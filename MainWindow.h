@@ -51,7 +51,8 @@ public:
 
 private:
 	void			_BuildLayout();
-	void			AddClip(BString clip);
+	bool			IsItemUnique(BString clipboardString);
+	void			AddClip(BString clipboardString);
 	BString			GetClipboard();
 	void			PutClipboard(BListView* list);
 	void			CropHistory(int limit);

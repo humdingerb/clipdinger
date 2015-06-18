@@ -12,6 +12,8 @@
 #include <ControlLook.h>
 #include <LayoutBuilder.h>
 
+#include <algorithm>
+
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "MainWindow"
 
@@ -132,8 +134,10 @@ MainWindow::MessageReceived(BMessage* message)
 	{
 		case B_CLIPBOARD_CHANGED:
 		{
+			fClipList->DeselectAll();
 			BString clipboardString(GetClipboard());
-			AddClip(clipboardString);
+			if (IsItemUnique(clipboardString))
+				AddClip(clipboardString);
 			fClipList->Select(0);
 			break;
 		}
@@ -213,6 +217,27 @@ MainWindow::MessageReceived(BMessage* message)
 			break;
 		}
 	}
+}
+
+
+bool
+MainWindow::IsItemUnique(BString clipboardString)
+{
+	if (fClipList->IsEmpty())
+		return true;
+
+	for (int i = 0; i < fClipList->CountItems(); i++)
+	{
+		BStringItem *sItem = dynamic_cast<BStringItem *> (fClipList->ItemAt(i));
+		BString *listItem = new BString(sItem->Text());
+
+		if (clipboardString.Compare(*listItem, std::min(clipboardString.Length(),
+				listItem->Length())) == 0) {
+			fClipList->MoveItem(i, 0);
+			return false;
+		}
+	}
+	return true;
 }
 
 
