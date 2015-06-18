@@ -1,12 +1,14 @@
 NAME= Clipdinger
 TYPE= APP
+APP_MIME_SIG= application/x-vnd.Clipdinger
 SRCS= App.cpp MainWindow.cpp
 RDEFS= Clipdinger.rdef
 LIBS= be localestub $(STDCPPLIBS)
 LIBPATHS=
 SYSTEM_INCLUDE_PATHS=
 LOCAL_INCLUDE_PATHS=
-OPTIMIZE=FULL
+OPTIMIZE= 
+LOCALES= 
 #	specify any preprocessor symbols to be defined.  The symbols will not
 #	have their values set automatically; you must supply the value (if any)
 #	to use.  For example, setting DEFINES to "DEBUG=1" will cause the
@@ -20,6 +22,7 @@ DEFINES=
 WARNINGS =
 # Build with debugging symbols if set to TRUE
 SYMBOLS=
+DEBUGGER := TRUE
 COMPILER_FLAGS=
 LINKER_FLAGS=
 

@@ -87,16 +87,9 @@ MainWindow::_BuildLayout()
 	BStringView* favoriteHeader = new BStringView("title",
 		B_TRANSLATE("Saved favourites:"));
 	favoriteHeader->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
-//	favoriteHeader->SetFont(be_bold_font);
-//	fPasteButton = new BButton("paste", "Paste" , new BMessage(PASTE_BUTTON));	
-	
+
 	// do the layouting				
 	float padding = be_control_look->DefaultItemSpacing();	
-	
-//	fMainSplitView = new BSplitView(B_HORIZONTAL);
-//	fMainSplitView->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNLIMITED));
-//	fRightSplitView = new BSplitView(B_VERTICAL);
-
 	BSplitView *v = 
 		BLayoutBuilder::Split<>(B_VERTICAL)
 			.AddGroup(B_VERTICAL)

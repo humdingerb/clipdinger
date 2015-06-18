@@ -1,5 +1,5 @@
 /*
- * Copyright 2014. All rights reserved.
+ * Copyright 2015. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -30,7 +30,6 @@ public:
 
 	void			AboutRequested();
 	virtual void	AppActivated(bool activated);
-	virtual void	ReadyToRun();
 	
 	MainWindow		*fMainWindow;
 	port_id			fPort;

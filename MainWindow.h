@@ -41,6 +41,7 @@
 #define MSG_INSERT_CLIP		'iclp'
 #define MSG_INSERT_FAVORITE	'ifav'
 
+
 class MainWindow : public BWindow {
 public:
 					MainWindow(BRect rect);
@@ -63,22 +64,13 @@ private:
 	BMenuItem		*fLimit50;
 	BMenuItem		*fLimit100;
 	BMenuItem		*fLimit200;
-
-//	BSplitView		*fMainSplitView;
-//	BSplitView		*fRightSplitView;
 	
 	BListView		*fClipList;
 	BListView		*fFavoriteList;
-//	BListView		*fSetList;
 	
 	BScrollView		*fClipScrollView;
 	BScrollView		*fFavoriteScrollView;
-//	BScrollView		*fSetScrollView;
 
-//	BButton			*fPasteButton;	
-//	BButton			*fAddButton;
-//	BButton			*fRemoveButton;
-//	BButton			*fEditButton;
 };
 
 #endif // MAIN_WINDOW_H

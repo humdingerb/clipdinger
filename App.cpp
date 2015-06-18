@@ -1,5 +1,5 @@
 /*
- * Copyright 2014. All rights reserved.
+ * Copyright 2015. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -20,19 +20,11 @@ App::App()
 	BApplication(kApplicationSignature)
 {	
 	BRect aFrame;
-	aFrame.Set(50.0, 50.0, 700.0, 400.0);
+	aFrame.Set(50.0, 50.0, 300.0, 400.0);
 	fMainWindow = new MainWindow(aFrame);
 	fMainWindow->Show();
 
 	fPort = create_port(20, INPUT_PORT_NAME);
-}
-
-
-void
-App::ReadyToRun()
-{
-//	fMainWindow->SetSizeLimits(190.0, 800.0, 90.0, 1000.0);
-//	fMainWindow->Show();
 }
 
 
@@ -54,7 +46,7 @@ App::AboutRequested()
 {
 	BAlert *alert = new BAlert("about", "Clipdinger v0.1\n"
 		"\twritten by Humdinger\n"
-		"\tCopyright 2014\n\n"
+		"\tCopyright 2015\n\n"
 		"Clipdinger provides a history and manages favourites of "
 		"clippings of the system clipboard.\n", "Thank you");
 	BTextView *view = alert->TextView();
