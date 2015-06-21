@@ -22,22 +22,35 @@ App::App()
 	BRect aFrame;
 	aFrame.Set(50.0, 50.0, 300.0, 400.0);
 	fMainWindow = new MainWindow(aFrame);
+
 	fMainWindow->Show();
+	fMainWindow->Minimize(true);
 
+	SetPulseRate(100000);
 	fPort = create_port(20, INPUT_PORT_NAME);
-}
-
-
-void
-App::AppActivated(bool activated)
-{
-	fMainWindow->Minimize(false);
-	printf("Activate! %d\n", activated);
 }
 
 
 App::~App()
 {
+}
+
+
+void
+App::Pulse()
+{
+	port_info info;
+	get_port_info(fPort, &info);
+	if (info.queue_count) {
+		int32 code;
+		read_port(fPort, &code, NULL, 0 );
+
+		if (code == 'CtSV') {
+			printf("Clipdinger filter triggered\n");
+			fMainWindow->Minimize(false);
+			fMainWindow->Activate(true);
+		}
+	}
 }
 
 
@@ -54,7 +67,7 @@ App::AboutRequested()
 
 	view->SetStylable(true);
 	view->GetFont(&font);
-	font.SetSize(font.Size()+4);
+	font.SetSize(font.Size() + 4);
 	font.SetFace(B_BOLD_FACE);
 	view->SetFontAndColor(0, 11, &font);
 	alert->Go();

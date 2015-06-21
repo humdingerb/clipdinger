@@ -41,6 +41,10 @@
 #define MSG_INSERT_CLIP		'iclp'
 #define MSG_INSERT_FAVORITE	'ifav'
 
+#define OUTPUT_PORT_NAME	"Clipdinger output port"
+
+const int32	kControlKeys = B_COMMAND_KEY | B_SHIFT_KEY;
+
 
 class MainWindow : public BWindow {
 public:
@@ -60,16 +64,16 @@ private:
 	
 private:
 	int32			fLimit;
-	BMenuItem		*fLimit25;
-	BMenuItem		*fLimit50;
-	BMenuItem		*fLimit100;
-	BMenuItem		*fLimit200;
+	BMenuItem*		fLimit25;
+	BMenuItem*		fLimit50;
+	BMenuItem*		fLimit100;
+	BMenuItem*		fLimit200;
 	
-	BListView		*fClipList;
-	BListView		*fFavoriteList;
+	BListView*		fClipList;
+	BListView*		fFavoriteList;
 	
-	BScrollView		*fClipScrollView;
-	BScrollView		*fFavoriteScrollView;
+	BScrollView*	fClipScrollView;
+	BScrollView*	fFavoriteScrollView;
 
 };
 

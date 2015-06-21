@@ -20,8 +20,9 @@
 
 MainWindow::MainWindow(BRect frame)
 	:
-	BWindow(frame, "Clipdinger", B_TITLED_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS),
-	fLimit(50)
+	BWindow(frame, "Clipdinger", B_TITLED_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS,
+		B_ALL_WORKSPACES),
+		fLimit(50)
 {
 	_BuildLayout();
 	be_clipboard->StartWatching(this);
@@ -76,18 +77,18 @@ MainWindow::_BuildLayout()
 	// The lists
 	fClipList = new BListView("cliplist");
 	fClipList->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
-	fFavoriteList = new BListView("favoritelist");
-	fFavoriteList->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
+//	fFavoriteList = new BListView("favoritelist");
+//	fFavoriteList->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
 	fClipScrollView = new BScrollView("clipscroll", fClipList,
 		B_FOLLOW_ALL_SIDES, false, true, B_FANCY_BORDER);
-	fFavoriteScrollView = new BScrollView("favoritescroll", fFavoriteList,
+/*	fFavoriteScrollView = new BScrollView("favoritescroll", fFavoriteList,
 		B_FOLLOW_ALL_SIDES, false, true, B_FANCY_BORDER);
 
 	BStringView* favoriteHeader = new BStringView("title",
 		B_TRANSLATE("Saved favourites:"));
 	favoriteHeader->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
-
+*/
 	// do the layouting				
 	float padding = be_control_look->DefaultItemSpacing();	
 	BSplitView *v = 
@@ -95,11 +96,11 @@ MainWindow::_BuildLayout()
 			.AddGroup(B_VERTICAL)
 				.Add(fClipScrollView)
 			.End()
-			.AddGroup(B_VERTICAL, padding / 2)
+/*			.AddGroup(B_VERTICAL, padding / 2)
 				.Add(favoriteHeader)
 				.Add(fFavoriteScrollView)
 			.End()
-		.SetInsets(padding, 0, padding, padding)
+*/		.SetInsets(padding, 0, padding, padding)
 		.View();
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
@@ -108,7 +109,7 @@ MainWindow::_BuildLayout()
 
 	fClipList->MakeFocus(true);
 	fClipList->SetInvocationMessage(new BMessage(MSG_INSERT_CLIP));
-	fFavoriteList->SetInvocationMessage(new BMessage(MSG_INSERT_FAVORITE));
+//	fFavoriteList->SetInvocationMessage(new BMessage(MSG_INSERT_FAVORITE));
 }
 
 
@@ -192,16 +193,16 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			if (fClipList->IsEmpty())
 				break;
-			PutClipboard(fClipList);
 			Minimize(true);
+			PutClipboard(fClipList);
 			break;
 		}
 		case MSG_INSERT_FAVORITE:
 		{
 			if (fFavoriteList->IsEmpty())
 				break;
-			PutClipboard(fFavoriteList);
 			Minimize(true);
+			PutClipboard(fFavoriteList);
 			break;
 		}		
 		default:
@@ -244,12 +245,14 @@ MainWindow::AddClip(BString clipboardString)
 }
 
 
-void MainWindow::CropHistory(int limit)
+void
+MainWindow::CropHistory(int limit)
 {
 	int count = fClipList->CountItems() - limit;
 	fClipList->RemoveItems(limit, count);
 	return;
 }	
+
 
 BString
 MainWindow::GetClipboard()
@@ -285,6 +288,10 @@ MainWindow::PutClipboard(BListView* list)
 			be_clipboard->Commit();
 		}
 		be_clipboard->Unlock();
+
+		port_id port = find_port(OUTPUT_PORT_NAME);
+		if (port != B_NAME_NOT_FOUND)
+			write_port(port, 'CtSV', NULL, 0);
 	}
 	return;
 }

@@ -20,7 +20,6 @@
 #include <strings.h>
 
 #define INPUT_PORT_NAME		"Clipdinger input port"
-#define OUTPUT_PORT_NAME	"Clipdinger output port"
 
 
 class App : public BApplication {
@@ -29,9 +28,9 @@ public:
 	virtual			~App();
 
 	void			AboutRequested();
-	virtual void	AppActivated(bool activated);
+	virtual void	Pulse();
 	
-	MainWindow		*fMainWindow;
+	MainWindow*		fMainWindow;
 	port_id			fPort;
 };
 
