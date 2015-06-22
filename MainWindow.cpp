@@ -58,12 +58,15 @@ MainWindow::_BuildLayout()
 		new BMessage(B_QUIT_REQUESTED), 'Q');
 	menu->AddItem(item);	
 	menuBar->AddItem(menu);
-	
+
 	menu = new BMenu(B_TRANSLATE("History"));
+
 	item = new BMenuItem(B_TRANSLATE("Clear history"),
 		new BMessage(msgCLEAR_HISTORY),'H');	
 	menu->AddItem(item);
+
 	submenu = new BMenu(B_TRANSLATE("Limit history"));
+
 	fLimit25 = new BMenuItem(B_TRANSLATE("25 entries"),
 		new BMessage(msgENTRIES_25));
 	submenu->AddItem(fLimit25);
@@ -96,7 +99,7 @@ MainWindow::_BuildLayout()
 	favoriteHeader->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 */
 	// do the layouting				
-	float padding = be_control_look->DefaultItemSpacing();	
+	const float padding = be_control_look->DefaultItemSpacing() / 2;
 	BSplitView *v = 
 		BLayoutBuilder::Split<>(B_VERTICAL)
 			.AddGroup(B_VERTICAL)
@@ -106,10 +109,10 @@ MainWindow::_BuildLayout()
 				.Add(favoriteHeader)
 				.Add(fFavoriteScrollView)
 			.End()
-*/		.SetInsets(padding, 0, padding, padding)
+*/		.SetInsets(padding)
 		.View();
 
-	BLayoutBuilder::Group<>(this, B_VERTICAL)
+	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(menuBar)
 		.Add(v);
 
@@ -152,7 +155,6 @@ MainWindow::MessageReceived(BMessage* message)
 				fClipList->RemoveItem(fClipList->CurrentSelection());
 			break;
 		}
-		
 		case msgCLEAR_HISTORY:
 		{
 			fClipList->MakeEmpty();

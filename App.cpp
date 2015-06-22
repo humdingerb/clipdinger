@@ -60,7 +60,7 @@ App::AboutRequested()
 	BAlert *alert = new BAlert("about", "Clipdinger v0.1\n"
 		"\twritten by Humdinger\n"
 		"\tCopyright 2015\n\n"
-		"Clipdinger provides a history and manages favourites of "
+		"Clipdinger provides a history of "
 		"clippings of the system clipboard.\n", "Thank you");
 	BTextView *view = alert->TextView();
 	BFont font;
