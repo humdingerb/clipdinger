@@ -6,6 +6,7 @@
  *	Humdinger, humdingerb@gmail.com
  */
 
+#include "EscFilter.h"
 #include "MainWindow.h"
 
 #include <Catalog.h>
@@ -20,12 +21,17 @@
 
 MainWindow::MainWindow(BRect frame)
 	:
-	BWindow(frame, "Clipdinger", B_TITLED_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS,
-		B_ALL_WORKSPACES),
+	BWindow(frame, B_TRANSLATE_SYSTEM_NAME("Clipdinger"), B_TITLED_WINDOW, B_NOT_CLOSABLE |
+		B_AUTO_UPDATE_SIZE_LIMITS, B_ALL_WORKSPACES),
 		fLimit(50)
 {
 	_BuildLayout();
 	be_clipboard->StartWatching(this);
+
+	if (GetClipboard() != " ")
+		PostMessage(B_CLIPBOARD_CHANGED);
+
+	AddCommonFilter(new EscFilter);
 }
 
 
@@ -133,6 +139,11 @@ MainWindow::MessageReceived(BMessage* message)
 			if (IsItemUnique(clipboardString))
 				AddClip(clipboardString);
 			fClipList->Select(0);
+			break;
+		}
+		case ESCAPE:
+		{
+			Minimize(true);
 			break;
 		}
 		case CLEAR_HISTORY:
