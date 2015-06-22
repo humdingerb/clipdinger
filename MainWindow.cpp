@@ -6,7 +6,7 @@
  *	Humdinger, humdingerb@gmail.com
  */
 
-#include "EscFilter.h"
+#include "KeyFilter.h"
 #include "MainWindow.h"
 
 #include <Catalog.h>
@@ -31,7 +31,7 @@ MainWindow::MainWindow(BRect frame)
 	if (GetClipboard() != " ")
 		PostMessage(B_CLIPBOARD_CHANGED);
 
-	AddCommonFilter(new EscFilter);
+	AddCommonFilter(new KeyFilter);
 }
 
 
@@ -61,21 +61,21 @@ MainWindow::_BuildLayout()
 	
 	menu = new BMenu(B_TRANSLATE("History"));
 	item = new BMenuItem(B_TRANSLATE("Clear history"),
-		new BMessage(CLEAR_HISTORY),'H');	
+		new BMessage(msgCLEAR_HISTORY),'H');	
 	menu->AddItem(item);
 	submenu = new BMenu(B_TRANSLATE("Limit history"));
 	fLimit25 = new BMenuItem(B_TRANSLATE("25 entries"),
-		new BMessage(ENTRIES_25));
+		new BMessage(msgENTRIES_25));
 	submenu->AddItem(fLimit25);
 	fLimit50 = new BMenuItem(B_TRANSLATE("50 entries"),
-		new BMessage(ENTRIES_50));
+		new BMessage(msgENTRIES_50));
 	submenu->AddItem(fLimit50);
 	fLimit50->SetMarked(true);
 	fLimit100 = new BMenuItem(B_TRANSLATE("100 entries"),
-		new BMessage(ENTRIES_100));
+		new BMessage(msgENTRIES_100));
 	submenu->AddItem(fLimit100);
 	fLimit200 = new BMenuItem(B_TRANSLATE("200 entries"),
-		new BMessage(ENTRIES_200));
+		new BMessage(msgENTRIES_200));
 	submenu->AddItem(fLimit200);
 	menu->AddItem(submenu);
 	menuBar->AddItem(menu);
@@ -114,8 +114,8 @@ MainWindow::_BuildLayout()
 		.Add(v);
 
 	fClipList->MakeFocus(true);
-	fClipList->SetInvocationMessage(new BMessage(MSG_INSERT_CLIP));
-//	fFavoriteList->SetInvocationMessage(new BMessage(MSG_INSERT_FAVORITE));
+	fClipList->SetInvocationMessage(new BMessage(msgINSERT_CLIP));
+//	fFavoriteList->SetInvocationMessage(new BMessage(msgINSERT_FAVORITE));
 }
 
 
@@ -141,18 +141,25 @@ MainWindow::MessageReceived(BMessage* message)
 			fClipList->Select(0);
 			break;
 		}
-		case ESCAPE:
+		case msgESCAPE:
 		{
 			Minimize(true);
 			break;
 		}
-		case CLEAR_HISTORY:
+		case msgDELETE:
+		{
+			if (!fClipList->IsEmpty());
+				fClipList->RemoveItem(fClipList->CurrentSelection());
+			break;
+		}
+		
+		case msgCLEAR_HISTORY:
 		{
 			fClipList->MakeEmpty();
 			PostMessage(B_CLIPBOARD_CHANGED);
 			break;
 		}
-		case ENTRIES_25:
+		case msgENTRIES_25:
 		{
 			fLimit = 25;
 			fLimit25->SetMarked(true);
@@ -164,7 +171,7 @@ MainWindow::MessageReceived(BMessage* message)
 				CropHistory(fLimit);
 			break;
 		}
-		case ENTRIES_50:
+		case msgENTRIES_50:
 		{
 			fLimit = 50;
 			fLimit25->SetMarked(false);
@@ -176,7 +183,7 @@ MainWindow::MessageReceived(BMessage* message)
 				CropHistory(fLimit);
 			break;
 		}
-		case ENTRIES_100:
+		case msgENTRIES_100:
 		{
 			fLimit = 100;
 			fLimit25->SetMarked(false);
@@ -188,7 +195,7 @@ MainWindow::MessageReceived(BMessage* message)
 				CropHistory(fLimit);
 			break;
 		}
-		case ENTRIES_200:
+		case msgENTRIES_200:
 		{
 			fLimit = 200;
 			fLimit25->SetMarked(false);
@@ -200,7 +207,7 @@ MainWindow::MessageReceived(BMessage* message)
 				CropHistory(fLimit);
 			break;
 		}
-		case MSG_INSERT_CLIP:
+		case msgINSERT_CLIP:
 		{
 			if (fClipList->IsEmpty())
 				break;
@@ -208,7 +215,7 @@ MainWindow::MessageReceived(BMessage* message)
 			PutClipboard(fClipList);
 			break;
 		}
-		case MSG_INSERT_FAVORITE:
+		case msgINSERT_FAVORITE:
 		{
 			if (fFavoriteList->IsEmpty())
 				break;

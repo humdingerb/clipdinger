@@ -1,28 +1,28 @@
 /*
- * Copyright 2010. All rights reserved.
+ * Copyright 2015. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
  *	Humdinger, humdingerb@gmail.com
  */
 
-#include "EscFilter.h"
+#include "KeyFilter.h"
 
 
-EscFilter::EscFilter()
+KeyFilter::KeyFilter()
 	:
 	BMessageFilter(B_PROGRAMMED_DELIVERY, B_ANY_SOURCE, B_KEY_DOWN)
 {
 }
 
 
-EscFilter::~EscFilter()
+KeyFilter::~KeyFilter()
 {
 }
 
 
 filter_result
-EscFilter::Filter(BMessage* message, BHandler** target)
+KeyFilter::Filter(BMessage* message, BHandler** target)
 {
 	int32 rawchar, mod;
 	message->FindInt32("raw_char", &rawchar);
@@ -34,7 +34,16 @@ EscFilter::Filter(BMessage* message, BHandler** target)
 			BLooper *loop = (*target)->Looper();
 			if (loop) {
 				BMessenger msgr(loop);
-				msgr.SendMessage(ESCAPE);
+				msgr.SendMessage(msgESCAPE);
+				return B_SKIP_MESSAGE;
+			}
+		}
+		case B_DELETE:
+		{
+			BLooper *loop = (*target)->Looper();
+			if (loop) {
+				BMessenger msgr(loop);
+				msgr.SendMessage(msgDELETE);
 				return B_SKIP_MESSAGE;
 			}
 		}

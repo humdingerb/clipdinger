@@ -32,14 +32,14 @@
 #include <strings.h>
 
 
-#define ENTRIES_25		'e025'
-#define ENTRIES_50		'e050'
-#define ENTRIES_100		'e100'
-#define ENTRIES_200		'e200'
+#define msgENTRIES_25		'e025'
+#define msgENTRIES_50		'e050'
+#define msgENTRIES_100		'e100'
+#define msgENTRIES_200		'e200'
 
-#define CLEAR_HISTORY		'clhi'
-#define MSG_INSERT_CLIP		'iclp'
-#define MSG_INSERT_FAVORITE	'ifav'
+#define msgCLEAR_HISTORY		'clhi'
+#define msgINSERT_CLIP		'iclp'
+#define msgINSERT_FAVORITE	'ifav'
 
 #define OUTPUT_PORT_NAME	"Clipdinger output port"
 
