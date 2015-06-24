@@ -8,10 +8,12 @@
 
 #include "KeyFilter.h"
 #include "MainWindow.h"
+#include "Settings.h"
 
 #include <Catalog.h>
 #include <ControlLook.h>
 #include <LayoutBuilder.h>
+#include <Screen.h>
 
 #include <algorithm>
 
@@ -19,16 +21,34 @@
 #define B_TRANSLATION_CONTEXT "MainWindow"
 
 
-MainWindow::MainWindow(BRect frame)
+MainWindow::MainWindow()
 	:
-	BWindow(frame, B_TRANSLATE_SYSTEM_NAME("Clipdinger"), B_TITLED_WINDOW, B_NOT_CLOSABLE |
-		B_AUTO_UPDATE_SIZE_LIMITS, B_ALL_WORKSPACES),
+	BWindow(BRect(), B_TRANSLATE_SYSTEM_NAME("Clipdinger"), B_TITLED_WINDOW,
+		B_NOT_CLOSABLE | B_AUTO_UPDATE_SIZE_LIMITS, B_ALL_WORKSPACES),
 		fLimit(50)
 {
 	_BuildLayout();
+
+	if (fSettings.WindowPosition() == BRect(-1, -1, -1, -1)) {
+		CenterOnScreen();
+		ResizeTo(300, 400);
+	} else {
+		BRect frame = fSettings.WindowPosition();
+		MoveTo(frame.LeftTop());
+		ResizeTo(frame.right - frame.left, frame.bottom - frame.top);
+
+		// make sure window is on screen
+		BScreen screen(this);
+		if (!screen.Frame().InsetByCopy(10, 10).Intersects(Frame()))
+			CenterOnScreen();
+	}
+
+	if (fSettings.Limit())
+		fLimit = fSettings.Limit();
+
 	be_clipboard->StartWatching(this);
 
-	if (GetClipboard() != " ")
+	if (GetClipboard() != "")
 		PostMessage(B_CLIPBOARD_CHANGED);
 
 	AddCommonFilter(new KeyFilter);
@@ -67,19 +87,19 @@ MainWindow::_BuildLayout()
 
 	submenu = new BMenu(B_TRANSLATE("Limit history"));
 
-	fLimit25 = new BMenuItem(B_TRANSLATE("25 entries"),
-		new BMessage(msgENTRIES_25));
-	submenu->AddItem(fLimit25);
-	fLimit50 = new BMenuItem(B_TRANSLATE("50 entries"),
-		new BMessage(msgENTRIES_50));
-	submenu->AddItem(fLimit50);
-	fLimit50->SetMarked(true);
-	fLimit100 = new BMenuItem(B_TRANSLATE("100 entries"),
-		new BMessage(msgENTRIES_100));
-	submenu->AddItem(fLimit100);
-	fLimit200 = new BMenuItem(B_TRANSLATE("200 entries"),
-		new BMessage(msgENTRIES_200));
-	submenu->AddItem(fLimit200);
+	fLimit1 = new BMenuItem(B_TRANSLATE("25 entries"),
+		new BMessage(msgLIMIT_1));
+	submenu->AddItem(fLimit1);
+	fLimit2 = new BMenuItem(B_TRANSLATE("50 entries"),
+		new BMessage(msgLIMIT_2));
+	submenu->AddItem(fLimit2);
+	fLimit2->SetMarked(true);							// from fSettings...
+	fLimit3 = new BMenuItem(B_TRANSLATE("100 entries"),
+		new BMessage(msgLIMIT_3));
+	submenu->AddItem(fLimit3);
+	fLimit4 = new BMenuItem(B_TRANSLATE("200 entries"),
+		new BMessage(msgLIMIT_4));
+	submenu->AddItem(fLimit4);
 	menu->AddItem(submenu);
 	menuBar->AddItem(menu);
 
@@ -125,6 +145,9 @@ MainWindow::_BuildLayout()
 bool
 MainWindow::QuitRequested()
 {
+	fSettings.SetLimit(fLimit);
+	fSettings.SetWindowPosition(ConvertToScreen(Bounds()));
+
 	be_app->PostMessage(B_QUIT_REQUESTED);
 	return true;
 }
@@ -161,49 +184,49 @@ MainWindow::MessageReceived(BMessage* message)
 			PostMessage(B_CLIPBOARD_CHANGED);
 			break;
 		}
-		case msgENTRIES_25:
+		case msgLIMIT_1:
 		{
 			fLimit = 25;
-			fLimit25->SetMarked(true);
-			fLimit50->SetMarked(false);
-			fLimit100->SetMarked(false);
-			fLimit200->SetMarked(false);
+			fLimit1->SetMarked(true);
+			fLimit2->SetMarked(false);
+			fLimit3->SetMarked(false);
+			fLimit4->SetMarked(false);
 
 			if (fClipList->CountItems() > fLimit)
 				CropHistory(fLimit);
 			break;
 		}
-		case msgENTRIES_50:
+		case msgLIMIT_2:
 		{
 			fLimit = 50;
-			fLimit25->SetMarked(false);
-			fLimit50->SetMarked(true);
-			fLimit100->SetMarked(false);
-			fLimit200->SetMarked(false);
+			fLimit1->SetMarked(false);
+			fLimit2->SetMarked(true);
+			fLimit3->SetMarked(false);
+			fLimit4->SetMarked(false);
 
 			if (fClipList->CountItems() > fLimit)
 				CropHistory(fLimit);
 			break;
 		}
-		case msgENTRIES_100:
+		case msgLIMIT_3:
 		{
 			fLimit = 100;
-			fLimit25->SetMarked(false);
-			fLimit50->SetMarked(false);
-			fLimit100->SetMarked(true);
-			fLimit200->SetMarked(false);
+			fLimit1->SetMarked(false);
+			fLimit2->SetMarked(false);
+			fLimit3->SetMarked(true);
+			fLimit4->SetMarked(false);
 
 			if (fClipList->CountItems() > fLimit)
 				CropHistory(fLimit);
 			break;
 		}
-		case msgENTRIES_200:
+		case msgLIMIT_4:
 		{
 			fLimit = 200;
-			fLimit25->SetMarked(false);
-			fLimit50->SetMarked(false);
-			fLimit100->SetMarked(false);
-			fLimit200->SetMarked(true);
+			fLimit1->SetMarked(false);
+			fLimit2->SetMarked(false);
+			fLimit3->SetMarked(false);
+			fLimit4->SetMarked(true);
 
 			if (fClipList->CountItems() > fLimit)
 				CropHistory(fLimit);

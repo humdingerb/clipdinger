@@ -8,9 +8,7 @@
  * A clipboard tool to manage clip history and favourites
  */
 
-
 #include "App.h"
-
 
 extern const char *kApplicationSignature = "application/x-vnd.Clipdinger";
 
@@ -19,10 +17,7 @@ App::App()
 	:
 	BApplication(kApplicationSignature)
 {	
-	BRect aFrame;
-	aFrame.Set(50.0, 50.0, 300.0, 400.0);
-	fMainWindow = new MainWindow(aFrame);
-
+	fMainWindow = new MainWindow();
 	fMainWindow->Show();
 	fMainWindow->Minimize(true);
 

@@ -9,11 +9,11 @@
 #ifndef APP_H
 #define APP_H
 
+#include "MainWindow.h"
+
 #include <Alert.h>
 #include <Application.h>
 #include <TextView.h>
-
-#include "MainWindow.h"
 
 #include <stdio.h>
 #include <stdlib.h>

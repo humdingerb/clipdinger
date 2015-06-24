@@ -9,6 +9,7 @@
 #ifndef MAIN_WINDOW_H
 #define MAIN_WINDOW_H
 
+#include "Settings.h"
 
 #include <Application.h>
 #include <Button.h>
@@ -32,12 +33,12 @@
 #include <strings.h>
 
 
-#define msgENTRIES_25		'e025'
-#define msgENTRIES_50		'e050'
-#define msgENTRIES_100		'e100'
-#define msgENTRIES_200		'e200'
+#define msgLIMIT_1		'lim1'
+#define msgLIMIT_2		'lim2'
+#define msgLIMIT_3		'lim3'
+#define msgLIMIT_4		'lim4'
 
-#define msgCLEAR_HISTORY		'clhi'
+#define msgCLEAR_HISTORY	'clhi'
 #define msgINSERT_CLIP		'iclp'
 #define msgINSERT_FAVORITE	'ifav'
 
@@ -48,7 +49,7 @@ const int32	kControlKeys = B_COMMAND_KEY | B_SHIFT_KEY;
 
 class MainWindow : public BWindow {
 public:
-					MainWindow(BRect rect);
+					MainWindow();
 	virtual			~MainWindow();
 	
 	bool			QuitRequested();
@@ -64,10 +65,10 @@ private:
 	
 private:
 	int32			fLimit;
-	BMenuItem*		fLimit25;
-	BMenuItem*		fLimit50;
-	BMenuItem*		fLimit100;
-	BMenuItem*		fLimit200;
+	BMenuItem*		fLimit1;
+	BMenuItem*		fLimit2;
+	BMenuItem*		fLimit3;
+	BMenuItem*		fLimit4;
 	
 	BListView*		fClipList;
 	BListView*		fFavoriteList;
@@ -75,6 +76,7 @@ private:
 	BScrollView*	fClipScrollView;
 	BScrollView*	fFavoriteScrollView;
 
+	Settings		fSettings;
 };
 
 #endif // MAIN_WINDOW_H
