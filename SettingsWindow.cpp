@@ -24,13 +24,12 @@ SettingsWindow::SettingsWindow(int32 limit, BRect frame)
 {
 	originalLimit = limit;
 	newLimit = limit;
-	printf("original limit: %d\n", originalLimit);
+
 	char string[4];
 	snprintf(string, sizeof(string), "%d", originalLimit);
-	printf("as String: %s\n", string);
 	
-	BTextControl* fLimitBox = new BTextControl("limitfield", NULL,
-		string, NULL);
+	fLimitBox = new BTextControl("limitfield", NULL, string,
+		NULL);
 	BStringView* limitlabel = new BStringView("limitlabel",
 		B_TRANSLATE("entries in the clipboard history"));
 
@@ -59,7 +58,6 @@ SettingsWindow::~SettingsWindow()
 {
 	App *app = dynamic_cast<App *> (be_app);
 	app->fMainWindow->NewLimit(newLimit);
-	printf("new limit: %d\n", newLimit);
 }
 
 
@@ -76,8 +74,7 @@ SettingsWindow::MessageReceived(BMessage* message)
 		}
 		case msgOK:
 		{
-			printf("limit: %s\n", fLimitBox->Text());
-//			newLimit = atoi(fLimitBox->Text());
+			newLimit = atoi(fLimitBox->Text());
 			Quit();
 			break;
 		}

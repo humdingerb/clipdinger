@@ -183,7 +183,7 @@ MainWindow::MessageReceived(BMessage* message)
 			BWindow* settingswindow = new SettingsWindow(fLimit, frame);
 			settingswindow->Show();
 			break;
-		}	
+		}
 		case msgINSERT_CLIP:
 		{
 			if (fClipList->IsEmpty())
@@ -199,7 +199,7 @@ MainWindow::MessageReceived(BMessage* message)
 //			Minimize(true);
 //			PutClipboard(fFavoriteList);
 //			break;
-//		}		
+//		}
 		default:
 		{
 			BWindow::MessageReceived(message);

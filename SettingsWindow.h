@@ -22,8 +22,7 @@ class SettingsWindow : public BWindow {
 public:
 					SettingsWindow(int32 limit, BRect frame);
 	virtual			~SettingsWindow();
-	
-//	bool			QuitRequested();
+
 	void			MessageReceived(BMessage* message);		
 private:
 	BTextControl*	fLimitBox;
