@@ -9,6 +9,7 @@
 #include "KeyFilter.h"
 #include "MainWindow.h"
 #include "Settings.h"
+#include "SettingsWindow.h"
 
 #include <Catalog.h>
 #include <ControlLook.h>
@@ -25,7 +26,7 @@ MainWindow::MainWindow()
 	:
 	BWindow(BRect(), B_TRANSLATE_SYSTEM_NAME("Clipdinger"), B_TITLED_WINDOW,
 		B_NOT_CLOSABLE | B_AUTO_UPDATE_SIZE_LIMITS, B_ALL_WORKSPACES),
-		fLimit(50)
+		fLimit(5)
 {
 	_BuildLayout();
 
@@ -43,8 +44,12 @@ MainWindow::MainWindow()
 			CenterOnScreen();
 	}
 
+
 	if (fSettings.Limit())
 		fLimit = fSettings.Limit();
+
+
+	printf("Start: limit is %d\n", fLimit);
 
 	be_clipboard->StartWatching(this);
 
@@ -82,25 +87,12 @@ MainWindow::_BuildLayout()
 	menu = new BMenu(B_TRANSLATE("History"));
 
 	item = new BMenuItem(B_TRANSLATE("Clear history"),
-		new BMessage(msgCLEAR_HISTORY),'H');	
+		new BMessage(msgCLEAR_HISTORY));
 	menu->AddItem(item);
 
-	submenu = new BMenu(B_TRANSLATE("Limit history"));
-
-	fLimit1 = new BMenuItem(B_TRANSLATE("25 entries"),
-		new BMessage(msgLIMIT_1));
-	submenu->AddItem(fLimit1);
-	fLimit2 = new BMenuItem(B_TRANSLATE("50 entries"),
-		new BMessage(msgLIMIT_2));
-	submenu->AddItem(fLimit2);
-	fLimit2->SetMarked(true);							// from fSettings...
-	fLimit3 = new BMenuItem(B_TRANSLATE("100 entries"),
-		new BMessage(msgLIMIT_3));
-	submenu->AddItem(fLimit3);
-	fLimit4 = new BMenuItem(B_TRANSLATE("200 entries"),
-		new BMessage(msgLIMIT_4));
-	submenu->AddItem(fLimit4);
-	menu->AddItem(submenu);
+	item = new BMenuItem(B_TRANSLATE("Settings" B_UTF8_ELLIPSIS),
+		new BMessage(msgSETTINGS));
+	menu->AddItem(item);
 	menuBar->AddItem(menu);
 
 	// The lists
@@ -184,54 +176,14 @@ MainWindow::MessageReceived(BMessage* message)
 			PostMessage(B_CLIPBOARD_CHANGED);
 			break;
 		}
-		case msgLIMIT_1:
+		case msgSETTINGS:
 		{
-			fLimit = 25;
-			fLimit1->SetMarked(true);
-			fLimit2->SetMarked(false);
-			fLimit3->SetMarked(false);
-			fLimit4->SetMarked(false);
-
-			if (fClipList->CountItems() > fLimit)
-				CropHistory(fLimit);
+			printf("main window limit: %d\n", fLimit);
+			BRect frame = Frame();
+			BWindow* settingswindow = new SettingsWindow(fLimit, frame);
+			settingswindow->Show();
 			break;
-		}
-		case msgLIMIT_2:
-		{
-			fLimit = 50;
-			fLimit1->SetMarked(false);
-			fLimit2->SetMarked(true);
-			fLimit3->SetMarked(false);
-			fLimit4->SetMarked(false);
-
-			if (fClipList->CountItems() > fLimit)
-				CropHistory(fLimit);
-			break;
-		}
-		case msgLIMIT_3:
-		{
-			fLimit = 100;
-			fLimit1->SetMarked(false);
-			fLimit2->SetMarked(false);
-			fLimit3->SetMarked(true);
-			fLimit4->SetMarked(false);
-
-			if (fClipList->CountItems() > fLimit)
-				CropHistory(fLimit);
-			break;
-		}
-		case msgLIMIT_4:
-		{
-			fLimit = 200;
-			fLimit1->SetMarked(false);
-			fLimit2->SetMarked(false);
-			fLimit3->SetMarked(false);
-			fLimit4->SetMarked(true);
-
-			if (fClipList->CountItems() > fLimit)
-				CropHistory(fLimit);
-			break;
-		}
+		}	
 		case msgINSERT_CLIP:
 		{
 			if (fClipList->IsEmpty())
@@ -240,14 +192,14 @@ MainWindow::MessageReceived(BMessage* message)
 			PutClipboard(fClipList);
 			break;
 		}
-		case msgINSERT_FAVORITE:
-		{
-			if (fFavoriteList->IsEmpty())
-				break;
-			Minimize(true);
-			PutClipboard(fFavoriteList);
-			break;
-		}		
+//		case msgINSERT_FAVORITE:
+//		{
+//			if (fFavoriteList->IsEmpty())
+//				break;
+//			Minimize(true);
+//			PutClipboard(fFavoriteList);
+//			break;
+//		}		
 		default:
 		{
 			BWindow::MessageReceived(message);
@@ -289,7 +241,7 @@ MainWindow::AddClip(BString clipboardString)
 
 
 void
-MainWindow::CropHistory(int limit)
+MainWindow::CropHistory(int32 limit)
 {
 	int count = fClipList->CountItems() - limit;
 	fClipList->RemoveItems(limit, count);

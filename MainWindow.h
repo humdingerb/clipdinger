@@ -33,14 +33,10 @@
 #include <strings.h>
 
 
-#define msgLIMIT_1		'lim1'
-#define msgLIMIT_2		'lim2'
-#define msgLIMIT_3		'lim3'
-#define msgLIMIT_4		'lim4'
-
 #define msgCLEAR_HISTORY	'clhi'
 #define msgINSERT_CLIP		'iclp'
 #define msgINSERT_FAVORITE	'ifav'
+#define msgSETTINGS			'sett'
 
 #define OUTPUT_PORT_NAME	"Clipdinger output port"
 
@@ -54,6 +50,7 @@ public:
 	
 	bool			QuitRequested();
 	void			MessageReceived(BMessage* message);
+	void			NewLimit(int32 limit) { fLimit = limit; };
 
 private:
 	void			_BuildLayout();
@@ -61,14 +58,10 @@ private:
 	void			AddClip(BString clipboardString);
 	BString			GetClipboard();
 	void			PutClipboard(BListView* list);
-	void			CropHistory(int limit);
+	void			CropHistory(int32 limit);
 	
 private:
 	int32			fLimit;
-	BMenuItem*		fLimit1;
-	BMenuItem*		fLimit2;
-	BMenuItem*		fLimit3;
-	BMenuItem*		fLimit4;
 	
 	BListView*		fClipList;
 	BListView*		fFavoriteList;
