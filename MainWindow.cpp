@@ -25,7 +25,8 @@
 MainWindow::MainWindow()
 	:
 	BWindow(BRect(), B_TRANSLATE_SYSTEM_NAME("Clipdinger"), B_TITLED_WINDOW,
-		B_NOT_CLOSABLE | B_AUTO_UPDATE_SIZE_LIMITS, B_ALL_WORKSPACES),
+		B_NOT_CLOSABLE | B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS,
+		B_ALL_WORKSPACES),
 		fLimit(5)
 {
 	_BuildLayout();
@@ -220,8 +221,7 @@ MainWindow::IsItemUnique(BString clipboardString)
 		BStringItem *sItem = dynamic_cast<BStringItem *> (fClipList->ItemAt(i));
 		BString *listItem = new BString(sItem->Text());
 
-		if (clipboardString.Compare(*listItem, std::min(clipboardString.Length(),
-				listItem->Length())) == 0) {
+		if (clipboardString.Compare(*listItem) == 0) {
 			fClipList->MoveItem(i, 0);
 			return false;
 		}
@@ -243,8 +243,12 @@ MainWindow::AddClip(BString clipboardString)
 void
 MainWindow::CropHistory(int32 limit)
 {
-	int count = fClipList->CountItems() - limit;
-	fClipList->RemoveItems(limit, count);
+	if (limit < fLimit) {
+		if (fClipList->CountItems() > limit) {
+			int count = fClipList->CountItems() - limit - 1;
+			fClipList->RemoveItems(limit, count);
+		}
+	}
 	return;
 }	
 
@@ -288,5 +292,18 @@ MainWindow::PutClipboard(BListView* list)
 		if (port != B_NAME_NOT_FOUND)
 			write_port(port, 'CtSV', NULL, 0);
 	}
+	return;
+}
+
+
+void
+MainWindow::UpdatedSettings(int32 limit)
+{
+	if (fLimit >= limit)
+		CropHistory(limit);
+
+	if (fLimit != limit)
+		fLimit = limit;
+
 	return;
 }

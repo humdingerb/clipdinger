@@ -50,7 +50,7 @@ public:
 	
 	bool			QuitRequested();
 	void			MessageReceived(BMessage* message);
-	void			NewLimit(int32 limit) { fLimit = limit; };
+	void			UpdatedSettings(int32 limit);
 
 private:
 	void			_BuildLayout();
