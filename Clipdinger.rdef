@@ -1,4 +1,4 @@
-resource app_signature "application/x-vnd.Clipdinger";
+resource app_signature "application/x-vnd.Clipdinger-debug";
 
 resource app_flags B_SINGLE_LAUNCH;
 

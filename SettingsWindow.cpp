@@ -9,9 +9,11 @@
 #include "App.h"
 #include "SettingsWindow.h"
 
+#include <Button.h>
 #include <Catalog.h>
 #include <ControlLook.h>
 #include <LayoutBuilder.h>
+#include <SeparatorView.h>
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "SettingsWindow"
@@ -40,15 +42,19 @@ SettingsWindow::SettingsWindow(int32 limit, BRect frame)
 
 	const float padding = be_control_look->DefaultItemSpacing();
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
-		.SetInsets(padding)
 		.AddGroup(B_HORIZONTAL)
+			.SetInsets(padding)
 			.Add(fLimitBox)
 			.Add(limitlabel)
 		.End()
 		.AddStrut(padding)
+		.Add(new BSeparatorView(B_HORIZONTAL))
 		.AddGroup(B_HORIZONTAL)
+			.SetInsets(0, 0, 0, padding / 2)
+			.AddGlue()
 			.Add(cancel)
 			.Add(ok)
+			.AddGlue()
 		.End();
 
 	frame.OffsetBy(60.0, 60.0);

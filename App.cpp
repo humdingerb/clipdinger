@@ -41,7 +41,6 @@ App::Pulse()
 		read_port(fPort, &code, NULL, 0 );
 
 		if (code == 'CtSV') {
-			printf("Clipdinger filter triggered\n");
 			fMainWindow->Minimize(false);
 			fMainWindow->Activate(true);
 		}

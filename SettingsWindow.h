@@ -14,8 +14,8 @@
 #include <TextControl.h>
 #include <Window.h>
 
-#define msgCANCEL			'cncl'
-#define msgOK				'okay'
+#define msgCANCEL	'cncl'
+#define msgOK		'okay'
 
 
 class SettingsWindow : public BWindow {

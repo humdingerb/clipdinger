@@ -15,10 +15,6 @@
 #include <Application.h>
 #include <TextView.h>
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <strings.h>
-
 #define INPUT_PORT_NAME		"Clipdinger input port"
 
 

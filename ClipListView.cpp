@@ -1,5 +1,5 @@
 /*
- * Copyright 2014. All rights reserved.
+ * Copyright 2015. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -9,8 +9,9 @@
 #include "ClipListView.h"
 #include "MainWindow.h"
 
-ClipListView::ClipListView()
-		  : BListView(BRect(), "ClipList", B_SINGLE_SELECTION_LIST, B_WILL_DRAW)
+ClipListView::ClipListView(const char* name)
+		  :
+		  BListView(BRect(), "name", B_SINGLE_SELECTION_LIST, B_WILL_DRAW)
 {
 }
 
@@ -36,7 +37,7 @@ ClipListView::FrameResized(float w, float h)
 	
 	for (int32 i = 0; i < CountItems(); i++) {
 		BListItem *item = ItemAt(i);
-		item->Update(this,be_plain_font);
+		item->Update(this, be_plain_font);
 	}
 	Invalidate();
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014. All rights reserved.
+ * Copyright 2015. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -11,11 +11,10 @@
 
 #include <ListView.h>
 
-#include <stdio.h>
 
 class ClipListView : public BListView {
 public:
-					ClipListView();
+					ClipListView(const char* name);
 					~ClipListView();
 	virtual void	Draw(BRect rect);
 	virtual	void	FrameResized(float w, float h);

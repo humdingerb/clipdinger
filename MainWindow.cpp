@@ -7,6 +7,7 @@
  */
 
 #include "KeyFilter.h"
+#include "ClipListItem.h"
 #include "MainWindow.h"
 #include "Settings.h"
 #include "SettingsWindow.h"
@@ -26,8 +27,7 @@ MainWindow::MainWindow()
 	:
 	BWindow(BRect(), B_TRANSLATE_SYSTEM_NAME("Clipdinger"), B_TITLED_WINDOW,
 		B_NOT_CLOSABLE | B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS,
-		B_ALL_WORKSPACES),
-		fLimit(5)
+		B_ALL_WORKSPACES)
 {
 	_BuildLayout();
 
@@ -45,12 +45,8 @@ MainWindow::MainWindow()
 			CenterOnScreen();
 	}
 
-
 	if (fSettings.Limit())
 		fLimit = fSettings.Limit();
-
-
-	printf("Start: limit is %d\n", fLimit);
 
 	be_clipboard->StartWatching(this);
 
@@ -97,7 +93,7 @@ MainWindow::_BuildLayout()
 	menuBar->AddItem(menu);
 
 	// The lists
-	fHistory = new BListView("history");
+	fHistory = new ClipListView("history");
 	fHistory->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 //	fFavorites = new BListView("favorites");
 //	fFavorites->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
@@ -130,7 +126,7 @@ MainWindow::_BuildLayout()
 		.Add(v);
 
 	fHistory->MakeFocus(true);
-	fHistory->SetInvocationMessage(new BMessage(msgINSERT_CLIP));
+	fHistory->SetInvocationMessage(new BMessage(msgINSERT_HISTORY));
 //	fFavorites->SetInvocationMessage(new BMessage(msgINSERT_FAVORITE));
 }
 
@@ -179,13 +175,12 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case msgSETTINGS:
 		{
-			printf("main window limit: %d\n", fLimit);
 			BRect frame = Frame();
 			BWindow* settingswindow = new SettingsWindow(fLimit, frame);
 			settingswindow->Show();
 			break;
 		}
-		case msgINSERT_CLIP:
+		case msgINSERT_HISTORY:
 		{
 			if (fHistory->IsEmpty())
 				break;
@@ -218,8 +213,8 @@ MainWindow::IsItemUnique(BString clipboardString)
 
 	for (int i = 0; i < fHistory->CountItems(); i++)
 	{
-		BStringItem *sItem = dynamic_cast<BStringItem *> (fHistory->ItemAt(i));
-		BString *listItem = new BString(sItem->Text());
+		ClipListItem *sItem = dynamic_cast<ClipListItem *> (fHistory->ItemAt(i));
+		BString *listItem = new BString(sItem->GetClip());
 
 		if (clipboardString.Compare(*listItem) == 0) {
 			fHistory->MoveItem(i, 0);
@@ -235,7 +230,8 @@ MainWindow::AddClip(BString clipboardString)
 {
 	if (fHistory->CountItems() > fLimit - 1)
 		fHistory->RemoveItem(fHistory->LastItem());
-	fHistory->AddItem(new BStringItem(clipboardString), 0);
+
+	fHistory->AddItem(new ClipListItem(clipboardString), 0);
 	return;
 }
 
@@ -275,8 +271,8 @@ MainWindow::PutClipboard(BListView* list)
 {
 	BMessage* clip = (BMessage *)NULL;
 	int index = list->CurrentSelection();
-	BStringItem *item = dynamic_cast<BStringItem *> (list->ItemAt(index));
-	BString text(item->Text());
+	ClipListItem *item = dynamic_cast<ClipListItem *> (list->ItemAt(index));
+	BString text(item->GetClip());
 		
 	ssize_t textLen = text.Length();
 	

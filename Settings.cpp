@@ -29,7 +29,7 @@ Settings::Settings()
 			BFile file(path.Path(), B_READ_ONLY);
 	
 			if (file.InitCheck() != B_OK || (msg.Unflatten(&file) != B_OK)) {
-				fLimit = 5;
+				fLimit = kDefaultLimit;
 				fPosition.Set(-1, -1, -1, -1);
 			} else {
 				msg.FindInt32("limit", &fLimit);

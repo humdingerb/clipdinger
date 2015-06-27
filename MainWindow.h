@@ -9,14 +9,13 @@
 #ifndef MAIN_WINDOW_H
 #define MAIN_WINDOW_H
 
+#include "ClipListView.h"
 #include "Settings.h"
 
 #include <Application.h>
-#include <Button.h>
 #include <Clipboard.h>
 #include <GroupLayout.h>
 #include <GroupLayoutBuilder.h>
-#include <ListView.h>
 #include <Menu.h>
 #include <MenuBar.h>
 #include <MenuItem.h>
@@ -24,7 +23,6 @@
 #include <Size.h>
 #include <SplitView.h>
 #include <String.h>
-#include <StringItem.h>
 #include <StringView.h>
 #include <Window.h>
 
@@ -34,8 +32,8 @@
 
 
 #define msgCLEAR_HISTORY	'clhi'
-#define msgINSERT_CLIP		'iclp'
-#define msgINSERT_FAVORITE	'ifav'
+#define msgINSERT_HISTORY	'ihis'
+//#define msgINSERT_FAVORITE	'ifav'
 #define msgSETTINGS			'sett'
 
 #define OUTPUT_PORT_NAME	"Clipdinger output port"
@@ -63,11 +61,11 @@ private:
 private:
 	int32			fLimit;
 	
-	BListView*		fHistory;
-	BListView*		fFavorites;
+	ClipListView*	fHistory;
+//	BListView*		fFavorites;
 	
 	BScrollView*	fHistoryScrollView;
-	BScrollView*	fFavoriteScrollView;
+//	BScrollView*	fFavoriteScrollView;
 
 	Settings		fSettings;
 };

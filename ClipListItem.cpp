@@ -1,21 +1,28 @@
 /*
- * Copyright 2014. All rights reserved.
+ * Copyright 2015. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
  *	Humdinger, humdingerb@gmail.com
  */
 
-#include <Application.h>
-
 #include "ClipListItem.h"
+
+#include <ControlLook.h>
 
 
 ClipListItem::ClipListItem(BString clip)
-		  :BListItem()
+	:
+	BListItem()
 {
-	printf("new item: %s\n", clip.String());
-	fClip = clip;
+	fTitle = new BString;
+	fClip = new BString(clip);
+
+	if (fClip->CountChars() > MAX_TITLE_CHARS) {
+		fClip->CopyInto(*fTitle, 0, MAX_TITLE_CHARS);
+		fTitle->Append(B_UTF8_ELLIPSIS);
+	} else
+		fTitle = fClip;
 }
 
 
@@ -27,51 +34,53 @@ ClipListItem::~ClipListItem()
 void
 ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 {
-    float offset = 10;
-
     // set background color
     if (IsSelected()) {
         view->SetHighColor(ui_color(B_LIST_SELECTED_BACKGROUND_COLOR));
         view->SetLowColor(ui_color(B_LIST_SELECTED_BACKGROUND_COLOR));    	
     }
     else {
-        view->SetHighColor(ui_color(B_CONTROL_BACKGROUND_COLOR));
-        view->SetLowColor(ui_color(B_CONTROL_BACKGROUND_COLOR));
+        view->SetHighColor(ui_color(B_LIST_BACKGROUND_COLOR));
+        view->SetLowColor(ui_color(B_LIST_BACKGROUND_COLOR));
     }
-    view->FillRect(rect);
+	view->FillRect(rect);
 
-	// clip
-    if (IsSelected())
+	// text
+	if (IsSelected())
     	view->SetHighColor(ui_color(B_LIST_SELECTED_ITEM_TEXT_COLOR));
     else
     	view->SetHighColor(ui_color(B_LIST_ITEM_TEXT_COLOR));
 
-	BFont font = be_plain_font;
-	font_height	finfo;
-	font.GetHeight(&finfo);
-    view->SetFont(&font);
+	BFont font;
+	view->SetFont(&font);
+	font_height	fheight;
+	font.GetHeight(&fheight);
 
-	fFontHeight = rect.top + 12.8;
+	float width, height;
+	view->GetPreferredSize(&width, &height);
 
-printf("finfo.ascent: %f\n", finfo.ascent);
-printf("finfo.descent: %f\n", finfo.descent);
-printf("fFontHeight: %f\n", fFontHeight);
+    BString string(fTitle->String());
+    view->TruncateString(&string, B_TRUNCATE_END, width -
+		be_control_look->DefaultLabelSpacing() / 2);
+    view->DrawString(string.String(),
+		BPoint(rect.left + be_control_look->DefaultLabelSpacing(),
+		rect.top + fheight.ascent + 2 + floorf(fheight.leading / 2)));
 
-	view->MovePenTo(offset, fFontHeight);
-
-    float width, height;
-    view->GetPreferredSize(&width, &height);
-
-    BString string(fClip);
-    view->TruncateString(&string, B_TRUNCATE_END, width - kBitmapSize - offset/2);
-    view->DrawString(string.String());
+	view->SetHighColor(tint_color(ui_color(B_CONTROL_BACKGROUND_COLOR),
+		B_DARKEN_1_TINT));
+	view->StrokeLine(rect.LeftBottom(), rect.RightBottom());
 }
 
 
-void ClipListItem::Update(BView *owner, const BFont *finfo)
+void ClipListItem::Update(BView *view, const BFont *finfo)
 {
 	// we need to override the update method so we can make sure the
 	// list item size doesn't change
-	BListItem::Update(owner, finfo);
-	SetHeight(fFontHeight * 2);
+	BListItem::Update(view, finfo);
+
+	font_height	fheight;
+	finfo->GetHeight(&fheight);
+
+	SetHeight(ceilf(fheight.ascent + 2 + fheight.leading / 2
+		+ fheight.descent) + 4);
 }

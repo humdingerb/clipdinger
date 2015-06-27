@@ -16,8 +16,6 @@
 #include <MessageFilter.h>
 #include <Messenger.h>
 
-#include <stdio.h>
-
 
 #define msgESCAPE		'esca'
 #define msgDELETE		'dele'
