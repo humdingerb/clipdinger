@@ -97,14 +97,14 @@ MainWindow::_BuildLayout()
 	menuBar->AddItem(menu);
 
 	// The lists
-	fClipList = new BListView("cliplist");
-	fClipList->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
-//	fFavoriteList = new BListView("favoritelist");
-//	fFavoriteList->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
+	fHistory = new BListView("history");
+	fHistory->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
+//	fFavorites = new BListView("favorites");
+//	fFavorites->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
-	fClipScrollView = new BScrollView("clipscroll", fClipList,
+	fHistoryScrollView = new BScrollView("historyscroll", fHistory,
 		B_FOLLOW_ALL_SIDES, false, true, B_FANCY_BORDER);
-/*	fFavoriteScrollView = new BScrollView("favoritescroll", fFavoriteList,
+/*	fFavoriteScrollView = new BScrollView("favoritescroll", fFavorites,
 		B_FOLLOW_ALL_SIDES, false, true, B_FANCY_BORDER);
 
 	BStringView* favoriteHeader = new BStringView("title",
@@ -116,7 +116,7 @@ MainWindow::_BuildLayout()
 	BSplitView *v = 
 		BLayoutBuilder::Split<>(B_VERTICAL)
 			.AddGroup(B_VERTICAL)
-				.Add(fClipScrollView)
+				.Add(fHistoryScrollView)
 			.End()
 /*			.AddGroup(B_VERTICAL, padding / 2)
 				.Add(favoriteHeader)
@@ -129,9 +129,9 @@ MainWindow::_BuildLayout()
 		.Add(menuBar)
 		.Add(v);
 
-	fClipList->MakeFocus(true);
-	fClipList->SetInvocationMessage(new BMessage(msgINSERT_CLIP));
-//	fFavoriteList->SetInvocationMessage(new BMessage(msgINSERT_FAVORITE));
+	fHistory->MakeFocus(true);
+	fHistory->SetInvocationMessage(new BMessage(msgINSERT_CLIP));
+//	fFavorites->SetInvocationMessage(new BMessage(msgINSERT_FAVORITE));
 }
 
 
@@ -153,11 +153,11 @@ MainWindow::MessageReceived(BMessage* message)
 	{
 		case B_CLIPBOARD_CHANGED:
 		{
-			fClipList->DeselectAll();
+			fHistory->DeselectAll();
 			BString clipboardString(GetClipboard());
 			if (IsItemUnique(clipboardString))
 				AddClip(clipboardString);
-			fClipList->Select(0);
+			fHistory->Select(0);
 			break;
 		}
 		case msgESCAPE:
@@ -167,13 +167,13 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case msgDELETE:
 		{
-			if (!fClipList->IsEmpty());
-				fClipList->RemoveItem(fClipList->CurrentSelection());
+			if (!fHistory->IsEmpty());
+				fHistory->RemoveItem(fHistory->CurrentSelection());
 			break;
 		}
 		case msgCLEAR_HISTORY:
 		{
-			fClipList->MakeEmpty();
+			fHistory->MakeEmpty();
 			PostMessage(B_CLIPBOARD_CHANGED);
 			break;
 		}
@@ -187,18 +187,18 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case msgINSERT_CLIP:
 		{
-			if (fClipList->IsEmpty())
+			if (fHistory->IsEmpty())
 				break;
 			Minimize(true);
-			PutClipboard(fClipList);
+			PutClipboard(fHistory);
 			break;
 		}
 //		case msgINSERT_FAVORITE:
 //		{
-//			if (fFavoriteList->IsEmpty())
+//			if (fFavorites->IsEmpty())
 //				break;
 //			Minimize(true);
-//			PutClipboard(fFavoriteList);
+//			PutClipboard(fFavorites);
 //			break;
 //		}
 		default:
@@ -213,16 +213,16 @@ MainWindow::MessageReceived(BMessage* message)
 bool
 MainWindow::IsItemUnique(BString clipboardString)
 {
-	if (fClipList->IsEmpty())
+	if (fHistory->IsEmpty())
 		return true;
 
-	for (int i = 0; i < fClipList->CountItems(); i++)
+	for (int i = 0; i < fHistory->CountItems(); i++)
 	{
-		BStringItem *sItem = dynamic_cast<BStringItem *> (fClipList->ItemAt(i));
+		BStringItem *sItem = dynamic_cast<BStringItem *> (fHistory->ItemAt(i));
 		BString *listItem = new BString(sItem->Text());
 
 		if (clipboardString.Compare(*listItem) == 0) {
-			fClipList->MoveItem(i, 0);
+			fHistory->MoveItem(i, 0);
 			return false;
 		}
 	}
@@ -233,9 +233,9 @@ MainWindow::IsItemUnique(BString clipboardString)
 void
 MainWindow::AddClip(BString clipboardString)
 {
-	if (fClipList->CountItems() > fLimit - 1)
-		fClipList->RemoveItem(fClipList->LastItem());
-	fClipList->AddItem(new BStringItem(clipboardString), 0);
+	if (fHistory->CountItems() > fLimit - 1)
+		fHistory->RemoveItem(fHistory->LastItem());
+	fHistory->AddItem(new BStringItem(clipboardString), 0);
 	return;
 }
 
@@ -244,9 +244,9 @@ void
 MainWindow::CropHistory(int32 limit)
 {
 	if (limit < fLimit) {
-		if (fClipList->CountItems() > limit) {
-			int count = fClipList->CountItems() - limit - 1;
-			fClipList->RemoveItems(limit, count);
+		if (fHistory->CountItems() > limit) {
+			int count = fHistory->CountItems() - limit - 1;
+			fHistory->RemoveItems(limit, count);
 		}
 	}
 	return;

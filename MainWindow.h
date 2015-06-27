@@ -63,10 +63,10 @@ private:
 private:
 	int32			fLimit;
 	
-	BListView*		fClipList;
-	BListView*		fFavoriteList;
+	BListView*		fHistory;
+	BListView*		fFavorites;
 	
-	BScrollView*	fClipScrollView;
+	BScrollView*	fHistoryScrollView;
 	BScrollView*	fFavoriteScrollView;
 
 	Settings		fSettings;
