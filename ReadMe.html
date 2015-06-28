@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta name="robots" content="all" />
+	<title>Clipdinger</title>
+
+<style type="text/css">
+
+body {
+    font-size: 0.9em;
+	font-family: "DejaVu Sans",Arial,Helvetica,sans-serif;
+	line-height: 1.5;
+	margin: 40px;
+	min-width: 45em;
+	max-width: 70em;
+}
+hr {
+	border: dotted thin #e0e0e0;
+}
+h1 {
+	font-size: 1.3em;
+	border-bottom: dotted thin #e0e0e0;
+	margin-bottom: 45px;
+}
+h2 {
+	font-size: 1.2em;
+	border-bottom: dotted thin #e0e0e0;
+	margin-top: 40px;
+}
+h3 {
+	font-size: 1em;
+	border-bottom: none;
+	margin-bottom: 0px;
+}
+.key {				/* Shortcut (separate with &#160; */
+	-webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;	
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border-color: #c7c7c7;
+	border-style: solid;
+	border-width: 1px;
+	padding: 0px 2px 0px 2px;
+	background-color: #e8e8e8;
+    font-family: sans;
+   	font-variant: small-caps;
+  	font-size: 1em;
+}
+</style> 
+
+</head>
+<body>
+<div align = "center">
+<img width="64" height="64" src="./images/clipdinger_icon_64.png" alt="Clipdinger icon" />
+<p><span style="font-size: 1.5em; font-weight:bold">Clipdinger</span><br />
+for <a href="http://www.haiku-os.org">Haiku</a><br />
+<i>by Humdinger</i></p>
+<hr />
+<p id="index"><a href="#tips">Tips &amp; Tricks</a> &mdash; <a href="#download">Download</a> &mdash; <a href="#bugs_feedback">Bugreports &amp; Feedback</a> &mdash; <a href="#thanks">Thanks</a> &mdash; <a href="#history">History</a></p>
+</div>
+<hr />
+<p><br /></p>
+<p>Clipdinger is a small tool to manage a history of the system clipboard. It solves the problem that often you have to paste some text you've just recently copied to the clipboard, but that has been replaced by something you've copied more recently...</p>
+<p>If you want to paste some text that isn't in the clipboard any more, simply hit <span class="key">SHIFT</span> <span class="key">ALT</span> <span class="key">V</span> to summon the Clipdinger window. Here you can select an entry with the <span class="key">CursorUp/Down</span> keys and paste it by 
+hitting <span class="key">RETURN</span>. <span class="key">ESCAPE</span>  minimizes the window without pasting.</p>
+
+<p>Here's the main window with a few entries in the history and the settings window when choosing <i>Settings...</i> from the History menu:</p>
+<div align = "center">
+<img src="./images/clipdinger.png" alt="Clipdinger windows" />
+</div>
+<p>The settings window has currently only one option: the number of entries in the history.<br />
+Keep in mind that every clipping is kept in memory and if you copy many large blocks of text, you may clog up your memory. Though, for everyday use, where clippings are seldom larger than a few hundred KiBs, having a few dozen entries in the history shouldn't tax memory noticibly.</p>
+<p>Once the limit of the history is reached, the oldest entry is removed automtically to make room for the new clipping.</p>
+<p>You can remove an entry by selecting it and pressing <span class="key">DEL</span> or remove the complete clipboard history with <i>Clear history</i> from the History menu.</p>
+
+<h2>
+<a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
+<a id="tips" name="tips">Tips &amp; Tricks</a></h2>
+<p>Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the  <tt>/boot/home/config/settings/boot/launch/</tt> folder. Then it gets started automatically on every boot-up.</p>
+
+<h2>
+<a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
+<a id="download" name="download">Download</a></h2>
+<p>Clipdinger is directly available through HaikuDepot from the HaikuPorts repository.<br />
+You can also build it yourself using <a href="https://bitbucket.org/haikuports/haikuports/wiki/Home">Haikuporter</a>. The source is hosted at <a href="http://sourceforge.net/p/clipdinger/code/ci/master/tree/">SourceForge</a>.</p>
+
+<h2>
+<a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
+<a id="bugs_feedback" name="bugs_feedback">Bugreports &amp; Feedback</a></h2>
+<p>Please use sourceforge's <a href="http://sourceforge.net/projects/clipdinger/support?source=navbar">bugreport form</a> if you experience unusual difficulties or email your general feedback to <a href="mailto:humdinger@gmail.com">me</a>. Also, email me if you'd like to provide more localizations.</p>
+
+<h2>
+<a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
+<a id="thanks" name="thanks">Thanks</a></h2>
+<p>	I have to thank Werner Freytag who created ClipUp for BeOS which was my inspiration and motivation to work on Clipdinger, to have a similar tool that works as I expect it to under Haiku. I pretty much copied his input_server device and filter...<br />
+Also, thanks to everyone that contributed translations for Clipdinger.</p>
+
+<h2>
+<a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
+<a id="history" name="history">History</a></h2>
+<p><b>0.1</b> - <i>--2015:</i></p>
+<ul>
+<li>Initial release.</li>
+</ul>
+</body>
+</html>
