@@ -36,12 +36,14 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 {
     // set background color
     if (IsSelected()) {
-        view->SetHighColor(ui_color(B_LIST_SELECTED_BACKGROUND_COLOR));
-        view->SetLowColor(ui_color(B_LIST_SELECTED_BACKGROUND_COLOR));    	
+		rgb_color bgColor = ui_color(B_LIST_SELECTED_BACKGROUND_COLOR);
+		view->SetHighColor(bgColor);
+		view->SetLowColor(bgColor);
     }
     else {
-        view->SetHighColor(ui_color(B_LIST_BACKGROUND_COLOR));
-        view->SetLowColor(ui_color(B_LIST_BACKGROUND_COLOR));
+		rgb_color bgColor = ui_color(B_LIST_BACKGROUND_COLOR);
+		view->SetHighColor(bgColor);
+		view->SetLowColor(bgColor);
     }
 	view->FillRect(rect);
 

@@ -242,6 +242,8 @@ MainWindow::CropHistory(int32 limit)
 	if (limit < fLimit) {
 		if (fHistory->CountItems() > limit) {
 			int count = fHistory->CountItems() - limit - 1;
+			if (limit == 0)
+				limit = 1;
 			fHistory->RemoveItems(limit, count);
 		}
 	}
