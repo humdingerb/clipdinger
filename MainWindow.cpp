@@ -149,8 +149,10 @@ MainWindow::MessageReceived(BMessage* message)
 	{
 		case B_CLIPBOARD_CHANGED:
 		{
-			fHistory->DeselectAll();
 			BString clipboardString(GetClipboard());
+			if (clipboardString.Length() == 0)
+				break;
+			fHistory->DeselectAll();
 			if (IsItemUnique(clipboardString))
 				AddClip(clipboardString);
 			fHistory->Select(0);
