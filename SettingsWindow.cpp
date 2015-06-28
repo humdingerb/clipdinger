@@ -32,6 +32,13 @@ SettingsWindow::SettingsWindow(int32 limit, BRect frame)
 	
 	fLimitBox = new BTextControl("limitfield", NULL, string,
 		NULL);
+	fLimitBox->SetAlignment(B_ALIGN_CENTER, B_ALIGN_CENTER);
+	for (uint32 i = 0; i < '0'; i++) 
+		fLimitBox->TextView()->DisallowChar(i);
+	for (uint32 i = '9' + 1; i < 255; i++)
+		fLimitBox->TextView()->DisallowChar(i);
+
+
 	BStringView* limitlabel = new BStringView("limitlabel",
 		B_TRANSLATE("entries in the clipboard history"));
 
