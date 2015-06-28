@@ -1,14 +1,14 @@
 NAME= Clipdinger
 TYPE= APP
 APP_MIME_SIG= application/x-vnd.Clipdinger
-SRCS= App.cpp ClipListItem.cpp ClipListView KeyFilter.cpp MainWindow.cpp Settings.cpp SettingsWindow.cpp
+SRCS= App.cpp ClipListItem.cpp ClipListView.cpp KeyFilter.cpp MainWindow.cpp Settings.cpp SettingsWindow.cpp
 RDEFS= Clipdinger.rdef
 LIBS= be localestub $(STDCPPLIBS)
 LIBPATHS=
 SYSTEM_INCLUDE_PATHS=
 LOCAL_INCLUDE_PATHS=
 OPTIMIZE= 
-LOCALES= 
+LOCALES= en de
 #	specify any preprocessor symbols to be defined.  The symbols will not
 #	have their values set automatically; you must supply the value (if any)
 #	to use.  For example, setting DEFINES to "DEBUG=1" will cause the

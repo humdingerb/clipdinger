@@ -10,8 +10,12 @@
 
 #include "App.h"
 
+#include <Catalog.h>
+
 extern const char *kApplicationSignature = "application/x-vnd.Clipdinger";
 
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "Application"
 
 App::App()
 	:
@@ -51,14 +55,16 @@ App::Pulse()
 void
 App::AboutRequested()
 {
-	BAlert *alert = new BAlert("about", "Clipdinger v0.1\n"
+	BAlert *alert = new BAlert("about",
+		B_TRANSLATE("Clipdinger v0.1\n"
 		"\twritten by Humdinger\n"
 		"\tCopyright 2015\n\n"
 		"Clipdinger provides a history of "
-		"clippings of the system clipboard.\n", "Thank you");
+		"clippings of the system clipboard.\n"),
+		B_TRANSLATE("Thank you"));
+
 	BTextView *view = alert->TextView();
 	BFont font;
-
 	view->SetStylable(true);
 	view->GetFont(&font);
 	font.SetSize(font.Size() + 4);
