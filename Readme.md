@@ -1,5 +1,4 @@
-![icon](images/clipdinger_icon_64.png) **Clipdinger**
-for [Haiku](http://www.haiku-os.org)
+![Clipdinger icon](./images/clipdinger_icon_64.png) **Clipdinger** for [Haiku](http://www.haiku-os.org)
 _by Humdinger_
 
 * * *
@@ -10,7 +9,7 @@ If you want to paste some text that isn't in the clipboard any more, simply hit 
 
 Here's the main window with a few entries in the history and the settings window when choosing _Settings..._ from the History menu:
 
-![screenshot](images/clipdinger.png)
+![screenshot](./images/clipdinger.png)
 
 The settings window has currently only one option: the number of entries in the history.  
 Keep in mind that every clipping is kept in memory and if you copy many large blocks of text, you may clog up your memory. Though, for everyday use, where clippings are seldom larger than a few hundred KiBs, having a few dozen entries in the history shouldn't tax memory noticibly.
