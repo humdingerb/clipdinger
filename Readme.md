@@ -19,25 +19,25 @@ Once the limit of the history is reached, the oldest entry is removed automtical
 
 You can remove an entry by selecting it and pressing _DEL_ or remove the complete clipboard history with _Clear history_ from the History menu.
 
-## Tips & Tricks
+### Tips & Tricks
 
 Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the <tt>/boot/home/config/settings/boot/launch/</tt> folder. Then it gets started automatically on every boot-up.
 
-## Download
+### Download
 
 Clipdinger is directly available through HaikuDepot from the HaikuPorts repository.  
- You can also build it yourself using [Haikuporter](https://bitbucket.org/haikuports/haikuports/wiki/Home). The source is hosted at [SourceForge](http://sourceforge.net/p/clipdinger/code/ci/master/tree/).
+ You can also build it yourself using [Haikuporter](https://github.com/haikuports). The source is hosted at [GitHub](https://github.com/humdingerb/clipdinger).
 
-## Bugreports & Feedback
+### Bugreports & Feedback
 
-Please use sourceforge's [bugreport form](http://sourceforge.net/projects/clipdinger/support?source=navbar) if you experience unusual difficulties or email your general feedback to [me](mailto:humdinger@gmail.com). Also, email me if you'd like to provide more localizations.
+Please use GitHubs's [issue tracker](https://github.com/humdingerb/clipdinger/issues) if you experience unusual difficulties or email your general feedback to [me](mailto:humdinger@gmail.com). Also, email me if you'd like to provide more localizations.
 
-## Thanks
+### Thanks
 
 I have to thank Werner Freytag who created ClipUp for BeOS which was my inspiration and motivation to work on Clipdinger, to have a similar tool that works as I expect it to under Haiku. I pretty much copied his input_server device and filter...  
  Also, thanks to everyone that contributed translations for Clipdinger.
 
-## History
+### History
 
 **0.1** - _--2015:_
 
