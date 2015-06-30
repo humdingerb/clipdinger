@@ -1,5 +1,4 @@
 ![Clipdinger icon](./images/clipdinger_icon_64.png) **Clipdinger** for [Haiku](http://www.haiku-os.org)
-_by Humdinger_
 
 * * *
 
