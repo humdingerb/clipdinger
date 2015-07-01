@@ -39,6 +39,6 @@ I have to thank Werner Freytag who created ClipUp for BeOS which was my inspirat
 
 ### History
 
-**0.1** - _--2015:_
+**0.1** - _30-06-2015:_
 
 *   Initial release.
