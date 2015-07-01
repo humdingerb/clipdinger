@@ -14,6 +14,10 @@
 
 #include <Catalog.h>
 #include <ControlLook.h>
+#include <Directory.h>
+#include <File.h>
+#include <FindDirectory.h>
+#include <Path.h>
 #include <LayoutBuilder.h>
 #include <Screen.h>
 
@@ -47,6 +51,8 @@ MainWindow::MainWindow()
 
 	if (fSettings.Limit())
 		fLimit = fSettings.Limit();
+
+	_LoadHistory();
 
 	be_clipboard->StartWatching(this);
 
@@ -131,9 +137,71 @@ MainWindow::_BuildLayout()
 }
 
 
+void
+MainWindow::_SaveHistory()
+{
+	BPath path;
+	BMessage msg;
+
+	if (find_directory(B_USER_SETTINGS_DIRECTORY, &path) < B_OK)
+		return;
+	status_t ret = path.Append(kSettingsFolder);
+
+	if (ret == B_OK)
+		ret = create_directory(path.Path(), 0777);
+
+	if (ret == B_OK)
+		path.Append(kHistoryFile);
+
+	if (ret == B_OK) {
+		BFile file(path.Path(), B_WRITE_ONLY | B_CREATE_FILE | B_ERASE_FILE);
+		ret = file.InitCheck();
+
+		if (ret == B_OK) {
+			for (int i = fHistory->CountItems() - 1; i > 0 ; i--)
+			{
+				ClipListItem *sItem = dynamic_cast<ClipListItem *>
+					(fHistory->ItemAt(i));
+
+				BString *clip = new BString(sItem->GetClip());
+				msg.AddString("clip", *clip);
+			}
+			msg.Flatten(&file);
+		}
+	}
+}
+
+
+void
+MainWindow::_LoadHistory()
+{
+	BPath path;
+	BMessage msg;
+
+	if (find_directory(B_USER_SETTINGS_DIRECTORY, &path) == B_OK) {
+		status_t ret = path.Append(kSettingsFolder);
+		if (ret == B_OK) {
+			path.Append(kHistoryFile);
+			BFile file(path.Path(), B_READ_ONLY);
+
+			if (file.InitCheck() != B_OK || (msg.Unflatten(&file) != B_OK))
+				return;
+			else {
+				BString clip;
+				int32 i = 0;
+				while (msg.FindString("clip", i++, &clip) == B_OK)
+					AddClip(clip);
+			}
+		}
+	}
+}
+
+
 bool
 MainWindow::QuitRequested()
 {
+	_SaveHistory();
+
 	fSettings.SetLimit(fLimit);
 	fSettings.SetWindowPosition(ConvertToScreen(Bounds()));
 

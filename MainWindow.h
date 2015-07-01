@@ -38,6 +38,7 @@
 
 #define OUTPUT_PORT_NAME	"Clipdinger output port"
 
+static const char kHistoryFile[] = "Clipdinger_history";
 const int32	kControlKeys = B_COMMAND_KEY | B_SHIFT_KEY;
 
 
@@ -52,6 +53,9 @@ public:
 
 private:
 	void			_BuildLayout();
+	void			_LoadHistory();
+	void			_SaveHistory();
+
 	bool			IsItemUnique(BString clipboardString);
 	void			AddClip(BString clipboardString);
 	BString			GetClipboard();

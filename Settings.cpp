@@ -10,8 +10,8 @@
 
 #include <Application.h>
 #include <Directory.h>
-#include <FindDirectory.h>
 #include <File.h>
+#include <FindDirectory.h>
 #include <Path.h>
 #include <Font.h>
 #include <Message.h>

@@ -2,7 +2,7 @@
 
 * * *
 
-Clipdinger is a small tool to manage a history of the system clipboard. It solves the problem that often you have to paste some text you've just recently copied to the clipboard, but that has been replaced by something you've copied more recently...
+Clipdinger is a small tool to manage a history of the system clipboard. It solves the problem that you often have to paste some text you've just recently copied to the clipboard, but that has been replaced by something you've copied more recently... It also saves the history so it'll appear just as you left it on the last shutdown.
 
 If you want to paste some text that isn't in the clipboard any more, simply hit _SHIFT_ + _ALT_ + _V_ to summon the Clipdinger window. Here you can select an entry with the _CursorUp/Down_ keys and paste it by hitting _RETURN_. _ESCAPE_ minimizes the window without pasting.
 
@@ -11,7 +11,7 @@ Here's the main window with a few entries in the history and the settings window
 ![screenshot](./images/clipdinger.png)
 
 The settings window has currently only one option: the number of entries in the history.  
-Keep in mind that every clipping is kept in memory and if you copy many large blocks of text, you may clog up your memory. Though, for everyday use, where clippings are seldom larger than a few hundred KiBs, having a few dozen entries in the history shouldn't tax memory noticibly.
+Keep in mind that every clipping is kept in memory and if you copy many large blocks of text, you may clog up your memory. Though, for everyday use, where clippings are seldom larger than a few KiBs, having a few dozen entries in the history shouldn't tax memory noticeably.
 
 Once the limit of the history is reached, the oldest entry is removed automtically to make room for the new clipping.
 
