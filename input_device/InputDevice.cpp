@@ -13,8 +13,9 @@
 #include "InputDevice.h"
 
 #include <InterfaceDefs.h>
+
 #include <stdlib.h>
-#include <syslog.h>
+// #include <syslog.h>
 
 
 thread_id	ClipdingerInputDevice::fThread = B_ERROR;
@@ -37,11 +38,11 @@ ClipdingerInputDevice::ClipdingerInputDevice()
 
 	RegisterDevices(clipdingerDeviceList);
 	
-	char *ident = "Clipdinger device";
-	int logopt = LOG_PID | LOG_CONS;
-	int facility = LOG_USER;
-	openlog(ident, logopt, facility);
-	syslog(LOG_INFO, "Init Clipdinger device");
+//	char *ident = "Clipdinger device";
+//	int logopt = LOG_PID | LOG_CONS;
+//	int facility = LOG_USER;
+//	openlog(ident, logopt, facility);
+//	syslog(LOG_INFO, "Init Clipdinger device");
 }
 
 
@@ -136,7 +137,7 @@ int32 ClipdingerInputDevice::listener(void* arg)
 		
 		clipdingerDevice->EnqueueMessage(event);
 
-	syslog(LOG_INFO, "Clipdinger device: Added event");
+//	syslog(LOG_INFO, "Clipdinger device: Added event");
 	
 		snooze(100000);
 	}

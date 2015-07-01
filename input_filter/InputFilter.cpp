@@ -16,8 +16,9 @@
 #include <Message.h>
 #include <Messenger.h>
 #include <OS.h>
+
 #include <stdio.h>
-#include <syslog.h>
+// #include <syslog.h>
 
 //------------------------------------------------------------------------
 
@@ -30,11 +31,11 @@ extern "C" BInputServerFilter* instantiate_input_filter()
 
 InputFilter::InputFilter()
 {
-	char *ident = "Clipdinger filter";
-	int logopt = LOG_PID | LOG_CONS;
-	int facility = LOG_USER;
-	openlog(ident, logopt, facility);
-	syslog(LOG_INFO, "Init Clipdinger filter");
+//	char *ident = "Clipdinger filter";
+//	int logopt = LOG_PID | LOG_CONS;
+//	int facility = LOG_USER;
+//	openlog(ident, logopt, facility);
+//	syslog(LOG_INFO, "Init Clipdinger filter");
 }
 
 
@@ -56,7 +57,7 @@ filter_result InputFilter::Filter(BMessage* message, BList* outList)
 
 			if (port!=B_NAME_NOT_FOUND) {
 				write_port(port, 'CtSV', NULL, 0);
-				syslog(LOG_INFO, "Clipdinger filter: Writing CtSV to write port");
+//				syslog(LOG_INFO, "Clipdinger filter: Writing CtSV to write port");
 				return B_SKIP_MESSAGE;
 			}
 		}

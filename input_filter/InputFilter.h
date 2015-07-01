@@ -26,4 +26,4 @@ public:
 	status_t		InitCheck();
 };
 
-#endif
+#endif _INPUT_FILTER_H_

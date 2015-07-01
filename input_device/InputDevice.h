@@ -10,8 +10,8 @@
  * Minimal changes by Humdinger, humdingerb@gmail.com 
  */
 
-#ifndef _CLIPDINGER_INPUT_DEVICE_H
-#define _CLIPDINGER_INPUT_DEVICE_H
+#ifndef _INPUT_DEVICE_H
+#define _INPUT_DEVICE_H
 
 #include <InputServerDevice.h>
 #include <List.h>
@@ -38,11 +38,9 @@ public:
 									void* cookie,
 									uint32 code, 
 									BMessage *message);
-
 private:
 	static int32			listener(void* arg);
 	static thread_id		fThread;
 };
 
-
-#endif
+#endif _INPUT_DEVICE_H
