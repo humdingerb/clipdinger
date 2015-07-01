@@ -10,7 +10,7 @@ Here's the main window with a few entries in the history and the settings window
 
 ![screenshot](./images/clipdinger.png)
 
-The settings window has currently only one option: the number of entries in the history.  
+The settings window has currently only one option: the number of entries in the history (the default is 50). 
 Keep in mind that every clipping is kept in memory and if you copy many large blocks of text, you may clog up your memory. Though, for everyday use, where clippings are seldom larger than a few KiBs, having a few dozen entries in the history shouldn't tax memory noticeably.
 
 Once the limit of the history is reached, the oldest entry is removed automtically to make room for the new clipping.
