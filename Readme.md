@@ -19,7 +19,9 @@ You can remove an entry by selecting it and pressing _DEL_ or remove the complet
 
 ### Tips & Tricks
 
-Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the <tt>/boot/home/config/settings/boot/launch/</tt> folder. Then it gets started automatically on every boot-up.
+*   Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the `/boot/home/config/settings/boot/launch/` folder. Then it gets started automatically on every boot-up.
+
+*   If you're interested in how much memory your history uses, have look at its save-file `/boot/home/config/settings/Clipdinger/Clipdinger_history`. Note, this file is only written after Clipdinger has quit. To get a current reading you'd have to quit and restart Clipdinger.
 
 ### Download
 
