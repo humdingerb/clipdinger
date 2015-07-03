@@ -30,7 +30,7 @@ Clipdinger is directly available through HaikuDepot from the HaikuPorts reposito
 
 ### Bugreports & Feedback
 
-Please use GitHubs's [issue tracker](https://github.com/humdingerb/clipdinger/issues) if you experience unusual difficulties or email your general feedback to [me](mailto:humdinger@gmail.com). Also, email me if you'd like to provide more localizations.
+Please use GitHubs's [issue tracker](https://github.com/humdingerb/clipdinger/issues) if you experience unusual difficulties or email your general feedback to [me](mailto:humdingerb@gmail.com). Also, email me if you'd like to provide more localizations.
 
 ### Thanks
 
