@@ -158,7 +158,7 @@ MainWindow::_SaveHistory()
 		ret = file.InitCheck();
 
 		if (ret == B_OK) {
-			for (int i = fHistory->CountItems() - 1; i > 0 ; i--)
+			for (int i = fHistory->CountItems() - 1; i >= 0 ; i--)
 			{
 				ClipListItem *sItem = dynamic_cast<ClipListItem *>
 					(fHistory->ItemAt(i));
