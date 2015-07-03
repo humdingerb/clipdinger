@@ -6,8 +6,8 @@
  *	Humdinger, humdingerb@gmail.com
  */
 
-#include "KeyFilter.h"
 #include "ClipListItem.h"
+#include "KeyFilter.h"
 #include "MainWindow.h"
 #include "Settings.h"
 #include "SettingsWindow.h"

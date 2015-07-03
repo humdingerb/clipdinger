@@ -24,10 +24,25 @@ KeyFilter::~KeyFilter()
 filter_result
 KeyFilter::Filter(BMessage* message, BHandler** target)
 {
-	int32 rawchar, mod;
+	int32 key, rawchar, mod;
+	message->FindInt32("key", &key);
 	message->FindInt32("raw_char", &rawchar);
 	message->FindInt32("modifiers", &mod);
 
+	switch (key) {
+		case 0x28:		// key 'W'
+		{
+			if (mod & B_COMMAND_KEY) {
+				BLooper *loop = (*target)->Looper();
+				if (loop) {
+					BMessenger msgr(loop);
+					msgr.SendMessage(msgESCAPE);
+					return B_SKIP_MESSAGE;
+				}
+			}
+			return B_DISPATCH_MESSAGE;
+		}
+	}
 	switch (rawchar) {
 		case B_ESCAPE:
 		{

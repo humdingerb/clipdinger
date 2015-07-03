@@ -32,6 +32,7 @@
 
 
 #define msgCLEAR_HISTORY	'clhi'
+#define msgDELETE			'dele'
 #define msgINSERT_HISTORY	'ihis'
 //#define msgINSERT_FAVORITE	'ifav'
 #define msgSETTINGS			'sett'
