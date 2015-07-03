@@ -34,6 +34,7 @@ Settings::Settings()
 			} else {
 				msg.FindInt32("limit", &fLimit);
 				msg.FindRect("windowlocation", &fPosition);
+				originalLimit = fLimit;
 				originalPosition = fPosition;
 			}
 		}
