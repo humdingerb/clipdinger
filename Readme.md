@@ -42,3 +42,8 @@ I have to thank Werner Freytag who created ClipUp for BeOS which was my inspirat
 **0.1** - _30-06-2015:_
 
 *   Initial release.
+
+**0.2** - _--2015:_
+
+*   Bug fix: First entry wasn't saved on quit.
+*   Bug fix: Setting were unnecessarily saved on quit.
