@@ -10,7 +10,11 @@
 #define CLIPLISTVIEW_H
 
 #include <ListView.h>
+#include <MenuItem.h>
+#include <PopUpMenu.h>
 
+#define msgPOPCLOSED	'pmcl'
+#define msgDELETE		'dele'
 
 class ClipListView : public BListView {
 public:
@@ -18,6 +22,12 @@ public:
 					~ClipListView();
 	virtual void	Draw(BRect rect);
 	virtual	void	FrameResized(float w, float h);
+	virtual	void	MessageReceived(BMessage* message);
+	void			MouseDown(BPoint position);
+	void			ShowPopUpMenu(BPoint screen);
+
+private:
+	bool			fShowingPopUpMenu;
 };
 
 #endif // CLIPLISTVIEW_H
