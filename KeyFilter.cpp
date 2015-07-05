@@ -36,7 +36,7 @@ KeyFilter::Filter(BMessage* message, BHandler** target)
 				BLooper *loop = (*target)->Looper();
 				if (loop) {
 					BMessenger msgr(loop);
-					msgr.SendMessage(msgESCAPE);
+					msgr.SendMessage(ESCAPE);
 					return B_SKIP_MESSAGE;
 				}
 			}
@@ -49,22 +49,25 @@ KeyFilter::Filter(BMessage* message, BHandler** target)
 			BLooper *loop = (*target)->Looper();
 			if (loop) {
 				BMessenger msgr(loop);
-				msgr.SendMessage(msgESCAPE);
+				msgr.SendMessage(ESCAPE);
 				return B_SKIP_MESSAGE;
 			}
+			break;
 		}
 		case B_DELETE:
 		{
 			BLooper *loop = (*target)->Looper();
 			if (loop) {
 				BMessenger msgr(loop);
-				msgr.SendMessage(msgDELETE);
+				msgr.SendMessage(DELETE);
 				return B_SKIP_MESSAGE;
 			}
+			break;
 		}
 		default:
 		{
 			return B_DISPATCH_MESSAGE;
+			break;
 		}
 	}
 }	

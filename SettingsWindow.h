@@ -9,13 +9,10 @@
 #ifndef SETTINGS_WINDOW_H
 #define SETTINGS_WINDOW_H
 
-#include "Settings.h"
-
 #include <TextControl.h>
 #include <Window.h>
 
-#define msgCANCEL	'cncl'
-#define msgOK		'okay'
+#include "Settings.h"
 
 
 class SettingsWindow : public BWindow {

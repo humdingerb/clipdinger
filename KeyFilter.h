@@ -16,9 +16,7 @@
 #include <MessageFilter.h>
 #include <Messenger.h>
 
-
-#define msgESCAPE		'esca'
-#define msgDELETE		'dele'
+#include "Constants.h"
 
 
 class KeyFilter : public BMessageFilter {

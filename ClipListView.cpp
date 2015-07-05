@@ -6,11 +6,12 @@
  *	Humdinger, humdingerb@gmail.com
  */
 
+#include <Catalog.h>
+
 #include "App.h"
 #include "ClipListView.h"
+#include "Constants.h"
 #include "MainWindow.h"
-
-#include <Catalog.h>
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "ClipList"
@@ -37,7 +38,7 @@ PopUpMenu::PopUpMenu(const char* name, BMessenger target)
 
 PopUpMenu::~PopUpMenu()
 {
-	fTarget.SendMessage(msgPOPCLOSED);
+	fTarget.SendMessage(POPCLOSED);
 }
 
 
@@ -79,18 +80,18 @@ void
 ClipListView::MessageReceived(BMessage* message)
 {
 	switch (message->what) {
-		case msgPOPCLOSED:
+		case POPCLOSED:
 		{
 			fShowingPopUpMenu = false;
 			break;
 		}
-		case msgDELETE:
+		case DELETE:
 		{
 			fShowingPopUpMenu = false;
 
 			App *app = dynamic_cast<App *> (be_app);
 			BMessenger msgr(app->fMainWindow);
-			BMessage refMsg(msgDELETE);
+			BMessage refMsg(DELETE);
 			msgr.SendMessage(&refMsg);
 			break;
 		}
@@ -124,7 +125,7 @@ ClipListView::ShowPopUpMenu(BPoint screen)
 	PopUpMenu* menu = new PopUpMenu("PopUpMenu", this);
 
 	BMenuItem* item = new BMenuItem(B_TRANSLATE("Remove clip"),
-		new BMessage(msgDELETE));
+		new BMessage(DELETE));
 	menu->AddItem(item);
 
 	menu->SetTargetForItems(this);

@@ -11,9 +11,6 @@
 
 #include <Rect.h>
 
-static const char kSettingsFolder[] = "Clipdinger";
-static const char kSettingsFile[] = "Clipdinger_settings";
-const int32 kDefaultLimit = 50;
 
 class Settings {
 public:

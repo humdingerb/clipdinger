@@ -9,14 +9,10 @@
 #ifndef CLIPLISTITEM_H
 #define CLIPLISTITEM_H
 
-
 #include <Font.h>
 #include <InterfaceDefs.h>
 #include <ListItem.h>
 #include <String.h>
-
-
-const int32 MAX_TITLE_CHARS = 200;
 
 
 class ClipListItem : public BListItem {

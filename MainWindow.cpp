@@ -6,12 +6,6 @@
  *	Humdinger, humdingerb@gmail.com
  */
 
-#include "ClipListItem.h"
-#include "KeyFilter.h"
-#include "MainWindow.h"
-#include "Settings.h"
-#include "SettingsWindow.h"
-
 #include <Catalog.h>
 #include <ControlLook.h>
 #include <Directory.h>
@@ -22,6 +16,12 @@
 #include <Screen.h>
 
 #include <algorithm>
+
+#include "ClipListItem.h"
+#include "KeyFilter.h"
+#include "MainWindow.h"
+#include "Settings.h"
+#include "SettingsWindow.h"
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "MainWindow"
@@ -90,11 +90,11 @@ MainWindow::_BuildLayout()
 	menu = new BMenu(B_TRANSLATE("History"));
 
 	item = new BMenuItem(B_TRANSLATE("Clear history"),
-		new BMessage(msgCLEAR_HISTORY));
+		new BMessage(CLEAR_HISTORY));
 	menu->AddItem(item);
 
 	item = new BMenuItem(B_TRANSLATE("Settings" B_UTF8_ELLIPSIS),
-		new BMessage(msgSETTINGS));
+		new BMessage(SETTINGS));
 	menu->AddItem(item);
 	menuBar->AddItem(menu);
 
@@ -132,8 +132,8 @@ MainWindow::_BuildLayout()
 		.Add(v);
 
 	fHistory->MakeFocus(true);
-	fHistory->SetInvocationMessage(new BMessage(msgINSERT_HISTORY));
-//	fFavorites->SetInvocationMessage(new BMessage(msgINSERT_FAVORITE));
+	fHistory->SetInvocationMessage(new BMessage(INSERT_HISTORY));
+//	fFavorites->SetInvocationMessage(new BMessage(INSERT_FAVORITE));
 }
 
 
@@ -226,31 +226,31 @@ MainWindow::MessageReceived(BMessage* message)
 			fHistory->Select(0);
 			break;
 		}
-		case msgESCAPE:
+		case ESCAPE:
 		{
 			Minimize(true);
 			break;
 		}
-		case msgDELETE:
+		case DELETE:
 		{
 			if (!fHistory->IsEmpty());
 				fHistory->RemoveItem(fHistory->CurrentSelection());
 			break;
 		}
-		case msgCLEAR_HISTORY:
+		case CLEAR_HISTORY:
 		{
 			fHistory->MakeEmpty();
 			PostMessage(B_CLIPBOARD_CHANGED);
 			break;
 		}
-		case msgSETTINGS:
+		case SETTINGS:
 		{
 			BRect frame = Frame();
 			BWindow* settingswindow = new SettingsWindow(fLimit, frame);
 			settingswindow->Show();
 			break;
 		}
-		case msgINSERT_HISTORY:
+		case INSERT_HISTORY:
 		{
 			if (fHistory->IsEmpty())
 				break;
@@ -258,7 +258,7 @@ MainWindow::MessageReceived(BMessage* message)
 			PutClipboard(fHistory);
 			break;
 		}
-//		case msgINSERT_FAVORITE:
+//		case INSERT_FAVORITE:
 //		{
 //			if (fFavorites->IsEmpty())
 //				break;

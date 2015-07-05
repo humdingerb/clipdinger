@@ -8,11 +8,11 @@
  * A clipboard tool to manage clip history and favourites
  */
 
-#include "App.h"
-
 #include <Catalog.h>
 
-extern const char *kApplicationSignature = "application/x-vnd.Clipdinger";
+#include "App.h"
+#include "Constants.h"
+
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "Application"

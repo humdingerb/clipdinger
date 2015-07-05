@@ -13,8 +13,6 @@
 #include <MenuItem.h>
 #include <PopUpMenu.h>
 
-#define msgPOPCLOSED	'pmcl'
-#define msgDELETE		'dele'
 
 class ClipListView : public BListView {
 public:

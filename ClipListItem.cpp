@@ -6,9 +6,10 @@
  *	Humdinger, humdingerb@gmail.com
  */
 
-#include "ClipListItem.h"
-
 #include <ControlLook.h>
+
+#include "ClipListItem.h"
+#include "Constants.h"
 
 
 ClipListItem::ClipListItem(BString clip)
@@ -18,8 +19,8 @@ ClipListItem::ClipListItem(BString clip)
 	fTitle = new BString;
 	fClip = new BString(clip);
 
-	if (fClip->CountChars() > MAX_TITLE_CHARS) {
-		fClip->CopyInto(*fTitle, 0, MAX_TITLE_CHARS);
+	if (fClip->CountChars() > kMaxTitleChars) {
+		fClip->CopyInto(*fTitle, 0, kMaxTitleChars);
 		fTitle->Append(B_UTF8_ELLIPSIS);
 	} else
 		fTitle = fClip;

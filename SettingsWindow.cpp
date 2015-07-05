@@ -6,14 +6,15 @@
  *	Humdinger, humdingerb@gmail.com
  */
 
-#include "App.h"
-#include "SettingsWindow.h"
-
 #include <Button.h>
 #include <Catalog.h>
 #include <ControlLook.h>
 #include <LayoutBuilder.h>
 #include <SeparatorView.h>
+
+#include "App.h"
+#include "Constants.h"
+#include "SettingsWindow.h"
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "SettingsWindow"
@@ -43,8 +44,8 @@ SettingsWindow::SettingsWindow(int32 limit, BRect frame)
 		B_TRANSLATE("entries in the clipboard history"));
 
 	BButton* cancel = new BButton("cancel", B_TRANSLATE("Cancel"),
-		new BMessage(msgCANCEL));
-	BButton* ok = new BButton("ok", B_TRANSLATE("OK"), new BMessage(msgOK));
+		new BMessage(CANCEL));
+	BButton* ok = new BButton("ok", B_TRANSLATE("OK"), new BMessage(OK));
 	ok->MakeDefault(true);
 
 	const float padding = be_control_look->DefaultItemSpacing();
@@ -83,13 +84,13 @@ SettingsWindow::MessageReceived(BMessage* message)
 {
 	switch (message->what)
 	{
-		case msgCANCEL:
+		case CANCEL:
 		{
 			newLimit = originalLimit;
 			Quit();
 			break;
 		}
-		case msgOK:
+		case OK:
 		{
 			newLimit = atoi(fLimitBox->Text());
 			Quit();

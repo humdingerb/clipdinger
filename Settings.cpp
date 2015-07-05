@@ -6,8 +6,6 @@
  *	Humdinger, humdingerb@gmail.com
  */
 
-#include "Settings.h"
-
 #include <Application.h>
 #include <Directory.h>
 #include <File.h>
@@ -15,6 +13,9 @@
 #include <Path.h>
 #include <Font.h>
 #include <Message.h>
+
+#include "Constants.h"
+#include "Settings.h"
 
 
 Settings::Settings()

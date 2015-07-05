@@ -9,9 +9,6 @@
 #ifndef MAIN_WINDOW_H
 #define MAIN_WINDOW_H
 
-#include "ClipListView.h"
-#include "Settings.h"
-
 #include <Application.h>
 #include <Clipboard.h>
 #include <GroupLayout.h>
@@ -30,16 +27,9 @@
 #include <stdlib.h>
 #include <strings.h>
 
+#include "ClipListView.h"
+#include "Settings.h"
 
-#define msgCLEAR_HISTORY	'clhi'
-#define msgDELETE			'dele'
-#define msgINSERT_HISTORY	'ihis'
-//#define msgINSERT_FAVORITE	'ifav'
-#define msgSETTINGS			'sett'
-
-#define OUTPUT_PORT_NAME	"Clipdinger output port"
-
-static const char kHistoryFile[] = "Clipdinger_history";
 const int32	kControlKeys = B_COMMAND_KEY | B_SHIFT_KEY;
 
 
