@@ -47,8 +47,8 @@ private:
 	void			_LoadHistory();
 	void			_SaveHistory();
 
-	bool			IsItemUnique(BString clipboardString);
-	void			AddClip(BString clipboardString, entry_ref originRef);
+	bool			IsItemUnique(BString clip);
+	void			AddClip(BString clip, entry_ref ref);
 	BString			GetClipboard();
 	void			PutClipboard(BListView* list);
 	void			CropHistory(int32 limit);

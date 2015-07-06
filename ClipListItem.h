@@ -21,18 +21,17 @@ public:
 					ClipListItem(BString clip, entry_ref ref);
 					~ClipListItem();
 
-	BString			GetClip() { return fClip->String(); };
-	entry_ref		GetOrigin() { return fOriginRef; };
+	BString			GetClip() { return *fClip; };
+	entry_ref		GetOrigin() { return *fOriginRef; };
 	virtual void	DrawItem(BView*, BRect, bool);
 	virtual	void	Update(BView*, const BFont*);
 
 private:
 	BString*		fClip;
 	BString*		fTitle;
-	entry_ref		fOriginRef;
+	entry_ref*		fOriginRef;
 
 	BBitmap*		fOriginIcon;
-	font_height		fFontHeight;
 };
 
 #endif // CLIPLISTITEM_H

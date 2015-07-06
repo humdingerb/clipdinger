@@ -22,7 +22,7 @@ ClipListItem::ClipListItem(BString clip, entry_ref ref)
 {
 	fClip = new BString(clip);
 	fTitle = new BString;
-	fOriginRef = ref;
+	fOriginRef = new entry_ref(ref);
 
 	BNode node;
 	BNodeInfo node_info;
@@ -48,7 +48,7 @@ ClipListItem::~ClipListItem()
 {
 	delete fClip;
 	delete fTitle;
-	delete fOriginIcon;
+	delete fOriginRef;
 }
 
 
@@ -77,9 +77,9 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 			rect.left + kIconSize - 1 + be_control_look->DefaultLabelSpacing(),
 			rect.top + kIconSize);
         view->SetDrawingMode(B_OP_OVER);
-        view->DrawBitmap(fOriginIcon, iconFrame);
 //		view->SetHighColor(ui_color(B_LIST_SELECTED_BACKGROUND_COLOR));
 // 		view->FillRect(iconFrame);
+        view->DrawBitmap(fOriginIcon, iconFrame);
         view->SetDrawingMode(B_OP_COPY);
 	} else
 		printf("Found no icon, fall back to generic.\n");

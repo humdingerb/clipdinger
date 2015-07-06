@@ -194,9 +194,10 @@ MainWindow::_LoadHistory()
 				BString clip;
 				entry_ref ref;
 				int32 i = 0;
-				while ((msg.FindString("clip", i++, &clip) == B_OK) &&
-						msg.FindRef("origin", i++, &ref) == B_OK)
+				while ((msg.FindString("clip", i, &clip) == B_OK) &&
+						msg.FindRef("origin", i++, &ref) == B_OK) {
 					AddClip(clip, ref);
+				}
 			}
 		}
 	}
@@ -223,19 +224,19 @@ MainWindow::MessageReceived(BMessage* message)
 	{
 		case B_CLIPBOARD_CHANGED:
 		{
-			BString clipboardString(GetClipboard());
-			if (clipboardString.Length() == 0)
+			BString clip(GetClipboard());
+			if (clip.Length() == 0)
 				break;
 			fHistory->DeselectAll();
 
 			app_info info;
-			entry_ref originRef;
+			entry_ref ref;
 			be_roster->GetActiveAppInfo(&info);
 			BEntry entry(&info.ref);
-			entry.GetRef(&originRef);
+			entry.GetRef(&ref);
 
-			if (IsItemUnique(clipboardString))
-				AddClip(clipboardString, originRef);
+			if (IsItemUnique(clip))
+				AddClip(clip, ref);
 
 			fHistory->Select(0);
 			break;
@@ -290,7 +291,7 @@ MainWindow::MessageReceived(BMessage* message)
 
 
 bool
-MainWindow::IsItemUnique(BString clipboardString)
+MainWindow::IsItemUnique(BString clip)
 {
 	if (fHistory->IsEmpty())
 		return true;
@@ -300,7 +301,7 @@ MainWindow::IsItemUnique(BString clipboardString)
 		ClipListItem *sItem = dynamic_cast<ClipListItem *> (fHistory->ItemAt(i));
 		BString *listItem = new BString(sItem->GetClip());
 
-		if (clipboardString.Compare(*listItem) == 0) {
+		if (clip.Compare(*listItem) == 0) {
 			fHistory->MoveItem(i, 0);
 			return false;
 		}
@@ -310,12 +311,12 @@ MainWindow::IsItemUnique(BString clipboardString)
 
 
 void
-MainWindow::AddClip(BString clipboardString, entry_ref originRef)
+MainWindow::AddClip(BString clip, entry_ref ref)
 {
 	if (fHistory->CountItems() > fLimit - 1)
 		fHistory->RemoveItem(fHistory->LastItem());
 
-	fHistory->AddItem(new ClipListItem(clipboardString, originRef), 0);
+	fHistory->AddItem(new ClipListItem(clip, ref), 0);
 	return;
 }
 
@@ -347,8 +348,8 @@ MainWindow::GetClipboard()
 				(const void **)&text, &textLen);
 		be_clipboard->Unlock();
 	}
-	BString clipboardString(text, textLen);
-	return clipboardString;
+	BString clip(text, textLen);
+	return clip;
 }
 
 
