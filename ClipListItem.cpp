@@ -48,6 +48,7 @@ ClipListItem::~ClipListItem()
 {
 	delete fClip;
 	delete fTitle;
+	delete fOriginIcon;
 	delete fOriginRef;
 }
 
