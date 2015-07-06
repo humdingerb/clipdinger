@@ -19,6 +19,7 @@ static const char kHistoryFile[] = "Clipdinger_history";
 
 static const int32 kMaxTitleChars = 200;
 static const int32 kDefaultLimit = 50;
+static const int32 kIconSize = 16;
 
 #define DELETE				'dele'
 #define ESCAPE				'esca'

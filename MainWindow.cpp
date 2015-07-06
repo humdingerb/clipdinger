@@ -9,10 +9,12 @@
 #include <Catalog.h>
 #include <ControlLook.h>
 #include <Directory.h>
+#include <Entry.h>
 #include <File.h>
 #include <FindDirectory.h>
 #include <Path.h>
 #include <LayoutBuilder.h>
+#include <Roster.h>
 #include <Screen.h>
 
 #include <algorithm>
@@ -163,8 +165,10 @@ MainWindow::_SaveHistory()
 				ClipListItem *sItem = dynamic_cast<ClipListItem *>
 					(fHistory->ItemAt(i));
 
-				BString *clip = new BString(sItem->GetClip());
+				BString* clip = new BString(sItem->GetClip());
+				entry_ref* ref = new entry_ref(sItem->GetOrigin());
 				msg.AddString("clip", *clip);
+				msg.AddRef("origin", ref);
 			}
 			msg.Flatten(&file);
 		}
@@ -188,9 +192,11 @@ MainWindow::_LoadHistory()
 				return;
 			else {
 				BString clip;
+				entry_ref ref;
 				int32 i = 0;
-				while (msg.FindString("clip", i++, &clip) == B_OK)
-					AddClip(clip);
+				while ((msg.FindString("clip", i++, &clip) == B_OK) &&
+						msg.FindRef("origin", i++, &ref) == B_OK)
+					AddClip(clip, ref);
 			}
 		}
 	}
@@ -221,8 +227,16 @@ MainWindow::MessageReceived(BMessage* message)
 			if (clipboardString.Length() == 0)
 				break;
 			fHistory->DeselectAll();
+
+			app_info info;
+			entry_ref originRef;
+			be_roster->GetActiveAppInfo(&info);
+			BEntry entry(&info.ref);
+			entry.GetRef(&originRef);
+
 			if (IsItemUnique(clipboardString))
-				AddClip(clipboardString);
+				AddClip(clipboardString, originRef);
+
 			fHistory->Select(0);
 			break;
 		}
@@ -296,12 +310,12 @@ MainWindow::IsItemUnique(BString clipboardString)
 
 
 void
-MainWindow::AddClip(BString clipboardString)
+MainWindow::AddClip(BString clipboardString, entry_ref originRef)
 {
 	if (fHistory->CountItems() > fLimit - 1)
 		fHistory->RemoveItem(fHistory->LastItem());
 
-	fHistory->AddItem(new ClipListItem(clipboardString), 0);
+	fHistory->AddItem(new ClipListItem(clipboardString, originRef), 0);
 	return;
 }
 
