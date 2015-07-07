@@ -31,8 +31,9 @@ ClipListItem::ClipListItem(BString clip, entry_ref ref)
 			(node_info.SetTo(&node) == B_NO_ERROR)) {
 		fOriginIcon = new BBitmap(BRect(0, 0, kIconSize - 1, kIconSize - 1),
 			0, B_RGBA32);
-		node_info.GetTrackerIcon(fOriginIcon);
-		printf("Get Tracker icon.\n");
+		status_t status = node_info.GetTrackerIcon(fOriginIcon, B_MINI_ICON);
+		if (status != B_OK)
+			fOriginIcon = NULL;
 	} else
 		fOriginIcon = NULL;
 
@@ -56,34 +57,30 @@ ClipListItem::~ClipListItem()
 void
 ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 {
-    // set background color
-    if (IsSelected()) {
-		rgb_color bgColor = ui_color(B_LIST_SELECTED_BACKGROUND_COLOR);
-		view->SetHighColor(bgColor);
-		view->SetLowColor(bgColor);
-    }
-    else {
-		rgb_color bgColor = ui_color(B_LIST_BACKGROUND_COLOR);
-		view->SetHighColor(bgColor);
-		view->SetLowColor(bgColor);
-    }
+	float spacing = be_control_look->DefaultLabelSpacing();
+
+	// set background color
+	rgb_color bgColor;
+
+	if (IsSelected())
+		bgColor = ui_color(B_LIST_SELECTED_BACKGROUND_COLOR);
+    else
+		bgColor = ui_color(B_LIST_BACKGROUND_COLOR);
+
+    view->SetHighColor(bgColor);
+	view->SetLowColor(bgColor);
 	view->FillRect(rect);
 
 	// icon of origin app
-
 	if (fOriginIcon) {
 		printf("Draw icon.\n");
-		BRect iconFrame(rect.left + be_control_look->DefaultLabelSpacing(),
-			rect.top + 1,
-			rect.left + kIconSize - 1 + be_control_look->DefaultLabelSpacing(),
-			rect.top + kIconSize);
+
         view->SetDrawingMode(B_OP_OVER);
-//		view->SetHighColor(ui_color(B_LIST_SELECTED_BACKGROUND_COLOR));
-// 		view->FillRect(iconFrame);
-        view->DrawBitmap(fOriginIcon, iconFrame);
+        view->DrawBitmap(fOriginIcon, BPoint(rect.left + spacing,
+			rect.top + (rect.Height() - kIconSize) / 2));
         view->SetDrawingMode(B_OP_COPY);
 	} else
-		printf("Found no icon, fall back to generic.\n");
+		printf("Found no icon\n");
 
 	// text
 	if (IsSelected())
@@ -101,14 +98,17 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 
     BString string(fTitle->String());
     view->TruncateString(&string, B_TRUNCATE_END, width - kIconSize
-		- be_control_look->DefaultLabelSpacing() * 3);
+		- spacing * 4);
     view->DrawString(string.String(),
-		BPoint(kIconSize - 1 + be_control_look->DefaultLabelSpacing() * 2,
-		rect.top + fheight.ascent + 2 + floorf(fheight.leading / 2)));
+		BPoint(kIconSize - 1 + spacing * 3,
+		rect.top + fheight.ascent + 3 + floorf(fheight.leading / 2)));
 
+	// draw lines
 	view->SetHighColor(tint_color(ui_color(B_CONTROL_BACKGROUND_COLOR),
-		B_DARKEN_1_TINT));
+		B_DARKEN_2_TINT));
 	view->StrokeLine(rect.LeftBottom(), rect.RightBottom());
+	view->StrokeLine(BPoint(kIconSize - 1 + spacing * 2, 0),
+		BPoint(kIconSize - 1 + spacing * 2, height));
 }
 
 
@@ -122,5 +122,5 @@ void ClipListItem::Update(BView *view, const BFont *finfo)
 	finfo->GetHeight(&fheight);
 
 	SetHeight(ceilf(fheight.ascent + 2 + fheight.leading / 2
-		+ fheight.descent) + 4);
+		+ fheight.descent) + 5);
 }

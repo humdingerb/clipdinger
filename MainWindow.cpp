@@ -58,8 +58,10 @@ MainWindow::MainWindow()
 
 	be_clipboard->StartWatching(this);
 
-	if (GetClipboard() != "")
-		PostMessage(B_CLIPBOARD_CHANGED);
+	if ((GetClipboard() = "") && (!fHistory->IsEmpty())) {
+		fHistory->Select(0);
+		PutClipboard(fHistory);
+	}
 
 	AddCommonFilter(new KeyFilter);
 }
@@ -235,8 +237,8 @@ MainWindow::MessageReceived(BMessage* message)
 			BEntry entry(&info.ref);
 			entry.GetRef(&ref);
 
-			if (IsItemUnique(clip))
-				AddClip(clip, ref);
+			MakeItemUnique(clip);
+			AddClip(clip, ref);
 
 			fHistory->Select(0);
 			break;
@@ -290,23 +292,21 @@ MainWindow::MessageReceived(BMessage* message)
 }
 
 
-bool
-MainWindow::IsItemUnique(BString clip)
+void
+MainWindow::MakeItemUnique(BString clip)
 {
 	if (fHistory->IsEmpty())
-		return true;
+		return;
 
-	for (int i = 0; i < fHistory->CountItems(); i++)
-	{
-		ClipListItem *sItem = dynamic_cast<ClipListItem *> (fHistory->ItemAt(i));
+	for (int i = 0; i < fHistory->CountItems(); i++) {
+		ClipListItem *sItem =
+			dynamic_cast<ClipListItem *> (fHistory->ItemAt(i));
 		BString *listItem = new BString(sItem->GetClip());
 
-		if (clip.Compare(*listItem) == 0) {
-			fHistory->MoveItem(i, 0);
-			return false;
-		}
+		if (clip.Compare(*listItem) == 0)
+			fHistory->RemoveItem(i);
 	}
-	return true;
+	return;
 }
 
 
