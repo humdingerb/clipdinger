@@ -48,7 +48,7 @@ private:
 	void			_SaveHistory();
 
 	void			MakeItemUnique(BString clip);
-	void			AddClip(BString clip, entry_ref ref);
+	void			AddClip(BString clip, BString path);
 	BString			GetClipboard();
 	void			PutClipboard(BListView* list);
 	void			CropHistory(int32 limit);

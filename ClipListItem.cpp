@@ -16,17 +16,17 @@
 #include "Constants.h"
 
 
-ClipListItem::ClipListItem(BString clip, entry_ref ref)
+ClipListItem::ClipListItem(BString clip, BString path)
 	:
 	BListItem()
 {
 	fClip = clip; 
-	fOriginRef = ref;
+	fOrigin = path;
 
 	BNode node;
 	BNodeInfo node_info;
 
-	if ((node.SetTo(&ref) == B_NO_ERROR) &&
+	if ((node.SetTo(path.String()) == B_NO_ERROR) &&
 			(node_info.SetTo(&node) == B_NO_ERROR)) {
 		fOriginIcon = new BBitmap(BRect(0, 0, kIconSize - 1, kIconSize - 1),
 			0, B_RGBA32);

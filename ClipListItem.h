@@ -18,18 +18,18 @@
 
 class ClipListItem : public BListItem {
 public:
-					ClipListItem(BString clip, entry_ref ref);
+					ClipListItem(BString clip, BString path);
 					~ClipListItem();
 
 	BString			GetClip() { return fClip; };
-	entry_ref		GetOrigin() { return fOriginRef; };
+	BString			GetOrigin() { return fOrigin; };
 	virtual void	DrawItem(BView*, BRect, bool);
 	virtual	void	Update(BView*, const BFont*);
 
 private:
 	BString			fClip;
 	BString			fTitle;
-	entry_ref		fOriginRef;
+	BString			fOrigin;
 
 	BBitmap*		fOriginIcon;
 };

@@ -168,10 +168,10 @@ MainWindow::_SaveHistory()
 				ClipListItem *sItem = dynamic_cast<ClipListItem *>
 					(fHistory->ItemAt(i));
 
-				BString* clip = new BString(sItem->GetClip());
-				entry_ref* ref = new entry_ref(sItem->GetOrigin());
-				msg.AddString("clip", *clip);
-				msg.AddRef("origin", ref);
+				BString clip(sItem->GetClip());
+				BString path(sItem->GetOrigin());
+				msg.AddString("clip", clip.String());
+				msg.AddString("origin", path.String());
 			}
 			msg.Flatten(&file);
 		}
@@ -195,11 +195,14 @@ MainWindow::_LoadHistory()
 				return;
 			else {
 				BString clip;
-				entry_ref ref;
+				BString path;
 				int32 i = 0;
+				printf("Loading\n");
 				while ((msg.FindString("clip", i, &clip) == B_OK) &&
-						(msg.FindRef("origin", i, &ref) == B_OK)) {
-					AddClip(clip, ref);
+						(msg.FindString("origin", i, &path) == B_OK)) {
+					printf("clip: %s\n", clip.String());
+					printf("path: %s\n\n", path.String());
+					AddClip(clip, path);
 					i++;
 				}
 			}
@@ -234,13 +237,13 @@ MainWindow::MessageReceived(BMessage* message)
 			fHistory->DeselectAll();
 
 			app_info info;
-			entry_ref ref;
+			BPath path;
 			be_roster->GetActiveAppInfo(&info);
 			BEntry entry(&info.ref);
-			entry.GetRef(&ref);
+			entry.GetPath(&path);
 
 			MakeItemUnique(clip);
-			AddClip(clip, ref);
+			AddClip(clip, path.Path());
 
 			fHistory->Select(0);
 			break;
@@ -313,12 +316,12 @@ MainWindow::MakeItemUnique(BString clip)
 
 
 void
-MainWindow::AddClip(BString clip, entry_ref ref)
+MainWindow::AddClip(BString clip, BString path)
 {
 	if (fHistory->CountItems() > fLimit - 1)
 		fHistory->RemoveItem(fHistory->LastItem());
 
-	fHistory->AddItem(new ClipListItem(clip, ref), 0);
+	fHistory->AddItem(new ClipListItem(clip, path), 0);
 	return;
 }
 
