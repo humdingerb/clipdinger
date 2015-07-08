@@ -20,9 +20,8 @@ ClipListItem::ClipListItem(BString clip, entry_ref ref)
 	:
 	BListItem()
 {
-	fClip = new BString(clip);
-	fTitle = new BString;
-	fOriginRef = new entry_ref(ref);
+	fClip = clip; 
+	fOriginRef = ref;
 
 	BNode node;
 	BNodeInfo node_info;
@@ -37,9 +36,9 @@ ClipListItem::ClipListItem(BString clip, entry_ref ref)
 	} else
 		fOriginIcon = NULL;
 
-	if (fClip->CountChars() > kMaxTitleChars) {
-		fClip->CopyInto(*fTitle, 0, kMaxTitleChars);
-		fTitle->Append(B_UTF8_ELLIPSIS);
+	if (fClip.CountChars() > kMaxTitleChars) {
+		fClip.CopyInto(fTitle, 0, kMaxTitleChars);
+		fTitle.Append(B_UTF8_ELLIPSIS);
 	} else
 		fTitle = fClip;
 }
@@ -47,10 +46,7 @@ ClipListItem::ClipListItem(BString clip, entry_ref ref)
 
 ClipListItem::~ClipListItem()
 {
-	delete fClip;
-	delete fTitle;
 	delete fOriginIcon;
-	delete fOriginRef;
 }
 
 
@@ -96,7 +92,7 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 	float width, height;
 	view->GetPreferredSize(&width, &height);
 
-    BString string(fTitle->String());
+    BString string(fTitle.String());
     view->TruncateString(&string, B_TRUNCATE_END, width - kIconSize
 		- spacing * 4);
     view->DrawString(string.String(),
@@ -105,7 +101,7 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 
 	// draw lines
 	view->SetHighColor(tint_color(ui_color(B_CONTROL_BACKGROUND_COLOR),
-		B_DARKEN_2_TINT));
+		B_DARKEN_1_TINT));
 	view->StrokeLine(rect.LeftBottom(), rect.RightBottom());
 	view->StrokeLine(BPoint(kIconSize - 1 + spacing * 2, 0),
 		BPoint(kIconSize - 1 + spacing * 2, height));
