@@ -69,8 +69,6 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 
 	// icon of origin app
 	if (fOriginIcon) {
-		printf("Draw icon.\n");
-
         view->SetDrawingMode(B_OP_OVER);
         view->DrawBitmap(fOriginIcon, BPoint(rect.left + spacing,
 			rect.top + (rect.Height() - kIconSize) / 2));

@@ -197,11 +197,8 @@ MainWindow::_LoadHistory()
 				BString clip;
 				BString path;
 				int32 i = 0;
-				printf("Loading\n");
 				while ((msg.FindString("clip", i, &clip) == B_OK) &&
 						(msg.FindString("origin", i, &path) == B_OK)) {
-					printf("clip: %s\n", clip.String());
-					printf("path: %s\n\n", path.String());
 					AddClip(clip, path);
 					i++;
 				}
