@@ -1,10 +1,10 @@
-1	German	application/x-vnd.Clipdinger	70634043
+1	German	application/x-vnd.Clipdinger	1420884340
 Clear history	MainWindow		Historie löschen
 About Clipdinger	MainWindow		Über Clipdinger
-Clipdinger v0.1\n\twritten by Humdinger\n\tCopyright 2015\n\nClipdinger provides a history of clippings of the system clipboard.\n	Application		Clipdinger v0.1\n\tvon Humdinger\n\tCopyright 2015\n\nClipdinger bietet eine Historie für die Zwischenablage.\n
 entries in the clipboard history	SettingsWindow		Einträge in der Historie
 History	MainWindow		Historie
 Settings…	MainWindow		Einstellungen…
+Clipdinger v0.2\n\twritten by Humdinger\n\tCopyright 2015\n\nClipdinger provides a history of clippings of the system clipboard.\n	Application		Clipdinger v0.2\n\tvon Humdinger\n\tCopyright 2015\n\nClipdinger bietet eine Historie für die Zwischenablage.\n
 OK	SettingsWindow		OK
 App	MainWindow		App
 Quit	MainWindow		Beenden

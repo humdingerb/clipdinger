@@ -32,6 +32,9 @@ App::App()
 
 App::~App()
 {
+	BMessenger messenger(fMainWindow);
+	if (messenger.IsValid() && messenger.LockTarget())
+		fMainWindow->Quit();
 }
 
 
@@ -56,7 +59,7 @@ void
 App::AboutRequested()
 {
 	BAlert *alert = new BAlert("about",
-		B_TRANSLATE("Clipdinger v0.1\n"
+		B_TRANSLATE("Clipdinger v0.2\n"
 		"\twritten by Humdinger\n"
 		"\tCopyright 2015\n\n"
 		"Clipdinger provides a history of "

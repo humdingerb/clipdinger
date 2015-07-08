@@ -10,12 +10,14 @@ Here's the main window with a few entries in the history and the settings window
 
 ![screenshot](./images/clipdinger.png)
 
+For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text.
+
 The settings window has currently only one option: the number of entries in the history (the default is 50). 
 Keep in mind that every clipping is kept in memory and if you copy many large blocks of text, you may clog up your memory. Though, for everyday use, where clippings are seldom larger than a few KiBs at most, having a few dozen entries in the history shouldn't tax memory noticeably.
 
-Once the limit of the history is reached, the oldest entry is removed automtically to make room for the new clipping.
+Once the limit of the history is reached, the oldest entry is removed automatically to make room for the new clipping.
 
-You can remove an entry by selecting it and pressing _DEL_ or remove the complete clipboard history with _Clear history_ from the History menu.
+You can remove an entry by selecting it and pressing _DEL_ or choose _Remove clip_ from the context menu. You remove the complete clipboard history with _Clear history_ from the History menu.
 
 ### Tips & Tricks
 
@@ -25,8 +27,7 @@ You can remove an entry by selecting it and pressing _DEL_ or remove the complet
 
 ### Download
 
-Clipdinger is directly available through HaikuDepot from the HaikuPorts repository.  
- You can also build it yourself using [Haikuporter](https://github.com/haikuports). The source is hosted at [GitHub](https://github.com/humdingerb/clipdinger).
+Clipdinger is directly available through HaikuDepot from the HaikuPorts repository. You can also build it yourself using [Haikuporter](https://github.com/haikuports). The source is hosted at [GitHub](https://github.com/humdingerb/clipdinger).
 
 ### Bugreports & Feedback
 
@@ -35,7 +36,7 @@ Please use GitHubs's [issue tracker](https://github.com/humdingerb/clipdinger/is
 ### Thanks
 
 I have to thank Werner Freytag who created ClipUp for BeOS which was my inspiration and motivation to work on Clipdinger, to have a similar tool that works as I expect it to under Haiku. I pretty much copied his input_server device and filter...  
- Also, thanks to everyone that contributed translations for Clipdinger.
+Also, thanks to everyone that contributed translations for Clipdinger.
 
 ### History
 
@@ -43,9 +44,9 @@ I have to thank Werner Freytag who created ClipUp for BeOS which was my inspirat
 
 *   Initial release.
 
-**0.2** - _--2015:_
+**0.2** - _08-07-2015:_
 
 *   Bug fix: First entry wasn't saved on quit.
-*   Bug fix: Setting were unnecessarily saved on quit.
+*   Bug fix: Settings were unnecessarily saved on quit.
 *   ALT+W now hides the window.
 *   Show the icon of the app a clip was copied from.
