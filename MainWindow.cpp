@@ -56,13 +56,14 @@ MainWindow::MainWindow()
 
 	_LoadHistory();
 
-	be_clipboard->StartWatching(this);
-
-	if ((GetClipboard() = "") && (!fHistory->IsEmpty())) {
+	if (!fHistory->IsEmpty())
 		fHistory->Select(0);
-		PutClipboard(fHistory);
-	}
 
+	if (GetClipboard() == "")
+		if (!fHistory->IsEmpty())
+			PutClipboard(fHistory);
+
+	be_clipboard->StartWatching(this);
 	AddCommonFilter(new KeyFilter);
 }
 
@@ -197,8 +198,9 @@ MainWindow::_LoadHistory()
 				entry_ref ref;
 				int32 i = 0;
 				while ((msg.FindString("clip", i, &clip) == B_OK) &&
-						msg.FindRef("origin", i++, &ref) == B_OK) {
+						(msg.FindRef("origin", i, &ref) == B_OK)) {
 					AddClip(clip, ref);
+					i++;
 				}
 			}
 		}

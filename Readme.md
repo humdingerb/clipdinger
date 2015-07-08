@@ -48,3 +48,4 @@ I have to thank Werner Freytag who created ClipUp for BeOS which was my inspirat
 *   Bug fix: First entry wasn't saved on quit.
 *   Bug fix: Setting were unnecessarily saved on quit.
 *   ALT+W now hides the window.
+*   Show the icon of the app a clip was copied from.

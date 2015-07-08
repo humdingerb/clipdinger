@@ -23,7 +23,7 @@ App::App()
 {	
 	fMainWindow = new MainWindow();
 	fMainWindow->Show();
-//	fMainWindow->Minimize(true);
+	fMainWindow->Minimize(true);
 
 	SetPulseRate(100000);
 	fPort = create_port(20, INPUT_PORT_NAME);
