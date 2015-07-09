@@ -16,12 +16,13 @@
 #include "Constants.h"
 
 
-ClipListItem::ClipListItem(BString clip, BString path)
+ClipListItem::ClipListItem(BString clip, BString path, int32 time)
 	:
 	BListItem()
 {
 	fClip = clip; 
 	fOrigin = path;
+	fTimeAdded = time;
 
 	BNode node;
 	BNodeInfo node_info;
@@ -60,8 +61,17 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 
 	if (IsSelected())
 		bgColor = ui_color(B_LIST_SELECTED_BACKGROUND_COLOR);
-    else
-		bgColor = ui_color(B_LIST_BACKGROUND_COLOR);
+    else {
+		int32 now(real_time_clock());
+		int32 minutes = (now - fTimeAdded) / 60;
+		float step = 0.04;
+		int32 speed = 24;	// change per x minutes
+		float level = B_NO_TINT + (step * ((float)minutes / speed));
+			printf("Clip: %s\n\tminutes: %i\t\tlevel: %f\n\n",
+				fTitle.String(), minutes, level);
+		bgColor = tint_color(ui_color(B_LIST_BACKGROUND_COLOR),
+			(level < 1.2) ? level : 1.2);  // limit to 1.2
+	}
 
     view->SetHighColor(bgColor);
 	view->SetLowColor(bgColor);
@@ -99,7 +109,7 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 
 	// draw lines
 	view->SetHighColor(tint_color(ui_color(B_CONTROL_BACKGROUND_COLOR),
-		B_DARKEN_1_TINT));
+		B_DARKEN_2_TINT));
 	view->StrokeLine(rect.LeftBottom(), rect.RightBottom());
 	view->StrokeLine(BPoint(kIconSize - 1 + spacing * 2, 0),
 		BPoint(kIconSize - 1 + spacing * 2, height));
@@ -108,7 +118,7 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 
 void ClipListItem::Update(BView *view, const BFont *finfo)
 {
-	// we need to override the update method so we can make sure the
+	// we need to DefaultLabelSpacing the update method so we can make sure the
 	// list item size doesn't change
 	BListItem::Update(view, finfo);
 

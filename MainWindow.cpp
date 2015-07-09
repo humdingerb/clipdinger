@@ -54,6 +54,8 @@ MainWindow::MainWindow()
 	if (fSettings.Limit())
 		fLimit = fSettings.Limit();
 
+	fLaunchTime = real_time_clock();
+
 	_LoadHistory();
 
 	if (!fHistory->IsEmpty())
@@ -65,11 +67,19 @@ MainWindow::MainWindow()
 
 	be_clipboard->StartWatching(this);
 	AddCommonFilter(new KeyFilter);
+	SetPulseRate(1000000);	// 1 sec
 }
 
 
 MainWindow::~MainWindow()
 {
+}
+
+
+void
+MainWindow::Pulse()
+{
+	fHistory->Invalidate();
 }
 
 
@@ -170,9 +180,12 @@ MainWindow::_SaveHistory()
 
 				BString clip(sItem->GetClip());
 				BString path(sItem->GetOrigin());
+				int32 time(sItem->GetTimeAdded());
 				msg.AddString("clip", clip.String());
 				msg.AddString("origin", path.String());
+				msg.AddInt32("time", time);
 			}
+			msg.AddInt32("quittime", real_time_clock());
 			msg.Flatten(&file);
 		}
 	}
@@ -196,10 +209,18 @@ MainWindow::_LoadHistory()
 			else {
 				BString clip;
 				BString path;
+				int32 time;
+				int32 quittime;
+				if (msg.FindInt32("quittime", &quittime) != B_OK) {
+					printf("no quit time.\n");
+					int32 quittime(real_time_clock());
+				}
 				int32 i = 0;
 				while ((msg.FindString("clip", i, &clip) == B_OK) &&
-						(msg.FindString("origin", i, &path) == B_OK)) {
-					AddClip(clip, path);
+						(msg.FindString("origin", i, &path) == B_OK) &&
+						(msg.FindInt32("time", i, &time) == B_OK)) {
+					time = time + (fLaunchTime - quittime);
+					AddClip(clip, path, time);
 					i++;
 				}
 			}
@@ -240,7 +261,8 @@ MainWindow::MessageReceived(BMessage* message)
 			entry.GetPath(&path);
 
 			MakeItemUnique(clip);
-			AddClip(clip, path.Path());
+			int32 time(real_time_clock());
+			AddClip(clip, path.Path(), time);
 
 			fHistory->Select(0);
 			break;
@@ -313,12 +335,12 @@ MainWindow::MakeItemUnique(BString clip)
 
 
 void
-MainWindow::AddClip(BString clip, BString path)
+MainWindow::AddClip(BString clip, BString path, int32 time)
 {
 	if (fHistory->CountItems() > fLimit - 1)
 		fHistory->RemoveItem(fHistory->LastItem());
 
-	fHistory->AddItem(new ClipListItem(clip, path), 0);
+	fHistory->AddItem(new ClipListItem(clip, path, time), 0);
 	return;
 }
 
@@ -358,8 +380,12 @@ MainWindow::GetClipboard()
 void
 MainWindow::PutClipboard(BListView* list)
 {
-	BMessage* clip = (BMessage *)NULL;
 	int index = list->CurrentSelection();
+	if (index < 0)
+		return;
+
+	BMessage* clip = (BMessage *)NULL;
+
 	ClipListItem *item = dynamic_cast<ClipListItem *> (list->ItemAt(index));
 	BString text(item->GetClip());
 		

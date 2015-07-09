@@ -43,8 +43,8 @@ PopUpMenu::~PopUpMenu()
 
 
 ClipListView::ClipListView(const char* name)
-		  :
-		  BListView(BRect(), "name", B_SINGLE_SELECTION_LIST, B_WILL_DRAW)
+	:
+	BListView(BRect(), "name", B_SINGLE_SELECTION_LIST, B_WILL_DRAW)
 {
 }
 

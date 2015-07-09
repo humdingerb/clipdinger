@@ -18,12 +18,14 @@ public:
 					~Settings();
 
 		int32		Limit() const { return fLimit; }
+		int32		QuitTime() const { return fQuitTime; }
 		BRect		WindowPosition() const { return fPosition; }
 		void		SetLimit(int32 limit);
 		void		SetWindowPosition(BRect where);
 private:
 		int32		fLimit;
 		int32		originalLimit;
+		int32		fQuitTime;
 		BRect		fPosition;
 		BRect		originalPosition;
 };

@@ -37,7 +37,8 @@ class MainWindow : public BWindow {
 public:
 					MainWindow();
 	virtual			~MainWindow();
-	
+
+	virtual void	Pulse();
 	bool			QuitRequested();
 	void			MessageReceived(BMessage* message);
 	void			UpdatedSettings(int32 limit);
@@ -48,13 +49,14 @@ private:
 	void			_SaveHistory();
 
 	void			MakeItemUnique(BString clip);
-	void			AddClip(BString clip, BString path);
+	void			AddClip(BString clip, BString path, int32 time);
 	BString			GetClipboard();
 	void			PutClipboard(BListView* list);
 	void			CropHistory(int32 limit);
 	
 private:
 	int32			fLimit;
+	int32			fLaunchTime;
 	
 	ClipListView*	fHistory;
 //	BListView*		fFavorites;

@@ -18,11 +18,13 @@
 
 class ClipListItem : public BListItem {
 public:
-					ClipListItem(BString clip, BString path);
+					ClipListItem(BString clip, BString path, int32 time);
 					~ClipListItem();
 
 	BString			GetClip() { return fClip; };
 	BString			GetOrigin() { return fOrigin; };
+	bigtime_t		GetTimeAdded() { return fTimeAdded; };
+
 	virtual void	DrawItem(BView*, BRect, bool);
 	virtual	void	Update(BView*, const BFont*);
 
@@ -30,6 +32,7 @@ private:
 	BString			fClip;
 	BString			fTitle;
 	BString			fOrigin;
+	int32			fTimeAdded;
 
 	BBitmap*		fOriginIcon;
 };

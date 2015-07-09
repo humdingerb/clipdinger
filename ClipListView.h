@@ -18,6 +18,7 @@ class ClipListView : public BListView {
 public:
 					ClipListView(const char* name);
 					~ClipListView();
+
 	virtual void	Draw(BRect rect);
 	virtual	void	FrameResized(float w, float h);
 	virtual	void	MessageReceived(BMessage* message);
