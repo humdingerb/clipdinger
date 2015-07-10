@@ -44,28 +44,22 @@ PopUpMenu::~PopUpMenu()
 
 ClipListView::ClipListView(const char* name)
 	:
-	BListView(BRect(), "name", B_SINGLE_SELECTION_LIST, B_WILL_DRAW
-		| B_PULSE_NEEDED)
+	BListView(BRect(), "name", B_SINGLE_SELECTION_LIST, B_WILL_DRAW)
 {
 }
 
 
 ClipListView::~ClipListView()
 {
+	delete fRunner;
 }
 
 
-//void
-//ClipListView::AttachedToWindow()
-//{
-//	Window()->SetPulseRate(1000000);	// 1 sec
-//}
-
-
 void
-ClipListView::Pulse()
+ClipListView::AttachedToWindow()
 {
-		Invalidate();
+	BMessage message(DRAWLIST);
+	fRunner	= new BMessageRunner(this, &message, 10000000); // 1 min 60000000
 }
 
 
@@ -108,6 +102,11 @@ ClipListView::MessageReceived(BMessage* message)
 			BMessenger msgr(app->fMainWindow);
 			BMessage refMsg(DELETE);
 			msgr.SendMessage(&refMsg);
+			break;
+		}
+		case DRAWLIST:
+		{
+			Invalidate();
 			break;
 		}
 		default:

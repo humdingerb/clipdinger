@@ -28,6 +28,7 @@ static const int32 kIconSize = 16;
 #define CLEAR_HISTORY		'clhi'
 #define INSERT_HISTORY		'ihis'
 //#define INSERT_FAVORITE	'ifav'
+#define DRAWLIST			'draw'
 #define SETTINGS			'sett'
 
 #define CANCEL				'cncl'
