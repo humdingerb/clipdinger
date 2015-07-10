@@ -24,6 +24,7 @@ public:
 	BString			GetClip() { return fClip; };
 	BString			GetOrigin() { return fOrigin; };
 	bigtime_t		GetTimeAdded() { return fTimeAdded; };
+	void			SetTimeAdded(int32 time) { fTimeAdded = time; };
 
 	virtual void	DrawItem(BView*, BRect, bool);
 	virtual	void	Update(BView*, const BFont*);

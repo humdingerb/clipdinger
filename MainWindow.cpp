@@ -296,7 +296,9 @@ MainWindow::MessageReceived(BMessage* message)
 			if (fHistory->IsEmpty())
 				break;
 			Minimize(true);
+			be_clipboard->StopWatching(this);
 			PutClipboard(fHistory);
+			be_clipboard->StartWatching(this);
 			break;
 		}
 //		case INSERT_FAVORITE:
@@ -403,6 +405,11 @@ MainWindow::PutClipboard(BListView* list)
 		if (port != B_NAME_NOT_FOUND)
 			write_port(port, 'CtSV', NULL, 0);
 	}
+	fHistory->MoveItem(fHistory->CurrentSelection(), 0);
+
+	int32 time(real_time_clock());
+	item = dynamic_cast<ClipListItem *> (list->ItemAt(0));
+	item->SetTimeAdded(time);
 	return;
 }
 

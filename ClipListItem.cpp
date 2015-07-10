@@ -65,7 +65,7 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 		int32 now(real_time_clock());
 		int32 minutes = (now - fTimeAdded) / 60;
 		float step = 0.04;
-		int32 speed = 24;	// change per x minutes
+		int32 speed = 48;	// change per x minutes
 		float level = B_NO_TINT + (step * ((float)minutes / speed));
 			printf("Clip: %s\n\tminutes: %i\t\tlevel: %f\n\n",
 				fTitle.String(), minutes, level);
