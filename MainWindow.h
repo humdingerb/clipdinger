@@ -38,7 +38,6 @@ public:
 					MainWindow();
 	virtual			~MainWindow();
 
-	virtual void	Pulse();
 	bool			QuitRequested();
 	void			MessageReceived(BMessage* message);
 	void			UpdatedSettings(int32 limit);

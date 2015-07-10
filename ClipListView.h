@@ -19,9 +19,12 @@ public:
 					ClipListView(const char* name);
 					~ClipListView();
 
+	virtual void	AttachedToWindow();
 	virtual void	Draw(BRect rect);
 	virtual	void	FrameResized(float w, float h);
 	virtual	void	MessageReceived(BMessage* message);
+	virtual void	Pulse();
+
 	void			MouseDown(BPoint position);
 	void			ShowPopUpMenu(BPoint screen);
 

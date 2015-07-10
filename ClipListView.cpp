@@ -44,13 +44,28 @@ PopUpMenu::~PopUpMenu()
 
 ClipListView::ClipListView(const char* name)
 	:
-	BListView(BRect(), "name", B_SINGLE_SELECTION_LIST, B_WILL_DRAW)
+	BListView(BRect(), "name", B_SINGLE_SELECTION_LIST, B_WILL_DRAW
+		| B_PULSE_NEEDED)
 {
 }
 
 
 ClipListView::~ClipListView()
 {
+}
+
+
+void
+ClipListView::AttachedToWindow()
+{
+	Window()->SetPulseRate(1000000);	// 1 sec
+}
+
+
+void
+ClipListView::Pulse()
+{
+		Invalidate();
 }
 
 

@@ -67,19 +67,11 @@ MainWindow::MainWindow()
 
 	be_clipboard->StartWatching(this);
 	AddCommonFilter(new KeyFilter);
-	SetPulseRate(1000000);	// 1 sec
 }
 
 
 MainWindow::~MainWindow()
 {
-}
-
-
-void
-MainWindow::Pulse()
-{
-	fHistory->Invalidate();
 }
 
 
