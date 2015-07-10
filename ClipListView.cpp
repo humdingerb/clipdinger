@@ -55,11 +55,11 @@ ClipListView::~ClipListView()
 }
 
 
-void
-ClipListView::AttachedToWindow()
-{
-	Window()->SetPulseRate(1000000);	// 1 sec
-}
+//void
+//ClipListView::AttachedToWindow()
+//{
+//	Window()->SetPulseRate(1000000);	// 1 sec
+//}
 
 
 void

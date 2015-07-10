@@ -19,7 +19,7 @@ public:
 					ClipListView(const char* name);
 					~ClipListView();
 
-	virtual void	AttachedToWindow();
+//	virtual void	AttachedToWindow();
 	virtual void	Draw(BRect rect);
 	virtual	void	FrameResized(float w, float h);
 	virtual	void	MessageReceived(BMessage* message);
