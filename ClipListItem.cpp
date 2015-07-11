@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 
+#include "App.h"
 #include "ClipListItem.h"
 #include "Constants.h"
 
@@ -62,10 +63,12 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 	if (IsSelected())
 		bgColor = ui_color(B_LIST_SELECTED_BACKGROUND_COLOR);
     else {
+		App *app = dynamic_cast<App *> (be_app);
 		int32 now(real_time_clock());
 		int32 minutes = (now - fTimeAdded) / 60;
-		float step = 0.04;
-		int32 speed = 1;	// 48 change per x minutes
+		float step = app->fMainWindow->fSettings.FadeStep();
+		int32 speed = app->fMainWindow->fSettings.FadeSpeed();
+
 		float level = B_NO_TINT + (step * ((float)minutes / speed));
 			printf("Clip: %s\n\tminutes: %i\t\tlevel: %f\n\n",
 				fTitle.String(), minutes, level);

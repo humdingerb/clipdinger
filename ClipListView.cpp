@@ -110,8 +110,10 @@ ClipListView::MessageReceived(BMessage* message)
 			break;
 		}
 		default:
-			BView::MessageReceived(message);
+		{
+			BListView::MessageReceived(message);
 			break;
+		}
 	}
 }
 

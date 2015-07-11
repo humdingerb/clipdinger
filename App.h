@@ -11,6 +11,7 @@
 
 #include <Alert.h>
 #include <Application.h>
+#include <MessageRunner.h>
 #include <TextView.h>
 
 #include "MainWindow.h"
@@ -22,10 +23,12 @@ public:
 	virtual			~App();
 
 	void			AboutRequested();
-	virtual void	Pulse();
-	
+	void			MessageReceived(BMessage* message);
+//	virtual void	Pulse();
+
 	MainWindow*		fMainWindow;
 	port_id			fPort;
+	BMessageRunner*	fPortRunner;
 };
 
 #endif	// APP_H

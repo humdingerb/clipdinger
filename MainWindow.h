@@ -42,6 +42,8 @@ public:
 	void			MessageReceived(BMessage* message);
 	void			UpdatedSettings(int32 limit);
 
+	Settings		fSettings;
+
 private:
 	void			_BuildLayout();
 	void			_LoadHistory();
@@ -53,7 +55,6 @@ private:
 	void			PutClipboard(BListView* list);
 	void			CropHistory(int32 limit);
 	
-private:
 	int32			fLimit;
 	int32			fLaunchTime;
 	
@@ -62,8 +63,6 @@ private:
 	
 	BScrollView*	fHistoryScrollView;
 //	BScrollView*	fFavoriteScrollView;
-
-	Settings		fSettings;
 };
 
 #endif // MAIN_WINDOW_H

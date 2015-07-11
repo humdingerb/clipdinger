@@ -25,8 +25,11 @@ App::App()
 	fMainWindow->Show();
 //	fMainWindow->Minimize(true);
 
-	SetPulseRate(100000);
+//	SetPulseRate(100000);
 	fPort = create_port(20, INPUT_PORT_NAME);
+
+	BMessage message(PORTQUEUE);
+	fPortRunner = new BMessageRunner(this, &message, 100000);
 }
 
 
@@ -35,24 +38,55 @@ App::~App()
 	BMessenger messenger(fMainWindow);
 	if (messenger.IsValid() && messenger.LockTarget())
 		fMainWindow->Quit();
+
+	delete fMainWindow;
+	delete fPortRunner;
 }
 
 
 void
-App::Pulse()
+App::MessageReceived(BMessage* message)
 {
-	port_info info;
-	get_port_info(fPort, &info);
-	if (info.queue_count) {
-		int32 code;
-		read_port(fPort, &code, NULL, 0 );
+	switch (message->what) {
+		case PORTQUEUE:
+		{
+			port_info info;
+			get_port_info(fPort, &info);
+			if (info.queue_count) {
+				int32 code;
+				read_port(fPort, &code, NULL, 0 );
 
-		if (code == 'CtSV') {
-			fMainWindow->Minimize(false);
-			fMainWindow->Activate(true);
+				if (code == 'CtSV') {
+					fMainWindow->Minimize(false);
+					fMainWindow->Activate(true);
+				}
+			}
+			break;
+		}
+		default:
+		{
+			BApplication::MessageReceived(message);
+			break;
 		}
 	}
 }
+
+
+//void
+//App::Pulse()
+//{
+//	port_info info;
+//	get_port_info(fPort, &info);
+//	if (info.queue_count) {
+//		int32 code;
+//		read_port(fPort, &code, NULL, 0 );
+//
+//		if (code == 'CtSV') {
+//			fMainWindow->Minimize(false);
+//			fMainWindow->Activate(true);
+//		}
+//	}
+//}
 
 
 void
