@@ -67,11 +67,15 @@ MainWindow::MainWindow()
 
 	be_clipboard->StartWatching(this);
 	AddCommonFilter(new KeyFilter);
+
+	BMessage message(DRAWLIST);
+	fRunner	= new BMessageRunner(this, &message, 10000000); // 1 min 60000000
 }
 
 
 MainWindow::~MainWindow()
 {
+	delete fRunner;
 }
 
 
@@ -301,6 +305,11 @@ MainWindow::MessageReceived(BMessage* message)
 //			PutClipboard(fFavorites);
 //			break;
 //		}
+		case DRAWLIST:
+		{
+			fHistory->Invalidate();
+			break;
+		}
 		default:
 		{
 			BWindow::MessageReceived(message);

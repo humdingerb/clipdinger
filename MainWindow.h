@@ -16,6 +16,7 @@
 #include <Menu.h>
 #include <MenuBar.h>
 #include <MenuItem.h>
+#include <MessageRunner.h>
 #include <ScrollView.h>
 #include <Size.h>
 #include <SplitView.h>
@@ -57,7 +58,9 @@ private:
 	
 	int32			fLimit;
 	int32			fLaunchTime;
-	
+
+	BMessageRunner*	fRunner;
+
 	ClipListView*	fHistory;
 //	BListView*		fFavorites;
 	

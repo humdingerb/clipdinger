@@ -51,15 +51,6 @@ ClipListView::ClipListView(const char* name)
 
 ClipListView::~ClipListView()
 {
-	delete fRunner;
-}
-
-
-void
-ClipListView::AttachedToWindow()
-{
-	BMessage message(DRAWLIST);
-	fRunner	= new BMessageRunner(this, &message, 10000000); // 1 min 60000000
 }
 
 
@@ -102,11 +93,6 @@ ClipListView::MessageReceived(BMessage* message)
 			BMessenger msgr(app->fMainWindow);
 			BMessage refMsg(DELETE);
 			msgr.SendMessage(&refMsg);
-			break;
-		}
-		case DRAWLIST:
-		{
-			Invalidate();
 			break;
 		}
 		default:
