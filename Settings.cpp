@@ -94,56 +94,24 @@ Settings::~Settings()
 
 
 int32
-Settings::Limit()
-{
-	return fLimit;
-}
-
-
+Settings::Limit() { return fLimit; }
 void
-Settings::SetLimit(int32 limit)
-{
-	fLimit = limit;
-}
+Settings::SetLimit(int32 limit) { fLimit = limit; }
 
 
 int32
-Settings::FadeSpeed()
-{
-	return fFadeSpeed;
-}
-
-
+Settings::FadeSpeed() { return fFadeSpeed; }
 void
-Settings::SetFadeSpeed(int32 speed)
-{
-	fFadeSpeed = speed;
-}
+Settings::SetFadeSpeed(int32 speed) { fFadeSpeed = speed; }
 
 
 float
-Settings::FadeStep()
-{
-	return fFadeStep;
-}
-
-
+Settings::FadeStep() { return fFadeStep; }
 void
-Settings::SetFadeStep(float step)
-{
-	fFadeStep = step;
-}
+Settings::SetFadeStep(float step) { fFadeStep = step; }
 
 
 BRect
-Settings::WindowPosition()
-{
-	return fPosition;
-}
-
-
+Settings::WindowPosition() { return fPosition; }
 void
-Settings::SetWindowPosition(BRect where)
-{
-	fPosition = where;
-}
+Settings::SetWindowPosition(BRect where) { fPosition = where; }

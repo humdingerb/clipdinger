@@ -119,7 +119,8 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 }
 
 
-void ClipListItem::Update(BView *view, const BFont *finfo)
+void
+ClipListItem::Update(BView *view, const BFont *finfo)
 {
 	// we need to DefaultLabelSpacing the update method so we can make sure the
 	// list item size doesn't change
@@ -131,3 +132,16 @@ void ClipListItem::Update(BView *view, const BFont *finfo)
 	SetHeight(ceilf(fheight.ascent + 2 + fheight.leading / 2
 		+ fheight.descent) + 5);
 }
+
+
+BString
+ClipListItem::GetClip() { return fClip; };
+
+BString
+ClipListItem::GetOrigin() { return fOrigin; };
+
+bigtime_t
+ClipListItem::GetTimeAdded() { return fTimeAdded; };
+
+void
+ClipListItem::SetTimeAdded(int32 time) { fTimeAdded = time; };

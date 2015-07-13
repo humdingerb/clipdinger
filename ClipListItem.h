@@ -21,10 +21,10 @@ public:
 					ClipListItem(BString clip, BString path, int32 time);
 					~ClipListItem();
 
-	BString			GetClip() { return fClip; };
-	BString			GetOrigin() { return fOrigin; };
-	bigtime_t		GetTimeAdded() { return fTimeAdded; };
-	void			SetTimeAdded(int32 time) { fTimeAdded = time; };
+	BString			GetClip();
+	BString			GetOrigin();
+	bigtime_t		GetTimeAdded();
+	void			SetTimeAdded(int32 time);
 
 	virtual void	DrawItem(BView*, BRect, bool);
 	virtual	void	Update(BView*, const BFont*);
