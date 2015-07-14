@@ -55,6 +55,15 @@ ClipListView::~ClipListView()
 
 
 void
+ClipListView::AttachedToWindow()
+{
+	BMessage message(DRAWLIST);
+	fRunner	= new BMessageRunner(this, &message, 10000000); // 1 min 60000000
+
+	BListView::AttachedToWindow();
+}
+
+void
 ClipListView::Draw(BRect rect)
 {
 		SetHighColor(ui_color(B_CONTROL_BACKGROUND_COLOR));
@@ -89,10 +98,14 @@ ClipListView::MessageReceived(BMessage* message)
 		{
 			fShowingPopUpMenu = false;
 
-			App *app = dynamic_cast<App *> (be_app);
-			BMessenger msgr(app->fMainWindow);
-			BMessage refMsg(DELETE);
-			msgr.SendMessage(&refMsg);
+			BMessenger messenger(my_app->fMainWindow);
+			BMessage message(DELETE);
+			messenger.SendMessage(&message);
+			break;
+		}
+		case DRAWLIST:
+		{
+			Invalidate();
 			break;
 		}
 		default:

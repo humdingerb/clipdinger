@@ -14,21 +14,27 @@
 #include <MessageRunner.h>
 #include <TextView.h>
 
+#include "ClipdingerSettings.h"
 #include "MainWindow.h"
 
+#define my_app dynamic_cast<App*>(be_app)
 
 class App : public BApplication {
 public:
-					App();
-	virtual			~App();
+						App();
+	virtual				~App();
 
-	void			AboutRequested();
-	void			MessageReceived(BMessage* message);
-//	virtual void	Pulse();
+	void				AboutRequested();
+	void				MessageReceived(BMessage* message);
 
-	MainWindow*		fMainWindow;
-	port_id			fPort;
-	BMessageRunner*	fPortRunner;
+	ClipdingerSettings* Settings() { return &fSettings; }
+
+	MainWindow*			fMainWindow;
+
+private:
+	port_id				fPort;
+	BMessageRunner*		fPortRunner;
+	ClipdingerSettings	fSettings;
 };
 
 #endif	// APP_H

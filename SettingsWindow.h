@@ -9,22 +9,41 @@
 #ifndef SETTINGS_WINDOW_H
 #define SETTINGS_WINDOW_H
 
+#include <CheckBox.h>
+#include <Slider.h>
 #include <TextControl.h>
+#include <TextView.h>
 #include <Window.h>
-
-#include "Settings.h"
 
 
 class SettingsWindow : public BWindow {
 public:
-					SettingsWindow(int32 limit, BRect frame);
+					SettingsWindow(BRect frame);
 	virtual			~SettingsWindow();
 
-	void			MessageReceived(BMessage* message);		
+	void			MessageReceived(BMessage* message);
+	bool			QuitRequested();
+	void			_BuildLayout();
+	void			UpdateFadeText();
+	void			UpdateSettings();
+
 private:
-	BTextControl*	fLimitBox;
+	BTextControl*	fLimitControl;
+	BCheckBox*		fFadeBox;
+	BSlider*		fFadeSpeed;
+	BSlider*		fFadeStep;
+	BTextView*		fFadeText;
+	BString*		fFadeDescription;
+
 	int32			originalLimit;
+	int32			originalFade;
+	int32			originalFadeSpeed;
+	float			originalFadeStep;
+
 	int32			newLimit;
+	int32			newFade;
+	int32			newFadeSpeed;
+	float			newFadeStep;
 };
 
 

@@ -13,7 +13,6 @@
 #include "App.h"
 #include "Constants.h"
 
-
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "Application"
 
@@ -21,11 +20,10 @@ App::App()
 	:
 	BApplication(kApplicationSignature)
 {	
-	fMainWindow = new MainWindow();
+	fMainWindow = new MainWindow(fSettings.GetWindowPosition());
 	fMainWindow->Show();
 //	fMainWindow->Minimize(true);
 
-//	SetPulseRate(100000);
 	fPort = create_port(20, INPUT_PORT_NAME);
 
 	BMessage message(PORTQUEUE);
@@ -39,7 +37,6 @@ App::~App()
 	if (messenger.IsValid() && messenger.LockTarget())
 		fMainWindow->Quit();
 
-	delete fMainWindow;
 	delete fPortRunner;
 }
 
@@ -70,23 +67,6 @@ App::MessageReceived(BMessage* message)
 		}
 	}
 }
-
-
-//void
-//App::Pulse()
-//{
-//	port_info info;
-//	get_port_info(fPort, &info);
-//	if (info.queue_count) {
-//		int32 code;
-//		read_port(fPort, &code, NULL, 0 );
-//
-//		if (code == 'CtSV') {
-//			fMainWindow->Minimize(false);
-//			fMainWindow->Activate(true);
-//		}
-//	}
-//}
 
 
 void

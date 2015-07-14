@@ -57,24 +57,33 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 {
 	float spacing = be_control_look->DefaultLabelSpacing();
 
+	bool fade;
+	int32 speed;
+	float step;
+	ClipdingerSettings* settings = my_app->Settings();
+	if (settings->Lock()) {
+		fade = settings->GetFade();
+		step = settings->GetFadeStep();
+		speed = settings->GetFadeSpeed();
+		settings->Unlock();
+	}
+
 	// set background color
 	rgb_color bgColor;
 
 	if (IsSelected())
 		bgColor = ui_color(B_LIST_SELECTED_BACKGROUND_COLOR);
-    else {
-		App *app = dynamic_cast<App *> (be_app);
+    else if (fade == true) {
 		int32 now(real_time_clock());
 		int32 minutes = (now - fTimeAdded) / 60;
-		float step = app->fMainWindow->fSettings.FadeStep();
-		int32 speed = app->fMainWindow->fSettings.FadeSpeed();
 
 		float level = B_NO_TINT + (step * ((float)minutes / speed));
-			printf("Clip: %s\n\tminutes: %i\t\tlevel: %f\n\n",
-				fTitle.String(), minutes, level);
+//			printf("Clip: %s\n\tminutes: %i\t\tlevel: %f\n\n",
+//				fTitle.String(), minutes, level);
 		bgColor = tint_color(ui_color(B_LIST_BACKGROUND_COLOR),
 			(level < 1.2) ? level : 1.2);  // limit to 1.2
-	}
+	} else
+		bgColor = ui_color(B_LIST_BACKGROUND_COLOR);
 
     view->SetHighColor(bgColor);
 	view->SetLowColor(bgColor);
@@ -132,16 +141,3 @@ ClipListItem::Update(BView *view, const BFont *finfo)
 	SetHeight(ceilf(fheight.ascent + 2 + fheight.leading / 2
 		+ fheight.descent) + 5);
 }
-
-
-BString
-ClipListItem::GetClip() { return fClip; };
-
-BString
-ClipListItem::GetOrigin() { return fOrigin; };
-
-bigtime_t
-ClipListItem::GetTimeAdded() { return fTimeAdded; };
-
-void
-ClipListItem::SetTimeAdded(int32 time) { fTimeAdded = time; };

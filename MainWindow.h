@@ -16,7 +16,6 @@
 #include <Menu.h>
 #include <MenuBar.h>
 #include <MenuItem.h>
-#include <MessageRunner.h>
 #include <ScrollView.h>
 #include <Size.h>
 #include <SplitView.h>
@@ -29,21 +28,19 @@
 #include <strings.h>
 
 #include "ClipListView.h"
-#include "Settings.h"
+#include "SettingsWindow.h"
 
 const int32	kControlKeys = B_COMMAND_KEY | B_SHIFT_KEY;
 
 
 class MainWindow : public BWindow {
 public:
-					MainWindow();
+					MainWindow(BRect frame);
 	virtual			~MainWindow();
 
 	bool			QuitRequested();
 	void			MessageReceived(BMessage* message);
 	void			UpdatedSettings(int32 limit);
-
-	Settings		fSettings;
 
 private:
 	void			_BuildLayout();
@@ -59,13 +56,13 @@ private:
 	int32			fLimit;
 	int32			fLaunchTime;
 
-	BMessageRunner*	fRunner;
-
 	ClipListView*	fHistory;
 //	BListView*		fFavorites;
 	
 	BScrollView*	fHistoryScrollView;
 //	BScrollView*	fFavoriteScrollView;
+
+	SettingsWindow*	fSettingsWindow;
 };
 
 #endif // MAIN_WINDOW_H

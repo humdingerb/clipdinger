@@ -19,17 +19,16 @@
 
 #include <algorithm>
 
+#include "App.h"
 #include "ClipListItem.h"
 #include "KeyFilter.h"
 #include "MainWindow.h"
-#include "Settings.h"
-#include "SettingsWindow.h"
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "MainWindow"
 
 
-MainWindow::MainWindow()
+MainWindow::MainWindow(BRect frame)
 	:
 	BWindow(BRect(), B_TRANSLATE_SYSTEM_NAME("Clipdinger"), B_TITLED_WINDOW,
 		B_NOT_CLOSABLE | B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS,
@@ -37,11 +36,10 @@ MainWindow::MainWindow()
 {
 	_BuildLayout();
 
-	if (fSettings.WindowPosition() == BRect(-1, -1, -1, -1)) {
+	if (frame == BRect(-1, -1, -1, -1)) {
 		CenterOnScreen();
 		ResizeTo(300, 400);
 	} else {
-		BRect frame = fSettings.WindowPosition();
 		MoveTo(frame.LeftTop());
 		ResizeTo(frame.right - frame.left, frame.bottom - frame.top);
 
@@ -51,9 +49,11 @@ MainWindow::MainWindow()
 			CenterOnScreen();
 	}
 
-	if (fSettings.Limit())
-		fLimit = fSettings.Limit();
-
+	ClipdingerSettings* settings = my_app->Settings();
+	if (settings->Lock()) {
+		fLimit = settings->GetLimit();
+		settings->Unlock();
+	}
 	fLaunchTime = real_time_clock();
 
 	_LoadHistory();
@@ -68,14 +68,39 @@ MainWindow::MainWindow()
 	be_clipboard->StartWatching(this);
 	AddCommonFilter(new KeyFilter);
 
-	BMessage message(DRAWLIST);
-	fRunner	= new BMessageRunner(this, &message, 10000000); // 1 min 60000000
+	frame = Frame();
+	fSettingsWindow = new SettingsWindow(frame);
+	fSettingsWindow->Hide();
+	fSettingsWindow->Show();
 }
 
 
 MainWindow::~MainWindow()
 {
-	delete fRunner;
+	delete fSettingsWindow;
+}
+
+
+bool
+MainWindow::QuitRequested()
+{
+	_SaveHistory();
+
+	ClipdingerSettings* settings = my_app->Settings();
+	if (settings->Lock()) {
+		settings->SetLimit(fLimit);
+		settings->SetWindowPosition(ConvertToScreen(Bounds()));
+		settings->Unlock();
+	}
+
+	if (fSettingsWindow) {
+		BMessenger messenger(fSettingsWindow);
+		if (messenger.IsValid() && messenger.LockTarget())
+			fSettingsWindow->Quit();
+	}
+
+	be_app->PostMessage(B_QUIT_REQUESTED);
+	return true;
 }
 
 
@@ -225,19 +250,6 @@ MainWindow::_LoadHistory()
 }
 
 
-bool
-MainWindow::QuitRequested()
-{
-	_SaveHistory();
-
-	fSettings.SetLimit(fLimit);
-	fSettings.SetWindowPosition(ConvertToScreen(Bounds()));
-
-	be_app->PostMessage(B_QUIT_REQUESTED);
-	return true;
-}
-
-
 void
 MainWindow::MessageReceived(BMessage* message)
 {
@@ -282,9 +294,7 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case SETTINGS:
 		{
-			BRect frame = Frame();
-			BWindow* settingswindow = new SettingsWindow(fLimit, frame);
-			settingswindow->Show();
+			fSettingsWindow->Show();
 			break;
 		}
 		case INSERT_HISTORY:
@@ -305,11 +315,6 @@ MainWindow::MessageReceived(BMessage* message)
 //			PutClipboard(fFavorites);
 //			break;
 //		}
-		case DRAWLIST:
-		{
-			fHistory->Invalidate();
-			break;
-		}
 		default:
 		{
 			BWindow::MessageReceived(message);
@@ -423,6 +428,10 @@ MainWindow::UpdatedSettings(int32 limit)
 
 	if (fLimit != limit)
 		fLimit = limit;
+
+	BMessenger messenger(fHistory);
+	BMessage message(DRAWLIST);
+	messenger.SendMessage(&message);
 
 	return;
 }

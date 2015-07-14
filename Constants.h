@@ -17,6 +17,7 @@ static const char kSettingsFolder[] = "Clipdinger";
 static const char kSettingsFile[] = "Clipdinger_settings";
 static const char kHistoryFile[] = "Clipdinger_history";
 
+static const bool kDefaultFade = 0;
 static const int32 kDefaultFadeSpeed = 1;
 static const float kDefaultFadeStep = 0.04;
 static const int32 kDefaultLimit = 50;
@@ -35,6 +36,9 @@ static const int32 kMaxTitleChars = 200;
 #define DRAWLIST			'draw'
 #define SETTINGS			'sett'
 
+#define FADE				'fade'
+#define SPEED				'sped'
+#define STEP				'step'
 #define CANCEL				'cncl'
 #define OK					'okay'
 
