@@ -23,6 +23,7 @@ static const float kDefaultFadeStep = 0.04;
 static const int32 kDefaultLimit = 50;
 static const int32 kIconSize = 16;
 static const int32 kMaxTitleChars = 200;
+static const int32 kMinuteUnits = 5; // minutes per unit
 
 #define PORTQUEUE			'port'
 

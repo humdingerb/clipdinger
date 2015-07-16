@@ -24,7 +24,7 @@
 SettingsWindow::SettingsWindow(BRect frame)
 	:
 	BWindow(BRect(), B_TRANSLATE("Clipdinger settings"),
-		B_DOCUMENT_WINDOW,
+		B_TITLED_WINDOW,
 		B_NOT_ZOOMABLE | B_NOT_RESIZABLE | B_AUTO_UPDATE_SIZE_LIMITS)
 {
 	ClipdingerSettings* settings = my_app->Settings();
@@ -43,7 +43,7 @@ SettingsWindow::SettingsWindow(BRect frame)
 	fLimitControl->SetText(string);
 	fFadeBox->SetValue(originalFade);
 	fDelaySlider->SetValue(originalFadeDelay);
-	fStepSlider->SetValue(originalFadeStep * 100);
+	fStepSlider->SetValue(originalFadeStep);
 
 	fDelaySlider->SetEnabled(originalFade);
 	fStepSlider->SetEnabled(originalFade);
@@ -84,11 +84,10 @@ SettingsWindow::UpdateFadeText()
 		char min[4];
 		char maxtint[4];
 		char step[4];
-		snprintf(min, sizeof(min), "%d", newFadeDelay);
+		snprintf(min, sizeof(min), "%d", newFadeDelay * kMinuteUnits);
 		snprintf(maxtint, sizeof(maxtint), "%d",
-			(int32)(floor(0.2 / newFadeStep + 0.5) * newFadeDelay));
-		snprintf(step, sizeof(step), "%d",
-			(int32)(floor((0.2 / newFadeStep) + 0.5)));
+			newFadeStep * newFadeDelay * kMinuteUnits);
+		snprintf(step, sizeof(step), "%d", newFadeStep);
 
 		BString string(B_TRANSLATE(
 		"Entries fade every %A% minutes.\n"
@@ -123,11 +122,11 @@ SettingsWindow::_BuildLayout()
 	fFadeBox = new BCheckBox("fading", B_TRANSLATE(
 		"Fade history entries over time"), new BMessage(FADE));
 	fDelaySlider = new BSlider(BRect(), "delay", B_TRANSLATE("Delay"),
-		new BMessage(SPEED), 1, 60);
+		new BMessage(SPEED), 1, 12);	// 12 units á 5 minutes
 	fDelaySlider->SetHashMarks(B_HASH_MARKS_BOTTOM);
 	fDelaySlider->SetHashMarkCount(10);
 	fDelaySlider->SetKeyIncrementValue(1);
-	fStepSlider = new BSlider(BRect(), "step", B_TRANSLATE("Stepsize"),
+	fStepSlider = new BSlider(BRect(), "step", B_TRANSLATE("Steps"),
 		new BMessage(STEP), 1, 10);
 	fStepSlider->SetHashMarks(B_HASH_MARKS_BOTTOM);
 	fStepSlider->SetHashMarkCount(10);
@@ -225,12 +224,12 @@ SettingsWindow::MessageReceived(BMessage* message)
 		}
 		case STEP:
 		{
-			newFadeStep = fStepSlider->Value() / 100.0;
+			newFadeStep = fStepSlider->Value();
 			if (settings->Lock()) {
 				settings->SetFadeStep(newFadeStep);
 				settings->Unlock();
 			}
-			printf("newFadeStep = %f\n", newFadeStep);
+			printf("newFadeStep = %i\n", newFadeStep);
 			UpdateSettings();
 			UpdateFadeText();
 			break;	

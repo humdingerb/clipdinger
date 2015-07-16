@@ -59,7 +59,7 @@ void
 ClipListView::AttachedToWindow()
 {
 	BMessage message(ADJUSTCOLORS);
-	fRunner	= new BMessageRunner(this, &message, 60000000); // 1 min
+	fRunner	= new BMessageRunner(this, &message, kMinuteUnits * 60000000);
 	BListView::AttachedToWindow();
 }
 
@@ -128,7 +128,7 @@ ClipListView::AdjustColors()
 	if (settings->Lock()) {
 		fade = settings->GetFade();
 		step = settings->GetFadeStep();
-		delay = settings->GetFadeDelay();
+		delay = settings->GetFadeDelay() * kMinuteUnits;
 		settings->Unlock();
 	}
 
@@ -137,7 +137,7 @@ ClipListView::AdjustColors()
 		ClipListItem *sItem = dynamic_cast<ClipListItem *> (ItemAt(i));
 		if (fade) {
 			int32 minutes = (now - sItem->GetTimeAdded()) / 60;
-			float level = B_NO_TINT + (step * ((float)minutes / delay));
+			float level = B_NO_TINT + (0.2 / step * ((float)minutes / delay));
 	//		printf("Clip: %s\n\tminutes: %i\t\tlevel: %f\n\n",
 	//			fTitle.String(), minutes, level);
 			sItem->SetColor(tint_color(ui_color(B_LIST_BACKGROUND_COLOR),

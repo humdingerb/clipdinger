@@ -38,12 +38,12 @@ private:
 	int32			originalLimit;
 	int32			originalFade;
 	int32			originalFadeDelay;
-	float			originalFadeStep;
+	int32			originalFadeStep;
 
 	int32			newLimit;
 	int32			newFade;
 	int32			newFadeDelay;
-	float			newFadeStep;
+	int32			newFadeStep;
 };
 
 
