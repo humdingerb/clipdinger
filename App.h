@@ -24,6 +24,7 @@ public:
 						App();
 	virtual				~App();
 
+	virtual void		ReadyToRun();
 	void				AboutRequested();
 	void				MessageReceived(BMessage* message);
 

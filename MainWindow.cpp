@@ -61,9 +61,9 @@ MainWindow::MainWindow(BRect frame)
 	if (!fHistory->IsEmpty())
 		fHistory->Select(0);
 
-	if (GetClipboard() == "")
-		if (!fHistory->IsEmpty())
-			PutClipboard(fHistory);
+//	if (GetClipboard() == "")
+//		if (!fHistory->IsEmpty())
+//			PutClipboard(fHistory);
 
 	be_clipboard->StartWatching(this);
 	AddCommonFilter(new KeyFilter);
