@@ -38,7 +38,7 @@ static const int32 kMinuteUnits = 5; // minutes per unit
 #define SETTINGS			'sett'
 
 #define FADE				'fade'
-#define SPEED				'sped'
+#define DELAY				'dely'
 #define STEP				'step'
 #define CANCEL				'cncl'
 #define OK					'okay'

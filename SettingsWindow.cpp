@@ -122,15 +122,17 @@ SettingsWindow::_BuildLayout()
 	fFadeBox = new BCheckBox("fading", B_TRANSLATE(
 		"Fade history entries over time"), new BMessage(FADE));
 	fDelaySlider = new BSlider(BRect(), "delay", B_TRANSLATE("Delay"),
-		new BMessage(SPEED), 1, 12);	// 12 units á 5 minutes
+		new BMessage(DELAY), 1, 12);	// 12 units á 5 minutes
 	fDelaySlider->SetHashMarks(B_HASH_MARKS_BOTTOM);
 	fDelaySlider->SetHashMarkCount(12);
 	fDelaySlider->SetKeyIncrementValue(1);
+	fDelaySlider->SetModificationMessage(new BMessage(DELAY));
 	fStepSlider = new BSlider(BRect(), "step", B_TRANSLATE("Steps"),
 		new BMessage(STEP), 1, 10);
 	fStepSlider->SetHashMarks(B_HASH_MARKS_BOTTOM);
 	fStepSlider->SetHashMarkCount(10);
-	fDelaySlider->SetKeyIncrementValue(1);
+	fStepSlider->SetKeyIncrementValue(1);
+	fStepSlider->SetModificationMessage(new BMessage(STEP));
 
 	BFont infoFont(*be_plain_font);
 	infoFont.SetFace(B_ITALIC_FACE);
@@ -211,7 +213,7 @@ SettingsWindow::MessageReceived(BMessage* message)
 			fStepSlider->SetEnabled(newFade);
 			break;
 		}
-		case SPEED:
+		case DELAY:
 		{
 			newFadeDelay = fDelaySlider->Value();
 			if (settings->Lock()) {
