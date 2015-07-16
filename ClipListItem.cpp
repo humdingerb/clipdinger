@@ -51,7 +51,7 @@ ClipListItem::~ClipListItem()
 void
 ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 {
-	float spacing = be_control_look->DefaultLabelSpacing();
+	static const float spacing = be_control_look->DefaultLabelSpacing();
 
 	// set background color
 	rgb_color bgColor;
