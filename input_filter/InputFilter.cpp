@@ -39,9 +39,9 @@ InputFilter::InputFilter()
 }
 
 
-filter_result InputFilter::Filter(BMessage* message, BList* outList)
+filter_result
+InputFilter::Filter(BMessage* message, BList* outList)
 {
-	
 	const int32	kControlKeys = B_COMMAND_KEY | B_SHIFT_KEY;
 	
 	if (message->what == B_KEY_DOWN) {
@@ -66,7 +66,8 @@ filter_result InputFilter::Filter(BMessage* message, BList* outList)
 }
 
 
-status_t InputFilter::InitCheck()
+status_t
+InputFilter::InitCheck()
 {
 	return B_OK;
 }

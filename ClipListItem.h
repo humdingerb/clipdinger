@@ -26,8 +26,8 @@ public:
 	bigtime_t		GetTimeAdded() { return fTimeAdded; };
 	void			SetTimeAdded(int32 time) { fTimeAdded = time; };
 
-	virtual void	DrawItem(BView*, BRect, bool);
-	virtual	void	Update(BView*, const BFont*);
+	virtual void	DrawItem(BView* view, BRect rect, bool complete);
+	virtual	void	Update(BView* view, const BFont* finfo);
 
 private:
 	BString			fClip;

@@ -58,13 +58,13 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 	float spacing = be_control_look->DefaultLabelSpacing();
 
 	bool fade;
-	int32 speed;
+	int32 delay;
 	float step;
 	ClipdingerSettings* settings = my_app->Settings();
 	if (settings->Lock()) {
 		fade = settings->GetFade();
 		step = settings->GetFadeStep();
-		speed = settings->GetFadeSpeed();
+		delay = settings->GetFadeDelay();
 		settings->Unlock();
 	}
 
@@ -77,7 +77,7 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 		int32 now(real_time_clock());
 		int32 minutes = (now - fTimeAdded) / 60;
 
-		float level = B_NO_TINT + (step * ((float)minutes / speed));
+		float level = B_NO_TINT + (step * ((float)minutes / delay));
 //			printf("Clip: %s\n\tminutes: %i\t\tlevel: %f\n\n",
 //				fTitle.String(), minutes, level);
 		bgColor = tint_color(ui_color(B_LIST_BACKGROUND_COLOR),
@@ -129,7 +129,7 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 
 
 void
-ClipListItem::Update(BView *view, const BFont *finfo)
+ClipListItem::Update(BView* view, const BFont* finfo)
 {
 	// we need to DefaultLabelSpacing the update method so we can make sure the
 	// list item size doesn't change

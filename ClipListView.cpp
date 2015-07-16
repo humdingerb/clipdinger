@@ -44,7 +44,7 @@ PopUpMenu::~PopUpMenu()
 
 ClipListView::ClipListView(const char* name)
 	:
-	BListView(BRect(), "name", B_SINGLE_SELECTION_LIST, B_WILL_DRAW)
+	BListView(BRect(), "name")
 {
 }
 
@@ -58,17 +58,16 @@ void
 ClipListView::AttachedToWindow()
 {
 	BMessage message(DRAWLIST);
-	fRunner	= new BMessageRunner(this, &message, 10000000); // 1 min 60000000
-
+	fRunner	= new BMessageRunner(this, &message, 60000000); // 1 min
 	BListView::AttachedToWindow();
 }
 
 void
 ClipListView::Draw(BRect rect)
 {
-		SetHighColor(ui_color(B_CONTROL_BACKGROUND_COLOR));
-		FillRect(rect);
-		BListView::Draw(rect);
+	SetHighColor(ui_color(B_CONTROL_BACKGROUND_COLOR));
+	FillRect(rect);
+	BListView::Draw(rect);
 }
 
 

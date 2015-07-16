@@ -23,14 +23,15 @@
 
 SettingsWindow::SettingsWindow(BRect frame)
 	:
-	BWindow(BRect(), B_TRANSLATE("Clipdinger settings"), B_TITLED_WINDOW,
+	BWindow(BRect(), B_TRANSLATE("Clipdinger settings"),
+		B_FLOATING_WINDOW,
 		B_NOT_ZOOMABLE | B_NOT_RESIZABLE | B_AUTO_UPDATE_SIZE_LIMITS)
 {
 	ClipdingerSettings* settings = my_app->Settings();
 	if (settings->Lock()) {
 		newLimit = originalLimit = settings->GetLimit();
 		newFade = originalFade = settings->GetFade();
-		newFadeSpeed = originalFadeSpeed = settings->GetFadeSpeed();
+		newFadeDelay = originalFadeDelay = settings->GetFadeDelay();
 		newFadeStep = originalFadeStep = settings->GetFadeStep();
 		settings->Unlock();
 	}
@@ -41,11 +42,11 @@ SettingsWindow::SettingsWindow(BRect frame)
 	snprintf(string, sizeof(string), "%d", originalLimit);
 	fLimitControl->SetText(string);
 	fFadeBox->SetValue(originalFade);
-	fFadeSpeed->SetValue(originalFadeSpeed);
-	fFadeStep->SetValue(originalFadeStep * 100);
+	fDelaySlider->SetValue(originalFadeDelay);
+	fStepSlider->SetValue(originalFadeStep * 100);
 
-	fFadeSpeed->SetEnabled(originalFade);
-	fFadeStep->SetEnabled(originalFade);
+	fDelaySlider->SetEnabled(originalFade);
+	fStepSlider->SetEnabled(originalFade);
 	
 	frame.OffsetBy(60.0, 60.0);
 	MoveTo(frame.LeftTop());
@@ -80,16 +81,19 @@ SettingsWindow::UpdateFadeText()
 	if (!newFade)
 		fFadeText->SetText(B_TRANSLATE("Entries don't fade over time."));
 	else {
-		BString string(B_TRANSLATE("Entries fade every %A% minutes.\n"
-		"The maximal tint is reached after %B% minutes (%C% steps)"));
 		char min[4];
 		char maxtint[4];
 		char step[4];
-		snprintf(min, sizeof(min), "%d", newFadeSpeed);
+		snprintf(min, sizeof(min), "%d", newFadeDelay);
 		snprintf(maxtint, sizeof(maxtint), "%d",
-			floor((0.2 / newFadeStep * newFadeSpeed) + 0.5));
+			(int32)(floor(0.2 / newFadeStep + 0.5) * newFadeDelay));
 		snprintf(step, sizeof(step), "%d",
-			floor((0.2 / newFadeStep) + 0.5));
+			(int32)(floor((0.2 / newFadeStep) + 0.5)));
+
+		BString string(B_TRANSLATE(
+		"Entries fade every %A% minutes.\n"
+		"The maximal tint is reached after\n"
+		"%B% minutes (in %C% steps)"));
 		string.ReplaceAll("%A%", min);
 		string.ReplaceAll("%B%", maxtint);
 		string.ReplaceAll("%C%", step);
@@ -118,23 +122,29 @@ SettingsWindow::_BuildLayout()
 	// Fading
 	fFadeBox = new BCheckBox("fading", B_TRANSLATE(
 		"Fade history entries over time"), new BMessage(FADE));
-	fFadeSpeed = new BSlider(BRect(), "speed", B_TRANSLATE("Speed"),
+	fDelaySlider = new BSlider(BRect(), "delay", B_TRANSLATE("Delay"),
 		new BMessage(SPEED), 1, 60);
-	fFadeStep = new BSlider(BRect(), "step", B_TRANSLATE("Stepsize"),
+	fDelaySlider->SetHashMarks(B_HASH_MARKS_BOTTOM);
+	fStepSlider = new BSlider(BRect(), "step", B_TRANSLATE("Stepsize"),
 		new BMessage(STEP), 1, 10);
+	fDelaySlider->SetHashMarks(B_HASH_MARKS_BOTTOM);
 
 	BFont infoFont(*be_plain_font);
 	infoFont.SetFace(B_ITALIC_FACE);
 	rgb_color infoColor = tint_color(ui_color(B_PANEL_BACKGROUND_COLOR),
 		B_DARKEN_4_TINT);
-	BRect textBounds = Bounds();
-	fFadeText = new BTextView(textBounds, "fadetext", textBounds, &infoFont,
-		&infoColor, B_FOLLOW_NONE, B_WILL_DRAW | B_SUPPORTS_LAYOUT);
+	fFadeText = new BTextView("fadetext", &infoFont, &infoColor,
+		B_WILL_DRAW | B_SUPPORTS_LAYOUT);
 	fFadeText->MakeEditable(false);
 	fFadeText->SetViewColor(ui_color(B_PANEL_BACKGROUND_COLOR));
 	fFadeText->SetStylable(true);
 	fFadeText->SetAlignment(B_ALIGN_CENTER);
 	UpdateFadeText();
+
+	font_height fheight;
+	infoFont.GetHeight(&fheight);
+	fFadeText->SetExplicitMinSize(BSize(0.0,
+		(fheight.ascent + fheight.descent + fheight.leading) * 3.0));
 
 	// Buttons
 	BButton* cancel = new BButton("cancel", B_TRANSLATE("Cancel"),
@@ -154,11 +164,11 @@ SettingsWindow::_BuildLayout()
 			.Add(fFadeBox)
 			.AddGroup(B_HORIZONTAL)
 				.Add(BSpaceLayoutItem::CreateHorizontalStrut(spacing))
-				.Add(fFadeSpeed)
+				.Add(fDelaySlider)
 			.End()
 			.AddGroup(B_HORIZONTAL)
 				.Add(BSpaceLayoutItem::CreateHorizontalStrut(spacing))
-				.Add(fFadeStep)
+				.Add(fStepSlider)
 			.End()
 			.AddGroup(B_HORIZONTAL)
 				.Add(BSpaceLayoutItem::CreateHorizontalStrut(spacing))
@@ -194,15 +204,15 @@ SettingsWindow::MessageReceived(BMessage* message)
 			UpdateSettings();
 			UpdateFadeText();
 
-			fFadeSpeed->SetEnabled(newFade);
-			fFadeStep->SetEnabled(newFade);
+			fDelaySlider->SetEnabled(newFade);
+			fStepSlider->SetEnabled(newFade);
 			break;
 		}
 		case SPEED:
 		{
-			newFadeSpeed = fFadeSpeed->Value();
+			newFadeDelay = fDelaySlider->Value();
 			if (settings->Lock()) {
-				settings->SetFadeSpeed(newFadeSpeed);
+				settings->SetFadeDelay(newFadeDelay);
 				settings->Unlock();
 			}
 			UpdateSettings();
@@ -211,12 +221,12 @@ SettingsWindow::MessageReceived(BMessage* message)
 		}
 		case STEP:
 		{
-			newFadeStep = fFadeStep->Value();
+			newFadeStep = fStepSlider->Value() / 100.0;
 			if (settings->Lock()) {
-				settings->SetFadeStep(newFadeStep / 100);
+				settings->SetFadeStep(newFadeStep);
 				settings->Unlock();
 			}
-			printf("newFadeStep = %f\n", newFadeStep / 100);
+			printf("newFadeStep = %f\n", newFadeStep);
 			UpdateSettings();
 			UpdateFadeText();
 			break;	
@@ -226,8 +236,8 @@ SettingsWindow::MessageReceived(BMessage* message)
 			if (settings->Lock()) {
 				settings->SetLimit(originalLimit);
 				settings->SetFade(originalFade);
-				settings->SetFadeSpeed(originalFadeSpeed);
-				settings->SetFadeStep(originalFadeStep / 100);
+				settings->SetFadeDelay(originalFadeDelay);
+				settings->SetFadeStep(originalFadeStep);
 				settings->Unlock();
 			}
 			UpdateSettings();
@@ -240,8 +250,8 @@ SettingsWindow::MessageReceived(BMessage* message)
 			if (settings->Lock()) {
 				settings->SetLimit(newLimit);
 				settings->SetFade(newFade);
-				settings->SetFadeSpeed(newFadeSpeed);
-				settings->SetFadeStep(newFadeStep / 100);
+				settings->SetFadeDelay(newFadeDelay);
+				settings->SetFadeStep(newFadeStep);
 				settings->Unlock();
 			}
 			UpdateSettings();

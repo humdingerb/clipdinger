@@ -30,19 +30,19 @@ public:
 private:
 	BTextControl*	fLimitControl;
 	BCheckBox*		fFadeBox;
-	BSlider*		fFadeSpeed;
-	BSlider*		fFadeStep;
+	BSlider*		fDelaySlider;
+	BSlider*		fStepSlider;
 	BTextView*		fFadeText;
 	BString*		fFadeDescription;
 
 	int32			originalLimit;
 	int32			originalFade;
-	int32			originalFadeSpeed;
+	int32			originalFadeDelay;
 	float			originalFadeStep;
 
 	int32			newLimit;
 	int32			newFade;
-	int32			newFadeSpeed;
+	int32			newFadeDelay;
 	float			newFadeStep;
 };
 

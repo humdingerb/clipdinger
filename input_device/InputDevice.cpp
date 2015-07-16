@@ -18,7 +18,7 @@
 // #include <syslog.h>
 
 
-thread_id	ClipdingerInputDevice::fThread = B_ERROR;
+thread_id ClipdingerInputDevice::fThread = B_ERROR;
 
 
 BInputServerDevice* instantiate_input_device()
@@ -52,7 +52,8 @@ ClipdingerInputDevice::~ClipdingerInputDevice()
 }
 
 
-status_t ClipdingerInputDevice::InitCheck()
+status_t
+ClipdingerInputDevice::InitCheck()
 {
 	// do any init code that could fail here
 	// you will be unloaded if you return false
@@ -61,7 +62,8 @@ status_t ClipdingerInputDevice::InitCheck()
 }
 
 
-status_t ClipdingerInputDevice::SystemShuttingDown()
+status_t
+ClipdingerInputDevice::SystemShuttingDown()
 {
 	// do any cleanup (ie. saving a settings file) when the
 	// system is about to shut down
@@ -70,7 +72,8 @@ status_t ClipdingerInputDevice::SystemShuttingDown()
 }
 
 
-status_t ClipdingerInputDevice::Start(const char* device, void* cookie)
+status_t
+ClipdingerInputDevice::Start(const char* device, void* cookie)
 {
 	// start generating events
 	// this is a hook function, it is called for you
@@ -83,7 +86,8 @@ status_t ClipdingerInputDevice::Start(const char* device, void* cookie)
 }
 
 
-status_t ClipdingerInputDevice::Stop(const char* device, void* cookie)
+status_t
+ClipdingerInputDevice::Stop(const char* device, void* cookie)
 {
 	// stop generating events
 	// this is a hook function, it is called for you
@@ -97,14 +101,16 @@ status_t ClipdingerInputDevice::Stop(const char* device, void* cookie)
 }
 
 
-status_t ClipdingerInputDevice::Control(const char* device, void* cookie,
+status_t
+ClipdingerInputDevice::Control(const char* device, void* cookie,
 	uint32 code, BMessage* message)
 {
 	return B_NO_ERROR;
 }
 
 
-int32 ClipdingerInputDevice::listener(void* arg)
+int32
+ClipdingerInputDevice::listener(void* arg)
 {
 	port_id port = create_port(20, "Clipdinger output port");
 
