@@ -37,14 +37,11 @@ App::~App()
 void
 App::ReadyToRun()
 {
-	fPort = create_port(20, INPUT_PORT_NAME);
-
-	BMessage message(PORTQUEUE);
-	fPortRunner = new BMessageRunner(this, &message, 100000);
-
 	fMainWindow = new MainWindow(fSettings.GetWindowPosition());
 	fMainWindow->Show();
 //	fMainWindow->Minimize(true);
+
+	PostMessage('crea');
 }
 
 
@@ -65,6 +62,14 @@ App::MessageReceived(BMessage* message)
 					fMainWindow->Activate(true);
 				}
 			}
+			break;
+		}
+		case 'crea':
+		{
+			fPort = create_port(20, INPUT_PORT_NAME);
+
+			BMessage message(PORTQUEUE);
+			fPortRunner = new BMessageRunner(this, &message, 100000);
 			break;
 		}
 		default:
