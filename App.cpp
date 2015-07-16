@@ -20,10 +20,7 @@ App::App()
 	:
 	BApplication(kApplicationSignature)
 {	
-	fPort = create_port(20, INPUT_PORT_NAME);
 
-	BMessage message(PORTQUEUE);
-	fPortRunner = new BMessageRunner(this, &message, 100000);
 }
 
 
@@ -40,6 +37,11 @@ App::~App()
 void
 App::ReadyToRun()
 {
+	fPort = create_port(20, INPUT_PORT_NAME);
+
+	BMessage message(PORTQUEUE);
+	fPortRunner = new BMessageRunner(this, &message, 100000);
+
 	fMainWindow = new MainWindow(fSettings.GetWindowPosition());
 	fMainWindow->Show();
 //	fMainWindow->Minimize(true);
