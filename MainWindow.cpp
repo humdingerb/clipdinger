@@ -137,6 +137,7 @@ MainWindow::_BuildLayout()
 	// The lists
 	fHistory = new ClipListView("history");
 	fHistory->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
+
 //	fFavorites = new BListView("favorites");
 //	fFavorites->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
@@ -150,17 +151,17 @@ MainWindow::_BuildLayout()
 	favoriteHeader->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 */
 	// do the layouting				
-	const float padding = be_control_look->DefaultItemSpacing() / 2;
+	static const float spacing = be_control_look->DefaultItemSpacing() / 2;
 	BSplitView *v = 
 		BLayoutBuilder::Split<>(B_VERTICAL)
 			.AddGroup(B_VERTICAL)
 				.Add(fHistoryScrollView)
 			.End()
-/*			.AddGroup(B_VERTICAL, padding / 2)
+/*			.AddGroup(B_VERTICAL, spacing / 2)
 				.Add(favoriteHeader)
 				.Add(fFavoriteScrollView)
 			.End()
-*/		.SetInsets(padding)
+*/		.SetInsets(spacing)
 		.View();
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
@@ -169,6 +170,8 @@ MainWindow::_BuildLayout()
 
 	fHistory->MakeFocus(true);
 	fHistory->SetInvocationMessage(new BMessage(INSERT_HISTORY));
+	fHistory->SetViewColor(ui_color(B_CONTROL_BACKGROUND_COLOR));
+	fHistory->SetFlags(fHistory->Flags() | B_FULL_UPDATE_ON_RESIZE);
 //	fFavorites->SetInvocationMessage(new BMessage(INSERT_FAVORITE));
 }
 

@@ -30,7 +30,7 @@ public:
 		void		SetLimit(int32 limit) { fLimit = limit; }
 		void		SetFade(int32 fade) { fFade = fade; }
 		void		SetFadeDelay(int32 delay) { fFadeDelay = delay; }
-		void		SetFadeStep(float step) { fFadeStep = step; }
+		void		SetFadeStep(int32 step) { fFadeStep = step; }
 		void		SetWindowPosition(BRect where) { fPosition = where; }
 private:
 		int32		fLimit;

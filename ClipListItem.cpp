@@ -21,7 +21,8 @@ ClipListItem::ClipListItem(BString clip, BString path, int32 time)
 	:
 	BListItem()
 {
-	fClip = clip; 
+	fClip = clip;
+	fTitle = fClip;
 	fOrigin = path;
 	fTimeAdded = time;
 	fColor = ui_color(B_LIST_BACKGROUND_COLOR);
@@ -38,12 +39,6 @@ ClipListItem::ClipListItem(BString clip, BString path, int32 time)
 			fOriginIcon = NULL;
 	} else
 		fOriginIcon = NULL;
-
-	if (fClip.CountChars() > kMaxTitleChars) {
-		fClip.CopyInto(fTitle, 0, kMaxTitleChars);
-		fTitle.Append(B_UTF8_ELLIPSIS);
-	} else
-		fTitle = fClip;
 }
 
 
@@ -90,13 +85,7 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 	font_height	fheight;
 	font.GetHeight(&fheight);
 
-	float width, height;
-	view->GetPreferredSize(&width, &height);
-
-    BString string(fTitle.String());
-    view->TruncateString(&string, B_TRUNCATE_END, width - kIconSize
-		- spacing * 4);
-    view->DrawString(string.String(),
+    view->DrawString(fTitle.String(),
 		BPoint(kIconSize - 1 + spacing * 3,
 		rect.top + fheight.ascent + 3 + floorf(fheight.leading / 2)));
 
@@ -105,7 +94,7 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 		B_DARKEN_2_TINT));
 	view->StrokeLine(rect.LeftBottom(), rect.RightBottom());
 	view->StrokeLine(BPoint(kIconSize - 1 + spacing * 2, 0),
-		BPoint(kIconSize - 1 + spacing * 2, height));
+		BPoint(kIconSize - 1 + spacing * 2, rect.bottom));
 }
 
 

@@ -19,7 +19,7 @@ static const char kHistoryFile[] = "Clipdinger_history";
 
 static const bool kDefaultFade = 0;
 static const int32 kDefaultFadeDelay = 1;
-static const float kDefaultFadeStep = 0.04;
+static const int32 kDefaultFadeStep = 4;
 static const int32 kDefaultLimit = 50;
 static const int32 kIconSize = 16;
 static const int32 kMaxTitleChars = 200;

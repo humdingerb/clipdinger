@@ -7,6 +7,7 @@
  */
 
 #include <Catalog.h>
+#include <ControlLook.h>
 
 #include "App.h"
 #include "ClipListItem.h"
@@ -63,23 +64,20 @@ ClipListView::AttachedToWindow()
 	BListView::AttachedToWindow();
 }
 
-void
-ClipListView::Draw(BRect rect)
-{
-	SetHighColor(ui_color(B_CONTROL_BACKGROUND_COLOR));
-	FillRect(rect);
-	BListView::Draw(rect);
-}
-
 
 void
-ClipListView::FrameResized(float w, float h)
+ClipListView::FrameResized(float width, float height)
 {
-	BListView::FrameResized(w, h);
+	BListView::FrameResized(width, height);
 	
+	static const float spacing = be_control_look->DefaultLabelSpacing();
+
 	for (int32 i = 0; i < CountItems(); i++) {
-		BListItem *item = ItemAt(i);
-		item->Update(this, be_plain_font);
+		ClipListItem *sItem = dynamic_cast<ClipListItem *> (ItemAt(i));
+		BString string(sItem->GetClip());
+		TruncateString(&string, B_TRUNCATE_END, width - kIconSize
+			- spacing * 4);
+		sItem->SetTitle(string);
 	}
 	Invalidate();
 }
@@ -138,8 +136,6 @@ ClipListView::AdjustColors()
 		if (fade) {
 			int32 minutes = (now - sItem->GetTimeAdded()) / 60;
 			float level = B_NO_TINT + (1.2 / step * ((float)minutes / delay));
-	//		printf("Clip: %s\n\tminutes: %i\t\tlevel: %f\n\n",
-	//			fTitle.String(), minutes, level);
 			sItem->SetColor(tint_color(ui_color(B_LIST_BACKGROUND_COLOR),
 			(level < 1.2) ? level : 1.2));  // limit to 1.2
 		} else

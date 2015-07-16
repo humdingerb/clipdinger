@@ -157,7 +157,7 @@ SettingsWindow::_BuildLayout()
 	BButton* ok = new BButton("ok", B_TRANSLATE("OK"), new BMessage(OK));
 	ok->MakeDefault(true);
 
-	const float spacing = be_control_look->DefaultItemSpacing();
+	static const float spacing = be_control_look->DefaultItemSpacing();
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.AddGroup(B_HORIZONTAL)
 			.SetInsets(spacing)

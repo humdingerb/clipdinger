@@ -21,8 +21,8 @@ public:
 					~ClipListView();
 
 	virtual void	AttachedToWindow();
-	virtual void	Draw(BRect rect);
-	virtual	void	FrameResized(float w, float h);
+//	virtual void	Draw(BRect rect);
+	virtual	void	FrameResized(float width, float height);
 	virtual	void	MessageReceived(BMessage* message);
 
 	void			AdjustColors();
