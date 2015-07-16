@@ -124,7 +124,7 @@ SettingsWindow::_BuildLayout()
 	fDelaySlider = new BSlider(BRect(), "delay", B_TRANSLATE("Delay"),
 		new BMessage(SPEED), 1, 12);	// 12 units á 5 minutes
 	fDelaySlider->SetHashMarks(B_HASH_MARKS_BOTTOM);
-	fDelaySlider->SetHashMarkCount(10);
+	fDelaySlider->SetHashMarkCount(12);
 	fDelaySlider->SetKeyIncrementValue(1);
 	fStepSlider = new BSlider(BRect(), "step", B_TRANSLATE("Steps"),
 		new BMessage(STEP), 1, 10);
