@@ -22,7 +22,7 @@ ClipListItem::ClipListItem(BString clip, BString path, int32 time)
 	BListItem()
 {
 	fClip = clip;
-	fTitle = fClip;
+	fTitle = "";
 	fOrigin = path;
 	fTimeAdded = time;
 	fColor = ui_color(B_LIST_BACKGROUND_COLOR);
