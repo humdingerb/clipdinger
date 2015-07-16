@@ -25,6 +25,7 @@ public:
 	virtual	void	FrameResized(float w, float h);
 	virtual	void	MessageReceived(BMessage* message);
 
+	void			AdjustColors();
 	void			MouseDown(BPoint position);
 	void			ShowPopUpMenu(BPoint screen);
 

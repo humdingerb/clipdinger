@@ -33,7 +33,7 @@ static const int32 kMaxTitleChars = 200;
 #define CLEAR_HISTORY		'clhi'
 #define INSERT_HISTORY		'ihis'
 //#define INSERT_FAVORITE	'ifav'
-#define DRAWLIST			'draw'
+#define ADJUSTCOLORS		'acol'
 #define SETTINGS			'sett'
 
 #define FADE				'fade'

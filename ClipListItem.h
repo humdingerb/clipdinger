@@ -25,6 +25,7 @@ public:
 	BString			GetOrigin() { return fOrigin; };
 	bigtime_t		GetTimeAdded() { return fTimeAdded; };
 	void			SetTimeAdded(int32 time) { fTimeAdded = time; };
+	rgb_color		SetColor(rgb_color color) { fColor = color; };
 
 	virtual void	DrawItem(BView* view, BRect rect, bool complete);
 	virtual	void	Update(BView* view, const BFont* finfo);
@@ -34,6 +35,7 @@ private:
 	BString			fTitle;
 	BString			fOrigin;
 	int32			fTimeAdded;
+	rgb_color		fColor;
 
 	BBitmap*		fOriginIcon;
 };

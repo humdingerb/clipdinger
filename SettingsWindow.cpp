@@ -24,7 +24,7 @@
 SettingsWindow::SettingsWindow(BRect frame)
 	:
 	BWindow(BRect(), B_TRANSLATE("Clipdinger settings"),
-		B_FLOATING_WINDOW,
+		B_DOCUMENT_WINDOW,
 		B_NOT_ZOOMABLE | B_NOT_RESIZABLE | B_AUTO_UPDATE_SIZE_LIMITS)
 {
 	ClipdingerSettings* settings = my_app->Settings();
@@ -125,9 +125,13 @@ SettingsWindow::_BuildLayout()
 	fDelaySlider = new BSlider(BRect(), "delay", B_TRANSLATE("Delay"),
 		new BMessage(SPEED), 1, 60);
 	fDelaySlider->SetHashMarks(B_HASH_MARKS_BOTTOM);
+	fDelaySlider->SetHashMarkCount(10);
+	fDelaySlider->SetKeyIncrementValue(1);
 	fStepSlider = new BSlider(BRect(), "step", B_TRANSLATE("Stepsize"),
 		new BMessage(STEP), 1, 10);
-	fDelaySlider->SetHashMarks(B_HASH_MARKS_BOTTOM);
+	fStepSlider->SetHashMarks(B_HASH_MARKS_BOTTOM);
+	fStepSlider->SetHashMarkCount(10);
+	fDelaySlider->SetKeyIncrementValue(1);
 
 	BFont infoFont(*be_plain_font);
 	infoFont.SetFace(B_ITALIC_FACE);

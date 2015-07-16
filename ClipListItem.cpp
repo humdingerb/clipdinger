@@ -24,6 +24,7 @@ ClipListItem::ClipListItem(BString clip, BString path, int32 time)
 	fClip = clip; 
 	fOrigin = path;
 	fTimeAdded = time;
+	fColor = ui_color(B_LIST_BACKGROUND_COLOR);
 
 	BNode node;
 	BNodeInfo node_info;
@@ -57,33 +58,13 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 {
 	float spacing = be_control_look->DefaultLabelSpacing();
 
-	bool fade;
-	int32 delay;
-	float step;
-	ClipdingerSettings* settings = my_app->Settings();
-	if (settings->Lock()) {
-		fade = settings->GetFade();
-		step = settings->GetFadeStep();
-		delay = settings->GetFadeDelay();
-		settings->Unlock();
-	}
-
 	// set background color
 	rgb_color bgColor;
 
 	if (IsSelected())
 		bgColor = ui_color(B_LIST_SELECTED_BACKGROUND_COLOR);
-    else if (fade == true) {
-		int32 now(real_time_clock());
-		int32 minutes = (now - fTimeAdded) / 60;
-
-		float level = B_NO_TINT + (step * ((float)minutes / delay));
-//			printf("Clip: %s\n\tminutes: %i\t\tlevel: %f\n\n",
-//				fTitle.String(), minutes, level);
-		bgColor = tint_color(ui_color(B_LIST_BACKGROUND_COLOR),
-			(level < 1.2) ? level : 1.2);  // limit to 1.2
-	} else
-		bgColor = ui_color(B_LIST_BACKGROUND_COLOR);
+	else
+		bgColor = fColor;
 
     view->SetHighColor(bgColor);
 	view->SetLowColor(bgColor);

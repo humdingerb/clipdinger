@@ -9,6 +9,7 @@
 #include <Catalog.h>
 
 #include "App.h"
+#include "ClipListItem.h"
 #include "ClipListView.h"
 #include "Constants.h"
 #include "MainWindow.h"
@@ -57,7 +58,7 @@ ClipListView::~ClipListView()
 void
 ClipListView::AttachedToWindow()
 {
-	BMessage message(DRAWLIST);
+	BMessage message(ADJUSTCOLORS);
 	fRunner	= new BMessageRunner(this, &message, 60000000); // 1 min
 	BListView::AttachedToWindow();
 }
@@ -102,8 +103,9 @@ ClipListView::MessageReceived(BMessage* message)
 			messenger.SendMessage(&message);
 			break;
 		}
-		case DRAWLIST:
+		case ADJUSTCOLORS:
 		{
+			AdjustColors();
 			Invalidate();
 			break;
 		}
@@ -112,6 +114,36 @@ ClipListView::MessageReceived(BMessage* message)
 			BListView::MessageReceived(message);
 			break;
 		}
+	}
+}
+
+
+void
+ClipListView::AdjustColors()
+{
+	bool fade;
+	int32 delay;
+	float step;
+	ClipdingerSettings* settings = my_app->Settings();
+	if (settings->Lock()) {
+		fade = settings->GetFade();
+		step = settings->GetFadeStep();
+		delay = settings->GetFadeDelay();
+		settings->Unlock();
+	}
+
+	int32 now(real_time_clock());
+	for (int32 i = 0; i < CountItems(); i++) {
+		ClipListItem *sItem = dynamic_cast<ClipListItem *> (ItemAt(i));
+		if (fade) {
+			int32 minutes = (now - sItem->GetTimeAdded()) / 60;
+			float level = B_NO_TINT + (step * ((float)minutes / delay));
+	//		printf("Clip: %s\n\tminutes: %i\t\tlevel: %f\n\n",
+	//			fTitle.String(), minutes, level);
+			sItem->SetColor(tint_color(ui_color(B_LIST_BACKGROUND_COLOR),
+			(level < 1.2) ? level : 1.2));  // limit to 1.2
+		} else
+			sItem->SetColor(ui_color(B_LIST_BACKGROUND_COLOR));
 	}
 }
 

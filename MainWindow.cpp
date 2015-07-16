@@ -68,8 +68,8 @@ MainWindow::MainWindow(BRect frame)
 	be_clipboard->StartWatching(this);
 	AddCommonFilter(new KeyFilter);
 
-	frame = Frame();
-	fSettingsWindow = new SettingsWindow(frame);
+	Frame();
+	fSettingsWindow = new SettingsWindow(Frame());
 	fSettingsWindow->Hide();
 	fSettingsWindow->Show();
 }
@@ -244,6 +244,7 @@ MainWindow::_LoadHistory()
 					AddClip(clip, path, time);
 					i++;
 				}
+				fHistory->AdjustColors();
 			}
 		}
 	}
@@ -430,7 +431,7 @@ MainWindow::UpdatedSettings(int32 limit)
 		fLimit = limit;
 
 	BMessenger messenger(fHistory);
-	BMessage message(DRAWLIST);
+	BMessage message(ADJUSTCOLORS);
 	messenger.SendMessage(&message);
 
 	return;
