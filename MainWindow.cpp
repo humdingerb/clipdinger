@@ -61,9 +61,9 @@ MainWindow::MainWindow(BRect frame)
 	if (!fHistory->IsEmpty())
 		fHistory->Select(0);
 
-//	if (GetClipboard() == "")
-//		if (!fHistory->IsEmpty())
-//			PutClipboard(fHistory);
+	if (GetClipboard() == "")
+		if (!fHistory->IsEmpty())
+			PutClipboard(fHistory);
 
 	be_clipboard->StartWatching(this);
 	AddCommonFilter(new KeyFilter);
@@ -425,15 +425,17 @@ MainWindow::PutClipboard(BListView* list)
 			be_clipboard->Commit();
 		}
 		be_clipboard->Unlock();
-
-		port_id port = find_port(OUTPUT_PORT_NAME);
-		if (port != B_NAME_NOT_FOUND)
-			write_port(port, 'CtSV', NULL, 0);
 	}
 	fHistory->MoveItem(fHistory->CurrentSelection(), 0);
+	fHistory->Select(0);
 
 	int32 time(real_time_clock());
 	item = dynamic_cast<ClipListItem *> (list->ItemAt(0));
 	item->SetTimeAdded(time);
+
+	BMessenger messenger(fHistory);
+	BMessage message(ADJUSTCOLORS);
+	messenger.SendMessage(&message);
+
 	return;
 }

@@ -21,12 +21,12 @@ public:
 					~ClipListView();
 
 	virtual void	AttachedToWindow();
-//	virtual void	Draw(BRect rect);
 	virtual	void	FrameResized(float width, float height);
 	virtual	void	MessageReceived(BMessage* message);
+	virtual	void	KeyDown(const char* bytes, int32 numBytes);
+	void			MouseDown(BPoint position);
 
 	void			AdjustColors();
-	void			MouseDown(BPoint position);
 	void			ShowPopUpMenu(BPoint screen);
 
 private:

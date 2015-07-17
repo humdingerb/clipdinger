@@ -11,7 +11,6 @@
 
 #include <Alert.h>
 #include <Application.h>
-#include <MessageRunner.h>
 #include <TextView.h>
 
 #include "ClipdingerSettings.h"
@@ -26,15 +25,12 @@ public:
 
 	virtual void		ReadyToRun();
 	void				AboutRequested();
-	void				MessageReceived(BMessage* message);
 
 	ClipdingerSettings* Settings() { return &fSettings; }
 
 	MainWindow*			fMainWindow;
 
 private:
-	port_id				fPort;
-	BMessageRunner*		fPortRunner;
 	ClipdingerSettings	fSettings;
 };
 

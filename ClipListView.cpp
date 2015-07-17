@@ -60,6 +60,7 @@ void
 ClipListView::AttachedToWindow()
 {
 	SetFlags(Flags() | B_FULL_UPDATE_ON_RESIZE);
+	SetEventMask(B_KEYBOARD_EVENTS);
 
 	BMessage message(ADJUSTCOLORS);
 	fRunner	= new BMessageRunner(this, &message, kMinuteUnits * 60000000);
@@ -97,7 +98,6 @@ ClipListView::MessageReceived(BMessage* message)
 		case DELETE:
 		{
 			fShowingPopUpMenu = false;
-
 			Looper()->PostMessage(DELETE);
 			break;
 		}
@@ -113,6 +113,20 @@ ClipListView::MessageReceived(BMessage* message)
 			break;
 		}
 	}
+}
+
+
+void
+ClipListView::KeyDown(const char* bytes, int32 numBytes)
+{
+	static const int32 kModifiers = B_SHIFT_KEY | B_COMMAND_KEY;
+
+	if (strcasecmp(bytes, "v") == 0
+		&& (modifiers() & kModifiers) == kModifiers) {
+		Window()->Minimize(false);
+		Window()->Activate(true);
+	} else
+		BListView::KeyDown(bytes, numBytes);
 }
 
 
