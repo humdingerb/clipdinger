@@ -318,6 +318,22 @@ MainWindow::MessageReceived(BMessage* message)
 //			PutClipboard(fFavorites);
 //			break;
 //		}
+		case UPDATE_SETTINGS:
+		{
+			int32 limit;
+			if (message->FindInt32("limit", &limit) == B_OK) {
+				if (fLimit >= limit)
+					CropHistory(limit);
+
+				if (fLimit != limit)
+					fLimit = limit;
+
+				BMessenger messenger(fHistory);
+				BMessage message(ADJUSTCOLORS);
+				messenger.SendMessage(&message);
+			}
+			break;
+		}
 		default:
 		{
 			BWindow::MessageReceived(message);
@@ -419,22 +435,5 @@ MainWindow::PutClipboard(BListView* list)
 	int32 time(real_time_clock());
 	item = dynamic_cast<ClipListItem *> (list->ItemAt(0));
 	item->SetTimeAdded(time);
-	return;
-}
-
-
-void
-MainWindow::UpdatedSettings(int32 limit)
-{
-	if (fLimit >= limit)
-		CropHistory(limit);
-
-	if (fLimit != limit)
-		fLimit = limit;
-
-	BMessenger messenger(fHistory);
-	BMessage message(ADJUSTCOLORS);
-	messenger.SendMessage(&message);
-
 	return;
 }

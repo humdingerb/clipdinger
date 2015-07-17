@@ -42,5 +42,6 @@ static const int32 kMinuteUnits = 5; // minutes per unit
 #define STEP				'step'
 #define CANCEL				'cncl'
 #define OK					'okay'
+#define UPDATE_SETTINGS		'uset'
 
 #endif //CONSTANTS_H

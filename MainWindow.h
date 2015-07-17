@@ -40,7 +40,6 @@ public:
 
 	bool			QuitRequested();
 	void			MessageReceived(BMessage* message);
-	void			UpdatedSettings(int32 limit);
 
 private:
 	void			_BuildLayout();

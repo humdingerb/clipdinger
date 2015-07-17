@@ -71,7 +71,11 @@ SettingsWindow::QuitRequested()
 void
 SettingsWindow::UpdateSettings()
 {
-	my_app->fMainWindow->UpdatedSettings(newLimit);
+	BMessenger messenger(my_app->fMainWindow);
+	BMessage message(UPDATE_SETTINGS);
+	message.AddInt32("limit", newLimit);
+	messenger.SendMessage(&message);
+	return;
 }
 
 
