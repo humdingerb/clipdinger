@@ -26,6 +26,7 @@ public:
 	bigtime_t		GetTimeAdded() { return fTimeAdded; };
 	void			SetTimeAdded(int32 time) { fTimeAdded = time; };
 	rgb_color		SetColor(rgb_color color) { fColor = color; };
+	BString			GetTitle() { return fTitle; };
 	void			SetTitle(BString title) { fTitle = title; };
 
 	virtual void	DrawItem(BView* view, BRect rect, bool complete);

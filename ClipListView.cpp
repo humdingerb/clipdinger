@@ -127,6 +127,8 @@ ClipListView::KeyDown(const char* bytes, int32 numBytes)
 		Window()->Activate(true);
 	} else
 		BListView::KeyDown(bytes, numBytes);
+
+	return;
 }
 
 

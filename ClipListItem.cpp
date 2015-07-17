@@ -22,7 +22,6 @@ ClipListItem::ClipListItem(BString clip, BString path, int32 time)
 	BListItem()
 {
 	fClip = clip;
-	fTitle = "";
 	fOrigin = path;
 	fTimeAdded = time;
 	fColor = ui_color(B_LIST_BACKGROUND_COLOR);
@@ -39,6 +38,13 @@ ClipListItem::ClipListItem(BString clip, BString path, int32 time)
 			fOriginIcon = NULL;
 	} else
 		fOriginIcon = NULL;
+
+	if (fClip.CountChars() > kMaxTitleChars) {
+		fClip.CopyInto(fTitle, 0, kMaxTitleChars);
+		fTitle.Append(B_UTF8_ELLIPSIS);
+	} else
+		fTitle = fClip;
+		printf("Title: %s\n", fTitle.String());
 }
 
 
@@ -106,7 +112,7 @@ ClipListItem::Update(BView* view, const BFont* finfo)
 	BListItem::Update(view, finfo);
 
 	static const float spacing = be_control_look->DefaultLabelSpacing();
-	BString string(GetClip());
+	BString string(GetTitle());
 	view->TruncateString(&string, B_TRUNCATE_END, Width() - kIconSize
 			- spacing * 4);
 	SetTitle(string);
