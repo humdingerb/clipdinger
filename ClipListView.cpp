@@ -125,7 +125,7 @@ ClipListView::KeyDown(const char* bytes, int32 numBytes)
 		&& (modifiers() & kModifiers) == kModifiers) {
 		Window()->Minimize(false);
 		Window()->Activate(true);
-	} else
+	} else if (Window()->IsActive())
 		BListView::KeyDown(bytes, numBytes);
 
 	return;
