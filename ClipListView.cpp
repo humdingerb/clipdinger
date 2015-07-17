@@ -46,7 +46,7 @@ PopUpMenu::~PopUpMenu()
 
 ClipListView::ClipListView(const char* name)
 	:
-	BListView(BRect(), "name")
+	BListView("name")
 {
 }
 
@@ -59,8 +59,11 @@ ClipListView::~ClipListView()
 void
 ClipListView::AttachedToWindow()
 {
+	SetFlags(Flags() | B_FULL_UPDATE_ON_RESIZE);
+
 	BMessage message(ADJUSTCOLORS);
 	fRunner	= new BMessageRunner(this, &message, kMinuteUnits * 60000000);
+
 	BListView::AttachedToWindow();
 }
 
@@ -79,7 +82,6 @@ ClipListView::FrameResized(float width, float height)
 			- spacing * 4);
 		sItem->SetTitle(string);
 	}
-	Invalidate();
 }
 
 
@@ -96,9 +98,7 @@ ClipListView::MessageReceived(BMessage* message)
 		{
 			fShowingPopUpMenu = false;
 
-			BMessenger messenger(my_app->fMainWindow);
-			BMessage message(DELETE);
-			messenger.SendMessage(&message);
+			Looper()->PostMessage(DELETE);
 			break;
 		}
 		case ADJUSTCOLORS:

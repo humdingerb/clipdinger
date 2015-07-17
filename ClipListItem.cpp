@@ -105,6 +105,12 @@ ClipListItem::Update(BView* view, const BFont* finfo)
 	// list item size doesn't change
 	BListItem::Update(view, finfo);
 
+	static const float spacing = be_control_look->DefaultLabelSpacing();
+	BString string(GetClip());
+	view->TruncateString(&string, B_TRUNCATE_END, Width() - kIconSize
+			- spacing * 4);
+	SetTitle(string);
+
 	font_height	fheight;
 	finfo->GetHeight(&fheight);
 

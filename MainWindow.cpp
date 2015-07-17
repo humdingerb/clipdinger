@@ -152,7 +152,7 @@ MainWindow::_BuildLayout()
 */
 	// do the layouting				
 	static const float spacing = be_control_look->DefaultItemSpacing() / 2;
-	BSplitView *v = 
+	BSplitView* v =
 		BLayoutBuilder::Split<>(B_VERTICAL)
 			.AddGroup(B_VERTICAL)
 				.Add(fHistoryScrollView)
@@ -171,7 +171,6 @@ MainWindow::_BuildLayout()
 	fHistory->MakeFocus(true);
 	fHistory->SetInvocationMessage(new BMessage(INSERT_HISTORY));
 	fHistory->SetViewColor(ui_color(B_CONTROL_BACKGROUND_COLOR));
-	fHistory->SetFlags(fHistory->Flags() | B_FULL_UPDATE_ON_RESIZE);
 //	fFavorites->SetInvocationMessage(new BMessage(INSERT_FAVORITE));
 }
 
