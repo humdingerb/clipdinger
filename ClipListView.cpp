@@ -125,9 +125,25 @@ ClipListView::KeyDown(const char* bytes, int32 numBytes)
 		&& (modifiers() & kModifiers) == kModifiers) {
 		Window()->Minimize(false);
 		Window()->Activate(true);
-	} else if (Window()->IsActive())
-		BListView::KeyDown(bytes, numBytes);
-
+	} else if (Window()->IsActive()) {
+		switch (bytes[0]) {
+			case B_DELETE:
+			{
+				Looper()->PostMessage(DELETE);
+				break;
+			}
+			case B_ESCAPE:
+			{
+				Looper()->PostMessage(ESCAPE);
+				break;
+			}
+			default:
+			{
+				BListView::KeyDown(bytes, numBytes);
+				break;
+			}
+		}
+	}
 	return;
 }
 

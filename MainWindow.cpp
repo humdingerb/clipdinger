@@ -21,7 +21,7 @@
 
 #include "App.h"
 #include "ClipListItem.h"
-#include "KeyFilter.h"
+#include "Constants.h"
 #include "MainWindow.h"
 
 #undef B_TRANSLATION_CONTEXT
@@ -66,9 +66,7 @@ MainWindow::MainWindow(BRect frame)
 			PutClipboard(fHistory);
 
 	be_clipboard->StartWatching(this);
-	AddCommonFilter(new KeyFilter);
 
-	Frame();
 	fSettingsWindow = new SettingsWindow(Frame());
 	fSettingsWindow->Hide();
 	fSettingsWindow->Show();
