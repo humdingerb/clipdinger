@@ -24,6 +24,7 @@ public:
 	void			MessageReceived(BMessage* message);
 	bool			QuitRequested();
 	void			_BuildLayout();
+	void			RevertSettings();
 	void			UpdateFadeText();
 	void			UpdateSettings();
 

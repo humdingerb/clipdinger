@@ -66,16 +66,11 @@ MainWindow::MainWindow(BRect frame)
 			PutClipboard(fHistory);
 
 	be_clipboard->StartWatching(this);
-
-	fSettingsWindow = new SettingsWindow(Frame());
-	fSettingsWindow->Hide();
-	fSettingsWindow->Show();
 }
 
 
 MainWindow::~MainWindow()
 {
-	delete fSettingsWindow;
 }
 
 
@@ -86,7 +81,6 @@ MainWindow::QuitRequested()
 
 	ClipdingerSettings* settings = my_app->Settings();
 	if (settings->Lock()) {
-		settings->SetLimit(fLimit);
 		settings->SetWindowPosition(ConvertToScreen(Bounds()));
 		settings->Unlock();
 	}
@@ -295,6 +289,7 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case SETTINGS:
 		{
+			fSettingsWindow = new SettingsWindow(Frame());
 			fSettingsWindow->Show();
 			break;
 		}

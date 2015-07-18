@@ -122,10 +122,11 @@ ClipView::KeyDown(const char* bytes, int32 numBytes)
 	static const int32 kModifiers = B_SHIFT_KEY | B_COMMAND_KEY;
 
 	if (strcasecmp(bytes, "v") == 0
-		&& (modifiers() & kModifiers) == kModifiers) {
+			&& (modifiers() & kModifiers) == kModifiers) {
 		Window()->Minimize(false);
 		Window()->Activate(true);
-	} else if (Window()->IsActive()) {
+	}
+	else if (Window()->IsActive()) {
 		switch (bytes[0]) {
 			case B_DELETE:
 			{

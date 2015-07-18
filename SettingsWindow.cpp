@@ -61,10 +61,26 @@ SettingsWindow::~SettingsWindow()
 bool
 SettingsWindow::QuitRequested()
 {
+	RevertSettings();
 	UpdateSettings();
 
-	this->Hide();
-	return false;
+	return true;
+}
+
+
+void
+SettingsWindow::RevertSettings()
+{
+	ClipdingerSettings* settings = my_app->Settings();
+
+	if (settings->Lock()) {
+		settings->SetLimit(originalLimit);
+		settings->SetFade(originalFade);
+		settings->SetFadeDelay(originalFadeDelay);
+		settings->SetFadeStep(originalFadeStep);
+		settings->Unlock();
+	}
+	return;
 }
 
 
@@ -242,15 +258,9 @@ SettingsWindow::MessageReceived(BMessage* message)
 		}
 		case CANCEL:
 		{
-			if (settings->Lock()) {
-				settings->SetLimit(originalLimit);
-				settings->SetFade(originalFade);
-				settings->SetFadeDelay(originalFadeDelay);
-				settings->SetFadeStep(originalFadeStep);
-				settings->Unlock();
-			}
+			RevertSettings();
 			UpdateSettings();
-			Hide();
+			Quit();
 			break;
 		}
 		case OK:
@@ -264,7 +274,7 @@ SettingsWindow::MessageReceived(BMessage* message)
 				settings->Unlock();
 			}
 			UpdateSettings();
-			Hide();
+			Quit();
 			break;
 		}
 		default:
@@ -273,4 +283,4 @@ SettingsWindow::MessageReceived(BMessage* message)
 			break;
 		}
 	}
-}		
+}
