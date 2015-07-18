@@ -25,14 +25,13 @@ static const int32 kIconSize = 16;
 static const int32 kMaxTitleChars = 200;
 static const int32 kMinuteUnits = 5; // minutes per unit
 
-#define PORTQUEUE			'port'
-
 #define DELETE				'dele'
 #define ESCAPE				'esca'
 #define POPCLOSED			'pmcl'
 
 #define CLEAR_HISTORY		'clhi'
 #define INSERT_HISTORY		'ihis'
+#define MINIMIZE			'mini'
 //#define INSERT_FAVORITE	'ifav'
 #define ADJUSTCOLORS		'acol'
 #define SETTINGS			'sett'

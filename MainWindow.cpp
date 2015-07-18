@@ -110,6 +110,9 @@ MainWindow::_BuildLayout()
 		new BMessage(B_ABOUT_REQUESTED));
 	menu->AddItem(item);
 	item->SetTarget(be_app);
+	item = new BMenuItem(B_TRANSLATE("Minimize"),
+		new BMessage(MINIMIZE), 'W');
+	menu->AddItem(item);
 	item = new BMenuItem(B_TRANSLATE("Quit"),
 		new BMessage(B_QUIT_REQUESTED), 'Q');
 	menu->AddItem(item);	
@@ -279,6 +282,11 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			if (!fHistory->IsEmpty());
 				fHistory->RemoveItem(fHistory->CurrentSelection());
+			break;
+		}
+		case MINIMIZE:
+		{
+			Minimize(true);
 			break;
 		}
 		case CLEAR_HISTORY:
