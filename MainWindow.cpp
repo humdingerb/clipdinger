@@ -20,7 +20,7 @@
 #include <algorithm>
 
 #include "App.h"
-#include "ClipListItem.h"
+#include "ClipItem.h"
 #include "Constants.h"
 #include "MainWindow.h"
 
@@ -133,7 +133,7 @@ MainWindow::_BuildLayout()
 	menuBar->AddItem(menu);
 
 	// The lists
-	fHistory = new ClipListView("history");
+	fHistory = new ClipView("history");
 	fHistory->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
 //	fFavorites = new BListView("favorites");
@@ -196,7 +196,7 @@ MainWindow::_SaveHistory()
 		if (ret == B_OK) {
 			for (int i = fHistory->CountItems() - 1; i >= 0 ; i--)
 			{
-				ClipListItem *sItem = dynamic_cast<ClipListItem *>
+				ClipItem *sItem = dynamic_cast<ClipItem *>
 					(fHistory->ItemAt(i));
 
 				BString clip(sItem->GetClip());
@@ -348,8 +348,8 @@ MainWindow::MakeItemUnique(BString clip)
 		return;
 
 	for (int i = 0; i < fHistory->CountItems(); i++) {
-		ClipListItem *sItem =
-			dynamic_cast<ClipListItem *> (fHistory->ItemAt(i));
+		ClipItem *sItem =
+			dynamic_cast<ClipItem *> (fHistory->ItemAt(i));
 		BString *listItem = new BString(sItem->GetClip());
 
 		if (clip.Compare(*listItem) == 0)
@@ -365,7 +365,7 @@ MainWindow::AddClip(BString clip, BString path, int32 time)
 	if (fHistory->CountItems() > fLimit - 1)
 		fHistory->RemoveItem(fHistory->LastItem());
 
-	fHistory->AddItem(new ClipListItem(clip, path, time), 0);
+	fHistory->AddItem(new ClipItem(clip, path, time), 0);
 	return;
 }
 
@@ -411,7 +411,7 @@ MainWindow::PutClipboard(BListView* list)
 
 	BMessage* clip = (BMessage *)NULL;
 
-	ClipListItem *item = dynamic_cast<ClipListItem *> (list->ItemAt(index));
+	ClipItem *item = dynamic_cast<ClipItem *> (list->ItemAt(index));
 	BString text(item->GetClip());
 		
 	ssize_t textLen = text.Length();
@@ -428,7 +428,7 @@ MainWindow::PutClipboard(BListView* list)
 	fHistory->Select(0);
 
 	int32 time(real_time_clock());
-	item = dynamic_cast<ClipListItem *> (list->ItemAt(0));
+	item = dynamic_cast<ClipItem *> (list->ItemAt(0));
 	item->SetTimeAdded(time);
 
 	BMessenger messenger(fHistory);

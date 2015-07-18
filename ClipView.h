@@ -6,8 +6,8 @@
  *	Humdinger, humdingerb@gmail.com
  */
 
-#ifndef CLIPLISTVIEW_H
-#define CLIPLISTVIEW_H
+#ifndef CLIPVIEW_H
+#define CLIPVIEW_H
 
 #include <ListView.h>
 #include <MenuItem.h>
@@ -15,10 +15,10 @@
 #include <PopUpMenu.h>
 
 
-class ClipListView : public BListView {
+class ClipView : public BListView {
 public:
-					ClipListView(const char* name);
-					~ClipListView();
+					ClipView(const char* name);
+					~ClipView();
 
 	virtual void	AttachedToWindow();
 	virtual	void	FrameResized(float width, float height);
@@ -34,4 +34,4 @@ private:
 	BMessageRunner*	fRunner;
 };
 
-#endif // CLIPLISTVIEW_H
+#endif // CLIPVIEW_H

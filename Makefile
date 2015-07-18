@@ -1,7 +1,7 @@
 NAME= Clipdinger
 TYPE= APP
 APP_MIME_SIG= application/x-vnd.Clipdinger
-SRCS= App.cpp ClipdingerSettings.cpp ClipListItem.cpp ClipListView.cpp MainWindow.cpp SettingsWindow.cpp
+SRCS= App.cpp ClipdingerSettings.cpp ClipItem.cpp ClipView.cpp MainWindow.cpp SettingsWindow.cpp
 RDEFS= Clipdinger.rdef
 LIBS= be localestub $(STDCPPLIBS)
 LIBPATHS=

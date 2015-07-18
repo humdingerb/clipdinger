@@ -6,8 +6,8 @@
  *	Humdinger, humdingerb@gmail.com
  */
 
-#ifndef CLIPLISTITEM_H
-#define CLIPLISTITEM_H
+#ifndef CLIPITEM_H
+#define CLIPITEM_H
 
 #include <Bitmap.h>
 #include <Font.h>
@@ -16,10 +16,10 @@
 #include <String.h>
 
 
-class ClipListItem : public BListItem {
+class ClipItem : public BListItem {
 public:
-					ClipListItem(BString clip, BString path, int32 time);
-					~ClipListItem();
+					ClipItem(BString clip, BString path, int32 time);
+					~ClipItem();
 
 	BString			GetClip() { return fClip; };
 	BString			GetOrigin() { return fOrigin; };
@@ -42,4 +42,4 @@ private:
 	BBitmap*		fOriginIcon;
 };
 
-#endif // CLIPLISTITEM_H
+#endif // CLIPITEM_H

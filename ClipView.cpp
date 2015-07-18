@@ -10,8 +10,8 @@
 #include <ControlLook.h>
 
 #include "App.h"
-#include "ClipListItem.h"
-#include "ClipListView.h"
+#include "ClipItem.h"
+#include "ClipView.h"
 #include "Constants.h"
 #include "MainWindow.h"
 
@@ -44,20 +44,20 @@ PopUpMenu::~PopUpMenu()
 }
 
 
-ClipListView::ClipListView(const char* name)
+ClipView::ClipView(const char* name)
 	:
 	BListView("name")
 {
 }
 
 
-ClipListView::~ClipListView()
+ClipView::~ClipView()
 {
 }
 
 
 void
-ClipListView::AttachedToWindow()
+ClipView::AttachedToWindow()
 {
 	SetFlags(Flags() | B_FULL_UPDATE_ON_RESIZE);
 	SetEventMask(B_KEYBOARD_EVENTS);
@@ -70,14 +70,14 @@ ClipListView::AttachedToWindow()
 
 
 void
-ClipListView::FrameResized(float width, float height)
+ClipView::FrameResized(float width, float height)
 {
 	BListView::FrameResized(width, height);
 	
 	static const float spacing = be_control_look->DefaultLabelSpacing();
 
 	for (int32 i = 0; i < CountItems(); i++) {
-		ClipListItem *sItem = dynamic_cast<ClipListItem *> (ItemAt(i));
+		ClipItem *sItem = dynamic_cast<ClipItem *> (ItemAt(i));
 		BString string(sItem->GetClip());
 		TruncateString(&string, B_TRUNCATE_END, width - kIconSize
 			- spacing * 4);
@@ -87,7 +87,7 @@ ClipListView::FrameResized(float width, float height)
 
 
 void
-ClipListView::MessageReceived(BMessage* message)
+ClipView::MessageReceived(BMessage* message)
 {
 	switch (message->what) {
 		case POPCLOSED:
@@ -117,7 +117,7 @@ ClipListView::MessageReceived(BMessage* message)
 
 
 void
-ClipListView::KeyDown(const char* bytes, int32 numBytes)
+ClipView::KeyDown(const char* bytes, int32 numBytes)
 {
 	static const int32 kModifiers = B_SHIFT_KEY | B_COMMAND_KEY;
 
@@ -149,7 +149,7 @@ ClipListView::KeyDown(const char* bytes, int32 numBytes)
 
 
 void
-ClipListView::AdjustColors()
+ClipView::AdjustColors()
 {
 	bool fade;
 	int32 delay;
@@ -164,7 +164,7 @@ ClipListView::AdjustColors()
 
 	int32 now(real_time_clock());
 	for (int32 i = 0; i < CountItems(); i++) {
-		ClipListItem *sItem = dynamic_cast<ClipListItem *> (ItemAt(i));
+		ClipItem *sItem = dynamic_cast<ClipItem *> (ItemAt(i));
 		if (fade) {
 			int32 minutes = (now - sItem->GetTimeAdded()) / 60;
 			float level = B_NO_TINT + (1.2 / step * ((float)minutes / delay));
@@ -177,7 +177,7 @@ ClipListView::AdjustColors()
 
 
 void
-ClipListView::MouseDown(BPoint position)
+ClipView::MouseDown(BPoint position)
 {
 	uint32 buttons = 0;
 	if (Window() != NULL && Window()->CurrentMessage() != NULL)
@@ -191,7 +191,7 @@ ClipListView::MouseDown(BPoint position)
 
 
 void
-ClipListView::ShowPopUpMenu(BPoint screen)
+ClipView::ShowPopUpMenu(BPoint screen)
 {
 	if (fShowingPopUpMenu)
 		return;

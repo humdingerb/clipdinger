@@ -13,11 +13,11 @@
 #include <stdio.h>
 
 #include "App.h"
-#include "ClipListItem.h"
+#include "ClipItem.h"
 #include "Constants.h"
 
 
-ClipListItem::ClipListItem(BString clip, BString path, int32 time)
+ClipItem::ClipItem(BString clip, BString path, int32 time)
 	:
 	BListItem()
 {
@@ -48,14 +48,14 @@ ClipListItem::ClipListItem(BString clip, BString path, int32 time)
 }
 
 
-ClipListItem::~ClipListItem()
+ClipItem::~ClipItem()
 {
 	delete fOriginIcon;
 }
 
 
 void
-ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
+ClipItem::DrawItem(BView *view, BRect rect, bool complete)
 {
 	static const float spacing = be_control_look->DefaultLabelSpacing();
 
@@ -105,7 +105,7 @@ ClipListItem::DrawItem(BView *view, BRect rect, bool complete)
 
 
 void
-ClipListItem::Update(BView* view, const BFont* finfo)
+ClipItem::Update(BView* view, const BFont* finfo)
 {
 	// we need to DefaultLabelSpacing the update method so we can make sure the
 	// list item size doesn't change
