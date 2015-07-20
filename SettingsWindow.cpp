@@ -173,7 +173,7 @@ SettingsWindow::_BuildLayout()
 
 	font_height fheight;
 	infoFont.GetHeight(&fheight);
-	fFadeText->SetExplicitMinSize(BSize(0.0,
+	fFadeText->SetExplicitMinSize(BSize(300.0,
 		(fheight.ascent + fheight.descent + fheight.leading) * 3.0));
 
 	// Buttons
@@ -188,6 +188,7 @@ SettingsWindow::_BuildLayout()
 			.SetInsets(spacing)
 			.Add(fLimitControl)
 			.Add(limitlabel)
+			.Add(BSpaceLayoutItem::CreateHorizontalStrut(spacing * 4))
 		.End()
 		.AddGroup(B_VERTICAL)
 			.SetInsets(spacing, 0, spacing, spacing)
@@ -263,7 +264,6 @@ SettingsWindow::MessageReceived(BMessage* message)
 				settings->SetFadeStep(newFadeStep);
 				settings->Unlock();
 			}
-			printf("newFadeStep = %i\n", newFadeStep);
 			UpdateSettings();
 			UpdateFadeText();
 			break;	

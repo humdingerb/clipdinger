@@ -1,15 +1,22 @@
-1	English	application/x-vnd.Clipdinger	1420884340
+1	English	application/x-vnd.Clipdinger	4149898413
+Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)	SettingsWindow		Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)
 Clear history	MainWindow		Clear history
 About Clipdinger	MainWindow		About Clipdinger
 entries in the clipboard history	SettingsWindow		entries in the clipboard history
 History	MainWindow		History
 Settings…	MainWindow		Settings…
-Clipdinger v0.2\n\twritten by Humdinger\n\tCopyright 2015\n\nClipdinger provides a history of clippings of the system clipboard.\n	Application		Clipdinger v0.2\n\twritten by Humdinger\n\tCopyright 2015\n\nClipdinger provides a history of clippings of the system clipboard.\n
 OK	SettingsWindow		OK
+Entries don't fade over time.	SettingsWindow		Entries don't fade over time.
 App	MainWindow		App
+Minimize	MainWindow		Minimize
 Quit	MainWindow		Quit
 Cancel	SettingsWindow		Cancel
 Clipdinger	System name		Clipdinger
+Fade history entries over time	SettingsWindow		Fade history entries over time
+Clipdinger v0.3\n\twritten by Humdinger\n\tCopyright 2015\n\nClipdinger provides a history of clippings of the system clipboard.\n	Application		Clipdinger v0.3\n\twritten by Humdinger\n\tCopyright 2015\n\nClipdinger provides a history of clippings of the system clipboard.\n
+Steps	SettingsWindow		Steps
+Auto-paste	SettingsWindow		Auto-paste
 Thank you	Application		Thank you
+Delay	SettingsWindow		Delay
 Remove clip	ClipList		Remove clip
 Clipdinger settings	SettingsWindow		Clipdinger settings
