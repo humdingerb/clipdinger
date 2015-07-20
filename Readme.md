@@ -4,17 +4,16 @@
 
 Clipdinger is a small tool to manage a history of the system clipboard. It solves the problem that you often have to paste some text you've just recently copied to the clipboard, but that has been replaced by something you've copied more recently... It also saves the history so it'll appear just as you left it on the last shutdown.
 
-If you want to paste some text that isn't in the clipboard any more, simply hit _SHIFT_ + _ALT_ + _V_ to summon the Clipdinger window. Here you can select an entry with the _CursorUp/Down_ keys and ut it into the clipboard by hitting _RETURN_. _ESCAPE_  aborts and minimizes the Clipdinger window.
+If you want to paste some text that isn't in the clipboard any more, simply hit _SHIFT_ + _ALT_ + _V_ to summon the Clipdinger window. Here you can select an entry with the _CursorUp/Down_ keys and ut it into the clipboard by hitting _RETURN_.
+_ESCAPE_  or _ALT_ + _W_ aborts and minimizes the Clipdinger window.
 
 Here's the main window with a few entries in the history and the settings window when choosing _Settings..._ from the History menu:
 
 ![screenshot](./images/clipdinger.png)
 
-For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text.
+For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text. The top entry is always what's currently in the clipboard.
 
-## Settings
-
-At the top, you can set the number of entries in the history (the default is 50).
+At the top of the settings window, you can set the number of entries in the history (the default is 50).
 Keep in mind that every clipping is kept in memory and if you copy many large blocks of text, you may clog up your memory. Though, for everyday use, where clippings are seldom larger than a few KiBs at most, having a few dozen entries in the history shouldn't tax memory noticeably.
 
 Once the limit of the history is reached, the oldest entry is removed automatically to make room for the new clipping.
@@ -25,9 +24,7 @@ The other settings pertain to the fading feature: When the checkbox Fade history
 
 ### Tips & Tricks
 
-*   Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the `/boot/home/config/settings/boot/launch/` folder. Then it gets started automatically on every boot-up.
-
-*   If you're interested in how much memory your history uses, have look at its save-file `/boot/home/config/settings/Clipdinger/Clipdinger_history`. Note, this file is only written after Clipdinger has quit. To get a current reading you'd have to quit and restart Clipdinger.
+Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the `/boot/home/config/settings/boot/launch/` folder. Then it gets started automatically on every boot-up.
 
 ### Download
 
@@ -58,6 +55,6 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 
 **0.3** - _18-07-2015:_
 
-*   Using input_server device and filter á là ClipUp resulted in unpredictable behaviour. Until I figure out a better way, Clipdinger won't automatically paste the clipboard into the application that summoned Clipdinger.
+*   Using input_server device and filter á là ClipUp resulted in unpredictable behaviour. Until I figure out a better way, Clipdinger won't automatically paste the clipboard into the application that summoned Clipdinger anymore.
 *   Added fading option, to darken history entries over time.
 *   Bug fixes and optimizations.

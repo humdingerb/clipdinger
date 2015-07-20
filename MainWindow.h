@@ -53,9 +53,10 @@ private:
 	void			CropHistory(int32 limit);
 	
 	int32			fLimit;
+	int32			fAutoPaste;
 	int32			fLaunchTime;
 
-	ClipView*	fHistory;
+	ClipView*		fHistory;
 //	BListView*		fFavorites;
 	
 	BScrollView*	fHistoryScrollView;

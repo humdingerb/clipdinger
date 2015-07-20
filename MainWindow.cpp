@@ -321,18 +321,20 @@ MainWindow::MessageReceived(BMessage* message)
 //		}
 		case UPDATE_SETTINGS:
 		{
-			int32 limit;
-			if (message->FindInt32("limit", &limit) == B_OK) {
-				if (fLimit >= limit)
-					CropHistory(limit);
+			int32 newValue;
+			if (message->FindInt32("limit", &newValue) == B_OK) {
+				if (fLimit >= newValue)
+					CropHistory(newValue);
 
-				if (fLimit != limit)
-					fLimit = limit;
+				if (fLimit != newValue)
+					fLimit = newValue;
 
 				BMessenger messenger(fHistory);
 				BMessage message(ADJUSTCOLORS);
 				messenger.SendMessage(&message);
 			}
+			if (message->FindInt32("autopaste", &newValue) == B_OK)
+				fAutoPaste = newValue;
 			break;
 		}
 		default:
@@ -358,7 +360,6 @@ MainWindow::MakeItemUnique(BString clip)
 		if (clip.Compare(*listItem) == 0)
 			fHistory->RemoveItem(i);
 	}
-	return;
 }
 
 
@@ -369,7 +370,6 @@ MainWindow::AddClip(BString clip, BString path, int32 time)
 		fHistory->RemoveItem(fHistory->LastItem());
 
 	fHistory->AddItem(new ClipItem(clip, path, time), 0);
-	return;
 }
 
 
@@ -384,7 +384,6 @@ MainWindow::CropHistory(int32 limit)
 			fHistory->RemoveItems(limit, count);
 		}
 	}
-	return;
 }	
 
 
@@ -427,6 +426,13 @@ MainWindow::PutClipboard(BListView* list)
 		}
 		be_clipboard->Unlock();
 	}
+
+	if (fAutoPaste) {
+		port_id port = find_port(OUTPUT_PORT_NAME);
+		if (port != B_NAME_NOT_FOUND)
+			write_port(port, 'CtSV', NULL, 0);
+	}
+
 	fHistory->MoveItem(fHistory->CurrentSelection(), 0);
 	fHistory->Select(0);
 
@@ -437,6 +443,4 @@ MainWindow::PutClipboard(BListView* list)
 	BMessenger messenger(fHistory);
 	BMessage message(ADJUSTCOLORS);
 	messenger.SendMessage(&message);
-
-	return;
 }

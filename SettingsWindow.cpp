@@ -30,6 +30,7 @@ SettingsWindow::SettingsWindow(BRect frame)
 	ClipdingerSettings* settings = my_app->Settings();
 	if (settings->Lock()) {
 		newLimit = originalLimit = settings->GetLimit();
+		newAutoPaste = originalAutoPaste = settings->GetAutoPaste();
 		newFade = originalFade = settings->GetFade();
 		newFadeDelay = originalFadeDelay = settings->GetFadeDelay();
 		newFadeStep = originalFadeStep = settings->GetFadeStep();
@@ -41,6 +42,7 @@ SettingsWindow::SettingsWindow(BRect frame)
 	char string[4];
 	snprintf(string, sizeof(string), "%d", originalLimit);
 	fLimitControl->SetText(string);
+	fAutoPasteBox->SetValue(originalAutoPaste);
 	fFadeBox->SetValue(originalFade);
 	fDelaySlider->SetValue(originalFadeDelay);
 	fStepSlider->SetValue(originalFadeStep);
@@ -75,12 +77,12 @@ SettingsWindow::RevertSettings()
 
 	if (settings->Lock()) {
 		settings->SetLimit(originalLimit);
+		settings->SetLimit(originalAutoPaste);
 		settings->SetFade(originalFade);
 		settings->SetFadeDelay(originalFadeDelay);
 		settings->SetFadeStep(originalFadeStep);
 		settings->Unlock();
 	}
-	return;
 }
 
 
@@ -90,8 +92,8 @@ SettingsWindow::UpdateSettings()
 	BMessenger messenger(my_app->fMainWindow);
 	BMessage message(UPDATE_SETTINGS);
 	message.AddInt32("limit", newLimit);
+	message.AddInt32("autopaste", newAutoPaste);
 	messenger.SendMessage(&message);
-	return;
 }
 
 
@@ -119,7 +121,6 @@ SettingsWindow::UpdateFadeText()
 
 		fFadeText->SetText(string.String());
 	}
-	return;
 }
 
 void
@@ -138,6 +139,9 @@ SettingsWindow::_BuildLayout()
 	BStringView* limitlabel = new BStringView("limitlabel",
 		B_TRANSLATE("entries in the clipboard history"));
 
+	// Auto-paste
+	fAutoPasteBox = new BCheckBox("autopaste", B_TRANSLATE(
+		"Auto-paste"), new BMessage(AUTOPASTE));
 	// Fading
 	fFadeBox = new BCheckBox("fading", B_TRANSLATE(
 		"Fade history entries over time"), new BMessage(FADE));
@@ -186,6 +190,7 @@ SettingsWindow::_BuildLayout()
 		.End()
 		.AddGroup(B_VERTICAL)
 			.SetInsets(spacing, 0, spacing, spacing)
+			.Add(fAutoPasteBox)
 			.Add(fFadeBox)
 			.AddGroup(B_HORIZONTAL)
 				.Add(BSpaceLayoutItem::CreateHorizontalStrut(spacing))
@@ -219,6 +224,12 @@ SettingsWindow::MessageReceived(BMessage* message)
 
 	switch (message->what)
 	{
+		case AUTOPASTE:
+		{
+			newAutoPaste = fAutoPasteBox->Value();
+			UpdateSettings();
+			break;
+		}
 		case FADE:
 		{
 			newFade = fFadeBox->Value();
@@ -268,6 +279,7 @@ SettingsWindow::MessageReceived(BMessage* message)
 			newLimit = atoi(fLimitControl->Text());
 			if (settings->Lock()) {
 				settings->SetLimit(newLimit);
+				settings->SetAutoPaste(newAutoPaste);
 				settings->SetFade(newFade);
 				settings->SetFadeDelay(newFadeDelay);
 				settings->SetFadeStep(newFadeStep);

@@ -21,6 +21,7 @@
 ClipdingerSettings::ClipdingerSettings()
 	:
 	fLimit(kDefaultLimit),
+	fAutoPaste(kDefaultAutoPaste),
 	fFade(kDefaultFade),
 	fFadeDelay(kDefaultFadeDelay),
 	fFadeStep(kDefaultFadeStep)
@@ -39,6 +40,9 @@ ClipdingerSettings::ClipdingerSettings()
 				if (msg.FindInt32("limit", &fLimit) != B_OK)
 					fLimit = kDefaultLimit;
 
+				if (msg.FindInt32("autopaste", &fAutoPaste) != B_OK)
+					fAutoPaste = kDefaultAutoPaste;
+
 				if (msg.FindInt32("fade", &fFade) != B_OK)
 					fFade = kDefaultFade;
 
@@ -52,6 +56,7 @@ ClipdingerSettings::ClipdingerSettings()
 					fPosition.Set(-1, -1, -1, -1);
 
 				originalLimit = fLimit;
+				originalAutoPaste = fAutoPaste;
 				originalFade = fFade;
 				originalFadeDelay = fFadeDelay;
 				originalFadeStep = fFadeStep;
@@ -65,6 +70,7 @@ ClipdingerSettings::ClipdingerSettings()
 ClipdingerSettings::~ClipdingerSettings()
 {
 	if (originalLimit == fLimit &&
+		originalAutoPaste == fAutoPaste &&
 		originalPosition == fPosition &&
 		originalFade == fFade &&
 		originalFadeDelay == fFadeDelay &&
@@ -90,6 +96,7 @@ ClipdingerSettings::~ClipdingerSettings()
 
 		if (ret == B_OK) {
 			msg.AddInt32("limit", fLimit);
+			msg.AddInt32("autopaste", fAutoPaste);
 			msg.AddInt32("fade", fFade);
 			msg.AddInt32("fadedelay", fFadeDelay);
 			msg.AddInt32("fadestep", fFadeStep);

@@ -9,7 +9,6 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-#define INPUT_PORT_NAME		"Clipdinger input port"
 #define OUTPUT_PORT_NAME	"Clipdinger output port"
 
 static const char *kApplicationSignature = "application/x-vnd.Clipdinger";
@@ -17,10 +16,11 @@ static const char kSettingsFolder[] = "Clipdinger";
 static const char kSettingsFile[] = "Clipdinger_settings";
 static const char kHistoryFile[] = "Clipdinger_history";
 
-static const bool kDefaultFade = 0;
+static const int32 kDefaultLimit = 50;
+static const int32 kDefaultAutoPaste = 1;
+static const int32 kDefaultFade = 0;
 static const int32 kDefaultFadeDelay = 1;
 static const int32 kDefaultFadeStep = 4;
-static const int32 kDefaultLimit = 50;
 static const int32 kIconSize = 16;
 static const int32 kMaxTitleChars = 200;
 static const int32 kMinuteUnits = 5; // minutes per unit
@@ -36,6 +36,7 @@ static const int32 kMinuteUnits = 5; // minutes per unit
 #define ADJUSTCOLORS		'acol'
 #define SETTINGS			'sett'
 
+#define	AUTOPASTE			'auto'
 #define FADE				'fade'
 #define DELAY				'dely'
 #define STEP				'step'

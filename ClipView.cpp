@@ -145,7 +145,6 @@ ClipView::KeyDown(const char* bytes, int32 numBytes)
 			}
 		}
 	}
-	return;
 }
 
 

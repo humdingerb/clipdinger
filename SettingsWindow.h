@@ -31,17 +31,20 @@ public:
 private:
 	BTextControl*	fLimitControl;
 	BCheckBox*		fFadeBox;
+	BCheckBox*		fAutoPasteBox;
 	BSlider*		fDelaySlider;
 	BSlider*		fStepSlider;
 	BTextView*		fFadeText;
 	BString*		fFadeDescription;
 
 	int32			originalLimit;
+	int32			originalAutoPaste;
 	int32			originalFade;
 	int32			originalFadeDelay;
 	int32			originalFadeStep;
 
 	int32			newLimit;
+	int32			newAutoPaste;
 	int32			newFade;
 	int32			newFadeDelay;
 	int32			newFadeStep;

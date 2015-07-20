@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -18,6 +18,23 @@ body {
 	min-width: 45em;
 	max-width: 70em;
 }
+/* link colors and text decoration */
+
+a:link { 
+	font-weight: bold; 
+	text-decoration: none; 
+	color: #dc3c01;
+}
+a:visited { 
+	font-weight: bold; 
+	text-decoration: none; 
+	color: #892601;
+}
+a:hover, a:active { 
+	text-decoration: underline; 
+	color: #ff4500;
+}
+
 hr {
 	border: dotted thin #e0e0e0;
 }
@@ -38,7 +55,7 @@ h3 {
 }
 .key {				/* Shortcut (separate with &#160; */
 	-webkit-border-radius: 3px;
-	-khtml-border-radius: 3px;	
+	-khtml-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	border-color: #c7c7c7;
@@ -47,10 +64,27 @@ h3 {
 	padding: 0px 2px 0px 2px;
 	background-color: #e8e8e8;
     font-family: sans;
-   	font-variant: small-caps;
-  	font-size: 1em;
+	font-variant: small-caps;
+	font-size: 1em;
 }
-</style> 
+.menu {				/* Menu */
+    font-size: 1.0em;
+    font-family: serif;
+    font-style: italic;
+	color: #24225e;
+}
+.button {			/* Button */
+    font-size: 1.0em;
+    font-family: serif;
+    font-style: italic;
+	color: #33583c;
+}
+.path {				/* File path */
+    background-color: #e8e8e8;
+    font-size: 0.9em;
+    font-family: monospace;
+}
+</style>
 
 </head>
 <body>
@@ -65,16 +99,16 @@ for <a href="http://www.haiku-os.org">Haiku</a><br />
 <hr />
 <p><br /></p>
 <p>Clipdinger is a small tool to manage a history of the system clipboard. It solves the problem that you often have to paste some text you've just recently copied to the clipboard, but that has been replaced by something you've copied more recently... It also saves the history so it'll appear just as you left it on the last shutdown.</p>
-<p>If you want to paste some text that isn't in the clipboard any more, simply hit <span class="key">SHIFT</span> <span class="key">ALT</span> <span class="key">V</span> to summon the Clipdinger window. Here you can select an entry with the <span class="key">CursorUp/Down</span> keys and put it into the clipboard by hitting <span class="key">RETURN</span>. <span class="key">ESCAPE</span> aborts and minimizes the Clipdinger window.</p>
+<p>If you want to paste some text that isn't in the clipboard any more, simply hit <span class="key">SHIFT</span> <span class="key">ALT</span> <span class="key">V</span> to summon the Clipdinger window. Here you can select an entry with the <span class="key">CursorUp/Down</span> keys and put it into the clipboard by hitting <span class="key">RETURN</span>.<br />
+<span class="key">ESCAPE</span> or <span class="key">ALT</span> <span class="key">W</span> aborts and minimizes the Clipdinger window.</p>
 
 <p>Here's the main window with a few entries in the history and the settings window when choosing <i>Settings...</i> from the History menu:</p>
 <div align = "center">
 <img src="./images/clipdinger.png" alt="Clipdinger windows" />
 </div>
-<p>For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text.</p>
+<p>For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text. The top entry is always what's currently in the clipboard.</p>
 
-<h3>Settings</h3>
-<p>At the top, you can set the number of entries in the history (the default is 50).<br />
+<p>At the top of the settings window, you can set the number of entries in the history (the default is 50).<br />
 Keep in mind that every clipping is kept in memory and if you copy many large blocks of text, you may clog up your memory. Though, for everyday use, where clippings are seldom larger than a few KiBs at most, having a few dozen entries in the history shouldn't tax memory noticeably.</p>
 <p>Once the limit of the history is reached, the oldest entry is removed automatically to make room for the new clipping.</p>
 <p>You can remove an entry by selecting it and pressing <span class="key">DEL</span>  or choose <i>Remove clip</i> from the context menu. You remove the complete clipboard history with <i>Clear history</i> from the History menu.</p>
@@ -83,10 +117,7 @@ Keep in mind that every clipping is kept in memory and if you copy many large bl
 <h2>
 <a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
 <a id="tips" name="tips">Tips &amp; Tricks</a></h2>
-<ul>
-<li><p>Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the  <tt>/boot/home/config/settings/boot/launch/</tt> folder. Then it gets started automatically on every boot-up.</p></li>
-<li><p>If you're interested in how much memory your history uses, have look at its save-file <tt>/boot/home/config/settings/Clipdinger/Clipdinger_history</tt>. Note, this file is only written after Clipdinger has quit. To get a current reading you'd have to quit and restart Clipdinger.</p></li>
-</ul>
+<p>Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the  <tt>/boot/home/config/settings/boot/launch/</tt> folder. Then it gets started automatically on every boot-up.</p>
 
 <h2>
 <a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
@@ -123,7 +154,7 @@ Also, thanks to everyone that contributed translations for Clipdinger.</p>
 
 <p><b>0.3</b> - <i>18-07-2015:</i></p>
 <ul>
-<li>Using input_server device and filter á là ClipUp resulted in unpredictable behaviour. Until I figure out a better way, Clipdinger won't automatically paste the clipboard into the application that summoned Clipdinger.</li>
+<li>Using input_server device and filter á là ClipUp resulted in unpredictable behaviour. Until I figure out a better way, Clipdinger won't automatically paste the clipboard into the application that summoned Clipdinger anymore.</li>
 <li>Added fading option, to darken history entries over time.</li>
 <li>Bug fixes and optimizations.</li>
 </ul>

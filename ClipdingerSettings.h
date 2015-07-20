@@ -22,24 +22,28 @@ public:
 		void		Unlock();
 			
 		int32		GetLimit() { return fLimit; }
+		int32		GetAutoPaste() { return fAutoPaste; }
 		int32		GetFade() { return fFade; }
 		int32		GetFadeDelay() { return fFadeDelay; }
 		int32		GetFadeStep() { return fFadeStep; }
 		BRect		GetWindowPosition() { return fPosition; }
 
 		void		SetLimit(int32 limit) { fLimit = limit; }
+		void		SetAutoPaste(int32 autopaste) { fAutoPaste = autopaste; }
 		void		SetFade(int32 fade) { fFade = fade; }
 		void		SetFadeDelay(int32 delay) { fFadeDelay = delay; }
 		void		SetFadeStep(int32 step) { fFadeStep = step; }
 		void		SetWindowPosition(BRect where) { fPosition = where; }
 private:
 		int32		fLimit;
+		int32		fAutoPaste;
 		int32		fFade;
 		int32		fFadeDelay;
 		int32		fFadeStep;
 		BRect		fPosition;
 
 		int32		originalLimit;
+		int32		originalAutoPaste;
 		int32		originalFade;
 		int32		originalFadeDelay;
 		int32		originalFadeStep;
