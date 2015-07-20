@@ -4,7 +4,7 @@
 
 Clipdinger is a small tool to manage a history of the system clipboard. It solves the problem that you often have to paste some text you've just recently copied to the clipboard, but that has been replaced by something you've copied more recently... It also saves the history so it'll appear just as you left it on the last shutdown.
 
-If you want to paste some text that isn't in the clipboard any more, simply hit _SHIFT_ + _ALT_ + _V_ to summon the Clipdinger window. Here you can select an entry with the _CursorUp/Down_ keys and ut it into the clipboard by hitting _RETURN_.
+If you want to paste some text that isn't in the clipboard any more, simply hit _SHIFT_ + _ALT_ + _V_ to summon the Clipdinger window. Here you can select an entry with the _CursorUp/Down_ keys and put it into the clipboard or auto-paste it by hitting _RETURN_.
 _ESCAPE_  or _ALT_ + _W_ aborts and minimizes the Clipdinger window.
 
 Here's the main window with a few entries in the history and the settings window when choosing _Settings..._ from the History menu:
@@ -18,9 +18,11 @@ Keep in mind that every clipping is kept in memory and if you copy many large bl
 
 Once the limit of the history is reached, the oldest entry is removed automatically to make room for the new clipping.
 
-You can remove an entry by selecting it and pressing _DEL_ or choose _Remove clip_ from the context menu. You remove the complete clipboard history with _Clear history_ from the History menu.
+You can remove an entry by selecting it and pressing _DEL_ or choose _Remove clip_ from the context menu. You remove the complete clipboard history with _Clear history_ from the _History_ menu.
 
-The other settings pertain to the fading feature: When the checkbox Fade history entries over time is active, entries get darker as time ticks on. You can set the intervall that entries are being tinted (_Delay_) and by how much they are tinted (_Steps_). Below the sliders is a summary of your settings in plain English.
+_Auto-paste_ will put the clipping you've chosen via double-click or _RETURN_ into the window that was active before you have summoned Clipdinger.
+
+The other settings below pertain to the fading feature: When the checkbox _Fade history entries over time_ is active, entries get darker as time ticks on. You can set the intervall that entries are being tinted (_Delay_) and by how much they are tinted (_Steps_). Below the sliders is a summary of your settings in plain English.
 
 ### Tips & Tricks
 
@@ -53,8 +55,8 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 *   ALT+W now hides the window.
 *   Show the icon of the app a clip was copied from.
 
-**0.3** - _18-07-2015:_
+**0.3** - _21-07-2015:_
 
-*   Using input_server device and filter á là ClipUp resulted in unpredictable behaviour. Until I figure out a better way, Clipdinger won't automatically paste the clipboard into the application that summoned Clipdinger anymore.
+*   Added auto-paste feature.
 *   Added fading option, to darken history entries over time.
 *   Bug fixes and optimizations.

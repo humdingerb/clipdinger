@@ -77,7 +77,7 @@ SettingsWindow::RevertSettings()
 
 	if (settings->Lock()) {
 		settings->SetLimit(originalLimit);
-		settings->SetLimit(originalAutoPaste);
+		settings->SetAutoPaste(originalAutoPaste);
 		settings->SetFade(originalFade);
 		settings->SetFadeDelay(originalFadeDelay);
 		settings->SetFadeStep(originalFadeStep);
@@ -142,6 +142,7 @@ SettingsWindow::_BuildLayout()
 	// Auto-paste
 	fAutoPasteBox = new BCheckBox("autopaste", B_TRANSLATE(
 		"Auto-paste"), new BMessage(AUTOPASTE));
+
 	// Fading
 	fFadeBox = new BCheckBox("fading", B_TRANSLATE(
 		"Fade history entries over time"), new BMessage(FADE));

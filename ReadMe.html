@@ -99,10 +99,10 @@ for <a href="http://www.haiku-os.org">Haiku</a><br />
 <hr />
 <p><br /></p>
 <p>Clipdinger is a small tool to manage a history of the system clipboard. It solves the problem that you often have to paste some text you've just recently copied to the clipboard, but that has been replaced by something you've copied more recently... It also saves the history so it'll appear just as you left it on the last shutdown.</p>
-<p>If you want to paste some text that isn't in the clipboard any more, simply hit <span class="key">SHIFT</span> <span class="key">ALT</span> <span class="key">V</span> to summon the Clipdinger window. Here you can select an entry with the <span class="key">CursorUp/Down</span> keys and put it into the clipboard by hitting <span class="key">RETURN</span>.<br />
+<p>If you want to paste some text that isn't in the clipboard any more, simply hit <span class="key">SHIFT</span> <span class="key">ALT</span> <span class="key">V</span> to summon the Clipdinger window. Here you can select an entry with the <span class="key">CursorUp/Down</span> keys and put it into the clipboard or auto-paste it by hitting <span class="key">RETURN</span>.<br />
 <span class="key">ESCAPE</span> or <span class="key">ALT</span> <span class="key">W</span> aborts and minimizes the Clipdinger window.</p>
 
-<p>Here's the main window with a few entries in the history and the settings window when choosing <i>Settings...</i> from the History menu:</p>
+<p>Here's the main window with a few entries in the history and the settings window when choosing <span class="menu">Settings...</span> from the <span class="menu">History</span> menu:</p>
 <div align = "center">
 <img src="./images/clipdinger.png" alt="Clipdinger windows" />
 </div>
@@ -111,13 +111,14 @@ for <a href="http://www.haiku-os.org">Haiku</a><br />
 <p>At the top of the settings window, you can set the number of entries in the history (the default is 50).<br />
 Keep in mind that every clipping is kept in memory and if you copy many large blocks of text, you may clog up your memory. Though, for everyday use, where clippings are seldom larger than a few KiBs at most, having a few dozen entries in the history shouldn't tax memory noticeably.</p>
 <p>Once the limit of the history is reached, the oldest entry is removed automatically to make room for the new clipping.</p>
-<p>You can remove an entry by selecting it and pressing <span class="key">DEL</span>  or choose <i>Remove clip</i> from the context menu. You remove the complete clipboard history with <i>Clear history</i> from the History menu.</p>
-<p>The other settings pertain to the fading feature: When the checkbox <i>Fade history entries over time</i> is active, entries get darker as time ticks on. You can set the intervall that entries are being tinted (<i>Delay</i>) and by how much they are tinted (<i>Steps</i>). Below the sliders is a summary of your settings in plain English.</p>
+<p>You can remove an entry by selecting it and pressing <span class="key">DEL</span>  or choose <span class="menu">Remove clip</span> from the context menu. You remove the complete clipboard history with <span class="menu">Clear history</span> from the <span class="menu">History</span> menu.</p>
+<p><span class="menu">Auto-paste</span> will put the clipping you've chosen via double-click or <span class="key">RETURN</span> into the window that was active before you have summoned Clipdinger.</p>
+<p>The other settings below pertain to the fading feature: When the checkbox <span class="menu">Fade history entries over time</span> is active, entries get darker as time ticks on. You can set the intervall that entries are being tinted (<span class="menu">Delay</span>) and by how much they are tinted (<span class="menu">Steps</span>). Below the sliders is a summary of your settings in plain English.</p>
 
 <h2>
 <a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
 <a id="tips" name="tips">Tips &amp; Tricks</a></h2>
-<p>Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the  <tt>/boot/home/config/settings/boot/launch/</tt> folder. Then it gets started automatically on every boot-up.</p>
+<p>Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the  <span class="path">/boot/home/config/settings/boot/launch/</span> folder. Then it gets started automatically on every boot-up.</p>
 
 <h2>
 <a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
@@ -152,9 +153,9 @@ Also, thanks to everyone that contributed translations for Clipdinger.</p>
 <li>Show the icon of the app a clip was copied from.</li>
 </ul>
 
-<p><b>0.3</b> - <i>18-07-2015:</i></p>
+<p><b>0.3</b> - <i>21-07-2015:</i></p>
 <ul>
-<li>Using input_server device and filter á là ClipUp resulted in unpredictable behaviour. Until I figure out a better way, Clipdinger won't automatically paste the clipboard into the application that summoned Clipdinger anymore.</li>
+<li>Added auto-paste feature.</li>
 <li>Added fading option, to darken history entries over time.</li>
 <li>Bug fixes and optimizations.</li>
 </ul>
