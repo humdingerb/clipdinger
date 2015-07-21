@@ -110,6 +110,9 @@ MainWindow::_BuildLayout()
 		new BMessage(B_ABOUT_REQUESTED));
 	menu->AddItem(item);
 	item->SetTarget(be_app);
+	item = new BMenuItem(B_TRANSLATE("Help"),
+		new BMessage(HELP));
+	menu->AddItem(item);
 	item = new BMenuItem(B_TRANSLATE("Minimize"),
 		new BMessage(MINIMIZE), 'W');
 	menu->AddItem(item);
@@ -282,6 +285,23 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			if (!fHistory->IsEmpty());
 				fHistory->RemoveItem(fHistory->CurrentSelection());
+			break;
+		}
+		case HELP:
+		{
+			app_info info;
+			BPath path;
+			be_roster->GetActiveAppInfo(&info);
+			BEntry entry(&info.ref);
+
+			entry.GetPath(&path);
+			path.GetParent(&path);
+			path.Append("ReadMe.html");
+
+			entry = path.Path();
+			entry_ref ref;
+			entry.GetRef(&ref);
+			be_roster->Launch(&ref);
 			break;
 		}
 		case MINIMIZE:
