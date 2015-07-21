@@ -318,8 +318,11 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case INSERT_HISTORY:
 		{
-			if (fHistory->IsEmpty())
+			int32 error;
+			message->FindInt32("index", &error);
+			if ((fHistory->IsEmpty()) || (error == B_ERROR))
 				break;
+
 			Minimize(true);
 			be_clipboard->StopWatching(this);
 			PutClipboard(fHistory);
