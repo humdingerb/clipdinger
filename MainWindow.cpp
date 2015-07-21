@@ -318,9 +318,9 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case INSERT_HISTORY:
 		{
-			int32 error;
-			message->FindInt32("index", &error);
-			if ((fHistory->IsEmpty()) || (error == B_ERROR))
+			int32 itemindex;
+			message->FindInt32("index", &itemindex);
+			if ((fHistory->IsEmpty()) || (itemindex < 0))
 				break;
 
 			Minimize(true);
