@@ -168,7 +168,7 @@ MainWindow::_BuildLayout()
 
 	fHistory->MakeFocus(true);
 	fHistory->SetInvocationMessage(new BMessage(INSERT_HISTORY));
-	fHistory->SetViewColor(ui_color(B_CONTROL_BACKGROUND_COLOR));
+	fHistory->SetViewColor(B_TRANSPARENT_COLOR);
 //	fFavorites->SetInvocationMessage(new BMessage(INSERT_FAVORITE));
 }
 

@@ -85,6 +85,15 @@ ClipView::FrameResized(float width, float height)
 	}
 }
 
+void
+ClipView::Draw(BRect rect)
+{
+	SetHighColor(ui_color(B_CONTROL_BACKGROUND_COLOR));
+	FillRect(Bounds());
+
+	BListView::Draw(rect);
+}
+
 
 void
 ClipView::MessageReceived(BMessage* message)
