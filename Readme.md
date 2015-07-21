@@ -22,7 +22,7 @@ You can remove an entry by selecting it and pressing _DEL_ or choose _Remove cli
 
 _Auto-paste_ will put the clipping you've chosen via double-click or _RETURN_ into the window that was active before you have summoned Clipdinger.
 
-The other settings below pertain to the fading feature: When the checkbox _Fade history entries over time_ is active, entries get darker as time ticks on. You can set the intervall that entries are being tinted (_Delay_) and by how much they are tinted (_Steps_). Below the sliders is a summary of your settings in plain English.
+The other settings belong to the fading feature: When the checkbox _Fade history entries over time_ is active, entries get darker as time ticks on. You can set the intervall that entries are being tinted (_Delay_) and by how much they are tinted (_Steps_). Below the sliders is a summary of your setting in plain English.
 
 ### Tips & Tricks
 
@@ -57,6 +57,6 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 
 **0.3** - _21-07-2015:_
 
-*   Added auto-paste feature.
+*   Added auto-paste setting.
 *   Added fading option, to darken history entries over time.
 *   Bug fixes and optimizations.
