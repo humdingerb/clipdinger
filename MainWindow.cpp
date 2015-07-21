@@ -114,7 +114,7 @@ MainWindow::_BuildLayout()
 		new BMessage(HELP));
 	menu->AddItem(item);
 	item = new BMenuItem(B_TRANSLATE("Minimize"),
-		new BMessage(MINIMIZE), 'W');
+		new BMessage(ESCAPE), 'W');
 	menu->AddItem(item);
 	item = new BMenuItem(B_TRANSLATE("Quit"),
 		new BMessage(B_QUIT_REQUESTED), 'Q');
@@ -302,11 +302,6 @@ MainWindow::MessageReceived(BMessage* message)
 			entry_ref ref;
 			entry.GetRef(&ref);
 			be_roster->Launch(&ref);
-			break;
-		}
-		case MINIMIZE:
-		{
-			Minimize(true);
 			break;
 		}
 		case CLEAR_HISTORY:
