@@ -89,7 +89,11 @@ void
 ClipView::Draw(BRect rect)
 {
 	SetHighColor(ui_color(B_CONTROL_BACKGROUND_COLOR));
-	FillRect(Bounds());
+
+	BRect bounds(Bounds());
+	BRect itemFrame = ItemFrame(CountItems() - 1);
+	bounds.top = itemFrame.bottom;
+	FillRect(bounds);
 
 	BListView::Draw(rect);
 }
@@ -188,13 +192,17 @@ ClipView::AdjustColors()
 void
 ClipView::MouseDown(BPoint position)
 {
-	uint32 buttons = 0;
-	if (Window() != NULL && Window()->CurrentMessage() != NULL)
-		buttons = Window()->CurrentMessage()->FindInt32("buttons");
+	BRect bounds(Bounds());
+	BRect itemFrame = ItemFrame(CountItems() - 1);
+	bounds.top = itemFrame.bottom;
+	if (bounds.Contains(position) == false) {
+		uint32 buttons = 0;
+		if (Window() != NULL && Window()->CurrentMessage() != NULL)
+			buttons = Window()->CurrentMessage()->FindInt32("buttons");
 
-	if (buttons == B_SECONDARY_MOUSE_BUTTON)
-		ShowPopUpMenu(ConvertToScreen(position));
-
+		if (buttons == B_SECONDARY_MOUSE_BUTTON)
+			ShowPopUpMenu(ConvertToScreen(position));
+	}
 	BListView::MouseDown(position);
 }
 
