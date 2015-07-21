@@ -27,7 +27,7 @@ The other settings belong to the fading feature: When the checkbox _Fade history
 ### Tips & Tricks
 
 *   Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the `/boot/home/config/settings/boot/launch/` folder. Then it gets started automatically on every boot-up.
-*   If you leave your computer or just know that you won't do any copy&paste for a long time, you can simply quit Clidinger with _ALT_ + _Q_ to prevent the entries in the history from fading.
+*   If you leave your computer or just know that you won't do any copy&paste for a long time, you can simply quit Clidinger with _ALT_ + _Q_ to prevent the entries in the history from fading. Clipdinger always starts in same state it was in when it was quit.
 
 ### Download
 
