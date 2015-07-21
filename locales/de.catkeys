@@ -1,4 +1,4 @@
-1	German	application/x-vnd.Clipdinger	4149898413
+1	German	application/x-vnd.Clipdinger	388184846
 Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)	SettingsWindow		Einträge werden alle %A% Minuten dunkler.\nDie maximale Abdunklung wird nach\n%B% Minuten erreicht (in %C% Stufen)
 Clear history	MainWindow		Historie löschen
 About Clipdinger	MainWindow		Über Clipdinger
@@ -16,6 +16,7 @@ Fade history entries over time	SettingsWindow		Einträge mit der Zeit abdunkeln
 Clipdinger v0.3\n\twritten by Humdinger\n\tCopyright 2015\n\nClipdinger provides a history of clippings of the system clipboard.\n	Application		Clipdinger v0.3\n\tvon Humdinger\n\tCopyright 2015\n\nClipdinger bietet eine Historie für die Zwischenablage.\n
 Steps	SettingsWindow		Stufen
 Auto-paste	SettingsWindow		Auto-Einfügen
+Help	MainWindow		Hilfe
 Thank you	Application		Danke
 Delay	SettingsWindow		Zeitintervall
 Remove clip	ClipList		Eintrag entfernen
