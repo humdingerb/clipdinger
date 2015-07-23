@@ -21,6 +21,7 @@
 
 #include "App.h"
 #include "ClipItem.h"
+#include "FavItem.h"
 #include "Constants.h"
 #include "MainWindow.h"
 
@@ -170,6 +171,7 @@ MainWindow::_BuildLayout()
 	fHistory->SetInvocationMessage(new BMessage(INSERT_HISTORY));
 	fHistory->SetViewColor(B_TRANSPARENT_COLOR);
 	fFavorites->SetInvocationMessage(new BMessage(INSERT_FAVORITE));
+	fFavorites->SetViewColor(B_TRANSPARENT_COLOR);
 }
 
 
@@ -287,6 +289,17 @@ MainWindow::MessageReceived(BMessage* message)
 				fHistory->RemoveItem(fHistory->CurrentSelection());
 			break;
 		}
+		case ADD_FAV:
+		{
+			AddFav();
+			break;
+		}
+		case DELETE_FAV:
+		{
+			if (!fFavorites->IsEmpty());
+				fFavorites->RemoveItem(fFavorites->CurrentSelection());
+			break;
+		}
 		case HELP:
 		{
 			app_info info;
@@ -329,14 +342,17 @@ MainWindow::MessageReceived(BMessage* message)
 			be_clipboard->StartWatching(this);
 			break;
 		}
-//		case INSERT_FAVORITE:
-//		{
-//			if (fFavorites->IsEmpty())
-//				break;
-//			Minimize(true);
-//			PutClipboard(fFavorites);
-//			break;
-//		}
+		case INSERT_FAVORITE:
+		{
+			if (fFavorites->IsEmpty())
+				break;
+
+			Minimize(true);
+			be_clipboard->StopWatching(this);
+			PutClipboard(fFavorites);
+			be_clipboard->StartWatching(this);
+			break;
+		}
 		case UPDATE_SETTINGS:
 		{
 			int32 newValue;
@@ -388,6 +404,21 @@ MainWindow::AddClip(BString clip, BString path, int32 time)
 		fHistory->RemoveItem(fHistory->LastItem());
 
 	fHistory->AddItem(new ClipItem(clip, path, time), 0);
+}
+
+
+void
+MainWindow::AddFav()
+{
+	int index = fHistory->CurrentSelection();
+	if (index < 0)
+		return;
+
+	ClipItem *item = dynamic_cast<ClipItem *> (fHistory->ItemAt(index));
+	BString clip(item->GetClip());
+
+	int32 lastitem = fFavorites->CountItems();
+	fFavorites->AddItem(new FavItem(clip, lastitem), lastitem);
 }
 
 

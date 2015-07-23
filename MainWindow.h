@@ -49,6 +49,7 @@ private:
 
 	void			MakeItemUnique(BString clip);
 	void			AddClip(BString clip, BString path, int32 time);
+	void			AddFav();
 	BString			GetClipboard();
 	void			PutClipboard(BListView* list);
 	void			CropHistory(int32 limit);

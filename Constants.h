@@ -27,6 +27,7 @@ static const int32 kMinuteUnits = 5; // minutes per unit
 
 #define DELETE				'dele'
 #define DELETE_FAV			'delf'
+#define ADD_FAV				'addf'
 #define ESCAPE				'esca'
 #define POPCLOSED			'pmcl'
 
