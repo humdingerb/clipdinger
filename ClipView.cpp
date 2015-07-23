@@ -14,34 +14,10 @@
 #include "ClipView.h"
 #include "Constants.h"
 #include "MainWindow.h"
+#include "ContextPopUp.h"
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "ClipList"
-
-
-class PopUpMenu : public BPopUpMenu {
-public:
-					PopUpMenu(const char* name, BMessenger target);
-	virtual 		~PopUpMenu();
-
-private:
-	BMessenger 		fTarget;
-};
-
-
-PopUpMenu::PopUpMenu(const char* name, BMessenger target)
-	:
-	BPopUpMenu(name, false, false),
-	fTarget(target)
-{
-	SetAsyncAutoDestruct(true);
-}
-
-
-PopUpMenu::~PopUpMenu()
-{
-	fTarget.SendMessage(POPCLOSED);
-}
 
 
 ClipView::ClipView(const char* name)
@@ -213,7 +189,7 @@ ClipView::ShowPopUpMenu(BPoint screen)
 	if (fShowingPopUpMenu)
 		return;
 
-	PopUpMenu* menu = new PopUpMenu("PopUpMenu", this);
+	ContextPopUp* menu = new ContextPopUp("PopUpMenu", this);
 
 	BMenuItem* item = new BMenuItem(B_TRANSLATE("Remove clip"),
 		new BMessage(DELETE));

@@ -136,30 +136,30 @@ MainWindow::_BuildLayout()
 	fHistory = new ClipView("history");
 	fHistory->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
-//	fFavorites = new BListView("favorites");
-//	fFavorites->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
+	fFavorites = new FavView("favorites");
+	fFavorites->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
 	fHistoryScrollView = new BScrollView("historyscroll", fHistory,
 		B_FOLLOW_ALL_SIDES, false, true, B_FANCY_BORDER);
-/*	fFavoriteScrollView = new BScrollView("favoritescroll", fFavorites,
+	fFavoriteScrollView = new BScrollView("favoritescroll", fFavorites,
 		B_FOLLOW_ALL_SIDES, false, true, B_FANCY_BORDER);
 
 	BStringView* favoriteHeader = new BStringView("title",
 		B_TRANSLATE("Saved favourites:"));
 	favoriteHeader->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
-*/
+
 	// do the layouting				
 	static const float spacing = be_control_look->DefaultItemSpacing() / 2;
 	BSplitView* v =
-		BLayoutBuilder::Split<>(B_VERTICAL)
+		BLayoutBuilder::Split<>(B_HORIZONTAL)
 			.AddGroup(B_VERTICAL)
 				.Add(fHistoryScrollView)
 			.End()
-/*			.AddGroup(B_VERTICAL, spacing / 2)
+			.AddGroup(B_VERTICAL, spacing / 2)
 				.Add(favoriteHeader)
 				.Add(fFavoriteScrollView)
 			.End()
-*/		.SetInsets(spacing)
+		.SetInsets(spacing)
 		.View();
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
@@ -169,7 +169,7 @@ MainWindow::_BuildLayout()
 	fHistory->MakeFocus(true);
 	fHistory->SetInvocationMessage(new BMessage(INSERT_HISTORY));
 	fHistory->SetViewColor(B_TRANSPARENT_COLOR);
-//	fFavorites->SetInvocationMessage(new BMessage(INSERT_FAVORITE));
+	fFavorites->SetInvocationMessage(new BMessage(INSERT_FAVORITE));
 }
 
 

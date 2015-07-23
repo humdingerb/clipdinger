@@ -12,7 +12,6 @@
 #include <ListView.h>
 #include <MenuItem.h>
 #include <MessageRunner.h>
-#include <PopUpMenu.h>
 
 
 class ClipView : public BListView {

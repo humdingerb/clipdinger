@@ -28,6 +28,7 @@
 #include <strings.h>
 
 #include "ClipView.h"
+#include "FavView.h"
 #include "SettingsWindow.h"
 
 const int32	kControlKeys = B_COMMAND_KEY | B_SHIFT_KEY;
@@ -57,10 +58,10 @@ private:
 	int32			fLaunchTime;
 
 	ClipView*		fHistory;
-//	BListView*		fFavorites;
+	FavView*		fFavorites;
 	
 	BScrollView*	fHistoryScrollView;
-//	BScrollView*	fFavoriteScrollView;
+	BScrollView*	fFavoriteScrollView;
 
 	SettingsWindow*	fSettingsWindow;
 };

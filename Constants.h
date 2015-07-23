@@ -26,13 +26,14 @@ static const int32 kMaxTitleChars = 200;
 static const int32 kMinuteUnits = 5; // minutes per unit
 
 #define DELETE				'dele'
+#define DELETE_FAV			'delf'
 #define ESCAPE				'esca'
 #define POPCLOSED			'pmcl'
 
 #define CLEAR_HISTORY		'clhi'
 #define HELP				'help'
 #define INSERT_HISTORY		'ihis'
-//#define INSERT_FAVORITE	'ifav'
+#define INSERT_FAVORITE		'ifav'
 #define ADJUSTCOLORS		'acol'
 #define SETTINGS			'sett'
 
