@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Clipdinger by humdingerb</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Clipdinger</h1>
+          <h2>A tool to manage a history of the system clipboard</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/humdingerb/clipdinger/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/humdingerb/clipdinger/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/humdingerb/clipdinger" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <p><img src="https://raw.githubusercontent.com/humdingerb/clipdinger/master/images/clipdinger_icon_64.png" alt="Clipdinger icon"> <strong>Clipdinger</strong> for <a href="http://www.haiku-os.org">Haiku</a></p>
+
+<hr>
+
+<p>Clipdinger is a small tool to manage a history of the system clipboard. It solves the problem that you often have to paste some text you've just recently copied to the clipboard, but that has been replaced by something you've copied more recently... It also saves the history so it'll appear just as you left it on the last shutdown.</p>
+
+<p>If you want to paste some text that isn't in the clipboard any more, simply hit <em>SHIFT</em> + <em>ALT</em> + <em>V</em> to summon the Clipdinger window. Here you can select an entry with the <em>CursorUp/Down</em> keys and put it into the clipboard or auto-paste it by hitting <em>RETURN</em>.
+<em>ESCAPE</em>  or <em>ALT</em> + <em>W</em> aborts and minimizes the Clipdinger window.</p>
+
+<p>Here's the main window with a few entries in the history and the settings window when choosing <em>Settings...</em> from the History menu:</p>
+
+<p><img src="https://raw.githubusercontent.com/humdingerb/clipdinger/master/images/clipdinger.png" alt="screenshot"></p>
+
+<p>For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text. The top entry is always what's currently in the clipboard.</p>
+
+<p>At the top of the settings window, you can set the number of entries in the history (the default is 50).
+Keep in mind that every clipping is kept in memory and if you copy many large blocks of text, you may clog up your memory. Though, for everyday use, where clippings are seldom larger than a few KiBs at most, having a few dozen entries in the history shouldn't tax memory noticeably.</p>
+
+<p>Once the limit of the history is reached, the oldest entry is removed automatically to make room for the new clipping.</p>
+
+<p>You can remove an entry by selecting it and pressing <em>DEL</em> or choose <em>Remove clip</em> from the context menu. You remove the complete clipboard history with <em>Clear history</em> from the <em>History</em> menu.</p>
+
+<p><em>Auto-paste</em> will put the clipping you've chosen via double-click or <em>RETURN</em> into the window that was active before you have summoned Clipdinger.</p>
+
+<p>The other settings belong to the fading feature: When the checkbox <em>Fade history entries over time</em> is active, entries get darker as time ticks on. You can set the intervall that entries are being tinted (<em>Delay</em>) and by how much they are tinted (<em>Steps</em>). Below the sliders is a summary of your setting in plain English.</p>
+
+<h3>
+<a id="tips--tricks" class="anchor" href="#tips--tricks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tips &amp; Tricks</h3>
+
+<ul>
+<li>  Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the <code>/boot/home/config/settings/boot/launch/</code> folder. Then it gets started automatically on every boot-up.</li>
+<li>  If you leave your computer or just know that you won't do any copy&amp;paste for a long time, you can simply quit Clidinger with <em>ALT</em> + <em>Q</em> to prevent the entries in the history from fading. Clipdinger always starts in same state it was in when it was quit.</li>
+</ul>
+
+<h3>
+<a id="download" class="anchor" href="#download" aria-hidden="true"><span class="octicon octicon-link"></span></a>Download</h3>
+
+<p>Clipdinger is directly available through HaikuDepot from the HaikuPorts repository. You can also build it yourself using <a href="https://github.com/haikuports">Haikuporter</a>. The source is hosted at <a href="https://github.com/humdingerb/clipdinger">GitHub</a>.</p>
+
+<h3>
+<a id="bugreports--feedback" class="anchor" href="#bugreports--feedback" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bugreports &amp; Feedback</h3>
+
+<p>Please use GitHubs's <a href="https://github.com/humdingerb/clipdinger/issues">issue tracker</a> if you experience unusual difficulties or email your general feedback to <a href="mailto:humdingerb@gmail.com">me</a>. Also, email me if you'd like to provide more localizations.</p>
+
+<h3>
+<a id="thanks" class="anchor" href="#thanks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Thanks</h3>
+
+<p>I have to thank Werner Freytag who created ClipUp for BeOS which was my inspiration and motivation to work on Clipdinger, to have a similar tool that works as I expect it to under Haiku.
+Even more thanks go to Rene Gollent, who pointed out many shortcomings in my amateurish code and provided solutions and patches.
+Also, thanks to everyone that contributed translations for Clipdinger.</p>
+
+<h3>
+<a id="history" class="anchor" href="#history" aria-hidden="true"><span class="octicon octicon-link"></span></a>History</h3>
+
+<p><strong>0.1</strong> - <em>30-06-2015:</em></p>
+
+<ul>
+<li>  Initial release.</li>
+</ul>
+
+<p><strong>0.2</strong> - <em>08-07-2015:</em></p>
+
+<ul>
+<li>  Bug fix: First entry wasn't saved on quit.</li>
+<li>  Bug fix: Settings were unnecessarily saved on quit.</li>
+<li>  ALT+W now hides the window.</li>
+<li>  Show the icon of the app a clip was copied from.</li>
+</ul>
+
+<p><strong>0.3</strong> - <em>21-07-2015:</em></p>
+
+<ul>
+<li>  Added auto-paste setting.</li>
+<li>  Added fading option, to darken history entries over time.</li>
+<li>  Added Help menu item to open ReadMe.html.</li>
+<li>  Bug fixes and optimizations.</li>
+</ul>
+        </section>
+
+        <footer>
+          Clipdinger is maintained by <a href="https://github.com/humdingerb">humdingerb</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
