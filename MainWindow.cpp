@@ -62,10 +62,13 @@ MainWindow::MainWindow(BRect frame)
 	if (!fHistory->IsEmpty())
 		fHistory->Select(0);
 
-	if (GetClipboard() == "")
-		if (!fHistory->IsEmpty())
-			PutClipboard(fHistory);
-
+	if (GetClipboard() == "") {
+		if (!fHistory->IsEmpty()) {
+			ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(0));
+			BString text(item->GetClip());
+			PutClipboard(text);
+		}
+	}
 	be_clipboard->StartWatching(this);
 }
 
@@ -338,18 +341,32 @@ MainWindow::MessageReceived(BMessage* message)
 
 			Minimize(true);
 			be_clipboard->StopWatching(this);
-			PutClipboard(fHistory);
+
+			ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(itemindex));
+			BString text(item->GetClip());
+			PutClipboard(text);
+			if (fAutoPaste)
+				AutoPaste();
+			MoveClipToTop();
+			UpdateColors();
 			be_clipboard->StartWatching(this);
 			break;
 		}
 		case INSERT_FAVORITE:
 		{
-			if (fFavorites->IsEmpty())
+			int32 itemindex;
+			message->FindInt32("index", &itemindex);
+			if ((fFavorites->IsEmpty()) || (itemindex < 0))
 				break;
 
 			Minimize(true);
 			be_clipboard->StopWatching(this);
-			PutClipboard(fFavorites);
+
+			FavItem* item = dynamic_cast<FavItem *> (fFavorites->ItemAt(itemindex));
+			BString text(item->GetClip());
+			PutClipboard(text);
+			if (fAutoPaste)
+				AutoPaste();
 			be_clipboard->StartWatching(this);
 			break;
 		}
@@ -454,18 +471,17 @@ MainWindow::GetClipboard()
 
 
 void
-MainWindow::PutClipboard(BListView* list)
+MainWindow::PutClipboard(BString text)
 {
-	int index = list->CurrentSelection();
-	if (index < 0)
-		return;
-
-	BMessage* clip = (BMessage *)NULL;
-
-	ClipItem *item = dynamic_cast<ClipItem *> (list->ItemAt(index));
-	BString text(item->GetClip());
-		
+//	int index = list->CurrentSelection();
+//	if (index < 0)
+//		return;
+//
+//	ClipItem* item = dynamic_cast<ClipItem *> (list->ItemAt(index));
+//
+//	BString text(item->GetClip());
 	ssize_t textLen = text.Length();
+	BMessage* clip = (BMessage *)NULL;
 	
 	if (be_clipboard->Lock()) {
 		be_clipboard->Clear();
@@ -476,19 +492,52 @@ MainWindow::PutClipboard(BListView* list)
 		be_clipboard->Unlock();
 	}
 
-	if (fAutoPaste) {
-		port_id port = find_port(OUTPUT_PORT_NAME);
-		if (port != B_NAME_NOT_FOUND)
-			write_port(port, 'CtSV', NULL, 0);
-	}
+//	Now in MainWindow::AutoPaste()
+//	if (fAutoPaste) {
+//		port_id port = find_port(OUTPUT_PORT_NAME);
+//		if (port != B_NAME_NOT_FOUND)
+//			write_port(port, 'CtSV', NULL, 0);
+//	}
 
+//	Now it MainWindow::MoveClipToTop()
+//	fHistory->MoveItem(fHistory->CurrentSelection(), 0);
+//	fHistory->Select(0);
+//
+//	int32 time(real_time_clock());
+//	item = dynamic_cast<ClipItem *> (list->ItemAt(0));
+//	item->SetTimeAdded(time);
+
+//	Now in MainWindow::UpdateColors()
+//	BMessenger messenger(fHistory);
+//	BMessage message(ADJUSTCOLORS);
+//	messenger.SendMessage(&message);
+}
+
+
+void
+MainWindow::AutoPaste()
+{
+	port_id port = find_port(OUTPUT_PORT_NAME);
+	if (port != B_NAME_NOT_FOUND)
+		write_port(port, 'CtSV', NULL, 0);
+}
+
+
+void
+MainWindow::MoveClipToTop()
+{
 	fHistory->MoveItem(fHistory->CurrentSelection(), 0);
 	fHistory->Select(0);
 
 	int32 time(real_time_clock());
-	item = dynamic_cast<ClipItem *> (list->ItemAt(0));
+	ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(0));
 	item->SetTimeAdded(time);
+}
 
+
+void
+MainWindow::UpdateColors()
+{
 	BMessenger messenger(fHistory);
 	BMessage message(ADJUSTCOLORS);
 	messenger.SendMessage(&message);

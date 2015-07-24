@@ -51,8 +51,11 @@ private:
 	void			AddClip(BString clip, BString path, int32 time);
 	void			AddFav();
 	BString			GetClipboard();
-	void			PutClipboard(BListView* list);
+	void			PutClipboard(BString text);
 	void			CropHistory(int32 limit);
+	void			AutoPaste();
+	void			MoveClipToTop();
+	void			UpdateColors();
 	
 	int32			fLimit;
 	int32			fAutoPaste;
