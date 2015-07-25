@@ -10,6 +10,7 @@
 #define MAIN_WINDOW_H
 
 #include <Application.h>
+#include <Button.h>
 #include <Clipboard.h>
 #include <GroupLayout.h>
 #include <GroupLayoutBuilder.h>
@@ -68,6 +69,9 @@ private:
 	
 	BScrollView*	fHistoryScrollView;
 	BScrollView*	fFavoriteScrollView;
+
+	BButton*		fButtonUp;
+	BButton*		fButtonDown;
 
 	SettingsWindow*	fSettingsWindow;
 };

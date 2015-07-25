@@ -34,6 +34,8 @@ static const int32 kMinuteUnits = 5; // minutes per unit
 
 #define CLEAR_HISTORY		'clhi'
 #define HELP				'help'
+#define	UP					'favu'
+#define DOWN				'favd'
 #define INSERT_HISTORY		'ihis'
 #define INSERT_FAVORITE		'ifav'
 #define ADJUSTCOLORS		'acol'

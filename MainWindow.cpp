@@ -154,6 +154,12 @@ MainWindow::_BuildLayout()
 		B_TRANSLATE("Saved favourites:"));
 	favoriteHeader->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
+	// The buttons
+	fButtonUp = new BButton("up", B_TRANSLATE("Move up"),
+		new BMessage(UP));
+	fButtonDown = new BButton("down", B_TRANSLATE("Move down"),
+		new BMessage(DOWN));
+
 	// do the layouting				
 	static const float spacing = be_control_look->DefaultItemSpacing() / 2;
 	BSplitView* v =
@@ -163,7 +169,14 @@ MainWindow::_BuildLayout()
 			.End()
 			.AddGroup(B_VERTICAL, spacing / 2)
 				.Add(favoriteHeader)
+				.AddStrut(spacing)
 				.Add(fFavoriteScrollView)
+				.AddGroup(B_HORIZONTAL)
+					.AddGlue()
+					.Add(fButtonUp)
+					.Add(fButtonDown)
+					.AddGlue()
+				.End()
 			.End()
 		.SetInsets(spacing)
 		.View();
