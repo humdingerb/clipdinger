@@ -23,6 +23,7 @@ public:
 	BString			GetClip() { return fClip; };
 	BString			GetTitle() { return fTitle; };
 	void			SetTitle(BString title) { fTitle = title; };
+	void			SetFavNumber(int32 number) { fFavNumber = number; };
 
 	virtual void	DrawItem(BView* view, BRect rect, bool complete);
 	virtual	void	Update(BView* view, const BFont* finfo);

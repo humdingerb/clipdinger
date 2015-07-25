@@ -377,8 +377,13 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case DELETE_FAV:
 		{
-			if (!fFavorites->IsEmpty());
-				fFavorites->RemoveItem(fFavorites->CurrentSelection());
+			if (fFavorites->IsEmpty())
+				break;
+
+			int32 start = fFavorites->CurrentSelection();
+			printf("index: %i\n", start);
+			fFavorites->RemoveItem(start);
+			RenumberFavorites(start);
 			break;
 		}
 		case HELP:
@@ -514,6 +519,17 @@ MainWindow::AddFav()
 
 	int32 lastitem = fFavorites->CountItems();
 	fFavorites->AddItem(new FavItem(clip, lastitem), lastitem);
+}
+
+
+void
+MainWindow::RenumberFavorites(int32 start)
+{
+	for (start; start < fFavorites->CountItems(); start++) {
+		FavItem *item = dynamic_cast<FavItem *> (fFavorites->ItemAt(start));
+		item->SetFavNumber(start);
+		printf("new indexed: %i\n", start);
+	}
 }
 
 

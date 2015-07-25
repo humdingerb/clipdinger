@@ -59,6 +59,7 @@ private:
 	void			AutoPaste();
 	void			MoveClipToTop();
 	void			UpdateColors();
+	void			RenumberFavorites(int32 start);
 	
 	int32			fLimit;
 	int32			fAutoPaste;
