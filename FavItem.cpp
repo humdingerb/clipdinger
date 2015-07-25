@@ -53,20 +53,33 @@ FavItem::DrawItem(BView *view, BRect rect, bool complete)
     	view->SetHighColor(ui_color(B_LIST_ITEM_TEXT_COLOR));
 
 	BFont font;
+	font.SetFace(B_BOLD_FACE);
 	view->SetFont(&font);
 	font_height	fheight;
 	font.GetHeight(&fheight);
 
+	char string[4];
+	snprintf(string, sizeof(string), "%d", fFavNumber + 1);
+	BString Fn("F");
+	Fn.Append(string);
+
+	if (fFavNumber < 12)
+		view->DrawString(Fn.String(), BPoint(spacing, rect.top +
+			fheight.ascent + 3 + floorf(fheight.leading / 2)));
+
+	font.SetFace(B_REGULAR_FACE);
+	view->SetFont(&font);
+
     view->DrawString(fTitle.String(),
-		BPoint(spacing * 3,
+		BPoint(spacing * 3 + font.StringWidth(Fn.String()),
 		rect.top + fheight.ascent + 3 + floorf(fheight.leading / 2)));
 
 	// draw lines
 	view->SetHighColor(tint_color(ui_color(B_CONTROL_BACKGROUND_COLOR),
 		B_DARKEN_2_TINT));
 	view->StrokeLine(rect.LeftBottom(), rect.RightBottom());
-	view->StrokeLine(BPoint(kIconSize - 1 + spacing * 2, 0),
-		BPoint(kIconSize - 1 + spacing * 2, rect.bottom));
+	view->StrokeLine(BPoint(spacing * 2 + font.StringWidth(Fn.String()), rect.top),
+		BPoint(spacing * 2 + font.StringWidth(Fn.String()), rect.bottom));
 }
 
 

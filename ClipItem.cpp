@@ -92,7 +92,7 @@ ClipItem::DrawItem(BView *view, BRect rect, bool complete)
 	view->SetHighColor(tint_color(ui_color(B_CONTROL_BACKGROUND_COLOR),
 		B_DARKEN_2_TINT));
 	view->StrokeLine(rect.LeftBottom(), rect.RightBottom());
-	view->StrokeLine(BPoint(kIconSize - 1 + spacing * 2, 0),
+	view->StrokeLine(BPoint(kIconSize - 1 + spacing * 2, rect.top),
 		BPoint(kIconSize - 1 + spacing * 2, rect.bottom));
 }
 

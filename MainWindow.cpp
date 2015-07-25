@@ -279,7 +279,7 @@ MainWindow::_SaveFavorites()
 		ret = file.InitCheck();
 
 		if (ret == B_OK) {
-			for (int i = fFavorites->CountItems() - 1; i >= 0 ; i--)
+			for (int i = 0; i < fFavorites->CountItems(); i++)
 			{
 				FavItem *sItem = dynamic_cast<FavItem *>
 					(fFavorites->ItemAt(i));
@@ -312,7 +312,7 @@ MainWindow::_LoadFavorites()
 				BString path;
 				int32 i = 0;
 				while (msg.FindString("clip", i, &clip) == B_OK) {
-					fFavorites->AddItem(new FavItem(clip, 0), 0);
+					fFavorites->AddItem(new FavItem(clip, i), i);
 					i++;
 				}
 			}
