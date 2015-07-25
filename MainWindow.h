@@ -65,6 +65,7 @@ private:
 	int32			fAutoPaste;
 	int32			fLaunchTime;
 
+	BSplitView*		fMainSplitView;
 	ClipView*		fHistory;
 	FavView*		fFavorites;
 	

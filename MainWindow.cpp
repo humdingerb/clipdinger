@@ -34,7 +34,8 @@ MainWindow::MainWindow(BRect frame)
 	:
 	BWindow(BRect(), B_TRANSLATE_SYSTEM_NAME("Clipdinger"), B_TITLED_WINDOW,
 		B_NOT_CLOSABLE | B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS,
-		B_ALL_WORKSPACES)
+		B_ALL_WORKSPACES),
+		fSettingsWindow(NULL)
 {
 	KeyCatcher* catcher = new KeyCatcher("catcher");
 	AddChild(catcher);
@@ -92,6 +93,9 @@ MainWindow::QuitRequested()
 
 	ClipdingerSettings* settings = my_app->Settings();
 	if (settings->Lock()) {
+		float leftWeight = fMainSplitView->ItemWeight((int32)0);
+		float rightWeight = fMainSplitView->ItemWeight(1);
+		settings->SetSplitWeight(leftWeight, rightWeight);
 		settings->SetWindowPosition(ConvertToScreen(Bounds()));
 		settings->Unlock();
 	}
@@ -170,7 +174,7 @@ MainWindow::_BuildLayout()
 
 	// do the layouting				
 	static const float spacing = be_control_look->DefaultItemSpacing() / 2;
-	BSplitView* v =
+	fMainSplitView =
 		BLayoutBuilder::Split<>(B_HORIZONTAL)
 			.AddGroup(B_VERTICAL)
 				.Add(fHistoryScrollView)
@@ -191,7 +195,17 @@ MainWindow::_BuildLayout()
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(menuBar)
-		.Add(v);
+		.Add(fMainSplitView);
+
+	float leftWeight;
+	float rightWeight;
+	ClipdingerSettings* settings = my_app->Settings();
+	if (settings->Lock()) {
+		settings->GetSplitWeight(&leftWeight, &rightWeight);
+		settings->Unlock();
+	}
+	fMainSplitView->SetItemWeight(0, leftWeight, false);
+	fMainSplitView->SetItemWeight(1, rightWeight, true);
 
 	fHistory->MakeFocus(true);
 	fHistory->SetInvocationMessage(new BMessage(INSERT_HISTORY));

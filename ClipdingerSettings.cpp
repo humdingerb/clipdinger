@@ -14,6 +14,9 @@
 #include <Font.h>
 #include <Message.h>
 
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "Constants.h"
 #include "ClipdingerSettings.h"
 
@@ -28,7 +31,6 @@ ClipdingerSettings::ClipdingerSettings()
 {
 	BPath path;
 	BMessage msg;
-	fPosition.Set(-1, -1, -1, -1);
 
 	if (find_directory(B_USER_SETTINGS_DIRECTORY, &path) == B_OK) {
 		status_t ret = path.Append(kSettingsFolder);
@@ -55,12 +57,20 @@ ClipdingerSettings::ClipdingerSettings()
 				if (msg.FindRect("windowlocation", &fPosition) != B_OK)
 					fPosition.Set(-1, -1, -1, -1);
 
+				if (msg.FindFloat("split_weight_left", &fLeftWeight) != B_OK)
+					fLeftWeight = 0.8;
+
+				if (msg.FindFloat("split_weight_right", &fRightWeight) != B_OK)
+					fRightWeight = 0.2;
+
 				originalLimit = fLimit;
 				originalAutoPaste = fAutoPaste;
 				originalFade = fFade;
 				originalFadeDelay = fFadeDelay;
 				originalFadeStep = fFadeStep;
 				originalPosition = fPosition;
+				originalLeftWeight = fLeftWeight;
+				originalRightWeight = fRightWeight;
 			}
 		}
 	}
@@ -71,10 +81,12 @@ ClipdingerSettings::~ClipdingerSettings()
 {
 	if (originalLimit == fLimit &&
 		originalAutoPaste == fAutoPaste &&
-		originalPosition == fPosition &&
 		originalFade == fFade &&
 		originalFadeDelay == fFadeDelay &&
-		originalFadeStep == fFadeStep)
+		originalFadeStep == fFadeStep &&
+		originalPosition == fPosition &&
+		originalLeftWeight == fLeftWeight &&
+		originalRightWeight == fRightWeight)
 			return;
 
 	BPath path;
@@ -101,6 +113,8 @@ ClipdingerSettings::~ClipdingerSettings()
 			msg.AddInt32("fadedelay", fFadeDelay);
 			msg.AddInt32("fadestep", fFadeStep);
 			msg.AddRect("windowlocation", fPosition);
+			msg.AddFloat("split_weight_left", fLeftWeight);
+			msg.AddFloat("split_weight_right", fRightWeight);
 			msg.Flatten(&file);
 		}
 	}
@@ -118,4 +132,20 @@ void
 ClipdingerSettings::Unlock()
 {
 	fLock.Unlock();
+}
+
+
+void
+ClipdingerSettings::GetSplitWeight(float* left, float* right)
+{
+	*left = fLeftWeight;
+	*right = fRightWeight;
+}
+
+
+void
+ClipdingerSettings::SetSplitWeight(float left, float right)
+{
+	fLeftWeight = left;
+	fRightWeight = right;
 }
