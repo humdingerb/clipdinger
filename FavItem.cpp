@@ -15,11 +15,12 @@
 #include "Constants.h"
 
 
-FavItem::FavItem(BString clip, int32 favnumber)
+FavItem::FavItem(BString clip, BString title, int32 favnumber)
 	:
 	BListItem()
 {
 	fClip = clip;
+	fTitle = title;
 	fFavNumber = favnumber;
 }
 

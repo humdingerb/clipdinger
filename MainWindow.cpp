@@ -306,7 +306,9 @@ MainWindow::_SaveFavorites()
 					(fFavorites->ItemAt(i));
 
 				BString clip(sItem->GetClip());
+				BString title(sItem->GetTitle());
 				msg.AddString("clip", clip.String());
+				msg.AddString("title", title.String());
 			}
 			msg.Flatten(&file);
 		}
@@ -330,10 +332,11 @@ MainWindow::_LoadFavorites()
 				return;
 			else {
 				BString clip;
-				BString path;
+				BString title;
 				int32 i = 0;
-				while (msg.FindString("clip", i, &clip) == B_OK) {
-					fFavorites->AddItem(new FavItem(clip, i), i);
+				while (msg.FindString("clip", i, &clip) == B_OK &&
+						msg.FindString("title", i, &title) == B_OK) {
+					fFavorites->AddItem(new FavItem(clip, title, i), i);
 					i++;
 				}
 			}
@@ -548,7 +551,7 @@ MainWindow::AddFav()
 	BString clip(item->GetClip());
 
 	int32 lastitem = fFavorites->CountItems();
-	fFavorites->AddItem(new FavItem(clip, lastitem), lastitem);
+	fFavorites->AddItem(new FavItem(clip, NULL, lastitem), lastitem);
 }
 
 

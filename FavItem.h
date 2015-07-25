@@ -17,7 +17,7 @@
 
 class FavItem : public BListItem {
 public:
-					FavItem(BString clip, int32 favnumber);
+					FavItem(BString clip, BString title, int32 favnumber);
 					~FavItem();
 
 	BString			GetClip() { return fClip; };
