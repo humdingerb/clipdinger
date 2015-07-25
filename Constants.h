@@ -15,6 +15,7 @@ static const char *kApplicationSignature = "application/x-vnd.Clipdinger";
 static const char kSettingsFolder[] = "Clipdinger";
 static const char kSettingsFile[] = "Clipdinger_settings";
 static const char kHistoryFile[] = "Clipdinger_history";
+static const char kFavoriteFile[] = "Clipdinger_favorites";
 
 static const int32 kDefaultLimit = 50;
 static const int32 kDefaultAutoPaste = 1;

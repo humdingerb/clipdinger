@@ -58,6 +58,7 @@ MainWindow::MainWindow(BRect frame)
 	fLaunchTime = real_time_clock();
 
 	_LoadHistory();
+	_LoadFavorites();
 
 	if (!fHistory->IsEmpty())
 		fHistory->Select(0);
@@ -82,6 +83,7 @@ bool
 MainWindow::QuitRequested()
 {
 	_SaveHistory();
+	_SaveFavorites();
 
 	ClipdingerSettings* settings = my_app->Settings();
 	if (settings->Lock()) {
@@ -250,6 +252,69 @@ MainWindow::_LoadHistory()
 					i++;
 				}
 				fHistory->AdjustColors();
+			}
+		}
+	}
+}
+
+
+void
+MainWindow::_SaveFavorites()
+{
+	BPath path;
+	BMessage msg;
+
+	if (find_directory(B_USER_SETTINGS_DIRECTORY, &path) < B_OK)
+		return;
+	status_t ret = path.Append(kSettingsFolder);
+
+	if (ret == B_OK)
+		ret = create_directory(path.Path(), 0777);
+
+	if (ret == B_OK)
+		path.Append(kFavoriteFile);
+
+	if (ret == B_OK) {
+		BFile file(path.Path(), B_WRITE_ONLY | B_CREATE_FILE | B_ERASE_FILE);
+		ret = file.InitCheck();
+
+		if (ret == B_OK) {
+			for (int i = fFavorites->CountItems() - 1; i >= 0 ; i--)
+			{
+				FavItem *sItem = dynamic_cast<FavItem *>
+					(fFavorites->ItemAt(i));
+
+				BString clip(sItem->GetClip());
+				msg.AddString("clip", clip.String());
+			}
+			msg.Flatten(&file);
+		}
+	}
+}
+
+
+void
+MainWindow::_LoadFavorites()
+{
+	BPath path;
+	BMessage msg;
+
+	if (find_directory(B_USER_SETTINGS_DIRECTORY, &path) == B_OK) {
+		status_t ret = path.Append(kSettingsFolder);
+		if (ret == B_OK) {
+			path.Append(kFavoriteFile);
+			BFile file(path.Path(), B_READ_ONLY);
+
+			if (file.InitCheck() != B_OK || (msg.Unflatten(&file) != B_OK))
+				return;
+			else {
+				BString clip;
+				BString path;
+				int32 i = 0;
+				while (msg.FindString("clip", i, &clip) == B_OK) {
+					fFavorites->AddItem(new FavItem(clip, 0), 0);
+					i++;
+				}
 			}
 		}
 	}
@@ -473,13 +538,6 @@ MainWindow::GetClipboard()
 void
 MainWindow::PutClipboard(BString text)
 {
-//	int index = list->CurrentSelection();
-//	if (index < 0)
-//		return;
-//
-//	ClipItem* item = dynamic_cast<ClipItem *> (list->ItemAt(index));
-//
-//	BString text(item->GetClip());
 	ssize_t textLen = text.Length();
 	BMessage* clip = (BMessage *)NULL;
 	
@@ -491,26 +549,6 @@ MainWindow::PutClipboard(BString text)
 		}
 		be_clipboard->Unlock();
 	}
-
-//	Now in MainWindow::AutoPaste()
-//	if (fAutoPaste) {
-//		port_id port = find_port(OUTPUT_PORT_NAME);
-//		if (port != B_NAME_NOT_FOUND)
-//			write_port(port, 'CtSV', NULL, 0);
-//	}
-
-//	Now it MainWindow::MoveClipToTop()
-//	fHistory->MoveItem(fHistory->CurrentSelection(), 0);
-//	fHistory->Select(0);
-//
-//	int32 time(real_time_clock());
-//	item = dynamic_cast<ClipItem *> (list->ItemAt(0));
-//	item->SetTimeAdded(time);
-
-//	Now in MainWindow::UpdateColors()
-//	BMessenger messenger(fHistory);
-//	BMessage message(ADJUSTCOLORS);
-//	messenger.SendMessage(&message);
 }
 
 

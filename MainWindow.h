@@ -46,6 +46,8 @@ private:
 	void			_BuildLayout();
 	void			_LoadHistory();
 	void			_SaveHistory();
+	void			_LoadFavorites();
+	void			_SaveFavorites();
 
 	void			MakeItemUnique(BString clip);
 	void			AddClip(BString clip, BString path, int32 time);
