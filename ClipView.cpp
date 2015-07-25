@@ -36,7 +36,6 @@ void
 ClipView::AttachedToWindow()
 {
 	SetFlags(Flags() | B_FULL_UPDATE_ON_RESIZE);
-	SetEventMask(B_KEYBOARD_EVENTS);
 
 	BMessage message(ADJUSTCOLORS);
 	fRunner	= new BMessageRunner(this, &message, kMinuteUnits * 60000000);
@@ -114,30 +113,16 @@ ClipView::MessageReceived(BMessage* message)
 void
 ClipView::KeyDown(const char* bytes, int32 numBytes)
 {
-	static const int32 kModifiers = B_SHIFT_KEY | B_COMMAND_KEY;
-
-	if (strcasecmp(bytes, "v") == 0
-			&& (modifiers() & kModifiers) == kModifiers) {
-		Window()->Minimize(false);
-		Window()->Activate(true);
-	}
-	else if (Window()->IsActive()) {
-		switch (bytes[0]) {
-			case B_DELETE:
-			{
-				Looper()->PostMessage(DELETE);
-				break;
-			}
-			case B_ESCAPE:
-			{
-				Looper()->PostMessage(ESCAPE);
-				break;
-			}
-			default:
-			{
-				BListView::KeyDown(bytes, numBytes);
-				break;
-			}
+	switch (bytes[0]) {
+		case B_DELETE:
+		{
+			Looper()->PostMessage(DELETE);
+			break;
+		}
+		default:
+		{
+			BListView::KeyDown(bytes, numBytes);
+			break;
 		}
 	}
 }

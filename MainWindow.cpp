@@ -21,6 +21,7 @@
 
 #include "App.h"
 #include "ClipItem.h"
+#include "KeyCatcher.h"
 #include "FavItem.h"
 #include "Constants.h"
 #include "MainWindow.h"
@@ -35,6 +36,10 @@ MainWindow::MainWindow(BRect frame)
 		B_NOT_CLOSABLE | B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS,
 		B_ALL_WORKSPACES)
 {
+	KeyCatcher* catcher = new KeyCatcher("catcher");
+	AddChild(catcher);
+	catcher->Hide();
+
 	_BuildLayout();
 
 	if (frame == BRect(-1, -1, -1, -1)) {
@@ -454,6 +459,7 @@ MainWindow::MessageReceived(BMessage* message)
 				AutoPaste();
 			MoveClipToTop();
 			UpdateColors();
+
 			be_clipboard->StartWatching(this);
 			break;
 		}
@@ -461,7 +467,8 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			int32 itemindex;
 			message->FindInt32("index", &itemindex);
-			if ((fFavorites->IsEmpty()) || (itemindex < 0))
+			if ((fFavorites->IsEmpty()) || (itemindex < 0) ||
+				(fFavorites->CountItems() <= itemindex))
 				break;
 
 			Minimize(true);
@@ -472,6 +479,7 @@ MainWindow::MessageReceived(BMessage* message)
 			PutClipboard(text);
 			if (fAutoPaste)
 				AutoPaste();
+
 			be_clipboard->StartWatching(this);
 			break;
 		}
