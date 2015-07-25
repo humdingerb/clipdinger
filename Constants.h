@@ -23,7 +23,7 @@ static const int32 kDefaultFade = 0;
 static const int32 kDefaultFadeDelay = 1;
 static const int32 kDefaultFadeStep = 4;
 static const int32 kIconSize = 16;
-static const int32 kMaxTitleChars = 200;
+static const int32 kMaxTitleChars = 100;
 static const int32 kMinuteUnits = 5; // minutes per unit
 
 #define DELETE				'dele'

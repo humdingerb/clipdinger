@@ -20,8 +20,16 @@ FavItem::FavItem(BString clip, BString title, int32 favnumber)
 	BListItem()
 {
 	fClip = clip;
-	fTitle = title;
 	fFavNumber = favnumber;
+	if (title != NULL)
+		fDisplayTitle = title;
+	else if (fClip.CountChars() > kMaxTitleChars) {
+		fClip.CopyInto(fDisplayTitle, 0, kMaxTitleChars);
+		fDisplayTitle.Append(B_UTF8_ELLIPSIS);
+	} else
+		fDisplayTitle = fClip;
+
+	fTitle = fDisplayTitle;
 }
 
 
@@ -81,7 +89,7 @@ FavItem::DrawItem(BView *view, BRect rect, bool complete)
 	font.SetFace(B_REGULAR_FACE);
 	view->SetFont(&font);
 
-    view->DrawString(fTitle.String(), BPoint(spacing * 3 + Fnwidth,
+    view->DrawString(fDisplayTitle.String(), BPoint(spacing * 3 + Fnwidth,
 		rect.top + fheight.ascent + fheight.descent + fheight.leading));
 
 	// draw lines
@@ -101,9 +109,9 @@ FavItem::Update(BView* view, const BFont* finfo)
 	BListItem::Update(view, finfo);
 
 	static const float spacing = be_control_look->DefaultLabelSpacing();
-	BString string(GetClip());
+	BString string(GetTitle());
 	view->TruncateString(&string, B_TRUNCATE_END, Width()- spacing * 4);
-	SetTitle(string);
+	SetDisplayTitle(string);
 
 	font_height	fheight;
 	finfo->GetHeight(&fheight);

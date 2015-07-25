@@ -53,7 +53,7 @@ FavView::FrameResized(float width, float height)
 		BString string(sItem->GetClip());
 		TruncateString(&string, B_TRUNCATE_END, width - kIconSize
 			- spacing * 4);
-		sItem->SetTitle(string);
+		sItem->SetDisplayTitle(string);
 	}
 }
 
