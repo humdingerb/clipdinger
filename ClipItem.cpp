@@ -86,7 +86,7 @@ ClipItem::DrawItem(BView *view, BRect rect, bool complete)
 
     view->DrawString(fTitle.String(),
 		BPoint(kIconSize - 1 + spacing * 3,
-		rect.top + fheight.ascent + 3 + floorf(fheight.leading / 2)));
+		rect.top + fheight.ascent + fheight.descent + fheight.leading));
 
 	// draw lines
 	view->SetHighColor(tint_color(ui_color(B_CONTROL_BACKGROUND_COLOR),

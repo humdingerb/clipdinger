@@ -47,39 +47,48 @@ FavItem::DrawItem(BView *view, BRect rect, bool complete)
 	view->FillRect(rect);
 
 	// text
-	if (IsSelected())
-    	view->SetHighColor(ui_color(B_LIST_SELECTED_ITEM_TEXT_COLOR));
-    else
-    	view->SetHighColor(ui_color(B_LIST_ITEM_TEXT_COLOR));
-
 	BFont font;
 	font.SetFace(B_BOLD_FACE);
 	view->SetFont(&font);
 	font_height	fheight;
 	font.GetHeight(&fheight);
 
+	BString Fn("F");
+	if (fFavNumber < 9)
+		Fn.Append("0");
+
 	char string[4];
 	snprintf(string, sizeof(string), "%d", fFavNumber + 1);
-	BString Fn("F");
 	Fn.Append(string);
+	float Fnwidth = font.StringWidth(Fn.String());
+
+	if (!IsSelected()) {
+		BRect Fnrect(rect.LeftTop(),
+			BPoint(spacing * 2 + Fnwidth, rect.bottom));
+		view->SetHighColor(tint_color(ui_color(B_LIST_BACKGROUND_COLOR), 1.08));
+		view->FillRect(Fnrect);
+	}
+	if (IsSelected())
+		view->SetHighColor(ui_color(B_LIST_SELECTED_ITEM_TEXT_COLOR));
+    else
+		view->SetHighColor(ui_color(B_LIST_ITEM_TEXT_COLOR));
 
 	if (fFavNumber < 12)
-		view->DrawString(Fn.String(), BPoint(spacing, rect.top +
-			fheight.ascent + 3 + floorf(fheight.leading / 2)));
+		view->DrawString(Fn.String(), BPoint(spacing,
+		rect.top + fheight.ascent + fheight.descent + fheight.leading));
 
 	font.SetFace(B_REGULAR_FACE);
 	view->SetFont(&font);
 
-    view->DrawString(fTitle.String(),
-		BPoint(spacing * 3 + font.StringWidth(Fn.String()),
-		rect.top + fheight.ascent + 3 + floorf(fheight.leading / 2)));
+    view->DrawString(fTitle.String(), BPoint(spacing * 3 + Fnwidth,
+		rect.top + fheight.ascent + fheight.descent + fheight.leading));
 
 	// draw lines
 	view->SetHighColor(tint_color(ui_color(B_CONTROL_BACKGROUND_COLOR),
 		B_DARKEN_2_TINT));
 	view->StrokeLine(rect.LeftBottom(), rect.RightBottom());
-	view->StrokeLine(BPoint(spacing * 2 + font.StringWidth(Fn.String()), rect.top),
-		BPoint(spacing * 2 + font.StringWidth(Fn.String()), rect.bottom));
+	view->StrokeLine(BPoint(spacing * 2 + Fnwidth, rect.top),
+		BPoint(spacing * 2 + Fnwidth, rect.bottom));
 }
 
 
