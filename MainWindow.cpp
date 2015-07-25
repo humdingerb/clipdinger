@@ -151,14 +151,17 @@ MainWindow::_BuildLayout()
 		B_FOLLOW_ALL_SIDES, false, true, B_FANCY_BORDER);
 
 	BStringView* favoriteHeader = new BStringView("title",
-		B_TRANSLATE("Saved favourites:"));
+		B_TRANSLATE("Saved favourites"));
 	favoriteHeader->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
+	BFont font(be_bold_font);
+	favoriteHeader->SetFont(&font);
+	favoriteHeader->SetAlignment(B_ALIGN_CENTER);
 
 	// The buttons
 	fButtonUp = new BButton("up", B_TRANSLATE("Move up"),
-		new BMessage(UP));
+		new BMessage(FAV_UP));
 	fButtonDown = new BButton("down", B_TRANSLATE("Move down"),
-		new BMessage(DOWN));
+		new BMessage(FAV_DOWN));
 
 	// do the layouting				
 	static const float spacing = be_control_look->DefaultItemSpacing() / 2;
@@ -370,12 +373,12 @@ MainWindow::MessageReceived(BMessage* message)
 				fHistory->RemoveItem(fHistory->CurrentSelection());
 			break;
 		}
-		case ADD_FAV:
+		case FAV_ADD:
 		{
 			AddFav();
 			break;
 		}
-		case DELETE_FAV:
+		case FAV_DELETE:
 		{
 			if (fFavorites->IsEmpty())
 				break;
@@ -384,6 +387,25 @@ MainWindow::MessageReceived(BMessage* message)
 			printf("index: %i\n", start);
 			fFavorites->RemoveItem(start);
 			RenumberFavorites(start);
+			break;
+		}
+		case FAV_DOWN:
+		{
+			int32 index = fFavorites->CurrentSelection();
+			int32 last = fFavorites->CountItems();
+			if (index == last - 1)
+				break;
+			fFavorites->SwapItems(index, index + 1);
+			RenumberFavorites(index);
+			break;
+		}
+		case FAV_UP:
+		{
+			int32 index = fFavorites->CurrentSelection();
+			if (index == 0)
+				break;
+			fFavorites->SwapItems(index, index - 1);
+			RenumberFavorites(index - 1);
 			break;
 		}
 		case HELP:

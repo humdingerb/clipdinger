@@ -80,10 +80,10 @@ FavView::MessageReceived(BMessage* message)
 			fShowingPopUpMenu = false;
 			break;
 		}
-		case DELETE_FAV:
+		case FAV_DELETE:
 		{
 			fShowingPopUpMenu = false;
-			Looper()->PostMessage(DELETE_FAV);
+			Looper()->PostMessage(FAV_DELETE);
 			break;
 		}
 		default:
@@ -101,7 +101,7 @@ FavView::KeyDown(const char* bytes, int32 numBytes)
 	switch (bytes[0]) {
 		case B_DELETE:
 		{
-			Looper()->PostMessage(DELETE_FAV);
+			Looper()->PostMessage(FAV_DELETE);
 			break;
 		}
 		default:
@@ -140,7 +140,7 @@ FavView::ShowPopUpMenu(BPoint screen)
 	ContextPopUp* menu = new ContextPopUp("PopUpMenu", this);
 
 	BMenuItem* item = new BMenuItem(B_TRANSLATE("Remove clip"),
-		new BMessage(DELETE_FAV));
+		new BMessage(FAV_DELETE));
 	menu->AddItem(item);
 
 	menu->SetTargetForItems(this);

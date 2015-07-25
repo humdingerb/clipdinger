@@ -84,10 +84,10 @@ ClipView::MessageReceived(BMessage* message)
 			fShowingPopUpMenu = false;
 			break;
 		}
-		case ADD_FAV:
+		case FAV_ADD:
 		{
 			fShowingPopUpMenu = false;
-			Looper()->PostMessage(ADD_FAV);
+			Looper()->PostMessage(FAV_ADD);
 			break;
 		}
 		case DELETE:
@@ -202,7 +202,7 @@ ClipView::ShowPopUpMenu(BPoint screen)
 	menu->AddItem(item);
 
 	item = new BMenuItem(B_TRANSLATE("Add to favorites"),
-		new BMessage(ADD_FAV));
+		new BMessage(FAV_ADD));
 	menu->AddItem(item);
 
 	menu->SetTargetForItems(this);

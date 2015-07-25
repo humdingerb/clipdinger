@@ -27,15 +27,15 @@ static const int32 kMaxTitleChars = 200;
 static const int32 kMinuteUnits = 5; // minutes per unit
 
 #define DELETE				'dele'
-#define DELETE_FAV			'delf'
-#define ADD_FAV				'addf'
+#define FAV_DELETE			'delf'
+#define FAV_ADD				'addf'
 #define ESCAPE				'esca'
 #define POPCLOSED			'pmcl'
 
 #define CLEAR_HISTORY		'clhi'
 #define HELP				'help'
-#define	UP					'favu'
-#define DOWN				'favd'
+#define	FAV_UP				'favu'
+#define FAV_DOWN			'favd'
 #define INSERT_HISTORY		'ihis'
 #define INSERT_FAVORITE		'ifav'
 #define ADJUSTCOLORS		'acol'
