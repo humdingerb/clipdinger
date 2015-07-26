@@ -14,6 +14,7 @@
 #include <MessageRunner.h>
 #include <PopUpMenu.h>
 
+#include "EditWindow.h"
 
 class FavView : public BListView {
 public:
@@ -31,6 +32,7 @@ public:
 
 private:
 	bool			fShowingPopUpMenu;
+	EditWindow*		fEditWindow;
 };
 
 #endif // FAVVIEW_H

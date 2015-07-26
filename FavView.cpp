@@ -13,7 +13,7 @@
 #include "FavItem.h"
 #include "FavView.h"
 #include "Constants.h"
-#include "MainWindow.h"
+// #include "MainWindow.h"
 #include "ContextPopUp.h"
 
 #undef B_TRANSLATION_CONTEXT
@@ -86,6 +86,15 @@ FavView::MessageReceived(BMessage* message)
 			Looper()->PostMessage(FAV_DELETE);
 			break;
 		}
+		case FAV_EDIT:
+		{
+			fShowingPopUpMenu = false;
+			FavItem *fav =
+				dynamic_cast<FavItem *> (ItemAt(CurrentSelection()));
+			fEditWindow = new EditWindow(Window()->Frame(), fav);
+			fEditWindow->Show();
+			break;
+		}
 		default:
 		{
 			BListView::MessageReceived(message);
@@ -139,7 +148,10 @@ FavView::ShowPopUpMenu(BPoint screen)
 
 	ContextPopUp* menu = new ContextPopUp("PopUpMenu", this);
 
-	BMenuItem* item = new BMenuItem(B_TRANSLATE("Remove clip"),
+	BMenuItem* item = new BMenuItem(B_TRANSLATE("Edit title"),
+		new BMessage(FAV_EDIT));
+	menu->AddItem(item);
+	item = new BMenuItem(B_TRANSLATE("Remove favorite"),
 		new BMessage(FAV_DELETE));
 	menu->AddItem(item);
 
