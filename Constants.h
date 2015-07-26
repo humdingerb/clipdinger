@@ -30,6 +30,7 @@ static const int32 kMinuteUnits = 5; // minutes per unit
 #define FAV_DELETE			'delf'
 #define FAV_ADD				'addf'
 #define	FAV_EDIT			'edif'
+#define UPDATE_FAV_DISPLAY	'updf'
 #define ESCAPE				'esca'
 #define POPCLOSED			'pmcl'
 #define F_KEY				'fkey'

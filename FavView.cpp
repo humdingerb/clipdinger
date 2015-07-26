@@ -13,7 +13,6 @@
 #include "FavItem.h"
 #include "FavView.h"
 #include "Constants.h"
-// #include "MainWindow.h"
 #include "ContextPopUp.h"
 
 #undef B_TRANSLATION_CONTEXT
@@ -50,7 +49,7 @@ FavView::FrameResized(float width, float height)
 
 	for (int32 i = 0; i < CountItems(); i++) {
 		FavItem *sItem = dynamic_cast<FavItem *> (ItemAt(i));
-		BString string(sItem->GetClip());
+		BString string(sItem->GetTitle());
 		TruncateString(&string, B_TRUNCATE_END, width - kIconSize
 			- spacing * 4);
 		sItem->SetDisplayTitle(string);
@@ -78,21 +77,6 @@ FavView::MessageReceived(BMessage* message)
 		case POPCLOSED:
 		{
 			fShowingPopUpMenu = false;
-			break;
-		}
-		case FAV_DELETE:
-		{
-			fShowingPopUpMenu = false;
-			Looper()->PostMessage(FAV_DELETE);
-			break;
-		}
-		case FAV_EDIT:
-		{
-			fShowingPopUpMenu = false;
-			FavItem *fav =
-				dynamic_cast<FavItem *> (ItemAt(CurrentSelection()));
-			fEditWindow = new EditWindow(Window()->Frame(), fav);
-			fEditWindow->Show();
 			break;
 		}
 		default:
@@ -154,8 +138,7 @@ FavView::ShowPopUpMenu(BPoint screen)
 	item = new BMenuItem(B_TRANSLATE("Remove favorite"),
 		new BMessage(FAV_DELETE));
 	menu->AddItem(item);
-
-	menu->SetTargetForItems(this);
+	menu->SetTargetForItems(Looper());
 	menu->Go(screen, true, true, true);
 	fShowingPopUpMenu = true;
 }

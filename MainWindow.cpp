@@ -184,6 +184,7 @@ MainWindow::_BuildLayout()
 				.AddStrut(spacing)
 				.Add(fFavoriteScrollView)
 				.AddGroup(B_HORIZONTAL)
+					.SetInsets(0, spacing / 2, 0, 0)
 					.AddGlue()
 					.Add(fButtonUp)
 					.Add(fButtonDown)
@@ -419,6 +420,14 @@ MainWindow::MessageReceived(BMessage* message)
 			RenumberFavorites(start);
 			break;
 		}
+		case FAV_EDIT:
+		{
+			FavItem *fav = dynamic_cast<FavItem *>
+				(fFavorites->ItemAt(fFavorites->CurrentSelection()));
+			fEditWindow = new EditWindow(Frame(), fav);
+			fEditWindow->Show();
+			break;
+		}
 		case FAV_DOWN:
 		{
 			int32 index = fFavorites->CurrentSelection();
@@ -436,6 +445,11 @@ MainWindow::MessageReceived(BMessage* message)
 				break;
 			fFavorites->SwapItems(index, index - 1);
 			RenumberFavorites(index - 1);
+			break;
+		}
+		case UPDATE_FAV_DISPLAY:
+		{
+			fFavorites->Invalidate();
 			break;
 		}
 		case HELP:

@@ -30,6 +30,7 @@
 
 #include "ClipView.h"
 #include "FavView.h"
+#include "EditWindow.h"
 #include "SettingsWindow.h"
 
 const int32	kControlKeys = B_COMMAND_KEY | B_SHIFT_KEY;
@@ -75,6 +76,7 @@ private:
 	BButton*		fButtonUp;
 	BButton*		fButtonDown;
 
+	EditWindow*		fEditWindow;
 	SettingsWindow*	fSettingsWindow;
 };
 

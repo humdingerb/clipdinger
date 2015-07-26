@@ -12,6 +12,7 @@
 #include <LayoutBuilder.h>
 #include <SeparatorView.h>
 
+#include "App.h"
 #include "Constants.h"
 #include "EditWindow.h"
 
@@ -89,6 +90,11 @@ EditWindow::MessageReceived(BMessage* message)
 			BString title = fTitleControl->Text();
 			fItem->SetTitle(title);
 			fItem->SetDisplayTitle(title);
+
+			BMessenger messenger(my_app->fMainWindow);
+			BMessage message(UPDATE_FAV_DISPLAY);
+			messenger.SendMessage(&message);
+
 			Quit();
 			break;
 		}
