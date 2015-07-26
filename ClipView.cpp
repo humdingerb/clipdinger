@@ -22,7 +22,7 @@
 
 ClipView::ClipView(const char* name)
 	:
-	BListView("name")
+	BListView(name)
 {
 }
 
@@ -35,7 +35,7 @@ ClipView::~ClipView()
 void
 ClipView::AttachedToWindow()
 {
-	SetFlags(Flags() | B_FULL_UPDATE_ON_RESIZE);
+	SetFlags(Flags() | B_FULL_UPDATE_ON_RESIZE | B_NAVIGABLE);
 
 	BMessage message(ADJUSTCOLORS);
 	fRunner	= new BMessageRunner(this, &message, kMinuteUnits * 60000000);

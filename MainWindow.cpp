@@ -168,9 +168,9 @@ MainWindow::_BuildLayout()
 
 	// The buttons
 	fButtonUp = new BButton("up", B_TRANSLATE("Move up"),
-		new BMessage(FAV_UP));
+		new BMessage(FAV_UP), B_WILL_DRAW | B_FULL_UPDATE_ON_RESIZE);
 	fButtonDown = new BButton("down", B_TRANSLATE("Move down"),
-		new BMessage(FAV_DOWN));
+		new BMessage(FAV_DOWN), B_WILL_DRAW | B_FULL_UPDATE_ON_RESIZE);
 
 	// do the layouting				
 	static const float spacing = be_control_look->DefaultItemSpacing() / 2;
@@ -389,6 +389,14 @@ MainWindow::MessageReceived(BMessage* message)
 			Minimize(true);
 			break;
 		}
+//		case SWITCH_LISTS:
+//		{
+//			if (fHistory->IsFocus())
+//				fFavorites->MakeFocus(true);
+//			else
+//				fHistory->MakeFocus(true);
+//			break;
+//		}
 		case DELETE:
 		{
 			if (!fHistory->IsEmpty());

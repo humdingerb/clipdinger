@@ -15,7 +15,7 @@
 
 KeyCatcher::KeyCatcher(const char* name)
 	:
-	BView("name", B_FOLLOW_ALL_SIDES)
+	BView(name, NULL)
 {
 }
 
@@ -62,6 +62,11 @@ KeyCatcher::KeyDown(const char* bytes, int32 numBytes)
 				messenger.SendMessage(&message);
 				break;
 			}
+//			case B_TAB:
+//			{
+//				Looper()->PostMessage(SWITCH_LISTS);
+//				break;
+//			}
 			default:
 			{
 				BView::KeyDown(bytes, numBytes);
