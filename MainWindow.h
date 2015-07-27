@@ -50,6 +50,7 @@ private:
 	void			_SaveHistory();
 	void			_LoadFavorites();
 	void			_SaveFavorites();
+	void			_SetSplitview();
 
 	void			MakeItemUnique(BString clip);
 	void			AddClip(BString clip, BString path, int32 time);

@@ -32,7 +32,7 @@
 
 MainWindow::MainWindow(BRect frame)
 	:
-	BWindow(BRect(), B_TRANSLATE_SYSTEM_NAME("Clipdinger"), B_TITLED_WINDOW,
+	BWindow(frame, B_TRANSLATE_SYSTEM_NAME("Clipdinger"), B_TITLED_WINDOW,
 		B_NOT_CLOSABLE | B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS,
 		B_ALL_WORKSPACES),
 		fSettingsWindow(NULL)
@@ -47,15 +47,11 @@ MainWindow::MainWindow(BRect frame)
 		CenterOnScreen();
 		ResizeTo(300, 400);
 	} else {
-		MoveTo(frame.LeftTop());
-		ResizeTo(frame.right - frame.left, frame.bottom - frame.top);
-
 		// make sure window is on screen
 		BScreen screen(this);
 		if (!screen.Frame().InsetByCopy(10, 10).Intersects(Frame()))
 			CenterOnScreen();
 	}
-
 	ClipdingerSettings* settings = my_app->Settings();
 	if (settings->Lock()) {
 		fLimit = settings->GetLimit();
@@ -82,6 +78,29 @@ MainWindow::MainWindow(BRect frame)
 
 MainWindow::~MainWindow()
 {
+}
+
+void
+MainWindow::_SetSplitview()
+{
+	float leftWeight;
+	float rightWeight;
+	ClipdingerSettings* settings = my_app->Settings();
+	if (settings->Lock()) {
+		settings->GetSplitWeight(&leftWeight, &rightWeight);
+		settings->Unlock();
+	}
+	fMainSplitView->SetItemWeight(0, leftWeight, false); // ,false
+	if (leftWeight == 0)
+		fMainSplitView->SetItemCollapsed(0, true);
+
+	fMainSplitView->SetItemWeight(1, rightWeight, true); // ,true
+	if (rightWeight == 0) {
+		printf("COLLAPSE!\n");
+		printf("collapsible: %i\n", fMainSplitView->IsCollapsible(1));
+		fMainSplitView->SetItemCollapsed(1, true);
+		printf("collapsed? : %i\n", fMainSplitView->IsItemCollapsed(1));
+	}
 }
 
 
@@ -197,23 +216,6 @@ MainWindow::_BuildLayout()
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(menuBar)
 		.Add(fMainSplitView);
-
-	float leftWeight;
-	float rightWeight;
-	ClipdingerSettings* settings = my_app->Settings();
-	if (settings->Lock()) {
-		settings->GetSplitWeight(&leftWeight, &rightWeight);
-		settings->Unlock();
-	}
-	fMainSplitView->SetItemWeight(0, leftWeight); // ,false
-	if (leftWeight == 0)
-		fMainSplitView->SetItemCollapsed(0, true);
-
-	fMainSplitView->SetItemWeight(1, rightWeight); // ,true
-	if (rightWeight == 0) {
-		printf("COLLAPSE!\n");
-		fMainSplitView->SetItemCollapsed(1, true);
-	}
 
 	fHistory->MakeFocus(true);
 	fHistory->SetInvocationMessage(new BMessage(INSERT_HISTORY));
@@ -390,6 +392,11 @@ MainWindow::MessageReceived(BMessage* message)
 			AddClip(clip, path.Path(), time);
 
 			fHistory->Select(0);
+			break;
+		}
+		case SPLIT:
+		{
+			_SetSplitview();
 			break;
 		}
 		case ESCAPE:

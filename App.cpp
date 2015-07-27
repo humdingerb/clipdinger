@@ -36,7 +36,9 @@ App::ReadyToRun()
 {
 	fMainWindow = new MainWindow(fSettings.GetWindowPosition());
 	fMainWindow->Show();
-	fMainWindow->Minimize(true);
+	fMainWindow->PostMessage(SPLIT);
+
+//	fMainWindow->Minimize(true);
 }
 
 
