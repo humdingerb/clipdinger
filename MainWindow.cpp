@@ -205,8 +205,15 @@ MainWindow::_BuildLayout()
 		settings->GetSplitWeight(&leftWeight, &rightWeight);
 		settings->Unlock();
 	}
-	fMainSplitView->SetItemWeight(0, leftWeight, false);
-	fMainSplitView->SetItemWeight(1, rightWeight, true);
+	fMainSplitView->SetItemWeight(0, leftWeight); // ,false
+	if (leftWeight == 0)
+		fMainSplitView->SetItemCollapsed(0, true);
+
+	fMainSplitView->SetItemWeight(1, rightWeight); // ,true
+	if (rightWeight == 0) {
+		printf("COLLAPSE!\n");
+		fMainSplitView->SetItemCollapsed(1, true);
+	}
 
 	fHistory->MakeFocus(true);
 	fHistory->SetInvocationMessage(new BMessage(INSERT_HISTORY));
