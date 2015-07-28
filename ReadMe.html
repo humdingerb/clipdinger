@@ -101,13 +101,21 @@ for <a href="http://www.haiku-os.org">Haiku</a><br />
 <p>Clipdinger is a small tool to manage a history of the system clipboard. It solves the problem that you often have to paste some text you've just recently copied to the clipboard, but that has been replaced by something you've copied more recently... It also saves the history so it'll appear just as you left it on the last shutdown.</p>
 <p>If you want to paste some text that isn't in the clipboard any more, simply hit <span class="key">SHIFT</span> <span class="key">ALT</span> <span class="key">V</span> to summon the Clipdinger window. Here you can select an entry with the <span class="key">CursorUp/Down</span> keys and put it into the clipboard or auto-paste it by hitting <span class="key">RETURN</span>.<br />
 <span class="key">ESCAPE</span> or <span class="key">ALT</span> <span class="key">W</span> aborts and minimizes the Clipdinger window.</p>
-
-<p>Here's the main window with a few entries in the history and the settings window when choosing <span class="menu">Settings...</span> from the <span class="menu">History</span> menu:</p>
+<p>This is the main window:</p>
 <div align = "center">
-<img src="./images/clipdinger.png" alt="Clipdinger windows" />
+<img src="./images/clipdinger.png" alt="Clipdinger main window" />
 </div>
-<p>For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text. The top entry is always what's currently in the clipboard.</p>
+<p>To the left is a history of your past clippings (empty, of course, when started for the first time). For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text. The top entry is always what's currently in the clipboard.</p>
 
+<p>To the right is a list of saved favorites. You right-click on an entry in the history to the left, and choose <span class="menu">Add to favorites</span> to make a clipping a favorite. The first 12 entries have automatically an <span class="key">F-key</span> assigned for even quicker pasting of your most used clippings.</p>
+<p>You can adjust the size of history/favorites by grabbing the dotted line between them. You can also completely collapse one of those lists. The <span class="key">F-keys</span> will still work, even if your favorites are collapsed.</p>
+<p>The <span class="button">Move up</span> and <span class="button">Move down</span> buttons allow for re-ordering the currently selected favorite.<br />
+<span class="key">DEL</span> or choosing <span class="menu">Remove favorite</span> from the context menu eliminates an entry. <span class="menu">Edit title</span> let's you choose another title for it. By default, the contents of the clip is displayed, just like for the history list on the left.</p>
+
+<p>This is the settings window, summoned with <span class="menu">Settings...</span> from the <span class="menu">History</span> menu:</p>
+<div align = "center">
+<img src="./images/clipdinger-settings.png" alt="Clipdinger settings" />
+</div>
 <p>At the top of the settings window, you can set the number of entries in the history (the default is 50).<br />
 Keep in mind that every clipping is kept in memory and if you copy many large blocks of text, you may clog up your memory. Though, for everyday use, where clippings are seldom larger than a few KiBs at most, having a few dozen entries in the history shouldn't tax memory noticeably.</p>
 <p>Once the limit of the history is reached, the oldest entry is removed automatically to make room for the new clipping.</p>
@@ -162,6 +170,12 @@ Also, thanks to everyone that contributed translations for Clipdinger.</p>
 <li>Added fading option, to darken history entries over time.</li>
 <li>Added Help menu item to open ReadMe.html.</li>
 <li>Bug fixes and optimizations.</li>
+</ul>
+
+<p><b>0.4</b> - <i>--2015:</i></p>
+<ul>
+<li>Bug fixes and optimizations.</li>
+<li>Added favorites feature.</li>
 </ul>
 </body>
 </html>

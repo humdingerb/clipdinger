@@ -7,11 +7,22 @@ Clipdinger is a small tool to manage a history of the system clipboard. It solve
 If you want to paste some text that isn't in the clipboard any more, simply hit _SHIFT_ + _ALT_ + _V_ to summon the Clipdinger window. Here you can select an entry with the _CursorUp/Down_ keys and put it into the clipboard or auto-paste it by hitting _RETURN_.
 _ESCAPE_  or _ALT_ + _W_ aborts and minimizes the Clipdinger window.
 
-Here's the main window with a few entries in the history and the settings window when choosing _Settings..._ from the History menu:
+This is the main window:
 
 ![screenshot](./images/clipdinger.png)
 
-For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text. The top entry is always what's currently in the clipboard.
+To the left is a history of your past clippings (empty, of course, when started for the first time). For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text. The top entry is always what's currently in the clipboard.
+
+To the right is a list of saved favorites. You right-click on an entry in the history to the left, and choose Add to favorites to make a clipping a favorite. The first 12 entries have automatically an _F-key_ assigned for even quicker pasting of your most used clippings.
+
+You can adjust the size of history/favorites by grabbing the dotted line between them. You can also completely collapse one of those lists. The _F-keys_ will still work, even if your favorites are collapsed.
+
+The _Move up_ and _Move down_ buttons allow for re-ordering the currently selected favorite.
+_DEL_ or choosing _Remove favorite_ from the context menu eliminates an entry. _Edit title_ let's you choose another title for it. By default, the contents of the clip is displayed, just like for the history list on the left.
+
+This is the settings window, summoned with _Settings..._ from the _History_ menu:
+
+![screenshot](./images/clipdinger-settings.png)
 
 At the top of the settings window, you can set the number of entries in the history (the default is 50).
 Keep in mind that every clipping is kept in memory and if you copy many large blocks of text, you may clog up your memory. Though, for everyday use, where clippings are seldom larger than a few KiBs at most, having a few dozen entries in the history shouldn't tax memory noticeably.
@@ -62,3 +73,8 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 *   Added fading option, to darken history entries over time.
 *	Added Help menu item to open ReadMe.html.
 *   Bug fixes and optimizations.
+
+**0.4** - _--2015:_
+
+*   Bug fixes and optimizations.
+*	Added favorites feature.
