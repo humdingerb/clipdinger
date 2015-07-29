@@ -134,13 +134,18 @@ ClipView::AdjustColors()
 	bool fade;
 	int32 delay;
 	float step;
+	bool pause;
 	ClipdingerSettings* settings = my_app->Settings();
 	if (settings->Lock()) {
 		fade = settings->GetFade();
 		step = settings->GetFadeStep();
 		delay = settings->GetFadeDelay() * kMinuteUnits;
+		pause = settings->GetFadePause();
 		settings->Unlock();
 	}
+
+	if (pause)
+		return;
 
 	int32 now(real_time_clock());
 	for (int32 i = 0; i < CountItems(); i++) {

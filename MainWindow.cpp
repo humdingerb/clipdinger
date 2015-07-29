@@ -186,6 +186,11 @@ MainWindow::_BuildLayout()
 	favoriteHeader->SetFont(&font);
 	favoriteHeader->SetAlignment(B_ALIGN_CENTER);
 
+	// The pause checkbox
+	fPauseCheckBox = new BCheckBox("pause", B_TRANSLATE("Pause fading"),
+		new BMessage(PAUSE), B_WILL_DRAW | B_FULL_UPDATE_ON_RESIZE);
+	fPauseCheckBox->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
+
 	// The buttons
 	fButtonUp = new BButton("up", B_TRANSLATE("Move up"),
 		new BMessage(FAV_UP), B_WILL_DRAW | B_FULL_UPDATE_ON_RESIZE);
@@ -198,6 +203,9 @@ MainWindow::_BuildLayout()
 		BLayoutBuilder::Split<>(B_HORIZONTAL)
 			.AddGroup(B_VERTICAL)
 				.Add(fHistoryScrollView)
+				.AddGlue()
+				.Add(fPauseCheckBox)
+				.AddGlue()
 			.End()
 			.AddGroup(B_VERTICAL, spacing / 2)
 				.Add(favoriteHeader)
@@ -404,6 +412,16 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			if (!fHistory->IsEmpty());
 				fHistory->RemoveItem(fHistory->CurrentSelection());
+			break;
+		}
+		case PAUSE:
+		{
+			int32 pause = fPauseCheckBox->Value();
+			ClipdingerSettings* settings = my_app->Settings();
+			if (settings->Lock()) {
+				settings->SetFadePause(pause);
+				settings->Unlock();
+			}
 			break;
 		}
 		case FAV_ADD:

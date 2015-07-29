@@ -26,6 +26,7 @@ public:
 		int32		GetFade() { return fFade; }
 		int32		GetFadeDelay() { return fFadeDelay; }
 		int32		GetFadeStep() { return fFadeStep; }
+		int32		GetFadePause() { return fFadePause; }
 		BRect		GetWindowPosition() { return fPosition; }
 		void		GetSplitWeight(float* left, float* right);
 		void		GetSplitCollapse(bool* left, bool* right);
@@ -38,12 +39,14 @@ public:
 		void		SetWindowPosition(BRect where);
 		void		SetSplitWeight(float left, float right);
 		void		SetSplitCollapse(bool left, bool right);
+		void		SetFadePause(int32 pause) { fFadePause = pause; }
 private:
 		int32		fLimit;
 		int32		fAutoPaste;
 		int32		fFade;
 		int32		fFadeDelay;
 		int32		fFadeStep;
+		int32		fFadePause;
 		BRect		fPosition;
 		float		fLeftWeight;
 		float		fRightWeight;

@@ -28,6 +28,7 @@ ClipdingerSettings::ClipdingerSettings()
 	fFade(kDefaultFade),
 	fFadeDelay(kDefaultFadeDelay),
 	fFadeStep(kDefaultFadeStep),
+	fFadePause(0),	
 	dirtySettings(false)
 {
 	fPosition.Set(-1, -1, -1, -1);
