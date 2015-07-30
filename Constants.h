@@ -34,7 +34,6 @@ static const int32 kMinuteUnits = 5; // minutes per unit
 #define ESCAPE				'esca'
 #define POPCLOSED			'pmcl'
 #define F_KEY				'fkey'
-#define SWITCH_LISTS		'swls'
 
 #define CLEAR_HISTORY		'clhi'
 #define HELP				'help'

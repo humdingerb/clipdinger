@@ -404,14 +404,6 @@ MainWindow::MessageReceived(BMessage* message)
 			Minimize(true);
 			break;
 		}
-//		case SWITCH_LISTS:
-//		{
-//			if (fHistory->IsFocus())
-//				fFavorites->MakeFocus(true);
-//			else
-//				fHistory->MakeFocus(true);
-//			break;
-//		}
 		case DELETE:
 		{
 			if (!fHistory->IsEmpty());
