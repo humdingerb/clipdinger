@@ -43,7 +43,6 @@ static const int32 kMinuteUnits = 5; // minutes per unit
 #define INSERT_FAVORITE		'ifav'
 #define ADJUSTCOLORS		'acol'
 #define SETTINGS			'sett'
-#define SPLIT				'spli'
 
 #define	AUTOPASTE			'auto'
 #define FADE				'fade'

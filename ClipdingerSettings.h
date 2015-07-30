@@ -28,14 +28,16 @@ public:
 		int32		GetFadeStep() { return fFadeStep; }
 		BRect		GetWindowPosition() { return fPosition; }
 		void		GetSplitWeight(float* left, float* right);
+		void		GetSplitCollapse(bool* left, bool* right);
 
-		void		SetLimit(int32 limit) { fLimit = limit; }
-		void		SetAutoPaste(int32 autopaste) { fAutoPaste = autopaste; }
-		void		SetFade(int32 fade) { fFade = fade; }
-		void		SetFadeDelay(int32 delay) { fFadeDelay = delay; }
-		void		SetFadeStep(int32 step) { fFadeStep = step; }
-		void		SetWindowPosition(BRect where) { fPosition = where; }
+		void		SetLimit(int32 limit);
+		void		SetAutoPaste(int32 autopaste);
+		void		SetFade(int32 fade);
+		void		SetFadeDelay(int32 delay);
+		void		SetFadeStep(int32 step);
+		void		SetWindowPosition(BRect where);
 		void		SetSplitWeight(float left, float right);
+		void		SetSplitCollapse(bool left, bool right);
 private:
 		int32		fLimit;
 		int32		fAutoPaste;
@@ -45,15 +47,10 @@ private:
 		BRect		fPosition;
 		float		fLeftWeight;
 		float		fRightWeight;
+		bool		fLeftCollapse;
+		bool		fRightCollapse;
 
-		int32		originalLimit;
-		int32		originalAutoPaste;
-		int32		originalFade;
-		int32		originalFadeDelay;
-		int32		originalFadeStep;
-		BRect		originalPosition;
-		float		originalLeftWeight;
-		float		originalRightWeight;
+		bool		dirtySettings;;
 		
 		BLocker		fLock;
 };

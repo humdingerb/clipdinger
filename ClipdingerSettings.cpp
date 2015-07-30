@@ -27,8 +27,10 @@ ClipdingerSettings::ClipdingerSettings()
 	fAutoPaste(kDefaultAutoPaste),
 	fFade(kDefaultFade),
 	fFadeDelay(kDefaultFadeDelay),
-	fFadeStep(kDefaultFadeStep)
+	fFadeStep(kDefaultFadeStep),
+	dirtySettings(false)
 {
+	fPosition.Set(-1, -1, -1, -1);
 	BPath path;
 	BMessage msg;
 
@@ -63,14 +65,11 @@ ClipdingerSettings::ClipdingerSettings()
 				if (msg.FindFloat("split_weight_right", &fRightWeight) != B_OK)
 					fRightWeight = 0.2;
 
-				originalLimit = fLimit;
-				originalAutoPaste = fAutoPaste;
-				originalFade = fFade;
-				originalFadeDelay = fFadeDelay;
-				originalFadeStep = fFadeStep;
-				originalPosition = fPosition;
-				originalLeftWeight = fLeftWeight;
-				originalRightWeight = fRightWeight;
+				if (msg.FindBool("split_collapse_left", &fLeftCollapse) != B_OK)
+					fLeftCollapse = false;
+
+				if (msg.FindBool("split_collapse_right", &fRightCollapse) != B_OK)
+					fRightCollapse = false;
 			}
 		}
 	}
@@ -79,15 +78,8 @@ ClipdingerSettings::ClipdingerSettings()
 
 ClipdingerSettings::~ClipdingerSettings()
 {
-	if (originalLimit == fLimit &&
-		originalAutoPaste == fAutoPaste &&
-		originalFade == fFade &&
-		originalFadeDelay == fFadeDelay &&
-		originalFadeStep == fFadeStep &&
-		originalPosition == fPosition &&
-		originalLeftWeight == fLeftWeight &&
-		originalRightWeight == fRightWeight)
-			return;
+	if (!dirtySettings)
+		return;
 
 	BPath path;
 	BMessage msg;
@@ -115,6 +107,8 @@ ClipdingerSettings::~ClipdingerSettings()
 			msg.AddRect("windowlocation", fPosition);
 			msg.AddFloat("split_weight_left", fLeftWeight);
 			msg.AddFloat("split_weight_right", fRightWeight);
+			msg.AddBool("split_collapse_left", fLeftCollapse);
+			msg.AddBool("split_collapse_right", fRightCollapse);
 			msg.Flatten(&file);
 		}
 	}
@@ -144,8 +138,90 @@ ClipdingerSettings::GetSplitWeight(float* left, float* right)
 
 
 void
+ClipdingerSettings::GetSplitCollapse(bool* left, bool* right)
+{
+	*left = fLeftCollapse;
+	*right = fRightCollapse;
+}
+
+
+void
+ClipdingerSettings::SetLimit(int32 limit)
+{
+	if (fLimit == limit)
+		return;
+	fLimit = limit;
+	dirtySettings = true;
+}
+
+
+void
+ClipdingerSettings::SetAutoPaste(int32 autopaste)
+{
+	if (fAutoPaste == autopaste)
+		return;
+	fAutoPaste = autopaste;
+	dirtySettings = true;
+}
+
+
+void
+ClipdingerSettings::SetFade(int32 fade)
+{
+	if (fFade == fade)
+		return;
+	fFade = fade;
+	dirtySettings = true;
+}
+
+
+void
+ClipdingerSettings::SetFadeDelay(int32 delay)
+{
+	if (fFadeDelay == delay)
+		return;
+	fFadeDelay = delay;
+	dirtySettings = true;
+}
+
+
+void
+ClipdingerSettings::SetFadeStep(int32 step)
+{
+	if (fFadeStep == step)
+		return;
+	fFadeStep = step;
+	dirtySettings = true;
+}
+
+
+void
+ClipdingerSettings::SetWindowPosition(BRect where)
+{
+	if (fPosition == where)
+		return;
+	fPosition = where;
+	dirtySettings = true;
+}
+
+
+void
 ClipdingerSettings::SetSplitWeight(float left, float right)
 {
+	if ((fLeftWeight == left) && (fRightWeight == right))
+		return;
 	fLeftWeight = left;
 	fRightWeight = right;
+	dirtySettings = true;
+}
+
+
+void
+ClipdingerSettings::SetSplitCollapse(bool left, bool right)
+{
+	if ((fLeftCollapse == left) && (fRightCollapse == right))
+		return;
+	fLeftCollapse = left;
+	fRightCollapse = right;
+	dirtySettings = true;
 }

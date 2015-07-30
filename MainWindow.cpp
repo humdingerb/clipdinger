@@ -42,10 +42,11 @@ MainWindow::MainWindow(BRect frame)
 	catcher->Hide();
 
 	_BuildLayout();
+	_SetSplitview();
 
 	if (frame == BRect(-1, -1, -1, -1)) {
 		CenterOnScreen();
-		ResizeTo(300, 400);
+		ResizeTo(500, 400);
 	} else {
 		// make sure window is on screen
 		BScreen screen(this);
@@ -85,22 +86,19 @@ MainWindow::_SetSplitview()
 {
 	float leftWeight;
 	float rightWeight;
+	bool leftCollapse;
+	bool rightCollapse;
 	ClipdingerSettings* settings = my_app->Settings();
 	if (settings->Lock()) {
 		settings->GetSplitWeight(&leftWeight, &rightWeight);
+		settings->GetSplitCollapse(&leftCollapse, &rightCollapse);
 		settings->Unlock();
 	}
 	fMainSplitView->SetItemWeight(0, leftWeight, false); // ,false
-	if (leftWeight == 0)
-		fMainSplitView->SetItemCollapsed(0, true);
+	fMainSplitView->SetItemCollapsed(0, leftCollapse);
 
 	fMainSplitView->SetItemWeight(1, rightWeight, true); // ,true
-	if (rightWeight == 0) {
-		printf("COLLAPSE!\n");
-		printf("collapsible: %i\n", fMainSplitView->IsCollapsible(1));
-		fMainSplitView->SetItemCollapsed(1, true);
-		printf("collapsed? : %i\n", fMainSplitView->IsItemCollapsed(1));
-	}
+	fMainSplitView->SetItemCollapsed(1, rightCollapse);
 }
 
 
@@ -114,7 +112,10 @@ MainWindow::QuitRequested()
 	if (settings->Lock()) {
 		float leftWeight = fMainSplitView->ItemWeight((int32)0);
 		float rightWeight = fMainSplitView->ItemWeight(1);
+		bool leftCollapse = fMainSplitView->IsItemCollapsed((int)0);
+		bool rightCollapse = fMainSplitView->IsItemCollapsed(1);
 		settings->SetSplitWeight(leftWeight, rightWeight);
+		settings->SetSplitCollapse(leftCollapse, rightCollapse);
 		settings->SetWindowPosition(ConvertToScreen(Bounds()));
 		settings->Unlock();
 	}
@@ -392,11 +393,6 @@ MainWindow::MessageReceived(BMessage* message)
 			AddClip(clip, path.Path(), time);
 
 			fHistory->Select(0);
-			break;
-		}
-		case SPLIT:
-		{
-			_SetSplitview();
 			break;
 		}
 		case ESCAPE:

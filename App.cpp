@@ -36,7 +36,6 @@ App::ReadyToRun()
 {
 	fMainWindow = new MainWindow(fSettings.GetWindowPosition());
 	fMainWindow->Show();
-	fMainWindow->PostMessage(SPLIT);
 
 //	fMainWindow->Minimize(true);
 }
@@ -46,7 +45,7 @@ void
 App::AboutRequested()
 {
 	BAlert *alert = new BAlert("about",
-		B_TRANSLATE("Clipdinger v0.3\n"
+		B_TRANSLATE("Clipdinger v0.4\n"
 		"\twritten by Humdinger\n"
 		"\tCopyright 2015\n\n"
 		"Clipdinger provides a history of "
