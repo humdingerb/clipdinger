@@ -94,10 +94,10 @@ MainWindow::_SetSplitview()
 		settings->GetSplitCollapse(&leftCollapse, &rightCollapse);
 		settings->Unlock();
 	}
-	fMainSplitView->SetItemWeight(0, leftWeight, false); // ,false
+	fMainSplitView->SetItemWeight(0, leftWeight, false);
 	fMainSplitView->SetItemCollapsed(0, leftCollapse);
 
-	fMainSplitView->SetItemWeight(1, rightWeight, true); // ,true
+	fMainSplitView->SetItemWeight(1, rightWeight, true);
 	fMainSplitView->SetItemCollapsed(1, rightCollapse);
 }
 
@@ -175,9 +175,9 @@ MainWindow::_BuildLayout()
 	fFavorites->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
 	fHistoryScrollView = new BScrollView("historyscroll", fHistory,
-		B_FOLLOW_ALL_SIDES, false, true, B_FANCY_BORDER);
+		B_WILL_DRAW, false, true);
 	fFavoriteScrollView = new BScrollView("favoritescroll", fFavorites,
-		B_FOLLOW_ALL_SIDES, false, true, B_FANCY_BORDER);
+		B_WILL_DRAW, false, true);
 
 	BStringView* favoriteHeader = new BStringView("title",
 		B_TRANSLATE("Saved favourites"));
@@ -188,7 +188,7 @@ MainWindow::_BuildLayout()
 
 	// The pause checkbox
 	fPauseCheckBox = new BCheckBox("pause", B_TRANSLATE("Pause fading"),
-		new BMessage(PAUSE), B_WILL_DRAW | B_FULL_UPDATE_ON_RESIZE);
+		new BMessage(PAUSE), B_WILL_DRAW);
 	fPauseCheckBox->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
 	// The buttons
@@ -203,9 +203,11 @@ MainWindow::_BuildLayout()
 		BLayoutBuilder::Split<>(B_HORIZONTAL)
 			.AddGroup(B_VERTICAL)
 				.Add(fHistoryScrollView)
-				.AddGlue()
-				.Add(fPauseCheckBox)
-				.AddGlue()
+				.AddGroup(B_HORIZONTAL)
+					.AddGlue()
+					.Add(fPauseCheckBox)
+					.AddGlue()
+				.End()
 			.End()
 			.AddGroup(B_VERTICAL, spacing / 2)
 				.Add(favoriteHeader)
