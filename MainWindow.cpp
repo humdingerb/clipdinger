@@ -188,14 +188,15 @@ MainWindow::_BuildLayout()
 
 	// The pause checkbox
 	fPauseCheckBox = new BCheckBox("pause", B_TRANSLATE("Pause fading"),
-		new BMessage(PAUSE), B_WILL_DRAW);
+		new BMessage(PAUSE));
 	fPauseCheckBox->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
+//	fPauseCheckBox->SetFlags(fPauseCheckBox->Flags() & ~B_NAVIGABLE);
 
 	// The buttons
 	fButtonUp = new BButton("up", B_TRANSLATE("Move up"),
-		new BMessage(FAV_UP), B_WILL_DRAW | B_FULL_UPDATE_ON_RESIZE);
+		new BMessage(FAV_UP));
 	fButtonDown = new BButton("down", B_TRANSLATE("Move down"),
-		new BMessage(FAV_DOWN), B_WILL_DRAW | B_FULL_UPDATE_ON_RESIZE);
+		new BMessage(FAV_DOWN));
 
 	// do the layouting				
 	static const float spacing = be_control_look->DefaultItemSpacing() / 2;
@@ -203,11 +204,12 @@ MainWindow::_BuildLayout()
 		BLayoutBuilder::Split<>(B_HORIZONTAL)
 			.AddGroup(B_VERTICAL)
 				.Add(fHistoryScrollView)
-				.AddGroup(B_HORIZONTAL)
-					.AddGlue()
-					.Add(fPauseCheckBox)
-					.AddGlue()
-				.End()
+				.Add(fPauseCheckBox)
+//				.AddGroup(B_HORIZONTAL)
+//					.AddGlue()
+//					.Add(fPauseCheckBox)
+//					.AddGlue()
+//				.End()
 			.End()
 			.AddGroup(B_VERTICAL, spacing / 2)
 				.Add(favoriteHeader)
@@ -542,6 +544,18 @@ MainWindow::MessageReceived(BMessage* message)
 				AutoPaste();
 
 			be_clipboard->StartWatching(this);
+			break;
+		}
+		case FADE_CHECKBOX:
+		{
+			int32 fade;
+			if (message->FindInt32("fade", &fade) == B_OK) {
+				if (!fade)
+					fPauseCheckBox->Hide();
+				else
+					fPauseCheckBox->Show();
+				InvalidateLayout();
+			}
 			break;
 		}
 		case UPDATE_SETTINGS:

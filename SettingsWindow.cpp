@@ -245,6 +245,11 @@ SettingsWindow::MessageReceived(BMessage* message)
 
 			fDelaySlider->SetEnabled(newFade);
 			fStepSlider->SetEnabled(newFade);
+
+			BMessenger messenger(my_app->fMainWindow);
+			BMessage message(FADE_CHECKBOX);
+			message.AddInt32("fade", fFadeBox->Value());
+			messenger.SendMessage(&message);
 			break;
 		}
 		case DELAY:
