@@ -299,7 +299,6 @@ MainWindow::_LoadHistory()
 				int32 time;
 				int32 quittime;
 				if (msg.FindInt32("quittime", &quittime) != B_OK) {
-					printf("no quit time.\n");
 					int32 quittime(real_time_clock());
 				}
 				int32 i = 0;
@@ -440,7 +439,6 @@ MainWindow::MessageReceived(BMessage* message)
 				break;
 
 			int32 start = fFavorites->CurrentSelection();
-			printf("index: %i\n", start);
 			fFavorites->RemoveItem(start);
 			RenumberFavorites(start);
 			break;
@@ -485,6 +483,9 @@ MainWindow::MessageReceived(BMessage* message)
 					fFavorites->MakeFocus(true);
 				if (listview == 1)
 					fHistory->MakeFocus(true);
+
+				fFavorites->Invalidate();
+				fHistory->Invalidate();
 			}
 			break;
 		}
@@ -643,7 +644,6 @@ MainWindow::RenumberFavorites(int32 start)
 	for (start; start < fFavorites->CountItems(); start++) {
 		FavItem *item = dynamic_cast<FavItem *> (fFavorites->ItemAt(start));
 		item->SetFavNumber(start);
-		printf("new indexed: %i\n", start);
 	}
 }
 

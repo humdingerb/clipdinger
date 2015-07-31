@@ -46,8 +46,10 @@ FavItem::DrawItem(BView *view, BRect rect, bool complete)
 	// set background color
 	rgb_color bgColor;
 
-	if (IsSelected())
+	if (IsSelected() && view->IsFocus())
 		bgColor = ui_color(B_LIST_SELECTED_BACKGROUND_COLOR);
+	else if (IsSelected() && !view->IsFocus())
+		bgColor = tint_color(ui_color(B_LIST_SELECTED_BACKGROUND_COLOR), 0.7);
 	else
 		bgColor = ui_color(B_LIST_BACKGROUND_COLOR);
 
