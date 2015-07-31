@@ -1,23 +1,34 @@
-1	German	application/x-vnd.Clipdinger	388184846
+1	German	application/x-vnd.Clipdinger	4155327014
 Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)	SettingsWindow		Einträge werden alle %A% Minuten dunkler.\nDie maximale Abdunklung wird nach\n%B% Minuten erreicht (in %C% Stufen)
+Title:	EditWindow		Titel:
 Clear history	MainWindow		Historie löschen
 About Clipdinger	MainWindow		Über Clipdinger
+Add to favorites	ClipList		Zu Favoriten hinzufügen
+Remove favorite	ClipList		Favorit entfernen
 entries in the clipboard history	SettingsWindow		Einträge in der Historie
+Edit title	EditWindow		Titel bearbeiten
 History	MainWindow		Historie
+OK	EditWindow		OK
 Settings…	MainWindow		Einstellungen…
+Saved favourites	MainWindow		Gespeicherte Favoriten
+Move down	MainWindow		Runter
 OK	SettingsWindow		OK
 Entries don't fade over time.	SettingsWindow		Einträge werden nicht abgedunkelt.
 App	MainWindow		App
 Minimize	MainWindow		Minimieren
 Quit	MainWindow		Beenden
+Edit title	ClipList		Titel bearbeiten
+Pause fading	MainWindow		Abdunkeln anhalten
 Cancel	SettingsWindow		Abbrechen
 Clipdinger	System name		Clipdinger
 Fade history entries over time	SettingsWindow		Einträge mit der Zeit abdunkeln
-Clipdinger v0.3\n\twritten by Humdinger\n\tCopyright 2015\n\nClipdinger provides a history of clippings of the system clipboard.\n	Application		Clipdinger v0.3\n\tvon Humdinger\n\tCopyright 2015\n\nClipdinger bietet eine Historie für die Zwischenablage.\n
 Steps	SettingsWindow		Stufen
 Auto-paste	SettingsWindow		Auto-Einfügen
 Help	MainWindow		Hilfe
 Thank you	Application		Danke
 Delay	SettingsWindow		Zeitintervall
+Clipdinger v0.4\n\twritten by Humdinger\n\tCopyright 2015\n\nClipdinger provides a history of clippings of the system clipboard.\n	Application		Clipdinger v0.4\n\tvon Humdinger\n\tCopyright 2015\n\nClipdinger bietet eine Historie für die Zwischenablage.\n
 Remove clip	ClipList		Eintrag entfernen
 Clipdinger settings	SettingsWindow		Clipdinger Einstellungen
+Cancel	EditWindow		Abbrechen
+Move up	MainWindow		Rauf
