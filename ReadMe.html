@@ -111,6 +111,7 @@ for <a href="http://www.haiku-os.org">Haiku</a><br />
 <p>You can adjust the size of history/favorites by grabbing the dotted line between them. You can also completely collapse one of those lists. The <span class="key">F-keys</span> will still work, even if your favorites are collapsed.</p>
 <p>The <span class="button">Move up</span> and <span class="button">Move down</span> buttons allow for re-ordering the currently selected favorite.<br />
 <span class="key">DEL</span> or choosing <span class="menu">Remove favorite</span> from the context menu eliminates an entry. <span class="menu">Edit title</span> let's you choose another title for it. By default, the contents of the clip is displayed, just like for the history list on the left.</p>
+<p>You can quickly switch between history and favorites lists with <span class="key">CursorRight/Left</span>.</p>
 
 <p>This is the settings window, summoned with <span class="menu">Settings...</span> from the <span class="menu">History</span> menu:</p>
 <div align = "center">
@@ -122,14 +123,11 @@ Keep in mind that every clipping is kept in memory and if you copy many large bl
 <p>You can remove an entry by selecting it and pressing <span class="key">DEL</span>  or choose <span class="menu">Remove clip</span> from the context menu. You remove the complete clipboard history with <span class="menu">Clear history</span> from the <span class="menu">History</span> menu.</p>
 <p><span class="menu">Auto-paste</span> will put the clipping you've chosen via double-click or <span class="key">RETURN</span> into the window that was active before you have summoned Clipdinger.</p>
 <p>The other settings belong to the fading feature: When the checkbox <span class="menu">Fade history entries over time</span> is active, entries get darker as time ticks on. You can set the intervall that entries are being tinted (<span class="menu">Delay</span>) and by how much they are tinted (<span class="menu">Steps</span>). Below the sliders is a summary of your setting in plain English.</p>
-
+<p>If you leave your computer or just know that you won't do any copy&amp;paste for a longer time, you can simply check the <span class="menu">Pause fading</span> checkbox below the history list of the main window to prevent the entries in the history from fading. Note, that this checkbox is only visible if the fading option in the settings is active.</p>
 <h2>
 <a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
 <a id="tips" name="tips">Tips &amp; Tricks</a></h2>
-<ul>
-<li><p>Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the  <span class="path">/boot/home/config/settings/boot/launch/</span> folder. Then it gets started automatically on every boot-up.</p></li>
-<li><p>If you leave your computer or just know that you won't do any copy&amp;paste for a long time, you can simply quit Clidinger with <span class="key">ALT</span> <span class="key">Q</span> to prevent the entries in the history from fading. Clipdinger always starts in same state it was in when it was quit.</p></li>
-</ul>
+<p>Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the  <span class="path">/boot/home/config/settings/boot/launch/</span> folder. Then it gets started automatically on every boot-up.</p>
 
 <h2>
 <a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
@@ -172,10 +170,11 @@ Also, thanks to everyone that contributed translations for Clipdinger.</p>
 <li>Bug fixes and optimizations.</li>
 </ul>
 
-<p><b>0.4</b> - <i>--2015:</i></p>
+<p><b>0.4</b> - <i>1-8-2015:</i></p>
 <ul>
 <li>Bug fixes and optimizations.</li>
 <li>Added favorites feature.</li>
+<li>Added a "Pause fading" checkbox.</li>
 </ul>
 </body>
 </html>

@@ -20,6 +20,8 @@ You can adjust the size of history/favorites by grabbing the dotted line between
 The _Move up_ and _Move down_ buttons allow for re-ordering the currently selected favorite.
 _DEL_ or choosing _Remove favorite_ from the context menu eliminates an entry. _Edit title_ let's you choose another title for it. By default, the contents of the clip is displayed, just like for the history list on the left.
 
+You can quickly switch between history and favorites lists with _CursorRight/Left_.
+
 This is the settings window, summoned with _Settings..._ from the _History_ menu:
 
 ![screenshot](./images/clipdinger-settings.png)
@@ -35,10 +37,11 @@ _Auto-paste_ will put the clipping you've chosen via double-click or _RETURN_ in
 
 The other settings belong to the fading feature: When the checkbox _Fade history entries over time_ is active, entries get darker as time ticks on. You can set the intervall that entries are being tinted (_Delay_) and by how much they are tinted (_Steps_). Below the sliders is a summary of your setting in plain English.
 
+If you leave your computer or just know that you won't do any copy&paste for a longer time, you can simply check the _Pause fading_ checkbox below the history list of the main window to prevent the entries in the history from fading. Note, that this checkbox is only visible if the fading option in the settings is active.
+
 ### Tips & Tricks
 
-*   Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the `/boot/home/config/settings/boot/launch/` folder. Then it gets started automatically on every boot-up.
-*   If you leave your computer or just know that you won't do any copy&paste for a long time, you can simply quit Clidinger with _ALT_ + _Q_ to prevent the entries in the history from fading. Clipdinger always starts in same state it was in when it was quit.
+Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the `/boot/home/config/settings/boot/launch/` folder. Then it gets started automatically on every boot-up.
 
 ### Download
 
@@ -74,7 +77,8 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 *	Added Help menu item to open ReadMe.html.
 *   Bug fixes and optimizations.
 
-**0.4** - _--2015:_
+**0.4** - _1-8-2015:_
 
 *   Bug fixes and optimizations.
 *	Added favorites feature.
+*   Added a "Pause fading" checkbox.
