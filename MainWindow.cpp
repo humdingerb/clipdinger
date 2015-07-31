@@ -54,10 +54,15 @@ MainWindow::MainWindow(BRect frame)
 			CenterOnScreen();
 	}
 	ClipdingerSettings* settings = my_app->Settings();
+	int32 fade;
 	if (settings->Lock()) {
 		fLimit = settings->GetLimit();
+		fade = settings->GetFade();
 		settings->Unlock();
 	}
+	if (!fade)
+		fPauseCheckBox->Hide();
+
 	fLaunchTime = real_time_clock();
 
 	_LoadHistory();
@@ -65,6 +70,8 @@ MainWindow::MainWindow(BRect frame)
 
 	if (!fHistory->IsEmpty())
 		fHistory->Select(0);
+	if (!fFavorites->IsEmpty())
+		fFavorites->Select(0);
 
 	if (GetClipboard() == "") {
 		if (!fHistory->IsEmpty()) {
@@ -190,7 +197,6 @@ MainWindow::_BuildLayout()
 	fPauseCheckBox = new BCheckBox("pause", B_TRANSLATE("Pause fading"),
 		new BMessage(PAUSE));
 	fPauseCheckBox->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
-//	fPauseCheckBox->SetFlags(fPauseCheckBox->Flags() & ~B_NAVIGABLE);
 
 	// The buttons
 	fButtonUp = new BButton("up", B_TRANSLATE("Move up"),
@@ -451,7 +457,7 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			int32 index = fFavorites->CurrentSelection();
 			int32 last = fFavorites->CountItems();
-			if (index == last - 1)
+			if ((index == last - 1) || (index < 0))
 				break;
 			fFavorites->SwapItems(index, index + 1);
 			RenumberFavorites(index);
@@ -460,7 +466,7 @@ MainWindow::MessageReceived(BMessage* message)
 		case FAV_UP:
 		{
 			int32 index = fFavorites->CurrentSelection();
-			if (index == 0)
+			if (index <= 0)
 				break;
 			fFavorites->SwapItems(index, index - 1);
 			RenumberFavorites(index - 1);
@@ -473,16 +479,13 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case SWITCHLIST:
 		{
-			message->PrintToStream();
 			int32 listview;
-			if (message->FindInt32("list", &listview) == B_OK) {
-			printf("list: %i\n", listview);
+			if (message->FindInt32("listview", &listview) == B_OK) {
 				if (listview == 0)
-					fHistory->MakeFocus(true);
-				if (listview == 1)
 					fFavorites->MakeFocus(true);
+				if (listview == 1)
+					fHistory->MakeFocus(true);
 			}
-			printf("break!\n");
 			break;
 		}
 		case HELP:
@@ -555,18 +558,6 @@ MainWindow::MessageReceived(BMessage* message)
 			be_clipboard->StartWatching(this);
 			break;
 		}
-		case FADE_CHECKBOX:
-		{
-			int32 fade;
-			if (message->FindInt32("fade", &fade) == B_OK) {
-				if (fade == 0)
-					fPauseCheckBox->Hide();
-				else
-					fPauseCheckBox->Show();
-				InvalidateLayout();
-			}
-			break;
-		}
 		case UPDATE_SETTINGS:
 		{
 			int32 newValue;
@@ -583,6 +574,16 @@ MainWindow::MessageReceived(BMessage* message)
 			}
 			if (message->FindInt32("autopaste", &newValue) == B_OK)
 				fAutoPaste = newValue;
+			if (message->FindInt32("fade", &newValue) == B_OK) {
+				if (newValue == 0) {
+					if (!fPauseCheckBox->IsHidden())
+						fPauseCheckBox->Hide();
+				} else {
+					if (fPauseCheckBox->IsHidden())
+						fPauseCheckBox->Show();
+				}
+				InvalidateLayout();
+			}
 			break;
 		}
 		default:

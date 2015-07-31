@@ -48,7 +48,6 @@ static const int32 kMinuteUnits = 5; // minutes per unit
 
 #define	AUTOPASTE			'auto'
 #define FADE				'fade'
-#define FADE_CHECKBOX		'facb'
 #define DELAY				'dely'
 #define STEP				'step'
 #define CANCEL				'cncl'

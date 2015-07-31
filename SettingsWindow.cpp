@@ -94,6 +94,7 @@ SettingsWindow::UpdateSettings()
 	BMessage message(UPDATE_SETTINGS);
 	message.AddInt32("limit", newLimit);
 	message.AddInt32("autopaste", newAutoPaste);
+	message.AddInt32("fade", fFadeBox->Value());
 	messenger.SendMessage(&message);
 }
 
@@ -245,11 +246,6 @@ SettingsWindow::MessageReceived(BMessage* message)
 
 			fDelaySlider->SetEnabled(newFade);
 			fStepSlider->SetEnabled(newFade);
-
-			BMessenger messenger(my_app->fMainWindow);
-			BMessage message(FADE_CHECKBOX);
-			message.AddInt32("fade", fFadeBox->Value());
-			messenger.SendMessage(&message);
 			break;
 		}
 		case DELAY:

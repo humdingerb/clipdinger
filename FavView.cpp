@@ -100,11 +100,9 @@ FavView::KeyDown(const char* bytes, int32 numBytes)
 		case B_LEFT_ARROW:
 		case B_RIGHT_ARROW:
 		{
-			printf("left/right\n");
 			BMessage message(SWITCHLIST);
 			message.AddInt32("listview", (int32)1);
-			message.PrintToStream();
-			Looper()->PostMessage(SWITCHLIST);
+			Looper()->PostMessage(&message);
 			break;
 		}
 		default:
