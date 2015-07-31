@@ -205,11 +205,6 @@ MainWindow::_BuildLayout()
 			.AddGroup(B_VERTICAL)
 				.Add(fHistoryScrollView)
 				.Add(fPauseCheckBox)
-//				.AddGroup(B_HORIZONTAL)
-//					.AddGlue()
-//					.Add(fPauseCheckBox)
-//					.AddGlue()
-//				.End()
 			.End()
 			.AddGroup(B_VERTICAL, spacing / 2)
 				.Add(favoriteHeader)
@@ -476,6 +471,20 @@ MainWindow::MessageReceived(BMessage* message)
 			fFavorites->Invalidate();
 			break;
 		}
+		case SWITCHLIST:
+		{
+			message->PrintToStream();
+			int32 listview;
+			if (message->FindInt32("list", &listview) == B_OK) {
+			printf("list: %i\n", listview);
+				if (listview == 0)
+					fHistory->MakeFocus(true);
+				if (listview == 1)
+					fFavorites->MakeFocus(true);
+			}
+			printf("break!\n");
+			break;
+		}
 		case HELP:
 		{
 			app_info info;
@@ -550,7 +559,7 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			int32 fade;
 			if (message->FindInt32("fade", &fade) == B_OK) {
-				if (!fade)
+				if (fade == 0)
 					fPauseCheckBox->Hide();
 				else
 					fPauseCheckBox->Show();

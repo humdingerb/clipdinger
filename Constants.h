@@ -44,6 +44,7 @@ static const int32 kMinuteUnits = 5; // minutes per unit
 #define ADJUSTCOLORS		'acol'
 #define PAUSE				'paus'
 #define SETTINGS			'sett'
+#define SWITCHLIST			'swls'
 
 #define	AUTOPASTE			'auto'
 #define FADE				'fade'
