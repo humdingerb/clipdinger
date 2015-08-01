@@ -94,18 +94,24 @@ h3 {
 for <a href="http://www.haiku-os.org">Haiku</a><br />
 <i>by Humdinger</i></p>
 <hr />
-<p id="index"><a href="#tips">Tips &amp; Tricks</a> &mdash; <a href="#download">Download</a> &mdash; <a href="#bugs_feedback">Bugreports &amp; Feedback</a> &mdash; <a href="#thanks">Thanks</a> &mdash; <a href="#history">History</a></p>
+<p id="index"><a href="#history-favorites">History &amp; Favorites</a> &mdash; <a href="#settings">Settings</a><br />
+<a href="#tips">Tips &amp; Tricks</a> &mdash; <a href="#download">Download</a> &mdash; <a href="#bugs_feedback">Bugreports &amp; Feedback</a> &mdash; <a href="#thanks">Thanks</a> &mdash; <a href="#history">History</a></p>
 </div>
 <hr />
 <p><br /></p>
 <p>Clipdinger is a small tool to manage a history of the system clipboard. It solves the problem that you often have to paste some text you've just recently copied to the clipboard, but that has been replaced by something you've copied more recently... It also saves the history so it'll appear just as you left it on the last shutdown.</p>
 <p>If you want to paste some text that isn't in the clipboard any more, simply hit <span class="key">SHIFT</span> <span class="key">ALT</span> <span class="key">V</span> to summon the Clipdinger window. Here you can select an entry with the <span class="key">CursorUp/Down</span> keys and put it into the clipboard or auto-paste it by hitting <span class="key">RETURN</span>.<br />
 <span class="key">ESCAPE</span> or <span class="key">ALT</span> <span class="key">W</span> aborts and minimizes the Clipdinger window.</p>
-<p>This is the main window:</p>
+
+<h2>
+<a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
+<a id="history-favorites" name="history-favorites">History &amp; Favorites</a></h2>
+<p>Clipdinger starts minimized, because it sits in the background a just monitors the system clipboard. When activated by pressing <span class="key">SHIFT</span> <span class="key">ALT</span> <span class="key">V</span> its main window pops up:</p>
 <div align = "center">
 <img src="./images/clipdinger.png" alt="Clipdinger main window" />
 </div>
 <p>To the left is a history of your past clippings (empty, of course, when started for the first time). For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text. The top entry is always what's currently in the clipboard.</p>
+<p>If you have the <span class="menu">Fade history entries over time</span> option activated, there'll also be a checkbox <span class="menu">Pause fading</span> below the history list. You find more on that farther down, where Clipdinger's settings are discussed.</p>
 
 <p>To the right is a list of saved favorites. You right-click on an entry in the history to the left, and choose <span class="menu">Add to favorites</span> to make a clipping a favorite. The first 12 entries have automatically an <span class="key">F-key</span> assigned for even quicker pasting of your most used clippings.</p>
 <p>You can adjust the size of history/favorites by grabbing the dotted line between them. You can also completely collapse one of those lists. The <span class="key">F-keys</span> will still work, even if your favorites are collapsed.</p>
@@ -113,6 +119,9 @@ for <a href="http://www.haiku-os.org">Haiku</a><br />
 <span class="key">DEL</span> or choosing <span class="menu">Remove favorite</span> from the context menu eliminates an entry. <span class="menu">Edit title</span> let's you choose another title for it. By default, the contents of the clip is displayed, just like for the history list on the left.</p>
 <p>You can quickly switch between history and favorites lists with <span class="key">CursorRight/Left</span>.</p>
 
+<h2>
+<a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
+<a id="settings" name="settings">Settings</a></h2>
 <p>This is the settings window, summoned with <span class="menu">Settings...</span> from the <span class="menu">History</span> menu:</p>
 <div align = "center">
 <img src="./images/clipdinger-settings.png" alt="Clipdinger settings" />
@@ -122,12 +131,17 @@ Keep in mind that every clipping is kept in memory and if you copy many large bl
 <p>Once the limit of the history is reached, the oldest entry is removed automatically to make room for the new clipping.</p>
 <p>You can remove an entry by selecting it and pressing <span class="key">DEL</span>  or choose <span class="menu">Remove clip</span> from the context menu. You remove the complete clipboard history with <span class="menu">Clear history</span> from the <span class="menu">History</span> menu.</p>
 <p><span class="menu">Auto-paste</span> will put the clipping you've chosen via double-click or <span class="key">RETURN</span> into the window that was active before you have summoned Clipdinger.</p>
-<p>The other settings belong to the fading feature: When the checkbox <span class="menu">Fade history entries over time</span> is active, entries get darker as time ticks on. You can set the intervall that entries are being tinted (<span class="menu">Delay</span>) and by how much they are tinted (<span class="menu">Steps</span>). Below the sliders is a summary of your setting in plain English.</p>
+<p>The other settings belong to the fading feature: When the checkbox <span class="menu">Fade history entries over time</span> is active, entries get darker as time ticks on. You can set the interval that entries are being tinted (<span class="menu">Delay</span>) and by how much they are tinted (<span class="menu">Steps</span>). The third slider sets the <span class="menu">Max. tint level</span>, i.e. how dark an entry can get.<br />
+Below the sliders is a summary of your setting in plain English.</p>
 <p>If you leave your computer or just know that you won't do any copy&amp;paste for a longer time, you can simply check the <span class="menu">Pause fading</span> checkbox below the history list of the main window to prevent the entries in the history from fading. Note, that this checkbox is only visible if the fading option in the settings is active.</p>
 <h2>
 <a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
 <a id="tips" name="tips">Tips &amp; Tricks</a></h2>
-<p>Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the  <span class="path">/boot/home/config/settings/boot/launch/</span> folder. Then it gets started automatically on every boot-up.</p>
+<ul>
+<li><p>Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the  <span class="path">/boot/home/config/settings/boot/launch/</span> folder. Then it gets started automatically on every boot-up.</p></li>
+<li><p>All changes in the settings window can be viewed live in the main window. To find the right fading settings for you, it's best to keep working normally for some time to fill the history and then just play around with the sliders until you're satisfied.</p></li>
+<li><p>Clipdinger's <span class="menu">Auto-paste</span> feature can be a bit tricky: It doesn't know in which application's window you pressed <span class="key">SHIFT</span> <span class="key">ALT</span> <span class="key">V</span> for it to pop up. With activated auto-paste, it simply pastes into last window that was active before you hit <span class="key">ENTER</span> or double-clicked an entry. So, avoid detours...</p></li>
+</ul>
 
 <h2>
 <a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
@@ -175,6 +189,7 @@ Also, thanks to everyone that contributed translations for Clipdinger.</p>
 <li>Bug fixes and optimizations.</li>
 <li>Added favorites feature.</li>
 <li>Added a "Pause fading" checkbox.</li>
+<li>Added a setting for the maximal fading tint.</li>
 </ul>
 </body>
 </html>

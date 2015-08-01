@@ -7,11 +7,15 @@ Clipdinger is a small tool to manage a history of the system clipboard. It solve
 If you want to paste some text that isn't in the clipboard any more, simply hit _SHIFT_ + _ALT_ + _V_ to summon the Clipdinger window. Here you can select an entry with the _CursorUp/Down_ keys and put it into the clipboard or auto-paste it by hitting _RETURN_.
 _ESCAPE_  or _ALT_ + _W_ aborts and minimizes the Clipdinger window.
 
-This is the main window:
+### History & Favorites
+
+Clipdinger starts minimized, because it sits in the background a just monitors the system clipboard. When activated by pressing _SHIFT_ + _ALT_ + _V_ its main window pops up:
 
 ![screenshot](./images/clipdinger.png)
 
 To the left is a history of your past clippings (empty, of course, when started for the first time). For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text. The top entry is always what's currently in the clipboard.
+
+If you have the _Fade history entries over time_ option activated, there'll also be a checkbox _Pause fading_ below the history list. You find more on that farther down, where Clipdinger's settings are discussed.
 
 To the right is a list of saved favorites. You right-click on an entry in the history to the left, and choose Add to favorites to make a clipping a favorite. The first 12 entries have automatically an _F-key_ assigned for even quicker pasting of your most used clippings.
 
@@ -21,6 +25,8 @@ The _Move up_ and _Move down_ buttons allow for re-ordering the currently select
 _DEL_ or choosing _Remove favorite_ from the context menu eliminates an entry. _Edit title_ let's you choose another title for it. By default, the contents of the clip is displayed, just like for the history list on the left.
 
 You can quickly switch between history and favorites lists with _CursorRight/Left_.
+
+### Settings
 
 This is the settings window, summoned with _Settings..._ from the _History_ menu:
 
@@ -35,13 +41,18 @@ You can remove an entry by selecting it and pressing _DEL_ or choose _Remove cli
 
 _Auto-paste_ will put the clipping you've chosen via double-click or _RETURN_ into the window that was active before you have summoned Clipdinger.
 
-The other settings belong to the fading feature: When the checkbox _Fade history entries over time_ is active, entries get darker as time ticks on. You can set the intervall that entries are being tinted (_Delay_) and by how much they are tinted (_Steps_). Below the sliders is a summary of your setting in plain English.
+The other settings belong to the fading feature: When the checkbox _Fade history entries over time_ is active, entries get darker as time ticks on. You can set the intervall that entries are being tinted (_Delay_) and by how much they are tinted (_Steps_). The third slider sets the _Max. tint level_, i.e. how dark an entry can get.
+Below the sliders is a summary of your setting in plain English.
 
 If you leave your computer or just know that you won't do any copy&paste for a longer time, you can simply check the _Pause fading_ checkbox below the history list of the main window to prevent the entries in the history from fading. Note, that this checkbox is only visible if the fading option in the settings is active.
 
 ### Tips & Tricks
 
-Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the `/boot/home/config/settings/boot/launch/` folder. Then it gets started automatically on every boot-up.
+*   Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the `/boot/home/config/settings/boot/launch/` folder. Then it gets started automatically on every boot-up.
+*   All changes in the settings window can be viewed live in the main window. To find the right fading settings for you, it's best to keep working normally for some time to fill the history and then just play around with the sliders until you're satisfied.
+*   Clipdinger's _Auto-paste_ feature can be a bit tricky: It doesn't know in which window you pressed _SHIFT_ + _ALT_ + _V_ for it to pop up. With activated auto-paste, it simply pastes into last window that was active before you hit _ENTER_ or double-clicked an entry. So, avoid detours...
+
+
 
 ### Download
 
@@ -82,3 +93,4 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 *   Bug fixes and optimizations.
 *	Added favorites feature.
 *   Added a "Pause fading" checkbox.
+*   Added a setting for the maximal fading tint.
