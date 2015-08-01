@@ -40,11 +40,32 @@
 <p>If you want to paste some text that isn't in the clipboard any more, simply hit <em>SHIFT</em> + <em>ALT</em> + <em>V</em> to summon the Clipdinger window. Here you can select an entry with the <em>CursorUp/Down</em> keys and put it into the clipboard or auto-paste it by hitting <em>RETURN</em>.
 <em>ESCAPE</em>  or <em>ALT</em> + <em>W</em> aborts and minimizes the Clipdinger window.</p>
 
-<p>Here's the main window with a few entries in the history and the settings window when choosing <em>Settings...</em> from the History menu:</p>
+<h3>
+<a id="history--favorites" class="anchor" href="#history--favorites" aria-hidden="true"><span class="octicon octicon-link"></span></a>History &amp; Favorites</h3>
+
+<p>Clipdinger starts minimized, because it sits in the background a just monitors the system clipboard. When activated by pressing <em>SHIFT</em> + <em>ALT</em> + <em>V</em> its main window pops up:</p>
 
 <p><img src="https://raw.githubusercontent.com/humdingerb/clipdinger/master/images/clipdinger.png" alt="screenshot"></p>
 
-<p>For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text. The top entry is always what's currently in the clipboard.</p>
+<p>To the left is a history of your past clippings (empty, of course, when started for the first time). For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text. The top entry is always what's currently in the clipboard.</p>
+
+<p>If you have the <em>Fade history entries over time</em> option activated, there'll also be a checkbox <em>Pause fading</em> below the history list. You find more on that farther down, where Clipdinger's settings are discussed.</p>
+
+<p>To the right is a list of saved favorites. You right-click on an entry in the history to the left, and choose Add to favorites to make a clipping a favorite. The first 12 entries have automatically an <em>F-key</em> assigned for even quicker pasting of your most used clippings.</p>
+
+<p>You can adjust the size of history/favorites by grabbing the dotted line between them. You can also completely collapse one of those lists. The <em>F-keys</em> will still work, even if your favorites are collapsed.</p>
+
+<p>The <em>Move up</em> and <em>Move down</em> buttons allow for re-ordering the currently selected favorite.
+<em>DEL</em> or choosing <em>Remove favorite</em> from the context menu eliminates an entry. <em>Edit title</em> let's you choose another title for it. By default, the contents of the clip is displayed, just like for the history list on the left.</p>
+
+<p>You can quickly switch between history and favorites lists with <em>CursorRight/Left</em>.</p>
+
+<h3>
+<a id="settings" class="anchor" href="#settings" aria-hidden="true"><span class="octicon octicon-link"></span></a>Settings</h3>
+
+<p>This is the settings window, summoned with <em>Settings...</em> from the <em>History</em> menu:</p>
+
+<p><img src="https://raw.githubusercontent.com/humdingerb/clipdinger/master/images/clipdinger-settings.png" alt="screenshot"></p>
 
 <p>At the top of the settings window, you can set the number of entries in the history (the default is 50).
 Keep in mind that every clipping is kept in memory and if you copy many large blocks of text, you may clog up your memory. Though, for everyday use, where clippings are seldom larger than a few KiBs at most, having a few dozen entries in the history shouldn't tax memory noticeably.</p>
@@ -55,14 +76,19 @@ Keep in mind that every clipping is kept in memory and if you copy many large bl
 
 <p><em>Auto-paste</em> will put the clipping you've chosen via double-click or <em>RETURN</em> into the window that was active before you have summoned Clipdinger.</p>
 
-<p>The other settings belong to the fading feature: When the checkbox <em>Fade history entries over time</em> is active, entries get darker as time ticks on. You can set the intervall that entries are being tinted (<em>Delay</em>) and by how much they are tinted (<em>Steps</em>). Below the sliders is a summary of your setting in plain English.</p>
+<p>The other settings belong to the fading feature: When the checkbox <em>Fade history entries over time</em> is active, entries get darker as time ticks on. You can set the intervall that entries are being tinted (<em>Delay</em>) and by how much they are tinted (<em>Steps</em>). The third slider sets the <em>Max. tint level</em>, i.e. how dark an entry can get.
+Below the sliders is a summary of your setting in plain English.</p>
+
+<p>If you leave your computer or just know that you won't do any copy&amp;paste for a longer time, you can simply check the <em>Pause fading</em> checkbox below the history list of the main window to prevent the entries in the history from fading. Note, that this checkbox is only visible if the fading option in the settings is active.</p>
 
 <h3>
 <a id="tips--tricks" class="anchor" href="#tips--tricks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tips &amp; Tricks</h3>
 
 <ul>
 <li>  Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the <code>/boot/home/config/settings/boot/launch/</code> folder. Then it gets started automatically on every boot-up.</li>
-<li>  If you leave your computer or just know that you won't do any copy&amp;paste for a long time, you can simply quit Clidinger with <em>ALT</em> + <em>Q</em> to prevent the entries in the history from fading. Clipdinger always starts in same state it was in when it was quit.</li>
+<li>  All changes in the settings window can be viewed live in the main window. To find the right fading settings for you, it's best to keep working normally for some time to fill the history and then just play around with the sliders until you're satisfied.</li>
+<li>  Clipdinger's <em>Auto-paste</em> feature can be a bit tricky: It doesn't know in which window you pressed <em>SHIFT</em> + <em>ALT</em> + <em>V</em> for it to pop up. With activated auto-paste, it simply pastes into last window that was active before you hit <em>ENTER</em> or double-clicked an entry. So, avoid detours...</li>
+<li>  If you want to back up Clipdinger's settings, history or favorites, or have the need to delete one or all of these files, you'll find them under <code>/boot/home/config/settings/Clipdinger/</code>.</li>
 </ul>
 
 <h3>
@@ -107,6 +133,15 @@ Also, thanks to everyone that contributed translations for Clipdinger.</p>
 <li>  Added fading option, to darken history entries over time.</li>
 <li>  Added Help menu item to open ReadMe.html.</li>
 <li>  Bug fixes and optimizations.</li>
+</ul>
+
+<p><strong>0.4</strong> - <em>1-8-2015:</em></p>
+
+<ul>
+<li>  Bug fixes and optimizations.</li>
+<li>  Added favorites feature.</li>
+<li>  Added a "Pause fading" checkbox.</li>
+<li>  Added a setting for the maximal fading tint.</li>
 </ul>
         </section>
 
