@@ -34,9 +34,12 @@ App::~App()
 void
 App::ReadyToRun()
 {
-	fMainWindow = new MainWindow(fSettings.GetWindowPosition());
+	fMainWindow = new MainWindow(BRect(fSettings.GetWindowPosition()));
+
+	fMainWindow->MoveBy(4000, 0); // Move out of view to avoid flicker
 	fMainWindow->Show();
 	fMainWindow->Minimize(true);
+	fMainWindow->MoveBy(-4000, 0);
 }
 
 
@@ -47,8 +50,10 @@ App::AboutRequested()
 		B_TRANSLATE("Clipdinger v0.4\n"
 		"\twritten by Humdinger\n"
 		"\tCopyright 2015\n\n"
-		"Clipdinger provides a history of "
-		"clippings of the system clipboard.\n"),
+		"Clipdinger provides a history of clippings of the system "
+		"clipboard and lets you create favorites.\n\n"
+		"Please let me know of any bugs you find or features you "
+		"miss. Contact info is in the ReadMe, see menu item 'Help'."),
 		B_TRANSLATE("Thank you"));
 
 	BTextView *view = alert->TextView();
