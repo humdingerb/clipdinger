@@ -102,9 +102,13 @@ SettingsWindow::UpdateSettings()
 void
 SettingsWindow::UpdateFadeText()
 {
-	if (!newFade)
-		fFadeText->SetText(B_TRANSLATE("Entries don't fade over time."));
-	else {
+	BString string;
+
+	if (!newFade) {
+		string = B_TRANSLATE("Entries don't fade over time.");
+		string.Prepend("\n");
+		string.Append("\n");
+	} else {
 		char min[4];
 		char maxtint[4];
 		char step[4];
@@ -113,16 +117,15 @@ SettingsWindow::UpdateFadeText()
 			newFadeStep * newFadeDelay * kMinuteUnits);
 		snprintf(step, sizeof(step), "%d", newFadeStep);
 
-		BString string(B_TRANSLATE(
+		string = B_TRANSLATE(
 		"Entries fade every %A% minutes.\n"
 		"The maximal tint is reached after\n"
-		"%B% minutes (in %C% steps)"));
+		"%B% minutes (in %C% steps)");
 		string.ReplaceAll("%A%", min);
 		string.ReplaceAll("%B%", maxtint);
 		string.ReplaceAll("%C%", step);
-
-		fFadeText->SetText(string.String());
 	}
+	fFadeText->SetText(string.String());
 }
 
 void
@@ -171,6 +174,7 @@ SettingsWindow::_BuildLayout()
 	fFadeText->SetViewColor(ui_color(B_PANEL_BACKGROUND_COLOR));
 	fFadeText->SetStylable(true);
 	fFadeText->SetAlignment(B_ALIGN_CENTER);
+
 	UpdateFadeText();
 
 	font_height fheight;
@@ -204,12 +208,12 @@ SettingsWindow::_BuildLayout()
 				.Add(BSpaceLayoutItem::CreateHorizontalStrut(spacing))
 				.Add(fStepSlider)
 			.End()
+			.AddStrut(spacing / 2)
 			.AddGroup(B_HORIZONTAL)
 				.Add(BSpaceLayoutItem::CreateHorizontalStrut(spacing))
 				.Add(fFadeText)
 			.End()
 		.End()
-		.AddStrut(spacing)
 		.Add(new BSeparatorView(B_HORIZONTAL))
 		.AddGroup(B_HORIZONTAL)
 			.SetInsets(0, 0, 0, spacing / 2)

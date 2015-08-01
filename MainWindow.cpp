@@ -60,9 +60,12 @@ MainWindow::MainWindow(BRect frame)
 		fade = settings->GetFade();
 		settings->Unlock();
 	}
-	if (!fade)
-		fPauseCheckBox->Hide();
 
+	if (!fade) {
+		fPauseCheckBox->Hide();		// Hide() twice, because the window
+		fPauseCheckBox->Hide();		// isn't Show()n yet... (?)
+		InvalidateLayout();
+	}
 	fLaunchTime = real_time_clock();
 
 	_LoadHistory();
