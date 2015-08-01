@@ -149,7 +149,7 @@ ClipView::AdjustColors()
 		fade = settings->GetFade();
 		step = settings->GetFadeStep();
 		delay = settings->GetFadeDelay() * kMinuteUnits;
-		maxlevel = 1.0 + 0.025 * settings->GetFadeMaxLevel(); // default: 1.2
+		maxlevel = 1.0 + 0.025 * settings->GetFadeMaxLevel();
 		pause = settings->GetFadePause();
 		settings->Unlock();
 	}
