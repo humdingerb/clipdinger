@@ -141,13 +141,15 @@ ClipView::AdjustColors()
 {
 	bool fade;
 	int32 delay;
-	float step;
+	int32 step;
+	float maxlevel;
 	bool pause;
 	ClipdingerSettings* settings = my_app->Settings();
 	if (settings->Lock()) {
 		fade = settings->GetFade();
 		step = settings->GetFadeStep();
 		delay = settings->GetFadeDelay() * kMinuteUnits;
+		maxlevel = 1.0 + 0.025 * settings->GetFadeMaxLevel(); // default: 1.2
 		pause = settings->GetFadePause();
 		settings->Unlock();
 	}
@@ -160,9 +162,9 @@ ClipView::AdjustColors()
 		ClipItem *sItem = dynamic_cast<ClipItem *> (ItemAt(i));
 		if (fade) {
 			int32 minutes = (now - sItem->GetTimeAdded()) / 60;
-			float level = B_NO_TINT + (1.2 / step * ((float)minutes / delay));
+			float level = B_NO_TINT + (maxlevel/ step * ((float)minutes / delay));
 			sItem->SetColor(tint_color(ui_color(B_LIST_BACKGROUND_COLOR),
-			(level < 1.2) ? level : 1.2));  // limit to 1.2
+			(level < maxlevel) ? level : maxlevel));  // limit to maxlevel
 		} else
 			sItem->SetColor(ui_color(B_LIST_BACKGROUND_COLOR));
 	}

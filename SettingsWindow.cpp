@@ -35,6 +35,7 @@ SettingsWindow::SettingsWindow(BRect frame)
 		newFade = originalFade = settings->GetFade();
 		newFadeDelay = originalFadeDelay = settings->GetFadeDelay();
 		newFadeStep = originalFadeStep = settings->GetFadeStep();
+		newFadeMaxLevel = originalFadeMaxLevel = settings->GetFadeMaxLevel();
 		settings->Unlock();
 	}
 
@@ -47,9 +48,11 @@ SettingsWindow::SettingsWindow(BRect frame)
 	fFadeBox->SetValue(originalFade);
 	fDelaySlider->SetValue(originalFadeDelay);
 	fStepSlider->SetValue(originalFadeStep);
+	fLevelSlider->SetValue(originalFadeMaxLevel);
 
 	fDelaySlider->SetEnabled(originalFade);
 	fStepSlider->SetEnabled(originalFade);
+	fLevelSlider->SetEnabled(originalFade);
 	
 	frame.OffsetBy(60.0, 60.0);
 	MoveTo(frame.LeftTop());
@@ -82,6 +85,7 @@ SettingsWindow::RevertSettings()
 		settings->SetFade(originalFade);
 		settings->SetFadeDelay(originalFadeDelay);
 		settings->SetFadeStep(originalFadeStep);
+		settings->SetFadeMaxLevel(originalFadeMaxLevel);
 		settings->Unlock();
 	}
 }
@@ -157,12 +161,20 @@ SettingsWindow::_BuildLayout()
 	fDelaySlider->SetHashMarkCount(12);
 	fDelaySlider->SetKeyIncrementValue(1);
 	fDelaySlider->SetModificationMessage(new BMessage(DELAY));
+
 	fStepSlider = new BSlider(BRect(), "step", B_TRANSLATE("Steps"),
 		new BMessage(STEP), 1, 10);
 	fStepSlider->SetHashMarks(B_HASH_MARKS_BOTTOM);
 	fStepSlider->SetHashMarkCount(10);
 	fStepSlider->SetKeyIncrementValue(1);
 	fStepSlider->SetModificationMessage(new BMessage(STEP));
+
+	fLevelSlider = new BSlider(BRect(), "level", B_TRANSLATE("Max. tint level"),
+		new BMessage(LEVEL), 3, 14);
+	fLevelSlider->SetHashMarks(B_HASH_MARKS_BOTTOM);
+	fLevelSlider->SetHashMarkCount(12);
+	fLevelSlider->SetKeyIncrementValue(1);
+	fLevelSlider->SetModificationMessage(new BMessage(LEVEL));
 
 	BFont infoFont(*be_plain_font);
 	infoFont.SetFace(B_ITALIC_FACE);
@@ -208,6 +220,10 @@ SettingsWindow::_BuildLayout()
 				.Add(BSpaceLayoutItem::CreateHorizontalStrut(spacing))
 				.Add(fStepSlider)
 			.End()
+			.AddGroup(B_HORIZONTAL)
+				.Add(BSpaceLayoutItem::CreateHorizontalStrut(spacing))
+				.Add(fLevelSlider)
+			.End()
 			.AddStrut(spacing / 2)
 			.AddGroup(B_HORIZONTAL)
 				.Add(BSpaceLayoutItem::CreateHorizontalStrut(spacing))
@@ -250,6 +266,7 @@ SettingsWindow::MessageReceived(BMessage* message)
 
 			fDelaySlider->SetEnabled(newFade);
 			fStepSlider->SetEnabled(newFade);
+			fLevelSlider->SetEnabled(newFade);
 			break;
 		}
 		case DELAY:
@@ -273,6 +290,16 @@ SettingsWindow::MessageReceived(BMessage* message)
 			UpdateSettings();
 			UpdateFadeText();
 			break;	
+		}
+		case LEVEL:
+		{
+			newFadeMaxLevel = fLevelSlider->Value();
+			if (settings->Lock()) {
+				settings->SetFadeMaxLevel(newFadeMaxLevel);
+				settings->Unlock();
+			}
+			UpdateSettings();
+			break;
 		}
 		case CANCEL:
 		{

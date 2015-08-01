@@ -34,6 +34,7 @@ private:
 	BCheckBox*		fAutoPasteBox;
 	BSlider*		fDelaySlider;
 	BSlider*		fStepSlider;
+	BSlider*		fLevelSlider;
 	BTextView*		fFadeText;
 	BString*		fFadeDescription;
 
@@ -42,12 +43,14 @@ private:
 	int32			originalFade;
 	int32			originalFadeDelay;
 	int32			originalFadeStep;
+	int32			originalFadeMaxLevel;
 
 	int32			newLimit;
 	int32			newAutoPaste;
 	int32			newFade;
 	int32			newFadeDelay;
 	int32			newFadeStep;
+	int32			newFadeMaxLevel;
 };
 
 

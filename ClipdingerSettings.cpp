@@ -28,6 +28,7 @@ ClipdingerSettings::ClipdingerSettings()
 	fFade(kDefaultFade),
 	fFadeDelay(kDefaultFadeDelay),
 	fFadeStep(kDefaultFadeStep),
+	fFadeMaxLevel(kDefaultFadeMaxLevel),
 	fFadePause(0),	
 	dirtySettings(false)
 {
@@ -56,6 +57,9 @@ ClipdingerSettings::ClipdingerSettings()
 
 				if (msg.FindInt32("fadestep", &fFadeStep) != B_OK)
 					fFadeStep = kDefaultFadeStep;
+
+				if (msg.FindInt32("fademax", &fFadeMaxLevel) != B_OK)
+					fFadeStep = kDefaultFadeMaxLevel;
 
 				if (msg.FindRect("windowlocation", &fPosition) != B_OK)
 					fPosition.Set(-1, -1, -1, -1);
@@ -105,6 +109,7 @@ ClipdingerSettings::~ClipdingerSettings()
 			msg.AddInt32("fade", fFade);
 			msg.AddInt32("fadedelay", fFadeDelay);
 			msg.AddInt32("fadestep", fFadeStep);
+			msg.AddInt32("fademax", fFadeMaxLevel);
 			msg.AddRect("windowlocation", fPosition);
 			msg.AddFloat("split_weight_left", fLeftWeight);
 			msg.AddFloat("split_weight_right", fRightWeight);
@@ -192,6 +197,16 @@ ClipdingerSettings::SetFadeStep(int32 step)
 	if (fFadeStep == step)
 		return;
 	fFadeStep = step;
+	dirtySettings = true;
+}
+
+
+void
+ClipdingerSettings::SetFadeMaxLevel(int32 level)
+{
+	if (fFadeMaxLevel == level)
+		return;
+	fFadeMaxLevel = level;
 	dirtySettings = true;
 }
 

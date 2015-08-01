@@ -17,14 +17,15 @@ static const char kSettingsFile[] = "Clipdinger_settings";
 static const char kHistoryFile[] = "Clipdinger_history";
 static const char kFavoriteFile[] = "Clipdinger_favorites";
 
-static const int32 kDefaultLimit = 50;
+static const int32 kDefaultLimit = 100;
 static const int32 kDefaultAutoPaste = 1;
 static const int32 kDefaultFade = 0;
-static const int32 kDefaultFadeDelay = 1;
-static const int32 kDefaultFadeStep = 4;
+static const int32 kDefaultFadeDelay = 6;
+static const int32 kDefaultFadeStep = 5;
+static const int32 kDefaultFadeMaxLevel = 8;
 static const int32 kIconSize = 16;
 static const int32 kMaxTitleChars = 100;
-static const int32 kMinuteUnits = 5; // minutes per unit
+static const int32 kMinuteUnits = 10; // minutes per unit
 
 #define DELETE				'dele'
 #define FAV_DELETE			'delf'
@@ -50,6 +51,7 @@ static const int32 kMinuteUnits = 5; // minutes per unit
 #define FADE				'fade'
 #define DELAY				'dely'
 #define STEP				'step'
+#define LEVEL				'levl'
 #define CANCEL				'cncl'
 #define OK					'okay'
 #define UPDATE_SETTINGS		'uset'
