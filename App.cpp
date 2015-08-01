@@ -36,7 +36,7 @@ App::ReadyToRun()
 {
 	fMainWindow = new MainWindow(fSettings.GetWindowPosition());
 	fMainWindow->Show();
-//	fMainWindow->Minimize(true);
+	fMainWindow->Minimize(true);
 }
 
 

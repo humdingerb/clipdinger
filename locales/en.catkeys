@@ -1,4 +1,4 @@
-1	English	application/x-vnd.Clipdinger	4155327014
+1	English	application/x-vnd.Clipdinger	386919629
 Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)	SettingsWindow		Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)
 Title:	EditWindow		Title:
 Clear history	MainWindow		Clear history
@@ -22,6 +22,7 @@ Pause fading	MainWindow		Pause fading
 Cancel	SettingsWindow		Cancel
 Clipdinger	System name		Clipdinger
 Fade history entries over time	SettingsWindow		Fade history entries over time
+Max. tint level	SettingsWindow		Max. tint level
 Steps	SettingsWindow		Steps
 Auto-paste	SettingsWindow		Auto-paste
 Help	MainWindow		Help

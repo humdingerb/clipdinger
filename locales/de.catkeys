@@ -1,4 +1,4 @@
-1	German	application/x-vnd.Clipdinger	4155327014
+1	German	application/x-vnd.Clipdinger	386919629
 Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)	SettingsWindow		Einträge werden alle %A% Minuten dunkler.\nDie maximale Abdunklung wird nach\n%B% Minuten erreicht (in %C% Stufen)
 Title:	EditWindow		Titel:
 Clear history	MainWindow		Historie löschen
@@ -22,6 +22,7 @@ Pause fading	MainWindow		Abdunkeln anhalten
 Cancel	SettingsWindow		Abbrechen
 Clipdinger	System name		Clipdinger
 Fade history entries over time	SettingsWindow		Einträge mit der Zeit abdunkeln
+Max. tint level	SettingsWindow		Max. Abdunklungsstufe
 Steps	SettingsWindow		Stufen
 Auto-paste	SettingsWindow		Auto-Einfügen
 Help	MainWindow		Hilfe
