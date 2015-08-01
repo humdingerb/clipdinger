@@ -564,6 +564,7 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case UPDATE_SETTINGS:
 		{
+			bool invisible = fPauseCheckBox->IsHidden();
 			int32 newValue;
 			if (message->FindInt32("limit", &newValue) == B_OK) {
 				if (fLimit >= newValue)
@@ -579,13 +580,13 @@ MainWindow::MessageReceived(BMessage* message)
 			if (message->FindInt32("autopaste", &newValue) == B_OK)
 				fAutoPaste = newValue;
 			if (message->FindInt32("fade", &newValue) == B_OK) {
-				if (newValue == 0) {
-					if (!fPauseCheckBox->IsHidden())
-						fPauseCheckBox->Hide();
-				} else {
-					if (fPauseCheckBox->IsHidden())
-						fPauseCheckBox->Show();
-				}
+				if ((invisible) && (newValue == 1))
+					fPauseCheckBox->Show();
+				else if ((!invisible) && (newValue == 0))
+					fPauseCheckBox->Hide();
+				else
+					break;
+
 				InvalidateLayout();
 			}
 			break;

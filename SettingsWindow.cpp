@@ -54,7 +54,7 @@ SettingsWindow::SettingsWindow(BRect frame)
 	fStepSlider->SetEnabled(originalFade);
 	fLevelSlider->SetEnabled(originalFade);
 	
-	frame.OffsetBy(60.0, 60.0);
+	frame.OffsetBy(260.0, 60.0);
 	MoveTo(frame.LeftTop());
 }
 
@@ -78,7 +78,6 @@ void
 SettingsWindow::RevertSettings()
 {
 	ClipdingerSettings* settings = my_app->Settings();
-
 	if (settings->Lock()) {
 		settings->SetLimit(originalLimit);
 		settings->SetAutoPaste(originalAutoPaste);
@@ -88,6 +87,12 @@ SettingsWindow::RevertSettings()
 		settings->SetFadeMaxLevel(originalFadeMaxLevel);
 		settings->Unlock();
 	}
+	newLimit = originalLimit;
+	newAutoPaste = originalAutoPaste;
+	newFade = originalFade;
+	newFadeDelay = originalFadeDelay;
+	newFadeStep = originalFadeStep;
+	newFadeMaxLevel = originalFadeMaxLevel;
 }
 
 
@@ -98,7 +103,7 @@ SettingsWindow::UpdateSettings()
 	BMessage message(UPDATE_SETTINGS);
 	message.AddInt32("limit", newLimit);
 	message.AddInt32("autopaste", newAutoPaste);
-	message.AddInt32("fade", fFadeBox->Value());
+	message.AddInt32("fade", newFade);
 	messenger.SendMessage(&message);
 }
 
