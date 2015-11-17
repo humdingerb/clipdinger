@@ -48,7 +48,7 @@ void
 ClipView::FrameResized(float width, float height)
 {
 	BListView::FrameResized(width, height);
-	
+
 	static const float spacing = be_control_look->DefaultLabelSpacing();
 
 	for (int32 i = 0; i < CountItems(); i++) {

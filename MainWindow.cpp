@@ -149,7 +149,7 @@ MainWindow::_BuildLayout()
 	BMenu* menu;
 	BMenu* submenu;
 	BMenuItem* item;
-	
+
 	menu = new BMenu(B_TRANSLATE("App"));
 	item = new BMenuItem(B_TRANSLATE("About Clipdinger"),
 		new BMessage(B_ABOUT_REQUESTED));
@@ -163,7 +163,7 @@ MainWindow::_BuildLayout()
 	menu->AddItem(item);
 	item = new BMenuItem(B_TRANSLATE("Quit"),
 		new BMessage(B_QUIT_REQUESTED), 'Q');
-	menu->AddItem(item);	
+	menu->AddItem(item);
 	menuBar->AddItem(menu);
 
 	menu = new BMenu(B_TRANSLATE("History"));
@@ -207,7 +207,7 @@ MainWindow::_BuildLayout()
 	fButtonDown = new BButton("down", B_TRANSLATE("Move down"),
 		new BMessage(FAV_DOWN));
 
-	// do the layouting				
+	// do the layouting
 	static const float spacing = be_control_look->DefaultItemSpacing() / 2;
 	fMainSplitView =
 		BLayoutBuilder::Split<>(B_HORIZONTAL)
@@ -551,15 +551,12 @@ MainWindow::MessageReceived(BMessage* message)
 				break;
 
 			Minimize(true);
-			be_clipboard->StopWatching(this);
 
 			FavItem* item = dynamic_cast<FavItem *> (fFavorites->ItemAt(itemindex));
 			BString text(item->GetClip());
 			PutClipboard(text);
 			if (fAutoPaste)
 				AutoPaste();
-
-			be_clipboard->StartWatching(this);
 			break;
 		}
 		case UPDATE_SETTINGS:
@@ -663,7 +660,7 @@ MainWindow::CropHistory(int32 limit)
 			fHistory->RemoveItems(limit, count);
 		}
 	}
-}	
+}
 
 
 BString
@@ -688,7 +685,7 @@ MainWindow::PutClipboard(BString text)
 {
 	ssize_t textLen = text.Length();
 	BMessage* clip = (BMessage *)NULL;
-	
+
 	if (be_clipboard->Lock()) {
 		be_clipboard->Clear();
 		if (clip = be_clipboard->Data()) {
