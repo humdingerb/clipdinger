@@ -44,7 +44,7 @@ void
 FavView::FrameResized(float width, float height)
 {
 	BListView::FrameResized(width, height);
-	
+
 	static const float spacing = be_control_look->DefaultLabelSpacing();
 
 	for (int32 i = 0; i < CountItems(); i++) {
@@ -117,6 +117,10 @@ FavView::KeyDown(const char* bytes, int32 numBytes)
 void
 FavView::MouseDown(BPoint position)
 {
+	BMessage message(SWITCHLIST);
+	message.AddInt32("listview", (int32)0);
+	Looper()->PostMessage(&message);
+
 	BRect bounds(Bounds());
 	BRect itemFrame = ItemFrame(CountItems() - 1);
 	bounds.top = itemFrame.bottom;

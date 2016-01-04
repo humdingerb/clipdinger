@@ -174,6 +174,10 @@ ClipView::AdjustColors()
 void
 ClipView::MouseDown(BPoint position)
 {
+	BMessage message(SWITCHLIST);
+	message.AddInt32("listview", (int32)1);
+	Looper()->PostMessage(&message);
+
 	BRect bounds(Bounds());
 	BRect itemFrame = ItemFrame(CountItems() - 1);
 	bounds.top = itemFrame.bottom;
