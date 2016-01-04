@@ -1,5 +1,5 @@
 /*
- * Copyright 2015. All rights reserved.
+ * Copyright 2015-2016. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -36,6 +36,7 @@ static const int32 kMinuteUnits = 10; // minutes per unit
 #define POPCLOSED			'pmcl'
 #define F_KEY				'fkey'
 
+#define PASTE_SPRUNGE		'pssp'
 #define CLEAR_HISTORY		'clhi'
 #define HELP				'help'
 #define	FAV_UP				'favu'

@@ -5,6 +5,9 @@
 Clipdinger is a small tool to manage a history of the system clipboard. It solves the problem that you often have to paste some text you've just recently copied to the clipboard, but that has been replaced by something you've copied more recently... It also saves the history so it'll appear just as you left it on the last shutdown.
 
 If you want to paste some text that isn't in the clipboard any more, simply hit _SHIFT_ + _ALT_ + _V_ to summon the Clipdinger window. Here you can select an entry with the _CursorUp/Down_ keys and put it into the clipboard or auto-paste it by hitting _RETURN_.
+
+After selecting a clip, you can also paste it to the online service [Sprunge.us](http://sprunge.us) by hitting _ALT_ + _P_. The returned URL for the clip is put into the clipboard for you to paste into your email or IRC channel etc.
+
 _ESCAPE_  or _ALT_ + _W_ aborts and minimizes the Clipdinger window.
 
 ### History & Favorites
@@ -94,3 +97,8 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 *	Added favorites feature.
 *   Added a "Pause fading" checkbox.
 *   Added a setting for the maximal fading tint.
+
+**0.5** - _?-?-2016:_
+
+*   Added a feature to paste to the online service [Sprunge.us](http://sprunge.us)
+*   Bug fix: A chosen favorite will now appear at the top of the clip list, which always shows what's currently in the clipboard.

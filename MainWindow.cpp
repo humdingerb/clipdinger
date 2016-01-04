@@ -1,5 +1,5 @@
 /*
- * Copyright 2015. All rights reserved.
+ * Copyright 2015-2016. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -166,12 +166,16 @@ MainWindow::_BuildLayout()
 	menu->AddItem(item);
 	menuBar->AddItem(menu);
 
-	menu = new BMenu(B_TRANSLATE("History"));
+	menu = new BMenu(B_TRANSLATE("Clip"));
+	item = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"),
+		new BMessage(PASTE_SPRUNGE), 'P');
+	menu->AddItem(item);
+	menuBar->AddItem(menu);
 
+	menu = new BMenu(B_TRANSLATE("History"));
 	item = new BMenuItem(B_TRANSLATE("Clear history"),
 		new BMessage(CLEAR_HISTORY));
 	menu->AddItem(item);
-
 	item = new BMenuItem(B_TRANSLATE("Settings" B_UTF8_ELLIPSIS),
 		new BMessage(SETTINGS));
 	menu->AddItem(item);
@@ -507,6 +511,33 @@ MainWindow::MessageReceived(BMessage* message)
 			entry_ref ref;
 			entry.GetRef(&ref);
 			be_roster->Launch(&ref);
+			break;
+		}
+		case PASTE_SPRUNGE:
+		{
+			if (fHistory->IsFocus() && !fHistory->IsEmpty()) {
+				int32 index = fHistory->CurrentSelection();
+				ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(index));
+				BString text(item->GetClip());
+				PutClipboard(text);
+
+			} else if (fFavorites->IsFocus() && !fFavorites->IsEmpty()) {
+				int32 index = fFavorites->CurrentSelection();
+				FavItem* item = dynamic_cast<FavItem *> (fFavorites->ItemAt(index));
+				BString text(item->GetClip());
+				PutClipboard(text);
+
+			} else
+				break;
+
+			BString command(
+				"URL=$(clipboard -p | curl -F 'sprunge=<-' http://sprunge.us) ; "
+				"clipboard -c $URL ; "
+				"exit");
+			system(command.String());
+
+			Minimize(true);
+			PostMessage(B_CLIPBOARD_CHANGED);
 			break;
 		}
 		case CLEAR_HISTORY:
