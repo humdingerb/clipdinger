@@ -147,9 +147,15 @@ FavView::ShowPopUpMenu(BPoint screen)
 	BMenuItem* item = new BMenuItem(B_TRANSLATE("Edit title"),
 		new BMessage(FAV_EDIT));
 	menu->AddItem(item);
+
 	item = new BMenuItem(B_TRANSLATE("Remove favorite"),
 		new BMessage(FAV_DELETE));
 	menu->AddItem(item);
+
+	item = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"),
+		new BMessage(PASTE_SPRUNGE));
+	menu->AddItem(item);
+
 	menu->SetTargetForItems(Looper());
 	menu->Go(screen, true, true, true);
 	fShowingPopUpMenu = true;

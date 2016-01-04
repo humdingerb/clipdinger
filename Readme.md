@@ -98,7 +98,8 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 *   Added a "Pause fading" checkbox.
 *   Added a setting for the maximal fading tint.
 
-**0.5** - _?-?-2016:_
+**0.5** - _4-1-2016:_
 
 *   Added a feature to paste to the online service [Sprunge.us](http://sprunge.us)
 *   Bug fix: A chosen favorite will now appear at the top of the clip list, which always shows what's currently in the clipboard.
+*   Bug fix: Using the mouse instead of the cursor keys to switch list now correctly shows the inactive list "dimmed".

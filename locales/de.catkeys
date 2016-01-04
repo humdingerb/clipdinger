@@ -1,4 +1,4 @@
-1	German	application/x-vnd.Clipdinger	93257293
+1	German	application/x-vnd.Clipdinger	673213143
 Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)	SettingsWindow		Einträge werden alle %A% Minuten dunkler.\nDie maximale Abdunklung wird nach\n%B% Minuten erreicht (in %C% Stufen)
 Title:	EditWindow		Titel:
 Clear history	MainWindow		Historie löschen
@@ -13,10 +13,13 @@ Settings…	MainWindow		Einstellungen…
 Saved favourites	MainWindow		Gespeicherte Favoriten
 Move down	MainWindow		Runter
 OK	SettingsWindow		OK
+Paste to Sprunge.us	MainWindow		Auf Sprunge.us hochladen
+Paste to Sprunge.us	ClipList		Auf Sprunge.us hochladen
 Entries don't fade over time.	SettingsWindow		Einträge werden nicht abgedunkelt.
 App	MainWindow		App
 Minimize	MainWindow		Minimieren
 Quit	MainWindow		Beenden
+Clipdinger v0.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.5\n\tvon Humdinger\n\tCopyright 2015-2016\n\nClipdinger bietet eine Historie für die Zwischenablage und die Anlage von Favoriten.\n\nBerichte zu Bugs oder gewünschten Features sind sehr willkommen. Kontaktinfos befinden sich im ReadMe, siehe Menü 'Hilfe'.
 Edit title	ClipList		Titel bearbeiten
 Pause fading	MainWindow		Abdunkeln anhalten
 Cancel	SettingsWindow		Abbrechen
@@ -28,7 +31,7 @@ Auto-paste	SettingsWindow		Auto-Einfügen
 Help	MainWindow		Hilfe
 Thank you	Application		Danke
 Delay	SettingsWindow		Zeitintervall
-Clipdinger v0.4\n\twritten by Humdinger\n\tCopyright 2015\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.4\n\tvon Humdinger\n\tCopyright 2015\n\nClipdinger bietet eine Historie für die Zwischenablage und die Anlage von Favoriten.\n\nBerichte zu Bugs oder gewünschten Features sind sehr willkommen. Kontaktinfos befinden sich im ReadMe, siehe Menü 'Hilfe'.
+Clip	MainWindow		Clip
 Remove clip	ClipList		Eintrag entfernen
 Clipdinger settings	SettingsWindow		Clipdinger Einstellungen
 Cancel	EditWindow		Abbrechen

@@ -47,9 +47,9 @@ void
 App::AboutRequested()
 {
 	BAlert *alert = new BAlert("about",
-		B_TRANSLATE("Clipdinger v0.4\n"
+		B_TRANSLATE("Clipdinger v0.5\n"
 		"\twritten by Humdinger\n"
-		"\tCopyright 2015\n\n"
+		"\tCopyright 2015-2016\n\n"
 		"Clipdinger provides a history of clippings of the system "
 		"clipboard and lets you create favorites.\n\n"
 		"Please let me know of any bugs you find or features you "
@@ -66,7 +66,7 @@ App::AboutRequested()
 	alert->Go();
 }
 
-		
+
 int
 main()
 {

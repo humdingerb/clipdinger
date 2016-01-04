@@ -209,6 +209,10 @@ ClipView::ShowPopUpMenu(BPoint screen)
 		new BMessage(FAV_ADD));
 	menu->AddItem(item);
 
+	item = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"),
+		new BMessage(PASTE_SPRUNGE));
+	menu->AddItem(item);
+
 	menu->SetTargetForItems(this);
 	menu->Go(screen, true, true, true);
 	fShowingPopUpMenu = true;
