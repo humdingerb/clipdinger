@@ -539,11 +539,16 @@ MainWindow::MessageReceived(BMessage* message)
 				break;
 
 			BString command(
-				"stat=$(echo -e \"GET http://sprunge.us HTTP/1.0\n\n\" | nc sprunge.us 80 | grep HTTP/1 | awk {'print $2'}) ; "
-				"if [ -z \"$stat\" ] || [ $stat -ne 200 ] ; then "
-					"URL='%ERROR% '$stat ; "
+				"stat=$(curl -m 2 -s -I http://google.com | grep HTTP/1 | awk {'print $2'}) ; "
+				"if [ -z  \"$stat\" ] ; then "	// network up in general?
+					"URL='%ERROR%' ; "
 				"else "
-					"URL=$(clipboard -p | curl -F 'sprunge=<-' http://sprunge.us) ; "
+					"stat=$(echo -e \"GET http://sprunge.us HTTP/1.0\n\n\" | nc sprunge.us 80 | grep HTTP/1 | awk {'print $2'}) ; "
+					"if [ -z \"$stat\" ] || [ $stat -ne 200 ] ; then "	// sprunge.us only accepts GET and PUT
+						"URL='%ERROR% '$stat ; "
+					"else "
+						"URL=$(clipboard -p | curl -F 'sprunge=<-' http://sprunge.us) ; "
+					"fi ; "
 				"fi ; "
 				"echo $URL ; "
 				"clipboard -c \"$URL\" ; "
