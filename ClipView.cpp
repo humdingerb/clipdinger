@@ -1,5 +1,5 @@
 /*
- * Copyright 2015. All rights reserved.
+ * Copyright 2015-2016. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -13,8 +13,8 @@
 #include "ClipItem.h"
 #include "ClipView.h"
 #include "Constants.h"
-#include "MainWindow.h"
 #include "ContextPopUp.h"
+#include "MainWindow.h"
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "ClipList"
@@ -81,18 +81,6 @@ ClipView::MessageReceived(BMessage* message)
 		case POPCLOSED:
 		{
 			fShowingPopUpMenu = false;
-			break;
-		}
-		case FAV_ADD:
-		{
-			fShowingPopUpMenu = false;
-			Looper()->PostMessage(FAV_ADD);
-			break;
-		}
-		case DELETE:
-		{
-			fShowingPopUpMenu = false;
-			Looper()->PostMessage(DELETE);
 			break;
 		}
 		case ADJUSTCOLORS:
@@ -213,7 +201,7 @@ ClipView::ShowPopUpMenu(BPoint screen)
 		new BMessage(PASTE_SPRUNGE));
 	menu->AddItem(item);
 
-	menu->SetTargetForItems(this);
+	menu->SetTargetForItems(Looper());
 	menu->Go(screen, true, true, true);
 	fShowingPopUpMenu = true;
 }
