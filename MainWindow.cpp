@@ -421,8 +421,13 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case DELETE:
 		{
-			if (!fHistory->IsEmpty());
-				fHistory->RemoveItem(fHistory->CurrentSelection());
+			int32 index = fHistory->CurrentSelection();
+			if ((fHistory->IsEmpty()) || (index < 0))
+				break;
+
+			fHistory->RemoveItem(index);
+			int32 count = fHistory->CountItems();
+			fHistory->Select((index > count - 1) ? count - 1 : index);
 			break;
 		}
 		case PAUSE:
@@ -442,12 +447,14 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case FAV_DELETE:
 		{
-			if (fFavorites->IsEmpty())
+			int32 index = fFavorites->CurrentSelection();
+			if ((fFavorites->IsEmpty()) || (index < 0))
 				break;
 
-			int32 start = fFavorites->CurrentSelection();
-			fFavorites->RemoveItem(start);
-			RenumberFavorites(start);
+			fFavorites->RemoveItem(index);
+			RenumberFavorites(index);
+			int32 count = fFavorites->CountItems();
+			fFavorites->Select((index > count - 1) ? count - 1 : index);
 			break;
 		}
 		case FAV_EDIT:
@@ -531,9 +538,17 @@ MainWindow::MessageReceived(BMessage* message)
 				break;
 
 			BString command(
-				"URL=$(clipboard -p | curl -F 'sprunge=<-' http://sprunge.us) ; "
-				"clipboard -c $URL ; "
+				"stat=$(curl -m 2 -s -I http://sprunge.us | grep HTTP/1.1 | awk {'print $2'}) ; "
+				"if [ -z \"$stat\" ] || [ $stat -ne 200 ] ; then "
+					"URL='%ERROR% '$stat ; "
+				"else "
+					"URL=$(clipboard -p | curl -F 'sprunge=<-' http://sprunge.us) ; "
+				"fi ; "
+				"echo $URL ; "
+				"clipboard -c \"$URL\" ; "
 				"exit");
+			command.ReplaceAll("%ERROR%",
+				B_TRANSLATE("Sprunge.us service not available."));
 			system(command.String());
 
 			Minimize(true);
