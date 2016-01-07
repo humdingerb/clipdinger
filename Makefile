@@ -7,7 +7,7 @@ LIBS= be localestub $(STDCPPLIBS)
 LIBPATHS=
 SYSTEM_INCLUDE_PATHS=
 LOCAL_INCLUDE_PATHS=
-OPTIMIZE= 
+OPTIMIZE=
 LOCALES= en de
 #	specify any preprocessor symbols to be defined.  The symbols will not
 #	have their values set automatically; you must supply the value (if any)

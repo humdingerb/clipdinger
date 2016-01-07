@@ -538,7 +538,7 @@ MainWindow::MessageReceived(BMessage* message)
 				break;
 
 			BString command(
-				"stat=$(curl -m 2 -s -I http://sprunge.us | grep HTTP/1.1 | awk {'print $2'}) ; "
+				"stat=$(echo -e \"GET http://sprunge.us HTTP/1.0\n\n\" | nc sprunge.us 80 | grep HTTP/1 | awk {'print $2'}) ; "
 				"if [ -z \"$stat\" ] || [ $stat -ne 200 ] ; then "
 					"URL='%ERROR% '$stat ; "
 				"else "
