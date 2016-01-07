@@ -53,7 +53,7 @@ SettingsWindow::SettingsWindow(BRect frame)
 	fDelaySlider->SetEnabled(originalFade);
 	fStepSlider->SetEnabled(originalFade);
 	fLevelSlider->SetEnabled(originalFade);
-	
+
 	frame.OffsetBy(260.0, 60.0);
 	MoveTo(frame.LeftTop());
 }
@@ -136,6 +136,7 @@ SettingsWindow::UpdateFadeText()
 	}
 	fFadeText->SetText(string.String());
 }
+
 
 void
 SettingsWindow::_BuildLayout()
@@ -294,7 +295,7 @@ SettingsWindow::MessageReceived(BMessage* message)
 			}
 			UpdateSettings();
 			UpdateFadeText();
-			break;	
+			break;
 		}
 		case LEVEL:
 		{

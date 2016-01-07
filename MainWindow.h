@@ -5,7 +5,7 @@
  * Author:
  *	Humdinger, humdingerb@gmail.com
  */
- 
+
 #ifndef MAIN_WINDOW_H
 #define MAIN_WINDOW_H
 
@@ -30,8 +30,8 @@
 #include <strings.h>
 
 #include "ClipView.h"
-#include "FavView.h"
 #include "EditWindow.h"
+#include "FavView.h"
 #include "SettingsWindow.h"
 
 const int32	kControlKeys = B_COMMAND_KEY | B_SHIFT_KEY;
@@ -63,7 +63,7 @@ private:
 	void			MoveClipToTop();
 	void			UpdateColors();
 	void			RenumberFavorites(int32 start);
-	
+
 	int32			fLimit;
 	int32			fAutoPaste;
 	int32			fLaunchTime;
@@ -71,7 +71,7 @@ private:
 	BSplitView*		fMainSplitView;
 	ClipView*		fHistory;
 	FavView*		fFavorites;
-	
+
 	BScrollView*	fHistoryScrollView;
 	BScrollView*	fFavoriteScrollView;
 

@@ -56,6 +56,7 @@ FavView::FrameResized(float width, float height)
 	}
 }
 
+
 void
 FavView::Draw(BRect rect)
 {

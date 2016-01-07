@@ -6,7 +6,6 @@
  *	Humdinger, humdingerb@gmail.com
  */
 
-
 #include "ContextPopUp.h"
 #include "Constants.h"
 

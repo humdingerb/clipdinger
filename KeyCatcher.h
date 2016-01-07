@@ -5,7 +5,6 @@
 #ifndef KEYCATCHER_H
 #define KEYCATCHER_H_H
 
-
 #include <View.h>
 
 

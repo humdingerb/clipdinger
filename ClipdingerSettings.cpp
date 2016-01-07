@@ -10,8 +10,8 @@
 #include <Directory.h>
 #include <File.h>
 #include <FindDirectory.h>
-#include <Path.h>
 #include <Font.h>
+#include <Path.h>
 #include <Message.h>
 
 #include <stdio.h>
@@ -29,7 +29,7 @@ ClipdingerSettings::ClipdingerSettings()
 	fFadeDelay(kDefaultFadeDelay),
 	fFadeStep(kDefaultFadeStep),
 	fFadeMaxLevel(kDefaultFadeMaxLevel),
-	fFadePause(0),	
+	fFadePause(0),
 	dirtySettings(false)
 {
 	fPosition.Set(-1, -1, -1, -1);
@@ -41,7 +41,7 @@ ClipdingerSettings::ClipdingerSettings()
 		if (ret == B_OK) {
 			path.Append(kSettingsFile);
 			BFile file(path.Path(), B_READ_ONLY);
-			
+
 			if ((file.InitCheck() == B_OK) && (msg.Unflatten(&file) == B_OK)) {
 				if (msg.FindInt32("limit", &fLimit) != B_OK)
 					fLimit = kDefaultLimit;

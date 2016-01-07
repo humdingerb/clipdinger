@@ -12,8 +12,8 @@
 #include <Entry.h>
 #include <File.h>
 #include <FindDirectory.h>
-#include <Path.h>
 #include <LayoutBuilder.h>
+#include <Path.h>
 #include <Roster.h>
 #include <Screen.h>
 
@@ -21,9 +21,9 @@
 
 #include "App.h"
 #include "ClipItem.h"
-#include "KeyCatcher.h"
-#include "FavItem.h"
 #include "Constants.h"
+#include "FavItem.h"
+#include "KeyCatcher.h"
 #include "MainWindow.h"
 
 #undef B_TRANSLATION_CONTEXT
@@ -90,6 +90,7 @@ MainWindow::MainWindow(BRect frame)
 MainWindow::~MainWindow()
 {
 }
+
 
 void
 MainWindow::_SetSplitview()

@@ -53,5 +53,4 @@ private:
 	int32			newFadeMaxLevel;
 };
 
-
 #endif // SETTINGS_WINDOW_H
