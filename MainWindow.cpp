@@ -23,8 +23,8 @@
 #include "ClipItem.h"
 #include "Constants.h"
 #include "FavItem.h"
-#include "KeyCatcher.h"
 #include "MainWindow.h"
+
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "MainWindow"
@@ -37,9 +37,9 @@ MainWindow::MainWindow(BRect frame)
 		B_ALL_WORKSPACES),
 		fSettingsWindow(NULL)
 {
-	KeyCatcher* catcher = new KeyCatcher("catcher");
-	AddChild(catcher);
-	catcher->Hide();
+	fKeyCatcher = new KeyCatcher("catcher");
+	AddChild(fKeyCatcher);
+	fKeyCatcher->Hide();
 
 	_BuildLayout();
 	_SetSplitview();
@@ -391,6 +391,20 @@ MainWindow::_LoadFavorites()
 
 
 void
+MainWindow::DispatchMessage(BMessage* message, BHandler* target)
+{
+	// This is needed to avoid the KeyCatcher inserting a duplicate
+	// message when invoking a menu item via shortcut
+	if (message->what == B_KEY_DOWN && target != NULL
+			&& target == fKeyCatcher) {
+		fKeyCatcher->MessageReceived(message);
+		return;
+	}
+	BWindow::DispatchMessage(message, target);
+}
+
+
+void
 MainWindow::MessageReceived(BMessage* message)
 {
 	switch (message->what)
@@ -492,6 +506,8 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case SWITCHLIST:
 		{
+			printf("SWITCH!\n\n");
+
 			int32 listview;
 			if (message->FindInt32("listview", &listview) == B_OK) {
 				if (listview == 0)
@@ -506,6 +522,7 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case HELP:
 		{
+			printf("HELP!\n\n");
 			app_info info;
 			BPath path;
 			be_roster->GetActiveAppInfo(&info);
@@ -523,6 +540,7 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case PASTE_SPRUNGE:
 		{
+			message->PrintToStream();
 			if (fHistory->IsFocus() && !fHistory->IsEmpty()) {
 				int32 index = fHistory->CurrentSelection();
 				ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(index));

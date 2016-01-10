@@ -8,9 +8,8 @@
 
 #include <strings.h>
 
-#include "KeyCatcher.h"
-#include "Constants.h"
 #include "MainWindow.h"
+#include "Constants.h"
 
 
 KeyCatcher::KeyCatcher(const char* name)

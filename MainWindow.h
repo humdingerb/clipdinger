@@ -32,6 +32,7 @@
 #include "ClipView.h"
 #include "EditWindow.h"
 #include "FavView.h"
+#include "KeyCatcher.h"
 #include "SettingsWindow.h"
 
 const int32	kControlKeys = B_COMMAND_KEY | B_SHIFT_KEY;
@@ -43,6 +44,7 @@ public:
 	virtual			~MainWindow();
 
 	bool			QuitRequested();
+	void			DispatchMessage(BMessage* message, BHandler* target);
 	void			MessageReceived(BMessage* message);
 
 private:
@@ -71,6 +73,7 @@ private:
 	BSplitView*		fMainSplitView;
 	ClipView*		fHistory;
 	FavView*		fFavorites;
+	KeyCatcher*		fKeyCatcher;
 
 	BScrollView*	fHistoryScrollView;
 	BScrollView*	fFavoriteScrollView;
