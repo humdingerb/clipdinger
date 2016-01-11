@@ -397,7 +397,7 @@ MainWindow::DispatchMessage(BMessage* message, BHandler* target)
 	// message when invoking a menu item via shortcut
 	if (message->what == B_KEY_DOWN && target != NULL
 			&& target == fKeyCatcher) {
-		fKeyCatcher->MessageReceived(message);
+		MessageReceived(message);
 		return;
 	}
 	BWindow::DispatchMessage(message, target);
