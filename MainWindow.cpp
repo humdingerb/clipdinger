@@ -56,6 +56,7 @@ MainWindow::MainWindow(BRect frame)
 	ClipdingerSettings* settings = my_app->Settings();
 	int32 fade;
 	if (settings->Lock()) {
+		fAutoPaste = settings->GetAutoPaste();
 		fLimit = settings->GetLimit();
 		fade = settings->GetFade();
 		settings->Unlock();

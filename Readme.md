@@ -107,3 +107,7 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 **0.5.1** - _7-1-2016:_
 
 *   Made pasting to [Sprunge.us](http://sprunge.us) more robust. It doesn't hang the GUI longer than 2 seconds if the network is down. Puts an error message in the clipboard, also if the service was unavailable.
+
+**0.5.2** - _20-1-2016:_
+
+*   Bug fix: The Auto-paste setting was ignored on startup.
