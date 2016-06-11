@@ -47,7 +47,7 @@ void
 App::AboutRequested()
 {
 	BAlert *alert = new BAlert("about",
-		B_TRANSLATE("Clipdinger v0.5.2\n"
+		B_TRANSLATE("Clipdinger v0.5.3\n"
 		"\twritten by Humdinger\n"
 		"\tCopyright 2015-2016\n\n"
 		"Clipdinger provides a history of clippings of the system "

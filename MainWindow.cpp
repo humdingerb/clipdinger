@@ -63,8 +63,7 @@ MainWindow::MainWindow(BRect frame)
 	}
 
 	if (!fade) {
-		fPauseCheckBox->Hide();		// Hide() twice, because the window
-		fPauseCheckBox->Hide();		// isn't Show()n yet... (?)
+		fPauseCheckBox->Hide();
 		InvalidateLayout();
 	}
 	fLaunchTime = real_time_clock();
@@ -659,7 +658,6 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case UPDATE_SETTINGS:
 		{
-			bool invisible = fPauseCheckBox->IsHidden();
 			int32 newValue;
 			if (message->FindInt32("limit", &newValue) == B_OK) {
 				if (fLimit >= newValue)
@@ -672,12 +670,15 @@ MainWindow::MessageReceived(BMessage* message)
 				BMessage message(ADJUSTCOLORS);
 				messenger.SendMessage(&message);
 			}
+
 			if (message->FindInt32("autopaste", &newValue) == B_OK)
 				fAutoPaste = newValue;
+
 			if (message->FindInt32("fade", &newValue) == B_OK) {
-				if ((invisible) && (newValue == 1))
+				bool invisible = fPauseCheckBox->IsHidden();
+				if ((invisible == true) && (newValue == 1))
 					fPauseCheckBox->Show();
-				else if ((!invisible) && (newValue == 0))
+				else if ((invisible == false) && (newValue == 0)) 
 					fPauseCheckBox->Hide();
 				else
 					break;

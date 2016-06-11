@@ -1,4 +1,4 @@
-1	English	application/x-vnd.Clipdinger	1363565741
+1	English	application/x-vnd.Clipdinger	2496279599
 Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)	SettingsWindow		Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)
 Title:	EditWindow		Title:
 Clear history	MainWindow		Clear history
@@ -30,10 +30,10 @@ Auto-paste	SettingsWindow		Auto-paste
 Help	MainWindow		Help
 Thank you	Application		Thank you
 Delay	SettingsWindow		Delay
-Clipdinger v0.5.1\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.5.1\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.
 Clip	MainWindow		Clip
 Remove clip	ClipList		Remove clip
 Clipdinger settings	SettingsWindow		Clipdinger settings
+Clipdinger v0.5.3\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.5.3\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.
 Cancel	EditWindow		Cancel
 Move up	MainWindow		Move up
 Sprunge.us service not available.	MainWindow		Sprunge.us service not available.

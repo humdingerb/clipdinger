@@ -91,23 +91,28 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 *	Added Help menu item to open ReadMe.html.
 *   Bug fixes and optimizations.
 
-**0.4** - _1-8-2015:_
+**0.4** - _01-08-2015:_
 
 *   Bug fixes and optimizations.
 *	Added favorites feature.
 *   Added a "Pause fading" checkbox.
 *   Added a setting for the maximal fading tint.
 
-**0.5** - _4-1-2016:_
+**0.5** - _04-01-2016:_
 
 *   Added a feature to paste to the online service [Sprunge.us](http://sprunge.us)
 *   Bug fix: A chosen favorite will now appear at the top of the clip list, which always shows what's currently in the clipboard.
 *   Bug fix: Using the mouse instead of the cursor keys to switch list now correctly shows the inactive list "dimmed".
 
-**0.5.1** - _7-1-2016:_
+**0.5.1** - _07-01-2016:_
 
 *   Made pasting to [Sprunge.us](http://sprunge.us) more robust. It doesn't hang the GUI longer than 2 seconds if the network is down. Puts an error message in the clipboard, also if the service was unavailable.
 
-**0.5.2** - _20-1-2016:_
+**0.5.2** - _20-01-2016:_
 
 *   Bug fix: The Auto-paste setting was ignored on startup.
+
+**0.5.3** - _11-06-2016:_
+
+*   Bug fix: Make the context menu more robust. Fixes issue #2.
+*	Added Russian localization, thanks to Akujiism.

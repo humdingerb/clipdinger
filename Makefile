@@ -8,7 +8,7 @@ LIBPATHS=
 SYSTEM_INCLUDE_PATHS=
 LOCAL_INCLUDE_PATHS=
 OPTIMIZE=
-LOCALES= en de
+LOCALES= en de ru
 #	specify any preprocessor symbols to be defined.  The symbols will not
 #	have their values set automatically; you must supply the value (if any)
 #	to use.  For example, setting DEFINES to "DEBUG=1" will cause the
