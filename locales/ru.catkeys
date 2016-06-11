@@ -36,4 +36,4 @@ Clipdinger settings	SettingsWindow		Настройки Clipdinger
 Clipdinger v0.5.3\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.5.3\n\tнаписан Humdinger\n\tCopyright 2015-2016\n\nClipdinger предоставляет историю записей из системного буфера обмена и возможность их добвления в избранное.\n\nПожалуйста, сообщайте мне обо всех найденных вами ошибках или новых функциях, которые вам нужны.  Данные для связи находятся в "Справке", доступной через меню.
 Cancel	EditWindow		Отмена
 Move up	MainWindow		Переместить выше
-Sprunge.us service not available.	MainWindow		Сервис Sprunge.us не доступен.
+Sprunge.us service not available.	MainWindow		Сервис Sprunge.us недоступен.
