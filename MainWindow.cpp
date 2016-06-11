@@ -72,6 +72,9 @@ MainWindow::MainWindow(BRect frame)
 	_LoadHistory();
 	_LoadFavorites();
 
+	if (fFavorites->CountItems() > 0)
+		UpdateButtons();
+
 	if (!fHistory->IsEmpty())
 		fHistory->Select(0);
 	if (!fFavorites->IsEmpty())
@@ -210,8 +213,11 @@ MainWindow::_BuildLayout()
 	// The buttons
 	fButtonUp = new BButton("up", B_TRANSLATE("Move up"),
 		new BMessage(FAV_UP));
+	fButtonUp->SetEnabled(false);
+
 	fButtonDown = new BButton("down", B_TRANSLATE("Move down"),
 		new BMessage(FAV_DOWN));
+	fButtonDown->SetEnabled(false);
 
 	// do the layouting
 	static const float spacing = be_control_look->DefaultItemSpacing() / 2;
@@ -244,6 +250,7 @@ MainWindow::_BuildLayout()
 	fHistory->SetInvocationMessage(new BMessage(INSERT_HISTORY));
 	fHistory->SetViewColor(B_TRANSPARENT_COLOR);
 	fFavorites->SetInvocationMessage(new BMessage(INSERT_FAVORITE));
+	fFavorites->SetSelectionMessage(new BMessage(FAV_SELECTION));
 	fFavorites->SetViewColor(B_TRANSPARENT_COLOR);
 }
 
@@ -424,10 +431,13 @@ MainWindow::MessageReceived(BMessage* message)
 		case DELETE:
 		{
 			int32 index = fHistory->CurrentSelection();
-			if ((fHistory->IsEmpty()) || (index < 0))
+			ClipItem* clip = NULL;
+			if (message->FindPointer("clip",
+				reinterpret_cast<void**>(&clip)) != B_OK)
 				break;
 
-			fHistory->RemoveItem(index);
+			fHistory->RemoveItem(clip);
+
 			int32 count = fHistory->CountItems();
 			fHistory->Select((index > count - 1) ? count - 1 : index);
 			break;
@@ -444,16 +454,25 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case FAV_ADD:
 		{
-			AddFav();
+			ClipItem* clip = NULL;
+			if (message->FindPointer("clip",
+				reinterpret_cast<void**>(&clip)) != B_OK)
+				break;
+
+			int32 lastitem = fFavorites->CountItems();
+			fFavorites->AddItem(new FavItem(clip->GetClip(), NULL, lastitem), lastitem);
 			break;
 		}
 		case FAV_DELETE:
 		{
 			int32 index = fFavorites->CurrentSelection();
-			if ((fFavorites->IsEmpty()) || (index < 0))
+			FavItem* fav = NULL;
+			if (message->FindPointer("fav",
+				reinterpret_cast<void**>(&fav)) != B_OK)
 				break;
 
-			fFavorites->RemoveItem(index);
+			fFavorites->RemoveItem(fav);
+
 			RenumberFavorites(index);
 			int32 count = fFavorites->CountItems();
 			fFavorites->Select((index > count - 1) ? count - 1 : index);
@@ -461,8 +480,11 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case FAV_EDIT:
 		{
-			FavItem *fav = dynamic_cast<FavItem *>
-				(fFavorites->ItemAt(fFavorites->CurrentSelection()));
+			FavItem* fav = NULL;
+			if (message->FindPointer("fav",
+				reinterpret_cast<void**>(&fav)) != B_OK)
+				break;
+
 			fEditWindow = new EditWindow(Frame(), fav);
 			fEditWindow->Show();
 			break;
@@ -473,17 +495,26 @@ MainWindow::MessageReceived(BMessage* message)
 			int32 last = fFavorites->CountItems();
 			if ((index == last - 1) || (index < 0))
 				break;
+
 			fFavorites->SwapItems(index, index + 1);
 			RenumberFavorites(index);
+			UpdateButtons();
 			break;
 		}
 		case FAV_UP:
 		{
 			int32 index = fFavorites->CurrentSelection();
-			if (index <= 0)
+			if (index < 1)
 				break;
+
 			fFavorites->SwapItems(index, index - 1);
 			RenumberFavorites(index - 1);
+			UpdateButtons();
+			break;
+		}
+		case FAV_SELECTION:
+		{
+			UpdateButtons();
 			break;
 		}
 		case UPDATE_FAV_DISPLAY:
@@ -525,19 +556,36 @@ MainWindow::MessageReceived(BMessage* message)
 		case PASTE_SPRUNGE:
 		{
 			if (fHistory->IsFocus() && !fHistory->IsEmpty()) {
-				int32 index = fHistory->CurrentSelection();
-				ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(index));
-				BString text(item->GetClip());
+				BString text;
+				ClipItem* clip = NULL;
+				if (message->FindPointer("clip",
+					reinterpret_cast<void**>(&clip)) == B_OK)
+					text = clip->GetClip();
+				else {
+					int32 index = fHistory->CurrentSelection();
+					ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(index));
+					text = item->GetClip();
+				}
 				PutClipboard(text);
 
 			} else if (fFavorites->IsFocus() && !fFavorites->IsEmpty()) {
-				int32 index = fFavorites->CurrentSelection();
-				FavItem* item = dynamic_cast<FavItem *> (fFavorites->ItemAt(index));
-				BString text(item->GetClip());
+				BString text;
+				FavItem* fav = NULL;
+				if (message->FindPointer("fav",
+					reinterpret_cast<void**>(&fav)) == B_OK)
+					text = fav->GetClip();
+				else {
+					int32 index = fFavorites->CurrentSelection();
+					FavItem* item = dynamic_cast<FavItem *> (fFavorites->ItemAt(index));
+					text = item->GetClip();
+				}
 				PutClipboard(text);
 
 			} else
 				break;
+
+			Minimize(true);
+			PostMessage(B_CLIPBOARD_CHANGED);
 
 			BString command(
 				"stat=$(curl -m 2 -s -I http://google.com | grep HTTP/1 | awk {'print $2'}) ; "
@@ -557,9 +605,6 @@ MainWindow::MessageReceived(BMessage* message)
 			command.ReplaceAll("%ERROR%",
 				B_TRANSLATE("Sprunge.us service not available."));
 			system(command.String());
-
-			Minimize(true);
-			PostMessage(B_CLIPBOARD_CHANGED);
 			break;
 		}
 		case CLEAR_HISTORY:
@@ -651,6 +696,20 @@ MainWindow::MessageReceived(BMessage* message)
 
 
 void
+MainWindow::UpdateButtons()
+{
+	int32 selection = fFavorites->CurrentSelection();
+	int32 count = fFavorites->CountItems();
+
+	if (selection < 0)
+		count = -1;
+
+	fButtonUp->SetEnabled((count > 1 && selection > 0) ? true : false);
+	fButtonDown->SetEnabled((count > 1 && selection < count - 1) ? true : false);
+}
+
+
+void
 MainWindow::MakeItemUnique(BString clip)
 {
 	if (fHistory->IsEmpty())
@@ -674,21 +733,6 @@ MainWindow::AddClip(BString clip, BString path, int32 time)
 		fHistory->RemoveItem(fHistory->LastItem());
 
 	fHistory->AddItem(new ClipItem(clip, path, time), 0);
-}
-
-
-void
-MainWindow::AddFav()
-{
-	int index = fHistory->CurrentSelection();
-	if (index < 0)
-		return;
-
-	ClipItem *item = dynamic_cast<ClipItem *> (fHistory->ItemAt(index));
-	BString clip(item->GetClip());
-
-	int32 lastitem = fFavorites->CountItems();
-	fFavorites->AddItem(new FavItem(clip, NULL, lastitem), lastitem);
 }
 
 

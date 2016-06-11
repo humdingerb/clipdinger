@@ -55,12 +55,12 @@ private:
 
 	void			MakeItemUnique(BString clip);
 	void			AddClip(BString clip, BString path, int32 time);
-	void			AddFav();
 	BString			GetClipboard();
 	void			PutClipboard(BString text);
 	void			CropHistory(int32 limit);
 	void			AutoPaste();
 	void			MoveClipToTop();
+	void			UpdateButtons();
 	void			UpdateColors();
 	void			RenumberFavorites(int32 start);
 

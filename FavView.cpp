@@ -118,14 +118,14 @@ FavView::KeyDown(const char* bytes, int32 numBytes)
 void
 FavView::MouseDown(BPoint position)
 {
+	BListView::MouseDown(position);
+
 	BMessage message(SWITCHLIST);
 	message.AddInt32("listview", (int32)0);
 	Looper()->PostMessage(&message);
 
-	BRect bounds(Bounds());
-	BRect itemFrame = ItemFrame(CountItems() - 1);
-	bounds.top = itemFrame.bottom;
-	if (bounds.Contains(position) == false) {
+	BRect bounds = ItemFrame(CurrentSelection());
+	if (bounds.Contains(position)) {
 		uint32 buttons = 0;
 		if (Window() != NULL && Window()->CurrentMessage() != NULL)
 			buttons = Window()->CurrentMessage()->FindInt32("buttons");
@@ -133,7 +133,6 @@ FavView::MouseDown(BPoint position)
 		if (buttons == B_SECONDARY_MOUSE_BUTTON)
 			ShowPopUpMenu(ConvertToScreen(position));
 	}
-	BListView::MouseDown(position);
 }
 
 
@@ -144,17 +143,22 @@ FavView::ShowPopUpMenu(BPoint screen)
 		return;
 
 	ContextPopUp* menu = new ContextPopUp("PopUpMenu", this);
+	FavItem *currentFav = dynamic_cast<FavItem *>(ItemAt(CurrentSelection()));
+	BMessage* msg;
 
-	BMenuItem* item = new BMenuItem(B_TRANSLATE("Edit title"),
-		new BMessage(FAV_EDIT));
+	msg = new BMessage(FAV_EDIT);
+	msg->AddPointer("fav", currentFav);
+	BMenuItem* item = new BMenuItem(B_TRANSLATE("Edit title"), msg);
 	menu->AddItem(item);
 
-	item = new BMenuItem(B_TRANSLATE("Remove favorite"),
-		new BMessage(FAV_DELETE));
+	msg = new BMessage(FAV_DELETE);
+	msg->AddPointer("fav", currentFav);
+	item = new BMenuItem(B_TRANSLATE("Remove favorite"),msg);
 	menu->AddItem(item);
 
-	item = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"),
-		new BMessage(PASTE_SPRUNGE));
+	msg = new BMessage(PASTE_SPRUNGE);
+	msg->AddPointer("fav", currentFav);
+	item = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"), msg);
 	menu->AddItem(item);
 
 	menu->SetTargetForItems(Looper());

@@ -162,14 +162,14 @@ ClipView::AdjustColors()
 void
 ClipView::MouseDown(BPoint position)
 {
+	BListView::MouseDown(position);
+
 	BMessage message(SWITCHLIST);
 	message.AddInt32("listview", (int32)1);
 	Looper()->PostMessage(&message);
 
-	BRect bounds(Bounds());
-	BRect itemFrame = ItemFrame(CountItems() - 1);
-	bounds.top = itemFrame.bottom;
-	if (bounds.Contains(position) == false) {
+	BRect bounds = ItemFrame(CurrentSelection());
+	if (bounds.Contains(position)) {
 		uint32 buttons = 0;
 		if (Window() != NULL && Window()->CurrentMessage() != NULL)
 			buttons = Window()->CurrentMessage()->FindInt32("buttons");
@@ -177,7 +177,6 @@ ClipView::MouseDown(BPoint position)
 		if (buttons == B_SECONDARY_MOUSE_BUTTON)
 			ShowPopUpMenu(ConvertToScreen(position));
 	}
-	BListView::MouseDown(position);
 }
 
 
@@ -188,17 +187,22 @@ ClipView::ShowPopUpMenu(BPoint screen)
 		return;
 
 	ContextPopUp* menu = new ContextPopUp("PopUpMenu", this);
+	ClipItem *currentClip = dynamic_cast<ClipItem *>(ItemAt(CurrentSelection()));
+	BMessage* msg;
 
-	BMenuItem* item = new BMenuItem(B_TRANSLATE("Remove clip"),
-		new BMessage(DELETE));
+	msg = new BMessage(DELETE);
+	msg->AddPointer("clip", currentClip);
+	BMenuItem* item = new BMenuItem(B_TRANSLATE("Remove clip"), msg);
 	menu->AddItem(item);
 
-	item = new BMenuItem(B_TRANSLATE("Add to favorites"),
-		new BMessage(FAV_ADD));
+	msg = new BMessage(FAV_ADD);
+	msg->AddPointer("clip", currentClip);
+	item = new BMenuItem(B_TRANSLATE("Add to favorites"), msg);
 	menu->AddItem(item);
 
-	item = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"),
-		new BMessage(PASTE_SPRUNGE));
+	msg = new BMessage(PASTE_SPRUNGE);
+	msg->AddPointer("clip", currentClip);
+	item = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"), msg);
 	menu->AddItem(item);
 
 	menu->SetTargetForItems(Looper());
