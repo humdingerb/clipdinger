@@ -15,7 +15,7 @@
 
 KeyCatcher::KeyCatcher(const char* name)
 	:
-	BView(name, NULL)
+	BView(name, 0)
 {
 }
 

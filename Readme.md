@@ -116,3 +116,8 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 
 *   Bug fix: Make the context menu more robust. Fixes issue #2.
 *	Added Russian localization, thanks to Akujiism.
+
+**0.5.4** - _12-06-2016:_
+
+*   Build fix for gcc5.
+*	Fixed typo in Russian localization, thanks to Diver.

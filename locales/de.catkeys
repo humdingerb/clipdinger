@@ -1,4 +1,4 @@
-1	German	application/x-vnd.Clipdinger	2496279599
+1	German	application/x-vnd.Clipdinger	915152880
 Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)	SettingsWindow		Einträge werden alle %A% Minuten dunkler.\nDie maximale Abdunklung wird nach\n%B% Minuten erreicht (in %C% Stufen)
 Title:	EditWindow		Titel:
 Clear history	MainWindow		Historie löschen
@@ -33,7 +33,7 @@ Delay	SettingsWindow		Zeitintervall
 Clip	MainWindow		Clip
 Remove clip	ClipList		Eintrag entfernen
 Clipdinger settings	SettingsWindow		Clipdinger Einstellungen
-Clipdinger v0.5.3\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.5.3\n\tvon Humdinger\n\tCopyright 2015-2016\n\nClipdinger bietet eine Historie für die Zwischenablage und die Anlage von Favoriten.\n\nBerichte zu Bugs oder gewünschten Features sind sehr willkommen. Kontaktinfos befinden sich im ReadMe, siehe Menü 'Hilfe'.
+Clipdinger v0.5.4\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.5.4\n\tvon Humdinger\n\tCopyright 2015-2016\n\nClipdinger bietet eine Historie für die Zwischenablage und die Anlage von Favoriten.\n\nBerichte zu Bugs oder gewünschten Features sind sehr willkommen. Kontaktinfos befinden sich im ReadMe, siehe Menü 'Hilfe'.
 Cancel	EditWindow		Abbrechen
 Move up	MainWindow		Rauf
 Sprunge.us service not available.	MainWindow		Sprunge.us nicht verfügbar.
