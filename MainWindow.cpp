@@ -155,13 +155,16 @@ MainWindow::_BuildLayout()
 	BMenuItem* item;
 
 	menu = new BMenu(B_TRANSLATE("App"));
+	item = new BMenuItem(B_TRANSLATE("Settings" B_UTF8_ELLIPSIS),
+		new BMessage(SETTINGS));
+	menu->AddItem(item);
+	item = new BMenuItem(B_TRANSLATE("Help"),
+		new BMessage(HELP));
+	menu->AddItem(item);
 	item = new BMenuItem(B_TRANSLATE("About Clipdinger"),
 		new BMessage(B_ABOUT_REQUESTED));
 	menu->AddItem(item);
 	item->SetTarget(be_app);
-	item = new BMenuItem(B_TRANSLATE("Help"),
-		new BMessage(HELP));
-	menu->AddItem(item);
 	item = new BMenuItem(B_TRANSLATE("Minimize"),
 		new BMessage(ESCAPE), 'W');
 	menu->AddItem(item);
@@ -179,9 +182,6 @@ MainWindow::_BuildLayout()
 	menu = new BMenu(B_TRANSLATE("History"));
 	item = new BMenuItem(B_TRANSLATE("Clear history"),
 		new BMessage(CLEAR_HISTORY));
-	menu->AddItem(item);
-	item = new BMenuItem(B_TRANSLATE("Settings" B_UTF8_ELLIPSIS),
-		new BMessage(SETTINGS));
 	menu->AddItem(item);
 	menuBar->AddItem(menu);
 
