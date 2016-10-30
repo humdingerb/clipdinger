@@ -18,6 +18,7 @@ static const char kHistoryFile[] = "Clipdinger_history";
 static const char kFavoriteFile[] = "Clipdinger_favorites";
 
 static const int32 kDefaultLimit = 100;
+static const int32 kDefaultAutoStart = 1;
 static const int32 kDefaultAutoPaste = 1;
 static const int32 kDefaultFade = 0;
 static const int32 kDefaultFadeDelay = 6;
@@ -49,6 +50,7 @@ static const int32 kMinuteUnits = 10; // minutes per unit
 #define SETTINGS			'sett'
 #define SWITCHLIST			'swls'
 
+#define	AUTOSTART			'aust'
 #define	AUTOPASTE			'auto'
 #define FADE				'fade'
 #define DELAY				'dely'

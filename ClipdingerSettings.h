@@ -22,6 +22,7 @@ public:
 		void		Unlock();
 			
 		int32		GetLimit() { return fLimit; }
+		bool		GetAutoStart() { return fAutoStart; }
 		int32		GetAutoPaste() { return fAutoPaste; }
 		int32		GetFade() { return fFade; }
 		int32		GetFadeDelay() { return fFadeDelay; }
@@ -33,6 +34,7 @@ public:
 		void		GetSplitCollapse(bool* left, bool* right);
 
 		void		SetLimit(int32 limit);
+		void		SetAutoStart(int32 autostart);
 		void		SetAutoPaste(int32 autopaste);
 		void		SetFade(int32 fade);
 		void		SetFadeDelay(int32 delay);
@@ -44,6 +46,7 @@ public:
 		void		SetFadePause(int32 pause) { fFadePause = pause; }
 private:
 		int32		fLimit;
+		bool		fAutoStart;
 		int32		fAutoPaste;
 		int32		fFade;
 		int32		fFadeDelay;

@@ -24,6 +24,7 @@
 ClipdingerSettings::ClipdingerSettings()
 	:
 	fLimit(kDefaultLimit),
+	fAutoStart(kDefaultAutoStart),
 	fAutoPaste(kDefaultAutoPaste),
 	fFade(kDefaultFade),
 	fFadeDelay(kDefaultFadeDelay),
@@ -43,24 +44,34 @@ ClipdingerSettings::ClipdingerSettings()
 			BFile file(path.Path(), B_READ_ONLY);
 
 			if ((file.InitCheck() == B_OK) && (msg.Unflatten(&file) == B_OK)) {
-				if (msg.FindInt32("limit", &fLimit) != B_OK)
+				if (msg.FindInt32("limit", &fLimit) != B_OK) {
 					fLimit = kDefaultLimit;
-
-				if (msg.FindInt32("autopaste", &fAutoPaste) != B_OK)
+					dirtySettings = true;
+				}
+				if (msg.FindBool("autostart", &fAutoStart) != B_OK) {
+					fAutoStart = kDefaultAutoStart;
+					dirtySettings = true;
+				}
+				if (msg.FindInt32("autopaste", &fAutoPaste) != B_OK) {
 					fAutoPaste = kDefaultAutoPaste;
-
-				if (msg.FindInt32("fade", &fFade) != B_OK)
+					dirtySettings = true;
+				}
+				if (msg.FindInt32("fade", &fFade) != B_OK) {
 					fFade = kDefaultFade;
-
-				if (msg.FindInt32("fadedelay", &fFadeDelay) != B_OK)
+					dirtySettings = true;
+				}
+				if (msg.FindInt32("fadedelay", &fFadeDelay) != B_OK) {
 					fFadeDelay = kDefaultFadeDelay;
-
-				if (msg.FindInt32("fadestep", &fFadeStep) != B_OK)
+					dirtySettings = true;
+				}
+				if (msg.FindInt32("fadestep", &fFadeStep) != B_OK) {
 					fFadeStep = kDefaultFadeStep;
-
-				if (msg.FindInt32("fademax", &fFadeMaxLevel) != B_OK)
+					dirtySettings = true;
+				}
+				if (msg.FindInt32("fademax", &fFadeMaxLevel) != B_OK) {
 					fFadeStep = kDefaultFadeMaxLevel;
-
+					dirtySettings = true;
+				}
 				if (msg.FindRect("windowlocation", &fPosition) != B_OK)
 					fPosition.Set(-1, -1, -1, -1);
 
@@ -105,6 +116,7 @@ ClipdingerSettings::~ClipdingerSettings()
 
 		if (ret == B_OK) {
 			msg.AddInt32("limit", fLimit);
+			msg.AddBool("autostart", fAutoStart);
 			msg.AddInt32("autopaste", fAutoPaste);
 			msg.AddInt32("fade", fFade);
 			msg.AddInt32("fadedelay", fFadeDelay);
@@ -157,6 +169,16 @@ ClipdingerSettings::SetLimit(int32 limit)
 	if (fLimit == limit)
 		return;
 	fLimit = limit;
+	dirtySettings = true;
+}
+
+
+void
+ClipdingerSettings::SetAutoStart(int32 autostart)
+{
+	if (fAutoStart == autostart)
+		return;
+	fAutoStart = autostart;
 	dirtySettings = true;
 }
 
