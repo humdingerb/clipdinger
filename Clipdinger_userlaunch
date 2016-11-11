@@ -1,7 +1,5 @@
-target desktop {
-	service x-vnd.Clipdinger {
-		if setting ~/config/settings/Clipdinger/Clipdinger_settings autostart
-		no_safemode
-		legacy
-	}
+job x-vnd.Clipdinger {
+	if setting ~/config/settings/Clipdinger/Clipdinger_settings autostart
+	no_safemode
+	legacy
 }
