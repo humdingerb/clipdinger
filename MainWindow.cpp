@@ -87,6 +87,7 @@ MainWindow::MainWindow(BRect frame)
 		}
 	}
 	be_clipboard->StartWatching(this);
+	PostMessage(B_CLIPBOARD_CHANGED);
 }
 
 
