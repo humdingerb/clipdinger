@@ -1,5 +1,5 @@
 /*
- * Copyright 2015. All rights reserved.
+ * Copyright 2015-2016. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -32,6 +32,7 @@
 #include "ClipView.h"
 #include "EditWindow.h"
 #include "FavView.h"
+#include "ReplWindow.h"
 #include "SettingsWindow.h"
 
 const int32	kControlKeys = B_COMMAND_KEY | B_SHIFT_KEY;
@@ -80,6 +81,7 @@ private:
 	BButton*		fButtonDown;
 
 	EditWindow*		fEditWindow;
+	ReplWindow*		fReplWindow;
 	SettingsWindow*	fSettingsWindow;
 };
 

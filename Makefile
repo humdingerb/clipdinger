@@ -1,7 +1,10 @@
 NAME= Clipdinger
 TYPE= APP
 APP_MIME_SIG= application/x-vnd.Clipdinger
-SRCS= App.cpp ClipdingerSettings.cpp ClipItem.cpp ClipView.cpp ContextPopUp.cpp EditWindow.cpp FavItem.cpp FavView.cpp KeyCatcher.cpp MainWindow.cpp SettingsWindow.cpp
+SRCS= App.cpp ClipdingerSettings.cpp ClipItem.cpp ClipView.cpp \
+	ContextPopUp.cpp EditWindow.cpp FavItem.cpp FavView.cpp \
+	KeyCatcher.cpp MainWindow.cpp ReplView.cpp ReplWindow.cpp \
+	SettingsWindow.cpp
 RDEFS= Clipdinger.rdef
 LIBS= be localestub $(STDCPPLIBS)
 LIBPATHS=
@@ -22,7 +25,7 @@ DEFINES=
 WARNINGS =
 # Build with debugging symbols if set to TRUE
 SYMBOLS=
-DEBUGGER :=
+DEBUGGER := TRUE
 COMPILER_FLAGS=
 LINKER_FLAGS=
 

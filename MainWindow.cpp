@@ -139,6 +139,11 @@ MainWindow::QuitRequested()
 		if (messenger.IsValid() && messenger.LockTarget())
 			fSettingsWindow->Quit();
 	}
+	if (fReplWindow) {
+		BMessenger messenger(fReplWindow);
+		if (messenger.IsValid() && messenger.LockTarget())
+			fReplWindow->Quit();
+	}
 
 	be_app->PostMessage(B_QUIT_REQUESTED);
 	return true;
@@ -155,6 +160,9 @@ MainWindow::_BuildLayout()
 	BMenuItem* item;
 
 	menu = new BMenu(B_TRANSLATE("App"));
+	item = new BMenuItem(B_TRANSLATE("Clipboard monitor" B_UTF8_ELLIPSIS),
+		new BMessage(CLIPMONITOR));
+	menu->AddItem(item);
 	item = new BMenuItem(B_TRANSLATE("Settings" B_UTF8_ELLIPSIS),
 		new BMessage(SETTINGS));
 	menu->AddItem(item);
@@ -616,6 +624,12 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			fSettingsWindow = new SettingsWindow(Frame());
 			fSettingsWindow->Show();
+			break;
+		}
+		case CLIPMONITOR:
+		{
+			fReplWindow = new ReplWindow(Frame());
+			fReplWindow->Show();
 			break;
 		}
 		case INSERT_HISTORY:

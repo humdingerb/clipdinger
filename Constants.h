@@ -11,7 +11,7 @@
 
 #define OUTPUT_PORT_NAME	"Clipdinger output port"
 
-static const char *kApplicationSignature = "application/x-vnd.Clipdinger";
+static const char* kApplicationSignature = "application/x-vnd.Clipdinger";
 static const char kSettingsFolder[] = "Clipdinger";
 static const char kSettingsFile[] = "Clipdinger_settings";
 static const char kHistoryFile[] = "Clipdinger_history";
@@ -47,6 +47,7 @@ static const int32 kMinuteUnits = 10; // minutes per unit
 #define INSERT_FAVORITE		'ifav'
 #define ADJUSTCOLORS		'acol'
 #define PAUSE				'paus'
+#define CLIPMONITOR			'cmon'
 #define SETTINGS			'sett'
 #define SWITCHLIST			'swls'
 
