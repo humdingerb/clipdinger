@@ -23,13 +23,13 @@
 
 ReplWindow::ReplWindow(BRect frame)
 	:
-	BWindow(BRect(0, 0, 350, 100), B_TRANSLATE("Clipboard monitor"),
+	BWindow(BRect(0, 0, 400, 100), B_TRANSLATE("Clipboard monitor"),
 		B_TITLED_WINDOW, B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS |
 		B_CLOSE_ON_ESCAPE)
 {
 	_BuildLayout();
 
-	frame.OffsetBy(160.0, 60.0);
+	frame.OffsetBy(30.0, 30.0);
 	MoveTo(frame.LeftTop());
 }
 

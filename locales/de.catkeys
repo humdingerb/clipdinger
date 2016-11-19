@@ -1,7 +1,7 @@
 1	German	application/x-vnd.Clipdinger	1517658326
 Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.5.5\n\tvon Humdinger\n\tCopyright 2015-2016\n\nClipdinger bietet eine Historie für die Zwischenablage und die Anlage von Favoriten.\n\nBerichte zu Bugs oder gewünschten Features sind sehr willkommen. Kontaktinfos befinden sich im ReadMe, siehe Menü 'Hilfe'.
 Thank you	Application		Danke
-Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger v0.5.5\n\tvon Humdinger\n\tCopyright 2015-2016\n\nClipdinger bietet eine Historie für die Zwischenablage und die Anlage von Favoriten.\n\nDieser Zwischenablagen-Monitor kann als Replikant auf dem Desktop benutzt werden, um stets ihren aktuellen Inhalt anzuzeigen.
+Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger v0.5.5\n\tvon Humdinger\n\tCopyright 2015-2016\n\nClipdinger bietet eine Historie für die Zwischenablage und die Anlage von Favoriten.\n\nDiese Zwischenablagenanzeige kann als Replikant auf dem Desktop benutzt werden, um stets ihren aktuellen Inhalt anzuzeigen.
 Thank you	ClipboardMonitor		Danke
 Add to favorites	ClipList		Zu Favoriten hinzufügen
 Edit title	ClipList		Titel bearbeiten
@@ -16,7 +16,7 @@ About Clipdinger	MainWindow		Über Clipdinger
 App	MainWindow		App
 Clear history	MainWindow		Historie löschen
 Clip	MainWindow		Clip
-Clipboard monitor…	MainWindow		Zwischenablagen-Monitor…
+Clipboard monitor…	MainWindow		Zwischenablagenanzeige…
 Help	MainWindow		Hilfe
 History	MainWindow		Historie
 Minimize	MainWindow		Minimieren
@@ -28,7 +28,7 @@ Quit	MainWindow		Beenden
 Saved favourites	MainWindow		Gespeicherte Favoriten
 Settings…	MainWindow		Einstellungen…
 Sprunge.us service not available.	MainWindow		Sprunge.us nicht verfügbar.
-Clipboard monitor	ReplWindow		Zwischenablagen-Monitor
+Clipboard monitor	ReplWindow		Zwischenablagenanzeige
 Resize the window to your needs and drag the Replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Fenstergröße anpassen, dann den Replikant am Icon auf den Desktop ziehen.\nDie Farbe lässt sich per Drag&Drop z.B. aus Icon-O-Matic ändern.
 Auto-paste	SettingsWindow		Auto-Einfügen
 Auto-start Clipdinger	SettingsWindow		Auto-Start  von Clipdinger
