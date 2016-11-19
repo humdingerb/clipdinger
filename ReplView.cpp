@@ -27,14 +27,6 @@
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "ClipboardMonitor"
 
-void
-ReplView::_Init()
-{
-	fContentsView = new BStringView("clip", "");
-	fContentsView->SetAlignment(B_ALIGN_CENTER);
-	fContentsView->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
-}
-
 
 BString
 ReplView::_GetClipboard()
@@ -68,7 +60,9 @@ ReplView::ReplView()
 	BView("Clipboard monitor", B_WILL_DRAW | B_FULL_UPDATE_ON_RESIZE),
 	fReplicated(false)
 {
-	_Init();
+	fContentsView = new BStringView("contents", "");
+	fContentsView->SetAlignment(B_ALIGN_CENTER);
+	fContentsView->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
 	// Dragger
 	BRect rect(Bounds());
@@ -99,7 +93,8 @@ ReplView::ReplView(BMessage* archive)
 	BView(archive),
 	fReplicated(true)
 {
-	_Init();
+	fContentsView = dynamic_cast<BStringView *> (FindView("contents"));
+	fContentsView->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 }
 
 
@@ -136,8 +131,6 @@ void
 ReplView::AttachedToWindow()
 {
 	BView::AttachedToWindow();
-
-//	AdoptSystemColors();
 
 	fCurrentClip = _GetClipboard().String();
 	TruncateClip(Bounds().Width());

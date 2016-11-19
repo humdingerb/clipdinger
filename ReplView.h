@@ -30,7 +30,6 @@ public:
 
 private:
 	BString					_GetClipboard();
-	void					_Init();
 
 	bool					fReplicated;
 	BStringView*			fContentsView;
