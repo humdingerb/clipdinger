@@ -1,39 +1,45 @@
-1	Russian	application/x-vnd.Clipdinger	915152880
-Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)	SettingsWindow		Записи затеняются каждые %A% минут.\nМаксимальное затенение будет достигнуто\nчерез %B% минут (в %C% шагов)
-Title:	EditWindow		Заголовок:
-Clear history	MainWindow		Очистить историю
-About Clipdinger	MainWindow		О Clipdinger
+1	Russian	application/x-vnd.Clipdinger	1517658326
+Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.
+Thank you	Application		Спасибо
+Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.
+Thank you	ClipboardMonitor		Thank you
 Add to favorites	ClipList		Добавить в избранное
-Remove favorite	ClipList		Удалить из избранного
-entries in the clipboard history	SettingsWindow		записей в истории буфера обмена
-Edit title	EditWindow		Редактировать заголовок
-History	MainWindow		История
-OK	EditWindow		OK
-Settings…	MainWindow		Настройки…
-Saved favourites	MainWindow		Избранное
-Move down	MainWindow		Переместить ниже
-OK	SettingsWindow		OK
-Paste to Sprunge.us	MainWindow		Опубликовать на Sprunge.us
-Paste to Sprunge.us	ClipList		Опубликовать на Sprunge.us
-Entries don't fade over time.	SettingsWindow		Записи не затеняются со временем.
-App	MainWindow		Приложение
-Minimize	MainWindow		Свернуть
-Quit	MainWindow		Выход
 Edit title	ClipList		Редактировать заголовок
+Paste to Sprunge.us	ClipList		Опубликовать на Sprunge.us
+Remove clip	ClipList		Удалить запись
+Remove favorite	ClipList		Удалить из избранного
+Cancel	EditWindow		Отмена
+Edit title	EditWindow		Редактировать заголовок
+OK	EditWindow		OK
+Title:	EditWindow		Заголовок:
+About Clipdinger	MainWindow		О Clipdinger
+App	MainWindow		Приложение
+Clear history	MainWindow		Очистить историю
+Clip	MainWindow		Запись
+Clipboard monitor…	MainWindow		Clipboard monitor…
+Help	MainWindow		Справка
+History	MainWindow		История
+Minimize	MainWindow		Свернуть
+Move down	MainWindow		Переместить ниже
+Move up	MainWindow		Переместить выше
+Paste to Sprunge.us	MainWindow		Опубликовать на Sprunge.us
 Pause fading	MainWindow		Приостановить затенение
+Quit	MainWindow		Выход
+Saved favourites	MainWindow		Избранное
+Settings…	MainWindow		Настройки…
+Sprunge.us service not available.	MainWindow		Сервис Sprunge.us недоступен.
+Clipboard monitor	ReplWindow		Clipboard monitor
+Resize the window to your needs and drag the Replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Resize the window to your needs and drag the Replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.
+Auto-paste	SettingsWindow		Автоматическая вставка
+Auto-start Clipdinger	SettingsWindow		Auto-start Clipdinger
 Cancel	SettingsWindow		Отмена
-Clipdinger	System name		Clipdinger
+Clipdinger settings	SettingsWindow		Настройки Clipdinger
+Delay	SettingsWindow		Задержка
+Entries don't fade over time.	SettingsWindow		Записи не затеняются со временем.
+Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)	SettingsWindow		Записи затеняются каждые %A% минут.\nМаксимальное затенение будет достигнуто\nчерез %B% минут (в %C% шагов)
+entries in the clipboard history	SettingsWindow		записей в истории буфера обмена
 Fade history entries over time	SettingsWindow		Затенять записи в истории со временем
 Max. tint level	SettingsWindow		Максимальный уровень затенения
+OK	SettingsWindow		OK
 Steps	SettingsWindow		Количество шагов
-Auto-paste	SettingsWindow		Автоматическая вставка
-Help	MainWindow		Справка
-Thank you	Application		Спасибо
-Delay	SettingsWindow		Задержка
-Clip	MainWindow		Запись
-Remove clip	ClipList		Удалить запись
-Clipdinger settings	SettingsWindow		Настройки Clipdinger
-Clipdinger v0.5.4\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.5.4\n\tнаписан Humdinger\n\tCopyright 2015-2016\n\nClipdinger предоставляет историю записей из системного буфера обмена и возможность их добвления в избранное.\n\nПожалуйста, сообщайте мне обо всех найденных вами ошибках или новых функциях, которые вам нужны.  Данные для связи находятся в "Справке", доступной через меню.
-Cancel	EditWindow		Отмена
-Move up	MainWindow		Переместить выше
-Sprunge.us service not available.	MainWindow		Сервис Sprunge.us недоступен.
+Clipdinger	System name		Clipdinger

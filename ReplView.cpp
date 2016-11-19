@@ -28,33 +28,6 @@
 #define B_TRANSLATION_CONTEXT "ClipboardMonitor"
 
 
-BString
-ReplView::_GetClipboard()
-{
-	const char* text;
-	ssize_t textLen;
-	BMessage* clipboard;
-	if (be_clipboard->Lock()) {
-		if ((clipboard = be_clipboard->Data()))
-			clipboard->FindData("text/plain", B_MIME_TYPE,
-				(const void **)&text, &textLen);
-		be_clipboard->Unlock();
-	}
-	BString clip(text, textLen);
-	return clip;
-}
-
-
-void
-ReplView::TruncateClip(float width)
-{
-	static const float spacing = be_control_look->DefaultLabelSpacing();
-	BString string(fCurrentClip);
-	TruncateString(&string, B_TRUNCATE_END, width - spacing * 8);
-	fContentsView->SetText(string);
-}
-
-
 ReplView::ReplView()
 	:
 	BView("Clipboard monitor", B_WILL_DRAW | B_FULL_UPDATE_ON_RESIZE),
@@ -75,8 +48,12 @@ ReplView::ReplView()
 	dragger->SetExplicitAlignment(BAlignment(B_ALIGN_RIGHT, B_ALIGN_BOTTOM));
 
 	// Layout
+	font_height fheight;
+	fContentsView->GetFontHeight(&fheight);
+
+	SetExplicitMinSize(BSize(10.0,
+		(fheight.ascent + fheight.descent + fheight.leading) * 1.5));
 	SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
-	SetExplicitMinSize(BSize(10.0, B_SIZE_UNSET));
 
 	static const float spacing = be_control_look->DefaultLabelSpacing();
 
@@ -142,6 +119,16 @@ ReplView::AttachedToWindow()
 void
 ReplView::MessageReceived(BMessage* msg)
 {
+	if (msg->WasDropped()) {
+		rgb_color *color;
+		ssize_t size;
+		if (msg->FindData("RGBColor", B_RGB_COLOR_TYPE,
+			(const void **)&color, &size) == B_OK) {
+				_AdjustColors(*color);
+				return;
+		}
+	}
+
 	switch (msg->what)
 	{
 		case B_CLIPBOARD_CHANGED:
@@ -183,3 +170,52 @@ ReplView::MessageReceived(BMessage* msg)
 }
 
 
+void
+ReplView::_AdjustColors(rgb_color color)
+{
+	SetViewColor(color);
+	fContentsView->SetViewColor(color);
+
+	float thresh = color.red + (color.green * 1.5f) + (color.blue * 0.50f);
+
+	if (thresh >= 300) {
+		color.red = 0;
+		color.green = 0;
+		color.blue = 0;
+	} else {
+		color.red = 255;
+		color.green = 255;
+		color.blue = 255;
+	}
+	fContentsView->SetHighColor(color);
+	fContentsView->SetLowColor(color);
+	fContentsView->Invalidate();
+	Invalidate();
+}
+
+
+BString
+ReplView::_GetClipboard()
+{
+	const char* text;
+	ssize_t textLen;
+	BMessage* clipboard;
+	if (be_clipboard->Lock()) {
+		if ((clipboard = be_clipboard->Data()))
+			clipboard->FindData("text/plain", B_MIME_TYPE,
+				(const void **)&text, &textLen);
+		be_clipboard->Unlock();
+	}
+	BString clip(text, textLen);
+	return clip;
+}
+
+
+void
+ReplView::TruncateClip(float width)
+{
+	static const float spacing = be_control_look->DefaultLabelSpacing();
+	BString string(fCurrentClip);
+	TruncateString(&string, B_TRUNCATE_END, width - spacing * 8);
+	fContentsView->SetText(string);
+}

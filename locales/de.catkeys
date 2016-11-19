@@ -1,39 +1,45 @@
-1	German	application/x-vnd.Clipdinger	915152880
-Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)	SettingsWindow		Einträge werden alle %A% Minuten dunkler.\nDie maximale Abdunklung wird nach\n%B% Minuten erreicht (in %C% Stufen)
-Title:	EditWindow		Titel:
-Clear history	MainWindow		Historie löschen
-About Clipdinger	MainWindow		Über Clipdinger
+1	German	application/x-vnd.Clipdinger	1517658326
+Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.5.5\n\tvon Humdinger\n\tCopyright 2015-2016\n\nClipdinger bietet eine Historie für die Zwischenablage und die Anlage von Favoriten.\n\nBerichte zu Bugs oder gewünschten Features sind sehr willkommen. Kontaktinfos befinden sich im ReadMe, siehe Menü 'Hilfe'.
+Thank you	Application		Danke
+Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger v0.5.5\n\tvon Humdinger\n\tCopyright 2015-2016\n\nClipdinger bietet eine Historie für die Zwischenablage und die Anlage von Favoriten.\n\nDieser Zwischenablagen-Monitor kann als Replikant auf dem Desktop benutzt werden, um stets ihren aktuellen Inhalt anzuzeigen.
+Thank you	ClipboardMonitor		Danke
 Add to favorites	ClipList		Zu Favoriten hinzufügen
-Remove favorite	ClipList		Favorit entfernen
-entries in the clipboard history	SettingsWindow		Einträge in der Historie
-Edit title	EditWindow		Titel bearbeiten
-History	MainWindow		Historie
-OK	EditWindow		OK
-Settings…	MainWindow		Einstellungen…
-Saved favourites	MainWindow		Gespeicherte Favoriten
-Move down	MainWindow		Runter
-OK	SettingsWindow		OK
-Paste to Sprunge.us	MainWindow		Auf Sprunge.us hochladen
-Paste to Sprunge.us	ClipList		Auf Sprunge.us hochladen
-Entries don't fade over time.	SettingsWindow		Einträge werden nicht abgedunkelt.
-App	MainWindow		App
-Minimize	MainWindow		Minimieren
-Quit	MainWindow		Beenden
 Edit title	ClipList		Titel bearbeiten
+Paste to Sprunge.us	ClipList		Auf Sprunge.us hochladen
+Remove clip	ClipList		Eintrag entfernen
+Remove favorite	ClipList		Favorit entfernen
+Cancel	EditWindow		Abbrechen
+Edit title	EditWindow		Titel bearbeiten
+OK	EditWindow		OK
+Title:	EditWindow		Titel:
+About Clipdinger	MainWindow		Über Clipdinger
+App	MainWindow		App
+Clear history	MainWindow		Historie löschen
+Clip	MainWindow		Clip
+Clipboard monitor…	MainWindow		Zwischenablagen-Monitor…
+Help	MainWindow		Hilfe
+History	MainWindow		Historie
+Minimize	MainWindow		Minimieren
+Move down	MainWindow		Runter
+Move up	MainWindow		Rauf
+Paste to Sprunge.us	MainWindow		Auf Sprunge.us hochladen
 Pause fading	MainWindow		Abdunkeln anhalten
+Quit	MainWindow		Beenden
+Saved favourites	MainWindow		Gespeicherte Favoriten
+Settings…	MainWindow		Einstellungen…
+Sprunge.us service not available.	MainWindow		Sprunge.us nicht verfügbar.
+Clipboard monitor	ReplWindow		Zwischenablagen-Monitor
+Resize the window to your needs and drag the Replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Fenstergröße anpassen, dann den Replikant am Icon auf den Desktop ziehen.\nDie Farbe lässt sich per Drag&Drop z.B. aus Icon-O-Matic ändern.
+Auto-paste	SettingsWindow		Auto-Einfügen
+Auto-start Clipdinger	SettingsWindow		Auto-Start  von Clipdinger
 Cancel	SettingsWindow		Abbrechen
-Clipdinger	System name		Clipdinger
+Clipdinger settings	SettingsWindow		Clipdinger Einstellungen
+Delay	SettingsWindow		Zeitintervall
+Entries don't fade over time.	SettingsWindow		Einträge werden nicht abgedunkelt.
+Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)	SettingsWindow		Einträge werden alle %A% Minuten dunkler.\nDie maximale Abdunklung wird nach\n%B% Minuten erreicht (in %C% Stufen)
+entries in the clipboard history	SettingsWindow		Einträge in der Historie
 Fade history entries over time	SettingsWindow		Einträge mit der Zeit abdunkeln
 Max. tint level	SettingsWindow		Max. Abdunklungsstufe
+OK	SettingsWindow		OK
 Steps	SettingsWindow		Stufen
-Auto-paste	SettingsWindow		Auto-Einfügen
-Help	MainWindow		Hilfe
-Thank you	Application		Danke
-Delay	SettingsWindow		Zeitintervall
-Clip	MainWindow		Clip
-Remove clip	ClipList		Eintrag entfernen
-Clipdinger settings	SettingsWindow		Clipdinger Einstellungen
-Clipdinger v0.5.4\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.5.4\n\tvon Humdinger\n\tCopyright 2015-2016\n\nClipdinger bietet eine Historie für die Zwischenablage und die Anlage von Favoriten.\n\nBerichte zu Bugs oder gewünschten Features sind sehr willkommen. Kontaktinfos befinden sich im ReadMe, siehe Menü 'Hilfe'.
-Cancel	EditWindow		Abbrechen
-Move up	MainWindow		Rauf
-Sprunge.us service not available.	MainWindow		Sprunge.us nicht verfügbar.
+Clipdinger	System name		Clipdinger

@@ -29,9 +29,20 @@ _DEL_ or choosing _Remove favorite_ from the context menu eliminates an entry. _
 
 You can quickly switch between history and favorites lists with _CursorRight/Left_.
 
+### Clipboard monitor
+
+You can open the _Clipboard monitor_ from the _App_ menu. It simply shows the current contents of theclipboard, which helps if you have to continuously switch between some clips in the history/favorites.
+The Clipboard monitor can be used as a Replicant on the Desktop:
+
+![screenshot](./images/clipboard-monitor.png)
+
+Adjust the window size until it fits your needs, then drag the little handle onto the Desktop. Make sure the option to _Show replicants_ in the Deskbar is active.
+
+You can change the background by dropping a color onto it from any application, like e.g. Icon-O-Matic. Like the icon labels on the Desktop, the color of the text will toggle automatically between black and white according to the brightness of the dropped background color.
+
 ### Settings
 
-This is the settings window, summoned with _Settings..._ from the _History_ menu:
+This is the settings window, summoned with _Settings..._ from the _App_ menu:
 
 ![screenshot](./images/clipdinger-settings.png)
 
@@ -42,6 +53,8 @@ Once the limit of the history is reached, the oldest entry is removed automatica
 
 You can remove an entry by selecting it and pressing _DEL_ or choose _Remove clip_ from the context menu. You remove the complete clipboard history with _Clear history_ from the _History_ menu.
 
+_Auto-start Clipdinger_ controls if Clipdinger will be started automatically at every boot-up.
+
 _Auto-paste_ will put the clipping you've chosen via double-click or _RETURN_ into the window that was active before you have summoned Clipdinger.
 
 The other settings belong to the fading feature: When the checkbox _Fade history entries over time_ is active, entries get darker as time ticks on. You can set the intervall that entries are being tinted (_Delay_) and by how much they are tinted (_Steps_). The third slider sets the _Max. tint level_, i.e. how dark an entry can get.
@@ -51,10 +64,11 @@ If you leave your computer or just know that you won't do any copy&paste for a l
 
 ### Tips & Tricks
 
-*   Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the `/boot/home/config/settings/boot/launch/` folder. Then it gets started automatically on every boot-up.
-*   All changes in the settings window can be viewed live in the main window. To find the right fading settings for you, it's best to keep working normally for some time to fill the history and then just play around with the sliders until you're satisfied.
+*   If you've used Clipdinger before v0.5.5, you can now remove the link to it in the `/boot/home/config/settings/boot/launch/` folder and use the new setting to auto-start instead.
+*   Changes in the settings window can be viewed live in the main window. To find the right fading settings for you, it's best to keep working normally for some time to fill the history and then just play around with the sliders until you're satisfied.
 *   Clipdinger's _Auto-paste_ feature can be a bit tricky: It doesn't know in which window you pressed _SHIFT_ + _ALT_ + _V_ for it to pop up. With activated auto-paste, it simply pastes into last window that was active before you hit _ENTER_ or double-clicked an entry. So, avoid detours...
 *   If you want to back up Clipdinger's settings, history or favorites, or have the need to delete one or all of these files, you'll find them under `/boot/home/config/settings/Clipdinger/`.
+*	If the Replicant of the Clipboard monitor unexpectedly gives you grieve (or any Replicant for that matter), you can remove all Replicants on the Desktop by deleting `/boot/home/config/settings/Tracker/tracker_shelf`.
 
 
 ### Download
@@ -73,23 +87,34 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 
 ### History
 
-**0.1** - _30-06-2015:_
+**0.5.5** - _19-11-2016:_
 
-*   Initial release.
+*   Added auto start setting.
+*   Added replicatable clipboard monitor.
 
-**0.2** - _08-07-2015:_
+**0.5.4** - _12-06-2016:_
 
-*   Bug fix: First entry wasn't saved on quit.
-*   Bug fix: Settings were unnecessarily saved on quit.
-*   ALT+W now hides the window.
-*   Show the icon of the app a clip was copied from.
+*   Build fix for gcc5.
+*	Fixed typo in Russian localization, thanks to Diver.
 
-**0.3** - _21-07-2015:_
+**0.5.3** - _11-06-2016:_
 
-*   Added auto-paste setting.
-*   Added fading option, to darken history entries over time.
-*	Added Help menu item to open ReadMe.html.
-*   Bug fixes and optimizations.
+*   Bug fix: Make the context menu more robust. Fixes issue #2.
+*	Added Russian localization, thanks to Akujiism.
+
+**0.5.2** - _20-01-2016:_
+
+*   Bug fix: The Auto-paste setting was ignored on startup.
+
+**0.5.1** - _07-01-2016:_
+
+*   Made pasting to [Sprunge.us](http://sprunge.us) more robust. It doesn't hang the GUI longer than 2 seconds if the network is down. Puts an error message in the clipboard, also if the service was unavailable.
+
+**0.5** - _04-01-2016:_
+
+*   Added a feature to paste to the online service [Sprunge.us](http://sprunge.us)
+*   Bug fix: A chosen favorite will now appear at the top of the clip list, which always shows what's currently in the clipboard.
+*   Bug fix: Using the mouse instead of the cursor keys to switch list now correctly shows the inactive list "dimmed".
 
 **0.4** - _01-08-2015:_
 
@@ -98,26 +123,20 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 *   Added a "Pause fading" checkbox.
 *   Added a setting for the maximal fading tint.
 
-**0.5** - _04-01-2016:_
+**0.3** - _21-07-2015:_
 
-*   Added a feature to paste to the online service [Sprunge.us](http://sprunge.us)
-*   Bug fix: A chosen favorite will now appear at the top of the clip list, which always shows what's currently in the clipboard.
-*   Bug fix: Using the mouse instead of the cursor keys to switch list now correctly shows the inactive list "dimmed".
+*   Added auto-paste setting.
+*   Added fading option, to darken history entries over time.
+*	Added Help menu item to open ReadMe.html.
+*   Bug fixes and optimizations.
 
-**0.5.1** - _07-01-2016:_
+**0.2** - _08-07-2015:_
 
-*   Made pasting to [Sprunge.us](http://sprunge.us) more robust. It doesn't hang the GUI longer than 2 seconds if the network is down. Puts an error message in the clipboard, also if the service was unavailable.
+*   Bug fix: First entry wasn't saved on quit.
+*   Bug fix: Settings were unnecessarily saved on quit.
+*   ALT+W now hides the window.
+*   Show the icon of the app a clip was copied from.
 
-**0.5.2** - _20-01-2016:_
+**0.1** - _30-06-2015:_
 
-*   Bug fix: The Auto-paste setting was ignored on startup.
-
-**0.5.3** - _11-06-2016:_
-
-*   Bug fix: Make the context menu more robust. Fixes issue #2.
-*	Added Russian localization, thanks to Akujiism.
-
-**0.5.4** - _12-06-2016:_
-
-*   Build fix for gcc5.
-*	Fixed typo in Russian localization, thanks to Diver.
+*   Initial release.

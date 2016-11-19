@@ -1,39 +1,45 @@
-1	English	application/x-vnd.Clipdinger	915152880
-Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)	SettingsWindow		Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)
-Title:	EditWindow		Title:
-Clear history	MainWindow		Clear history
-About Clipdinger	MainWindow		About Clipdinger
+1	English	application/x-vnd.Clipdinger	1517658326
+Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.
+Thank you	Application		Thank you
+Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.
+Thank you	ClipboardMonitor		Thank you
 Add to favorites	ClipList		Add to favorites
-Remove favorite	ClipList		Remove favorite
-entries in the clipboard history	SettingsWindow		entries in the clipboard history
-Edit title	EditWindow		Edit title
-History	MainWindow		History
-OK	EditWindow		OK
-Settings…	MainWindow		Settings…
-Saved favourites	MainWindow		Saved favourites
-Move down	MainWindow		Move down
-OK	SettingsWindow		OK
-Paste to Sprunge.us	MainWindow		Paste to Sprunge.us
-Paste to Sprunge.us	ClipList		Paste to Sprunge.us
-Entries don't fade over time.	SettingsWindow		Entries don't fade over time.
-App	MainWindow		App
-Minimize	MainWindow		Minimize
-Quit	MainWindow		Quit
 Edit title	ClipList		Edit title
+Paste to Sprunge.us	ClipList		Paste to Sprunge.us
+Remove clip	ClipList		Remove clip
+Remove favorite	ClipList		Remove favorite
+Cancel	EditWindow		Cancel
+Edit title	EditWindow		Edit title
+OK	EditWindow		OK
+Title:	EditWindow		Title:
+About Clipdinger	MainWindow		About Clipdinger
+App	MainWindow		App
+Clear history	MainWindow		Clear history
+Clip	MainWindow		Clip
+Clipboard monitor…	MainWindow		Clipboard monitor…
+Help	MainWindow		Help
+History	MainWindow		History
+Minimize	MainWindow		Minimize
+Move down	MainWindow		Move down
+Move up	MainWindow		Move up
+Paste to Sprunge.us	MainWindow		Paste to Sprunge.us
 Pause fading	MainWindow		Pause fading
+Quit	MainWindow		Quit
+Saved favourites	MainWindow		Saved favourites
+Settings…	MainWindow		Settings…
+Sprunge.us service not available.	MainWindow		Sprunge.us service not available.
+Clipboard monitor	ReplWindow		Clipboard monitor
+Resize the window to your needs and drag the Replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Resize the window to your needs and drag the Replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.
+Auto-paste	SettingsWindow		Auto-paste
+Auto-start Clipdinger	SettingsWindow		Auto-start Clipdinger
 Cancel	SettingsWindow		Cancel
-Clipdinger	System name		Clipdinger
+Clipdinger settings	SettingsWindow		Clipdinger settings
+Delay	SettingsWindow		Delay
+Entries don't fade over time.	SettingsWindow		Entries don't fade over time.
+Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)	SettingsWindow		Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)
+entries in the clipboard history	SettingsWindow		entries in the clipboard history
 Fade history entries over time	SettingsWindow		Fade history entries over time
 Max. tint level	SettingsWindow		Max. tint level
+OK	SettingsWindow		OK
 Steps	SettingsWindow		Steps
-Auto-paste	SettingsWindow		Auto-paste
-Help	MainWindow		Help
-Thank you	Application		Thank you
-Delay	SettingsWindow		Delay
-Clip	MainWindow		Clip
-Remove clip	ClipList		Remove clip
-Clipdinger settings	SettingsWindow		Clipdinger settings
-Clipdinger v0.5.4\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.5.4\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.
-Cancel	EditWindow		Cancel
-Move up	MainWindow		Move up
-Sprunge.us service not available.	MainWindow		Sprunge.us service not available.
+Clipdinger	System name		Clipdinger

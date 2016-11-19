@@ -30,6 +30,7 @@ public:
 
 private:
 	BString					_GetClipboard();
+	void					_AdjustColors(rgb_color color);
 
 	bool					fReplicated;
 	BStringView*			fContentsView;

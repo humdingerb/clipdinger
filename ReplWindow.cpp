@@ -23,7 +23,7 @@
 
 ReplWindow::ReplWindow(BRect frame)
 	:
-	BWindow(BRect(0, 0, 300, 100), B_TRANSLATE("Clipboard monitor"),
+	BWindow(BRect(0, 0, 350, 100), B_TRANSLATE("Clipboard monitor"),
 		B_TITLED_WINDOW, B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS |
 		B_CLOSE_ON_ESCAPE)
 {
@@ -87,14 +87,13 @@ ReplWindow::_BuildLayout()
 	welcomeText->SetStylable(true);
 	welcomeText->SetAlignment(B_ALIGN_CENTER);
 	welcomeText->SetText(B_TRANSLATE(
-		"The Clipboard monitor shows the current contents of the clipboard. "
 		"Resize the window to your needs and drag the Replicant handle "
-		"onto the Desktop."));
+		"onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic."));
 
 	font_height fheight;
 	infoFont.GetHeight(&fheight);
 	welcomeText->SetExplicitMinSize(BSize(B_SIZE_UNSET,
-		(fheight.ascent + fheight.descent + fheight.leading) * 4.0));
+		(fheight.ascent + fheight.descent + fheight.leading) * 3.0));
 	welcomeText->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
 	static const float spacing = be_control_look->DefaultItemSpacing();
