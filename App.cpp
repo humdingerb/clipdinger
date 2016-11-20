@@ -1,5 +1,5 @@
 /*
- * Copyright 2015. All rights reserved.
+ * Copyright 2015-2016. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -40,6 +40,25 @@ App::ReadyToRun()
 	fMainWindow->Show();
 	fMainWindow->Minimize(true);
 	fMainWindow->MoveBy(-4000, 0);
+}
+
+
+void
+App::MessageReceived(BMessage* msg)
+{
+	switch (msg->what)
+	{
+		case ACTIVATE:
+		{
+			fMainWindow->Minimize(false);
+			break;
+		}
+		default:
+		{
+			BApplication::MessageReceived(msg);
+			break;
+		}
+	}
 }
 
 

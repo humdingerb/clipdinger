@@ -24,13 +24,14 @@ public:
 	virtual status_t 		Archive(BMessage* data, bool deep = true) const;
 
 	virtual void			AttachedToWindow();
+	virtual void			MouseDown(BPoint point);
 	void					MessageReceived(BMessage* msg);
 
 	void					TruncateClip(float width);
 
 private:
 	BString					_GetClipboard();
-	void					_AdjustColors(rgb_color color);
+	void					_SetColor(rgb_color color);
 
 	bool					fReplicated;
 	BStringView*			fContentsView;

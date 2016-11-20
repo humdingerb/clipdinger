@@ -37,6 +37,8 @@ ReplView::ReplView()
 	fContentsView->SetAlignment(B_ALIGN_CENTER);
 	fContentsView->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
+	_SetColor(tint_color(ui_color(B_PANEL_BACKGROUND_COLOR), B_DARKEN_1_TINT));
+
 	// Dragger
 	BRect rect(Bounds());
 	rect.left = rect.right - 7;
@@ -58,7 +60,7 @@ ReplView::ReplView()
 	static const float spacing = be_control_look->DefaultLabelSpacing();
 
 	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
-		.SetInsets(spacing, spacing / 2, spacing, spacing / 2)
+		.SetInsets(spacing, spacing / 2, spacing, spacing / 3)
 		.Add(fContentsView)
 		.Add(dragger, 0.01)
 		.End();
@@ -124,11 +126,10 @@ ReplView::MessageReceived(BMessage* msg)
 		ssize_t size;
 		if (msg->FindData("RGBColor", B_RGB_COLOR_TYPE,
 			(const void **)&color, &size) == B_OK) {
-				_AdjustColors(*color);
+				_SetColor(*color);
 				return;
 		}
 	}
-
 	switch (msg->what)
 	{
 		case B_CLIPBOARD_CHANGED:
@@ -171,7 +172,46 @@ ReplView::MessageReceived(BMessage* msg)
 
 
 void
-ReplView::_AdjustColors(rgb_color color)
+ReplView::MouseDown(BPoint point)
+{
+	BMessage* msg = Window()->CurrentMessage();
+	uint32 buttons = msg->FindInt32("buttons");
+	int32 clicks = msg->FindInt32("clicks");
+
+	if (buttons == B_PRIMARY_MOUSE_BUTTON && clicks >= 2) {
+		team_id team;
+		team = be_roster->TeamFor(kApplicationSignature);
+		if (team < 0) {
+			be_roster->Launch(kApplicationSignature);
+			while (be_roster->TeamFor(kApplicationSignature) < 0)
+				snooze(100000);
+		}
+		BMessenger messenger(kApplicationSignature);
+		BMessage message(ACTIVATE);
+		messenger.SendMessage(&message);
+	}
+}
+
+
+BString
+ReplView::_GetClipboard()
+{
+	const char* text;
+	ssize_t textLen;
+	BMessage* clipboard;
+	if (be_clipboard->Lock()) {
+		if ((clipboard = be_clipboard->Data()))
+			clipboard->FindData("text/plain", B_MIME_TYPE,
+				(const void **)&text, &textLen);
+		be_clipboard->Unlock();
+	}
+	BString clip(text, textLen);
+	return clip;
+}
+
+
+void
+ReplView::_SetColor(rgb_color color)
 {
 	SetViewColor(color);
 	fContentsView->SetViewColor(color);
@@ -191,23 +231,6 @@ ReplView::_AdjustColors(rgb_color color)
 	fContentsView->SetLowColor(color);
 	fContentsView->Invalidate();
 	Invalidate();
-}
-
-
-BString
-ReplView::_GetClipboard()
-{
-	const char* text;
-	ssize_t textLen;
-	BMessage* clipboard;
-	if (be_clipboard->Lock()) {
-		if ((clipboard = be_clipboard->Data()))
-			clipboard->FindData("text/plain", B_MIME_TYPE,
-				(const void **)&text, &textLen);
-		be_clipboard->Unlock();
-	}
-	BString clip(text, textLen);
-	return clip;
 }
 
 

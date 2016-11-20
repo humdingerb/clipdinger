@@ -1,5 +1,5 @@
 /*
- * Copyright 2015. All rights reserved.
+ * Copyright 2015-2016. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -25,6 +25,7 @@ public:
 
 	virtual void		ReadyToRun();
 	void				AboutRequested();
+	void				MessageReceived(BMessage* msg);
 
 	ClipdingerSettings* Settings() { return &fSettings; }
 

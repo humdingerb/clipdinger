@@ -28,6 +28,7 @@ static const int32 kIconSize = 16;
 static const int32 kMaxTitleChars = 100;
 static const int32 kMinuteUnits = 10; // minutes per unit
 
+#define ACTIVATE			'actv'
 #define DELETE				'dele'
 #define FAV_DELETE			'delf'
 #define FAV_ADD				'addf'
