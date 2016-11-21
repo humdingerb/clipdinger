@@ -9,6 +9,7 @@
 #ifndef REPLVIEW_H
 #define REPLVIEW_H
 
+#include <MessageFilter.h>
 #include <StringView.h>
 #include <View.h>
 
@@ -31,7 +32,10 @@ public:
 
 private:
 	BString					_GetClipboard();
+	void					_LaunchClipdinger(BMessage* msg);
 	void					_SetColor(rgb_color color);
+	static	filter_result	MessageFilter(BMessage* msg,
+								BHandler** target, BMessageFilter* filter);
 
 	bool					fReplicated;
 	BStringView*			fContentsView;

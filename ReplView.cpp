@@ -60,7 +60,7 @@ ReplView::ReplView()
 	static const float spacing = be_control_look->DefaultLabelSpacing();
 
 	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
-		.SetInsets(spacing, spacing / 2, spacing, spacing / 3)
+		.SetInsets(spacing, spacing / 2, spacing, spacing / 2.5)
 		.Add(fContentsView)
 		.Add(dragger, 0.01)
 		.End();
@@ -115,6 +115,9 @@ ReplView::AttachedToWindow()
 	TruncateClip(Bounds().Width());
 
 	status_t error = be_clipboard->StartWatching(this);
+
+	fContentsView->AddFilter(new BMessageFilter(B_MOUSE_DOWN,
+		&ReplView::MessageFilter));
 }
 
 
@@ -175,6 +178,13 @@ void
 ReplView::MouseDown(BPoint point)
 {
 	BMessage* msg = Window()->CurrentMessage();
+	_LaunchClipdinger(msg);
+}
+
+
+void
+ReplView::_LaunchClipdinger(BMessage* msg)
+{
 	uint32 buttons = msg->FindInt32("buttons");
 	int32 clicks = msg->FindInt32("clicks");
 
@@ -196,9 +206,10 @@ ReplView::MouseDown(BPoint point)
 BString
 ReplView::_GetClipboard()
 {
-	const char* text;
-	ssize_t textLen;
-	BMessage* clipboard;
+	const char* text = B_TRANSLATE("-= Clipboard is empty =-");
+	ssize_t textLen = strlen(text);
+	BMessage* clipboard = (BMessage *)NULL;
+
 	if (be_clipboard->Lock()) {
 		if ((clipboard = be_clipboard->Data()))
 			clipboard->FindData("text/plain", B_MIME_TYPE,
@@ -241,4 +252,21 @@ ReplView::TruncateClip(float width)
 	BString string(fCurrentClip);
 	TruncateString(&string, B_TRUNCATE_END, width - spacing * 8);
 	fContentsView->SetText(string);
+}
+
+
+filter_result
+ReplView::MessageFilter(BMessage* msg, BHandler** target, BMessageFilter* filter)
+{
+	ReplView* view = (ReplView *)(*target);
+	switch (msg->what)
+	{
+		case B_MOUSE_DOWN:
+		{
+			view->_LaunchClipdinger(msg);
+			return B_SKIP_MESSAGE;
+		}
+		default:
+			return B_DISPATCH_MESSAGE;
+	}
 }

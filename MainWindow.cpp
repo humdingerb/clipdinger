@@ -779,9 +779,10 @@ MainWindow::CropHistory(int32 limit)
 BString
 MainWindow::GetClipboard()
 {
-	const char* text;
-	ssize_t textLen;
-	BMessage* clipboard;
+	const char* text = B_TRANSLATE("-= Clipboard is empty =-");
+	ssize_t textLen = strlen(text);
+	BMessage* clipboard = (BMessage *)NULL;
+
 	if (be_clipboard->Lock()) {
 		if ((clipboard = be_clipboard->Data()))
 			clipboard->FindData("text/plain", B_MIME_TYPE,
