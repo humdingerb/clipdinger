@@ -24,9 +24,11 @@ public:
 	void			MessageReceived(BMessage* message);
 	bool			QuitRequested();
 	void			_BuildLayout();
+	void			GetSettings();
+	void			SetControls();
 	void			RevertSettings();
-	void			UpdateFadeText();
 	void			UpdateSettings();
+	void			UpdateFadeText();
 
 private:
 	BTextControl*	fLimitControl;

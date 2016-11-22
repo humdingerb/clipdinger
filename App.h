@@ -15,6 +15,8 @@
 
 #include "ClipdingerSettings.h"
 #include "MainWindow.h"
+#include "ReplWindow.h"
+#include "SettingsWindow.h"
 
 #define my_app dynamic_cast<App*>(be_app)
 
@@ -24,6 +26,7 @@ public:
 	virtual				~App();
 
 	virtual void		ReadyToRun();
+	virtual bool		QuitRequested();
 	void				AboutRequested();
 	void				MessageReceived(BMessage* msg);
 
@@ -33,6 +36,8 @@ public:
 
 private:
 	ClipdingerSettings	fSettings;
+	ReplWindow*			fReplWindow;
+	SettingsWindow*		fSettingsWindow;
 };
 
 #endif	// APP_H

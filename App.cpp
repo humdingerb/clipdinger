@@ -25,16 +25,38 @@ App::App()
 
 App::~App()
 {
-	BMessenger messenger(fMainWindow);
-	if (messenger.IsValid() && messenger.LockTarget())
-		fMainWindow->Quit();
+}
+
+
+bool
+App::QuitRequested()
+{
+	if (fSettingsWindow) {
+		BMessenger messenger(fSettingsWindow);
+		if (messenger.IsValid() && messenger.LockTarget())
+			fSettingsWindow->Quit();
+	}
+	if (fReplWindow) {
+		BMessenger messenger(fReplWindow);
+		if (messenger.IsValid() && messenger.LockTarget())
+			fReplWindow->Quit();
+	}
+	if (fMainWindow) {
+		BMessenger messenger(fMainWindow);
+		if (messenger.IsValid() && messenger.LockTarget())
+			fMainWindow->Quit();
+	}
+	return true;
 }
 
 
 void
 App::ReadyToRun()
 {
-	fMainWindow = new MainWindow(BRect(fSettings.GetWindowPosition()));
+	BRect rect = fSettings.GetWindowPosition();
+	fMainWindow = new MainWindow(rect);
+	fReplWindow = new ReplWindow(rect);
+	fSettingsWindow = new SettingsWindow(rect);
 
 	fMainWindow->MoveBy(4000, 0); // Move out of view to avoid flicker
 	fMainWindow->Show();
@@ -51,6 +73,28 @@ App::MessageReceived(BMessage* msg)
 		case ACTIVATE:
 		{
 			fMainWindow->Minimize(false);
+			break;
+		}
+		case CLIPMONITOR:
+		{
+			if (fReplWindow->Lock()) {
+				if (fReplWindow->IsHidden())
+					fReplWindow->Show();
+				else
+					fReplWindow->Activate();
+			}
+			fReplWindow->Unlock();
+			break;
+		}
+		case SETTINGS:
+		{
+			if (fSettingsWindow->Lock()) {
+				if (fSettingsWindow->IsHidden())
+					fSettingsWindow->Show();
+				else
+					fSettingsWindow->Activate();
+			}
+			fSettingsWindow->Unlock();
 			break;
 		}
 		default:

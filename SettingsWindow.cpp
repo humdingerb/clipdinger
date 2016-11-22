@@ -28,33 +28,10 @@ SettingsWindow::SettingsWindow(BRect frame)
 		B_NOT_ZOOMABLE | B_NOT_RESIZABLE | B_AUTO_UPDATE_SIZE_LIMITS |
 		B_CLOSE_ON_ESCAPE)
 {
-	ClipdingerSettings* settings = my_app->Settings();
-	if (settings->Lock()) {
-		newLimit = originalLimit = settings->GetLimit();
-		newAutoStart = originalAutoStart = settings->GetAutoStart();
-		newAutoPaste = originalAutoPaste = settings->GetAutoPaste();
-		newFade = originalFade = settings->GetFade();
-		newFadeDelay = originalFadeDelay = settings->GetFadeDelay();
-		newFadeStep = originalFadeStep = settings->GetFadeStep();
-		newFadeMaxLevel = originalFadeMaxLevel = settings->GetFadeMaxLevel();
-		settings->Unlock();
-	}
 
 	_BuildLayout();
-
-	char string[4];
-	snprintf(string, sizeof(string), "%d", originalLimit);
-	fLimitControl->SetText(string);
-	fAutoStartBox->SetValue(originalAutoStart);
-	fAutoPasteBox->SetValue(originalAutoPaste);
-	fFadeBox->SetValue(originalFade);
-	fDelaySlider->SetValue(originalFadeDelay);
-	fStepSlider->SetValue(originalFadeStep);
-	fLevelSlider->SetValue(originalFadeMaxLevel);
-
-	fDelaySlider->SetEnabled(originalFade);
-	fStepSlider->SetEnabled(originalFade);
-	fLevelSlider->SetEnabled(originalFade);
+	GetSettings();
+	SetControls();
 
 	frame.OffsetBy(260.0, 60.0);
 	MoveTo(frame.LeftTop());
@@ -69,10 +46,45 @@ SettingsWindow::~SettingsWindow()
 bool
 SettingsWindow::QuitRequested()
 {
-	RevertSettings();
-	UpdateSettings();
+	if (!IsHidden())
+		Hide();
+	return false;
+}
 
-	return true;
+
+void
+SettingsWindow::GetSettings()
+{
+	ClipdingerSettings* settings = my_app->Settings();
+	if (settings->Lock()) {
+		newLimit = originalLimit = settings->GetLimit();
+		newAutoStart = originalAutoStart = settings->GetAutoStart();
+		newAutoPaste = originalAutoPaste = settings->GetAutoPaste();
+		newFade = originalFade = settings->GetFade();
+		newFadeDelay = originalFadeDelay = settings->GetFadeDelay();
+		newFadeStep = originalFadeStep = settings->GetFadeStep();
+		newFadeMaxLevel = originalFadeMaxLevel = settings->GetFadeMaxLevel();
+		settings->Unlock();
+	}
+}
+
+
+void
+SettingsWindow::SetControls()
+{
+	char string[4];
+	snprintf(string, sizeof(string), "%d", originalLimit);
+	fLimitControl->SetText(string);
+	fAutoStartBox->SetValue(originalAutoStart);
+	fAutoPasteBox->SetValue(originalAutoPaste);
+	fFadeBox->SetValue(originalFade);
+	fDelaySlider->SetValue(originalFadeDelay);
+	fStepSlider->SetValue(originalFadeStep);
+	fLevelSlider->SetValue(originalFadeMaxLevel);
+
+	fDelaySlider->SetEnabled(originalFade);
+	fStepSlider->SetEnabled(originalFade);
+	fLevelSlider->SetEnabled(originalFade);
 }
 
 
@@ -106,7 +118,6 @@ SettingsWindow::UpdateSettings()
 	BMessenger messenger(my_app->fMainWindow);
 	BMessage message(UPDATE_SETTINGS);
 	message.AddInt32("limit", newLimit);
-	message.AddInt32("autostart", newAutoStart);
 	message.AddInt32("autopaste", newAutoPaste);
 	message.AddInt32("fade", newFade);
 	messenger.SendMessage(&message);
@@ -327,7 +338,8 @@ SettingsWindow::MessageReceived(BMessage* message)
 		{
 			RevertSettings();
 			UpdateSettings();
-			Quit();
+			SetControls();
+			Hide();
 			break;
 		}
 		case OK:
@@ -343,7 +355,8 @@ SettingsWindow::MessageReceived(BMessage* message)
 				settings->Unlock();
 			}
 			UpdateSettings();
-			Quit();
+			GetSettings();
+			Hide();
 			break;
 		}
 		default:

@@ -42,7 +42,9 @@ ReplWindow::~ReplWindow()
 bool
 ReplWindow::QuitRequested()
 {
-	return true;
+	if (!IsHidden())
+		Hide();
+	return false;
 }
 
 

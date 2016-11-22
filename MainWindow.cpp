@@ -34,8 +34,7 @@ MainWindow::MainWindow(BRect frame)
 	:
 	BWindow(frame, B_TRANSLATE_SYSTEM_NAME("Clipdinger"), B_TITLED_WINDOW,
 		B_NOT_CLOSABLE | B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS,
-		B_ALL_WORKSPACES),
-		fSettingsWindow(NULL)
+		B_ALL_WORKSPACES)
 {
 	KeyCatcher* catcher = new KeyCatcher("catcher");
 	AddChild(catcher);
@@ -135,19 +134,8 @@ MainWindow::QuitRequested()
 		settings->Unlock();
 	}
 
-	if (fSettingsWindow) {
-		BMessenger messenger(fSettingsWindow);
-		if (messenger.IsValid() && messenger.LockTarget())
-			fSettingsWindow->Quit();
-	}
-	if (fReplWindow) {
-		BMessenger messenger(fReplWindow);
-		if (messenger.IsValid() && messenger.LockTarget())
-			fReplWindow->Quit();
-	}
-
 	be_app->PostMessage(B_QUIT_REQUESTED);
-	return true;
+	return false;
 }
 
 
@@ -163,9 +151,11 @@ MainWindow::_BuildLayout()
 	menu = new BMenu(B_TRANSLATE("App"));
 	item = new BMenuItem(B_TRANSLATE("Clipboard monitor" B_UTF8_ELLIPSIS),
 		new BMessage(CLIPMONITOR));
+	item->SetTarget(be_app);
 	menu->AddItem(item);
 	item = new BMenuItem(B_TRANSLATE("Settings" B_UTF8_ELLIPSIS),
 		new BMessage(SETTINGS));
+	item->SetTarget(be_app);
 	menu->AddItem(item);
 	item = new BMenuItem(B_TRANSLATE("Help"),
 		new BMessage(HELP));
@@ -619,18 +609,6 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			fHistory->MakeEmpty();
 			PostMessage(B_CLIPBOARD_CHANGED);
-			break;
-		}
-		case SETTINGS:
-		{
-			fSettingsWindow = new SettingsWindow(Frame());
-			fSettingsWindow->Show();
-			break;
-		}
-		case CLIPMONITOR:
-		{
-			fReplWindow = new ReplWindow(Frame());
-			fReplWindow->Show();
 			break;
 		}
 		case INSERT_HISTORY:
