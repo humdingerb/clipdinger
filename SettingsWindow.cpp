@@ -134,9 +134,9 @@ SettingsWindow::UpdateFadeText()
 		string.Prepend("\n");
 		string.Append("\n");
 	} else {
-		char min[4];
-		char maxtint[4];
-		char step[4];
+		char min[5];
+		char maxtint[5];
+		char step[5];
 		snprintf(min, sizeof(min), "%d", newFadeDelay * kMinuteUnits);
 		snprintf(maxtint, sizeof(maxtint), "%d",
 			newFadeStep * newFadeDelay * kMinuteUnits);
