@@ -89,11 +89,12 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 
 ### History
 
-**0.5.5** - _22-11-2016:_
+**0.5.5** - _23-11-2016:_
 
 *   Added auto start setting.
 *   Added replicatable clipboard monitor.
 *	Bug fix: When Clipdinger is launched, check for existing clipboard contents  and add it to its history.
+*	Bug fix: Explanatory text in settings window didn't show 4-digit minute values.
 
 **0.5.4** - _12-06-2016:_
 
