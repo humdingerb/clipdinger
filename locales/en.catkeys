@@ -1,6 +1,7 @@
-1	English	application/x-vnd.Clipdinger	1517658326
+1	English	application/x-vnd.Clipdinger	2092496208
 Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.
 Thank you	Application		Thank you
+-= Clipboard is empty =-	ClipboardMonitor		-= Clipboard is empty =-
 Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.
 Thank you	ClipboardMonitor		Thank you
 Add to favorites	ClipList		Add to favorites
@@ -29,7 +30,7 @@ Saved favourites	MainWindow		Saved favourites
 Settings…	MainWindow		Settings…
 Sprunge.us service not available.	MainWindow		Sprunge.us service not available.
 Clipboard monitor	ReplWindow		Clipboard monitor
-Resize the window to your needs and drag the Replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Resize the window to your needs and drag the Replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.
+Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.
 Auto-paste	SettingsWindow		Auto-paste
 Auto-start Clipdinger	SettingsWindow		Auto-start Clipdinger
 Cancel	SettingsWindow		Cancel

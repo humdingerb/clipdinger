@@ -25,7 +25,7 @@ DEFINES=
 WARNINGS =
 # Build with debugging symbols if set to TRUE
 SYMBOLS=
-DEBUGGER := TRUE
+DEBUGGER :=
 COMPILER_FLAGS=
 LINKER_FLAGS=
 
