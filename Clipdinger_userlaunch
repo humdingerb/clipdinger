@@ -1,4 +1,4 @@
-job x-vnd.Clipdinger {
+job x-vnd.humdinger-clipdinger {
 	if setting ~/config/settings/Clipdinger/Clipdinger_settings autostart
 	no_safemode
 	legacy
