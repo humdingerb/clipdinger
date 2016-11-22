@@ -1,6 +1,6 @@
 NAME= Clipdinger
 TYPE= APP
-APP_MIME_SIG= application/x-vnd.Clipdinger
+APP_MIME_SIG= application/x-vnd.humdinger-clipdinger
 SRCS= App.cpp ClipdingerSettings.cpp ClipItem.cpp ClipView.cpp \
 	ContextPopUp.cpp EditWindow.cpp FavItem.cpp FavView.cpp \
 	KeyCatcher.cpp MainWindow.cpp ReplView.cpp ReplWindow.cpp \
