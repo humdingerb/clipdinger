@@ -32,13 +32,15 @@ You can quickly switch between history and favorites lists with _CursorRight/Lef
 ### Clipboard monitor
 
 You can open the _Clipboard monitor_ from the _App_ menu. It simply shows the current contents of theclipboard, which helps if you have to continuously switch between some clips in the history/favorites.
-The Clipboard monitor can be used as a Replicant on the Desktop:
+The Clipboard monitor can be used as a replicant on the Desktop:
 
 ![screenshot](./images/clipboard-monitor.png)
 
 Adjust the window size until it fits your needs, then drag the little handle onto the Desktop. Make sure the option to _Show replicants_ in the Deskbar is active.
 
 You can change the background by dropping a color onto it from any application, like e.g. Icon-O-Matic. Like the icon labels on the Desktop, the color of the text will toggle automatically between black and white according to the brightness of the dropped background color.
+
+As a replicant the Clipboard monitor doesn't need a running Clipdinger to work. Double-clicking on the replicant will, however, summon Clipdinger by either launching it or simply unhiding its main window.
 
 ### Settings
 
@@ -68,7 +70,7 @@ If you leave your computer or just know that you won't do any copy&paste for a l
 *   Changes in the settings window can be viewed live in the main window. To find the right fading settings for you, it's best to keep working normally for some time to fill the history and then just play around with the sliders until you're satisfied.
 *   Clipdinger's _Auto-paste_ feature can be a bit tricky: It doesn't know in which window you pressed _SHIFT_ + _ALT_ + _V_ for it to pop up. With activated auto-paste, it simply pastes into last window that was active before you hit _ENTER_ or double-clicked an entry. So, avoid detours...
 *   If you want to back up Clipdinger's settings, history or favorites, or have the need to delete one or all of these files, you'll find them under `/boot/home/config/settings/Clipdinger/`.
-*	If the Replicant of the Clipboard monitor unexpectedly gives you grieve (or any Replicant for that matter), you can remove all Replicants on the Desktop by deleting `/boot/home/config/settings/Tracker/tracker_shelf`.
+*	If the replicant of the Clipboard monitor unexpectedly gives you grieve (or any replicant for that matter), you can remove all replicants on the Desktop by deleting `/boot/home/config/settings/Tracker/tracker_shelf`.
 
 
 ### Download
@@ -87,10 +89,11 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 
 ### History
 
-**0.5.5** - _19-11-2016:_
+**0.5.5** - _22-11-2016:_
 
 *   Added auto start setting.
 *   Added replicatable clipboard monitor.
+*	Bug fix: When Clipdinger is launched, check for existing clipboard contents  and add it to its history.
 
 **0.5.4** - _12-06-2016:_
 

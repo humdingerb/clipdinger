@@ -87,7 +87,7 @@ ReplWindow::_BuildLayout()
 	welcomeText->SetStylable(true);
 	welcomeText->SetAlignment(B_ALIGN_CENTER);
 	welcomeText->SetText(B_TRANSLATE(
-		"Resize the window to your needs and drag the Replicant handle "
+		"Resize the window to your needs and drag the replicant handle "
 		"onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic."));
 
 	font_height fheight;
