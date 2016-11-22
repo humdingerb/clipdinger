@@ -206,8 +206,8 @@ ReplView::_LaunchClipdinger(BMessage* msg)
 BString
 ReplView::_GetClipboard()
 {
-	const char* text = B_TRANSLATE("-= Clipboard is empty =-");
-	ssize_t textLen = strlen(text);
+	const char* text;
+	ssize_t textLen;
 	BMessage* clipboard = (BMessage *)NULL;
 
 	if (be_clipboard->Lock()) {
@@ -215,6 +215,10 @@ ReplView::_GetClipboard()
 			clipboard->FindData("text/plain", B_MIME_TYPE,
 				(const void **)&text, &textLen);
 		be_clipboard->Unlock();
+	}
+	if (text == NULL) {
+		text = B_TRANSLATE("-= Clipboard is empty =-");
+		textLen = strlen(text);
 	}
 	BString clip(text, textLen);
 	return clip;
