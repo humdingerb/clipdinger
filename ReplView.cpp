@@ -231,9 +231,12 @@ ReplView::_LaunchClipdinger(BMessage* msg)
 			while (be_roster->TeamFor(kApplicationSignature) < 0)
 				snooze(100000);
 		}
-		BMessenger messenger(kApplicationSignature);
-		BMessage message(ACTIVATE);
-		messenger.SendMessage(&message);
+		team = be_roster->TeamFor(kApplicationSignature);
+		BMessenger messenger(kApplicationSignature, team);
+		if (messenger.IsValid()) {
+			BMessage message(ACTIVATE);
+			messenger.SendMessage(&message);
+		}
 	}
 }
 

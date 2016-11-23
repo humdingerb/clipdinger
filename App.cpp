@@ -68,7 +68,9 @@ App::MessageReceived(BMessage* msg)
 	{
 		case ACTIVATE:
 		{
-			fMainWindow->Minimize(false);
+			if (fMainWindow->Lock())
+				fMainWindow->Minimize(false);
+			fMainWindow->Unlock();
 			break;
 		}
 		case CLIPMONITOR:
