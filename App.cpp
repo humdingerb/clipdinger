@@ -41,12 +41,8 @@ App::QuitRequested()
 		if (messenger.IsValid() && messenger.LockTarget())
 			fReplWindow->Quit();
 	}
-	if (fMainWindow) {
-		BMessenger messenger(fMainWindow);
-		if (messenger.IsValid() && messenger.LockTarget())
-			fMainWindow->Quit();
-	}
-	return true;
+
+	BApplication::QuitRequested();
 }
 
 

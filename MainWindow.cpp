@@ -114,7 +114,7 @@ MainWindow::QuitRequested()
 	}
 
 	be_app->PostMessage(B_QUIT_REQUESTED);
-	return false;
+	return true;
 }
 
 
