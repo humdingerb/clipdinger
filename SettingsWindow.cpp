@@ -1,5 +1,5 @@
 /*
- * Copyright 2015. All rights reserved.
+ * Copyright 2015-2016. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -28,10 +28,9 @@ SettingsWindow::SettingsWindow(BRect frame)
 		B_NOT_ZOOMABLE | B_NOT_RESIZABLE | B_AUTO_UPDATE_SIZE_LIMITS |
 		B_CLOSE_ON_ESCAPE)
 {
-
 	_BuildLayout();
-	GetSettings();
-	SetControls();
+	_GetSettings();
+	_UpdateControls();
 
 	frame.OffsetBy(260.0, 60.0);
 	MoveTo(frame.LeftTop());
@@ -40,6 +39,106 @@ SettingsWindow::SettingsWindow(BRect frame)
 
 SettingsWindow::~SettingsWindow()
 {
+}
+
+
+void
+SettingsWindow::MessageReceived(BMessage* message)
+{
+	ClipdingerSettings* settings = my_app->Settings();
+
+	switch (message->what)
+	{
+		case AUTOSTART:
+		{
+			newAutoStart = fAutoStartBox->Value();
+			_UpdateMainWindow();
+			break;
+		}
+		case AUTOPASTE:
+		{
+			newAutoPaste = fAutoPasteBox->Value();
+			_UpdateMainWindow();
+			break;
+		}
+		case FADE:
+		{
+			newFade = fFadeBox->Value();
+			if (settings->Lock()) {
+				settings->SetFade(newFade);
+				settings->Unlock();
+			}
+			_UpdateMainWindow();
+			_UpdateFadeText();
+
+			fDelaySlider->SetEnabled(newFade);
+			fStepSlider->SetEnabled(newFade);
+			fLevelSlider->SetEnabled(newFade);
+			break;
+		}
+		case DELAY:
+		{
+			newFadeDelay = fDelaySlider->Value();
+			if (settings->Lock()) {
+				settings->SetFadeDelay(newFadeDelay);
+				settings->Unlock();
+			}
+			_UpdateMainWindow();
+			_UpdateFadeText();
+			break;
+		}
+		case STEP:
+		{
+			newFadeStep = fStepSlider->Value();
+			if (settings->Lock()) {
+				settings->SetFadeStep(newFadeStep);
+				settings->Unlock();
+			}
+			_UpdateMainWindow();
+			_UpdateFadeText();
+			break;
+		}
+		case LEVEL:
+		{
+			newFadeMaxLevel = fLevelSlider->Value();
+			if (settings->Lock()) {
+				settings->SetFadeMaxLevel(newFadeMaxLevel);
+				settings->Unlock();
+			}
+			_UpdateMainWindow();
+			break;
+		}
+		case CANCEL:
+		{
+			_RevertSettings();
+			_UpdateMainWindow();
+			_UpdateControls();
+			Hide();
+			break;
+		}
+		case OK:
+		{
+			newLimit = atoi(fLimitControl->Text());
+			if (settings->Lock()) {
+				settings->SetLimit(newLimit);
+				settings->SetAutoStart(newAutoStart);
+				settings->SetAutoPaste(newAutoPaste);
+				settings->SetFade(newFade);
+				settings->SetFadeDelay(newFadeDelay);
+				settings->SetFadeStep(newFadeStep);
+				settings->Unlock();
+			}
+			_UpdateMainWindow();
+			_GetSettings();
+			Hide();
+			break;
+		}
+		default:
+		{
+			BWindow::MessageReceived(message);
+			break;
+		}
+	}
 }
 
 
@@ -52,106 +151,7 @@ SettingsWindow::QuitRequested()
 }
 
 
-void
-SettingsWindow::GetSettings()
-{
-	ClipdingerSettings* settings = my_app->Settings();
-	if (settings->Lock()) {
-		newLimit = originalLimit = settings->GetLimit();
-		newAutoStart = originalAutoStart = settings->GetAutoStart();
-		newAutoPaste = originalAutoPaste = settings->GetAutoPaste();
-		newFade = originalFade = settings->GetFade();
-		newFadeDelay = originalFadeDelay = settings->GetFadeDelay();
-		newFadeStep = originalFadeStep = settings->GetFadeStep();
-		newFadeMaxLevel = originalFadeMaxLevel = settings->GetFadeMaxLevel();
-		settings->Unlock();
-	}
-}
-
-
-void
-SettingsWindow::SetControls()
-{
-	char string[4];
-	snprintf(string, sizeof(string), "%d", originalLimit);
-	fLimitControl->SetText(string);
-	fAutoStartBox->SetValue(originalAutoStart);
-	fAutoPasteBox->SetValue(originalAutoPaste);
-	fFadeBox->SetValue(originalFade);
-	fDelaySlider->SetValue(originalFadeDelay);
-	fStepSlider->SetValue(originalFadeStep);
-	fLevelSlider->SetValue(originalFadeMaxLevel);
-
-	fDelaySlider->SetEnabled(originalFade);
-	fStepSlider->SetEnabled(originalFade);
-	fLevelSlider->SetEnabled(originalFade);
-}
-
-
-void
-SettingsWindow::RevertSettings()
-{
-	ClipdingerSettings* settings = my_app->Settings();
-	if (settings->Lock()) {
-		settings->SetLimit(originalLimit);
-		settings->SetAutoStart(originalAutoStart);
-		settings->SetAutoPaste(originalAutoPaste);
-		settings->SetFade(originalFade);
-		settings->SetFadeDelay(originalFadeDelay);
-		settings->SetFadeStep(originalFadeStep);
-		settings->SetFadeMaxLevel(originalFadeMaxLevel);
-		settings->Unlock();
-	}
-	newLimit = originalLimit;
-	newAutoStart = originalAutoStart;
-	newAutoPaste = originalAutoPaste;
-	newFade = originalFade;
-	newFadeDelay = originalFadeDelay;
-	newFadeStep = originalFadeStep;
-	newFadeMaxLevel = originalFadeMaxLevel;
-}
-
-
-void
-SettingsWindow::UpdateSettings()
-{
-	BMessenger messenger(my_app->fMainWindow);
-	BMessage message(UPDATE_SETTINGS);
-	message.AddInt32("limit", newLimit);
-	message.AddInt32("autopaste", newAutoPaste);
-	message.AddInt32("fade", newFade);
-	messenger.SendMessage(&message);
-}
-
-
-void
-SettingsWindow::UpdateFadeText()
-{
-	BString string;
-
-	if (!newFade) {
-		string = B_TRANSLATE("Entries don't fade over time.");
-		string.Prepend("\n");
-		string.Append("\n");
-	} else {
-		char min[5];
-		char maxtint[5];
-		char step[5];
-		snprintf(min, sizeof(min), "%d", newFadeDelay * kMinuteUnits);
-		snprintf(maxtint, sizeof(maxtint), "%d",
-			newFadeStep * newFadeDelay * kMinuteUnits);
-		snprintf(step, sizeof(step), "%d", newFadeStep);
-
-		string = B_TRANSLATE(
-		"Entries fade every %A% minutes.\n"
-		"The maximal tint is reached after\n"
-		"%B% minutes (in %C% steps)");
-		string.ReplaceAll("%A%", min);
-		string.ReplaceAll("%B%", maxtint);
-		string.ReplaceAll("%C%", step);
-	}
-	fFadeText->SetText(string.String());
-}
+// #pragma mark - Layout & Display
 
 
 void
@@ -213,7 +213,7 @@ SettingsWindow::_BuildLayout()
 	fFadeText->SetStylable(true);
 	fFadeText->SetAlignment(B_ALIGN_CENTER);
 
-	UpdateFadeText();
+	_UpdateFadeText();
 
 	font_height fheight;
 	infoFont.GetHeight(&fheight);
@@ -272,100 +272,105 @@ SettingsWindow::_BuildLayout()
 
 
 void
-SettingsWindow::MessageReceived(BMessage* message)
+SettingsWindow::_UpdateControls()
+{
+	char string[4];
+	snprintf(string, sizeof(string), "%d", originalLimit);
+	fLimitControl->SetText(string);
+	fAutoStartBox->SetValue(originalAutoStart);
+	fAutoPasteBox->SetValue(originalAutoPaste);
+	fFadeBox->SetValue(originalFade);
+	fDelaySlider->SetValue(originalFadeDelay);
+	fStepSlider->SetValue(originalFadeStep);
+	fLevelSlider->SetValue(originalFadeMaxLevel);
+
+	fDelaySlider->SetEnabled(originalFade);
+	fStepSlider->SetEnabled(originalFade);
+	fLevelSlider->SetEnabled(originalFade);
+}
+
+
+void
+SettingsWindow::_UpdateFadeText()
+{
+	BString string;
+
+	if (!newFade) {
+		string = B_TRANSLATE("Entries don't fade over time.");
+		string.Prepend("\n");
+		string.Append("\n");
+	} else {
+		char min[5];
+		char maxtint[5];
+		char step[5];
+		snprintf(min, sizeof(min), "%d", newFadeDelay * kMinuteUnits);
+		snprintf(maxtint, sizeof(maxtint), "%d",
+			newFadeStep * newFadeDelay * kMinuteUnits);
+		snprintf(step, sizeof(step), "%d", newFadeStep);
+
+		string = B_TRANSLATE(
+		"Entries fade every %A% minutes.\n"
+		"The maximal tint is reached after\n"
+		"%B% minutes (in %C% steps)");
+		string.ReplaceAll("%A%", min);
+		string.ReplaceAll("%B%", maxtint);
+		string.ReplaceAll("%C%", step);
+	}
+	fFadeText->SetText(string.String());
+}
+
+
+void
+SettingsWindow::_UpdateMainWindow()
+{
+	BMessenger messenger(my_app->fMainWindow);
+	BMessage message(UPDATE_SETTINGS);
+	message.AddInt32("limit", newLimit);
+	message.AddInt32("autopaste", newAutoPaste);
+	message.AddInt32("fade", newFade);
+	messenger.SendMessage(&message);
+}
+
+
+// #pragma mark - Settings
+
+
+void
+SettingsWindow::_GetSettings()
 {
 	ClipdingerSettings* settings = my_app->Settings();
-
-	switch (message->what)
-	{
-		case AUTOSTART:
-		{
-			newAutoStart = fAutoStartBox->Value();
-			UpdateSettings();
-			break;
-		}
-		case AUTOPASTE:
-		{
-			newAutoPaste = fAutoPasteBox->Value();
-			UpdateSettings();
-			break;
-		}
-		case FADE:
-		{
-			newFade = fFadeBox->Value();
-			if (settings->Lock()) {
-				settings->SetFade(newFade);
-				settings->Unlock();
-			}
-			UpdateSettings();
-			UpdateFadeText();
-
-			fDelaySlider->SetEnabled(newFade);
-			fStepSlider->SetEnabled(newFade);
-			fLevelSlider->SetEnabled(newFade);
-			break;
-		}
-		case DELAY:
-		{
-			newFadeDelay = fDelaySlider->Value();
-			if (settings->Lock()) {
-				settings->SetFadeDelay(newFadeDelay);
-				settings->Unlock();
-			}
-			UpdateSettings();
-			UpdateFadeText();
-			break;
-		}
-		case STEP:
-		{
-			newFadeStep = fStepSlider->Value();
-			if (settings->Lock()) {
-				settings->SetFadeStep(newFadeStep);
-				settings->Unlock();
-			}
-			UpdateSettings();
-			UpdateFadeText();
-			break;
-		}
-		case LEVEL:
-		{
-			newFadeMaxLevel = fLevelSlider->Value();
-			if (settings->Lock()) {
-				settings->SetFadeMaxLevel(newFadeMaxLevel);
-				settings->Unlock();
-			}
-			UpdateSettings();
-			break;
-		}
-		case CANCEL:
-		{
-			RevertSettings();
-			UpdateSettings();
-			SetControls();
-			Hide();
-			break;
-		}
-		case OK:
-		{
-			newLimit = atoi(fLimitControl->Text());
-			if (settings->Lock()) {
-				settings->SetLimit(newLimit);
-				settings->SetAutoStart(newAutoStart);
-				settings->SetAutoPaste(newAutoPaste);
-				settings->SetFade(newFade);
-				settings->SetFadeDelay(newFadeDelay);
-				settings->SetFadeStep(newFadeStep);
-				settings->Unlock();
-			}
-			UpdateSettings();
-			GetSettings();
-			Hide();
-			break;
-		}
-		default:
-		{
-			BWindow::MessageReceived(message);
-			break;
-		}
+	if (settings->Lock()) {
+		newLimit = originalLimit = settings->GetLimit();
+		newAutoStart = originalAutoStart = settings->GetAutoStart();
+		newAutoPaste = originalAutoPaste = settings->GetAutoPaste();
+		newFade = originalFade = settings->GetFade();
+		newFadeDelay = originalFadeDelay = settings->GetFadeDelay();
+		newFadeStep = originalFadeStep = settings->GetFadeStep();
+		newFadeMaxLevel = originalFadeMaxLevel = settings->GetFadeMaxLevel();
+		settings->Unlock();
 	}
+}
+
+
+void
+SettingsWindow::_RevertSettings()
+{
+	ClipdingerSettings* settings = my_app->Settings();
+	if (settings->Lock()) {
+		settings->SetLimit(originalLimit);
+		settings->SetAutoStart(originalAutoStart);
+		settings->SetAutoPaste(originalAutoPaste);
+		settings->SetFade(originalFade);
+		settings->SetFadeDelay(originalFadeDelay);
+		settings->SetFadeStep(originalFadeStep);
+		settings->SetFadeMaxLevel(originalFadeMaxLevel);
+		settings->Unlock();
+	}
+	newLimit = originalLimit;
+	newAutoStart = originalAutoStart;
+	newAutoPaste = originalAutoPaste;
+	newFade = originalFade;
+	newFadeDelay = originalFadeDelay;
+	newFadeStep = originalFadeStep;
+	newFadeMaxLevel = originalFadeMaxLevel;
 }

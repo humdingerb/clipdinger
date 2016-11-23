@@ -45,6 +45,20 @@ ClipView::AttachedToWindow()
 
 
 void
+ClipView::Draw(BRect rect)
+{
+	SetHighColor(ui_color(B_CONTROL_BACKGROUND_COLOR));
+
+	BRect bounds(Bounds());
+	BRect itemFrame = ItemFrame(CountItems() - 1);
+	bounds.top = itemFrame.bottom;
+	FillRect(bounds);
+
+	BListView::Draw(rect);
+}
+
+
+void
 ClipView::FrameResized(float width, float height)
 {
 	BListView::FrameResized(width, height);
@@ -58,19 +72,6 @@ ClipView::FrameResized(float width, float height)
 			- spacing * 4);
 		sItem->SetTitle(string);
 	}
-}
-
-void
-ClipView::Draw(BRect rect)
-{
-	SetHighColor(ui_color(B_CONTROL_BACKGROUND_COLOR));
-
-	BRect bounds(Bounds());
-	BRect itemFrame = ItemFrame(CountItems() - 1);
-	bounds.top = itemFrame.bottom;
-	FillRect(bounds);
-
-	BListView::Draw(rect);
 }
 
 
@@ -125,6 +126,30 @@ ClipView::KeyDown(const char* bytes, int32 numBytes)
 
 
 void
+ClipView::MouseDown(BPoint position)
+{
+	BListView::MouseDown(position);
+
+	BMessage message(SWITCHLIST);
+	message.AddInt32("listview", (int32)1);
+	Looper()->PostMessage(&message);
+
+	BRect bounds = ItemFrame(CurrentSelection());
+	if (bounds.Contains(position)) {
+		uint32 buttons = 0;
+		if (Window() != NULL && Window()->CurrentMessage() != NULL)
+			buttons = Window()->CurrentMessage()->FindInt32("buttons");
+
+		if (buttons == B_SECONDARY_MOUSE_BUTTON)
+			_ShowPopUpMenu(ConvertToScreen(position));
+	}
+}
+
+
+// #pragma mark - Member Functions
+
+
+void
 ClipView::AdjustColors()
 {
 	bool fade;
@@ -147,7 +172,7 @@ ClipView::AdjustColors()
 
 	int32 now(real_time_clock());
 	for (int32 i = 0; i < CountItems(); i++) {
-		ClipItem *sItem = dynamic_cast<ClipItem *> (ItemAt(i));
+		ClipItem* sItem = dynamic_cast<ClipItem *> (ItemAt(i));
 		if (fade) {
 			int32 minutes = (now - sItem->GetTimeAdded()) / 60;
 			float level = B_NO_TINT + (maxlevel/ step * ((float)minutes / delay));
@@ -160,34 +185,13 @@ ClipView::AdjustColors()
 
 
 void
-ClipView::MouseDown(BPoint position)
-{
-	BListView::MouseDown(position);
-
-	BMessage message(SWITCHLIST);
-	message.AddInt32("listview", (int32)1);
-	Looper()->PostMessage(&message);
-
-	BRect bounds = ItemFrame(CurrentSelection());
-	if (bounds.Contains(position)) {
-		uint32 buttons = 0;
-		if (Window() != NULL && Window()->CurrentMessage() != NULL)
-			buttons = Window()->CurrentMessage()->FindInt32("buttons");
-
-		if (buttons == B_SECONDARY_MOUSE_BUTTON)
-			ShowPopUpMenu(ConvertToScreen(position));
-	}
-}
-
-
-void
-ClipView::ShowPopUpMenu(BPoint screen)
+ClipView::_ShowPopUpMenu(BPoint screen)
 {
 	if (fShowingPopUpMenu)
 		return;
 
 	ContextPopUp* menu = new ContextPopUp("PopUpMenu", this);
-	ClipItem *currentClip = dynamic_cast<ClipItem *>(ItemAt(CurrentSelection()));
+	ClipItem* currentClip = dynamic_cast<ClipItem *>(ItemAt(CurrentSelection()));
 	BMessage* msg;
 
 	msg = new BMessage(DELETE);

@@ -18,6 +18,7 @@
 #include "ReplWindow.h"
 #include "SettingsWindow.h"
 
+
 #define my_app dynamic_cast<App*>(be_app)
 
 class App : public BApplication {

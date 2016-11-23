@@ -48,7 +48,7 @@ ClipItem::~ClipItem()
 
 
 void
-ClipItem::DrawItem(BView *view, BRect rect, bool complete)
+ClipItem::DrawItem(BView* view, BRect rect, bool complete)
 {
 	static const float spacing = be_control_look->DefaultLabelSpacing();
 

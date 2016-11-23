@@ -12,7 +12,6 @@
 #include <Locker.h>
 #include <Rect.h>
 
-
 class ClipdingerSettings {
 public:
 					ClipdingerSettings();
@@ -29,6 +28,7 @@ public:
 		int32		GetFadeStep() { return fFadeStep; }
 		int32		GetFadeMaxLevel() { return fFadeMaxLevel; }
 		int32		GetFadePause() { return fFadePause; }
+
 		BRect		GetWindowPosition() { return fPosition; }
 		void		GetSplitWeight(float* left, float* right);
 		void		GetSplitCollapse(bool* left, bool* right);
@@ -53,13 +53,14 @@ private:
 		int32		fFadeStep;
 		int32		fFadeMaxLevel;
 		int32		fFadePause;
+
 		BRect		fPosition;
 		float		fLeftWeight;
 		float		fRightWeight;
 		bool		fLeftCollapse;
 		bool		fRightCollapse;
 
-		bool		dirtySettings;;
+		bool		dirtySettings;
 		
 		BLocker		fLock;
 };

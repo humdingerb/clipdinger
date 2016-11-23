@@ -33,13 +33,13 @@ public:
 private:
 	BString					_GetClipboard();
 	void					_LaunchClipdinger(BMessage* msg);
-	void					_SetColor(rgb_color color);
-	static	filter_result	MessageFilter(BMessage* msg,
+	static filter_result	_MessageFilter(BMessage* msg,
 								BHandler** target, BMessageFilter* filter);
+	void					_SetColor(rgb_color color);
 
-	bool					fReplicated;
 	BStringView*			fContentsView;
 	BString					fCurrentClip;
+	bool					fReplicated;
 };
 
 

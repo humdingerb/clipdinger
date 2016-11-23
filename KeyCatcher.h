@@ -1,7 +1,11 @@
 /*
- * Copyright 2015 Your Name <your@email.address>
- * All rights reserved. Distributed under the terms of the MIT license.
+ * Copyright 2015. All rights reserved.
+ * Distributed under the terms of the MIT license.
+ *
+ * Author:
+ *	Humdinger, humdingerb@gmail.com
  */
+
 #ifndef KEYCATCHER_H
 #define KEYCATCHER_H_H
 

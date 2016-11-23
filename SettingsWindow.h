@@ -1,5 +1,5 @@
 /*
- * Copyright 2015. All rights reserved.
+ * Copyright 2015-2016. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -23,14 +23,16 @@ public:
 
 	void			MessageReceived(BMessage* message);
 	bool			QuitRequested();
-	void			_BuildLayout();
-	void			GetSettings();
-	void			SetControls();
-	void			RevertSettings();
-	void			UpdateSettings();
-	void			UpdateFadeText();
 
 private:
+	void			_BuildLayout();
+	void			_UpdateControls();
+	void			_UpdateFadeText();
+	void			_UpdateMainWindow();
+
+	void			_GetSettings();
+	void			_RevertSettings();
+
 	BTextControl*	fLimitControl;
 	BCheckBox*		fFadeBox;
 	BCheckBox*		fAutoStartBox;

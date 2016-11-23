@@ -39,12 +39,12 @@ ReplWindow::~ReplWindow()
 }
 
 
-bool
-ReplWindow::QuitRequested()
+void
+ReplWindow::FrameResized(float width, float height)
 {
-	if (!IsHidden())
-		Hide();
-	return false;
+	fClipMonitorView->TruncateClip(width);
+
+	BWindow::FrameResized(width, height);
 }
 
 
@@ -62,12 +62,12 @@ ReplWindow::MessageReceived(BMessage* message)
 }
 
 
-void
-ReplWindow::FrameResized(float width, float height)
+bool
+ReplWindow::QuitRequested()
 {
-	fClipMonitorView->TruncateClip(width);
-
-	BWindow::FrameResized(width, height);
+	if (!IsHidden())
+		Hide();
+	return false;
 }
 
 
@@ -107,5 +107,3 @@ ReplWindow::_BuildLayout()
 		.AddGlue(10)
 		.End();
 }
-
-

@@ -21,13 +21,13 @@ public:
 	virtual			~EditWindow();
 
 	void			MessageReceived(BMessage* message);
-	void			_BuildLayout();
 
 private:
-	BTextControl*	fTitleControl;
-	FavItem*		fItem;
-	BString			originalTitle;
-};
+	void			_BuildLayout();
 
+	FavItem*		fItem;
+	BString			fOriginalTitle;
+	BTextControl*	fTitleControl;
+};
 
 #endif // EDIT_WINDOW_H

@@ -46,22 +46,25 @@ public:
 
 private:
 	void			_BuildLayout();
+	void			_SetSplitview();
+
 	void			_LoadHistory();
 	void			_SaveHistory();
 	void			_LoadFavorites();
 	void			_SaveFavorites();
-	void			_SetSplitview();
 
-	void			MakeItemUnique(BString clip);
-	void			AddClip(BString clip, BString path, int32 time);
-	BString			GetClipboard();
-	void			PutClipboard(BString text);
-	void			CropHistory(int32 limit);
-	void			AutoPaste();
-	void			MoveClipToTop();
-	void			UpdateButtons();
-	void			UpdateColors();
-	void			RenumberFavorites(int32 start);
+	void			_AddClip(BString clip, BString path, int32 time);
+	void			_MakeItemUnique(BString clip);
+	void			_MoveClipToTop();
+	void			_CropHistory(int32 limit);
+	void			_RenumberFavorites(int32 start);
+
+	BString			_GetClipboard();
+	void			_PutClipboard(BString text);
+
+	void			_AutoPaste();
+	void			_UpdateButtons();
+	void			_UpdateColors();
 
 	int32			fLimit;
 	int32			fAutoPaste;

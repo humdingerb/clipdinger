@@ -25,6 +25,7 @@ public:
 
 private:
 	void			_BuildLayout();
+
 	ReplView*		fClipMonitorView;
 };
 

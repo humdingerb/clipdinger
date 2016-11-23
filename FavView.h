@@ -14,6 +14,7 @@
 #include <MessageRunner.h>
 #include <PopUpMenu.h>
 
+
 class FavView : public BListView {
 public:
 					FavView(const char* name);
@@ -23,12 +24,13 @@ public:
 	virtual void	Draw(BRect rect);
 	virtual	void	FrameResized(float width, float height);
 	virtual	void	MessageReceived(BMessage* message);
+
 	virtual	void	KeyDown(const char* bytes, int32 numBytes);
 	void			MouseDown(BPoint position);
 
-	void			ShowPopUpMenu(BPoint screen);
-
 private:
+	void			_ShowPopUpMenu(BPoint screen);
+
 	bool			fShowingPopUpMenu;
 };
 

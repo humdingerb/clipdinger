@@ -27,9 +27,10 @@ public:
 	void			MouseDown(BPoint position);
 
 	void			AdjustColors();
-	void			ShowPopUpMenu(BPoint screen);
 
 private:
+	void			_ShowPopUpMenu(BPoint screen);
+
 	bool			fShowingPopUpMenu;
 	BMessageRunner*	fRunner;
 };

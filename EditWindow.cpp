@@ -28,7 +28,7 @@ EditWindow::EditWindow(BRect frame, FavItem* fav)
 		B_CLOSE_ON_ESCAPE)
 {
 	fItem = fav;
-	originalTitle = fav->GetTitle();
+	fOriginalTitle = fav->GetTitle();
 	
 	_BuildLayout();
 
@@ -40,38 +40,6 @@ EditWindow::EditWindow(BRect frame, FavItem* fav)
 
 EditWindow::~EditWindow()
 {
-}
-
-
-void
-EditWindow::_BuildLayout()
-{
-	// Limit
-	fTitleControl = new BTextControl("title", B_TRANSLATE("Title:"),
-		originalTitle, NULL);
-	fTitleControl->SetExplicitMinSize(BSize(250.0, B_SIZE_UNSET));
-
-	// Buttons
-	BButton* cancel = new BButton("cancel", B_TRANSLATE("Cancel"),
-		new BMessage(CANCEL));
-	BButton* ok = new BButton("ok", B_TRANSLATE("OK"), new BMessage(OK));
-	ok->MakeDefault(true);
-
-	static const float spacing = be_control_look->DefaultItemSpacing();
-	BLayoutBuilder::Group<>(this, B_VERTICAL)
-		.AddGroup(B_VERTICAL)
-			.SetInsets(spacing)
-			.Add(fTitleControl)
-			.AddStrut(spacing / 2)
-		.End()
-		.Add(new BSeparatorView(B_HORIZONTAL))
-		.AddGroup(B_HORIZONTAL)
-			.SetInsets(0, 0, 0, spacing / 2)
-			.AddGlue()
-			.Add(cancel)
-			.Add(ok)
-			.AddGlue()
-		.End();
 }
 
 
@@ -104,4 +72,36 @@ EditWindow::MessageReceived(BMessage* message)
 			break;
 		}
 	}
+}
+
+
+void
+EditWindow::_BuildLayout()
+{
+	// Limit
+	fTitleControl = new BTextControl("title", B_TRANSLATE("Title:"),
+		fOriginalTitle, NULL);
+	fTitleControl->SetExplicitMinSize(BSize(250.0, B_SIZE_UNSET));
+
+	// Buttons
+	BButton* cancel = new BButton("cancel", B_TRANSLATE("Cancel"),
+		new BMessage(CANCEL));
+	BButton* ok = new BButton("ok", B_TRANSLATE("OK"), new BMessage(OK));
+	ok->MakeDefault(true);
+
+	static const float spacing = be_control_look->DefaultItemSpacing();
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.AddGroup(B_VERTICAL)
+			.SetInsets(spacing)
+			.Add(fTitleControl)
+			.AddStrut(spacing / 2)
+		.End()
+		.Add(new BSeparatorView(B_HORIZONTAL))
+		.AddGroup(B_HORIZONTAL)
+			.SetInsets(0, 0, 0, spacing / 2)
+			.AddGlue()
+			.Add(cancel)
+			.Add(ok)
+			.AddGlue()
+		.End();
 }

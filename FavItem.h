@@ -20,14 +20,14 @@ public:
 					FavItem(BString clip, BString title, int32 favnumber);
 					~FavItem();
 
+	virtual void	DrawItem(BView* view, BRect rect, bool complete);
+	virtual	void	Update(BView* view, const BFont* finfo);
+
 	BString			GetClip() { return fClip; };
 	BString			GetTitle() { return fTitle; };
 	void			SetTitle(BString title) { fTitle = title; };
 	void			SetDisplayTitle(BString display) { fDisplayTitle = display; };
 	void			SetFavNumber(int32 number) { fFavNumber = number; };
-
-	virtual void	DrawItem(BView* view, BRect rect, bool complete);
-	virtual	void	Update(BView* view, const BFont* finfo);
 
 private:
 	BString			fClip;

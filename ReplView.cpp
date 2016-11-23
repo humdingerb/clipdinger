@@ -117,7 +117,15 @@ ReplView::AttachedToWindow()
 	status_t error = be_clipboard->StartWatching(this);
 
 	fContentsView->AddFilter(new BMessageFilter(B_MOUSE_DOWN,
-		&ReplView::MessageFilter));
+		&ReplView::_MessageFilter));
+}
+
+
+void
+ReplView::MouseDown(BPoint point)
+{
+	BMessage* msg = Window()->CurrentMessage();
+	_LaunchClipdinger(msg);
 }
 
 
@@ -125,7 +133,7 @@ void
 ReplView::MessageReceived(BMessage* msg)
 {
 	if (msg->WasDropped()) {
-		rgb_color *color;
+		rgb_color* color;
 		ssize_t size;
 		if (msg->FindData("RGBColor", B_RGB_COLOR_TYPE,
 			(const void **)&color, &size) == B_OK) {
@@ -146,7 +154,7 @@ ReplView::MessageReceived(BMessage* msg)
 		}
 		case B_ABOUT_REQUESTED:
 		{
-			BAlert *alert = new BAlert("about",
+			BAlert* alert = new BAlert("about",
 				B_TRANSLATE("Clipdinger v0.5.5\n"
 				"\twritten by Humdinger\n"
 				"\tCopyright 2015-2016\n\n"
@@ -156,7 +164,7 @@ ReplView::MessageReceived(BMessage* msg)
 				"the Desktop to always show its current contents."),
 				B_TRANSLATE("Thank you"));
 		
-			BTextView *view = alert->TextView();
+			BTextView* view = alert->TextView();
 			BFont font;
 			view->SetStylable(true);
 			view->GetFont(&font);
@@ -174,32 +182,16 @@ ReplView::MessageReceived(BMessage* msg)
 }
 
 
-void
-ReplView::MouseDown(BPoint point)
-{
-	BMessage* msg = Window()->CurrentMessage();
-	_LaunchClipdinger(msg);
-}
+// #pragma mark - Member Functions
 
 
 void
-ReplView::_LaunchClipdinger(BMessage* msg)
+ReplView::TruncateClip(float width)
 {
-	uint32 buttons = msg->FindInt32("buttons");
-	int32 clicks = msg->FindInt32("clicks");
-
-	if (buttons == B_PRIMARY_MOUSE_BUTTON && clicks >= 2) {
-		team_id team;
-		team = be_roster->TeamFor(kApplicationSignature);
-		if (team < 0) {
-			be_roster->Launch(kApplicationSignature);
-			while (be_roster->TeamFor(kApplicationSignature) < 0)
-				snooze(100000);
-		}
-		BMessenger messenger(kApplicationSignature);
-		BMessage message(ACTIVATE);
-		messenger.SendMessage(&message);
-	}
+	static const float spacing = be_control_look->DefaultLabelSpacing();
+	BString string(fCurrentClip);
+	TruncateString(&string, B_TRUNCATE_END, width - spacing * 8);
+	fContentsView->SetText(string);
 }
 
 
@@ -226,6 +218,44 @@ ReplView::_GetClipboard()
 
 
 void
+ReplView::_LaunchClipdinger(BMessage* msg)
+{
+	uint32 buttons = msg->FindInt32("buttons");
+	int32 clicks = msg->FindInt32("clicks");
+
+	if (buttons == B_PRIMARY_MOUSE_BUTTON && clicks >= 2) {
+		team_id team;
+		team = be_roster->TeamFor(kApplicationSignature);
+		if (team < 0) {
+			be_roster->Launch(kApplicationSignature);
+			while (be_roster->TeamFor(kApplicationSignature) < 0)
+				snooze(100000);
+		}
+		BMessenger messenger(kApplicationSignature);
+		BMessage message(ACTIVATE);
+		messenger.SendMessage(&message);
+	}
+}
+
+
+filter_result
+ReplView::_MessageFilter(BMessage* msg, BHandler** target, BMessageFilter* filter)
+{
+	ReplView* view = (ReplView *)(*target);
+	switch (msg->what)
+	{
+		case B_MOUSE_DOWN:
+		{
+			view->_LaunchClipdinger(msg);
+			return B_SKIP_MESSAGE;
+		}
+		default:
+			return B_DISPATCH_MESSAGE;
+	}
+}
+
+
+void
 ReplView::_SetColor(rgb_color color)
 {
 	SetViewColor(color);
@@ -246,31 +276,4 @@ ReplView::_SetColor(rgb_color color)
 	fContentsView->SetLowColor(color);
 	fContentsView->Invalidate();
 	Invalidate();
-}
-
-
-void
-ReplView::TruncateClip(float width)
-{
-	static const float spacing = be_control_look->DefaultLabelSpacing();
-	BString string(fCurrentClip);
-	TruncateString(&string, B_TRUNCATE_END, width - spacing * 8);
-	fContentsView->SetText(string);
-}
-
-
-filter_result
-ReplView::MessageFilter(BMessage* msg, BHandler** target, BMessageFilter* filter)
-{
-	ReplView* view = (ReplView *)(*target);
-	switch (msg->what)
-	{
-		case B_MOUSE_DOWN:
-		{
-			view->_LaunchClipdinger(msg);
-			return B_SKIP_MESSAGE;
-		}
-		default:
-			return B_DISPATCH_MESSAGE;
-	}
 }

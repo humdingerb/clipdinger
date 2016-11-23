@@ -41,6 +41,20 @@ FavView::AttachedToWindow()
 
 
 void
+FavView::Draw(BRect rect)
+{
+	SetHighColor(ui_color(B_CONTROL_BACKGROUND_COLOR));
+
+	BRect bounds(Bounds());
+	BRect itemFrame = ItemFrame(CountItems() - 1);
+	bounds.top = itemFrame.bottom;
+	FillRect(bounds);
+
+	BListView::Draw(rect);
+}
+
+
+void
 FavView::FrameResized(float width, float height)
 {
 	BListView::FrameResized(width, height);
@@ -54,20 +68,6 @@ FavView::FrameResized(float width, float height)
 			- spacing * 4);
 		sItem->SetDisplayTitle(string);
 	}
-}
-
-
-void
-FavView::Draw(BRect rect)
-{
-	SetHighColor(ui_color(B_CONTROL_BACKGROUND_COLOR));
-
-	BRect bounds(Bounds());
-	BRect itemFrame = ItemFrame(CountItems() - 1);
-	bounds.top = itemFrame.bottom;
-	FillRect(bounds);
-
-	BListView::Draw(rect);
 }
 
 
@@ -131,13 +131,16 @@ FavView::MouseDown(BPoint position)
 			buttons = Window()->CurrentMessage()->FindInt32("buttons");
 
 		if (buttons == B_SECONDARY_MOUSE_BUTTON)
-			ShowPopUpMenu(ConvertToScreen(position));
+			_ShowPopUpMenu(ConvertToScreen(position));
 	}
 }
 
 
+// #pragma mark - Member Functions
+
+
 void
-FavView::ShowPopUpMenu(BPoint screen)
+FavView::_ShowPopUpMenu(BPoint screen)
 {
 	if (fShowingPopUpMenu)
 		return;

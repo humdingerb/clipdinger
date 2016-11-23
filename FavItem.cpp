@@ -39,7 +39,7 @@ FavItem::~FavItem()
 
 
 void
-FavItem::DrawItem(BView *view, BRect rect, bool complete)
+FavItem::DrawItem(BView* view, BRect rect, bool complete)
 {
 	static const float spacing = be_control_look->DefaultLabelSpacing();
 
