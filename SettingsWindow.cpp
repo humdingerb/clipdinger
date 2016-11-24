@@ -213,8 +213,6 @@ SettingsWindow::_BuildLayout()
 	fFadeText->SetStylable(true);
 	fFadeText->SetAlignment(B_ALIGN_CENTER);
 
-	_UpdateFadeText();
-
 	font_height fheight;
 	infoFont.GetHeight(&fheight);
 	fFadeText->SetExplicitMinSize(BSize(300.0,
@@ -287,6 +285,8 @@ SettingsWindow::_UpdateControls()
 	fDelaySlider->SetEnabled(originalFade);
 	fStepSlider->SetEnabled(originalFade);
 	fLevelSlider->SetEnabled(originalFade);
+
+	_UpdateFadeText();
 }
 
 
