@@ -154,14 +154,19 @@ ReplView::MessageReceived(BMessage* msg)
 		}
 		case B_ABOUT_REQUESTED:
 		{
-			BAlert* alert = new BAlert("about",
-				B_TRANSLATE("Clipdinger v0.5.5\n"
+			BString text = B_TRANSLATE_COMMENT(
+				"Clipdinger %version%\n"
 				"\twritten by Humdinger\n"
-				"\tCopyright 2015-2016\n\n"
+				"\tCopyright %years%\n\n"
 				"Clipdinger provides a history of clippings of the system "
 				"clipboard and lets you create favorites.\n\n"
 				"This is its clipboard monitor that can be replicated to "
-				"the Desktop to always show its current contents."),
+				"the Desktop to always show its current contents.",
+				"Don't change the variables %years% and %version%.");
+			text.ReplaceAll("%years%", kCopyright);
+			text.ReplaceAll("%version%", kVersion);
+
+			BAlert* alert = new BAlert("about", text.String(),
 				B_TRANSLATE("Thank you"));
 		
 			BTextView* view = alert->TextView();

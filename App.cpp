@@ -107,14 +107,19 @@ App::MessageReceived(BMessage* msg)
 void
 App::AboutRequested()
 {
-	BAlert *alert = new BAlert("about",
-		B_TRANSLATE("Clipdinger v0.5.5\n"
+	BString text = B_TRANSLATE_COMMENT(
+		"Clipdinger %version%\n"
 		"\twritten by Humdinger\n"
-		"\tCopyright 2015-2016\n\n"
+		"\tCopyright %years%\n\n"
 		"Clipdinger provides a history of clippings of the system "
 		"clipboard and lets you create favorites.\n\n"
 		"Please let me know of any bugs you find or features you "
-		"miss. Contact info is in the ReadMe, see menu item 'Help'."),
+		"miss. Contact info is in the ReadMe, see menu item 'Help'.",
+		"Don't change the variables %years% and %version%.");
+	text.ReplaceAll("%years%", kCopyright);
+	text.ReplaceAll("%version%", kVersion);
+
+	BAlert *alert = new BAlert("about", text.String(),
 		B_TRANSLATE("Thank you"));
 
 	BTextView *view = alert->TextView();
