@@ -1,4 +1,4 @@
-1	German	application/x-vnd.humdinger-clipdinger	2092496208
+1	German	application/x-vnd.humdinger-clipdinger	631122551
 Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.5.5\n\tvon Humdinger\n\tCopyright 2015-2016\n\nClipdinger bietet eine Historie für die Zwischenablage und die Anlage von Favoriten.\n\nBerichte zu Bugs oder gewünschten Features sind sehr willkommen. Kontaktinfos befinden sich im ReadMe, siehe Menü 'Hilfe'.
 Thank you	Application		Danke
 -= Clipboard is empty =-	ClipboardMonitor		-= Zwischenablage ist leer =-
@@ -26,7 +26,7 @@ Move up	MainWindow		Rauf
 Paste to Sprunge.us	MainWindow		Auf Sprunge.us hochladen
 Pause fading	MainWindow		Abdunkeln anhalten
 Quit	MainWindow		Beenden
-Saved favourites	MainWindow		Gespeicherte Favoriten
+Saved favorites	MainWindow		Gespeicherte Favoriten
 Settings…	MainWindow		Einstellungen…
 Sprunge.us service not available.	MainWindow		Sprunge.us nicht verfügbar.
 Clipboard monitor	ReplWindow		Zwischenablagenanzeige

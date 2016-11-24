@@ -1,14 +1,14 @@
-1	English	application/x-vnd.humdinger-clipdinger	631122551
-Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.
+1	British	application/x-vnd.humdinger-clipdinger	631122551
+Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favourites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.
 Thank you	Application		Thank you
 -= Clipboard is empty =-	ClipboardMonitor		-= Clipboard is empty =-
-Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.
+Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favourites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.
 Thank you	ClipboardMonitor		Thank you
-Add to favorites	ClipList		Add to favorites
+Add to favorites	ClipList		Add to favourites
 Edit title	ClipList		Edit title
 Paste to Sprunge.us	ClipList		Paste to Sprunge.us
 Remove clip	ClipList		Remove clip
-Remove favorite	ClipList		Remove favorite
+Remove favorite	ClipList		Remove favourite
 Cancel	EditWindow		Cancel
 Edit title	EditWindow		Edit title
 OK	EditWindow		OK
@@ -26,11 +26,11 @@ Move up	MainWindow		Move up
 Paste to Sprunge.us	MainWindow		Paste to Sprunge.us
 Pause fading	MainWindow		Pause fading
 Quit	MainWindow		Quit
-Saved favorites	MainWindow		Saved favorites
+Saved favorites	MainWindow		Saved favourites
 Settings…	MainWindow		Settings…
 Sprunge.us service not available.	MainWindow		Sprunge.us service not available.
 Clipboard monitor	ReplWindow		Clipboard monitor
-Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.
+Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a colour e.g. from Icon-O-Matic.
 Auto-paste	SettingsWindow		Auto-paste
 Auto-start Clipdinger	SettingsWindow		Auto-start Clipdinger
 Cancel	SettingsWindow		Cancel

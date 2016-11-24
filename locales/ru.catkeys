@@ -1,4 +1,4 @@
-1	Russian	application/x-vnd.humdinger-clipdinger	2092496208
+1	Russian	application/x-vnd.humdinger-clipdinger	631122551
 Clipdinger v0.5.5\n\twritten by Humdinger\n\tCopyright 2015-2016\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger v0.5.5\n\tнаписан Humdinger\n\tCopyright 2015-2016\n\nClipdinger предоставляет историю записей из системного буфера обмена и возможность их добвления в избранное.\n\nПожалуйста, сообщайте мне обо всех найденных вами ошибках или новых функциях, которые вам нужны.  Данные для связи находятся в "Справке", доступной через меню.
 Thank you	Application		Спасибо
 -= Clipboard is empty =-	ClipboardMonitor		-= Clipboard is empty =-
@@ -26,7 +26,7 @@ Move up	MainWindow		Переместить выше
 Paste to Sprunge.us	MainWindow		Опубликовать на Sprunge.us
 Pause fading	MainWindow		Приостановить затенение
 Quit	MainWindow		Выход
-Saved favourites	MainWindow		Избранное
+Saved favorites	MainWindow		Избранное
 Settings…	MainWindow		Настройки…
 Sprunge.us service not available.	MainWindow		Сервис Sprunge.us недоступен.
 Clipboard monitor	ReplWindow		Clipboard monitor
