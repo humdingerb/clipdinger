@@ -182,7 +182,7 @@ SettingsWindow::_BuildLayout()
 	fFadeBox = new BCheckBox("fading", B_TRANSLATE(
 		"Fade history entries over time"), new BMessage(FADE));
 	fDelaySlider = new BSlider(BRect(), "delay", B_TRANSLATE("Delay"),
-		new BMessage(DELAY), 1, 12);	// 12 units á 10 minutes
+		new BMessage(DELAY), 1, 12);	// 12 units á kMinuteUnits minutes
 	fDelaySlider->SetHashMarks(B_HASH_MARKS_BOTTOM);
 	fDelaySlider->SetHashMarkCount(12);
 	fDelaySlider->SetKeyIncrementValue(1);

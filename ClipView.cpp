@@ -175,7 +175,8 @@ ClipView::AdjustColors()
 		ClipItem* sItem = dynamic_cast<ClipItem *> (ItemAt(i));
 		if (fade) {
 			int32 minutes = (now - sItem->GetTimeAdded()) / 60;
-			float level = B_NO_TINT + (maxlevel/ step * ((float)minutes / delay));
+			float level = B_NO_TINT
+				+ (maxlevel / step * ((float)minutes / delay) / kMinuteUnits);
 			sItem->SetColor(tint_color(ui_color(B_LIST_BACKGROUND_COLOR),
 			(level < maxlevel) ? level : maxlevel));  // limit to maxlevel
 		} else
