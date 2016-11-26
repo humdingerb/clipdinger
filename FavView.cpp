@@ -95,7 +95,11 @@ FavView::KeyDown(const char* bytes, int32 numBytes)
 	switch (bytes[0]) {
 		case B_DELETE:
 		{
-			Looper()->PostMessage(FAV_DELETE);
+			FavItem* currentFav
+				= dynamic_cast<FavItem *>(ItemAt(CurrentSelection()));
+			BMessage message(FAV_DELETE);
+			message.AddPointer("fav", currentFav);
+			Looper()->PostMessage(&message);
 			break;
 		}
 		case B_LEFT_ARROW:

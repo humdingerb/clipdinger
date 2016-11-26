@@ -105,7 +105,11 @@ ClipView::KeyDown(const char* bytes, int32 numBytes)
 	switch (bytes[0]) {
 		case B_DELETE:
 		{
-			Looper()->PostMessage(DELETE);
+			ClipItem* currentClip
+				= dynamic_cast<ClipItem *>(ItemAt(CurrentSelection()));
+			BMessage message(DELETE);
+			message.AddPointer("clip", currentClip);
+			Looper()->PostMessage(&message);
 			break;
 		}
 		case B_LEFT_ARROW:
