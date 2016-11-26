@@ -214,7 +214,7 @@ ReplView::_GetClipboard()
 		be_clipboard->Unlock();
 	}
 	if (text == NULL) {
-		text = B_TRANSLATE("-= Clipboard is empty =-");
+		text = B_TRANSLATE("-= No text in clipboard =-");
 		textLen = strlen(text);
 	}
 	BString clip(text, textLen);

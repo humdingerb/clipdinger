@@ -472,7 +472,7 @@ MainWindow::_BuildLayout()
 		B_WILL_DRAW, false, true);
 
 	BStringView* favoriteHeader = new BStringView("title",
-		B_TRANSLATE("Saved favorites"));
+		B_TRANSLATE("Favorites"));
 	favoriteHeader->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 	BFont font(be_bold_font);
 	favoriteHeader->SetFont(&font);
