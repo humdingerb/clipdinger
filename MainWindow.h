@@ -53,7 +53,8 @@ private:
 	void			_LoadFavorites();
 	void			_SaveFavorites();
 
-	void			_AddClip(BString clip, BString path, int32 time);
+	void			_AddClip(BString clip, BString path, bigtime_t time,
+						bigtime_t since);
 	void			_MakeItemUnique(BString clip);
 	void			_MoveClipToTop();
 	void			_CropHistory(int32 limit);
@@ -68,7 +69,7 @@ private:
 
 	int32			fLimit;
 	int32			fAutoPaste;
-	int32			fLaunchTime;
+	bigtime_t		fLaunchTime;
 
 	BSplitView*		fMainSplitView;
 	ClipView*		fHistory;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015. All rights reserved.
+ * Copyright 2015-2016. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -27,6 +27,9 @@ public:
 	void			MouseDown(BPoint position);
 
 	void			AdjustColors();
+
+protected:
+	virtual	bool	GetToolTipAt(BPoint point, BToolTip** _tip);
 
 private:
 	void			_ShowPopUpMenu(BPoint screen);

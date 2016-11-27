@@ -8,6 +8,8 @@
 
 #include <Catalog.h>
 #include <ControlLook.h>
+#include <DateFormat.h>
+#include <TimeFormat.h>
 
 #include "App.h"
 #include "ClipItem.h"
@@ -68,8 +70,8 @@ ClipView::FrameResized(float width, float height)
 	for (int32 i = 0; i < CountItems(); i++) {
 		ClipItem *sItem = dynamic_cast<ClipItem *> (ItemAt(i));
 		BString string(sItem->GetClip());
-		TruncateString(&string, B_TRUNCATE_END, width - kIconSize
-			- spacing * 4);
+		TruncateString(&string, B_TRUNCATE_END,
+			width - kIconSize - spacing * 4);
 		sItem->SetTitle(string);
 	}
 }
@@ -150,6 +152,37 @@ ClipView::MouseDown(BPoint position)
 }
 
 
+bool
+ClipView::GetToolTipAt(BPoint point, BToolTip** _tip)
+{
+	ClipItem* item = static_cast<ClipItem*>(this->ItemAt(this->IndexOf(point)));
+	if (item == NULL)
+		return false;
+
+	BString dateString = "";
+	bigtime_t added = item->GetTimeAdded();
+	if (BDateFormat().Format(dateString, added,
+		B_MEDIUM_DATE_FORMAT) != B_OK)
+		return false;
+
+	BString timeString = "";
+	added = item->GetTimeAdded();
+	if (BTimeFormat().Format(timeString, added,
+		B_SHORT_TIME_FORMAT) != B_OK)
+		return false;
+
+	BString toolTip(B_TRANSLATE_COMMENT("Added:\n%time%\n%date%",
+		"Tooltip, don't change the variables %time% and %date%."));
+	toolTip.ReplaceAll("%time%", timeString.String());
+	toolTip.ReplaceAll("%date%", dateString.String());
+
+	SetToolTip(toolTip.String());
+	*_tip = ToolTip();
+
+	return true;
+}
+
+
 // #pragma mark - Member Functions
 
 
@@ -174,11 +207,11 @@ ClipView::AdjustColors()
 	if (pause)
 		return;
 
-	int32 now(real_time_clock());
+	bigtime_t now(real_time_clock());
 	for (int32 i = 0; i < CountItems(); i++) {
 		ClipItem* sItem = dynamic_cast<ClipItem *> (ItemAt(i));
 		if (fade) {
-			int32 minutes = (now - sItem->GetTimeAdded()) / 60;
+			bigtime_t minutes = (now - sItem->GetTimeSince()) / 60;
 			float level = B_NO_TINT
 				+ (maxlevel / step * ((float)minutes / delay) / kMinuteUnits);
 			sItem->SetColor(tint_color(ui_color(B_LIST_BACKGROUND_COLOR),
@@ -197,7 +230,7 @@ ClipView::_ShowPopUpMenu(BPoint screen)
 
 	ContextPopUp* menu = new ContextPopUp("PopUpMenu", this);
 	ClipItem* currentClip = dynamic_cast<ClipItem *>(ItemAt(CurrentSelection()));
-	BMessage* msg;
+	BMessage* msg = NULL;
 
 	msg = new BMessage(DELETE);
 	msg->AddPointer("clip", currentClip);

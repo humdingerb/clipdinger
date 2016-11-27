@@ -84,9 +84,10 @@ FavItem::DrawItem(BView* view, BRect rect, bool complete)
     else
 		view->SetHighColor(ui_color(B_LIST_ITEM_TEXT_COLOR));
 
-	if (fFavNumber < 12)
+	if (fFavNumber < 12) {
 		view->DrawString(Fn.String(), BPoint(spacing,
 		rect.top + fheight.ascent + fheight.descent + fheight.leading));
+	}
 
 	font.SetFace(B_REGULAR_FACE);
 	view->SetFont(&font);
@@ -112,7 +113,7 @@ FavItem::Update(BView* view, const BFont* finfo)
 
 	static const float spacing = be_control_look->DefaultLabelSpacing();
 	BString string(GetTitle());
-	view->TruncateString(&string, B_TRUNCATE_END, Width()- spacing * 4);
+	view->TruncateString(&string, B_TRUNCATE_END, Width() - spacing * 4);
 	SetDisplayTitle(string);
 
 	font_height	fheight;

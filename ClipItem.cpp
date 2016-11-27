@@ -17,20 +17,21 @@
 #include "Constants.h"
 
 
-ClipItem::ClipItem(BString clip, BString path, int32 time)
+ClipItem::ClipItem(BString clip, BString path, bigtime_t added, bigtime_t since)
 	:
 	BListItem()
 {
 	fClip = clip;
 	fOrigin = path;
-	fTimeAdded = time;
+	fTimeAdded = added;
+	fTimeSince = since;
 	fColor = ui_color(B_LIST_BACKGROUND_COLOR);
 
 	BNode node;
 	BNodeInfo node_info;
 
-	if ((node.SetTo(path.String()) == B_NO_ERROR) &&
-			(node_info.SetTo(&node) == B_NO_ERROR)) {
+	if ((node.SetTo(path.String()) == B_NO_ERROR)
+			&& (node_info.SetTo(&node) == B_NO_ERROR)) {
 		fOriginIcon = new BBitmap(BRect(0, 0, kIconSize - 1, kIconSize - 1),
 			0, B_RGBA32);
 		status_t status = node_info.GetTrackerIcon(fOriginIcon, B_MINI_ICON);

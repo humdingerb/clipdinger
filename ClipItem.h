@@ -18,7 +18,8 @@
 
 class ClipItem : public BListItem {
 public:
-					ClipItem(BString clip, BString path, int32 time);
+					ClipItem(BString clip, BString path, bigtime_t added,
+						bigtime_t since);
 					~ClipItem();
 
 	virtual void	DrawItem(BView* view, BRect rect, bool complete);
@@ -29,14 +30,17 @@ public:
 	BString			GetTitle() { return fTitle; };
 	void			SetTitle(BString title) { fTitle = title; };
 	bigtime_t		GetTimeAdded() { return fTimeAdded; };
-	void			SetTimeAdded(int32 time) { fTimeAdded = time; };
+	void			SetTimeAdded(bigtime_t added) { fTimeAdded = added; };
+	bigtime_t		GetTimeSince() { return fTimeSince; };
+	void			SetTimeSince(bigtime_t since) { fTimeSince = since; };
 	rgb_color		SetColor(rgb_color color) { fColor = color; };
 
 private:
 	BString			fClip;
 	BString			fOrigin;
 	BString			fTitle;
-	int32			fTimeAdded;
+	bigtime_t		fTimeAdded;
+	bigtime_t		fTimeSince;
 	rgb_color		fColor;
 
 	BBitmap*		fOriginIcon;

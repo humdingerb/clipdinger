@@ -151,7 +151,7 @@ FavView::_ShowPopUpMenu(BPoint screen)
 
 	ContextPopUp* menu = new ContextPopUp("PopUpMenu", this);
 	FavItem *currentFav = dynamic_cast<FavItem *>(ItemAt(CurrentSelection()));
-	BMessage* msg;
+	BMessage* msg = NULL;
 
 	msg = new BMessage(FAV_EDIT);
 	msg->AddPointer("fav", currentFav);

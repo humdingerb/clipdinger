@@ -137,8 +137,8 @@ MainWindow::MessageReceived(BMessage* message)
 			entry.GetPath(&path);
 
 			_MakeItemUnique(clip);
-			int32 time(real_time_clock());
-			_AddClip(clip, path.Path(), time);
+			bigtime_t time(real_time_clock());
+			_AddClip(clip, path.Path(), time, time);
 
 			fHistory->Select(0);
 			break;
@@ -580,12 +580,12 @@ MainWindow::_SaveHistory()
 
 				BString clip(sItem->GetClip());
 				BString path(sItem->GetOrigin());
-				int32 time(sItem->GetTimeAdded());
+				bigtime_t added(sItem->GetTimeAdded());
 				msg.AddString("clip", clip.String());
 				msg.AddString("origin", path.String());
-				msg.AddInt32("time", time);
+				msg.AddInt64("time", added);
 			}
-			msg.AddInt32("quittime", real_time_clock());
+			msg.AddInt64("quittime", real_time_clock());
 			msg.Flatten(&file);
 		}
 	}
@@ -609,17 +609,28 @@ MainWindow::_LoadHistory()
 			else {
 				BString clip;
 				BString path;
-				int32 time;
-				int32 quittime;
-				if (msg.FindInt32("quittime", &quittime) != B_OK) {
-					int32 quittime(real_time_clock());
-				}
+				int32 old_added = 0;	// used int32 pre v.0.5.5,
+				int32 old_quittime = 0;	// read old history files too.
+				bigtime_t added = 0;
+				bigtime_t quittime = 0;
+				bigtime_t since = 0;
+
+				if (msg.FindInt32("quittime", &old_quittime) == B_OK)
+					quittime = (int64)old_quittime;
+				else if (msg.FindInt64("quittime", &quittime) != B_OK)
+					quittime = real_time_clock();
+
 				int32 i = 0;
 				while ((msg.FindString("clip", i, &clip) == B_OK) &&
 						(msg.FindString("origin", i, &path) == B_OK) &&
-						(msg.FindInt32("time", i, &time) == B_OK)) {
-					time = time + (fLaunchTime - quittime);
-					_AddClip(clip, path, time);
+						((msg.FindInt32("time", i, &old_added) == B_OK) ||
+						(msg.FindInt64("time", i, &added) == B_OK))) {
+
+					if (added == 0)
+						added = (int64)old_added;
+
+					since = added + (fLaunchTime - quittime);
+					_AddClip(clip, path, added, since);
 					i++;
 				}
 				fHistory->AdjustColors();
@@ -698,12 +709,13 @@ MainWindow::_LoadFavorites()
 // #pragma mark - Clips etc.
 
 void
-MainWindow::_AddClip(BString clip, BString path, int32 time)
+MainWindow::_AddClip(BString clip, BString path, bigtime_t added,
+				bigtime_t since)
 {
 	if (fHistory->CountItems() > fLimit - 1)
 		fHistory->RemoveItem(fHistory->LastItem());
 
-	fHistory->AddItem(new ClipItem(clip, path, time), 0);
+	fHistory->AddItem(new ClipItem(clip, path, added, since), 0);
 }
 
 
@@ -731,7 +743,7 @@ MainWindow::_MoveClipToTop()
 	fHistory->MoveItem(fHistory->CurrentSelection(), 0);
 	fHistory->Select(0);
 
-	int32 time(real_time_clock());
+	bigtime_t time(real_time_clock());
 	ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(0));
 	item->SetTimeAdded(time);
 }
