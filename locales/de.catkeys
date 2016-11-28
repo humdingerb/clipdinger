@@ -1,4 +1,4 @@
-1	German	application/x-vnd.humdinger-clipdinger	1506720292
+1	English	application/x-vnd.humdinger-clipdinger	1322036589
 Thank you	Application		Danke
 Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tvon Humdinger\n\tCopyright %years%\n\nClipdinger bietet eine Historie für die Zwischenablage und das Anlegen von Favoriten.\n\nBerichte zu Bugs oder gewünschten Features sind sehr willkommen. Kontaktinfos befinden sich im ReadMe, siehe Menü 'Hilfe'.
 -= No text in clipboard =-	ClipboardMonitor		-= Kein Text in Zwischenablage =-
@@ -9,6 +9,7 @@ Edit title	ClipList		Titel bearbeiten
 Paste to Sprunge.us	ClipList		Auf Sprunge.us hochladen
 Remove clip	ClipList		Eintrag entfernen
 Remove favorite	ClipList		Favorit entfernen
+Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Hinzu:\n%time%\n%date%
 Cancel	EditWindow		Abbrechen
 Edit title	EditWindow		Titel bearbeiten
 OK	EditWindow		OK
@@ -44,5 +45,3 @@ Max. tint level	SettingsWindow		Max. Abdunklungsstufe
 OK	SettingsWindow		OK
 Steps	SettingsWindow		Stufen
 Clipdinger	System name		Clipdinger
-nger
-er

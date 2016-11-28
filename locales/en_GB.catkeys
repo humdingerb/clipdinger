@@ -1,4 +1,4 @@
-1	BritishEnglish	application/x-vnd.humdinger-clipdinger	1506720292
+1	English	application/x-vnd.humdinger-clipdinger	1322036589
 Thank you	Application		Thank you
 Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favourites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.
 -= No text in clipboard =-	ClipboardMonitor		-= No text in clipboard =-
@@ -9,6 +9,7 @@ Edit title	ClipList		Edit title
 Paste to Sprunge.us	ClipList		Paste to Sprunge.us
 Remove clip	ClipList		Remove clip
 Remove favorite	ClipList		Remove favourite
+Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Added:\n%time%\n%date%
 Cancel	EditWindow		Cancel
 Edit title	EditWindow		Edit title
 OK	EditWindow		OK
