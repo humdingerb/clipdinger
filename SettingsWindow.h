@@ -21,10 +21,12 @@ public:
 					SettingsWindow(BRect frame);
 	virtual			~SettingsWindow();
 
+	void			DispatchMessage(BMessage* message, BHandler* handler);
 	void			MessageReceived(BMessage* message);
 	bool			QuitRequested();
 
 private:
+	status_t		_KeyDown(BMessage* message);
 	void			_BuildLayout();
 	void			_UpdateControls();
 	void			_UpdateFadeText();

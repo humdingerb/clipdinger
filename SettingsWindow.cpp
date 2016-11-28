@@ -25,8 +25,7 @@ SettingsWindow::SettingsWindow(BRect frame)
 	:
 	BWindow(BRect(), B_TRANSLATE("Clipdinger settings"),
 		B_TITLED_WINDOW,
-		B_NOT_ZOOMABLE | B_NOT_RESIZABLE | B_AUTO_UPDATE_SIZE_LIMITS |
-		B_CLOSE_ON_ESCAPE)
+		B_NOT_ZOOMABLE | B_NOT_RESIZABLE | B_AUTO_UPDATE_SIZE_LIMITS)
 {
 	_BuildLayout();
 	_GetSettings();
@@ -39,6 +38,16 @@ SettingsWindow::SettingsWindow(BRect frame)
 
 SettingsWindow::~SettingsWindow()
 {
+}
+
+
+void
+SettingsWindow::DispatchMessage(BMessage* message, BHandler* handler)
+{
+	if (_KeyDown(message) == B_OK)	// Was ESC pressed?
+		return;
+
+	BWindow::DispatchMessage(message, handler);
 }
 
 
@@ -113,7 +122,8 @@ SettingsWindow::MessageReceived(BMessage* message)
 			_RevertSettings();
 			_UpdateMainWindow();
 			_UpdateControls();
-			Hide();
+			if (!IsHidden())
+				Hide();
 			break;
 		}
 		case OK:
@@ -146,12 +156,29 @@ bool
 SettingsWindow::QuitRequested()
 {
 	if (!IsHidden())
-		Hide();
+		Hide(); 
+
 	return false;
 }
 
 
 // #pragma mark - Layout & Display
+
+
+status_t
+SettingsWindow::_KeyDown(BMessage* message)
+{
+	uint32 raw_char  = message->FindInt32("raw_char");
+	switch (raw_char)
+	{
+		case B_ESCAPE:
+		{
+			PostMessage(CANCEL);
+			return B_OK;
+		}
+	}
+	return B_ERROR;
+}
 
 
 void
