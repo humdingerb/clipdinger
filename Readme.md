@@ -2,7 +2,7 @@
 
 * * *
 
-Clipdinger is a small tool to manage a history of the system clipboard. It solves the problem that you often have to paste some text you've just recently copied to the clipboard, but that has been replaced by something you've copied more recently... It also saves the history so it'll appear just as you left it on the last shutdown.
+Clipdinger manages a history of the system clipboard. It solves the problem that you often have to paste some text you've just recently copied to the clipboard, but that has been replaced by something you've copied more recently... It also saves the history so it'll appear just as you left it on the last shutdown.
 
 If you want to paste some text that isn't in the clipboard any more, simply hit _SHIFT_ + _ALT_ + _V_ to summon the Clipdinger window. Here you can select an entry with the _CursorUp/Down_ keys and put it into the clipboard or auto-paste it by hitting _RETURN_.
 
@@ -12,11 +12,11 @@ _ESCAPE_  or _ALT_ + _W_ aborts and minimizes the Clipdinger window.
 
 ### History & Favorites
 
-Clipdinger starts minimized, because it sits in the background a just monitors the system clipboard. When activated by pressing _SHIFT_ + _ALT_ + _V_ its main window pops up:
+Clipdinger starts minimized, because it sits in the background and just monitors the system clipboard. When activated by pressing _SHIFT_ + _ALT_ + _V_ its main window pops up:
 
 ![screenshot](./images/clipdinger.png)
 
-To the left is a history of your past clippings (empty, of course, when started for the first time). For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text. The top entry is always what's currently in the clipboard.
+To the left is a history of your past clippings (empty, of course, when started for the first time). For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text. The top entry is always what's currently in the clipboard. Hover your mouse pointer over an entry for a tool tip with the time and date when a clip was added.
 
 If you have the _Fade history entries over time_ option activated, there'll also be a checkbox _Pause fading_ below the history list. You find more on that farther down, where Clipdinger's settings are discussed.
 
@@ -31,8 +31,8 @@ You can quickly switch between history and favorites lists with _CursorRight/Lef
 
 ### Clipboard monitor
 
-You can open the _Clipboard monitor_ from the _App_ menu. It simply shows the current contents of theclipboard, which helps if you have to continuously switch between some clips in the history/favorites.
-The Clipboard monitor can be used as a replicant on the Desktop:
+You can open the _Clipboard monitor_ from the _App_ menu. It simply shows the current contents of theclipboard, which helps if you have to continuously switch between some clips from the history/favorites.
+The Clipboard monitor is supposed be used as a replicant on the Desktop.
 
 ![screenshot](./images/clipboard-monitor.png)
 
@@ -49,7 +49,7 @@ This is the settings window, summoned with _Settings..._ from the _App_ menu:
 ![screenshot](./images/clipdinger-settings.png)
 
 At the top of the settings window, you can set the number of entries in the history (the default is 100).
-Keep in mind that every clipping is kept in memory and if you copy many large blocks of text, you may clog up your memory. Though, for everyday use, where clippings are seldom larger than a few KiBs at most, having a few dozen entries in the history shouldn't tax memory noticeably.
+Keep in mind that every clipping is kept in memory and if you copy many large blocks of text, you may clog up your memory. Though, for everyday use, where clippings are seldom larger than a few KiBs at most, having several dozen entries in the history shouldn't tax memory noticeably.
 
 Once the limit of the history is reached, the oldest entry is removed automatically to make room for the new clipping.
 
@@ -69,8 +69,8 @@ If you leave your computer or just know that you won't do any copy&paste for a l
 *   If you've used Clipdinger before v0.5.5, you can now remove the link to it in the `/boot/home/config/settings/boot/launch/` folder and use the new setting to auto-start instead.
 *   Changes in the settings window can be viewed live in the main window. To find the right fading settings for you, it's best to keep working normally for some time to fill the history and then just play around with the sliders until you're satisfied.
 *   Clipdinger's _Auto-paste_ feature can be a bit tricky: It doesn't know in which window you pressed _SHIFT_ + _ALT_ + _V_ for it to pop up. With activated auto-paste, it simply pastes into last window that was active before you hit _ENTER_ or double-clicked an entry. So, avoid detours...
-*   If you want to back up Clipdinger's settings, history or favorites, or have the need to delete one or all of these files, you'll find them under `/boot/home/config/settings/Clipdinger/`.
-*	If the replicant of the Clipboard monitor unexpectedly gives you grieve (or any replicant for that matter), you can remove all replicants on the Desktop by deleting `/boot/home/config/settings/Tracker/tracker_shelf`.
+*   If you want to back-up Clipdinger's settings, history or favorites, or have the need to delete one or all of these files, you'll find them under `/boot/home/config/settings/Clipdinger/`.
+*	If the replicant of the Clipboard monitor unexpectedly gives you grief (or any replicant for that matter), you can remove all replicants on the Desktop by deleting `/boot/home/config/settings/Tracker/tracker_shelf`.
 
 
 ### Download
@@ -89,12 +89,18 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 
 ### History
 
-**0.5.5** - _23-11-2016:_
+**0.5.5** - _28-11-2016:_
 
-*   Added auto start setting.
+*   Added auto-start setting.
 *   Added replicatable clipboard monitor.
-*	Bug fix: When Clipdinger is launched, check for existing clipboard contents  and add it to its history.
-*	Bug fix: Explanatory text in settings window didn't show 4-digit minute values.
+*	Tweaked fading algorithm to fade much slower now.
+*	Added tool tip with the time and date a clip was added to the history.
+*	Added localization for British English.
+*	Use standard conforming app signature "application/x-vnd.humdinger-clipdinger".
+*	Bug fix: Deleting clips with the _DEL_ key was broken.
+*	Bug fix: When Clipdinger is launched, add existing clipboard contents to the history.
+*	Bug fix: Explanatory text in settings window didn't show 4-digit minutes value and didn't show the correct values when first opened.
+*	Bug fix: The time a clip was added was put in too small a variable (32bit), now it's 64bit. Old history clips may experience color problems. Use _Clear history_ in that case.
 
 **0.5.4** - _12-06-2016:_
 
@@ -103,7 +109,7 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 
 **0.5.3** - _11-06-2016:_
 
-*   Bug fix: Make the context menu more robust. Fixes issue #2.
+*   Bug fix: Make the context menu more robust.
 *	Added Russian localization, thanks to Akujiism.
 
 **0.5.2** - _20-01-2016:_
