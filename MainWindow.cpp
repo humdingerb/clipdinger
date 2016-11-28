@@ -494,8 +494,11 @@ MainWindow::_BuildLayout()
 
 	// do the layouting
 	static const float spacing = be_control_look->DefaultItemSpacing() / 2;
-	fMainSplitView =
-		BLayoutBuilder::Split<>(B_HORIZONTAL)
+
+	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
+		.Add(menuBar)
+		.AddSplit(B_HORIZONTAL)
+			.GetSplitView(&fMainSplitView)
 			.AddGroup(B_VERTICAL)
 				.Add(fHistoryScrollView)
 				.Add(fPauseCheckBox)
@@ -512,12 +515,7 @@ MainWindow::_BuildLayout()
 					.AddGlue()
 				.End()
 			.End()
-		.SetInsets(spacing)
-		.View();
-
-	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
-		.Add(menuBar)
-		.Add(fMainSplitView);
+		.SetInsets(spacing);
 
 	fHistory->MakeFocus(true);
 	fHistory->SetInvocationMessage(new BMessage(INSERT_HISTORY));
