@@ -35,7 +35,7 @@
 
 <hr>
 
-<p>Clipdinger is a small tool to manage a history of the system clipboard. It solves the problem that you often have to paste some text you've just recently copied to the clipboard, but that has been replaced by something you've copied more recently... It also saves the history so it'll appear just as you left it on the last shutdown.</p>
+<p>Clipdinger manages a history of the system clipboard. It solves the problem that you often have to paste some text you've just recently copied to the clipboard, but that has been replaced by something you've copied more recently... It also saves the history so it'll appear just as you left it on the last shutdown.</p>
 
 <p>If you want to paste some text that isn't in the clipboard any more, simply hit <em>SHIFT</em> + <em>ALT</em> + <em>V</em> to summon the Clipdinger window. Here you can select an entry with the <em>CursorUp/Down</em> keys and put it into the clipboard or auto-paste it by hitting <em>RETURN</em>.</p>
 
@@ -46,11 +46,11 @@
 <h3>
 <a id="history--favorites" class="anchor" href="#history--favorites" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>History &amp; Favorites</h3>
 
-<p>Clipdinger starts minimized, because it sits in the background a just monitors the system clipboard. When activated by pressing <em>SHIFT</em> + <em>ALT</em> + <em>V</em> its main window pops up:</p>
+<p>Clipdinger starts minimized, because it sits in the background and just monitors the system clipboard. When activated by pressing <em>SHIFT</em> + <em>ALT</em> + <em>V</em> its main window pops up:</p>
 
 <p><img src="https://raw.githubusercontent.com/humdingerb/clipdinger/master/images/clipdinger.png" alt="screenshot"></p>
 
-<p>To the left is a history of your past clippings (empty, of course, when started for the first time). For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text. The top entry is always what's currently in the clipboard.</p>
+<p>To the left is a history of your past clippings (empty, of course, when started for the first time). For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text. The top entry is always what's currently in the clipboard. Hover your mouse pointer over an entry for a tool tip with the time and date when a clip was added.</p>
 
 <p>If you have the <em>Fade history entries over time</em> option activated, there'll also be a checkbox <em>Pause fading</em> below the history list. You find more on that farther down, where Clipdinger's settings are discussed.</p>
 
@@ -64,18 +64,34 @@
 <p>You can quickly switch between history and favorites lists with <em>CursorRight/Left</em>.</p>
 
 <h3>
+<a id="clipboard-monitor" class="anchor" href="#clipboard-monitor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Clipboard monitor</h3>
+
+<p>You can open the <em>Clipboard monitor</em> from the <em>App</em> menu. It simply shows the current contents of theclipboard, which helps if you have to continuously switch between some clips from the history/favorites.
+The Clipboard monitor is supposed be used as a replicant on the Desktop.</p>
+
+<p><img src="https://raw.githubusercontent.com/humdingerb/clipdinger/master/images/clipboard-monitor.png" alt="screenshot"></p>
+
+<p>Adjust the window size until it fits your needs, then drag the little handle onto the Desktop. Make sure the option to <em>Show replicants</em> in the Deskbar is active.</p>
+
+<p>You can change the background by dropping a color onto it from any application, like e.g. Icon-O-Matic. Like the icon labels on the Desktop, the color of the text will toggle automatically between black and white according to the brightness of the dropped background color.</p>
+
+<p>As a replicant the Clipboard monitor doesn't need a running Clipdinger to work. Double-clicking on the replicant will, however, summon Clipdinger by either launching it or simply unhiding its main window.</p>
+
+<h3>
 <a id="settings" class="anchor" href="#settings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Settings</h3>
 
-<p>This is the settings window, summoned with <em>Settings...</em> from the <em>History</em> menu:</p>
+<p>This is the settings window, summoned with <em>Settings...</em> from the <em>App</em> menu:</p>
 
 <p><img src="https://raw.githubusercontent.com/humdingerb/clipdinger/master/images/clipdinger-settings.png" alt="screenshot"></p>
 
-<p>At the top of the settings window, you can set the number of entries in the history (the default is 50).
-Keep in mind that every clipping is kept in memory and if you copy many large blocks of text, you may clog up your memory. Though, for everyday use, where clippings are seldom larger than a few KiBs at most, having a few dozen entries in the history shouldn't tax memory noticeably.</p>
+<p>At the top of the settings window, you can set the number of entries in the history (the default is 100).
+Keep in mind that every clipping is kept in memory and if you copy many large blocks of text, you may clog up your memory. Though, for everyday use, where clippings are seldom larger than a few KiBs at most, having several dozen entries in the history shouldn't tax memory noticeably.</p>
 
 <p>Once the limit of the history is reached, the oldest entry is removed automatically to make room for the new clipping.</p>
 
 <p>You can remove an entry by selecting it and pressing <em>DEL</em> or choose <em>Remove clip</em> from the context menu. You remove the complete clipboard history with <em>Clear history</em> from the <em>History</em> menu.</p>
+
+<p><em>Auto-start Clipdinger</em> controls if Clipdinger will be started automatically at every boot-up.</p>
 
 <p><em>Auto-paste</em> will put the clipping you've chosen via double-click or <em>RETURN</em> into the window that was active before you have summoned Clipdinger.</p>
 
@@ -88,10 +104,11 @@ Below the sliders is a summary of your setting in plain English.</p>
 <a id="tips--tricks" class="anchor" href="#tips--tricks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tips &amp; Tricks</h3>
 
 <ul>
-<li>  Obviously, Clipdinger can only keep a clipboard history while it's running. You should therefore create a link to it in the <code>/boot/home/config/settings/boot/launch/</code> folder. Then it gets started automatically on every boot-up.</li>
-<li>  All changes in the settings window can be viewed live in the main window. To find the right fading settings for you, it's best to keep working normally for some time to fill the history and then just play around with the sliders until you're satisfied.</li>
+<li>  If you've used Clipdinger before v0.5.5, you can now remove the link to it in the <code>/boot/home/config/settings/boot/launch/</code> folder and use the new setting to auto-start instead.</li>
+<li>  Changes in the settings window can be viewed live in the main window. To find the right fading settings for you, it's best to keep working normally for some time to fill the history and then just play around with the sliders until you're satisfied.</li>
 <li>  Clipdinger's <em>Auto-paste</em> feature can be a bit tricky: It doesn't know in which window you pressed <em>SHIFT</em> + <em>ALT</em> + <em>V</em> for it to pop up. With activated auto-paste, it simply pastes into last window that was active before you hit <em>ENTER</em> or double-clicked an entry. So, avoid detours...</li>
-<li>  If you want to back up Clipdinger's settings, history or favorites, or have the need to delete one or all of these files, you'll find them under <code>/boot/home/config/settings/Clipdinger/</code>.</li>
+<li>  If you want to back-up Clipdinger's settings, history or favorites, or have the need to delete one or all of these files, you'll find them under <code>/boot/home/config/settings/Clipdinger/</code>.</li>
+<li>  If the replicant of the Clipboard monitor unexpectedly gives you grief (or any replicant for that matter), you can remove all replicants on the Desktop by deleting <code>/boot/home/config/settings/Tracker/tracker_shelf</code>.</li>
 </ul>
 
 <h3>
@@ -114,19 +131,63 @@ Also, thanks to everyone that contributed translations for Clipdinger.</p>
 <h3>
 <a id="history" class="anchor" href="#history" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>History</h3>
 
-<p><strong>0.1</strong> - <em>30-06-2015:</em></p>
+<p><strong>0.5.5</strong> - <em>28-11-2016:</em></p>
 
 <ul>
-<li>  Initial release.</li>
+<li>  Added auto-start setting.</li>
+<li>  Added replicatable clipboard monitor.</li>
+<li>  Tweaked fading algorithm to fade much slower now.</li>
+<li>  Added tool tip with the time and date a clip was added to the history.</li>
+<li>  Added localization for British English.</li>
+<li>  Use standard conforming app signature "application/x-vnd.humdinger-clipdinger".</li>
+<li>  Bug fix: Deleting clips with the <em>DEL</em> key was broken.</li>
+<li>  Bug fix: When Clipdinger is launched, add existing clipboard contents to the history.</li>
+<li>  Bug fix: Explanatory text in settings window didn't show 4-digit minutes value and didn't show the correct values when first opened.</li>
+<li>  Bug fix: The time a clip was added was put in too small a variable (32bit), now it's 64bit. Old history clips may experience color problems. Use <em>Clear history</em> in that case.</li>
 </ul>
 
-<p><strong>0.2</strong> - <em>08-07-2015:</em></p>
+<p><strong>0.5.4</strong> - <em>12-06-2016:</em></p>
 
 <ul>
-<li>  Bug fix: First entry wasn't saved on quit.</li>
-<li>  Bug fix: Settings were unnecessarily saved on quit.</li>
-<li>  ALT+W now hides the window.</li>
-<li>  Show the icon of the app a clip was copied from.</li>
+<li>  Build fix for gcc5.</li>
+<li>  Fixed typo in Russian localization, thanks to Diver.</li>
+</ul>
+
+<p><strong>0.5.3</strong> - <em>11-06-2016:</em></p>
+
+<ul>
+<li>  Bug fix: Make the context menu more robust.</li>
+<li>  Added Russian localization, thanks to Akujiism.</li>
+</ul>
+
+<p><strong>0.5.2</strong> - <em>20-01-2016:</em></p>
+
+<ul>
+<li>  Bug fix: The Auto-paste setting was ignored on startup.</li>
+</ul>
+
+<p><strong>0.5.1</strong> - <em>07-01-2016:</em></p>
+
+<ul>
+<li>  Made pasting to <a href="http://sprunge.us">Sprunge.us</a> more robust. It doesn't hang the GUI longer than 2 seconds if the network is down. Puts an error message in the clipboard, also if the service was unavailable.</li>
+</ul>
+
+<p><strong>0.5</strong> - <em>04-01-2016:</em></p>
+
+<ul>
+<li>  Added a feature to paste to the online service <a href="http://sprunge.us">Sprunge.us</a>
+</li>
+<li>  Bug fix: A chosen favorite will now appear at the top of the clip list, which always shows what's currently in the clipboard.</li>
+<li>  Bug fix: Using the mouse instead of the cursor keys to switch list now correctly shows the inactive list "dimmed".</li>
+</ul>
+
+<p><strong>0.4</strong> - <em>01-08-2015:</em></p>
+
+<ul>
+<li>  Bug fixes and optimizations.</li>
+<li>  Added favorites feature.</li>
+<li>  Added a "Pause fading" checkbox.</li>
+<li>  Added a setting for the maximal fading tint.</li>
 </ul>
 
 <p><strong>0.3</strong> - <em>21-07-2015:</em></p>
@@ -138,48 +199,19 @@ Also, thanks to everyone that contributed translations for Clipdinger.</p>
 <li>  Bug fixes and optimizations.</li>
 </ul>
 
-<p><strong>0.4</strong> - <em>1-8-2015:</em></p>
+<p><strong>0.2</strong> - <em>08-07-2015:</em></p>
 
 <ul>
-<li>  Bug fixes and optimizations.</li>
-<li>  Added favorites feature.</li>
-<li>  Added a "Pause fading" checkbox.</li>
-<li>  Added a setting for the maximal fading tint.</li>
+<li>  Bug fix: First entry wasn't saved on quit.</li>
+<li>  Bug fix: Settings were unnecessarily saved on quit.</li>
+<li>  ALT+W now hides the window.</li>
+<li>  Show the icon of the app a clip was copied from.</li>
 </ul>
 
-<p><strong>0.5</strong> - <em>4-1-2016:</em></p>
+<p><strong>0.1</strong> - <em>30-06-2015:</em></p>
 
 <ul>
-<li>  Added a feature to paste to the online service <a href="http://sprunge.us">Sprunge.us</a>
-</li>
-<li>  Bug fix: A chosen favorite will now appear at the top of the clip list, which always shows what's currently in the clipboard.</li>
-<li>  Bug fix: Using the mouse instead of the cursor keys to switch list now correctly shows the inactive list "dimmed".</li>
-</ul>
-
-<p><strong>0.5.1</strong> - <em>7-1-2016:</em></p>
-
-<ul>
-<li>  Made pasting to <a href="http://sprunge.us">Sprunge.us</a> more robust. It doesn't hang the GUI longer than 2 seconds if the network is down. Puts an error message in the clipboard, also if the service was unavailable.</li>
-</ul>
-
-<p><strong>0.5.2</strong> - <em>20-1-2016:</em></p>
-
-<ul>
-<li>  Bug fix: The Auto-paste setting was ignored on startup.</li>
-</ul>
-
-<p><strong>0.5.3</strong> - <em>11-06-2016:</em></p>
-
-<ul>
-<li>  Bug fix: Make the context menu more robust. Fixes issue #2.</li>
-<li>  Added Russian localization, thanks to Akujiism.</li>
-</ul>
-
-<p><strong>0.5.4</strong> - <em>12-06-2016:</em></p>
-
-<ul>
-<li>  Build fix for gcc5.</li>
-<li>  Fixed typo in Russian localization, thanks to Diver.</li>
+<li>  Initial release.</li>
 </ul>
         </section>
 
