@@ -157,6 +157,8 @@ MainWindow::MessageReceived(BMessage* message)
 				break;
 
 			fHistory->RemoveItem(clip);
+			if (index < 0)
+				break;
 
 			int32 count = fHistory->CountItems();
 			fHistory->Select((index > count - 1) ? count - 1 : index);
@@ -192,6 +194,8 @@ MainWindow::MessageReceived(BMessage* message)
 				break;
 
 			fFavorites->RemoveItem(fav);
+			if (index < 0)
+				break;
 
 			_RenumberFavorites(index);
 			int32 count = fFavorites->CountItems();
@@ -283,6 +287,8 @@ MainWindow::MessageReceived(BMessage* message)
 					text = clip->GetClip();
 				else {
 					int32 index = fHistory->CurrentSelection();
+					if (index < 0)
+						break;
 					ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(index));
 					text = item->GetClip();
 				}
@@ -296,6 +302,8 @@ MainWindow::MessageReceived(BMessage* message)
 					text = fav->GetClip();
 				else {
 					int32 index = fFavorites->CurrentSelection();
+					if (index < 0)
+						break;
 					FavItem* item = dynamic_cast<FavItem *> (fFavorites->ItemAt(index));
 					text = item->GetClip();
 				}
@@ -493,29 +501,26 @@ MainWindow::_BuildLayout()
 	fButtonDown->SetEnabled(false);
 
 	// do the layouting
-	static const float spacing = be_control_look->DefaultItemSpacing() / 2;
-
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(menuBar)
-		.AddSplit(B_HORIZONTAL)
-			.GetSplitView(&fMainSplitView)
+		.AddSplit(B_HORIZONTAL, B_USE_SMALL_SPACING)
+		.GetSplitView(&fMainSplitView)
 			.AddGroup(B_VERTICAL)
 				.Add(fHistoryScrollView)
 				.Add(fPauseCheckBox)
 			.End()
-			.AddGroup(B_VERTICAL, spacing / 2)
+			.AddGroup(B_VERTICAL, B_USE_SMALL_SPACING)
 				.Add(favoriteHeader)
-				.AddStrut(spacing)
 				.Add(fFavoriteScrollView)
-				.AddGroup(B_HORIZONTAL)
-					.SetInsets(0, spacing / 2, 0, 0)
+				.AddGroup(B_HORIZONTAL, B_USE_SMALL_SPACING)
 					.AddGlue()
 					.Add(fButtonUp)
 					.Add(fButtonDown)
 					.AddGlue()
 				.End()
 			.End()
-		.SetInsets(spacing);
+		.SetInsets(B_USE_SMALL_INSETS)
+		.End();
 
 	fHistory->MakeFocus(true);
 	fHistory->SetInvocationMessage(new BMessage(INSERT_HISTORY));
