@@ -30,8 +30,8 @@ public:
 		int32		GetFadePause() { return fFadePause; }
 
 		BRect		GetWindowPosition() { return fPosition; }
-		void		GetSplitWeight(float* left, float* right);
-		void		GetSplitCollapse(bool* left, bool* right);
+		void		GetSplitWeight(float& left, float& right);
+		void		GetSplitCollapse(bool& left, bool& right);
 
 		void		SetLimit(int32 limit);
 		void		SetAutoStart(int32 autostart);

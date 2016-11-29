@@ -31,9 +31,14 @@ ClipdingerSettings::ClipdingerSettings()
 	fFadeStep(kDefaultFadeStep),
 	fFadeMaxLevel(kDefaultFadeMaxLevel),
 	fFadePause(0),
+	fPosition(-1, -1, -1, -1),
+	fLeftWeight(0.8),
+	fRightWeight(0.2),
+	fLeftCollapse(false),
+	fRightCollapse(false),
 	dirtySettings(false)
+
 {
-	fPosition.Set(-1, -1, -1, -1);
 	BPath path;
 	BMessage msg;
 
@@ -148,18 +153,18 @@ ClipdingerSettings::Unlock()
 
 
 void
-ClipdingerSettings::GetSplitWeight(float* left, float* right)
+ClipdingerSettings::GetSplitWeight(float& left, float& right)
 {
-	*left = fLeftWeight;
-	*right = fRightWeight;
+	left = fLeftWeight;
+	right = fRightWeight;
 }
 
 
 void
-ClipdingerSettings::GetSplitCollapse(bool* left, bool* right)
+ClipdingerSettings::GetSplitCollapse(bool& left, bool& right)
 {
-	*left = fLeftCollapse;
-	*right = fRightCollapse;
+	left = fLeftCollapse;
+	right = fRightCollapse;
 }
 
 

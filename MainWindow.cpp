@@ -535,8 +535,8 @@ MainWindow::_SetSplitview()
 	bool rightCollapse;
 	ClipdingerSettings* settings = my_app->Settings();
 	if (settings->Lock()) {
-		settings->GetSplitWeight(&leftWeight, &rightWeight);
-		settings->GetSplitCollapse(&leftCollapse, &rightCollapse);
+		settings->GetSplitWeight(leftWeight, rightWeight);
+		settings->GetSplitCollapse(leftCollapse, rightCollapse);
 		settings->Unlock();
 	}
 	fMainSplitView->SetItemWeight(0, leftWeight, false);
