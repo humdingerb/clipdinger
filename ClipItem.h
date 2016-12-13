@@ -22,7 +22,7 @@ public:
 						bigtime_t since);
 					~ClipItem();
 
-	virtual void	DrawItem(BView* view, BRect rect, bool complete);
+	virtual void	DrawItem(BView* view, BRect rect, bool complete = false);
 	virtual	void	Update(BView* view, const BFont* finfo);
 
 	BString			GetClip() { return fClip; };

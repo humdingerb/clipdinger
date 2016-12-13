@@ -176,6 +176,12 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case FAV_ADD:
 		{
+			if (message->WasDropped()) {
+				BRect favScreen = fFavorites->ConvertToScreen(fFavorites->Bounds());
+				BPoint dropPoint = message->DropPoint();
+				if (!(favScreen.Contains(dropPoint)))
+					break;
+			}
 			ClipItem* clip = NULL;
 			if (message->FindPointer("clip",
 				reinterpret_cast<void**>(&clip)) != B_OK)

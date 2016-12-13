@@ -77,6 +77,46 @@ ClipView::FrameResized(float width, float height)
 }
 
 
+bool
+ClipView::InitiateDrag(BPoint point, int32 index, bool wasSelected)
+{
+	ClipItem* sItem = dynamic_cast<ClipItem *> (ItemAt(index));
+	if (sItem == NULL)
+		return false;
+
+	BString string(sItem->GetClip());
+	BMessage message(FAV_ADD);
+	message.AddData("text/plain", B_MIME_TYPE, string, string.Length());
+	message.AddPointer("clip", sItem);
+
+	BRect dragRect(0.0f, 0.0f, Bounds().Width(), sItem->Height());
+	BBitmap* dragBitmap = new BBitmap(dragRect, B_RGB32, true);
+	if (dragBitmap->IsValid()) {
+		BView* view = new BView(dragBitmap->Bounds(), "helper", B_FOLLOW_NONE,
+			B_WILL_DRAW);
+		dragBitmap->AddChild(view);
+		dragBitmap->Lock();
+
+		sItem->DrawItem(view, dragRect);
+		view->SetHighColor(0, 0, 0, 255);
+		view->StrokeRect(view->Bounds());
+		view->Sync();
+
+		dragBitmap->Unlock();
+	} else {
+		delete dragBitmap;
+		dragBitmap = NULL;
+	}
+
+	if (dragBitmap != NULL)
+		DragMessage(&message, dragBitmap, B_OP_ALPHA, BPoint(0.0, 0.0));
+	else
+		DragMessage(&message, dragRect.OffsetToCopy(point), this);
+
+	return true;
+}
+
+
 void
 ClipView::MessageReceived(BMessage* message)
 {
