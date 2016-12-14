@@ -218,6 +218,11 @@ MainWindow::MessageReceived(BMessage* message)
 
 			int32 count = fHistory->CountItems();
 			fHistory->Select((index > count - 1) ? count - 1 : index);
+			if (index == 0) {
+				ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(1));
+				BString text(item->GetClip());
+				_PutClipboard(text);
+			}
 			break;
 		}
 		case PAUSE:
