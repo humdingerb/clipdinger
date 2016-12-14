@@ -1,5 +1,5 @@
 /*
- * Copyright 2015. All rights reserved.
+ * Copyright 2015-2016. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -22,7 +22,8 @@
 
 FavView::FavView(const char* name)
 	:
-	BListView(name)
+	BListView(name),
+	fDropRect()
 {
 }
 
@@ -52,6 +53,11 @@ FavView::Draw(BRect rect)
 	FillRect(bounds);
 
 	BListView::Draw(rect);
+
+	if (fDropRect.IsValid()) {
+		SetHighColor(255, 0, 0, 255);
+		StrokeRect(fDropRect);
+	}
 }
 
 
@@ -195,6 +201,50 @@ FavView::MouseDown(BPoint position)
 		if (buttons == B_SECONDARY_MOUSE_BUTTON)
 			_ShowPopUpMenu(ConvertToScreen(position));
 	}
+}
+
+
+void
+FavView::MouseUp(BPoint position)
+{
+	BListView::MouseUp(position);
+
+	fDropRect = BRect(-1, -1, -1, -1);
+	Invalidate();
+}
+
+
+void
+FavView::MouseMoved(BPoint where, uint32 transit, const BMessage* dragMessage)
+{
+	if (dragMessage != NULL) {
+		switch (transit) {
+			case B_ENTERED_VIEW:
+			case B_INSIDE_VIEW:
+			{
+				int32 index = IndexOf(where);
+				if (index < 0)
+					index = CountItems();
+
+				fDropRect = ItemFrame(index);
+				if (fDropRect.IsValid()) {
+					fDropRect.top = fDropRect.top -1;
+					fDropRect.bottom = fDropRect.top + 1;
+				} else {
+					fDropRect = ItemFrame(index - 1);
+					if (fDropRect.IsValid())
+						fDropRect.top = fDropRect.bottom - 1;
+					else {
+						// empty view, show indicator at top
+						fDropRect = Bounds();
+						fDropRect.bottom = fDropRect.top + 1;
+					}
+				}
+			Invalidate();
+			}
+		}
+	}
+	BListView::MouseMoved(where, transit, dragMessage);
 }
 
 

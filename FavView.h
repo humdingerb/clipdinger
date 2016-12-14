@@ -1,5 +1,5 @@
 /*
- * Copyright 2015. All rights reserved.
+ * Copyright 2015-2016. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -29,12 +29,16 @@ public:
 
 	virtual	void	KeyDown(const char* bytes, int32 numBytes);
 	void			MouseDown(BPoint position);
+	void			MouseUp(BPoint position);
+	virtual	void 	MouseMoved(BPoint where, uint32 transit,
+						const BMessage* dragMessage);
 
 private:
 	void			_RenumberAll();
 	void			_ShowPopUpMenu(BPoint screen);
 
 	bool			fShowingPopUpMenu;
+	BRect			fDropRect;
 };
 
 #endif // FAVVIEW_H
