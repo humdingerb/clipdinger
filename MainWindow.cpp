@@ -148,6 +148,62 @@ MainWindow::MessageReceived(BMessage* message)
 			Minimize(true);
 			break;
 		}
+		case MENU_ADD:
+		{
+			if (!fHistory->IsEmpty()) {
+				ClipItem* currentClip = dynamic_cast<ClipItem *>
+					(fHistory->ItemAt(fHistory->CurrentSelection()));
+				if (currentClip == NULL)
+					break;
+
+				BMessage* msg = NULL;
+				msg = new BMessage(FAV_ADD);
+				msg->AddPointer("clip", currentClip);
+				PostMessage(msg);
+			}
+			break;
+		}
+		case MENU_DEL:
+		{
+			if (fHistory->IsFocus() && !fHistory->IsEmpty()) {
+				ClipItem* currentClip = dynamic_cast<ClipItem *>
+					(fHistory->ItemAt(fHistory->CurrentSelection()));
+				if (currentClip == NULL)
+					break;
+
+				BMessage* msg = NULL;
+				msg = new BMessage(DELETE);
+				msg->AddPointer("clip", currentClip);
+				PostMessage(msg);
+
+			} else if (fFavorites->IsFocus() && !fFavorites->IsEmpty()) {
+				FavItem* currentFav = dynamic_cast<FavItem *>
+					(fFavorites->ItemAt(fFavorites->CurrentSelection()));
+				if (currentFav == NULL)
+					break;
+
+				BMessage* msg = NULL;
+				msg = new BMessage(FAV_DELETE);
+				msg->AddPointer("fav", currentFav);
+				PostMessage(msg);
+			}
+			break;
+		}
+		case MENU_EDIT:
+		{
+			if (!fFavorites->IsEmpty()) {
+				FavItem* currentFav = dynamic_cast<FavItem *>
+					(fFavorites->ItemAt(fFavorites->CurrentSelection()));
+				if (currentFav == NULL)
+					break;
+
+				BMessage* msg = NULL;
+				msg = new BMessage(FAV_EDIT);
+				msg->AddPointer("fav", currentFav);
+				PostMessage(msg);
+			}
+			break;
+		}
 		case DELETE:
 		{
 			int32 index = fHistory->CurrentSelection();
@@ -471,6 +527,15 @@ MainWindow::_BuildLayout()
 	menu = new BMenu(B_TRANSLATE("Clip"));
 	item = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"),
 		new BMessage(PASTE_SPRUNGE), 'P');
+	menu->AddItem(item);
+	item = new BMenuItem(B_TRANSLATE("Add to favorites"),
+		new BMessage(MENU_ADD), 'A');
+	menu->AddItem(item);
+	item = new BMenuItem(B_TRANSLATE("Edit favorite title"),
+		new BMessage(MENU_EDIT), 'E');
+	menu->AddItem(item);
+	item = new BMenuItem(B_TRANSLATE("Remove"),
+		new BMessage(MENU_DEL));
 	menu->AddItem(item);
 	menuBar->AddItem(menu);
 

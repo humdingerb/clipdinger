@@ -32,6 +32,9 @@ static const int32 kMaxTitleChars = 100;
 static const int32 kMinuteUnits = 10; // minutes per unit
 
 #define ACTIVATE			'actv'
+#define MENU_ADD			'madd'
+#define MENU_DEL			'mdel'
+#define MENU_EDIT			'medi'
 #define DELETE				'dele'
 #define FAV_DELETE			'delf'
 #define FAV_ADD				'addf'
