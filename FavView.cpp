@@ -122,7 +122,8 @@ FavView::MessageReceived(BMessage* message)
 			int32 dropIndex;
 			BPoint dropPoint;
 
-			message->FindInt32("index", &origIndex);
+			if (message->FindInt32("index", &origIndex) != B_OK)
+				origIndex = CountItems() - 1; // new Fav added at the bottom
 			dropPoint = message->DropPoint();
 			dropIndex = IndexOf(ConvertFromScreen(dropPoint));
 			if (dropIndex < 0)

@@ -189,6 +189,13 @@ MainWindow::MessageReceived(BMessage* message)
 
 			int32 lastitem = fFavorites->CountItems();
 			fFavorites->AddItem(new FavItem(clip->GetClip(), NULL, lastitem), lastitem);
+
+			if (message->WasDropped()) {	// move new Fav to where it was dropped
+				BMessenger messenger(fFavorites);
+				BMessage msg(FAV_DRAGGED);
+				msg.AddPoint("_drop_point_", message->DropPoint());
+				messenger.SendMessage(&msg);
+			}
 			break;
 		}
 		case FAV_DELETE:
