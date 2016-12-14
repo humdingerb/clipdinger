@@ -207,10 +207,10 @@ FavView::MouseDown(BPoint position)
 void
 FavView::MouseUp(BPoint position)
 {
-	BListView::MouseUp(position);
-
 	fDropRect = BRect(-1, -1, -1, -1);
 	Invalidate();
+
+	BListView::MouseUp(position);
 }
 
 
@@ -240,7 +240,14 @@ FavView::MouseMoved(BPoint where, uint32 transit, const BMessage* dragMessage)
 						fDropRect.bottom = fDropRect.top + 1;
 					}
 				}
-			Invalidate();
+				Invalidate();
+				break;
+			}
+			case B_EXITED_VIEW:
+			{
+				fDropRect = BRect(-1, -1, -1, -1);
+				Invalidate();
+				break;
 			}
 		}
 	}
