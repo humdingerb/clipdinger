@@ -20,7 +20,7 @@ public:
 					FavItem(BString clip, BString title, int32 favnumber);
 					~FavItem();
 
-	virtual void	DrawItem(BView* view, BRect rect, bool complete);
+	virtual void	DrawItem(BView* view, BRect rect, bool complete = false);
 	virtual	void	Update(BView* view, const BFont* finfo);
 
 	BString			GetClip() { return fClip; };

@@ -6,6 +6,7 @@
  *	Humdinger, humdingerb@gmail.com
  */
 
+#include <Bitmap.h>
 #include <Catalog.h>
 #include <ControlLook.h>
 
@@ -71,10 +72,66 @@ FavView::FrameResized(float width, float height)
 }
 
 
+bool
+FavView::InitiateDrag(BPoint point, int32 index, bool wasSelected)
+{
+	FavItem* sItem = dynamic_cast<FavItem *> (ItemAt(index));
+	if (sItem == NULL)
+		return false;
+
+	BString string(sItem->GetClip());
+	BMessage message(FAV_DRAGGED);
+	message.AddData("text/plain", B_MIME_TYPE, string, string.Length());
+	message.AddInt32("index", index);
+
+	BRect dragRect(0.0f, 0.0f, Bounds().Width(), sItem->Height());
+	BBitmap* dragBitmap = new BBitmap(dragRect, B_RGB32, true);
+	if (dragBitmap->IsValid()) {
+		BView* view = new BView(dragBitmap->Bounds(), "helper", B_FOLLOW_NONE,
+			B_WILL_DRAW);
+		dragBitmap->AddChild(view);
+		dragBitmap->Lock();
+
+		sItem->DrawItem(view, dragRect);
+		view->SetHighColor(0, 0, 0, 255);
+		view->StrokeRect(view->Bounds());
+		view->Sync();
+
+		dragBitmap->Unlock();
+	} else {
+		delete dragBitmap;
+		dragBitmap = NULL;
+	}
+
+	if (dragBitmap != NULL)
+		DragMessage(&message, dragBitmap, B_OP_ALPHA, BPoint(0.0, 0.0));
+	else
+		DragMessage(&message, dragRect.OffsetToCopy(point), this);
+
+	return true;
+}
+
+
 void
 FavView::MessageReceived(BMessage* message)
 {
 	switch (message->what) {
+		case FAV_DRAGGED:
+		{
+			int32 origIndex;
+			int32 dropIndex;
+			BPoint dropPoint;
+
+			message->FindInt32("index", &origIndex);
+			dropPoint = message->DropPoint();
+			dropIndex = IndexOf(ConvertFromScreen(dropPoint));
+			if (dropIndex < 0)
+				dropIndex = CountItems() - 1; // move to bottom
+
+			MoveItem(origIndex, dropIndex);
+			_RenumberAll();
+			break;
+		}
 		case POPCLOSED:
 		{
 			fShowingPopUpMenu = false;
@@ -141,6 +198,16 @@ FavView::MouseDown(BPoint position)
 
 
 // #pragma mark - Member Functions
+
+
+void
+FavView::_RenumberAll()
+{
+	for (int32 i = 0; i < CountItems(); i++) {
+		FavItem* item = dynamic_cast<FavItem *>(ItemAt(i));
+		item->SetFavNumber(i);
+	}
+}
 
 
 void

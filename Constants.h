@@ -65,4 +65,6 @@ static const int32 kMinuteUnits = 10; // minutes per unit
 #define OK					'okay'
 #define UPDATE_SETTINGS		'uset'
 
+#define FAV_DRAGGED			'drfv'
+
 #endif //CONSTANTS_H

@@ -23,12 +23,15 @@ public:
 	virtual void	AttachedToWindow();
 	virtual void	Draw(BRect rect);
 	virtual	void	FrameResized(float width, float height);
+	virtual bool	InitiateDrag(BPoint point, int32 index,
+						bool wasSelected);
 	virtual	void	MessageReceived(BMessage* message);
 
 	virtual	void	KeyDown(const char* bytes, int32 numBytes);
 	void			MouseDown(BPoint position);
 
 private:
+	void			_RenumberAll();
 	void			_ShowPopUpMenu(BPoint screen);
 
 	bool			fShowingPopUpMenu;
