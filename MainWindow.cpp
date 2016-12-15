@@ -409,6 +409,11 @@ MainWindow::MessageReceived(BMessage* message)
 			system(command.String());
 			break;
 		}
+		case CLEAR_FAVORITES:
+		{
+			fFavorites->MakeEmpty();
+			break;
+		}
 		case CLEAR_HISTORY:
 		{
 			fHistory->MakeEmpty();
@@ -536,7 +541,7 @@ MainWindow::_BuildLayout()
 	item = new BMenuItem(B_TRANSLATE("Add to favorites"),
 		new BMessage(MENU_ADD), 'A');
 	menu->AddItem(item);
-	item = new BMenuItem(B_TRANSLATE("Edit favorite title"),
+	item = new BMenuItem(B_TRANSLATE("Edit title"),
 		new BMessage(MENU_EDIT), 'E');
 	menu->AddItem(item);
 	item = new BMenuItem(B_TRANSLATE("Remove"),
@@ -544,9 +549,12 @@ MainWindow::_BuildLayout()
 	menu->AddItem(item);
 	menuBar->AddItem(menu);
 
-	menu = new BMenu(B_TRANSLATE("History"));
-	item = new BMenuItem(B_TRANSLATE("Clear history"),
+	menu = new BMenu(B_TRANSLATE("Lists"));
+	item = new BMenuItem(B_TRANSLATE("Clear clip history"),
 		new BMessage(CLEAR_HISTORY));
+	menu->AddItem(item);
+	item = new BMenuItem(B_TRANSLATE("Clear favorites"),
+		new BMessage(CLEAR_FAVORITES));
 	menu->AddItem(item);
 	menuBar->AddItem(menu);
 

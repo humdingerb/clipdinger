@@ -35,6 +35,9 @@ static const int32 kMinuteUnits = 10; // minutes per unit
 #define MENU_ADD			'madd'
 #define MENU_DEL			'mdel'
 #define MENU_EDIT			'medi'
+#define PASTE_SPRUNGE		'pssp'
+#define CLEAR_HISTORY		'clhi'
+#define CLEAR_FAVORITES		'clfv'
 #define DELETE				'dele'
 #define FAV_DELETE			'delf'
 #define FAV_ADD				'addf'
@@ -44,8 +47,6 @@ static const int32 kMinuteUnits = 10; // minutes per unit
 #define POPCLOSED			'pmcl'
 #define F_KEY				'fkey'
 
-#define PASTE_SPRUNGE		'pssp'
-#define CLEAR_HISTORY		'clhi'
 #define HELP				'help'
 #define	FAV_UP				'favu'
 #define FAV_DOWN			'favd'

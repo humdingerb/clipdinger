@@ -272,19 +272,19 @@ ClipView::_ShowPopUpMenu(BPoint screen)
 	ClipItem* currentClip = dynamic_cast<ClipItem *>(ItemAt(CurrentSelection()));
 	BMessage* msg = NULL;
 
-	msg = new BMessage(DELETE);
+	msg = new BMessage(PASTE_SPRUNGE);
 	msg->AddPointer("clip", currentClip);
-	BMenuItem* item = new BMenuItem(B_TRANSLATE("Remove clip"), msg);
+	BMenuItem* item = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"), msg, 'P');
 	menu->AddItem(item);
 
 	msg = new BMessage(FAV_ADD);
 	msg->AddPointer("clip", currentClip);
-	item = new BMenuItem(B_TRANSLATE("Add to favorites"), msg);
+	item = new BMenuItem(B_TRANSLATE("Add to favorites"), msg, 'A');
 	menu->AddItem(item);
 
-	msg = new BMessage(PASTE_SPRUNGE);
+	msg = new BMessage(DELETE);
 	msg->AddPointer("clip", currentClip);
-	item = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"), msg);
+	item = new BMenuItem(B_TRANSLATE("Remove"), msg);
 	menu->AddItem(item);
 
 	menu->SetTargetForItems(Looper());

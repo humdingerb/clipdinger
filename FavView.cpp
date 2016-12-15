@@ -278,19 +278,19 @@ FavView::_ShowPopUpMenu(BPoint screen)
 	FavItem *currentFav = dynamic_cast<FavItem *>(ItemAt(CurrentSelection()));
 	BMessage* msg = NULL;
 
+	msg = new BMessage(PASTE_SPRUNGE);
+	msg->AddPointer("fav", currentFav);
+	BMenuItem* item = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"), msg, 'P');
+	menu->AddItem(item);
+
 	msg = new BMessage(FAV_EDIT);
 	msg->AddPointer("fav", currentFav);
-	BMenuItem* item = new BMenuItem(B_TRANSLATE("Edit title"), msg);
+	item = new BMenuItem(B_TRANSLATE("Edit title"), msg, 'E');
 	menu->AddItem(item);
 
 	msg = new BMessage(FAV_DELETE);
 	msg->AddPointer("fav", currentFav);
-	item = new BMenuItem(B_TRANSLATE("Remove favorite"),msg);
-	menu->AddItem(item);
-
-	msg = new BMessage(PASTE_SPRUNGE);
-	msg->AddPointer("fav", currentFav);
-	item = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"), msg);
+	item = new BMenuItem(B_TRANSLATE("Remove"),msg);
 	menu->AddItem(item);
 
 	menu->SetTargetForItems(Looper());
