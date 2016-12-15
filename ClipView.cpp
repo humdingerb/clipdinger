@@ -69,10 +69,10 @@ ClipView::FrameResized(float width, float height)
 
 	for (int32 i = 0; i < CountItems(); i++) {
 		ClipItem *sItem = dynamic_cast<ClipItem *> (ItemAt(i));
-		BString string(sItem->GetClip());
+		BString string(sItem->GetTitle());
 		TruncateString(&string, B_TRUNCATE_END,
 			width - kIconSize - spacing * 4);
-		sItem->SetTitle(string);
+		sItem->SetDisplayTitle(string);
 	}
 }
 

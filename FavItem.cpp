@@ -21,7 +21,7 @@ FavItem::FavItem(BString clip, BString title, int32 favnumber)
 {
 	fClip = clip;
 	fFavNumber = favnumber;
-	if (title != NULL)
+	if (title != "")
 		fDisplayTitle = title;
 	else if (fClip.CountChars() > kMaxTitleChars) {
 		fClip.CopyInto(fDisplayTitle, 0, kMaxTitleChars);

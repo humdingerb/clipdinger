@@ -53,8 +53,8 @@ private:
 	void			_LoadFavorites();
 	void			_SaveFavorites();
 
-	void			_AddClip(BString clip, BString path, bigtime_t time,
-						bigtime_t since);
+	void			_AddClip(BString clip, BString title, BString path,
+						bigtime_t time, bigtime_t since);
 	void			_MakeItemUnique(BString clip);
 	void			_MoveClipToTop();
 	void			_CropHistory(int32 limit);

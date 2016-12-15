@@ -1,5 +1,5 @@
 /*
- * Copyright 2015. All rights reserved.
+ * Copyright 2015-2016. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -17,11 +17,22 @@
 #include "Constants.h"
 
 
-ClipItem::ClipItem(BString clip, BString path, bigtime_t added, bigtime_t since)
+ClipItem::ClipItem(BString clip, BString title, BString path, bigtime_t added,
+	bigtime_t since)
 	:
 	BListItem()
 {
 	fClip = clip;
+	if (title != "")
+		fDisplayTitle = title;
+	else if (fClip.CountChars() > kMaxTitleChars) {
+		fClip.CopyInto(fDisplayTitle, 0, kMaxTitleChars);
+		fDisplayTitle.Append(B_UTF8_ELLIPSIS);
+	} else
+		fDisplayTitle = fClip;
+
+	fTitle = fDisplayTitle;
+
 	fOrigin = path;
 	fTimeAdded = added;
 	fTimeSince = since;
@@ -87,7 +98,7 @@ ClipItem::DrawItem(BView* view, BRect rect, bool complete)
 	font_height	fheight;
 	font.GetHeight(&fheight);
 
-    view->DrawString(fTitle.String(),
+    view->DrawString(fDisplayTitle.String(),
 		BPoint(kIconSize - 1 + spacing * 3,
 		rect.top + fheight.ascent + fheight.descent + fheight.leading));
 
@@ -108,10 +119,10 @@ ClipItem::Update(BView* view, const BFont* finfo)
 	BListItem::Update(view, finfo);
 
 	static const float spacing = be_control_look->DefaultLabelSpacing();
-	BString string(GetClip());
+	BString string(GetTitle());
 	view->TruncateString(&string, B_TRUNCATE_END, Width() - kIconSize
 			- spacing * 4);
-	SetTitle(string);
+	SetDisplayTitle(string);
 
 	font_height	fheight;
 	finfo->GetHeight(&fheight);

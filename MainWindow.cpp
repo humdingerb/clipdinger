@@ -138,7 +138,7 @@ MainWindow::MessageReceived(BMessage* message)
 
 			_MakeItemUnique(clip);
 			bigtime_t time(real_time_clock());
-			_AddClip(clip, path.Path(), time, time);
+			_AddClip(clip, NULL, path.Path(), time, time);
 
 			fHistory->Select(0);
 			break;
@@ -673,9 +673,13 @@ MainWindow::_SaveHistory()
 					(fHistory->ItemAt(i));
 
 				BString clip(sItem->GetClip());
+				BString title(sItem->GetTitle());
+				if (title == clip)
+					title = "";
 				BString path(sItem->GetOrigin());
 				bigtime_t added(sItem->GetTimeAdded());
 				msg.AddString("clip", clip.String());
+				msg.AddString("title", title.String());
 				msg.AddString("origin", path.String());
 				msg.AddInt64("time", added);
 			}
@@ -702,6 +706,7 @@ MainWindow::_LoadHistory()
 				return;
 			else {
 				BString clip;
+				BString title;
 				BString path;
 				int32 old_added = 0;	// used int32 pre v.0.5.5,
 				int32 old_quittime = 0;	// read old history files too.
@@ -720,11 +725,14 @@ MainWindow::_LoadHistory()
 						((msg.FindInt32("time", i, &old_added) == B_OK) ||
 						(msg.FindInt64("time", i, &added) == B_OK))) {
 
+					if (msg.FindString("title", i, &title) != B_OK)
+						title = "";	// if there's no title found (pre v1.0)
+
 					if (added == 0)
 						added = (int64)old_added;
 
 					since = added + (fLaunchTime - quittime);
-					_AddClip(clip, path, added, since);
+					_AddClip(clip, title, path, added, since);
 					i++;
 				}
 				fHistory->AdjustColors();
@@ -762,6 +770,8 @@ MainWindow::_SaveFavorites()
 
 				BString clip(sItem->GetClip());
 				BString title(sItem->GetTitle());
+				if (title == clip)
+					title = "";
 				msg.AddString("clip", clip.String());
 				msg.AddString("title", title.String());
 			}
@@ -803,13 +813,13 @@ MainWindow::_LoadFavorites()
 // #pragma mark - Clips etc.
 
 void
-MainWindow::_AddClip(BString clip, BString path, bigtime_t added,
-				bigtime_t since)
+MainWindow::_AddClip(BString clip, BString title, BString path,
+	bigtime_t added, bigtime_t since)
 {
 	if (fHistory->CountItems() > fLimit - 1)
 		fHistory->RemoveItem(fHistory->LastItem());
 
-	fHistory->AddItem(new ClipItem(clip, path, added, since), 0);
+	fHistory->AddItem(new ClipItem(clip, title, path, added, since), 0);
 }
 
 
