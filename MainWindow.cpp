@@ -324,11 +324,14 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			int32 listview;
 			if (message->FindInt32("listview", &listview) == B_OK) {
-				if (listview == 0)
+				if (listview == 0) {
 					fFavorites->MakeFocus(true);
-				if (listview == 1)
+					SetHistoryActiveFlag(false);
+				}
+				if (listview == 1) {
 					fHistory->MakeFocus(true);
-
+					SetHistoryActiveFlag(true);
+				}
 				fFavorites->Invalidate();
 				fHistory->Invalidate();
 			}
@@ -614,6 +617,7 @@ MainWindow::_BuildLayout()
 		.End();
 
 	fHistory->MakeFocus(true);
+	SetHistoryActiveFlag(true);
 	fHistory->SetInvocationMessage(new BMessage(INSERT_HISTORY));
 	fHistory->SetViewColor(B_TRANSPARENT_COLOR);
 	fFavorites->SetInvocationMessage(new BMessage(INSERT_FAVORITE));

@@ -44,6 +44,9 @@ public:
 	bool			QuitRequested();
 	void			MessageReceived(BMessage* message);
 
+	bool			GetHistoryActiveFlag() { return fHistoryActiveFlag; };
+	bool			SetHistoryActiveFlag(bool flag) { fHistoryActiveFlag = flag; };
+
 private:
 	void			_BuildLayout();
 	void			_SetSplitview();
@@ -74,6 +77,7 @@ private:
 	BSplitView*		fMainSplitView;
 	ClipView*		fHistory;
 	FavView*		fFavorites;
+	bool			fHistoryActiveFlag;	// true if fHistory view is the active one
 
 	BScrollView*	fHistoryScrollView;
 	BScrollView*	fFavoriteScrollView;

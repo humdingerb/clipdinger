@@ -46,10 +46,8 @@ FavItem::DrawItem(BView* view, BRect rect, bool complete)
 	// set background color
 	rgb_color bgColor;
 
-	if (IsSelected() && view->IsFocus())
+	if (IsSelected() && !my_app->fMainWindow->GetHistoryActiveFlag())
 		bgColor = ui_color(B_LIST_SELECTED_BACKGROUND_COLOR);
-	else if (IsSelected() && !view->IsFocus())
-		bgColor = tint_color(ui_color(B_LIST_SELECTED_BACKGROUND_COLOR), 0.7);
 	else
 		bgColor = ui_color(B_LIST_BACKGROUND_COLOR);
 
@@ -73,13 +71,14 @@ FavItem::DrawItem(BView* view, BRect rect, bool complete)
 	Fn.Append(string);
 	float Fnwidth = font.StringWidth(Fn.String());
 
-	if (!IsSelected()) {
+	if (!IsSelected()
+			|| (IsSelected() && my_app->fMainWindow->GetHistoryActiveFlag())) {
 		BRect Fnrect(rect.LeftTop(),
 			BPoint(spacing * 2 + Fnwidth, rect.bottom));
 		view->SetHighColor(tint_color(ui_color(B_LIST_BACKGROUND_COLOR), 1.08));
 		view->FillRect(Fnrect);
 	}
-	if (IsSelected())
+	if (IsSelected() && !my_app->fMainWindow->GetHistoryActiveFlag())
 		view->SetHighColor(ui_color(B_LIST_SELECTED_ITEM_TEXT_COLOR));
     else
 		view->SetHighColor(ui_color(B_LIST_ITEM_TEXT_COLOR));
