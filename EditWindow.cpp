@@ -1,5 +1,5 @@
 /*
- * Copyright 2015. All rights reserved.
+ * Copyright 2015-2016. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -20,15 +20,14 @@
 #define B_TRANSLATION_CONTEXT "EditWindow"
 
 
-EditWindow::EditWindow(BRect frame, FavItem* fav)
+EditWindow::EditWindow(BRect frame, BString text)
 	:
 	BWindow(BRect(), B_TRANSLATE("Edit title"),
 		B_MODAL_WINDOW,
 		B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS |
 		B_CLOSE_ON_ESCAPE)
 {
-	fItem = fav;
-	fOriginalTitle = fav->GetTitle();
+	fOriginalTitle = text;
 	
 	_BuildLayout();
 
@@ -56,11 +55,9 @@ EditWindow::MessageReceived(BMessage* message)
 		case OK:
 		{
 			BString title = fTitleControl->Text();
-			fItem->SetTitle(title);
-			fItem->SetDisplayTitle(title);
-
 			BMessenger messenger(my_app->fMainWindow);
-			BMessage message(UPDATE_FAV_DISPLAY);
+			BMessage message(UPDATE_TITLE);
+			message.AddString("edit_title", title);
 			messenger.SendMessage(&message);
 
 			Quit();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015. All rights reserved.
+ * Copyright 2015-2016. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -17,7 +17,7 @@
 
 class EditWindow : public BWindow {
 public:
-					EditWindow(BRect frame, FavItem* fav);
+					EditWindow(BRect frame, BString text);
 	virtual			~EditWindow();
 
 	void			MessageReceived(BMessage* message);
@@ -25,7 +25,6 @@ public:
 private:
 	void			_BuildLayout();
 
-	FavItem*		fItem;
 	BString			fOriginalTitle;
 	BTextControl*	fTitleControl;
 };

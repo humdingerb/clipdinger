@@ -147,10 +147,7 @@ ClipView::KeyDown(const char* bytes, int32 numBytes)
 	switch (bytes[0]) {
 		case B_DELETE:
 		{
-			ClipItem* currentClip
-				= dynamic_cast<ClipItem *>(ItemAt(CurrentSelection()));
 			BMessage message(DELETE);
-			message.AddPointer("clip", currentClip);
 			Looper()->PostMessage(&message);
 			break;
 		}
@@ -269,21 +266,21 @@ ClipView::_ShowPopUpMenu(BPoint screen)
 		return;
 
 	ContextPopUp* menu = new ContextPopUp("PopUpMenu", this);
-	ClipItem* currentClip = dynamic_cast<ClipItem *>(ItemAt(CurrentSelection()));
 	BMessage* msg = NULL;
 
 	msg = new BMessage(PASTE_SPRUNGE);
-	msg->AddPointer("clip", currentClip);
 	BMenuItem* item = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"), msg, 'P');
 	menu->AddItem(item);
 
 	msg = new BMessage(FAV_ADD);
-	msg->AddPointer("clip", currentClip);
 	item = new BMenuItem(B_TRANSLATE("Add to favorites"), msg, 'A');
 	menu->AddItem(item);
 
+	msg = new BMessage(EDIT_TITLE);
+	item = new BMenuItem(B_TRANSLATE("Edit title"), msg, 'E');
+	menu->AddItem(item);
+
 	msg = new BMessage(DELETE);
-	msg->AddPointer("clip", currentClip);
 	item = new BMenuItem(B_TRANSLATE("Remove"), msg);
 	menu->AddItem(item);
 

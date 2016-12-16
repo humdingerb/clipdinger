@@ -26,7 +26,7 @@ public:
 	BString			GetClip() { return fClip; };
 	BString			GetTitle() { return fTitle; };
 	void			SetTitle(BString title) { fTitle = title; };
-	void			SetDisplayTitle(BString display) { fDisplayTitle = display; };
+	void			SetDisplayTitle(BString display, bool update = false);
 	void			SetFavNumber(int32 number) { fFavNumber = number; };
 
 private:
@@ -34,6 +34,7 @@ private:
 	BString			fDisplayTitle;
 	BString			fTitle;
 	int32			fFavNumber;
+	bool			fUpdateNeeded;
 };
 
 #endif // FAVITEM_H

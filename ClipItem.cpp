@@ -20,7 +20,8 @@
 ClipItem::ClipItem(BString clip, BString title, BString path, bigtime_t added,
 	bigtime_t since)
 	:
-	BListItem()
+	BListItem(),
+	fUpdateNeeded(true)
 {
 	fClip = clip;
 	if (title != "")
@@ -91,6 +92,15 @@ ClipItem::DrawItem(BView* view, BRect rect, bool complete)
     else
     	view->SetHighColor(ui_color(B_LIST_ITEM_TEXT_COLOR));
 
+	if (fUpdateNeeded) {
+		BString string(GetTitle());
+//		float wide = Width();
+		view->TruncateString(&string, B_TRUNCATE_END, Width()
+			- kIconSize - spacing * 4);
+		fDisplayTitle = string;
+		fUpdateNeeded = false;
+	}
+
 	BFont font;
 	view->SetFont(&font);
 	font_height	fheight;
@@ -115,16 +125,25 @@ ClipItem::Update(BView* view, const BFont* finfo)
 	// we need to DefaultLabelSpacing the update method so we can make sure the
 	// list item size doesn't change
 	BListItem::Update(view, finfo);
+// printf("ClipItem::Update(): item %p, width %f\n", this, Width());
 
 	static const float spacing = be_control_look->DefaultLabelSpacing();
-	BString string(GetTitle());
+	BString string = fTitle;
 	view->TruncateString(&string, B_TRUNCATE_END, Width() - kIconSize
 			- spacing * 4);
-	SetDisplayTitle(string);
+	fDisplayTitle = string;
 
 	font_height	fheight;
 	finfo->GetHeight(&fheight);
 
 	SetHeight(ceilf(fheight.ascent + 2 + fheight.leading / 2
 		+ fheight.descent) + 5);
+}
+
+
+void
+ClipItem::SetDisplayTitle(BString display, bool update)
+{
+	fDisplayTitle = display;
+	fUpdateNeeded = update;
 }

@@ -148,83 +148,6 @@ MainWindow::MessageReceived(BMessage* message)
 			Minimize(true);
 			break;
 		}
-		case MENU_ADD:
-		{
-			if (!fHistory->IsEmpty()) {
-				ClipItem* currentClip = dynamic_cast<ClipItem *>
-					(fHistory->ItemAt(fHistory->CurrentSelection()));
-				if (currentClip == NULL)
-					break;
-
-				BMessage* msg = NULL;
-				msg = new BMessage(FAV_ADD);
-				msg->AddPointer("clip", currentClip);
-				PostMessage(msg);
-			}
-			break;
-		}
-		case MENU_DEL:
-		{
-			if (fHistory->IsFocus() && !fHistory->IsEmpty()) {
-				ClipItem* currentClip = dynamic_cast<ClipItem *>
-					(fHistory->ItemAt(fHistory->CurrentSelection()));
-				if (currentClip == NULL)
-					break;
-
-				BMessage* msg = NULL;
-				msg = new BMessage(DELETE);
-				msg->AddPointer("clip", currentClip);
-				PostMessage(msg);
-
-			} else if (fFavorites->IsFocus() && !fFavorites->IsEmpty()) {
-				FavItem* currentFav = dynamic_cast<FavItem *>
-					(fFavorites->ItemAt(fFavorites->CurrentSelection()));
-				if (currentFav == NULL)
-					break;
-
-				BMessage* msg = NULL;
-				msg = new BMessage(FAV_DELETE);
-				msg->AddPointer("fav", currentFav);
-				PostMessage(msg);
-			}
-			break;
-		}
-		case MENU_EDIT:
-		{
-			if (!fFavorites->IsEmpty()) {
-				FavItem* currentFav = dynamic_cast<FavItem *>
-					(fFavorites->ItemAt(fFavorites->CurrentSelection()));
-				if (currentFav == NULL)
-					break;
-
-				BMessage* msg = NULL;
-				msg = new BMessage(FAV_EDIT);
-				msg->AddPointer("fav", currentFav);
-				PostMessage(msg);
-			}
-			break;
-		}
-		case DELETE:
-		{
-			int32 index = fHistory->CurrentSelection();
-			ClipItem* clip = NULL;
-			if (message->FindPointer("clip",
-				reinterpret_cast<void**>(&clip)) != B_OK)
-				break;
-
-			fHistory->RemoveItem(clip);
-			if (index < 0)
-				break;
-
-			int32 count = fHistory->CountItems();
-			fHistory->Select((index > count - 1) ? count - 1 : index);
-			if (index == 0) {
-				ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(1));
-				BString text(item->GetClip());
-				_PutClipboard(text);
-			}
-			break;
-		}
 		case PAUSE:
 		{
 			int32 pause = fPauseCheckBox->Value();
@@ -232,6 +155,98 @@ MainWindow::MessageReceived(BMessage* message)
 			if (settings->Lock()) {
 				settings->SetFadePause(pause);
 				settings->Unlock();
+			}
+			break;
+		}
+		case DELETE:
+		{
+			if (GetHistoryActiveFlag() && !fHistory->IsEmpty()) {
+				int32 index = fHistory->CurrentSelection();
+				if (index < 0)
+					break;
+				fHistory->RemoveItem(index);
+
+				int32 count = fHistory->CountItems();
+				fHistory->Select((index > count - 1) ? count - 1 : index);
+				if (index == 0) {
+					ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(1));
+					BString text(item->GetClip());
+					_PutClipboard(text);
+				}
+			} else if (!GetHistoryActiveFlag() && !fFavorites->IsEmpty()) {
+				int32 index = fFavorites->CurrentSelection();
+				if (index < 0)
+					break;
+				fFavorites->RemoveItem(index);
+
+				_RenumberFavorites(index);
+				int32 count = fFavorites->CountItems();
+				fFavorites->Select((index > count - 1) ? count - 1 : index);
+			}
+			break;
+		}
+		case EDIT_TITLE:
+		{
+			BString text;
+			if (GetHistoryActiveFlag() && !fHistory->IsEmpty()) {
+				int32 index = fHistory->CurrentSelection();
+				if (index < 0)
+					break;
+
+				ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(index));
+				if ((text = item->GetTitle()) == "")
+					text = item->GetClip();
+
+			} else if (!GetHistoryActiveFlag() && !fFavorites->IsEmpty()) {
+				int32 index = fFavorites->CurrentSelection();
+				if (index < 0)
+					break;
+
+				FavItem* item = dynamic_cast<FavItem *> (fFavorites->ItemAt(index));
+				if ((text = item->GetTitle()) == "")
+					text = item->GetClip();
+			} else
+				break;
+
+			fEditWindow = new EditWindow(Frame(), text);
+			fEditWindow->Show();
+			break;
+		}
+		case UPDATE_TITLE:
+		{
+			BString newTitle;
+			if (GetHistoryActiveFlag() && !fHistory->IsEmpty()) {
+				int32 index = fHistory->CurrentSelection();
+				if (index < 0)
+					break;
+
+				if (message->FindString("edit_title", &newTitle) == B_OK) {
+					ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(index));
+					if (newTitle == "") {
+						item->SetTitle("");
+						item->SetDisplayTitle(item->GetClip(), true);
+					} else {
+						item->SetTitle(newTitle);
+						item->SetDisplayTitle(newTitle, true);
+					}
+					fHistory->InvalidateItem(index);
+				}
+			} else if (!GetHistoryActiveFlag() && !fFavorites->IsEmpty()) {
+				int32 index = fFavorites->CurrentSelection();
+				if (index < 0)
+					break;
+
+				if (message->FindString("edit_title", &newTitle) == B_OK) {
+					FavItem* item = dynamic_cast<FavItem *> (fFavorites->ItemAt(index));
+					if (newTitle == "") {
+						item->SetTitle("");
+						item->SetDisplayTitle(item->GetClip(), true);
+					} else {
+						item->SetTitle(newTitle);
+						item->SetDisplayTitle(newTitle, true);
+					}
+					fFavorites->InvalidateItem(index);
+				}
 			}
 			break;
 		}
@@ -245,7 +260,11 @@ MainWindow::MessageReceived(BMessage* message)
 			}
 			ClipItem* clip = NULL;
 			if (message->FindPointer("clip",
-				reinterpret_cast<void**>(&clip)) != B_OK)
+					reinterpret_cast<void**>(&clip)) != B_OK) {
+				clip = dynamic_cast<ClipItem *>
+					(fHistory->ItemAt(fHistory->CurrentSelection()));
+			}
+			if (clip == NULL)
 				break;
 
 			int32 lastitem = fFavorites->CountItems();
@@ -257,34 +276,6 @@ MainWindow::MessageReceived(BMessage* message)
 				msg.AddPoint("_drop_point_", message->DropPoint());
 				messenger.SendMessage(&msg);
 			}
-			break;
-		}
-		case FAV_DELETE:
-		{
-			int32 index = fFavorites->CurrentSelection();
-			FavItem* fav = NULL;
-			if (message->FindPointer("fav",
-				reinterpret_cast<void**>(&fav)) != B_OK)
-				break;
-
-			fFavorites->RemoveItem(fav);
-			if (index < 0)
-				break;
-
-			_RenumberFavorites(index);
-			int32 count = fFavorites->CountItems();
-			fFavorites->Select((index > count - 1) ? count - 1 : index);
-			break;
-		}
-		case FAV_EDIT:
-		{
-			FavItem* fav = NULL;
-			if (message->FindPointer("fav",
-				reinterpret_cast<void**>(&fav)) != B_OK)
-				break;
-
-			fEditWindow = new EditWindow(Frame(), fav);
-			fEditWindow->Show();
 			break;
 		}
 		case FAV_DOWN:
@@ -315,80 +306,30 @@ MainWindow::MessageReceived(BMessage* message)
 			_UpdateButtons();
 			break;
 		}
-		case UPDATE_FAV_DISPLAY:
-		{
-			fFavorites->Invalidate();
-			break;
-		}
-		case SWITCHLIST:
-		{
-			int32 listview;
-			if (message->FindInt32("listview", &listview) == B_OK) {
-				if (listview == 0) {
-					fFavorites->MakeFocus(true);
-					SetHistoryActiveFlag(false);
-				}
-				if (listview == 1) {
-					fHistory->MakeFocus(true);
-					SetHistoryActiveFlag(true);
-				}
-				fFavorites->Invalidate();
-				fHistory->Invalidate();
-			}
-			break;
-		}
-		case HELP:
-		{
-			app_info info;
-			BPath path;
-			be_roster->GetActiveAppInfo(&info);
-			BEntry entry(&info.ref);
-
-			entry.GetPath(&path);
-			path.GetParent(&path);
-			path.Append("ReadMe.html");
-
-			entry = path.Path();
-			entry_ref ref;
-			entry.GetRef(&ref);
-			be_roster->Launch(&ref);
-			break;
-		}
 		case PASTE_SPRUNGE:
 		{
-			if (fHistory->IsFocus() && !fHistory->IsEmpty()) {
-				BString text;
-				ClipItem* clip = NULL;
-				if (message->FindPointer("clip",
-					reinterpret_cast<void**>(&clip)) == B_OK)
-					text = clip->GetClip();
-				else {
-					int32 index = fHistory->CurrentSelection();
-					if (index < 0)
-						break;
-					ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(index));
-					text = item->GetClip();
-				}
-				_PutClipboard(text);
+			BString text;
 
-			} else if (fFavorites->IsFocus() && !fFavorites->IsEmpty()) {
-				BString text;
-				FavItem* fav = NULL;
-				if (message->FindPointer("fav",
-					reinterpret_cast<void**>(&fav)) == B_OK)
-					text = fav->GetClip();
-				else {
-					int32 index = fFavorites->CurrentSelection();
-					if (index < 0)
-						break;
-					FavItem* item = dynamic_cast<FavItem *> (fFavorites->ItemAt(index));
-					text = item->GetClip();
-				}
-				_PutClipboard(text);
+			if (GetHistoryActiveFlag() && !fHistory->IsEmpty()) {
+				int32 index = fHistory->CurrentSelection();
+				if (index < 0)
+					break;
+
+				ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(index));
+				text = item->GetClip();
+
+			} else if (!GetHistoryActiveFlag() && !fFavorites->IsEmpty()) {
+				int32 index = fFavorites->CurrentSelection();
+				if (index < 0)
+					break;
+
+				FavItem* item = dynamic_cast<FavItem *> (fFavorites->ItemAt(index));
+				text = item->GetClip();
 
 			} else
 				break;
 
+			_PutClipboard(text);
 			Minimize(true);
 			PostMessage(B_CLIPBOARD_CHANGED);
 
@@ -410,17 +351,6 @@ MainWindow::MessageReceived(BMessage* message)
 			command.ReplaceAll("%ERROR%",
 				B_TRANSLATE("Sprunge.us service not available."));
 			system(command.String());
-			break;
-		}
-		case CLEAR_FAVORITES:
-		{
-			fFavorites->MakeEmpty();
-			break;
-		}
-		case CLEAR_HISTORY:
-		{
-			fHistory->MakeEmpty();
-			PostMessage(B_CLIPBOARD_CHANGED);
 			break;
 		}
 		case INSERT_HISTORY:
@@ -459,6 +389,52 @@ MainWindow::MessageReceived(BMessage* message)
 			_PutClipboard(text);
 			if (fAutoPaste)
 				_AutoPaste();
+			break;
+		}
+		case CLEAR_FAVORITES:
+		{
+			fFavorites->MakeEmpty();
+			break;
+		}
+		case CLEAR_HISTORY:
+		{
+			fHistory->MakeEmpty();
+			PostMessage(B_CLIPBOARD_CHANGED);
+			break;
+		}
+		case SWITCHLIST:
+		{
+			int32 listview;
+			if (message->FindInt32("listview", &listview) == B_OK) {
+				if (listview == 0) {
+					fFavorites->MakeFocus(true);
+					SetHistoryActiveFlag(false);
+				}
+				if (listview == 1) {
+					fHistory->MakeFocus(true);
+					SetHistoryActiveFlag(true);
+				}
+				fFavorites->Invalidate();
+				fHistory->Invalidate();
+				_UpdateButtons();
+			}
+			break;
+		}
+		case HELP:
+		{
+			app_info info;
+			BPath path;
+			be_roster->GetActiveAppInfo(&info);
+			BEntry entry(&info.ref);
+
+			entry.GetPath(&path);
+			path.GetParent(&path);
+			path.Append("ReadMe.html");
+
+			entry = path.Path();
+			entry_ref ref;
+			entry.GetRef(&ref);
+			be_roster->Launch(&ref);
 			break;
 		}
 		case UPDATE_SETTINGS:
@@ -542,13 +518,13 @@ MainWindow::_BuildLayout()
 		new BMessage(PASTE_SPRUNGE), 'P');
 	menu->AddItem(item);
 	item = new BMenuItem(B_TRANSLATE("Add to favorites"),
-		new BMessage(MENU_ADD), 'A');
+		new BMessage(FAV_ADD), 'A');
 	menu->AddItem(item);
 	item = new BMenuItem(B_TRANSLATE("Edit title"),
-		new BMessage(MENU_EDIT), 'E');
+		new BMessage(EDIT_TITLE), 'E');
 	menu->AddItem(item);
 	item = new BMenuItem(B_TRANSLATE("Remove"),
-		new BMessage(MENU_DEL));
+		new BMessage(DELETE));
 	menu->AddItem(item);
 	menuBar->AddItem(menu);
 

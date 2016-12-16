@@ -159,10 +159,7 @@ FavView::KeyDown(const char* bytes, int32 numBytes)
 	switch (bytes[0]) {
 		case B_DELETE:
 		{
-			FavItem* currentFav
-				= dynamic_cast<FavItem *>(ItemAt(CurrentSelection()));
-			BMessage message(FAV_DELETE);
-			message.AddPointer("fav", currentFav);
+			BMessage message(DELETE);
 			Looper()->PostMessage(&message);
 			break;
 		}
@@ -275,22 +272,18 @@ FavView::_ShowPopUpMenu(BPoint screen)
 		return;
 
 	ContextPopUp* menu = new ContextPopUp("PopUpMenu", this);
-	FavItem *currentFav = dynamic_cast<FavItem *>(ItemAt(CurrentSelection()));
 	BMessage* msg = NULL;
 
 	msg = new BMessage(PASTE_SPRUNGE);
-	msg->AddPointer("fav", currentFav);
 	BMenuItem* item = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"), msg, 'P');
 	menu->AddItem(item);
 
-	msg = new BMessage(FAV_EDIT);
-	msg->AddPointer("fav", currentFav);
+	msg = new BMessage(EDIT_TITLE);
 	item = new BMenuItem(B_TRANSLATE("Edit title"), msg, 'E');
 	menu->AddItem(item);
 
-	msg = new BMessage(FAV_DELETE);
-	msg->AddPointer("fav", currentFav);
-	item = new BMenuItem(B_TRANSLATE("Remove"),msg);
+	msg = new BMessage(DELETE);
+	item = new BMenuItem(B_TRANSLATE("Remove"), msg);
 	menu->AddItem(item);
 
 	menu->SetTargetForItems(Looper());

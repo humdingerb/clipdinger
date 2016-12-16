@@ -29,7 +29,7 @@ public:
 	BString			GetOrigin() { return fOrigin; };
 	BString			GetTitle() { return fTitle; };
 	void			SetTitle(BString title) { fTitle = title; };
-	void			SetDisplayTitle(BString display) { fDisplayTitle = display; };
+	void			SetDisplayTitle(BString display, bool update = false);
 
 	bigtime_t		GetTimeAdded() { return fTimeAdded; };
 	void			SetTimeAdded(bigtime_t added) { fTimeAdded = added; };
@@ -45,6 +45,7 @@ private:
 	bigtime_t		fTimeAdded;
 	bigtime_t		fTimeSince;
 	rgb_color		fColor;
+	bool			fUpdateNeeded;
 
 	BBitmap*		fOriginIcon;
 };
