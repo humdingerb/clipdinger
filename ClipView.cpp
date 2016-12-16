@@ -80,6 +80,14 @@ ClipView::FrameResized(float width, float height)
 bool
 ClipView::InitiateDrag(BPoint point, int32 index, bool wasSelected)
 {
+		BPoint pt;
+		uint32 buttons;
+		GetMouse(&pt, &buttons);
+
+		if ((buttons & B_SECONDARY_MOUSE_BUTTON) != 0) {
+			return false;
+		}
+
 	ClipItem* sItem = dynamic_cast<ClipItem *> (ItemAt(index));
 	if (sItem == NULL)
 		return false;
@@ -170,21 +178,26 @@ ClipView::KeyDown(const char* bytes, int32 numBytes)
 void
 ClipView::MouseDown(BPoint position)
 {
-	BListView::MouseDown(position);
-
 	BMessage message(SWITCHLIST);
 	message.AddInt32("listview", (int32)1);
 	Looper()->PostMessage(&message);
 
-	BRect bounds = ItemFrame(CurrentSelection());
-	if (bounds.Contains(position)) {
-		uint32 buttons = 0;
-		if (Window() != NULL && Window()->CurrentMessage() != NULL)
-			buttons = Window()->CurrentMessage()->FindInt32("buttons");
+	BRect bounds(Bounds());
+	BRect itemFrame = ItemFrame(CountItems() - 1);
+	bounds.top = itemFrame.bottom;
+	if (bounds.Contains(position))
+		return;
 
-		if (buttons == B_SECONDARY_MOUSE_BUTTON)
-			_ShowPopUpMenu(ConvertToScreen(position));
+	uint32 buttons = 0;
+	if (Window() != NULL && Window()->CurrentMessage() != NULL)
+		buttons = Window()->CurrentMessage()->FindInt32("buttons");
+
+	if ((buttons & B_SECONDARY_MOUSE_BUTTON) != 0) {
+		Select(IndexOf(position));
+		_ShowPopUpMenu(ConvertToScreen(position));
+		return;
 	}
+	BListView::MouseDown(position);
 }
 
 

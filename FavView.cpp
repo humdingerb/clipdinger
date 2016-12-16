@@ -183,21 +183,26 @@ FavView::KeyDown(const char* bytes, int32 numBytes)
 void
 FavView::MouseDown(BPoint position)
 {
-	BListView::MouseDown(position);
-
 	BMessage message(SWITCHLIST);
 	message.AddInt32("listview", (int32)0);
 	Looper()->PostMessage(&message);
 
-	BRect bounds = ItemFrame(CurrentSelection());
-	if (bounds.Contains(position)) {
-		uint32 buttons = 0;
-		if (Window() != NULL && Window()->CurrentMessage() != NULL)
-			buttons = Window()->CurrentMessage()->FindInt32("buttons");
+	BRect bounds(Bounds());
+	BRect itemFrame = ItemFrame(CountItems() - 1);
+	bounds.top = itemFrame.bottom;
+	if (bounds.Contains(position))
+		return;
 
-		if (buttons == B_SECONDARY_MOUSE_BUTTON)
-			_ShowPopUpMenu(ConvertToScreen(position));
+	uint32 buttons = 0;
+	if (Window() != NULL && Window()->CurrentMessage() != NULL)
+		buttons = Window()->CurrentMessage()->FindInt32("buttons");
+
+	if ((buttons & B_SECONDARY_MOUSE_BUTTON) != 0) {
+		Select(IndexOf(position));
+		_ShowPopUpMenu(ConvertToScreen(position));
+		return;
 	}
+	BListView::MouseDown(position);
 }
 
 
