@@ -87,7 +87,6 @@ ClipView::InitiateDrag(BPoint point, int32 index, bool wasSelected)
 	BString string(sItem->GetClip());
 	BMessage message(FAV_ADD);
 	message.AddData("text/plain", B_MIME_TYPE, string, string.Length());
-	message.AddPointer("clip", sItem);
 
 	BRect dragRect(0.0f, 0.0f, Bounds().Width(), sItem->Height());
 	BBitmap* dragBitmap = new BBitmap(dragRect, B_RGB32, true);

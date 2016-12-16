@@ -20,17 +20,14 @@ FavItem::FavItem(BString clip, BString title, int32 favnumber)
 	BListItem(),
 	fUpdateNeeded(true)
 {
-	fClip = clip;
 	fFavNumber = favnumber;
-	if (title != "")
-		fDisplayTitle = title;
-	else if (fClip.CountChars() > kMaxTitleChars) {
-		fClip.CopyInto(fDisplayTitle, 0, kMaxTitleChars);
-		fDisplayTitle.Append(B_UTF8_ELLIPSIS);
-	} else
-		fDisplayTitle = fClip;
+	fClip = clip;
+	fTitle = title;
 
-	fTitle = fDisplayTitle;
+	if (title == "")
+		fDisplayTitle = fClip;
+	else
+		fDisplayTitle = fTitle;
 }
 
 
@@ -121,7 +118,7 @@ FavItem::Update(BView* view, const BFont* finfo)
 // printf("FavItem::Update(): item %p, width %f\n", this, Width());
 
 	static const float spacing = be_control_look->DefaultLabelSpacing();
-	BString string = fTitle;
+	BString string(GetTitle());
 	view->TruncateString(&string, B_TRUNCATE_END, Width() - spacing * 4);
 	fDisplayTitle = string;
 
@@ -133,9 +130,24 @@ FavItem::Update(BView* view, const BFont* finfo)
 }
 
 
-void
-FavItem::SetDisplayTitle(BString display, bool update)
+BString
+FavItem::GetTitle()
 {
-	fDisplayTitle = display;
+	return ((fTitle == "") ? fClip : fTitle);
+}
+
+
+void
+FavItem::SetTitle(BString title, bool update)
+{
+	fTitle = title;
+	fUpdateNeeded = update;
+}
+
+
+void
+FavItem::SetDisplayTitle(BString string, bool update)
+{
+	fDisplayTitle = string;
 	fUpdateNeeded = update;
 }

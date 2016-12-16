@@ -194,8 +194,7 @@ MainWindow::MessageReceived(BMessage* message)
 					break;
 
 				ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(index));
-				if ((text = item->GetTitle()) == "")
-					text = item->GetClip();
+				text = item->GetTitle();
 
 			} else if (!GetHistoryActiveFlag() && !fFavorites->IsEmpty()) {
 				int32 index = fFavorites->CurrentSelection();
@@ -222,13 +221,7 @@ MainWindow::MessageReceived(BMessage* message)
 
 				if (message->FindString("edit_title", &newTitle) == B_OK) {
 					ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(index));
-					if (newTitle == "") {
-						item->SetTitle("");
-						item->SetDisplayTitle(item->GetClip(), true);
-					} else {
-						item->SetTitle(newTitle);
-						item->SetDisplayTitle(newTitle, true);
-					}
+					item->SetTitle(newTitle, true);
 					fHistory->InvalidateItem(index);
 				}
 			} else if (!GetHistoryActiveFlag() && !fFavorites->IsEmpty()) {
@@ -238,13 +231,7 @@ MainWindow::MessageReceived(BMessage* message)
 
 				if (message->FindString("edit_title", &newTitle) == B_OK) {
 					FavItem* item = dynamic_cast<FavItem *> (fFavorites->ItemAt(index));
-					if (newTitle == "") {
-						item->SetTitle("");
-						item->SetDisplayTitle(item->GetClip(), true);
-					} else {
-						item->SetTitle(newTitle);
-						item->SetDisplayTitle(newTitle, true);
-					}
+					item->SetTitle(newTitle, true);
 					fFavorites->InvalidateItem(index);
 				}
 			}
@@ -267,8 +254,12 @@ MainWindow::MessageReceived(BMessage* message)
 			if (clip == NULL)
 				break;
 
+			BString title(clip->GetTitle());
+			BString contents(clip->GetClip());
+			if (title == contents)
+				title = "";
 			int32 lastitem = fFavorites->CountItems();
-			fFavorites->AddItem(new FavItem(clip->GetClip(), NULL, lastitem), lastitem);
+			fFavorites->AddItem(new FavItem(contents, title, lastitem), lastitem);
 
 			if (message->WasDropped()) {	// move new Fav to where it was dropped
 				BMessenger messenger(fFavorites);

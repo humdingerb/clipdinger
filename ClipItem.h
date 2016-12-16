@@ -27,9 +27,10 @@ public:
 
 	BString			GetClip() { return fClip; };
 	BString			GetOrigin() { return fOrigin; };
-	BString			GetTitle() { return fTitle; };
-	void			SetTitle(BString title) { fTitle = title; };
-	void			SetDisplayTitle(BString display, bool update = false);
+
+	BString			GetTitle();
+	void			SetTitle(BString title, bool update = false);
+	void			SetDisplayTitle(BString string, bool update = false);
 
 	bigtime_t		GetTimeAdded() { return fTimeAdded; };
 	void			SetTimeAdded(bigtime_t added) { fTimeAdded = added; };
@@ -38,16 +39,17 @@ public:
 	rgb_color		SetColor(rgb_color color) { fColor = color; };
 
 private:
-	BString			fClip;
-	BString			fDisplayTitle;
-	BString			fOrigin;
-	BString			fTitle;
-	bigtime_t		fTimeAdded;
-	bigtime_t		fTimeSince;
-	rgb_color		fColor;
+	BString			fClip;			// The actual clip, never touch!
+	BString			fTitle;			// The optional user title.
+	BString			fDisplayTitle;	// What's actually displayed
 	bool			fUpdateNeeded;
 
+	BString			fOrigin;
 	BBitmap*		fOriginIcon;
+	bigtime_t		fTimeAdded;
+	bigtime_t		fTimeSince;
+
+	rgb_color		fColor;
 };
 
 #endif // CLIPITEM_H

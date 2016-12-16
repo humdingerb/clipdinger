@@ -24,17 +24,17 @@ public:
 	virtual	void	Update(BView* view, const BFont* finfo);
 
 	BString			GetClip() { return fClip; };
-	BString			GetTitle() { return fTitle; };
-	void			SetTitle(BString title) { fTitle = title; };
-	void			SetDisplayTitle(BString display, bool update = false);
+	BString			GetTitle();
+	void			SetTitle(BString title, bool update = false);
+	void			SetDisplayTitle(BString string, bool update = false);
 	void			SetFavNumber(int32 number) { fFavNumber = number; };
 
 private:
-	BString			fClip;
-	BString			fDisplayTitle;
-	BString			fTitle;
-	int32			fFavNumber;
+	BString			fClip;			// The actual clip, never touch!
+	BString			fTitle;			// The optional user title.
+	BString			fDisplayTitle;	// What's actually displayed
 	bool			fUpdateNeeded;
+	int32			fFavNumber;
 };
 
 #endif // FAVITEM_H

@@ -24,15 +24,12 @@ ClipItem::ClipItem(BString clip, BString title, BString path, bigtime_t added,
 	fUpdateNeeded(true)
 {
 	fClip = clip;
-	if (title != "")
-		fDisplayTitle = title;
-	else if (fClip.CountChars() > kMaxTitleChars) {
-		fClip.CopyInto(fDisplayTitle, 0, kMaxTitleChars);
-		fDisplayTitle.Append(B_UTF8_ELLIPSIS);
-	} else
-		fDisplayTitle = fClip;
+	fTitle = title;
 
-	fTitle = fDisplayTitle;
+	if (title == "")
+		fDisplayTitle = fClip;
+	else
+		fDisplayTitle = fTitle;
 
 	fOrigin = path;
 	fTimeAdded = added;
@@ -128,7 +125,7 @@ ClipItem::Update(BView* view, const BFont* finfo)
 // printf("ClipItem::Update(): item %p, width %f\n", this, Width());
 
 	static const float spacing = be_control_look->DefaultLabelSpacing();
-	BString string = fTitle;
+	BString string(GetTitle());
 	view->TruncateString(&string, B_TRUNCATE_END, Width() - kIconSize
 			- spacing * 4);
 	fDisplayTitle = string;
@@ -141,9 +138,24 @@ ClipItem::Update(BView* view, const BFont* finfo)
 }
 
 
-void
-ClipItem::SetDisplayTitle(BString display, bool update)
+BString
+ClipItem::GetTitle()
 {
-	fDisplayTitle = display;
+	return ((fTitle == "") ? fClip : fTitle);
+}
+
+
+void
+ClipItem::SetTitle(BString title, bool update)
+{
+	fTitle = title;
+	fUpdateNeeded = update;
+}
+
+
+void
+ClipItem::SetDisplayTitle(BString string, bool update)
+{
+	fDisplayTitle = string;
 	fUpdateNeeded = update;
 }
