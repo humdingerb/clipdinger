@@ -272,11 +272,12 @@ MainWindow::MessageReceived(BMessage* message)
 		case FAV_DOWN:
 		{
 			int32 index = fFavorites->CurrentSelection();
-			int32 last = fFavorites->CountItems();
-			if ((index == last - 1) || (index < 0))
+			int32 last = fFavorites->CountItems() - 1;
+			if ((index == last) || (index < 0))
 				break;
 
 			fFavorites->SwapItems(index, index + 1);
+			fFavorites->Select(index + 1);
 			_RenumberFavorites(index);
 			_UpdateControls();
 			break;
@@ -288,6 +289,7 @@ MainWindow::MessageReceived(BMessage* message)
 				break;
 
 			fFavorites->SwapItems(index, index - 1);
+			fFavorites->Select(index - 1);
 			_RenumberFavorites(index - 1);
 			_UpdateControls();
 			break;
@@ -385,6 +387,7 @@ MainWindow::MessageReceived(BMessage* message)
 		case CLEAR_FAVORITES:
 		{
 			fFavorites->MakeEmpty();
+			_UpdateControls();
 			break;
 		}
 		case CLEAR_HISTORY:
