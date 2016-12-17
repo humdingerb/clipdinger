@@ -54,7 +54,6 @@ static const int32 kMinuteUnits = 10; // minutes per unit
 #define PAUSE				'paus'
 #define CLIPMONITOR			'cmon'
 #define SETTINGS			'sett'
-#define SWITCHLIST			'swls'
 
 #define	AUTOSTART			'aust'
 #define	AUTOPASTE			'auto'

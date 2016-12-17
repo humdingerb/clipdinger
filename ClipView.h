@@ -24,6 +24,7 @@ public:
 	virtual	void	FrameResized(float width, float height);
 	virtual bool	InitiateDrag(BPoint point, int32 index,
 						bool wasSelected);
+	virtual	void	MakeFocus(bool focused = true);
 	virtual	void	MessageReceived(BMessage* message);
 	virtual	void	KeyDown(const char* bytes, int32 numBytes);
 	void			MouseDown(BPoint position);

@@ -119,6 +119,18 @@ FavView::InitiateDrag(BPoint point, int32 index, bool wasSelected)
 
 
 void
+FavView::MakeFocus(bool focused)
+{
+	BListView::MakeFocus(focused);
+
+	// only signal FavView is focused when gaining focus
+	if (focused)
+		my_app->fMainWindow->SetHistoryActiveFlag(!focused);
+
+}
+
+
+void
 FavView::MessageReceived(BMessage* message)
 {
 	switch (message->what) {
@@ -164,11 +176,10 @@ FavView::KeyDown(const char* bytes, int32 numBytes)
 			break;
 		}
 		case B_LEFT_ARROW:
-		case B_RIGHT_ARROW:
 		{
-			BMessage message(SWITCHLIST);
-			message.AddInt32("listview", (int32)1);
-			Looper()->PostMessage(&message);
+			if (my_app->fMainWindow->Lock())
+				my_app->fMainWindow->fHistory->MakeFocus(true);
+			my_app->fMainWindow->Unlock();
 			break;
 		}
 		default:
@@ -183,9 +194,7 @@ FavView::KeyDown(const char* bytes, int32 numBytes)
 void
 FavView::MouseDown(BPoint position)
 {
-	BMessage message(SWITCHLIST);
-	message.AddInt32("listview", (int32)0);
-	Looper()->PostMessage(&message);
+	MakeFocus(true);
 
 	BRect bounds(Bounds());
 	BRect itemFrame = ItemFrame(CountItems() - 1);

@@ -71,7 +71,7 @@ MainWindow::MainWindow(BRect frame)
 	_LoadFavorites();
 
 	if (fFavorites->CountItems() > 0)
-		_UpdateButtons();
+		_UpdateControls();
 
 	if (!fHistory->IsEmpty())
 		fHistory->Select(0);
@@ -278,7 +278,7 @@ MainWindow::MessageReceived(BMessage* message)
 
 			fFavorites->SwapItems(index, index + 1);
 			_RenumberFavorites(index);
-			_UpdateButtons();
+			_UpdateControls();
 			break;
 		}
 		case FAV_UP:
@@ -289,12 +289,12 @@ MainWindow::MessageReceived(BMessage* message)
 
 			fFavorites->SwapItems(index, index - 1);
 			_RenumberFavorites(index - 1);
-			_UpdateButtons();
+			_UpdateControls();
 			break;
 		}
 		case FAV_SELECTION:
 		{
-			_UpdateButtons();
+			_UpdateControls();
 			break;
 		}
 		case PASTE_SPRUNGE:
@@ -391,24 +391,6 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			fHistory->MakeEmpty();
 			PostMessage(B_CLIPBOARD_CHANGED);
-			break;
-		}
-		case SWITCHLIST:
-		{
-			int32 listview;
-			if (message->FindInt32("listview", &listview) == B_OK) {
-				if (listview == 0) {
-					fFavorites->MakeFocus(true);
-					SetHistoryActiveFlag(false);
-				}
-				if (listview == 1) {
-					fHistory->MakeFocus(true);
-					SetHistoryActiveFlag(true);
-				}
-				fFavorites->Invalidate();
-				fHistory->Invalidate();
-				_UpdateButtons();
-			}
 			break;
 		}
 		case HELP:
@@ -508,9 +490,9 @@ MainWindow::_BuildLayout()
 	item = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"),
 		new BMessage(PASTE_SPRUNGE), 'P');
 	menu->AddItem(item);
-	item = new BMenuItem(B_TRANSLATE("Add to favorites"),
+	fMenuAdd = new BMenuItem(B_TRANSLATE("Add to favorites"),
 		new BMessage(FAV_ADD), 'A');
-	menu->AddItem(item);
+	menu->AddItem(fMenuAdd);
 	item = new BMenuItem(B_TRANSLATE("Edit title"),
 		new BMessage(EDIT_TITLE), 'E');
 	menu->AddItem(item);
@@ -583,8 +565,6 @@ MainWindow::_BuildLayout()
 		.SetInsets(B_USE_SMALL_INSETS)
 		.End();
 
-	fHistory->MakeFocus(true);
-	SetHistoryActiveFlag(true);
 	fHistory->SetInvocationMessage(new BMessage(INSERT_HISTORY));
 	fHistory->SetViewColor(B_TRANSPARENT_COLOR);
 	fFavorites->SetInvocationMessage(new BMessage(INSERT_FAVORITE));
@@ -899,16 +879,20 @@ MainWindow::_AutoPaste()
 
 
 void
-MainWindow::_UpdateButtons()
+MainWindow::_UpdateControls()
 {
+	bool active = GetHistoryActiveFlag();
 	int32 selection = fFavorites->CurrentSelection();
 	int32 count = fFavorites->CountItems();
 
 	if (selection < 0)
 		count = -1;
 
-	fButtonUp->SetEnabled((count > 1 && selection > 0) ? true : false);
-	fButtonDown->SetEnabled((count > 1 && selection < count - 1) ? true : false);
+	fButtonUp->SetEnabled((count > 1 && selection > 0 && !active)
+		? true : false);
+	fButtonDown->SetEnabled((count > 1 && selection < count - 1 && !active)
+		? true : false);
+	fMenuAdd->SetEnabled((active == true ) ? true : false);
 }
 
 
@@ -919,3 +903,21 @@ MainWindow::_UpdateColors()
 	BMessage message(ADJUSTCOLORS);
 	messenger.SendMessage(&message);
 }
+
+
+bool
+MainWindow::GetHistoryActiveFlag()
+{
+	return fHistoryActiveFlag;
+}
+
+
+void
+MainWindow::SetHistoryActiveFlag(bool flag)
+{
+	fHistoryActiveFlag = flag;
+	fHistory->Invalidate();
+	fFavorites->Invalidate();
+	_UpdateControls();
+}
+

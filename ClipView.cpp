@@ -125,6 +125,18 @@ ClipView::InitiateDrag(BPoint point, int32 index, bool wasSelected)
 
 
 void
+ClipView::MakeFocus(bool focused)
+{
+	BListView::MakeFocus(focused);
+
+	// only signal ClipView is focused when gaining focus
+	if (focused)
+		my_app->fMainWindow->SetHistoryActiveFlag(focused);
+
+}
+
+
+void
 ClipView::MessageReceived(BMessage* message)
 {
 	switch (message->what) {
@@ -158,12 +170,11 @@ ClipView::KeyDown(const char* bytes, int32 numBytes)
 			Looper()->PostMessage(&message);
 			break;
 		}
-		case B_LEFT_ARROW:
 		case B_RIGHT_ARROW:
 		{
-			BMessage message(SWITCHLIST);
-			message.AddInt32("listview", (int32)0);
-			Looper()->PostMessage(&message);
+			if (my_app->fMainWindow->Lock())
+				my_app->fMainWindow->fFavorites->MakeFocus(true);
+			my_app->fMainWindow->Unlock();
 			break;
 		}
 		default:
@@ -178,10 +189,6 @@ ClipView::KeyDown(const char* bytes, int32 numBytes)
 void
 ClipView::MouseDown(BPoint position)
 {
-	BMessage message(SWITCHLIST);
-	message.AddInt32("listview", (int32)1);
-	Looper()->PostMessage(&message);
-
 	BRect bounds(Bounds());
 	BRect itemFrame = ItemFrame(CountItems() - 1);
 	bounds.top = itemFrame.bottom;

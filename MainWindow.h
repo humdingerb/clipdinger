@@ -44,8 +44,11 @@ public:
 	bool			QuitRequested();
 	void			MessageReceived(BMessage* message);
 
-	bool			GetHistoryActiveFlag() { return fHistoryActiveFlag; };
-	bool			SetHistoryActiveFlag(bool flag) { fHistoryActiveFlag = flag; };
+	bool			GetHistoryActiveFlag();
+	void			SetHistoryActiveFlag(bool flag);
+
+	ClipView*		fHistory;
+	FavView*		fFavorites;
 
 private:
 	void			_BuildLayout();
@@ -67,7 +70,7 @@ private:
 	void			_PutClipboard(BString text);
 
 	void			_AutoPaste();
-	void			_UpdateButtons();
+	void			_UpdateControls();
 	void			_UpdateColors();
 
 	int32			fLimit;
@@ -75,8 +78,6 @@ private:
 	bigtime_t		fLaunchTime;
 
 	BSplitView*		fMainSplitView;
-	ClipView*		fHistory;
-	FavView*		fFavorites;
 	bool			fHistoryActiveFlag;	// true if fHistory view is the active one
 
 	BScrollView*	fHistoryScrollView;
@@ -85,6 +86,7 @@ private:
 	BCheckBox*		fPauseCheckBox;
 	BButton*		fButtonUp;
 	BButton*		fButtonDown;
+	BMenuItem*		fMenuAdd;
 
 	EditWindow*		fEditWindow;
 };

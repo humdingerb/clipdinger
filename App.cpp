@@ -58,6 +58,9 @@ App::ReadyToRun()
 	fMainWindow->Show();
 //	fMainWindow->Minimize(true);
 	fMainWindow->MoveBy(-4000, 0);
+	if (fMainWindow->Lock())
+		fMainWindow->fHistory->MakeFocus(true);
+	fMainWindow->Unlock();
 }
 
 
