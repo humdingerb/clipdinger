@@ -64,7 +64,6 @@ private:
 	void			_MakeItemUnique(BString clip);
 	void			_MoveClipToTop();
 	void			_CropHistory(int32 limit);
-	void			_RenumberFavorites(int32 start);
 
 	BString			_GetClipboard();
 	void			_PutClipboard(BString text);
@@ -81,7 +80,7 @@ private:
 	bool			fHistoryActiveFlag;	// true if fHistory view is the active one
 
 	BScrollView*	fHistoryScrollView;
-	BScrollView*	fFavoriteScrollView;
+	BScrollView*	fFavoritesScrollView;
 
 	BCheckBox*		fPauseCheckBox;
 	BButton*		fButtonUp;

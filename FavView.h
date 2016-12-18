@@ -23,7 +23,7 @@ public:
 	virtual void	AttachedToWindow();
 	virtual void	Draw(BRect rect);
 	virtual	void	FrameResized(float width, float height);
-	virtual bool	InitiateDrag(BPoint point, int32 index,
+	virtual bool	InitiateDrag(BPoint point, int32 dragIndex,
 						bool wasSelected);
 	virtual	void	MakeFocus(bool focused = true);
 	virtual	void	MessageReceived(BMessage* message);
@@ -34,8 +34,9 @@ public:
 	virtual	void 	MouseMoved(BPoint where, uint32 transit,
 						const BMessage* dragMessage);
 
+	void			RenumberFKeys();
+
 private:
-	void			_RenumberAll();
 	void			_ShowPopUpMenu(BPoint screen);
 
 	bool			fShowingPopUpMenu;

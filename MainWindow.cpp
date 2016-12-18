@@ -179,7 +179,7 @@ MainWindow::MessageReceived(BMessage* message)
 					break;
 				fFavorites->RemoveItem(index);
 
-				_RenumberFavorites(index);
+				fFavorites->RenumberFKeys();
 				int32 count = fFavorites->CountItems();
 				fFavorites->Select((index > count - 1) ? count - 1 : index);
 			}
@@ -237,6 +237,7 @@ MainWindow::MessageReceived(BMessage* message)
 			}
 			break;
 		}
+		case B_SIMPLE_DATA:
 		case FAV_ADD:
 		{
 			if (message->WasDropped()) {
@@ -245,28 +246,36 @@ MainWindow::MessageReceived(BMessage* message)
 				if (!(favScreen.Contains(dropPoint)))
 					break;
 			}
-			ClipItem* clip = NULL;
-			if (message->FindPointer("clip",
-					reinterpret_cast<void**>(&clip)) != B_OK) {
-				clip = dynamic_cast<ClipItem *>
-					(fHistory->ItemAt(fHistory->CurrentSelection()));
-			}
-			if (clip == NULL)
+			int32 command = -1;
+			// only accept drops from inside Clipdinger
+			if (message->FindInt32("clipdinger_command", &command) != B_OK)
 				break;
 
-			BString title(clip->GetTitle());
-			BString contents(clip->GetClip());
-			if (title == contents)
-				title = "";
-			int32 lastitem = fFavorites->CountItems();
-			fFavorites->AddItem(new FavItem(contents, title, lastitem), lastitem);
+			int32 index = fFavorites->CountItems();
+			if (command == FAV_ADD) {
+				ClipItem* clip = dynamic_cast<ClipItem *>
+						(fHistory->ItemAt(fHistory->CurrentSelection()));
+				if (clip == NULL)
+					break;
 
-			if (message->WasDropped()) {	// move new Fav to where it was dropped
+				BString title(clip->GetTitle());
+				BString contents(clip->GetClip());
+				if (title == contents)
+					title = "";
+
+				fFavorites->AddItem(new FavItem(contents, title, index + 1));
+			}
+			// move Fav to where it was dropped
+			if (message->WasDropped()) {
 				BMessenger messenger(fFavorites);
 				BMessage msg(FAV_DRAGGED);
+				if (message->FindInt32("index", &index) != B_OK)
+					index = fFavorites->CountItems() - 1;
+				msg.AddInt32("index", index);
 				msg.AddPoint("_drop_point_", message->DropPoint());
 				messenger.SendMessage(&msg);
-			}
+			} else
+				fFavorites->RenumberFKeys();
 			break;
 		}
 		case FAV_DOWN:
@@ -278,7 +287,7 @@ MainWindow::MessageReceived(BMessage* message)
 
 			fFavorites->SwapItems(index, index + 1);
 			fFavorites->Select(index + 1);
-			_RenumberFavorites(index);
+			fFavorites->RenumberFKeys();
 			_UpdateControls();
 			break;
 		}
@@ -290,7 +299,7 @@ MainWindow::MessageReceived(BMessage* message)
 
 			fFavorites->SwapItems(index, index - 1);
 			fFavorites->Select(index - 1);
-			_RenumberFavorites(index - 1);
+			fFavorites->RenumberFKeys();
 			_UpdateControls();
 			break;
 		}
@@ -493,8 +502,10 @@ MainWindow::_BuildLayout()
 	item = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"),
 		new BMessage(PASTE_SPRUNGE), 'P');
 	menu->AddItem(item);
+	BMessage* message = new BMessage(FAV_ADD);
+	message->AddInt32("clipdinger_command", FAV_ADD);
 	fMenuAdd = new BMenuItem(B_TRANSLATE("Add to favorites"),
-		new BMessage(FAV_ADD), 'A');
+		message, 'A');
 	menu->AddItem(fMenuAdd);
 	item = new BMenuItem(B_TRANSLATE("Edit title"),
 		new BMessage(EDIT_TITLE), 'E');
@@ -522,15 +533,15 @@ MainWindow::_BuildLayout()
 
 	fHistoryScrollView = new BScrollView("historyscroll", fHistory,
 		B_WILL_DRAW, false, true);
-	fFavoriteScrollView = new BScrollView("favoritescroll", fFavorites,
+	fFavoritesScrollView = new BScrollView("favoritesscroll", fFavorites,
 		B_WILL_DRAW, false, true);
 
-	BStringView* favoriteHeader = new BStringView("title",
+	BStringView* favoritesHeader = new BStringView("title",
 		B_TRANSLATE("Favorites"));
-	favoriteHeader->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
+	favoritesHeader->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 	BFont font(be_bold_font);
-	favoriteHeader->SetFont(&font);
-	favoriteHeader->SetAlignment(B_ALIGN_CENTER);
+	favoritesHeader->SetFont(&font);
+	favoritesHeader->SetAlignment(B_ALIGN_CENTER);
 
 	// The pause checkbox
 	fPauseCheckBox = new BCheckBox("pause", B_TRANSLATE("Pause fading"),
@@ -556,8 +567,8 @@ MainWindow::_BuildLayout()
 				.Add(fPauseCheckBox)
 			.End()
 			.AddGroup(B_VERTICAL, B_USE_SMALL_SPACING)
-				.Add(favoriteHeader)
-				.Add(fFavoriteScrollView)
+				.Add(favoritesHeader)
+				.Add(fFavoritesScrollView)
 				.AddGroup(B_HORIZONTAL, B_USE_SMALL_SPACING)
 					.AddGlue()
 					.Add(fButtonUp)
@@ -710,7 +721,7 @@ MainWindow::_SaveFavorites()
 		ret = create_directory(path.Path(), 0777);
 
 	if (ret == B_OK)
-		path.Append(kFavoriteFile);
+		path.Append(kFavoritesFile);
 
 	if (ret == B_OK) {
 		BFile file(path.Path(), B_WRITE_ONLY | B_CREATE_FILE | B_ERASE_FILE);
@@ -744,7 +755,7 @@ MainWindow::_LoadFavorites()
 	if (find_directory(B_USER_SETTINGS_DIRECTORY, &path) == B_OK) {
 		status_t ret = path.Append(kSettingsFolder);
 		if (ret == B_OK) {
-			path.Append(kFavoriteFile);
+			path.Append(kFavoritesFile);
 			BFile file(path.Path(), B_READ_ONLY);
 
 			if (file.InitCheck() != B_OK || (msg.Unflatten(&file) != B_OK))
@@ -817,16 +828,6 @@ MainWindow::_CropHistory(int32 limit)
 				limit = 1;
 			fHistory->RemoveItems(limit, count);
 		}
-	}
-}
-
-
-void
-MainWindow::_RenumberFavorites(int32 start)
-{
-	for (start; start < fFavorites->CountItems(); start++) {
-		FavItem* item = dynamic_cast<FavItem *> (fFavorites->ItemAt(start));
-		item->SetFavNumber(start);
 	}
 }
 

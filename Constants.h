@@ -18,7 +18,7 @@ static const char kCopyright[] = "2015-2016";
 static const char kSettingsFolder[] = "Clipdinger";
 static const char kSettingsFile[] = "Clipdinger_settings";
 static const char kHistoryFile[] = "Clipdinger_history";
-static const char kFavoriteFile[] = "Clipdinger_favorites";
+static const char kFavoritesFile[] = "Clipdinger_favorites";
 
 static const int32 kDefaultLimit = 100;
 static const int32 kDefaultAutoStart = 1;

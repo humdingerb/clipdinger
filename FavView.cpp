@@ -79,16 +79,22 @@ FavView::FrameResized(float width, float height)
 
 
 bool
-FavView::InitiateDrag(BPoint point, int32 index, bool wasSelected)
+FavView::InitiateDrag(BPoint point, int32 dragIndex, bool wasSelected)
 {
-	FavItem* sItem = dynamic_cast<FavItem *> (ItemAt(index));
-	if (sItem == NULL)
-		return false;
-
+	FavItem* sItem = dynamic_cast<FavItem *> (ItemAt(CurrentSelection()));
+	if (sItem == NULL) {
+		// workaround for a timing problem (see Locale prefs)
+		sItem = dynamic_cast<FavItem *> (ItemAt(dragIndex));
+		Select(dragIndex);
+		if (sItem == NULL)
+			return false;
+	}
 	BString string(sItem->GetClip());
-	BMessage message(FAV_DRAGGED);
+	BMessage message(B_SIMPLE_DATA);
 	message.AddData("text/plain", B_MIME_TYPE, string, string.Length());
+	int32 index = CurrentSelection();
 	message.AddInt32("index", index);
+	message.AddInt32("clipdinger_command", FAV_DRAGGED);
 
 	BRect dragRect(0.0f, 0.0f, Bounds().Width(), sItem->Height());
 	BBitmap* dragBitmap = new BBitmap(dragRect, B_RGB32, true);
@@ -144,11 +150,14 @@ FavView::MessageReceived(BMessage* message)
 				origIndex = CountItems() - 1; // new Fav added at the bottom
 			dropPoint = message->DropPoint();
 			dropIndex = IndexOf(ConvertFromScreen(dropPoint));
+			if (dropIndex > origIndex)
+				dropIndex = dropIndex - 1;
 			if (dropIndex < 0)
 				dropIndex = CountItems() - 1; // move to bottom
 
 			MoveItem(origIndex, dropIndex);
-			_RenumberAll();
+			Select(dropIndex);
+			RenumberFKeys();
 			break;
 		}
 		case POPCLOSED:
@@ -270,7 +279,7 @@ FavView::MouseMoved(BPoint where, uint32 transit, const BMessage* dragMessage)
 
 
 void
-FavView::_RenumberAll()
+FavView::RenumberFKeys()
 {
 	for (int32 i = 0; i < CountItems(); i++) {
 		FavItem* item = dynamic_cast<FavItem *>(ItemAt(i));

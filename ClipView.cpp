@@ -78,7 +78,7 @@ ClipView::FrameResized(float width, float height)
 
 
 bool
-ClipView::InitiateDrag(BPoint point, int32 index, bool wasSelected)
+ClipView::InitiateDrag(BPoint point, int32 dragIndex, bool wasSelected)
 {
 		BPoint pt;
 		uint32 buttons;
@@ -88,13 +88,18 @@ ClipView::InitiateDrag(BPoint point, int32 index, bool wasSelected)
 			return false;
 		}
 
-	ClipItem* sItem = dynamic_cast<ClipItem *> (ItemAt(index));
-	if (sItem == NULL)
-		return false;
-
+	ClipItem* sItem = dynamic_cast<ClipItem *> (ItemAt(CurrentSelection()));
+	if (sItem == NULL) {
+		// workaround for a timing problem (see Locale prefs)
+		sItem = dynamic_cast<ClipItem *> (ItemAt(dragIndex));
+		Select(dragIndex);
+		if (sItem == NULL)
+			return false;
+	}
 	BString string(sItem->GetClip());
-	BMessage message(FAV_ADD);
+	BMessage message(B_SIMPLE_DATA);
 	message.AddData("text/plain", B_MIME_TYPE, string, string.Length());
+	message.AddInt32("clipdinger_command", FAV_ADD);
 
 	BRect dragRect(0.0f, 0.0f, Bounds().Width(), sItem->Height());
 	BBitmap* dragBitmap = new BBitmap(dragRect, B_RGB32, true);
@@ -189,6 +194,8 @@ ClipView::KeyDown(const char* bytes, int32 numBytes)
 void
 ClipView::MouseDown(BPoint position)
 {
+	MakeFocus(true);
+
 	BRect bounds(Bounds());
 	BRect itemFrame = ItemFrame(CountItems() - 1);
 	bounds.top = itemFrame.bottom;
@@ -292,6 +299,7 @@ ClipView::_ShowPopUpMenu(BPoint screen)
 	menu->AddItem(item);
 
 	msg = new BMessage(FAV_ADD);
+	msg->AddInt32("clipdinger_command", FAV_ADD);
 	item = new BMenuItem(B_TRANSLATE("Add to favorites"), msg, 'A');
 	menu->AddItem(item);
 
