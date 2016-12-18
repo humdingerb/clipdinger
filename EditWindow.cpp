@@ -79,7 +79,7 @@ EditWindow::_BuildLayout()
 	// Title
 	fTitleControl = new BTextControl("title", B_TRANSLATE("Title:"),
 		fOriginalTitle, NULL);
-	fTitleControl->SetExplicitMinSize(BSize(250.0, B_SIZE_UNSET));
+	fTitleControl->SetExplicitMinSize(BSize(300.0, B_SIZE_UNSET));
 
 	// Info
 	BFont infoFont(*be_plain_font);
@@ -95,6 +95,12 @@ EditWindow::_BuildLayout()
 	infoText->SetText(B_TRANSLATE(
 		"Leave title empty to return to original title."));
 
+	font_height fheight;
+	infoFont.GetHeight(&fheight);
+	infoText->SetExplicitMinSize(BSize(B_SIZE_UNSET,
+		(fheight.ascent + fheight.descent + fheight.leading) * 2.0));
+	infoText->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
+
 	// Buttons
 	BButton* cancel = new BButton("cancel", B_TRANSLATE("Cancel"),
 		new BMessage(CANCEL));
@@ -103,7 +109,7 @@ EditWindow::_BuildLayout()
 
 	static const float spacing = be_control_look->DefaultItemSpacing();
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
-		.AddGroup(B_VERTICAL)
+		.AddGroup(B_VERTICAL, 0)
 			.SetInsets(spacing)
 			.Add(fTitleControl)
 			.Add(infoText)

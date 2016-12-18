@@ -16,22 +16,22 @@ Clipdinger starts minimized, because it sits in the background and just monitors
 
 ![screenshot](./images/clipdinger.png)
 
-To the left is a history of your past clippings (empty, of course, when started for the first time). For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text. The top entry is always what's currently in the clipboard. Hover your mouse pointer over an entry for a tool tip with the time and date when a clip was added.
+To the left is a history of your past clippings. For easier orientation, the icon of the app that a clip was copied from is drawn to the left of the text. The top entry is always what's currently in the clipboard. Hover your mouse pointer over an entry for a tool tip with the time and date when a clip was added.
 
-If you have the _Fade history entries over time_ option activated, there'll also be a checkbox _Pause fading_ below the history list. You find more on that farther down, where Clipdinger's settings are discussed.
+If you have the _Fade history entries over time_ option activated, there'll also be a checkbox _Pause fading_ below the history list. You find more on that further down, where Clipdinger's settings are discussed.
 
-To the right is a list of saved favorites. You right-click on an entry in the history to the left, and choose Add to favorites to make a clipping a favorite. The first 12 entries have automatically an _F-key_ assigned for even quicker pasting of your most used clippings.
+To the right is a list of saved favorites. To make a clip a favorite, you drag & drop a clip from the history on the left into the favorites list to the right. You can also right-click on an entry in the history and choose _Add to favorites_ or use that same menu item from _Clip_ menu in the menu bar. The first 12 entries have automatically an _F-key_ assigned for even quicker pasting of your most used clippings.
 
-You can adjust the size of history/favorites by grabbing the dotted line between them. You can also completely collapse one of those lists. The _F-keys_ will still work, even if your favorites are collapsed.
+You can adjust the size of the history/favorites lists by grabbing the dotted line between them. You can also completely collapse one of those lists. The _F-keys_ will still work, even if your favorites are collapsed.
 
-The _Move up_ and _Move down_ buttons allow for re-ordering the currently selected favorite.
-_DEL_ or choosing _Remove favorite_ from the context menu eliminates an entry. _Edit title_ let's you choose another title for it. By default, the contents of the clip is displayed, just like for the history list on the left.
+The _Move up_ and _Move down_ buttons allow for re-ordering the currently selected favorite. Or simply use drag & drop.
+_DEL_ or choosing _Remove favorite_ from the (context) menu eliminates an entry. _Edit title_ lets you choose another title for it. By default, the contents of the clip is displayed. You can also change the title of the clips in the history, but it's more useful for the more permanent favorites.
 
-You can quickly switch between history and favorites lists with _CursorRight/Left_.
+You can quickly switch between the history and favorites lists with _CursorRight/Left_.
 
 ### Clipboard monitor
 
-You can open the _Clipboard monitor_ from the _App_ menu. It simply shows the current contents of theclipboard, which helps if you have to continuously switch between some clips from the history/favorites.
+You can open the _Clipboard monitor_ from the _App_ menu. It simply shows the current contents of the clipboard, which helps if you have to continuously switch between some clips from the history/favorites.
 The Clipboard monitor is supposed be used as a replicant on the Desktop.
 
 ![screenshot](./images/clipboard-monitor.png)
@@ -44,7 +44,7 @@ As a replicant the Clipboard monitor doesn't need a running Clipdinger to work. 
 
 ### Settings
 
-This is the settings window, summoned with _Settings..._ from the _App_ menu:
+This is the settings window, opened with _Settings..._ from the _App_ menu:
 
 ![screenshot](./images/clipdinger-settings.png)
 
@@ -53,7 +53,7 @@ Keep in mind that every clipping is kept in memory and if you copy many large bl
 
 Once the limit of the history is reached, the oldest entry is removed automatically to make room for the new clipping.
 
-You can remove an entry by selecting it and pressing _DEL_ or choose _Remove clip_ from the context menu. You remove the complete clipboard history with _Clear history_ from the _History_ menu.
+You can remove an entry by selecting it and pressing _DEL_ or choose _Remove_ from the (context) menu. You remove the complete clipboard history with _Clear history_ from the _Lists_ menu.
 
 _Auto-start Clipdinger_ controls if Clipdinger will be started automatically at every boot-up.
 
@@ -66,12 +66,12 @@ If you leave your computer or just know that you won't do any copy&paste for a l
 
 ### Tips & Tricks
 
-*   If you've used Clipdinger before v0.5.5, you can now remove the link to it in the `/boot/home/config/settings/boot/launch/` folder and use the new setting to auto-start instead.
+*	Instead of double-clicking a clip/favorite or hitting _RETURN_ to paste it, you can also drag & drop it into applications or onto the Desktop. That's useful in some situations, especially since it leaves the Clipdinger window open.
 *   Changes in the settings window can be viewed live in the main window. To find the right fading settings for you, it's best to keep working normally for some time to fill the history and then just play around with the sliders until you're satisfied.
-*   Clipdinger's _Auto-paste_ feature can be a bit tricky: It doesn't know in which window you pressed _SHIFT_ + _ALT_ + _V_ for it to pop up. With activated auto-paste, it simply pastes into last window that was active before you hit _ENTER_ or double-clicked an entry. So, avoid detours...
+*   Clipdinger's _Auto-paste_ feature can be a bit tricky: It doesn't know in which window you pressed _SHIFT_ + _ALT_ + _V_ for it to pop up. With activated auto-paste, it simply pastes into last window that was active before you hit _RETURN_ or double-clicked an entry. So, avoid detours...
 *   If you want to back-up Clipdinger's settings, history or favorites, or have the need to delete one or all of these files, you'll find them under `/boot/home/config/settings/Clipdinger/`.
 *	If the replicant of the Clipboard monitor unexpectedly gives you grief (or any replicant for that matter), you can remove all replicants on the Desktop by deleting `/boot/home/config/settings/Tracker/tracker_shelf`.
-
+*   If you've used Clipdinger before v0.5.5, you can now remove the link to it in the `/boot/home/config/settings/boot/launch/` folder and use the new setting to auto-start instead.
 
 ### Download
 
@@ -88,6 +88,21 @@ Even more thanks go to Rene Gollent, who pointed out many shortcomings in my ama
 Also, thanks to everyone that contributed translations for Clipdinger.
 
 ### History
+
+
+**1.0** - _24-12-2016:_
+
+*	Add clips to favorites and re-ordering favorites with drag & drop.
+*	Drag & drop clips and favorites into other apps.
+*	Made history clips titles editable as well.
+*	Made the GUI unambiguous. There's only ever one clip shown as active.
+*	Added menu items that apply to clips/favorites, re-ordered context menus.
+*	Renamed menu to "Lists" and added item to "Clear favorites".
+*	Bug fix: Fixed drawing errors of split view handle on resize.
+*	Bug fix: Fixed issues when starting without settings file.
+*	Bug fix: Fixed crash when trying to paste to sprunge.us with no selection.
+*	Bug fix: Put formerly 2nd clip into clipboard when 1st was removed.
+*	Bug fix: Correctly show GUI controls availablity (e.g. the move buttons).
 
 **0.5.5** - _28-11-2016:_
 

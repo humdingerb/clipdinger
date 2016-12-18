@@ -1,4 +1,4 @@
-1	English	application/x-vnd.humdinger-clipdinger	1322036589
+1	Russian	application/x-vnd.humdinger-clipdinger	1393009794
 Thank you	Application		Спасибо
 Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tнаписан Humdinger\n\tCopyright %years%\n\nClipdinger предоставляет историю записей из системного буфера обмена и возможность их добвления в избранное.\n\nПожалуйста, сообщайте мне обо всех найденных вами ошибках или новых функциях, которые вам нужны.  Данные для связи находятся в "Справке", доступной через меню.
 -= No text in clipboard =-	ClipboardMonitor		-= No text in clipboard =-
@@ -7,27 +7,31 @@ Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger 
 Add to favorites	ClipList		Добавить в избранное
 Edit title	ClipList		Редактировать заголовок
 Paste to Sprunge.us	ClipList		Опубликовать на Sprunge.us
-Remove clip	ClipList		Удалить запись
-Remove favorite	ClipList		Удалить из избранного
+Remove	ClipList		Remove
 Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Added:\n%time%\n%date%
 Cancel	EditWindow		Отмена
 Edit title	EditWindow		Редактировать заголовок
+Leave title empty to return to original title.	EditWindow		Leave title empty to return to original title.
 OK	EditWindow		OK
 Title:	EditWindow		Заголовок:
 About Clipdinger	MainWindow		О Clipdinger
+Add to favorites	MainWindow		Add to favorites
 App	MainWindow		Приложение
-Clear history	MainWindow		Очистить историю
+Clear clip history	MainWindow		Clear clip history
+Clear favorites	MainWindow		Clear favorites
 Clip	MainWindow		Запись
 Clipboard monitor…	MainWindow		Clipboard monitor…
+Edit title	MainWindow		Edit title
 Favorites	MainWindow		Favorites
 Help	MainWindow		Справка
-History	MainWindow		История
+Lists	MainWindow		Lists
 Minimize	MainWindow		Свернуть
 Move down	MainWindow		Переместить ниже
 Move up	MainWindow		Переместить выше
 Paste to Sprunge.us	MainWindow		Опубликовать на Sprunge.us
 Pause fading	MainWindow		Приостановить затенение
 Quit	MainWindow		Выход
+Remove	MainWindow		Remove
 Settings…	MainWindow		Настройки…
 Sprunge.us service not available.	MainWindow		Сервис Sprunge.us недоступен.
 Clipboard monitor	ReplWindow		Clipboard monitor

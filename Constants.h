@@ -13,7 +13,7 @@
 
 static const char* kApplicationSignature = "application/x-vnd.humdinger-clipdinger";
 
-static const char kVersion[] = "v0.5.5";
+static const char kVersion[] = "v1.0";
 static const char kCopyright[] = "2015-2016";
 static const char kSettingsFolder[] = "Clipdinger";
 static const char kSettingsFile[] = "Clipdinger_settings";

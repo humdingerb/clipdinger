@@ -162,7 +162,7 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			if (GetHistoryActiveFlag() && !fHistory->IsEmpty()) {
 				int32 index = fHistory->CurrentSelection();
-				if (index < 0)
+				if (index < 0 || fHistory->CountItems() == 1)
 					break;
 				fHistory->RemoveItem(index);
 
@@ -276,6 +276,7 @@ MainWindow::MessageReceived(BMessage* message)
 				messenger.SendMessage(&msg);
 			} else
 				fFavorites->RenumberFKeys();
+			_UpdateControls();
 			break;
 		}
 		case FAV_DOWN:
@@ -499,29 +500,29 @@ MainWindow::_BuildLayout()
 	menuBar->AddItem(menu);
 
 	menu = new BMenu(B_TRANSLATE("Clip"));
-	item = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"),
+	fMenuPaste = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"),
 		new BMessage(PASTE_SPRUNGE), 'P');
-	menu->AddItem(item);
+	menu->AddItem(fMenuPaste);
 	BMessage* message = new BMessage(FAV_ADD);
 	message->AddInt32("clipdinger_command", FAV_ADD);
 	fMenuAdd = new BMenuItem(B_TRANSLATE("Add to favorites"),
 		message, 'A');
 	menu->AddItem(fMenuAdd);
-	item = new BMenuItem(B_TRANSLATE("Edit title"),
+	fMenuEdit = new BMenuItem(B_TRANSLATE("Edit title"),
 		new BMessage(EDIT_TITLE), 'E');
-	menu->AddItem(item);
-	item = new BMenuItem(B_TRANSLATE("Remove"),
+	menu->AddItem(fMenuEdit);
+	fMenuDelete = new BMenuItem(B_TRANSLATE("Remove"),
 		new BMessage(DELETE));
-	menu->AddItem(item);
+	menu->AddItem(fMenuDelete);
 	menuBar->AddItem(menu);
 
 	menu = new BMenu(B_TRANSLATE("Lists"));
 	item = new BMenuItem(B_TRANSLATE("Clear clip history"),
 		new BMessage(CLEAR_HISTORY));
 	menu->AddItem(item);
-	item = new BMenuItem(B_TRANSLATE("Clear favorites"),
+	fMenuClearFav = new BMenuItem(B_TRANSLATE("Clear favorites"),
 		new BMessage(CLEAR_FAVORITES));
-	menu->AddItem(item);
+	menu->AddItem(fMenuClearFav);
 	menuBar->AddItem(menu);
 
 	// The lists
@@ -888,6 +889,18 @@ MainWindow::_UpdateControls()
 	bool active = GetHistoryActiveFlag();
 	int32 selection = fFavorites->CurrentSelection();
 	int32 count = fFavorites->CountItems();
+
+	if (active == false && count == 0) {
+		fMenuDelete->SetEnabled(false);
+		fMenuEdit->SetEnabled(false);
+		fMenuPaste->SetEnabled(false);
+	}
+	if (active) {
+		fMenuDelete->SetEnabled(true);
+		fMenuEdit->SetEnabled(true);
+		fMenuPaste->SetEnabled(true);
+	}
+	fMenuClearFav->SetEnabled((count > 0 ) ? true : false);
 
 	if (selection < 0)
 		count = -1;

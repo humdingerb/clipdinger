@@ -86,6 +86,10 @@ private:
 	BButton*		fButtonUp;
 	BButton*		fButtonDown;
 	BMenuItem*		fMenuAdd;
+	BMenuItem*		fMenuEdit;
+	BMenuItem*		fMenuDelete;
+	BMenuItem*		fMenuPaste;
+	BMenuItem*		fMenuClearFav;
 
 	EditWindow*		fEditWindow;
 };

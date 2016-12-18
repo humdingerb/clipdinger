@@ -1,4 +1,4 @@
-1	English	application/x-vnd.humdinger-clipdinger	1322036589
+1	German	application/x-vnd.humdinger-clipdinger	1393009794
 Thank you	Application		Danke
 Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tvon Humdinger\n\tCopyright %years%\n\nClipdinger bietet eine Historie für die Zwischenablage und das Anlegen von Favoriten.\n\nBerichte zu Bugs oder gewünschten Features sind sehr willkommen. Kontaktinfos befinden sich im ReadMe, siehe Menü 'Hilfe'.
 -= No text in clipboard =-	ClipboardMonitor		-= Kein Text in Zwischenablage =-
@@ -7,27 +7,31 @@ Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger 
 Add to favorites	ClipList		Zu Favoriten hinzufügen
 Edit title	ClipList		Titel bearbeiten
 Paste to Sprunge.us	ClipList		Auf Sprunge.us hochladen
-Remove clip	ClipList		Eintrag entfernen
-Remove favorite	ClipList		Favorit entfernen
+Remove	ClipList		Entfernen
 Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Hinzu:\n%time%\n%date%
 Cancel	EditWindow		Abbrechen
 Edit title	EditWindow		Titel bearbeiten
+Leave title empty to return to original title.	EditWindow		Titel leer lassen, um zum Original zurückzukehren.
 OK	EditWindow		OK
 Title:	EditWindow		Titel:
 About Clipdinger	MainWindow		Über Clipdinger
+Add to favorites	MainWindow		Zu Favoriten hinzufügen
 App	MainWindow		App
-Clear history	MainWindow		Historie löschen
+Clear clip history	MainWindow		Historie löschen
+Clear favorites	MainWindow		Favoriten löschen
 Clip	MainWindow		Clip
 Clipboard monitor…	MainWindow		Zwischenablagenanzeige…
+Edit title	MainWindow		Titel bearbeiten
 Favorites	MainWindow		Favoriten
 Help	MainWindow		Hilfe
-History	MainWindow		Historie
+Lists	MainWindow		Listen
 Minimize	MainWindow		Minimieren
 Move down	MainWindow		Runter
 Move up	MainWindow		Rauf
 Paste to Sprunge.us	MainWindow		Auf Sprunge.us hochladen
 Pause fading	MainWindow		Abdunkeln anhalten
 Quit	MainWindow		Beenden
+Remove	MainWindow		Entfernen
 Settings…	MainWindow		Einstellungen…
 Sprunge.us service not available.	MainWindow		Sprunge.us nicht verfügbar.
 Clipboard monitor	ReplWindow		Zwischenablagenanzeige
