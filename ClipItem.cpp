@@ -148,7 +148,11 @@ ClipItem::GetTitle()
 void
 ClipItem::SetTitle(BString title, bool update)
 {
-	fTitle = title;
+	if (title == fClip)
+		fTitle = "";
+	else
+		fTitle = (title == "") ? fClip : title;
+
 	fUpdateNeeded = update;
 }
 
