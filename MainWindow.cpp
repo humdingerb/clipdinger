@@ -333,7 +333,11 @@ MainWindow::MessageReceived(BMessage* message)
 				break;
 
 			_PutClipboard(text);
-			Minimize(true);
+
+			if ((modifiers() & (B_COMMAND_KEY | B_SHIFT_KEY))
+					!= (B_COMMAND_KEY | B_SHIFT_KEY)) // don't minimize on SHIFT
+				Minimize(true);
+
 			PostMessage(B_CLIPBOARD_CHANGED);
 
 			BString command(
@@ -585,6 +589,9 @@ MainWindow::_BuildLayout()
 	fFavorites->SetInvocationMessage(new BMessage(INSERT_FAVORITE));
 	fFavorites->SetSelectionMessage(new BMessage(FAV_SELECTION));
 	fFavorites->SetViewColor(B_TRANSPARENT_COLOR);
+
+	AddShortcut('P', B_SHIFT_KEY,
+		new BMessage(PASTE_SPRUNGE));
 }
 
 
