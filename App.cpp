@@ -13,6 +13,9 @@
 #include "App.h"
 #include "Constants.h"
 
+const char* kApplicationSignature = "application/x-vnd.humdinger-clipdinger";
+
+
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "Application"
 
@@ -41,8 +44,8 @@ App::QuitRequested()
 		if (messenger.IsValid() && messenger.LockTarget())
 			fReplWindow->Quit();
 	}
-
 	BApplication::QuitRequested();
+	return true;
 }
 
 

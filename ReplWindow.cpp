@@ -5,6 +5,7 @@
  * Author:
  *	Humdinger, humdingerb@gmail.com
  */
+#include <stdio.h>
 
 #include <Catalog.h>
 #include <ControlLook.h>

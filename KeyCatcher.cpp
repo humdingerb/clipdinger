@@ -36,7 +36,7 @@ KeyCatcher::AttachedToWindow()
 void
 KeyCatcher::KeyDown(const char* bytes, int32 numBytes)
 {
-	static const int32 kModifiers = B_SHIFT_KEY | B_COMMAND_KEY;
+	static const uint32 kModifiers = B_SHIFT_KEY | B_COMMAND_KEY;
 
 	if (strcasecmp(bytes, "v") == 0
 			&& (modifiers() & kModifiers) == kModifiers) {

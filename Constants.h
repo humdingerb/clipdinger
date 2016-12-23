@@ -11,7 +11,7 @@
 
 #define OUTPUT_PORT_NAME	"Clipdinger output port"
 
-static const char* kApplicationSignature = "application/x-vnd.humdinger-clipdinger";
+extern const char* kApplicationSignature;
 
 static const char kVersion[] = "v1.0";
 static const char kCopyright[] = "2015-2016";

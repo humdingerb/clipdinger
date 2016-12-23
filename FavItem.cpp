@@ -65,7 +65,7 @@ FavItem::DrawItem(BView* view, BRect rect, bool complete)
 		Fn.Append("0");
 
 	char string[4];
-	snprintf(string, sizeof(string), "%d", fFavNumber + 1);
+	snprintf(string, sizeof(string), "%" B_PRId32, fFavNumber + 1);
 	Fn.Append(string);
 	float Fnwidth = font.StringWidth(Fn.String());
 

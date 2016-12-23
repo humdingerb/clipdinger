@@ -53,7 +53,7 @@ MainWindow::MainWindow(BRect frame)
 			CenterOnScreen();
 	}
 	ClipdingerSettings* settings = my_app->Settings();
-	int32 fade;
+	int32 fade = 0;
 	if (settings->Lock()) {
 		fAutoPaste = settings->GetAutoPaste();
 		fLimit = settings->GetLimit();
@@ -476,7 +476,6 @@ MainWindow::_BuildLayout()
 	// The menu
 	BMenuBar* menuBar = new BMenuBar("menubar");
 	BMenu* menu;
-	BMenu* submenu;
 	BMenuItem* item;
 
 	menu = new BMenu(B_TRANSLATE("App"));
@@ -869,7 +868,7 @@ MainWindow::_PutClipboard(BString text)
 
 	if (be_clipboard->Lock()) {
 		be_clipboard->Clear();
-		if (clip = be_clipboard->Data()) {
+		if ((clip = be_clipboard->Data())) {
 			clip->AddData("text/plain", B_MIME_TYPE, text.String(), textLen);
 			be_clipboard->Commit();
 		}

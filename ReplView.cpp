@@ -114,7 +114,8 @@ ReplView::AttachedToWindow()
 	fCurrentClip = _GetClipboard().String();
 	TruncateClip(Bounds().Width());
 
-	status_t error = be_clipboard->StartWatching(this);
+//	status_t error = 
+	be_clipboard->StartWatching(this);
 
 	fContentsView->AddFilter(new BMessageFilter(B_MOUSE_DOWN,
 		&ReplView::_MessageFilter));

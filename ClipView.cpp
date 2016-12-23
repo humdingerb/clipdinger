@@ -252,11 +252,12 @@ ClipView::GetToolTipAt(BPoint point, BToolTip** _tip)
 void
 ClipView::AdjustColors()
 {
-	bool fade;
-	int32 delay;
-	int32 step;
-	float maxlevel;
-	bool pause;
+	bool fade = false;
+	int32 delay = 0;
+	int32 step = 0;
+	float maxlevel = 0;
+	bool pause = false;
+
 	ClipdingerSettings* settings = my_app->Settings();
 	if (settings->Lock()) {
 		fade = settings->GetFade();

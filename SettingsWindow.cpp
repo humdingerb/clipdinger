@@ -17,6 +17,7 @@
 #include "Constants.h"
 #include "SettingsWindow.h"
 
+#include <stdio.h>
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "SettingsWindow"
 
@@ -157,7 +158,6 @@ SettingsWindow::QuitRequested()
 {
 	if (!IsHidden())
 		Hide(); 
-
 	return false;
 }
 
@@ -300,7 +300,7 @@ void
 SettingsWindow::_UpdateControls()
 {
 	char string[4];
-	snprintf(string, sizeof(string), "%d", originalLimit);
+	snprintf(string, sizeof(string), "%" B_PRId32, originalLimit);
 	fLimitControl->SetText(string);
 	fAutoStartBox->SetValue(originalAutoStart);
 	fAutoPasteBox->SetValue(originalAutoPaste);
@@ -330,10 +330,10 @@ SettingsWindow::_UpdateFadeText()
 		char min[5];
 		char maxtint[5];
 		char step[5];
-		snprintf(min, sizeof(min), "%d", newFadeDelay * kMinuteUnits);
-		snprintf(maxtint, sizeof(maxtint), "%d",
+		snprintf(min, sizeof(min), "%" B_PRId32, newFadeDelay * kMinuteUnits);
+		snprintf(maxtint, sizeof(maxtint), "%" B_PRId32,
 			newFadeStep * newFadeDelay * kMinuteUnits);
-		snprintf(step, sizeof(step), "%d", newFadeStep);
+		snprintf(step, sizeof(step), "%" B_PRId32, newFadeStep);
 
 		string = B_TRANSLATE(
 		"Entries fade every %A% minutes.\n"

@@ -36,7 +36,7 @@ public:
 	void			SetTimeAdded(bigtime_t added) { fTimeAdded = added; };
 	bigtime_t		GetTimeSince() { return fTimeSince; };
 	void			SetTimeSince(bigtime_t since) { fTimeSince = since; };
-	rgb_color		SetColor(rgb_color color) { fColor = color; };
+	void			SetColor(rgb_color color) { fColor = color; };
 
 private:
 	BString			fClip;			// The actual clip, never touch!
