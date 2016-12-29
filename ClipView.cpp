@@ -60,33 +60,15 @@ ClipView::Draw(BRect rect)
 }
 
 
-void
-ClipView::FrameResized(float width, float height)
-{
-	BListView::FrameResized(width, height);
-
-	static const float spacing = be_control_look->DefaultLabelSpacing();
-
-	for (int32 i = 0; i < CountItems(); i++) {
-		ClipItem *sItem = dynamic_cast<ClipItem *> (ItemAt(i));
-		BString string(sItem->GetTitle());
-		TruncateString(&string, B_TRUNCATE_END,
-			width - kIconSize - spacing * 4);
-		sItem->SetDisplayTitle(string);
-	}
-}
-
-
 bool
 ClipView::InitiateDrag(BPoint point, int32 dragIndex, bool wasSelected)
 {
-		BPoint pt;
-		uint32 buttons;
-		GetMouse(&pt, &buttons);
+	BPoint pt;
+	uint32 buttons;
+	GetMouse(&pt, &buttons);
 
-		if ((buttons & B_SECONDARY_MOUSE_BUTTON) != 0) {
-			return false;
-		}
+	if ((buttons & B_SECONDARY_MOUSE_BUTTON) != 0)
+		return false;
 
 	ClipItem* sItem = dynamic_cast<ClipItem *> (ItemAt(CurrentSelection()));
 	if (sItem == NULL) {

@@ -26,7 +26,6 @@ public:
 	BString			GetClip() { return fClip; };
 	BString			GetTitle();
 	void			SetTitle(BString title, bool update = false);
-	void			SetDisplayTitle(BString string, bool update = false);
 	void			SetFavNumber(int32 number) { fFavNumber = number; };
 
 private:

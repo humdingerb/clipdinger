@@ -21,7 +21,6 @@ public:
 
 	virtual void	AttachedToWindow();
 	virtual void	Draw(BRect rect);
-	virtual	void	FrameResized(float width, float height);
 	virtual bool	InitiateDrag(BPoint point, int32 index,
 						bool wasSelected);
 	virtual	void	MakeFocus(bool focused = true);

@@ -88,8 +88,7 @@ FavItem::DrawItem(BView* view, BRect rect, bool complete)
 
 	if (fUpdateNeeded) {
 		BString string(GetTitle());
-//		float wide = Width();
-		view->TruncateString(&string, B_TRUNCATE_END, Width() - spacing * 4);
+		view->TruncateString(&string, B_TRUNCATE_END, Width() - spacing * 7);
 		fDisplayTitle = string;
 		fUpdateNeeded = false;
 	}
@@ -115,13 +114,11 @@ FavItem::Update(BView* view, const BFont* finfo)
 	// we need to DefaultLabelSpacing the update method so we can make sure the
 	// list item size doesn't change
 	BListItem::Update(view, finfo);
-// printf("FavItem::Update(): item %p, width %f\n", this, Width());
 
 	static const float spacing = be_control_look->DefaultLabelSpacing();
 	BString string(GetTitle());
-	view->TruncateString(&string, B_TRUNCATE_END, Width() - spacing * 4);
+	view->TruncateString(&string, B_TRUNCATE_END, Width() - spacing * 7);
 	fDisplayTitle = string;
-
 	font_height	fheight;
 	finfo->GetHeight(&fheight);
 
@@ -145,13 +142,5 @@ FavItem::SetTitle(BString title, bool update)
 	else
 		fTitle = (title == "") ? fClip : title;
 
-	fUpdateNeeded = update;
-}
-
-
-void
-FavItem::SetDisplayTitle(BString string, bool update)
-{
-	fDisplayTitle = string;
 	fUpdateNeeded = update;
 }

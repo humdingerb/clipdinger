@@ -30,7 +30,6 @@ public:
 
 	BString			GetTitle();
 	void			SetTitle(BString title, bool update = false);
-	void			SetDisplayTitle(BString string, bool update = false);
 
 	bigtime_t		GetTimeAdded() { return fTimeAdded; };
 	void			SetTimeAdded(bigtime_t added) { fTimeAdded = added; };
