@@ -91,7 +91,7 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 ### History
 
 
-**1.0** - _24-12-2016:_
+**1.0** - _30-12-2016:_
 
 *	Add clips to favorites and re-ordering favorites with drag & drop.
 *	Drag & drop clips and favorites into other apps.
@@ -101,6 +101,7 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 *	Made the GUI unambiguous. There's only ever one clip shown as active.
 *	Added menu items that apply to clips/favorites, re-ordered context menus.
 *	Renamed menu to "Lists" and added item to "Clear favorites".
+*	Added Romanian translation. Thanks Emrys!
 *	Bug fix: Fixed drawing errors of split view handle on resize.
 *	Bug fix: Fixed issues when starting without settings file.
 *	Bug fix: Fixed crash when trying to paste to sprunge.us with no selection.

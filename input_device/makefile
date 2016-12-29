@@ -122,7 +122,7 @@ SYMBOLS =
 DEBUGGER = 
 
 #	specify additional compiler flags for all files
-COMPILER_FLAGS =
+COMPILER_FLAGS = -Wall -Wno-multichar
 
 #	specify additional linker flags
 LINKER_FLAGS =
