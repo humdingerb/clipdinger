@@ -102,6 +102,7 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 *	Added menu items that apply to clips/favorites, re-ordered context menus.
 *	Renamed menu to "Lists" and added item to "Clear favorites".
 *	Added Romanian translation. Thanks Emrys!
+*	Updated Russian translation. Thanks Diver!
 *	Bug fix: Fixed drawing errors of split view handle on resize.
 *	Bug fix: Fixed issues when starting without settings file.
 *	Bug fix: Fixed crash when trying to paste to sprunge.us with no selection.
