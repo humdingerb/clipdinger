@@ -449,7 +449,7 @@ MainWindow::MessageReceived(BMessage* message)
 				bool invisible = fPauseCheckBox->IsHidden();
 				if ((invisible == true) && (newValue == 1))
 					fPauseCheckBox->Show();
-				else if ((invisible == false) && (newValue == 0)) 
+				else if ((invisible == false) && (newValue == 0))
 					fPauseCheckBox->Hide();
 				else
 					break;
@@ -830,7 +830,7 @@ MainWindow::_CropHistory(int32 limit)
 {
 	if (limit < fLimit) {
 		if (fHistory->CountItems() > limit) {
-			int count = fHistory->CountItems() - limit - 1;
+			int count = fHistory->CountItems() - limit;
 			if (limit == 0)
 				limit = 1;
 			fHistory->RemoveItems(limit, count);

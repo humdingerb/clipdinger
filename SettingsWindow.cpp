@@ -130,6 +130,11 @@ SettingsWindow::MessageReceived(BMessage* message)
 		case OK:
 		{
 			newLimit = atoi(fLimitControl->Text());
+			if (newLimit == 0) {
+				newLimit = 1;	// History has to be at least 1 deep.
+				fLimitControl->SetText("1");
+			}
+
 			if (settings->Lock()) {
 				settings->SetLimit(newLimit);
 				settings->SetAutoStart(newAutoStart);
@@ -157,7 +162,7 @@ bool
 SettingsWindow::QuitRequested()
 {
 	if (!IsHidden())
-		Hide(); 
+		Hide();
 	return false;
 }
 
