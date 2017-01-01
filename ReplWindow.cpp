@@ -26,7 +26,7 @@ ReplWindow::ReplWindow(BRect frame)
 	:
 	BWindow(BRect(0, 0, 350, 100), B_TRANSLATE("Clipboard monitor"),
 		B_TITLED_WINDOW, B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS |
-		B_CLOSE_ON_ESCAPE)
+		B_CLOSE_ON_ESCAPE, B_ALL_WORKSPACES)
 {
 	_BuildLayout();
 

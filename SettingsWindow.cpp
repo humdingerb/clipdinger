@@ -26,7 +26,8 @@ SettingsWindow::SettingsWindow(BRect frame)
 	:
 	BWindow(BRect(), B_TRANSLATE("Clipdinger settings"),
 		B_TITLED_WINDOW,
-		B_NOT_ZOOMABLE | B_NOT_RESIZABLE | B_AUTO_UPDATE_SIZE_LIMITS)
+		B_NOT_ZOOMABLE | B_NOT_RESIZABLE | B_AUTO_UPDATE_SIZE_LIMITS,
+		B_ALL_WORKSPACES)
 {
 	_BuildLayout();
 	_GetSettings();
