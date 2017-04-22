@@ -270,9 +270,9 @@ ReplView::_SetColor(rgb_color color)
 	SetViewColor(color);
 	fContentsView->SetViewColor(color);
 
-	float thresh = color.red + (color.green * 1.5f) + (color.blue * 0.50f);
+	float thresh = color.red + (color.green * 1.25f) + (color.blue * 0.45f);
 
-	if (thresh >= 300) {
+	if (thresh >= 360) {
 		color.red = 0;
 		color.green = 0;
 		color.blue = 0;
