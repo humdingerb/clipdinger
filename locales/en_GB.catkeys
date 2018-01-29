@@ -12,7 +12,7 @@ Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %
 Cancel	EditWindow		Cancel
 Edit title	EditWindow		Edit title
 Leave title empty to return to original title.	EditWindow		Leave title empty to return to original title.
-OK	EditWindow		OK
+OK	EditWindow		Alright
 Title:	EditWindow		Title:
 About Clipdinger	MainWindow		About Clipdinger
 Add to favorites	MainWindow		Add to favourites
@@ -46,6 +46,6 @@ Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes 
 entries in the clipboard history	SettingsWindow		entries in the clipboard history
 Fade history entries over time	SettingsWindow		Fade history entries over time
 Max. tint level	SettingsWindow		Max. tint level
-OK	SettingsWindow		OK
+OK	SettingsWindow		Alright
 Steps	SettingsWindow		Steps
 Clipdinger	System name		Clipdinger
