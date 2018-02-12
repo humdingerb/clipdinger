@@ -6,7 +6,7 @@ Clipdinger manages a history of the system clipboard. It solves the problem that
 
 If you want to paste some text that isn't in the clipboard any more, simply hit _SHIFT_ + _ALT_ + _V_ to summon the Clipdinger window. Here you can select an entry with the _CursorUp/Down_ keys and put it into the clipboard or auto-paste it by hitting _RETURN_.
 
-After selecting a clip, you can also paste it to the online service [Sprunge.us](http://sprunge.us) by hitting _ALT_ + _P_. The returned URL for the clip is put into the clipboard for you to paste into your email or IRC channel etc.
+After selecting a clip, you can also paste it to an online text pasting service by hitting _ALT_ + _P_. The returned URL for the clip is put into the clipboard for you to paste into your email or IRC channel etc.
 
 _ESCAPE_  or _ALT_ + _W_ aborts and minimizes the Clipdinger window.
 
@@ -67,7 +67,7 @@ If you leave your computer or just know that you won't do any copy&paste for a l
 ### Tips & Tricks
 
 *	Instead of double-clicking a clip/favorite or hitting _RETURN_ to paste it, you can also drag & drop it into applications or onto the Desktop. That's useful in some situations, especially since it leaves the Clipdinger window open.
-*	Hold _SHIFT_ while pasting to sprunge.us to keep the Clipdinger window open. This, too, is probably rarely used, but comes in handy when e.g. sprunging several clips one after another.
+*	Hold _SHIFT_ while pasting to an online service to keep the Clipdinger window open. This, too, is probably rarely used, but comes in handy when e.g. pasting several clips one after another.
 *   Changes in the settings window can be viewed live in the main window. To find the right fading settings for you, it's best to keep working normally for some time to fill the history and then just play around with the sliders until you're satisfied.
 *   Clipdinger's _Auto-paste_ feature can be a bit tricky: It doesn't know in which window you pressed _SHIFT_ + _ALT_ + _V_ for it to pop up. With activated auto-paste, it simply pastes into last window that was active before you hit _RETURN_ or double-clicked an entry. So, avoid detours...
 *   If you want to back-up Clipdinger's settings, history or favorites, or have the need to delete one or all of these files, you'll find them under `/boot/home/config/settings/Clipdinger/`.
@@ -90,6 +90,11 @@ Also, thanks to everyone that contributed translations for Clipdinger.
 
 ### History
 
+**1.0.1** - _12-02-2017:_
+
+*	Quick fix: Drop the online pasting service http://sprunge.us as it's been
+	non-functional for a while now. Currently using http://ix.io.
+*	Added localization for Swedish. Thanks Knezzen!
 
 **1.0** - _30-12-2016:_
 

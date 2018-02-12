@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016. All rights reserved.
+ * Copyright 2015-2018. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -281,7 +281,7 @@ FavView::_ShowPopUpMenu(BPoint screen)
 	BMessage* msg = NULL;
 
 	msg = new BMessage(PASTE_SPRUNGE);
-	BMenuItem* item = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"), msg, 'P');
+	BMenuItem* item = new BMenuItem(B_TRANSLATE("Paste online"), msg, 'P');
 	menu->AddItem(item);
 
 	msg = new BMessage(EDIT_TITLE);

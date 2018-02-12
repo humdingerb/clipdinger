@@ -1,14 +1,14 @@
-1	Ukrainian	application/x-vnd.humdinger-clipdinger	1393009794
+1	Ukrainian	application/x-vnd.humdinger-clipdinger	4255599668
 Thank you	Application		Дякуємо
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tрозроблений Humdinger\n\tCopyright %years%\n\nClipdinger надає історію записів з системного буфера обміну і можливість зробити їх обраними.\n\nПовідомляйте мене про всі знайдені вами помилки або нові функції, які вам потрібні.  Контактна інформація доступна через меню 'Довідка'.
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tрозроблений Humdinger\n\tCopyright %years%\n\nClipdinger надає історію записів з системного буфера обміну і можливість зробити їх обраними.\n\nПовідомляйте мене про всі знайдені вами помилки або нові функції, які вам потрібні.  Контактна інформація доступна через меню 'Довідка'.
 -= No text in clipboard =-	ClipboardMonitor		-= Немає тексту в буфері обміну =-
 Thank you	ClipboardMonitor		Дякуємо
 Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tрозроблений Humdinger\n\tCopyright %years%\n\nClipdinger надає історію записів з системного буфера обміну і можливість зробити їх обраними.\n\nЦе монітор буфера обміну, який можна встановити у вигляді репліканта на робочий стіл, щоб завжди відображати його вміст. 
 Add to favorites	ClipList		Додати до обраного
 Edit title	ClipList		Редагувати заголовок
-Paste to Sprunge.us	ClipList		Опублікувати на Sprunge.us
 Remove	ClipList		Видалити
 Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Додано:\n%time%\n%date%
+Paste online	ClipList		Вставити он-лайн
 Cancel	EditWindow		Скасувати
 Edit title	EditWindow		Редагувати заголовок
 Leave title empty to return to original title.	EditWindow		Щоб повернути оригінальний заголовок залиште його порожнім.
@@ -28,12 +28,12 @@ Lists	MainWindow		Списки
 Minimize	MainWindow		Згорнути
 Move down	MainWindow		Перемістити нижче
 Move up	MainWindow		Перемістити вище
-Paste to Sprunge.us	MainWindow		Опублікувати на Sprunge.us
 Pause fading	MainWindow		Призупинити затінення
 Quit	MainWindow		Вийти
 Remove	MainWindow		Видалити
 Settings…	MainWindow		Параметри…
-Sprunge.us service not available.	MainWindow		Сервіс Sprunge.us недоступний.
+Online paste service not available	MainWindow		Інтернет-сервіс недоступний
+Paste online	MainWindow		Вставити он-лайн
 Clipboard monitor	ReplWindow		Монітор буфера обміну
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Розтягніть вікно як бажаєте і перетягніть реплікант на робочий стіл.\nСпробуйте перетягнути на нього колір, наприклад з Icon-O-Matic.
 Auto-paste	SettingsWindow		Автовставлення

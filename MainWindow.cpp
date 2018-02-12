@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016. All rights reserved.
+ * Copyright 2015-2018. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -345,18 +345,18 @@ MainWindow::MessageReceived(BMessage* message)
 				"if [ -z  \"$stat\" ] ; then "	// network up in general?
 					"URL='%ERROR%' ; "
 				"else "
-					"stat=$(echo -e \"GET http://sprunge.us HTTP/1.0\n\n\" | nc sprunge.us 80 | grep HTTP/1 | awk {'print $2'}) ; "
-					"if [ -z \"$stat\" ] || [ $stat -ne 200 ] ; then "	// sprunge.us only accepts GET and PUT
-						"URL='%ERROR% '$stat ; "
-					"else "
-						"URL=$(clipboard -p | curl -F 'sprunge=<-' http://sprunge.us) ; "
-					"fi ; "
+// 					"stat=$(echo -e \"GET http://ix.io HTTP/1.0\\n\\n\" | nc xi.io 80 | grep HTTP/1 | awk {'print $2'}) ; "
+//					"if [ -z \"$stat\" ] || [ $stat -ne 200 ] ; then "
+//						"URL='%ERROR% '$stat ; "
+//					"else "
+						"URL=$(clipboard -p | curl -F 'f:1=<-' http://ix.io) ; "
+//					"fi ; "
 				"fi ; "
 				"echo $URL ; "
 				"clipboard -c \"$URL\" ; "
 				"exit");
 			command.ReplaceAll("%ERROR%",
-				B_TRANSLATE("Sprunge.us service not available."));
+				B_TRANSLATE("Online paste service not available"));
 			system(command.String());
 			break;
 		}
@@ -503,7 +503,7 @@ MainWindow::_BuildLayout()
 	menuBar->AddItem(menu);
 
 	menu = new BMenu(B_TRANSLATE("Clip"));
-	fMenuPaste = new BMenuItem(B_TRANSLATE("Paste to Sprunge.us"),
+	fMenuPaste = new BMenuItem(B_TRANSLATE("Paste online"),
 		new BMessage(PASTE_SPRUNGE), 'P');
 	menu->AddItem(fMenuPaste);
 	BMessage* message = new BMessage(FAV_ADD);

@@ -1,4 +1,4 @@
-1	Romanian	application/x-vnd.humdinger-clipdinger	1393009794
+1	Romanian	application/x-vnd.humdinger-clipdinger	4255599668
 Thank you	Application		Mulțumesc
 Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tscris de Humdinger\n\tCopyright %years%\n\nClipdinger furnizează un istoric al decupărilor din clipboardul sistemului și vă permite să creați favorite.\n\nAnunțați dacă găsiți orice defecțiuni sau dacă vă lipsesc unele funcționalități. Informațiile de contact se află în ReadMe, vedeți elementul de meniu „Ajutor”.
 -= No text in clipboard =-	ClipboardMonitor		-= Niciun text în clipboard =-
@@ -6,9 +6,9 @@ Thank you	ClipboardMonitor		Mulțumesc
 Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tscris de Humdinger\n\tCopyright %years%\n\nClipdinger furnizează un istoric al decupărilor din clipboardul sistemului și vă permite să creați favorite.\n\nAcesta este monitorul de clipboard care poate fi replicat pe Desktop pentru a arăta mereu conținutul actual.
 Add to favorites	ClipList		Adaugă la favorite
 Edit title	ClipList		Editează titlul
-Paste to Sprunge.us	ClipList		Lipește la Sprunge.us
 Remove	ClipList		Elimină
 Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Adăugat:\n%time%\n%date%
+Paste online	ClipList		Lipire online
 Cancel	EditWindow		Anulează
 Edit title	EditWindow		Editare titlu
 Leave title empty to return to original title.	EditWindow		Lăsați titlul liber pentru a reveni la titlul original.
@@ -28,16 +28,16 @@ Lists	MainWindow		Liste
 Minimize	MainWindow		Minimizare
 Move down	MainWindow		Mută jos
 Move up	MainWindow		Mută sus
-Paste to Sprunge.us	MainWindow		Lipire la Sprunge.us
 Pause fading	MainWindow		Pauzare decolorare
 Quit	MainWindow		Ieșire
 Remove	MainWindow		Eliminare
 Settings…	MainWindow		Configurări…
-Sprunge.us service not available.	MainWindow		Serviciul Sprunge.us nu este disponibil.
+Online paste service not available	MainWindow		Serviciul de lipire online nu este disponibil
+Paste online	MainWindow		Lipire online
 Clipboard monitor	ReplWindow		Monitor clipboard
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Redimensionați fereastra după cum este necesar și trageți mânerul replicantului pe Desktop.\nÎncercați să aplicați o culoare ex. din Icon-O-Matic.
 Auto-paste	SettingsWindow		Lipire automată
-Auto-start Clipdinger	SettingsWindow		Pornire automată Clipdinger
+Auto-start Clipdinger	SettingsWindow		Pornire automată Clipdinger
 Cancel	SettingsWindow		Anulează
 Clipdinger settings	SettingsWindow		Configurări Clipdinger
 Delay	SettingsWindow		Amânare

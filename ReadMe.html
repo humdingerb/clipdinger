@@ -101,7 +101,7 @@ for <a href="http://www.haiku-os.org">Haiku</a><br />
 <p><br /></p>
 <p>Clipdinger manages a history of the system clipboard. It solves the problem that you often have to paste some text you've just recently copied to the clipboard, but that has been replaced by something you've copied more recently... It also saves the history so it'll appear just as you left it on the last shutdown.</p>
 <p>If you want to paste some text that isn't in the clipboard any more, simply hit <span class="key">SHIFT</span> <span class="key">ALT</span> <span class="key">V</span> to summon the Clipdinger window. Here you can select an entry with the <span class="key">CursorUp/Down</span> keys and put it into the clipboard or auto-paste it by hitting <span class="key">RETURN</span>.</p>
-<p>After selecting a clip, you can also paste it to the online service <a href="http://sprunge.us">Sprunge.us</a> by hitting <span class="key">ALT</span> <span class="key">P</span>. The returned URL for the clip is put into the clipboard for you to paste into your email or IRC channel etc.</p>
+<p>After selecting a clip, you can also paste it to an online text pasting service by hitting <span class="key">ALT</span> <span class="key">P</span>. The returned URL for the clip is put into the clipboard for you to paste into your email or IRC channel etc.</p>
 <p><span class="key">ESCAPE</span> or <span class="key">ALT</span> <span class="key">W</span> aborts and minimizes the Clipdinger window.</p>
 
 <h2>
@@ -153,7 +153,7 @@ Below the sliders is a summary of your setting in plain English.</p>
 <a id="tips" name="tips">Tips &amp; Tricks</a></h2>
 <ul>
 <li><p>Instead of double-clicking a clip/favorite or hitting <span class="key">RETURN</span> to paste it, you can also drag &amp; drop it into applications or onto the Desktop. That's useful in some situations, especially since it leaves the Clipdinger window open.</p></li>
-<li><p>Hold <span class="key">SHIFT</span> while pasting to sprunge.us to keep the Clipdinger window open. This, too, is probably rarely used, but comes in handy when e.g. sprunging several clips one after another.</p></li>
+<li><p>Hold <span class="key">SHIFT</span> while pasting to an online service to keep the Clipdinger window open. This, too, is probably rarely used, but comes in handy when e.g. pasting several clips one after another.</p></li>
 <li><p>Changes in the settings window can be viewed live in the main window. To find the right fading settings for you, it's best to keep working normally for some time to fill the history and then just play around with the sliders until you're satisfied.</p></li>
 <li><p>Clipdinger's <span class="menu">Auto-paste</span> feature can be a bit tricky: It doesn't know in which application's window you pressed <span class="key">SHIFT</span> <span class="key">ALT</span> <span class="key">V</span> for it to pop up. With activated auto-paste, it simply pastes into last window that was active before you hit <span class="key">RETURN</span> or double-clicked an entry. So, avoid detours...</p></li>
 <li><p>If you want to back-up Clipdinger's settings, history or favorites, or have the need to delete one or all of these files, you'll find them under <span class="path">/boot/home/config/settings/Clipdinger/</span>.</p></li>
@@ -181,6 +181,12 @@ Also, thanks to everyone that contributed translations for Clipdinger.</p>
 <h2>
 <a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
 <a id="history" name="history">History</a></h2>
+
+<p><b>1.0.1</b> - <i>12-02-2017:</i></p>
+<ul>
+<li>Quick fix: Drop the online pasting service http://sprunge.us as it's been non-functional for a while now. Currently using http://ix.io.</li>
+<li>Added localization for Swedish. Thanks Knezzen!</li>
+</ul>
 
 <p><b>1.0</b> - <i>30-12-2016:</i></p>
 <ul>
