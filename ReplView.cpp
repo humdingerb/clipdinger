@@ -30,7 +30,7 @@
 
 ReplView::ReplView()
 	:
-	BView("Clipboard monitor", B_WILL_DRAW | B_FULL_UPDATE_ON_RESIZE),
+	BView(B_TRANSLATE("Clipboard monitor"), B_WILL_DRAW | B_FULL_UPDATE_ON_RESIZE),
 	fReplicated(false)
 {
 	fContentsView = new BStringView("contents", "");
