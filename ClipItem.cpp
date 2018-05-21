@@ -86,8 +86,8 @@ ClipItem::DrawItem(BView* view, BRect rect, bool complete)
 	// text
 	if (IsSelected() && my_app->fMainWindow->GetHistoryActiveFlag())
     	view->SetHighColor(ui_color(B_LIST_SELECTED_ITEM_TEXT_COLOR));
-    else
-    	view->SetHighColor(ui_color(B_LIST_ITEM_TEXT_COLOR));
+	else
+		view->SetHighColor(ui_color(B_LIST_ITEM_TEXT_COLOR));
 
 	if (fUpdateNeeded) {
 		BString string(GetTitle());
