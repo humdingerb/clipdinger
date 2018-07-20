@@ -487,6 +487,7 @@ MainWindow::_BuildLayout()
 		new BMessage(SETTINGS));
 	item->SetTarget(be_app);
 	menu->AddItem(item);
+	menu->AddSeparatorItem();
 	item = new BMenuItem(B_TRANSLATE("Help"),
 		new BMessage(HELP));
 	menu->AddItem(item);
@@ -494,6 +495,7 @@ MainWindow::_BuildLayout()
 		new BMessage(B_ABOUT_REQUESTED));
 	menu->AddItem(item);
 	item->SetTarget(be_app);
+	menu->AddSeparatorItem();
 	item = new BMenuItem(B_TRANSLATE("Minimize"),
 		new BMessage(ESCAPE), 'W');
 	menu->AddItem(item);
