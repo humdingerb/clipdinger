@@ -1,0 +1,52 @@
+1	English	application/x-vnd.humdinger-clipdinger	158967473
+Clipboard monitor	ReplWindow		Leikepöytävalvonta
+Title:	EditWindow		Otsikko:
+About Clipdinger	MainWindow		Ohjelmasta Clipdinger
+Add to favorites	ClipList		Lisää suosikkeihin
+Favorites	MainWindow		Suosikit
+Thank you	ClipboardMonitor		Kiitos
+Lists	MainWindow		Luettelot
+entries in the clipboard history	SettingsWindow		rivit leikepöytähistoriassa
+Edit title	EditWindow		Muokkaa otsikkoa
+OK	EditWindow		Valmis
+Settings…	MainWindow		Asetukset…
+Remove	MainWindow		Poista
+{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Rivit häipyvät näkyvistä joka %A% minuutti.\nEnimmäisvärisävy saavutetaan\n%B% minuutissa (1 vaiheessa)}other{Rivit häipyvät näkyvistä joka %A% minuutti.\nEnimmäisvärisävy saavutetaan\n%B% minuutissa (# vaiheessa)}}
+Move down	MainWindow		Siirrä alaspäin
+OK	SettingsWindow		Valmis
+Paste online	ClipList		Liitä verkossa
+Add to favorites	MainWindow		Lisää suosikkeihin
+Remove	ClipList		Poista
+Entries don't fade over time.	SettingsWindow		Rivit eivät haihdu ajan mittaan.
+App	MainWindow		Sovellus
+Minimize	MainWindow		Minimoi
+Quit	MainWindow		Poistu
+Clipboard monitor	ClipboardMonitor		Leikepöytävalvonta
+Clear favorites	MainWindow		Tyhjennä suosikit
+Edit title	ClipList		Muokkaa otsikkoa
+Pause fading	MainWindow		Tauota häivytys
+Clipboard monitor…	MainWindow		Leikepöytäseuranta…
+Cancel	SettingsWindow		Peru
+Clipdinger	System name		Clipdinger
+Online paste service not available	MainWindow		Liittämispalvelu verkossa ei ole saatavilla
+Fade history entries over time	SettingsWindow		Häivytä historiarivit näkyvistä ajan mittaan
+Leave title empty to return to original title.	EditWindow		Palaa alkuperäiseen otsikkoon jättämällä otsikkokenttä tyhjäksi.
+Max. tint level	SettingsWindow		Enimmäisvärisävytaso
+Auto-start Clipdinger	SettingsWindow		Käynnistä Clipdinger automaattisesti
+Paste online	MainWindow		Liitä verkossa
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\ttekijä: Humdinger\n\tCopyright %years%\n\nClipdinger tarjoaa järjestelmän leikepöydän leikkeiden historian ja sallii sinun luoda suosikkeja.\n\nKerro minulle ohjelmointivirheistä ja ominaisuuksista, joita kaipaat. Yhteystiedot löytyvät kohdasta ReadMe valikosta 'Opaste'.
+Steps	SettingsWindow		Vaiheet
+Auto-paste	SettingsWindow		Liitä automaattisesti
+Help	MainWindow		Opaste
+-= No text in clipboard =-	ClipboardMonitor		-= Leikepöydällä ei ole tekstiä =-
+Thank you	Application		Kiitos
+Delay	SettingsWindow		Viive
+Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Muuta ikkunan kokoa tarpeesi mukaan ja raahaa kopiokäsittelijä työpöydälle.\nYritä värin pudottamista esimerkiksi Kuvakemaatista.
+Clear clip history	MainWindow		Tyhjennä leikepöytähistoria
+Clip	MainWindow		Leike
+Clipdinger settings	SettingsWindow		Clipdinger-asetukset
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\ttekijä: Humdinger\n\tCopyright %years%\n\nClipdinger tarjoaa järjestelmän leikepöydän leikkeiden historian ja sallii sinun luoda suosikkeja.\n\nTämä on sen leikepöytäseuranta, josta voidaan kopioida Työpöydälle aina näytettäväksi sen nykyinen sisältö.
+Cancel	EditWindow		Peru
+Move up	MainWindow		Siirrä ylöspäin
+Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Lisätty:\n%time%\n%date%
+Edit title	MainWindow		Muokkaa otsikkoa

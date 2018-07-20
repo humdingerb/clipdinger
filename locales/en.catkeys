@@ -1,6 +1,5 @@
-1	English	application/x-vnd.humdinger-clipdinger	4255599668
+1	English	application/x-vnd.humdinger-clipdinger	158967473
 Clipboard monitor	ReplWindow		Clipboard monitor
-Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)	SettingsWindow		Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)
 Title:	EditWindow		Title:
 About Clipdinger	MainWindow		About Clipdinger
 Add to favorites	ClipList		Add to favorites
@@ -12,6 +11,7 @@ Edit title	EditWindow		Edit title
 OK	EditWindow		OK
 Settings…	MainWindow		Settings…
 Remove	MainWindow		Remove
+{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}
 Move down	MainWindow		Move down
 OK	SettingsWindow		OK
 Paste online	ClipList		Paste online
@@ -21,6 +21,7 @@ Entries don't fade over time.	SettingsWindow		Entries don't fade over time.
 App	MainWindow		App
 Minimize	MainWindow		Minimize
 Quit	MainWindow		Quit
+Clipboard monitor	ClipboardMonitor		Clipboard monitor
 Clear favorites	MainWindow		Clear favorites
 Edit title	ClipList		Edit title
 Pause fading	MainWindow		Pause fading

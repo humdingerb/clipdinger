@@ -343,10 +343,10 @@ SettingsWindow::_UpdateFadeText()
 		static BMessageFormat fadeFormat(B_TRANSLATE("{0, plural,"
 			"=1{Entries fade every %A% minutes.\n"
 				"The maximal tint is reached after\n"
-				"%B% minutes in 1 step}"
+				"%B% minutes (in 1 step)}"
 			"other{Entries fade every %A% minutes.\n"
 				"The maximal tint is reached after\n"
-				"%B% minutes in # steps}}"));
+				"%B% minutes (in # steps)}}"));
 		fadeFormat.Format(fadeText, newFadeStep);
 
 		fadeText.ReplaceAll("%A%", min);

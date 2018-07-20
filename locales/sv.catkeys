@@ -1,51 +1,52 @@
-1	Swedish	application/x-vnd.humdinger-clipdinger	4255599668
-Thank you	Application		Tack
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tskriven av Humdinger\n\tCopyright %years%\n\nClipdinger tillhandahåller historik om systemets urklipp och låter dig skapa favoriter.\n\nHör gärna av dig om du hittar några buggar eller känner att du saknar några funktioner. Kontaktinformation finns i ReadMe-filen under menyn 'Hjälp'.
--= No text in clipboard =-	ClipboardMonitor		-= Ingen text i urklipp =-
-Thank you	ClipboardMonitor		Tack
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tskriven av Humdinger\n\tCopyright %years%\n\nClipdinger tillhandahåller historik om systemets urklipp och låter dig skapa favoriter.\n\nDet här är dess urklippsmonitor som kan bli replikerad till skrivbordet, så du alltid kan se den nuvarande statusen.
-Add to favorites	ClipList		Lägg till i favoriter
-Edit title	ClipList		Ändra titel
-Remove	ClipList		Ta bort
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Tillagd:\n%time%\n%date%
-Paste online	ClipList		Klistra in online
-Cancel	EditWindow		Avbryt
-Edit title	EditWindow		Ändra titel
-Leave title empty to return to original title.	EditWindow		Lämna titelfältet tomt för att återgå till ursprunglig titel.
-OK	EditWindow		OK
+1	English	application/x-vnd.humdinger-clipdinger	158967473
+Clipboard monitor	ReplWindow		Urklippsmonitor
 Title:	EditWindow		Titel:
 About Clipdinger	MainWindow		Om Clipdinger
-Add to favorites	MainWindow		Lägg till i favoriter
-App	MainWindow		App
-Clear clip history	MainWindow		Rensa klipphistorik
-Clear favorites	MainWindow		Rensa favoriter
-Clip	MainWindow		Klipp
-Clipboard monitor…	MainWindow		Urklippsmonitor…
-Edit title	MainWindow		Ändra titel
+Add to favorites	ClipList		Lägg till i favoriter
 Favorites	MainWindow		Favoriter
-Help	MainWindow		Hjälp
+Thank you	ClipboardMonitor		Tack
 Lists	MainWindow		Listor
-Minimize	MainWindow		Minimera
-Move down	MainWindow		Flytta ner
-Move up	MainWindow		Flytta upp
-Pause fading	MainWindow		Pausa uttoning
-Quit	MainWindow		Avsluta
-Remove	MainWindow		Ta bort
-Settings…	MainWindow		Inställningar…
-Online paste service not available	MainWindow		Servicen för att klistra in online är inte tillgänglig
-Paste online	MainWindow		Klistra in online
-Clipboard monitor	ReplWindow		Urklippsmonitor
-Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Ändra storlek på fönstret efter dina behov och dra replikeringshandtaget till skrivbordet.\nProva att dra en färg till rutan, från t.ex Icon-O-Matic.
-Auto-paste	SettingsWindow		Klistra in automatiskt
-Auto-start Clipdinger	SettingsWindow		Starta Clipdinger automatiskt
-Cancel	SettingsWindow		Avbryt
-Clipdinger settings	SettingsWindow		Clipdinger inställningar
-Delay	SettingsWindow		Fördröjning
-Entries don't fade over time.	SettingsWindow		Poster tonar inte ut över tid.
-Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in %C% steps)	SettingsWindow		Poster tonar ut var %A% minuter.\Maximal uttoning uppnås efter\n%B% minuter (i %C% steg)
 entries in the clipboard history	SettingsWindow		poster i urklippshistoriken
-Fade history entries over time	SettingsWindow		Tona ut historiska poster över tid
-Max. tint level	SettingsWindow		Maximal toning
+Edit title	EditWindow		Ändra titel
+OK	EditWindow		OK
+Settings…	MainWindow		Inställningar…
+Remove	MainWindow		Ta bort
+{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Poster tonar ut var %A% minuter.\Maximal uttoning uppnås efter\n%B% minuter (i 1 steg)}other{Poster tonar ut var %A% minuter.\Maximal uttoning uppnås efter\n%B% minuter (i # steg)}}
+Move down	MainWindow		Flytta ner
 OK	SettingsWindow		OK
-Steps	SettingsWindow		Steg
+Paste online	ClipList		Klistra in online
+Add to favorites	MainWindow		Lägg till i favoriter
+Remove	ClipList		Ta bort
+Entries don't fade over time.	SettingsWindow		Poster tonar inte ut över tid.
+App	MainWindow		App
+Minimize	MainWindow		Minimera
+Quit	MainWindow		Avsluta
+Clipboard monitor	ClipboardMonitor		Urklippsmonitor
+Clear favorites	MainWindow		Rensa favoriter
+Edit title	ClipList		Ändra titel
+Pause fading	MainWindow		Pausa uttoning
+Clipboard monitor…	MainWindow		Urklippsmonitor…
+Cancel	SettingsWindow		Avbryt
 Clipdinger	System name		Clipdinger
+Online paste service not available	MainWindow		Servicen för att klistra in online är inte tillgänglig
+Fade history entries over time	SettingsWindow		Tona ut historiska poster över tid
+Leave title empty to return to original title.	EditWindow		Lämna titelfältet tomt för att återgå till ursprunglig titel.
+Max. tint level	SettingsWindow		Maximal toning
+Auto-start Clipdinger	SettingsWindow		Starta Clipdinger automatiskt
+Paste online	MainWindow		Klistra in online
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tskriven av Humdinger\n\tCopyright %years%\n\nClipdinger tillhandahåller historik om systemets urklipp och låter dig skapa favoriter.\n\nHör gärna av dig om du hittar några buggar eller känner att du saknar några funktioner. Kontaktinformation finns i ReadMe-filen under menyn 'Hjälp'.
+Steps	SettingsWindow		Steg
+Auto-paste	SettingsWindow		Klistra in automatiskt
+Help	MainWindow		Hjälp
+-= No text in clipboard =-	ClipboardMonitor		-= Ingen text i urklipp =-
+Thank you	Application		Tack
+Delay	SettingsWindow		Fördröjning
+Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Ändra storlek på fönstret efter dina behov och dra replikeringshandtaget till skrivbordet.\nProva att dra en färg till rutan, från t.ex Icon-O-Matic.
+Clear clip history	MainWindow		Rensa klipphistorik
+Clip	MainWindow		Klipp
+Clipdinger settings	SettingsWindow		Clipdinger inställningar
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tskriven av Humdinger\n\tCopyright %years%\n\nClipdinger tillhandahåller historik om systemets urklipp och låter dig skapa favoriter.\n\nDet här är dess urklippsmonitor som kan bli replikerad till skrivbordet, så du alltid kan se den nuvarande statusen.
+Cancel	EditWindow		Avbryt
+Move up	MainWindow		Flytta upp
+Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Tillagd:\n%time%\n%date%
+Edit title	MainWindow		Ändra titel
