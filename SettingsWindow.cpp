@@ -10,6 +10,7 @@
 #include <Catalog.h>
 #include <ControlLook.h>
 #include <LayoutBuilder.h>
+#include <MessageFormat.h>
 #include <SeparatorView.h>
 #include <SpaceLayoutItem.h>
 
@@ -326,30 +327,32 @@ SettingsWindow::_UpdateControls()
 void
 SettingsWindow::_UpdateFadeText()
 {
-	BString string;
+	BString fadeText;
 
 	if (!newFade) {
-		string = B_TRANSLATE("Entries don't fade over time.");
-		string.Prepend("\n");
-		string.Append("\n");
+		fadeText = B_TRANSLATE("Entries don't fade over time.");
+		fadeText.Prepend("\n");
+		fadeText.Append("\n");
 	} else {
 		char min[5];
 		char maxtint[5];
-		char step[5];
 		snprintf(min, sizeof(min), "%" B_PRId32, newFadeDelay * kMinuteUnits);
 		snprintf(maxtint, sizeof(maxtint), "%" B_PRId32,
 			newFadeStep * newFadeDelay * kMinuteUnits);
-		snprintf(step, sizeof(step), "%" B_PRId32, newFadeStep);
 
-		string = B_TRANSLATE(
-		"Entries fade every %A% minutes.\n"
-		"The maximal tint is reached after\n"
-		"%B% minutes (in %C% steps)");
-		string.ReplaceAll("%A%", min);
-		string.ReplaceAll("%B%", maxtint);
-		string.ReplaceAll("%C%", step);
+		static BMessageFormat fadeFormat(B_TRANSLATE("{0, plural,"
+			"=1{Entries fade every %A% minutes.\n"
+				"The maximal tint is reached after\n"
+				"%B% minutes in 1 step}"
+			"other{Entries fade every %A% minutes.\n"
+				"The maximal tint is reached after\n"
+				"%B% minutes in # steps}}"));
+		fadeFormat.Format(fadeText, newFadeStep);
+
+		fadeText.ReplaceAll("%A%", min);
+		fadeText.ReplaceAll("%B%", maxtint);
 	}
-	fFadeText->SetText(string.String());
+	fFadeText->SetText(fadeText.String());
 }
 
 
