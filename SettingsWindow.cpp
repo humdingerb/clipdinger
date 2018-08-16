@@ -10,9 +10,9 @@
 #include <Catalog.h>
 #include <ControlLook.h>
 #include <LayoutBuilder.h>
-#include <MessageFormat.h>
 #include <SeparatorView.h>
 #include <SpaceLayoutItem.h>
+#include <StringFormat.h>
 
 #include "App.h"
 #include "Constants.h"
@@ -340,7 +340,7 @@ SettingsWindow::_UpdateFadeText()
 		snprintf(maxtint, sizeof(maxtint), "%" B_PRId32,
 			newFadeStep * newFadeDelay * kMinuteUnits);
 
-		static BMessageFormat fadeFormat(B_TRANSLATE("{0, plural,"
+		static BStringFormat fadeFormat(B_TRANSLATE("{0, plural,"
 			"=1{Entries fade every %A% minutes.\n"
 				"The maximal tint is reached after\n"
 				"%B% minutes (in 1 step)}"
