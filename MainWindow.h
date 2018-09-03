@@ -64,6 +64,7 @@ private:
 	void			_MakeItemUnique(BString clip);
 	void			_MoveClipToTop();
 	void			_CropHistory(int32 limit);
+	bool			_CheckNetworkConnection();
 
 	BString			_GetClipboard();
 	void			_PutClipboard(BString text);

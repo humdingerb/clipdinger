@@ -13,6 +13,8 @@
 #include <File.h>
 #include <FindDirectory.h>
 #include <LayoutBuilder.h>
+#include <NetworkInterface.h>
+#include <NetworkRoster.h>
 #include <Path.h>
 #include <Roster.h>
 #include <Screen.h>
@@ -340,23 +342,16 @@ MainWindow::MessageReceived(BMessage* message)
 
 			PostMessage(B_CLIPBOARD_CHANGED);
 
+			if (_CheckNetworkConnection() == false) {
+				_PutClipboard(B_TRANSLATE("Online paste service not available"));
+				break;
+			}
+
 			BString command(
-				"stat=$(curl -m 2 -s -I http://google.com | grep HTTP/1 | awk {'print $2'}) ; "
-				"if [ -z  \"$stat\" ] ; then "	// network up in general?
-					"URL='%ERROR%' ; "
-				"else "
-// 					"stat=$(echo -e \"GET http://ix.io HTTP/1.0\\n\\n\" | nc xi.io 80 | grep HTTP/1 | awk {'print $2'}) ; "
-//					"if [ -z \"$stat\" ] || [ $stat -ne 200 ] ; then "
-//						"URL='%ERROR% '$stat ; "
-//					"else "
-						"URL=$(clipboard -p | curl -F 'f:1=<-' http://ix.io) ; "
-//					"fi ; "
-				"fi ; "
+				"URL=$(clipboard -p | curl -F 'f:1=<-' http://ix.io) ; "
 				"echo $URL ; "
 				"clipboard -c \"$URL\" ; "
 				"exit");
-			command.ReplaceAll("%ERROR%",
-				B_TRANSLATE("Online paste service not available"));
 			system(command.String());
 			break;
 		}
@@ -838,6 +833,24 @@ MainWindow::_CropHistory(int32 limit)
 			fHistory->RemoveItems(limit, count);
 		}
 	}
+}
+
+
+bool
+MainWindow::_CheckNetworkConnection()
+{
+	BNetworkRoster& roster = BNetworkRoster::Default();
+	BNetworkInterface interface;
+	uint32 cookie = 0;
+	while (roster.GetNextInterface(&cookie, interface) == B_OK) {
+		uint32 flags = interface.Flags();
+		if ((flags & IFF_LOOPBACK) == 0
+			&& (flags & (IFF_UP | IFF_LINK)) == (IFF_UP | IFF_LINK)) {
+			return true;
+		}
+	}
+	// No network connection detected, cannot continue
+	return false;
 }
 
 
