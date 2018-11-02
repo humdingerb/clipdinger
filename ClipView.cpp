@@ -10,6 +10,7 @@
 #include <ControlLook.h>
 #include <DateFormat.h>
 #include <TimeFormat.h>
+#include <ToolTip.h>
 
 #include "App.h"
 #include "ClipItem.h"
@@ -216,14 +217,25 @@ ClipView::GetToolTipAt(BPoint point, BToolTip** _tip)
 		B_SHORT_TIME_FORMAT) != B_OK)
 		return false;
 
-	BString toolTip(B_TRANSLATE_COMMENT("Added:\n%time%\n%date%",
+	BString clipString(item->GetClip());
+	// Add ellipsis if text length is > 300 chars
+	if (clipString.Length() > 300) {
+		clipString.Truncate(300);
+		clipString << B_UTF8_ELLIPSIS;
+	}
+
+	BString toolTip(B_TRANSLATE_COMMENT("Added: %time% %date%\n%clip%",
 		"Tooltip, don't change the variables %time% and %date%."));
 	toolTip.ReplaceAll("%time%", timeString.String());
 	toolTip.ReplaceAll("%date%", dateString.String());
+	toolTip.ReplaceAll("%clip%", clipString.String());
 
 	SetToolTip(toolTip.String());
 	*_tip = ToolTip();
 
+	ToolTip()->View()->SetExplicitPreferredSize(BSize(300, B_SIZE_UNSET));
+	if (BTextView* textView = dynamic_cast<BTextView*>(ToolTip()->View()))
+		textView->SetWordWrap(true);
 	return true;
 }
 
