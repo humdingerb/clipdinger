@@ -481,6 +481,17 @@ MainWindow::MessageReceived(BMessage* message)
 			}
 			break;
 		}
+		case FILTER:
+		{
+			printf("FILTER\n");
+			ClipItem* sItem = NULL;
+			sItem = dynamic_cast<ClipItem *>(fHistory->ItemAt(0));
+			fFilter->AddItem(sItem);
+
+			fHistoryScrollView->Hide();
+			fFilterScrollView->Show();
+			break;
+		}
 		default:
 		{
 			BWindow::MessageReceived(message);
@@ -554,18 +565,27 @@ MainWindow::_BuildLayout()
 	menuBar->AddItem(menu);
 
 	// The lists
+	fFilter = new ClipView("filter");
+	fFilter->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
+
 	fHistory = new ClipView("history");
 	fHistory->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
 	fFavorites = new FavView("favorites");
 	fFavorites->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
+	fFilterScrollView = new BScrollView("filterscroll", fFilter,
+		B_WILL_DRAW, false, true);
 	fHistoryScrollView = new BScrollView("historyscroll", fHistory,
 		B_WILL_DRAW, false, true);
 	fFavoritesScrollView = new BScrollView("favoritesscroll", fFavorites,
 		B_WILL_DRAW, false, true);
 
-	BStringView* favoritesHeader = new BStringView("title",
+	fFilterControl = new BTextControl("filter", B_TRANSLATE("Filter:"), "",
+		new BMessage(FILTER));
+	fFilterControl->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
+
+	BStringView* favoritesHeader = new BStringView("favorites",
 		B_TRANSLATE("Favorites"));
 	favoritesHeader->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 	BFont font(be_bold_font);
@@ -593,7 +613,9 @@ MainWindow::_BuildLayout()
 		.GetSplitView(&fMainSplitView)
 			.AddGroup(B_VERTICAL)
 				.Add(fHistoryScrollView)
+				.Add(fFilterScrollView)
 				.Add(fPauseCheckBox)
+				.Add(fFilterControl)
 			.End()
 			.AddGroup(B_VERTICAL, B_USE_SMALL_SPACING)
 				.Add(favoritesHeader)
@@ -607,6 +629,8 @@ MainWindow::_BuildLayout()
 			.End()
 		.SetInsets(B_USE_SMALL_INSETS)
 		.End();
+
+	fFilterScrollView->Hide();
 
 	fHistory->SetInvocationMessage(new BMessage(INSERT_HISTORY));
 	fHistory->SetViewColor(B_TRANSPARENT_COLOR);
