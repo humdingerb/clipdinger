@@ -23,6 +23,7 @@
 #include <SplitView.h>
 #include <String.h>
 #include <StringView.h>
+#include <TextControl.h>
 #include <Window.h>
 
 #include <stdio.h>
@@ -47,6 +48,7 @@ public:
 	bool			GetHistoryActiveFlag();
 	void			SetHistoryActiveFlag(bool flag);
 
+	ClipView*		fFilter;
 	ClipView*		fHistory;
 	FavView*		fFavorites;
 
@@ -80,6 +82,9 @@ private:
 	BSplitView*		fMainSplitView;
 	bool			fHistoryActiveFlag;	// true if fHistory view is the active one
 
+	BTextControl*	fFilterControl;
+
+	BScrollView*	fFilterScrollView;
 	BScrollView*	fHistoryScrollView;
 	BScrollView*	fFavoritesScrollView;
 
