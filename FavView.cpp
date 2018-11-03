@@ -9,6 +9,7 @@
 #include <Bitmap.h>
 #include <Catalog.h>
 #include <ControlLook.h>
+#include <ToolTip.h>
 
 #include "App.h"
 #include "FavItem.h"
@@ -260,6 +261,30 @@ FavView::MouseMoved(BPoint where, uint32 transit, const BMessage* dragMessage)
 		}
 	}
 	BListView::MouseMoved(where, transit, dragMessage);
+}
+
+
+bool
+FavView::GetToolTipAt(BPoint point, BToolTip** _tip)
+{
+	FavItem* item = static_cast<FavItem*>(this->ItemAt(this->IndexOf(point)));
+	if (item == NULL)
+		return false;
+
+	BString favString(item->GetClip());
+	// Add ellipsis if text length is > 300 chars
+	if (favString.Length() > 300) {
+		favString.Truncate(300);
+		favString << B_UTF8_ELLIPSIS;
+	}
+
+	SetToolTip(favString.String());
+	*_tip = ToolTip();
+
+	ToolTip()->View()->SetExplicitPreferredSize(BSize(400, B_SIZE_UNSET));
+	if (BTextView* textView = dynamic_cast<BTextView*>(ToolTip()->View()))
+		textView->SetWordWrap(true);
+	return true;
 }
 
 
