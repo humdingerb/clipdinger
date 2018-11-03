@@ -35,6 +35,9 @@ public:
 
 	void			RenumberFKeys();
 
+protected:
+	virtual	bool	GetToolTipAt(BPoint point, BToolTip** _tip);
+
 private:
 	void			_ShowPopUpMenu(BPoint screen);
 

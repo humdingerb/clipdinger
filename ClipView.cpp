@@ -224,7 +224,7 @@ ClipView::GetToolTipAt(BPoint point, BToolTip** _tip)
 		clipString << B_UTF8_ELLIPSIS;
 	}
 
-	BString toolTip(B_TRANSLATE_COMMENT("Added: %time% %date%\n%clip%",
+	BString toolTip(B_TRANSLATE_COMMENT("Added: %time% - %date%\n%clip%",
 		"Tooltip, don't change the variables %time% and %date%."));
 	toolTip.ReplaceAll("%time%", timeString.String());
 	toolTip.ReplaceAll("%date%", dateString.String());
@@ -233,7 +233,7 @@ ClipView::GetToolTipAt(BPoint point, BToolTip** _tip)
 	SetToolTip(toolTip.String());
 	*_tip = ToolTip();
 
-	ToolTip()->View()->SetExplicitPreferredSize(BSize(300, B_SIZE_UNSET));
+	ToolTip()->View()->SetExplicitPreferredSize(BSize(400, B_SIZE_UNSET));
 	if (BTextView* textView = dynamic_cast<BTextView*>(ToolTip()->View()))
 		textView->SetWordWrap(true);
 	return true;
