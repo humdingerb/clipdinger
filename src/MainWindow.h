@@ -55,6 +55,8 @@ public:
 private:
 	void			_BuildLayout();
 	void			_SetSplitview();
+	void			_ResetFilter();
+	void			_ToggleFilterHistory();
 
 	void			_LoadHistory();
 	void			_SaveHistory();

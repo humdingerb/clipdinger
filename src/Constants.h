@@ -48,6 +48,7 @@ static const int32 kMinuteUnits = 10; // minutes per unit
 #define	FAV_UP				'favu'
 #define FAV_DOWN			'favd'
 #define FAV_SELECTION		'favs'
+#define INSERT_FILTER		'ifil'
 #define INSERT_HISTORY		'ihis'
 #define INSERT_FAVORITE		'ifav'
 #define ADJUSTCOLORS		'acol'

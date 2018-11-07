@@ -148,7 +148,10 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case ESCAPE:
 		{
-			Minimize(true);
+			if (fHistoryScrollView->IsHidden())
+				_ResetFilter();
+			else
+				Minimize(true);
 			break;
 		}
 		case PAUSE:
@@ -383,6 +386,27 @@ MainWindow::MessageReceived(BMessage* message)
 			system(command.String());
 			break;
 		}
+		case INSERT_FILTER:
+		{
+			int32 itemindex;
+			message->FindInt32("index", &itemindex);
+			if ((fFilter->IsEmpty()) || (itemindex < 0))
+				break;
+
+			Minimize(true);
+			be_clipboard->StopWatching(this);
+
+			ClipItem* item = dynamic_cast<ClipItem *> (fFilter->ItemAt(itemindex));
+			BString text(item->GetClip());
+			_PutClipboard(text);
+			if (fAutoPaste)
+				_AutoPaste();
+
+			be_clipboard->StartWatching(this);
+
+			_ResetFilter();
+			break;
+		}
 		case INSERT_HISTORY:
 		{
 			int32 itemindex;
@@ -483,13 +507,27 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case FILTER:
 		{
-			printf("FILTER\n");
-			ClipItem* sItem = NULL;
-			sItem = dynamic_cast<ClipItem *>(fHistory->ItemAt(0));
-			fFilter->AddItem(sItem);
-
-			fHistoryScrollView->Hide();
-			fFilterScrollView->Show();
+			fFilter->MakeEmpty();
+			BString filter = fFilterControl->Text();
+			if ((filter == "") && (fHistoryScrollView->IsHidden())) {
+				_ToggleFilterHistory();
+				break;
+			}
+			for (int32 i = 0; i < fHistory->CountItems(); i++)
+			{
+				ClipItem* historyItem = NULL;
+				historyItem = dynamic_cast<ClipItem *>(fHistory->ItemAt(i));
+				BString clip(historyItem->GetClip());
+				if (strcasestr(clip, filter.String()) != NULL) {
+					BString title(historyItem->GetTitle());
+					BString path(historyItem->GetOrigin());
+					bigtime_t added = historyItem->GetTimeAdded();
+					bigtime_t since = historyItem->GetTimeSince();
+					fFilter->AddItem(new ClipItem(clip, title, path, added, since), 0);
+				}
+			}
+			if (!fHistoryScrollView->IsHidden())
+				_ToggleFilterHistory();
 			break;
 		}
 		default:
@@ -502,6 +540,29 @@ MainWindow::MessageReceived(BMessage* message)
 
 
 // #pragma mark - Layout
+
+
+void
+MainWindow::_ResetFilter()
+{
+	fFilter->MakeEmpty();
+	fFilterControl->SetText("");
+	_ToggleFilterHistory();
+}
+
+
+void
+MainWindow::_ToggleFilterHistory()
+{
+	bool invisible = fFilterScrollView->IsHidden();
+	if (invisible == true) {
+		fHistoryScrollView->Hide();
+		fFilterScrollView->Show();
+	} else {
+		fHistoryScrollView->Show();
+		fFilterScrollView->Hide();
+	}
+}
 
 
 void
@@ -632,6 +693,8 @@ MainWindow::_BuildLayout()
 
 	fFilterScrollView->Hide();
 
+	fFilter->SetInvocationMessage(new BMessage(INSERT_FILTER));
+	fFilter->SetViewColor(B_TRANSPARENT_COLOR);
 	fHistory->SetInvocationMessage(new BMessage(INSERT_HISTORY));
 	fHistory->SetViewColor(B_TRANSPARENT_COLOR);
 	fFavorites->SetInvocationMessage(new BMessage(INSERT_FAVORITE));
