@@ -65,18 +65,21 @@ KeyCatcher::KeyDown(const char* bytes, int32 numBytes)
 			case B_BACKSPACE:
 			{
 				BMessenger messenger(Looper());
-				BMessage message(FILTERINPUT);
+				BMessage message(FILTER_INPUT);
 				message.AddString("input", "BACKSPACE");
 				messenger.SendMessage(&message);
 				break;
 			}
 			default:
-			{
-				BString input(bytes);
-				BMessenger messenger(Looper());
-				BMessage message(FILTERINPUT);
-				message.AddString("input", input.String());
-				messenger.SendMessage(&message);
+			{	// Send all ASCII and UTF characters to MainWindow
+				if ((bytes[0] >= 'A' && bytes[0] <= 'Z') || (bytes[0] >= 'a' && bytes[0] <= 'z')
+						|| ((unsigned char)bytes[0] >= 0xC0)) {
+					BString input(bytes);
+					BMessenger messenger(Looper());
+					BMessage message(FILTER_INPUT);
+					message.AddString("input", input.String());
+					messenger.SendMessage(&message);
+				}
 				break;
 			}
 		}
