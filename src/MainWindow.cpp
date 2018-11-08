@@ -505,7 +505,12 @@ MainWindow::MessageReceived(BMessage* message)
 			}
 			break;
 		}
-		case FILTERINPUT:
+		case FILTER_CLEAR:
+		{
+			_ResetFilter();
+			break;
+		}
+		case FILTER_INPUT:
 		{
 			bool focus = fFilterControl->TextView()->IsFocus();
 
@@ -526,6 +531,8 @@ MainWindow::MessageReceived(BMessage* message)
 			fFilter->MakeEmpty();
 			BString filter = fFilterControl->Text();
 			if ((filter == "") && (fHistoryScrollView->IsHidden())) {
+				fHistory->Select(0);
+				fHistory->MakeFocus(true);
 				_ToggleFilterHistory();
 				break;
 			}
@@ -542,6 +549,10 @@ MainWindow::MessageReceived(BMessage* message)
 					fFilter->AddItem(new ClipItem(clip, title, path, added, since), 0);
 				}
 			}
+
+			fFilter->Select(0);
+			fFilter->MakeFocus(true);
+
 			if (!fHistoryScrollView->IsHidden())
 				_ToggleFilterHistory();
 			break;
@@ -577,6 +588,8 @@ MainWindow::_ToggleFilterHistory()
 	} else {
 		fHistoryScrollView->Show();
 		fFilterScrollView->Hide();
+		fHistory->Select(0);
+		fHistory->MakeFocus(true);
 	}
 }
 
@@ -683,6 +696,10 @@ MainWindow::_BuildLayout()
 		new BMessage(FAV_DOWN));
 	fButtonDown->SetEnabled(false);
 
+	BButton* buttonClear = new BButton("clear", B_TRANSLATE("Clear"),
+		new BMessage(FILTER_CLEAR));
+	buttonClear->SetEnabled(true);
+
 	// do the layouting
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(menuBar)
@@ -692,7 +709,10 @@ MainWindow::_BuildLayout()
 				.Add(fHistoryScrollView)
 				.Add(fFilterScrollView)
 				.Add(fPauseCheckBox)
-				.Add(fFilterControl)
+				.AddGroup(B_HORIZONTAL)
+					.Add(fFilterControl)
+					.Add(buttonClear)
+				.End()
 			.End()
 			.AddGroup(B_VERTICAL, B_USE_SMALL_SPACING)
 				.Add(favoritesHeader)
