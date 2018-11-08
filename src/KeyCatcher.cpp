@@ -62,6 +62,23 @@ KeyCatcher::KeyDown(const char* bytes, int32 numBytes)
 				messenger.SendMessage(&message);
 				break;
 			}
+			case B_BACKSPACE:
+			{
+				BMessenger messenger(Looper());
+				BMessage message(FILTERINPUT);
+				message.AddString("input", "BACKSPACE");
+				messenger.SendMessage(&message);
+				break;
+			}
+			default:
+			{
+				BString input(bytes);
+				BMessenger messenger(Looper());
+				BMessage message(FILTERINPUT);
+				message.AddString("input", input.String());
+				messenger.SendMessage(&message);
+				break;
+			}
 		}
 	}
 }
