@@ -477,6 +477,22 @@ MainWindow::MessageReceived(BMessage* message)
 			}
 			break;
 		}
+		case FILTERINPUT:
+		{
+			bool focus = fFilterControl->TextView()->IsFocus();
+
+			BString filter = fFilterControl->Text();
+			BString input;
+			if ((message->FindString("input", &input) == B_OK) && (!focus)) {
+				if (input == "BACKSPACE")
+					filter.Truncate(filter.CountChars() - 1);
+				else
+					filter.Append(input.String());
+
+				fFilterControl->SetText(filter);
+			}
+			// Intentional fall-through
+		}
 		case FILTER:
 		{
 			fFilter->MakeEmpty();
@@ -615,7 +631,7 @@ MainWindow::_BuildLayout()
 		B_WILL_DRAW, false, true);
 
 	fFilterControl = new BTextControl("filter", B_TRANSLATE("Filter:"), "",
-		new BMessage(FILTER));
+		NULL);
 	fFilterControl->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
 	BStringView* favoritesHeader = new BStringView("favorites",

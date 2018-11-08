@@ -56,6 +56,7 @@ static const int32 kMinuteUnits = 10; // minutes per unit
 #define CLIPMONITOR			'cmon'
 #define SETTINGS			'sett'
 #define FILTER				'filt'
+#define FILTERINPUT			'fiin'
 
 #define	AUTOSTART			'aust'
 #define	AUTOPASTE			'auto'
