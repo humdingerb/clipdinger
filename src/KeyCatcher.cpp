@@ -44,6 +44,8 @@ KeyCatcher::KeyDown(const char* bytes, int32 numBytes)
 		Window()->Activate(true);
 	}
 	else if (Window()->IsActive()) {
+		if ((modifiers() & B_COMMAND_KEY) == B_COMMAND_KEY) // don't catch shortcuts
+			return;
 		switch (bytes[0]) {
 			case B_ESCAPE:
 			{
