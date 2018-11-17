@@ -65,7 +65,7 @@ MainWindow::MainWindow(BRect frame)
 	}
 
 	if (!fade) {
-		fPauseCheckBox->Hide();
+		fPauseLayout->SetVisible(false);
 		InvalidateLayout();
 	}
 	fLaunchTime = real_time_clock();
@@ -148,7 +148,7 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case ESCAPE:
 		{
-			if (fHistoryScrollView->IsHidden())
+			if (fFilterLayout->IsVisible())
 				_ResetFilter();
 			else
 				Minimize(true);
@@ -493,11 +493,11 @@ MainWindow::MessageReceived(BMessage* message)
 				fAutoPaste = newValue;
 
 			if (message->FindInt32("fade", &newValue) == B_OK) {
-				bool invisible = fPauseCheckBox->IsHidden();
-				if ((invisible == true) && (newValue == 1))
-					fPauseCheckBox->Show();
-				else if ((invisible == false) && (newValue == 0))
-					fPauseCheckBox->Hide();
+				bool visible = fPauseLayout->IsVisible();
+				if ((visible == false) && (newValue == 1))
+					fPauseLayout->SetVisible(true);
+				else if ((visible == true) && (newValue == 0))
+					fPauseLayout->SetVisible(false);
 				else
 					break;
 
@@ -517,9 +517,11 @@ MainWindow::MessageReceived(BMessage* message)
 			BString filter = fFilterControl->Text();
 			BString input;
 			if ((message->FindString("input", &input) == B_OK) && (!focus)) {
-				if (input == "BACKSPACE")
+				if (input == "BACKSPACE") {
+					if (filter.IsEmpty())
+						break;
 					filter.Truncate(filter.CountChars() - 1);
-				else
+				} else
 					filter.Append(input.String());
 
 				fFilterControl->SetText(filter);
@@ -530,7 +532,7 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			fFilter->MakeEmpty();
 			BString filter = fFilterControl->Text();
-			if ((filter == "") && (fHistoryScrollView->IsHidden())) {
+			if ((filter == "") && (!fHistoryLayout->IsVisible())) {
 				fHistory->Select(0);
 				fHistory->MakeFocus(true);
 				_ToggleFilterHistory();
@@ -553,7 +555,7 @@ MainWindow::MessageReceived(BMessage* message)
 			fFilter->Select(0);
 			fFilter->MakeFocus(true);
 
-			if (!fHistoryScrollView->IsHidden())
+			if (fHistoryLayout->IsVisible())
 				_ToggleFilterHistory();
 			break;
 		}
@@ -581,13 +583,13 @@ MainWindow::_ResetFilter()
 void
 MainWindow::_ToggleFilterHistory()
 {
-	bool invisible = fFilterScrollView->IsHidden();
-	if (invisible == true) {
-		fHistoryScrollView->Hide();
-		fFilterScrollView->Show();
+	bool visible = fHistoryLayout->IsVisible();
+	if (visible) {
+		fHistoryLayout->SetVisible(false);
+		fFilterLayout->SetVisible(true);
 	} else {
-		fHistoryScrollView->Show();
-		fFilterScrollView->Hide();
+		fHistoryLayout->SetVisible(true);
+		fFilterLayout->SetVisible(false);
 		fHistory->Select(0);
 		fHistory->MakeFocus(true);
 	}
@@ -655,23 +657,23 @@ MainWindow::_BuildLayout()
 	menuBar->AddItem(menu);
 
 	// The lists
-	fFilter = new ClipView("filter");
+	fFilter = new ClipView("filterview");
 	fFilter->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
-	fHistory = new ClipView("history");
+	fHistory = new ClipView("historyview");
 	fHistory->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
-	fFavorites = new FavView("favorites");
+	fFavorites = new FavView("favoritesview");
 	fFavorites->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
-	fFilterScrollView = new BScrollView("filterscroll", fFilter,
+	BScrollView* filterScrollView = new BScrollView("filterscroll", fFilter,
 		B_WILL_DRAW, false, true);
-	fHistoryScrollView = new BScrollView("historyscroll", fHistory,
+	BScrollView* historyScrollView = new BScrollView("historyscroll", fHistory,
 		B_WILL_DRAW, false, true);
-	fFavoritesScrollView = new BScrollView("favoritesscroll", fFavorites,
+	BScrollView* favoritesScrollView = new BScrollView("favoritesscroll", fFavorites,
 		B_WILL_DRAW, false, true);
 
-	fFilterControl = new BTextControl("filter", B_TRANSLATE("Filter:"), "",
+	fFilterControl = new BTextControl("filterbox", B_TRANSLATE("Filter:"), "",
 		NULL);
 	fFilterControl->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
@@ -706,28 +708,40 @@ MainWindow::_BuildLayout()
 		.AddSplit(B_HORIZONTAL, B_USE_SMALL_SPACING)
 		.GetSplitView(&fMainSplitView)
 			.AddGroup(B_VERTICAL)
-				.Add(fHistoryScrollView)
-				.Add(fFilterScrollView)
-				.Add(fPauseCheckBox)
+				.AddGroup(B_HORIZONTAL)
+					.GetLayout(&fHistoryLayout)
+					.Add(historyScrollView)
+					.End()
+				.AddGroup(B_HORIZONTAL)
+					.GetLayout(&fFilterLayout)
+					.Add(filterScrollView)
+					.End()
+				.AddGroup(B_HORIZONTAL)
+					.GetLayout(&fPauseLayout)
+					.Add(fPauseCheckBox)
+					.End()
 				.AddGroup(B_HORIZONTAL)
 					.Add(fFilterControl)
 					.Add(buttonClear)
+					.End()
 				.End()
-			.End()
 			.AddGroup(B_VERTICAL, B_USE_SMALL_SPACING)
 				.Add(favoritesHeader)
-				.Add(fFavoritesScrollView)
+				.Add(favoritesScrollView)
 				.AddGroup(B_HORIZONTAL, B_USE_SMALL_SPACING)
 					.AddGlue()
 					.Add(fButtonUp)
 					.Add(fButtonDown)
 					.AddGlue()
+					.End()
 				.End()
-			.End()
-		.SetInsets(B_USE_SMALL_INSETS)
+			.SetInsets(B_USE_SMALL_INSETS)
 		.End();
 
-	fFilterScrollView->Hide();
+	fHistoryLayout->SetVisible(true);
+	fFilterLayout->SetVisible(false);
+	fPauseLayout->SetVisible(false);
+	InvalidateLayout();
 
 	fFilter->SetInvocationMessage(new BMessage(INSERT_FILTER));
 	fFilter->SetViewColor(B_TRANSPARENT_COLOR);

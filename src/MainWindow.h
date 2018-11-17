@@ -86,9 +86,9 @@ private:
 
 	BTextControl*	fFilterControl;
 
-	BScrollView*	fFilterScrollView;
-	BScrollView*	fHistoryScrollView;
-	BScrollView*	fFavoritesScrollView;
+	BGroupLayout*	fFilterLayout;
+	BGroupLayout*	fHistoryLayout;
+	BGroupLayout*	fPauseLayout;
 
 	BCheckBox*		fPauseCheckBox;
 	BButton*		fButtonUp;
