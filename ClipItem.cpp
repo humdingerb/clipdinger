@@ -90,10 +90,10 @@ ClipItem::DrawItem(BView* view, BRect rect, bool complete)
 		view->SetHighColor(ui_color(B_LIST_ITEM_TEXT_COLOR));
 
 	if (fUpdateNeeded) {
-		BString string(GetTitle());
-		view->TruncateString(&string, B_TRUNCATE_END, Width()
+		BString title(GetTitle());
+		view->TruncateString(&title, B_TRUNCATE_END, Width()
 			- kIconSize - spacing * 4);
-		fDisplayTitle = string;
+		fDisplayTitle = title;
 		fUpdateNeeded = false;
 	}
 
@@ -123,10 +123,10 @@ ClipItem::Update(BView* view, const BFont* finfo)
 	BListItem::Update(view, finfo);
 
 	static const float spacing = be_control_look->DefaultLabelSpacing();
-	BString string(GetTitle());
-	view->TruncateString(&string, B_TRUNCATE_END, Width() - kIconSize
+	BString title(GetTitle());
+	view->TruncateString(&title, B_TRUNCATE_END, Width() - kIconSize
 			- spacing * 4);
-	fDisplayTitle = string;
+	fDisplayTitle = title;
 
 	font_height	fheight;
 	finfo->GetHeight(&fheight);

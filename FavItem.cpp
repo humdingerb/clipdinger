@@ -64,9 +64,9 @@ FavItem::DrawItem(BView* view, BRect rect, bool complete)
 	if (fFavNumber < 9)
 		Fn.Append("0");
 
-	char string[4];
-	snprintf(string, sizeof(string), "%" B_PRId32, fFavNumber + 1);
-	Fn.Append(string);
+	char Fnumber[4];
+	snprintf(Fnumber, sizeof(Fnumber), "%" B_PRId32, fFavNumber + 1);
+	Fn.Append(Fnumber);
 	float Fnwidth = font.StringWidth(Fn.String());
 
 	if (!IsSelected()
@@ -87,9 +87,9 @@ FavItem::DrawItem(BView* view, BRect rect, bool complete)
 	}
 
 	if (fUpdateNeeded) {
-		BString string(GetTitle());
-		view->TruncateString(&string, B_TRUNCATE_END, Width() - spacing * 7);
-		fDisplayTitle = string;
+		BString title(GetTitle());
+		view->TruncateString(&title, B_TRUNCATE_END, Width() - spacing * 7);
+		fDisplayTitle = title;
 		fUpdateNeeded = false;
 	}
 
@@ -116,9 +116,9 @@ FavItem::Update(BView* view, const BFont* finfo)
 	BListItem::Update(view, finfo);
 
 	static const float spacing = be_control_look->DefaultLabelSpacing();
-	BString string(GetTitle());
-	view->TruncateString(&string, B_TRUNCATE_END, Width() - spacing * 7);
-	fDisplayTitle = string;
+	BString title(GetTitle());
+	view->TruncateString(&title, B_TRUNCATE_END, Width() - spacing * 7);
+	fDisplayTitle = title;
 	font_height	fheight;
 	finfo->GetHeight(&fheight);
 
