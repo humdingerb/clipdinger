@@ -265,6 +265,33 @@ MainWindow::MessageReceived(BMessage* message)
 				if (title == contents)
 					title = "";
 
+				FavItem* favItem = NULL;
+				bool isDuplicate = false;
+				for (int32 i = 0; i < index; ++i) {
+					favItem = static_cast<FavItem*>(fFavorites->ItemAt(i));
+					if (favItem->GetClip() == contents) {
+						isDuplicate = true;
+						break;
+					}
+				}
+
+				if (isDuplicate) {
+					BString text(B_TRANSLATE(
+						"This clip is already a favorite"));
+					BString favTitle(favItem->GetTitle());
+					if (favTitle != contents) {
+						text += " ('";
+						text += favTitle;
+						text += "')";
+					}
+					text += '.';
+
+					BAlert* alert = new BAlert("error", text,
+						B_TRANSLATE("OK"));
+					alert->Go();
+					break;
+				}
+
 				fFavorites->AddItem(new FavItem(contents, title, index + 1));
 			}
 			// move Fav to where it was dropped
