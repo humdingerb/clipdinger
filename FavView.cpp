@@ -112,9 +112,14 @@ FavView::MakeFocus(bool focused)
 {
 	BListView::MakeFocus(focused);
 
-	// only signal FavView is focused when gaining focus
-	if (focused)
+	if (focused) {
+		// only signal FavView is focused when gaining focus
 		my_app->fMainWindow->SetHistoryActiveFlag(!focused);
+
+		// When gaining focus and no items selected, select the first item.
+		if (CurrentSelection() < 0)
+			Select(0);
+	}
 
 }
 
