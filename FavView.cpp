@@ -115,6 +115,11 @@ FavView::MakeFocus(bool focused)
 	// only signal FavView is focused when gaining focus
 	if (focused)
 		my_app->fMainWindow->SetHistoryActiveFlag(!focused);
+	
+	if (focused){
+		if (BListView::CurrentSelection() < 0)
+			BListView::Select(0);
+	}
 
 }
 
