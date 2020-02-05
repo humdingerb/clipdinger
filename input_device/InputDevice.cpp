@@ -32,7 +32,7 @@ ClipdingerInputDevice::ClipdingerInputDevice()
 	BInputServerDevice()
 {
 	input_device_ref clipdingerDevice = { 
-		"Clipdinger input device", B_KEYBOARD_DEVICE, NULL};
+		"Clipdinger input device", B_UNDEFINED_DEVICE, NULL};
 	input_device_ref *clipdingerDeviceList[2] = {
 		&clipdingerDevice, NULL};
 
