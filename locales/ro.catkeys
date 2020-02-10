@@ -1,52 +1,52 @@
-1	English	application/x-vnd.humdinger-clipdinger	158967473
-Clipboard monitor	ReplWindow		Monitor clipboard
+1	Romanian	application/x-vnd.humdinger-clipdinger	158967473
+Thank you	Application		Mulțumesc
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tscris de Humdinger\n\tCopyright %years%\n\nClipdinger furnizează un istoric al decupărilor din clipboardul sistemului și vă permite să creați favorite.\n\nAnunțați dacă găsiți orice defecțiuni sau dacă vă lipsesc unele funcționalități. Informațiile de contact se află în ReadMe, vedeți elementul de meniu „Ajutor”.
+-= No text in clipboard =-	ClipboardMonitor		-= Niciun text în clipboard =-
+Thank you	ClipboardMonitor		Mulțumesc
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tscris de Humdinger\n\tCopyright %years%\n\nClipdinger furnizează un istoric al decupărilor din clipboardul sistemului și vă permite să creați favorite.\n\nAcesta este monitorul de clipboard care poate fi replicat pe Desktop pentru a arăta mereu conținutul actual.
+Clipboard monitor	ClipboardMonitor		Monitor clipboard
+Add to favorites	ClipList		Adaugă la favorite
+Edit title	ClipList		Editează titlul
+Remove	ClipList		Elimină
+Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Adăugat:\n%time%\n%date%
+Paste online	ClipList		Lipire online
+Cancel	EditWindow		Anulează
+Edit title	EditWindow		Editare titlu
+Leave title empty to return to original title.	EditWindow		Lăsați titlul liber pentru a reveni la titlul original.
+OK	EditWindow		OK
 Title:	EditWindow		Titlu:
 About Clipdinger	MainWindow		Despre Clipdinger
-Add to favorites	ClipList		Adaugă la favorite
-Favorites	MainWindow		Favorite
-Thank you	ClipboardMonitor		Mulțumesc
-Lists	MainWindow		Liste
-entries in the clipboard history	SettingsWindow		intrări în istoricul de clipboard
-Edit title	EditWindow		Editare titlu
-OK	EditWindow		OK
-Settings…	MainWindow		Configurări…
-Remove	MainWindow		Eliminare
-{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Intrările dispar la fiecare %A% minute.\nTenta maximă este atinsă după\n%B% minute (în 1 pas)}other{Intrările dispar la fiecare %A% minute.\nTenta maximă este atinsă după\n%B% minute (în # pași)}}
-Move down	MainWindow		Mută jos
-OK	SettingsWindow		OK
-Paste online	ClipList		Lipire online
 Add to favorites	MainWindow		Adaugă la favorite
-Remove	ClipList		Elimină
-Entries don't fade over time.	SettingsWindow		Intrările nu dispar în timp.
-App	MainWindow		App
-Minimize	MainWindow		Minimizare
-Quit	MainWindow		Ieșire
-Clipboard monitor	ClipboardMonitor		Monitor clipboard
-Clear favorites	MainWindow		Elimină favorite
-Edit title	ClipList		Editează titlul
-Pause fading	MainWindow		Pauzare decolorare
-Clipboard monitor…	MainWindow		Monitor clipboard…
-Cancel	SettingsWindow		Anulează
-Clipdinger	System name		Clipdinger
-Online paste service not available	MainWindow		Serviciul de lipire online nu este disponibil
-Fade history entries over time	SettingsWindow		Șterge intrările din istoric în timp
-Leave title empty to return to original title.	EditWindow		Lăsați titlul liber pentru a reveni la titlul original.
-Max. tint level	SettingsWindow		Nivel maxim tentă
-Auto-start Clipdinger	SettingsWindow		Pornire automată Clipdinger
-Paste online	MainWindow		Lipire online
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tscris de Humdinger\n\tCopyright %years%\n\nClipdinger furnizează un istoric al decupărilor din clipboardul sistemului și vă permite să creați favorite.\n\nAnunțați dacă găsiți orice defecțiuni sau dacă vă lipsesc unele funcționalități. Informațiile de contact se află în ReadMe, vedeți elementul de meniu „Ajutor”.
-Steps	SettingsWindow		Pași
-Auto-paste	SettingsWindow		Lipire automată
-Help	MainWindow		Ajutor
--= No text in clipboard =-	ClipboardMonitor		-= Niciun text în clipboard =-
-Thank you	Application		Mulțumesc
-Delay	SettingsWindow		Amânare
-Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Redimensionați fereastra după cum este necesar și trageți mânerul replicantului pe Desktop.\nÎncercați să aplicați o culoare ex. din Icon-O-Matic.
+App	MainWindow		Aplicație
 Clear clip history	MainWindow		Eliberează istoric decupări
-Clip	MainWindow		Clip
-Clipdinger settings	SettingsWindow		Configurări Clipdinger
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tscris de Humdinger\n\tCopyright %years%\n\nClipdinger furnizează un istoric al decupărilor din clipboardul sistemului și vă permite să creați favorite.\n\nAcesta este monitorul de clipboard care poate fi replicat pe Desktop pentru a arăta mereu conținutul actual.
-Cancel	EditWindow		Anulează
-Move up	MainWindow		Mută sus
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Adăugat:\n%time%\n%date%
+Clear favorites	MainWindow		Elimină favorite
+Clip	MainWindow		Secțiune
+Clipboard monitor…	MainWindow		Monitor clipboard…
 Edit title	MainWindow		Editare titlu
+Favorites	MainWindow		Favorite
+Help	MainWindow		Ajutor
+Lists	MainWindow		Liste
+Minimize	MainWindow		Minimizare
+Move down	MainWindow		Mută jos
+Move up	MainWindow		Mută sus
+Pause fading	MainWindow		Pauzare decolorare
+Quit	MainWindow		Ieșire
+Remove	MainWindow		Eliminare
+Settings…	MainWindow		Configurări…
+Online paste service not available	MainWindow		Serviciul de lipire online nu este disponibil
+Paste online	MainWindow		Lipire online
+Clipboard monitor	ReplWindow		Monitor clipboard
+Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Redimensionați fereastra după cum este necesar și trageți mânerul replicantului pe Desktop.\nÎncercați să aplicați o culoare ex. din Icon-O-Matic.
+Auto-paste	SettingsWindow		Lipire automată
+Auto-start Clipdinger	SettingsWindow		Pornire automată Clipdinger
+Cancel	SettingsWindow		Anulează
+Clipdinger settings	SettingsWindow		Configurări Clipdinger
+Delay	SettingsWindow		Amânare
+Entries don't fade over time.	SettingsWindow		Intrările nu dispar în timp.
+entries in the clipboard history	SettingsWindow		intrări în istoricul de clipboard
+Fade history entries over time	SettingsWindow		Șterge intrările din istoric în timp
+Max. tint level	SettingsWindow		Nivel maxim tentă
+OK	SettingsWindow		OK
+Steps	SettingsWindow		Pași
+{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Intrările dispar la fiecare %A% minute.\nTenta maximă este atinsă după\n%B% minute (într-un pas)}other{Intrările dispar la fiecare %A% de minute.\nTenta maximă este atinsă după\n%B% de minute (în # pași)}}
+Clipdinger	System name		Clipdinger

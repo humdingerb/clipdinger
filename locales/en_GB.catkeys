@@ -1,52 +1,52 @@
-1	English	application/x-vnd.humdinger-clipdinger	158967473
-Clipboard monitor	ReplWindow		Clipboard monitor
+1	English (British)	application/x-vnd.humdinger-clipdinger	158967473
+Thank you	Application		Thank you
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favourites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.
+-= No text in clipboard =-	ClipboardMonitor		-= No text in clipboard =-
+Thank you	ClipboardMonitor		Thank you
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favourites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.
+Clipboard monitor	ClipboardMonitor		Clipboard monitor
+Add to favorites	ClipList		Add to favourites
+Edit title	ClipList		Edit title
+Remove	ClipList		Remove
+Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Added:\n%time%\n%date%
+Paste online	ClipList		Paste online
+Cancel	EditWindow		Cancel
+Edit title	EditWindow		Edit title
+Leave title empty to return to original title.	EditWindow		Leave the title empty to return to the original title.
+OK	EditWindow		Alright
 Title:	EditWindow		Title:
 About Clipdinger	MainWindow		About Clipdinger
-Add to favorites	ClipList		Add to favourites
-Favorites	MainWindow		Favourites
-Thank you	ClipboardMonitor		Thank you
-Lists	MainWindow		Lists
-entries in the clipboard history	SettingsWindow		entries in the clipboard history
-Edit title	EditWindow		Edit title
-OK	EditWindow		Alright
-Settings…	MainWindow		Settings…
-Remove	MainWindow		Remove
-{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}
-Move down	MainWindow		Move down
-OK	SettingsWindow		Alright
-Paste online	ClipList		Paste online
 Add to favorites	MainWindow		Add to favourites
-Remove	ClipList		Remove
-Entries don't fade over time.	SettingsWindow		Entries don't fade over time.
 App	MainWindow		App
-Minimize	MainWindow		Minimize
-Quit	MainWindow		Quit
-Clipboard monitor	ClipboardMonitor		Clipboard monitor
-Clear favorites	MainWindow		Clear favourites
-Edit title	ClipList		Edit title
-Pause fading	MainWindow		Pause fading
-Clipboard monitor…	MainWindow		Clipboard monitor…
-Cancel	SettingsWindow		Cancel
-Clipdinger	System name		Clipdinger
-Online paste service not available	MainWindow		Online paste service not available
-Fade history entries over time	SettingsWindow		Fade history entries over time
-Leave title empty to return to original title.	EditWindow		Leave title empty to return to original title.
-Max. tint level	SettingsWindow		Max. tint level
-Auto-start Clipdinger	SettingsWindow		Auto-start Clipdinger
-Paste online	MainWindow		Paste online
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favourites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.
-Steps	SettingsWindow		Steps
-Auto-paste	SettingsWindow		Auto-paste
-Help	MainWindow		Help
--= No text in clipboard =-	ClipboardMonitor		-= No text in clipboard =-
-Thank you	Application		Thank you
-Delay	SettingsWindow		Delay
-Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a colour e.g. from Icon-O-Matic.
 Clear clip history	MainWindow		Clear clip history
+Clear favorites	MainWindow		Clear favourites
 Clip	MainWindow		Clip
-Clipdinger settings	SettingsWindow		Clipdinger settings
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favourites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.
-Cancel	EditWindow		Cancel
-Move up	MainWindow		Move up
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Added:\n%time%\n%date%
+Clipboard monitor…	MainWindow		Clipboard monitor…
 Edit title	MainWindow		Edit title
+Favorites	MainWindow		Favourites
+Help	MainWindow		Help
+Lists	MainWindow		Lists
+Minimize	MainWindow		Minimize
+Move down	MainWindow		Move down
+Move up	MainWindow		Move up
+Pause fading	MainWindow		Pause fading
+Quit	MainWindow		Quit
+Remove	MainWindow		Remove
+Settings…	MainWindow		Settings…
+Online paste service not available	MainWindow		Online paste service not available
+Paste online	MainWindow		Paste online
+Clipboard monitor	ReplWindow		Clipboard monitor
+Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a colour e.g. from Icon-O-Matic.
+Auto-paste	SettingsWindow		Auto-paste
+Auto-start Clipdinger	SettingsWindow		Auto-start Clipdinger
+Cancel	SettingsWindow		Cancel
+Clipdinger settings	SettingsWindow		Clipdinger settings
+Delay	SettingsWindow		Delay
+Entries don't fade over time.	SettingsWindow		Entries don't fade over time.
+entries in the clipboard history	SettingsWindow		entries in the clipboard history
+Fade history entries over time	SettingsWindow		Fade history entries over time
+Max. tint level	SettingsWindow		Max. tint level
+OK	SettingsWindow		Alright
+Steps	SettingsWindow		Steps
+{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}
+Clipdinger	System name		Clipdinger

@@ -1,0 +1,52 @@
+1	Portuguese (Brazil)	application/x-vnd.humdinger-clipdinger	158967473
+Thank you	Application		Obrigado
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tescrito por Humdinger\n\tDireitos reservados %years%\n\nClipdinger provê um histórico de recortes da área de transferência do sistema e permite que se criem favoritos.\n\nPor favor me informe sobre quaisquer  bugs que encontrar ou funcionalidades faltantes. A informação de contato está no ReadMe, veja o item de menu 'Ajuda'.
+-= No text in clipboard =-	ClipboardMonitor		-= Nenhum texto na área de transferência =-
+Thank you	ClipboardMonitor		Obrigado
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tescrito por Humdinger\n\tDireitos reservados %years%\n\nClipdinger provê um histórico de recortes da área de transferência do sistema e permite que se criem favoritos.\n\nEste é seu monitor da área de transferência que pode ser replicado na Área de Trabalho para mostrar sempre seus conteúdos atuais.
+Clipboard monitor	ClipboardMonitor		Monitor da área de transferência
+Add to favorites	ClipList		Adicionar aos favoritos
+Edit title	ClipList		Editar título
+Remove	ClipList		Remover
+Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Adicionado:\n%time%\n%date%
+Paste online	ClipList		Colar online
+Cancel	EditWindow		Cancelar
+Edit title	EditWindow		Editar título
+Leave title empty to return to original title.	EditWindow		Deixe o título vazio para retornar ao título original.
+OK	EditWindow		OK
+Title:	EditWindow		Título:
+About Clipdinger	MainWindow		Sobre o Clipdinger
+Add to favorites	MainWindow		Adicionar aos favoritos
+App	MainWindow		Aplicativo
+Clear clip history	MainWindow		Limpar histórico
+Clear favorites	MainWindow		Limpar favoritos
+Clip	MainWindow		Recorte
+Clipboard monitor…	MainWindow		Monitor da área de transferência…
+Edit title	MainWindow		Editar título
+Favorites	MainWindow		Favoritos
+Help	MainWindow		Ajuda
+Lists	MainWindow		Listas
+Minimize	MainWindow		Minimizar
+Move down	MainWindow		Mover para baixo
+Move up	MainWindow		Mover para cima
+Pause fading	MainWindow		Pausar desvanecimento
+Quit	MainWindow		Sair
+Remove	MainWindow		Remover
+Settings…	MainWindow		Definições…
+Online paste service not available	MainWindow		Serviço de colagem online não disponível
+Paste online	MainWindow		Colar online
+Clipboard monitor	ReplWindow		Monitor da área de transferência
+Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Redimensione a janela de acordo com suas necessidades e arraste a alça do replicante para a Área de Trabalho.\nExperimente soltar uma cor, por exemplo, a partir do Icon-O-Matic.
+Auto-paste	SettingsWindow		Colar automático
+Auto-start Clipdinger	SettingsWindow		Iniciar automaticamente o Clipdinger
+Cancel	SettingsWindow		Cancelar
+Clipdinger settings	SettingsWindow		Configurações do Clipdinger
+Delay	SettingsWindow		Atraso
+Entries don't fade over time.	SettingsWindow		Entradas não desvanecem com o tempo.
+entries in the clipboard history	SettingsWindow		entradas no histórico da área de transferência
+Fade history entries over time	SettingsWindow		Desvanecer entradas do histórico ao longo do tempo
+Max. tint level	SettingsWindow		Nível máx. do matiz
+OK	SettingsWindow		OK
+Steps	SettingsWindow		Passos
+{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Entradas desvanecem a cada %A% minutos.\nO matiz máximo é atingido após\n%B% minutos (em 1 passo)}other{Entradas desvanecem a cada %A% minutos.\nO matiz máximo é atingido após\n%B% minutos (em # passos)}}
+Clipdinger	System name		Clipdinger

@@ -1,52 +1,52 @@
-1	English	application/x-vnd.humdinger-clipdinger	158967473
-Clipboard monitor	ReplWindow		Monitor del portapapeles
+1	Spanish	application/x-vnd.humdinger-clipdinger	158967473
+Thank you	Application		Gracias
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tescrito por Humdinger\n\tCopyright %years%\n\nClipdinger provee un historial de los copiados del portapapeles del sistema y te permite crear favoritos.\n\nPor favor, permíteme conocer cualquier error que encuentres o funciones que eches en falta. Información de contacto en el ReadMe, ver apartado del menú 'Ayuda'
+-= No text in clipboard =-	ClipboardMonitor		-= Ningún texto en el portapapeles =-
+Thank you	ClipboardMonitor		Gracias
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tescrito por Humdinger\n\tCopyright %years%\n\nClipdinger provee un historial de los copiados del portapapeles del sistema y te permite crear favoritos.\n\nEste es el monitor del portapapeles, que puede ser replicado al escritorio para mostrar siempre su contenido actual.
+Clipboard monitor	ClipboardMonitor		Monitor del portapapeles
+Add to favorites	ClipList		Agregar a favoritos
+Edit title	ClipList		Editar título
+Remove	ClipList		Quitar
+Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Agregado:\n%time%\n%date%
+Paste online	ClipList		Pegar online
+Cancel	EditWindow		Cancelar
+Edit title	EditWindow		Editar título
+Leave title empty to return to original title.	EditWindow		Dejar el título vacío para volver al título original
+OK	EditWindow		Aceptar
 Title:	EditWindow		Título:
 About Clipdinger	MainWindow		Sobre Clipdinger
-Add to favorites	ClipList		Agregar a favoritos
-Favorites	MainWindow		Favoritos
-Thank you	ClipboardMonitor		Gracias
-Lists	MainWindow		Listas
-entries in the clipboard history	SettingsWindow		entradas en el historial del portapapeles
-Edit title	EditWindow		Editar título
-OK	EditWindow		OK
-Settings…	MainWindow		Configuración
-Remove	MainWindow		Eliminar
-{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Las entradas se desvanecen cada %A% minutos.\nEl matiz máximo se alcanza después de \n%B% minutos (en 1 paso)}other{Las entradas se desvanecen cada %A% minutos.\nEl matiz máximo se alcanza después de \n%B% minutos (en # pasos)}}
-Move down	MainWindow		Mover abajo
-OK	SettingsWindow		OK
-Paste online	ClipList		Pegar online
 Add to favorites	MainWindow		Agregar a favoritos
-Remove	ClipList		Quitar
-Entries don't fade over time.	SettingsWindow		Las entradas no se desvanecen con el tiempo.
 App	MainWindow		Aplicación
-Minimize	MainWindow		Minimizar
-Quit	MainWindow		Salir
-Clipboard monitor	ClipboardMonitor		Monitor del portapapeles
-Clear favorites	MainWindow		Limpiar favoritos
-Edit title	ClipList		Editar título
-Pause fading	MainWindow		Pausar desvanecimiento
-Clipboard monitor…	MainWindow		Monitor del portapapeles
-Cancel	SettingsWindow		Cancelar
-Clipdinger	System name		Clipdinger
-Online paste service not available	MainWindow		Servicio de pegado online no disponible
-Fade history entries over time	SettingsWindow		Historial del desvanecimiento de entradas en el tiempo
-Leave title empty to return to original title.	EditWindow		Dejar el título vacío para volver al título original
-Max. tint level	SettingsWindow		Nivel de matiz máximo
-Auto-start Clipdinger	SettingsWindow		Auto-inicio de Clipdinger
-Paste online	MainWindow		Pegar online
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tescrito por Humdinger\n\tCopyright %years%\n\nClipdinger provee un historial de los copiados del portapapeles del sistema y te permite crear favoritos.\n\nPor favor, permíteme conocer cualquier error que encuentres o funciones que eches en falta. Información de contacto en el ReadMe, ver apartado del menú 'Ayuda'
-Steps	SettingsWindow		Pasos
-Auto-paste	SettingsWindow		Auto-pegado
-Help	MainWindow		Ayuda
--= No text in clipboard =-	ClipboardMonitor		-= Ningún texto en el portapapeles =-
-Thank you	Application		Gracias
-Delay	SettingsWindow		Retraso
-Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Redimensiona la ventana a tu necesidad y arrastra el lanzador del replicador al escritorio.\nPrueba dejando un color p.ej. desde Icon-O-Matic.
 Clear clip history	MainWindow		Limpiar historial de copiado
+Clear favorites	MainWindow		Limpiar favoritos
 Clip	MainWindow		Copiar
-Clipdinger settings	SettingsWindow		Configuración de Clipdinger
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tescrito por Humdinger\n\tCopyright %years%\n\nClipdinger provee un historial de los copiados del portapapeles del sistema y te permite crear favoritos.\n\nEste es el monitor del portapapeles, que puede ser replicado al escritorio para mostrar siempre su contenido actual.
-Cancel	EditWindow		Cancelar
-Move up	MainWindow		Mover arriba
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Agregado:\n%time%\n%date%
+Clipboard monitor…	MainWindow		Monitor del portapapeles
 Edit title	MainWindow		Editar título
+Favorites	MainWindow		Favoritos
+Help	MainWindow		Ayuda
+Lists	MainWindow		Listas
+Minimize	MainWindow		Minimizar
+Move down	MainWindow		Mover abajo
+Move up	MainWindow		Mover arriba
+Pause fading	MainWindow		Pausar desvanecimiento
+Quit	MainWindow		Salir
+Remove	MainWindow		Eliminar
+Settings…	MainWindow		Configuración
+Online paste service not available	MainWindow		Servicio de pegado online no disponible
+Paste online	MainWindow		Pegar online
+Clipboard monitor	ReplWindow		Monitor del portapapeles
+Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Redimensiona la ventana a tu necesidad y arrastra el lanzador del replicador al escritorio.\nPrueba dejando un color p.ej. desde Icon-O-Matic.
+Auto-paste	SettingsWindow		Auto-pegado
+Auto-start Clipdinger	SettingsWindow		Auto-inicio de Clipdinger
+Cancel	SettingsWindow		Cancelar
+Clipdinger settings	SettingsWindow		Configuración de Clipdinger
+Delay	SettingsWindow		Retraso
+Entries don't fade over time.	SettingsWindow		Las entradas no se desvanecen con el tiempo.
+entries in the clipboard history	SettingsWindow		entradas en el historial del portapapeles
+Fade history entries over time	SettingsWindow		Historial del desvanecimiento de entradas en el tiempo
+Max. tint level	SettingsWindow		Nivel de matiz máximo
+OK	SettingsWindow		Aceptar
+Steps	SettingsWindow		Pasos
+{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Las entradas se desvanecen cada %A% minutos.\nEl matiz máximo se alcanza después de \n%B% minutos (en 1 paso)}other{Las entradas se desvanecen cada %A% minutos.\nEl matiz máximo se alcanza después de \n%B% minutos (en # pasos)}}
+Clipdinger	System name		Clipdinger

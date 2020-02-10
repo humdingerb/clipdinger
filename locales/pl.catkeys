@@ -1,52 +1,52 @@
-1	English	application/x-vnd.humdinger-clipdinger	158967473
-Clipboard monitor	ReplWindow		Monitor schowka
+1	Polish	application/x-vnd.humdinger-clipdinger	158967473
+Thank you	Application		Dziękuję
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tnapisany przez Humdingera\n\tCopyright %years%\n\nClipdinger udostępnia historię wycinków w systemowym schowku i umożliwia dodawanie ich do ulubionych.\n\nProszę, daj mi znać o znalezionych błędach lub brakujących funkcjonalnościach. Informacje kontaktowe są w pliku ReadMe, zobacz menu „Pomoc”.
+-= No text in clipboard =-	ClipboardMonitor		-= Brak tekstu w schowku =-
+Thank you	ClipboardMonitor		Dziękuję
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tnapisany przez Humdingera\n\tCopyright %years%\n\nClipdinger udostępnia historię wycinków w systemowym schowku i umożliwia dodawanie ich do ulubionych.\n\nProszę, daj mi znać o znalezionych błędach lub brakujących funkcjonalnościach.\n\nTo jest monitor schowka, który można umieścić na Pulpicie, aby zawsze pokazywał najnowsze wycinki.
+Clipboard monitor	ClipboardMonitor		Monitor schowka
+Add to favorites	ClipList		Dodaj do ulubionych
+Edit title	ClipList		Edytuj tytuł
+Remove	ClipList		Usuń
+Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Dodany:\n%time%\n%date%
+Paste online	ClipList		Wklej do sieci
+Cancel	EditWindow		Anuluj
+Edit title	EditWindow		Edytuj tytuł
+Leave title empty to return to original title.	EditWindow		Zostaw tytuł pusty, aby powrócić do pierwotnej wersji.
+OK	EditWindow		OK
 Title:	EditWindow		Tytuł:
 About Clipdinger	MainWindow		O Clipdingerze
-Add to favorites	ClipList		Dodaj do ulubionych
-Favorites	MainWindow		Ulubione
-Thank you	ClipboardMonitor		Dziękuję
-Lists	MainWindow		Listy
-entries in the clipboard history	SettingsWindow		wpisów w historii schowka
-Edit title	EditWindow		Edytuj tytuł
-OK	EditWindow		OK
-Settings…	MainWindow		Ustawienia…
-Remove	MainWindow		Usuń
-{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Wpisy są stopniowo zapominane co %A% minut.\nMaksymalne zabarwienie zostaje osiągnięte po \n%B% minutach (w 1 krok)}other{Wpisy są stopniowo zapominane co %A% minut.\nMaksymalne zabarwienie zostaje osiągnięte po \n%B% minutach (w # krokach)}}
-Move down	MainWindow		Przesuń w dół
-OK	SettingsWindow		OK
-Paste online	ClipList		Wklej do sieci
 Add to favorites	MainWindow		Dodaj do ulubionych
-Remove	ClipList		Usuń
-Entries don't fade over time.	SettingsWindow		Wpisy nie są z czasem zapominane.
 App	MainWindow		Aplikacja
-Minimize	MainWindow		Minimalizuj
-Quit	MainWindow		Zakończ
-Clipboard monitor	ClipboardMonitor		Clipboard monitor
-Clear favorites	MainWindow		Wyczyść ulubione
-Edit title	ClipList		Edytuj tytuł
-Pause fading	MainWindow		Wstrzymaj wygaszanie
-Clipboard monitor…	MainWindow		Monitor schowka…
-Cancel	SettingsWindow		Anuluj
-Clipdinger	System name		Clipdinger
-Online paste service not available	MainWindow		Sieciowa usługa wklejania jest niedostępna
-Fade history entries over time	SettingsWindow		Zapominaj wpisy z upływem czasu
-Leave title empty to return to original title.	EditWindow		Zostaw tytuł pusty, aby powrócić do pierwotnej wersji.
-Max. tint level	SettingsWindow		Maks. poziom zabarwienia
-Auto-start Clipdinger	SettingsWindow		Automatycznie uruchamiaj Clipdingera
-Paste online	MainWindow		Wklej do sieci
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tnapisany przez Humdingera\n\tCopyright %years%\n\nClipdinger udostępnia historię wycinków w systemowym schowku i umożliwia dodawanie ich do ulubionych.\n\nProszę, daj mi znać o znalezionych błędach lub brakujących funkcjonalnościach. Informacje kontaktowe są w pliku ReadMe, zobacz menu „Pomoc”.
-Steps	SettingsWindow		Kroki
-Auto-paste	SettingsWindow		Autowklejanie
-Help	MainWindow		Pomoc
--= No text in clipboard =-	ClipboardMonitor		-= Brak tekstu w schowku =-
-Thank you	Application		Dziękuję
-Delay	SettingsWindow		Opóźnienie
-Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Zmień rozmiar okna odpowiednio do potrzeb i przeciągnij replikant na Pulpit.\nSpróbuj  upuścić na nim kolor np. z Icon-O-Matic.
 Clear clip history	MainWindow		Wyczyść historię schowka
+Clear favorites	MainWindow		Wyczyść ulubione
 Clip	MainWindow		Wycinek
-Clipdinger settings	SettingsWindow		Ustawienia Clipdingera
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tnapisany przez Humdingera\n\tCopyright %years%\n\nClipdinger udostępnia historię wycinków w systemowym schowku i umożliwia dodawanie ich do ulubionych.\n\nProszę, daj mi znać o znalezionych błędach lub brakujących funkcjonalnościach.\n\nTo jest monitor schowka, który można umieścić na Pulpicie, aby zawsze pokazywał najnowsze wycinki.
-Cancel	EditWindow		Anuluj
-Move up	MainWindow		Przesuń w górę
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Dodany:\n%time%\n%date%
+Clipboard monitor…	MainWindow		Monitor schowka…
 Edit title	MainWindow		Edytuj tytuł
+Favorites	MainWindow		Ulubione
+Help	MainWindow		Pomoc
+Lists	MainWindow		Listy
+Minimize	MainWindow		Minimalizuj
+Move down	MainWindow		Przesuń w dół
+Move up	MainWindow		Przesuń w górę
+Pause fading	MainWindow		Wstrzymaj wygaszanie
+Quit	MainWindow		Zakończ
+Remove	MainWindow		Usuń
+Settings…	MainWindow		Ustawienia…
+Online paste service not available	MainWindow		Sieciowa usługa wklejania jest niedostępna
+Paste online	MainWindow		Wklej do sieci
+Clipboard monitor	ReplWindow		Monitor schowka
+Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Zmień rozmiar okna odpowiednio do potrzeb i przeciągnij replikant na Pulpit.\nSpróbuj  upuścić na nim kolor np. z Icon-O-Matic.
+Auto-paste	SettingsWindow		Autowklejanie
+Auto-start Clipdinger	SettingsWindow		Automatycznie uruchamiaj Clipdingera
+Cancel	SettingsWindow		Anuluj
+Clipdinger settings	SettingsWindow		Ustawienia Clipdingera
+Delay	SettingsWindow		Opóźnienie
+Entries don't fade over time.	SettingsWindow		Wpisy nie są z czasem zapominane.
+entries in the clipboard history	SettingsWindow		wpisów w historii schowka
+Fade history entries over time	SettingsWindow		Zapominaj wpisy z upływem czasu
+Max. tint level	SettingsWindow		Maks. poziom zabarwienia
+OK	SettingsWindow		OK
+Steps	SettingsWindow		Kroki
+{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Wpisy są stopniowo zapominane co %A% minut.\nMaksymalne zabarwienie zostaje osiągnięte po \n%B% minutach (w 1 kroku)} other{Wpisy są stopniowo zapominane co %A% minut.\nMaksymalne zabarwienie zostaje osiągnięte po \n%B% minutach (w # krokach)}}
+Clipdinger	System name		Clipdinger
