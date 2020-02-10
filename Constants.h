@@ -13,8 +13,8 @@
 
 extern const char* kApplicationSignature;
 
-static const char kVersion[] = "v1.0.1";
-static const char kCopyright[] = "2015-2018";
+static const char kVersion[] = "v1.0.2";
+static const char kCopyright[] = "2015-2020";
 static const char kSettingsFolder[] = "Clipdinger";
 static const char kSettingsFile[] = "Clipdinger_settings";
 static const char kHistoryFile[] = "Clipdinger_history";
