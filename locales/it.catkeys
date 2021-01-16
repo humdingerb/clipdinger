@@ -1,20 +1,20 @@
 1	Italian	application/x-vnd.humdinger-clipdinger	158967473
-Thank you	Application		Grazie
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tscritto da Humdinger\n\tCopyright %years%\n\nClipdinger fornisce una cronologia degli appunti di sistema e consente di creare dei preferiti.\n\nPer favore, comunicami la presenza di eventuali bug o di funzioni di cui hai bisogno.Le informazioni di contatto sono nel file ReadMe, consulta il menu 'Aiuto'.
 -= No text in clipboard =-	ClipboardMonitor		-= Non c'è testo negli appunti =-
-Thank you	ClipboardMonitor		Grazie
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tscritto da Humdinger\n\tCopyright %years%\n\nClipdinger fornisce una cronologia degli appunti di sistema e consente di creare dei preferiti.\n\nQuesto è il monitor degli appunti e può essere replicato sulla scrivania per mostrare sempre il suo contenuto.
 Clipboard monitor	ClipboardMonitor		Monitoraggio degli appunti
-Add to favorites	ClipList		Aggiungi ai preferiti
-Edit title	ClipList		Modifica titolo
-Remove	ClipList		Rimuovi
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Aggiunto:\n%time%\n%date%
-Paste online	ClipList		Incolla online
-Cancel	EditWindow		Annulla
-Edit title	EditWindow		Modifica titolo
-Leave title empty to return to original title.	EditWindow		Lascia il titolo vuoto per mantenere il titolo originale.
-OK	EditWindow		OK
-Title:	EditWindow		Titolo:
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tscritto da Humdinger\n\tCopyright %years%\n\nClipdinger fornisce una cronologia degli appunti di sistema e consente di creare dei preferiti.\n\nQuesto è il monitor degli appunti e può essere replicato sulla scrivania per mostrare sempre il suo contenuto.
+Thank you	ClipboardMonitor		Grazie
+{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Gli elementi sbiadiscono ogni %A% minuto.\nLa massima tinta è raggiunta in\n%B% minuti (in 1 passaggio)}other{Gli elementi sbiadiscono ogni %A% minuto.\nLa massima tinta è raggiunta in\n%B% minuti (in # passaggi)}}
+Auto-paste	SettingsWindow		Incolla automaticamente
+Auto-start Clipdinger	SettingsWindow		Esegui automaticamente Clipdinger all'avvio
+Cancel	SettingsWindow		Annulla
+Clipdinger settings	SettingsWindow		Impostazioni di Clipdinger
+Delay	SettingsWindow		Ritarfo
+Entries don't fade over time.	SettingsWindow		Gli elementi non sbiadiscono nel tempo.
+entries in the clipboard history	SettingsWindow		elementi nella cronologia appunti
+Fade history entries over time	SettingsWindow		Sbiadisci gli elementi col tempo.
+Max. tint level	SettingsWindow		Livello massimo tinta
+OK	SettingsWindow		OK
+Steps	SettingsWindow		Passi
 About Clipdinger	MainWindow		Informazioni su Clipdinger
 Add to favorites	MainWindow		Aggiungi ai preferiti
 App	MainWindow		Applicazione
@@ -29,24 +29,24 @@ Lists	MainWindow		Liste
 Minimize	MainWindow		Minimizza
 Move down	MainWindow		Muovi in basso
 Move up	MainWindow		Muovi in alto
+Online paste service not available	MainWindow		Servizio incolla online non disponibile
+Paste online	MainWindow		Incolla online
 Pause fading	MainWindow		Metti in pausa sbiadimento
 Quit	MainWindow		Esci
 Remove	MainWindow		Rimuovi
 Settings…	MainWindow		Impostazioni…
-Online paste service not available	MainWindow		Servizio incolla online non disponibile
-Paste online	MainWindow		Incolla online
+Add to favorites	ClipList		Aggiungi ai preferiti
+Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Aggiunto:\n%time%\n%date%
+Edit title	ClipList		Modifica titolo
+Paste online	ClipList		Incolla online
+Remove	ClipList		Rimuovi
+Cancel	EditWindow		Annulla
+Edit title	EditWindow		Modifica titolo
+Leave title empty to return to original title.	EditWindow		Lascia il titolo vuoto per mantenere il titolo originale.
+OK	EditWindow		OK
+Title:	EditWindow		Titolo:
 Clipboard monitor	ReplWindow		Monitor appunti
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Ridimensiona la finestra secondo le tue necessità e trascina la maniglia del replicanta sulla scrivania.\nProva a rilasciarvi un colore, per esempio da Icon-O-Matic.
-Auto-paste	SettingsWindow		Incolla automaticamente
-Auto-start Clipdinger	SettingsWindow		Esegui automaticamente Clipdinger all'avvio
-Cancel	SettingsWindow		Annulla
-Clipdinger settings	SettingsWindow		Impostazioni di Clipdinger
-Delay	SettingsWindow		Ritarfo
-Entries don't fade over time.	SettingsWindow		Gli elementi non sbiadiscono nel tempo.
-entries in the clipboard history	SettingsWindow		elementi nella cronologia appunti
-Fade history entries over time	SettingsWindow		Sbiadisci gli elementi col tempo.
-Max. tint level	SettingsWindow		Livello massimo tinta
-OK	SettingsWindow		OK
-Steps	SettingsWindow		Passi
-{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Gli elementi sbiadiscono ogni %A% minuto.\nLa massima tinta è raggiunta in\n%B% minuti (in 1 passaggio)}other{Gli elementi sbiadiscono ogni %A% minuto.\nLa massima tinta è raggiunta in\n%B% minuti (in # passaggi)}}
 Clipdinger	System name		Clipdinger
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tscritto da Humdinger\n\tCopyright %years%\n\nClipdinger fornisce una cronologia degli appunti di sistema e consente di creare dei preferiti.\n\nPer favore, comunicami la presenza di eventuali bug o di funzioni di cui hai bisogno.Le informazioni di contatto sono nel file ReadMe, consulta il menu 'Aiuto'.
+Thank you	Application		Grazie

@@ -1,20 +1,20 @@
 1	Russian	application/x-vnd.humdinger-clipdinger	158967473
-Thank you	Application		Спасибо
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tнаписан Humdinger\n\tВсе права защищены %years%\n\nClipdinger предоставляет историю записей из системного буфера обмена и возможность их добвления в избранное.\n\nПожалуйста, сообщайте мне обо всех найденных вами ошибках или новых функциях, которые вам нужны.  Данные для связи находятся в "Справке", доступной через меню.
 -= No text in clipboard =-	ClipboardMonitor		-= Нет текста в буфере обмена =-
-Thank you	ClipboardMonitor		Спасибо
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tнаписан  Humdinger\n\tВсе права защищены %years%\n\nClipdinger предоставляет историю записей из системного буфера обмена и возможность их добвления в избранное.\n\nЭто его монитор буфера обмена, который можно установить в виде репликанта на рабочий стол: чтобы всегда отображать его содержимое. 
 Clipboard monitor	ClipboardMonitor		Монитор буфера обмена
-Add to favorites	ClipList		Добавить в избранное
-Edit title	ClipList		Редактировать заголовок
-Remove	ClipList		Удалить
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Добавлено:\n%time%\n%date%
-Paste online	ClipList		Разместить онлайн
-Cancel	EditWindow		Отмена
-Edit title	EditWindow		Редактировать заголовок
-Leave title empty to return to original title.	EditWindow		Чтобы вернуть оригинальный заголовок оставьте его пустым.
-OK	EditWindow		OK
-Title:	EditWindow		Заголовок:
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tнаписан  Humdinger\n\tВсе права защищены %years%\n\nClipdinger предоставляет историю записей из системного буфера обмена и возможность их добвления в избранное.\n\nЭто его монитор буфера обмена, который можно установить в виде репликанта на рабочий стол: чтобы всегда отображать его содержимое. 
+Thank you	ClipboardMonitor		Спасибо
+{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Записи затеняются каждые %A% минут.\nМаксимальное затенение будет достигнуто\nчерез %B% минут (в 1 шаг)}other{Записи затеняются каждые %A% минут.\nМаксимальное затенение будет достигнуто\nчерез %B% минут (в # шагов)}}
+Auto-paste	SettingsWindow		Автоматическая вставка
+Auto-start Clipdinger	SettingsWindow		Автозагрузка Clipdinger
+Cancel	SettingsWindow		Отмена
+Clipdinger settings	SettingsWindow		Настройки Clipdinger
+Delay	SettingsWindow		Задержка
+Entries don't fade over time.	SettingsWindow		Записи не затеняются со временем.
+entries in the clipboard history	SettingsWindow		записей в истории буфера обмена
+Fade history entries over time	SettingsWindow		Затенять записи в истории со временем
+Max. tint level	SettingsWindow		Максимальный уровень затенения
+OK	SettingsWindow		OK
+Steps	SettingsWindow		Количество шагов
 About Clipdinger	MainWindow		О Clipdinger
 Add to favorites	MainWindow		Добавить в избранное
 App	MainWindow		Приложение
@@ -29,24 +29,24 @@ Lists	MainWindow		Списки
 Minimize	MainWindow		Свернуть
 Move down	MainWindow		Переместить ниже
 Move up	MainWindow		Переместить выше
+Online paste service not available	MainWindow		Онлайн сервисы размещения текста не доступны
+Paste online	MainWindow		Разместить онлайн
 Pause fading	MainWindow		Приостановить затенение
 Quit	MainWindow		Выход
 Remove	MainWindow		Удалить
 Settings…	MainWindow		Настройки…
-Online paste service not available	MainWindow		Онлайн сервисы размещения текста не доступны
-Paste online	MainWindow		Разместить онлайн
+Add to favorites	ClipList		Добавить в избранное
+Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Добавлено:\n%time%\n%date%
+Edit title	ClipList		Редактировать заголовок
+Paste online	ClipList		Разместить онлайн
+Remove	ClipList		Удалить
+Cancel	EditWindow		Отмена
+Edit title	EditWindow		Редактировать заголовок
+Leave title empty to return to original title.	EditWindow		Чтобы вернуть оригинальный заголовок оставьте его пустым.
+OK	EditWindow		OK
+Title:	EditWindow		Заголовок:
 Clipboard monitor	ReplWindow		Монитор буфера обмена
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Растяните окно по вашему вкусу и перетащите репликант на рабочий стол.\nПопробуйте кинуть на него цвет, например из Икономатика.
-Auto-paste	SettingsWindow		Автоматическая вставка
-Auto-start Clipdinger	SettingsWindow		Автозагрузка Clipdinger
-Cancel	SettingsWindow		Отмена
-Clipdinger settings	SettingsWindow		Настройки Clipdinger
-Delay	SettingsWindow		Задержка
-Entries don't fade over time.	SettingsWindow		Записи не затеняются со временем.
-entries in the clipboard history	SettingsWindow		записей в истории буфера обмена
-Fade history entries over time	SettingsWindow		Затенять записи в истории со временем
-Max. tint level	SettingsWindow		Максимальный уровень затенения
-OK	SettingsWindow		OK
-Steps	SettingsWindow		Количество шагов
-{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Записи затеняются каждые %A% минут.\nМаксимальное затенение будет достигнуто\nчерез %B% минут (в 1 шаг)}other{Записи затеняются каждые %A% минут.\nМаксимальное затенение будет достигнуто\nчерез %B% минут (в # шагов)}}
 Clipdinger	System name		Clipdinger
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tнаписан Humdinger\n\tВсе права защищены %years%\n\nClipdinger предоставляет историю записей из системного буфера обмена и возможность их добвления в избранное.\n\nПожалуйста, сообщайте мне обо всех найденных вами ошибках или новых функциях, которые вам нужны.  Данные для связи находятся в "Справке", доступной через меню.
+Thank you	Application		Спасибо

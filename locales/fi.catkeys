@@ -1,20 +1,20 @@
 1	Finnish	application/x-vnd.humdinger-clipdinger	158967473
-Thank you	Application		Kiitos
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\ttekijä: Humdinger\n\tCopyright %years%\n\nClipdinger tarjoaa järjestelmän leikepöydän leikkeiden historian ja sallii sinun luoda suosikkeja.\n\nKerro minulle ohjelmointivirheistä ja ominaisuuksista, joita kaipaat. Yhteystiedot löytyvät kohdasta ReadMe valikosta 'Opaste'.
 -= No text in clipboard =-	ClipboardMonitor		-= Leikepöydällä ei ole tekstiä =-
-Thank you	ClipboardMonitor		Kiitos
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\ttekijä: Humdinger\n\tCopyright %years%\n\nClipdinger tarjoaa järjestelmän leikepöydän leikkeiden historian ja sallii sinun luoda suosikkeja.\n\nTämä on sen leikepöytäseuranta, josta voidaan kopioida Työpöydälle aina näytettäväksi sen nykyinen sisältö.
 Clipboard monitor	ClipboardMonitor		Leikepöytävalvonta
-Add to favorites	ClipList		Lisää suosikkeihin
-Edit title	ClipList		Muokkaa otsikkoa
-Remove	ClipList		Poista
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Lisätty:\n%time%\n%date%
-Paste online	ClipList		Liitä verkossa
-Cancel	EditWindow		Peru
-Edit title	EditWindow		Muokkaa otsikkoa
-Leave title empty to return to original title.	EditWindow		Palaa alkuperäiseen otsikkoon jättämällä otsikkokenttä tyhjäksi.
-OK	EditWindow		Valmis
-Title:	EditWindow		Otsikko:
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\ttekijä: Humdinger\n\tCopyright %years%\n\nClipdinger tarjoaa järjestelmän leikepöydän leikkeiden historian ja sallii sinun luoda suosikkeja.\n\nTämä on sen leikepöytäseuranta, josta voidaan kopioida Työpöydälle aina näytettäväksi sen nykyinen sisältö.
+Thank you	ClipboardMonitor		Kiitos
+{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Rivit häipyvät näkyvistä joka %A% minuutti.\nEnimmäisvärisävy saavutetaan\n%B% minuutissa (1 vaiheessa)}other{Rivit häipyvät näkyvistä joka %A% minuutti.\nEnimmäisvärisävy saavutetaan\n%B% minuutissa (# vaiheessa)}}
+Auto-paste	SettingsWindow		Liitä automaattisesti
+Auto-start Clipdinger	SettingsWindow		Käynnistä Clipdinger automaattisesti
+Cancel	SettingsWindow		Peru
+Clipdinger settings	SettingsWindow		Clipdinger-asetukset
+Delay	SettingsWindow		Viive
+Entries don't fade over time.	SettingsWindow		Rivit eivät haihdu ajan mittaan.
+entries in the clipboard history	SettingsWindow		rivit leikepöytähistoriassa
+Fade history entries over time	SettingsWindow		Häivytä historiarivit näkyvistä ajan mittaan
+Max. tint level	SettingsWindow		Enimmäisvärisävytaso
+OK	SettingsWindow		Valmis
+Steps	SettingsWindow		Vaiheet
 About Clipdinger	MainWindow		Ohjelmasta Clipdinger
 Add to favorites	MainWindow		Lisää suosikkeihin
 App	MainWindow		Sovellus
@@ -29,24 +29,24 @@ Lists	MainWindow		Luettelot
 Minimize	MainWindow		Minimoi
 Move down	MainWindow		Siirrä alaspäin
 Move up	MainWindow		Siirrä ylöspäin
+Online paste service not available	MainWindow		Liittämispalvelu verkossa ei ole saatavilla
+Paste online	MainWindow		Liitä verkossa
 Pause fading	MainWindow		Tauota häivytys
 Quit	MainWindow		Poistu
 Remove	MainWindow		Poista
 Settings…	MainWindow		Asetukset…
-Online paste service not available	MainWindow		Liittämispalvelu verkossa ei ole saatavilla
-Paste online	MainWindow		Liitä verkossa
+Add to favorites	ClipList		Lisää suosikkeihin
+Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Lisätty:\n%time%\n%date%
+Edit title	ClipList		Muokkaa otsikkoa
+Paste online	ClipList		Liitä verkossa
+Remove	ClipList		Poista
+Cancel	EditWindow		Peru
+Edit title	EditWindow		Muokkaa otsikkoa
+Leave title empty to return to original title.	EditWindow		Palaa alkuperäiseen otsikkoon jättämällä otsikkokenttä tyhjäksi.
+OK	EditWindow		Valmis
+Title:	EditWindow		Otsikko:
 Clipboard monitor	ReplWindow		Leikepöytävalvonta
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Muuta ikkunan kokoa tarpeesi mukaan ja raahaa kopiokäsittelijä työpöydälle.\nYritä värin pudottamista esimerkiksi Kuvakemaatista.
-Auto-paste	SettingsWindow		Liitä automaattisesti
-Auto-start Clipdinger	SettingsWindow		Käynnistä Clipdinger automaattisesti
-Cancel	SettingsWindow		Peru
-Clipdinger settings	SettingsWindow		Clipdinger-asetukset
-Delay	SettingsWindow		Viive
-Entries don't fade over time.	SettingsWindow		Rivit eivät haihdu ajan mittaan.
-entries in the clipboard history	SettingsWindow		rivit leikepöytähistoriassa
-Fade history entries over time	SettingsWindow		Häivytä historiarivit näkyvistä ajan mittaan
-Max. tint level	SettingsWindow		Enimmäisvärisävytaso
-OK	SettingsWindow		Valmis
-Steps	SettingsWindow		Vaiheet
-{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Rivit häipyvät näkyvistä joka %A% minuutti.\nEnimmäisvärisävy saavutetaan\n%B% minuutissa (1 vaiheessa)}other{Rivit häipyvät näkyvistä joka %A% minuutti.\nEnimmäisvärisävy saavutetaan\n%B% minuutissa (# vaiheessa)}}
 Clipdinger	System name		Clipdinger
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\ttekijä: Humdinger\n\tCopyright %years%\n\nClipdinger tarjoaa järjestelmän leikepöydän leikkeiden historian ja sallii sinun luoda suosikkeja.\n\nKerro minulle ohjelmointivirheistä ja ominaisuuksista, joita kaipaat. Yhteystiedot löytyvät kohdasta ReadMe valikosta 'Opaste'.
+Thank you	Application		Kiitos

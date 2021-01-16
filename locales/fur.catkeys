@@ -1,20 +1,20 @@
 1	Friulian	application/x-vnd.humdinger-clipdinger	158967473
-Thank you	Application		Gracie
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tscrit di Humdinger\n\tCopyright %years%\n\nClipdinger al furnìs une cronologjie di ritais des notis di sisteme e ti permet di creâ dai preferîts.\n\nPar plasê fasimi savê se tu cjatis cualchi erôr o se a mancje cualchi funzionalitât. Lis informazions di contat a son tal ReadMe, viôt la vôs dal menù 'Jutori'.
 -= No text in clipboard =-	ClipboardMonitor		-= Nissun test tes notis =-
-Thank you	ClipboardMonitor		Gracie
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tscrit di Humdinger\n\tCopyright %years%\n\nClipdinger al furnìs une cronologjie di ritais des notis di sisteme e ti permet di creâ dai preferîts.\n\nChest al è il so monitor des notis che al pues jessi replicât sul Scritori, cussì di podê simpri viodi i siei contignûts.
 Clipboard monitor	ClipboardMonitor		Monitor notis
-Add to favorites	ClipList		Zonte tai preferîts
-Edit title	ClipList		Modifiche titul
-Remove	ClipList		Gjave
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Zontât:\n%time%\n%date%
-Paste online	ClipList		Tache in rêt
-Cancel	EditWindow		Anule
-Edit title	EditWindow		Modifiche titul
-Leave title empty to return to original title.	EditWindow		Lasse vueit il titul par tornâ al titul origjinâl.
-OK	EditWindow		Va ben
-Title:	EditWindow		Titul:
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tscrit di Humdinger\n\tCopyright %years%\n\nClipdinger al furnìs une cronologjie di ritais des notis di sisteme e ti permet di creâ dai preferîts.\n\nChest al è il so monitor des notis che al pues jessi replicât sul Scritori, cussì di podê simpri viodi i siei contignûts.
+Thank you	ClipboardMonitor		Gracie
+{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Lis vôs si fantin ogni %A% minûts.\nSi rive al massim tint dopo\n%B% minûts (in 1 passaç)}other{Lis vôs si sfantin ogni %A% minûts.\nSi rive al massim tint dopo\n%B% minûts (in # passaçs)}}
+Auto-paste	SettingsWindow		Tache in automatic
+Auto-start Clipdinger	SettingsWindow		Auto-invie Clipdinger
+Cancel	SettingsWindow		Anule
+Clipdinger settings	SettingsWindow		Impostazions Clipdinger
+Delay	SettingsWindow		Ritart
+Entries don't fade over time.	SettingsWindow		Lis vôs no si sfantin cul lâ dal timp.
+entries in the clipboard history	SettingsWindow		vôs te cronologjie des notis
+Fade history entries over time	SettingsWindow		Sfante vôs de cronologjie cul lâ dal timp
+Max. tint level	SettingsWindow		Nivel tint massim
+OK	SettingsWindow		Va ben
+Steps	SettingsWindow		Passaçs
 About Clipdinger	MainWindow		Informazions su Clipdinger
 Add to favorites	MainWindow		Zonte tai preferîts
 App	MainWindow		Aplicazion
@@ -29,24 +29,24 @@ Lists	MainWindow		Listis
 Minimize	MainWindow		Minimize
 Move down	MainWindow		Sposte jù
 Move up	MainWindow		Sposte sù
+Online paste service not available	MainWindow		Servizi par tacâ in rêt no disponibil
+Paste online	MainWindow		Tache in rêt
 Pause fading	MainWindow		Pause il sfantâ
 Quit	MainWindow		Jes
 Remove	MainWindow		Gjave
 Settings…	MainWindow		Impostazions…
-Online paste service not available	MainWindow		Servizi par tacâ in rêt no disponibil
-Paste online	MainWindow		Tache in rêt
+Add to favorites	ClipList		Zonte tai preferîts
+Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Zontât:\n%time%\n%date%
+Edit title	ClipList		Modifiche titul
+Paste online	ClipList		Tache in rêt
+Remove	ClipList		Gjave
+Cancel	EditWindow		Anule
+Edit title	EditWindow		Modifiche titul
+Leave title empty to return to original title.	EditWindow		Lasse vueit il titul par tornâ al titul origjinâl.
+OK	EditWindow		Va ben
+Title:	EditWindow		Titul:
 Clipboard monitor	ReplWindow		Monitor des notis
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Ridimensione il barcon in base aes tôs necessitâts e strissine il replicant sul Scritori dal so angulut.\nProve a strissinâi e molâi parsore un colôr p.e. di Icon-O-Matic.
-Auto-paste	SettingsWindow		Tache in automatic
-Auto-start Clipdinger	SettingsWindow		Auto-invie Clipdinger
-Cancel	SettingsWindow		Anule
-Clipdinger settings	SettingsWindow		Impostazions Clipdinger
-Delay	SettingsWindow		Ritart
-Entries don't fade over time.	SettingsWindow		Lis vôs no si sfantin cul lâ dal timp.
-entries in the clipboard history	SettingsWindow		vôs te cronologjie des notis
-Fade history entries over time	SettingsWindow		Sfante vôs de cronologjie cul lâ dal timp
-Max. tint level	SettingsWindow		Nivel tint massim
-OK	SettingsWindow		Va ben
-Steps	SettingsWindow		Passaçs
-{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Lis vôs si fantin ogni %A% minûts.\nSi rive al massim tint dopo\n%B% minûts (in 1 passaç)}other{Lis vôs si sfantin ogni %A% minûts.\nSi rive al massim tint dopo\n%B% minûts (in # passaçs)}}
 Clipdinger	System name		Clipdinger
+Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tscrit di Humdinger\n\tCopyright %years%\n\nClipdinger al furnìs une cronologjie di ritais des notis di sisteme e ti permet di creâ dai preferîts.\n\nPar plasê fasimi savê se tu cjatis cualchi erôr o se a mancje cualchi funzionalitât. Lis informazions di contat a son tal ReadMe, viôt la vôs dal menù 'Jutori'.
+Thank you	Application		Gracie
