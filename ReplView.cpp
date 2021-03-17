@@ -1,5 +1,5 @@
 /*
- * Copyright 2016. All rights reserved.
+ * Copyright 2016-2021. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -40,21 +40,16 @@ ReplView::ReplView()
 	_SetColor(tint_color(ui_color(B_PANEL_BACKGROUND_COLOR), B_DARKEN_1_TINT));
 
 	// Dragger
-	BRect rect(Bounds());
-	rect.left = rect.right - 7;
-	rect.top = rect.bottom - 7;
-	BDragger* dragger = new BDragger(rect, this,
-		B_FOLLOW_RIGHT | B_FOLLOW_BOTTOM);
+	BDragger* dragger = new BDragger(this);
 	dragger->SetExplicitMinSize(BSize(7, 7));
 	dragger->SetExplicitMaxSize(BSize(7, 7));
-	dragger->SetExplicitAlignment(BAlignment(B_ALIGN_RIGHT, B_ALIGN_BOTTOM));
 
 	// Layout
 	font_height fheight;
 	fContentsView->GetFontHeight(&fheight);
 
 	SetExplicitMinSize(BSize(10.0,
-		(fheight.ascent + fheight.descent + fheight.leading) * 1.5));
+		(fheight.ascent + fheight.descent + fheight.leading) * 1.3));
 	SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
 	static const float spacing = be_control_look->DefaultLabelSpacing();
@@ -62,7 +57,9 @@ ReplView::ReplView()
 	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
 		.SetInsets(spacing, spacing / 2, spacing, spacing / 2.5)
 		.Add(fContentsView)
-		.Add(dragger, 0.01)
+		.AddGroup(B_HORIZONTAL)
+			.Add(dragger)
+			.End()
 		.End();
 }
 
@@ -99,7 +96,7 @@ ReplView::Archive(BMessage* archive, bool deep) const
 
 	archive->AddString("add_on", kApplicationSignature);
 	archive->AddString("class", "Clipboard monitor");
-		
+
 	archive->PrintToStream();
 
 	return B_OK;
@@ -114,7 +111,6 @@ ReplView::AttachedToWindow()
 	fCurrentClip = _GetClipboard().String();
 	TruncateClip(Bounds().Width());
 
-//	status_t error = 
 	be_clipboard->StartWatching(this);
 
 	fContentsView->AddFilter(new BMessageFilter(B_MOUSE_DOWN,
@@ -169,7 +165,7 @@ ReplView::MessageReceived(BMessage* msg)
 
 			BAlert* alert = new BAlert("about", text.String(),
 				B_TRANSLATE("Thank you"));
-		
+
 			BTextView* view = alert->TextView();
 			BFont font;
 			view->SetStylable(true);
@@ -195,9 +191,14 @@ void
 ReplView::TruncateClip(float width)
 {
 	static const float spacing = be_control_look->DefaultLabelSpacing();
-	BString string(fCurrentClip);
-	TruncateString(&string, B_TRUNCATE_END, width - spacing * 8);
-	fContentsView->SetText(string);
+	BString clip(fCurrentClip);
+
+	// Remove empty lines, spaces, tabs from beginning of clip
+	while (clip.StartsWith(" ") || clip.StartsWith("\n") || clip.StartsWith("\t"))
+		clip.Remove(0, 1); // Remove first char
+
+	TruncateString(&clip, B_TRUNCATE_END, width - spacing * 8);
+	fContentsView->SetText(clip);
 }
 
 
