@@ -52,14 +52,9 @@ ReplView::ReplView()
 		(fheight.ascent + fheight.descent + fheight.leading) * 1.3));
 	SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
-	static const float spacing = be_control_look->DefaultLabelSpacing();
-
-	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
-		.SetInsets(spacing, spacing / 2, spacing, spacing / 2.5)
-		.Add(fContentsView)
-		.AddGroup(B_HORIZONTAL)
-			.Add(dragger)
-			.End()
+	BLayoutBuilder::Group<>(this, B_HORIZONTAL, 0)
+		.Add(fContentsView, 100)
+		.Add(dragger)
 		.End();
 }
 
@@ -109,7 +104,7 @@ ReplView::AttachedToWindow()
 	BView::AttachedToWindow();
 
 	fCurrentClip = _GetClipboard().String();
-	TruncateClip(Bounds().Width());
+	TruncateClip(Bounds().Width() - 7); // respect dragger width
 
 	be_clipboard->StartWatching(this);
 
@@ -146,7 +141,7 @@ ReplView::MessageReceived(BMessage* msg)
 			if (fCurrentClip.Length() == 0)
 				break;
 
-			TruncateClip(Bounds().Width());
+			TruncateClip(Bounds().Width() - 7); // respect dragger width
 			break;
 		}
 		case B_ABOUT_REQUESTED:
@@ -190,14 +185,26 @@ ReplView::MessageReceived(BMessage* msg)
 void
 ReplView::TruncateClip(float width)
 {
-	static const float spacing = be_control_look->DefaultLabelSpacing();
 	BString clip(fCurrentClip);
 
-	// Remove empty lines, spaces, tabs from beginning of clip
-	while (clip.StartsWith(" ") || clip.StartsWith("\n") || clip.StartsWith("\t"))
-		clip.Remove(0, 1); // Remove first char
+	// Remove spaces, tabs. empty lines from beginning of clip
+	while (true) {
+		if (clip.StartsWith(" "))
+			clip.Remove(0, 1);
+		else if (clip.StartsWith("\t"))
+			clip.Remove(0, 1);
+		else if (clip.StartsWith("\n"))
+			clip.Remove(0, 1);
+		else
+			break;
+	}
+	// Remove all but the first line
+	int32 newline = clip.FindFirst("\n");
+	if (newline >= 0)
+		clip.Remove(newline, clip.Length());
 
-	TruncateString(&clip, B_TRUNCATE_END, width - spacing * 8);
+	static const float spacing = be_control_look->DefaultLabelSpacing();
+	TruncateString(&clip, B_TRUNCATE_END, width - spacing * 5);
 	fContentsView->SetText(clip);
 }
 
