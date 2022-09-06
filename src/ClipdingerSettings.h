@@ -1,5 +1,5 @@
 /*
- * Copyright 2015. All rights reserved.
+ * Copyright 2015-2022. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -19,9 +19,10 @@ public:
 
 		bool		Lock();
 		void		Unlock();
-			
+
 		int32		GetLimit() { return fLimit; }
 		bool		GetAutoStart() { return fAutoStart; }
+		bool		GetTrayIcon() { return fTrayIcon; }
 		int32		GetAutoPaste() { return fAutoPaste; }
 		int32		GetFade() { return fFade; }
 		int32		GetFadeDelay() { return fFadeDelay; }
@@ -34,6 +35,7 @@ public:
 		void		GetSplitCollapse(bool& left, bool& right);
 
 		void		SetLimit(int32 limit);
+		void		SetTrayIcon(int32 autostart);
 		void		SetAutoStart(int32 autostart);
 		void		SetAutoPaste(int32 autopaste);
 		void		SetFade(int32 fade);
@@ -46,7 +48,9 @@ public:
 		void		SetFadePause(int32 pause) { fFadePause = pause; }
 private:
 		int32		fLimit;
+		bool		fTrayIcon;
 		bool		fAutoStart;
+
 		int32		fAutoPaste;
 		int32		fFade;
 		int32		fFadeDelay;
@@ -61,7 +65,7 @@ private:
 		bool		fRightCollapse;
 
 		bool		dirtySettings;
-		
+
 		BLocker		fLock;
 };
 

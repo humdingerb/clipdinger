@@ -10,11 +10,10 @@
 
 #include <AboutWindow.h>
 #include <Catalog.h>
+#include <Messenger.h>
 
 #include "App.h"
 #include "Constants.h"
-
-const char* kApplicationSignature = "application/x-vnd.humdinger-clipdinger";
 
 
 #undef B_TRANSLATION_CONTEXT
@@ -114,13 +113,14 @@ App::MessageReceived(BMessage* msg)
 void
 App::AboutRequested()
 {
-	BAboutWindow* aboutW = new BAboutWindow("Clipdinger", kApplicationSignature);
+	BAboutWindow* aboutW = new BAboutWindow(B_TRANSLATE_SYSTEM_NAME(kApplicationName),
+		kApplicationSignature);
 	aboutW->AddDescription(B_TRANSLATE(
 		"Clipdinger provides a history of clippings of the system "
 		"clipboard and lets you create favorites.\n\n"
 		"Please let me know of any bugs you find or features you "
 		"miss. Contact info is in the ReadMe, see menu item 'Help'."));
-	aboutW->AddCopyright(2022, "Humdinger");
+	aboutW->AddCopyright(2015, "Humdinger");
 	aboutW->Show();
 }
 

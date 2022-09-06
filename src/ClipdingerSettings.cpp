@@ -1,5 +1,5 @@
 /*
- * Copyright 2015. All rights reserved.
+ * Copyright 2015-2022. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -24,6 +24,7 @@
 ClipdingerSettings::ClipdingerSettings()
 	:
 	fLimit(kDefaultLimit),
+	fTrayIcon(kDefaultTrayIcon),
 	fAutoStart(kDefaultAutoStart),
 	fAutoPaste(kDefaultAutoPaste),
 	fFade(kDefaultFade),
@@ -51,6 +52,10 @@ ClipdingerSettings::ClipdingerSettings()
 			if ((file.InitCheck() == B_OK) && (msg.Unflatten(&file) == B_OK)) {
 				if (msg.FindInt32("limit", &fLimit) != B_OK) {
 					fLimit = kDefaultLimit;
+					dirtySettings = true;
+				}
+				if (msg.FindBool("trayicon", &fTrayIcon) != B_OK) {
+					fTrayIcon = kDefaultTrayIcon;
 					dirtySettings = true;
 				}
 				if (msg.FindBool("autostart", &fAutoStart) != B_OK) {
@@ -121,6 +126,7 @@ ClipdingerSettings::~ClipdingerSettings()
 
 		if (ret == B_OK) {
 			msg.AddInt32("limit", fLimit);
+			msg.AddBool("trayicon", fTrayIcon);
 			msg.AddBool("autostart", fAutoStart);
 			msg.AddInt32("autopaste", fAutoPaste);
 			msg.AddInt32("fade", fFade);
@@ -174,6 +180,16 @@ ClipdingerSettings::SetLimit(int32 limit)
 	if (fLimit == limit)
 		return;
 	fLimit = limit;
+	dirtySettings = true;
+}
+
+
+void
+ClipdingerSettings::SetTrayIcon(int32 trayicon)
+{
+	if (fTrayIcon == trayicon)
+		return;
+	fTrayIcon = trayicon;
 	dirtySettings = true;
 }
 

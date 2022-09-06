@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016. All rights reserved.
+ * Copyright 2015-2022. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -9,7 +9,9 @@
 #include <Button.h>
 #include <Catalog.h>
 #include <ControlLook.h>
+#include <Deskbar.h>
 #include <LayoutBuilder.h>
+#include <Roster.h>
 #include <SeparatorView.h>
 #include <SpaceLayoutItem.h>
 #include <StringFormat.h>
@@ -36,11 +38,15 @@ SettingsWindow::SettingsWindow(BRect frame)
 
 	frame.OffsetBy(260.0, 60.0);
 	MoveTo(frame.LeftTop());
+
+	if (newTrayIcon)
+		_AddIconToDeskbar();
 }
 
 
 SettingsWindow::~SettingsWindow()
 {
+	_RemoveIconFromDeskbar();
 }
 
 
@@ -61,6 +67,15 @@ SettingsWindow::MessageReceived(BMessage* message)
 
 	switch (message->what)
 	{
+		case TRAYICON:
+		{
+			newTrayIcon = fTrayIconBox->Value();
+			if (newTrayIcon)
+				_AddIconToDeskbar();
+			else
+				_RemoveIconFromDeskbar();
+			break;
+		}
 		case AUTOSTART:
 		{
 			newAutoStart = fAutoStartBox->Value();
@@ -139,6 +154,7 @@ SettingsWindow::MessageReceived(BMessage* message)
 
 			if (settings->Lock()) {
 				settings->SetLimit(newLimit);
+				settings->SetTrayIcon(newTrayIcon);
 				settings->SetAutoStart(newAutoStart);
 				settings->SetAutoPaste(newAutoPaste);
 				settings->SetFade(newFade);
@@ -204,6 +220,10 @@ SettingsWindow::_BuildLayout()
 	BStringView* limitlabel = new BStringView("limitlabel",
 		B_TRANSLATE("entries in the clipboard history"));
 
+	// Tray icon
+	fTrayIconBox = new BCheckBox("trayicon", B_TRANSLATE(
+		"Show icon in Deskbar tray"), new BMessage(TRAYICON));
+
 	// Auto-start
 	fAutoStartBox = new BCheckBox("autostart", B_TRANSLATE(
 		"Auto-start Clipdinger"), new BMessage(AUTOSTART));
@@ -268,6 +288,7 @@ SettingsWindow::_BuildLayout()
 		.End()
 		.AddGroup(B_VERTICAL, 0)
 			.SetInsets(spacing, 0, spacing, 0)
+			.Add(fTrayIconBox)
 			.Add(fAutoStartBox)
 			.Add(fAutoPasteBox)
 			.End()
@@ -304,11 +325,53 @@ SettingsWindow::_BuildLayout()
 
 
 void
+SettingsWindow::_AddIconToDeskbar()
+{
+	app_info appInfo;
+	be_app->GetAppInfo(&appInfo);
+
+	BDeskbar deskbar;
+
+	if (!deskbar.IsRunning())
+		return;
+
+	if (deskbar.HasItem("Clipdinger"))
+		return;
+
+	status_t res = deskbar.AddItem(&appInfo.ref);
+	if (res != B_OK)
+		printf("Failed adding deskbar icon: %" B_PRId32 "\n", res);
+}
+
+
+void
+SettingsWindow::_RemoveIconFromDeskbar()
+{
+	BDeskbar deskbar;
+	int32 found_id;
+
+	if (deskbar.GetItemInfo(kApplicationName, &found_id) == B_OK) {
+		status_t err = deskbar.RemoveItem(found_id);
+		if (err != B_OK) {
+			printf("Clipdinger: Error removing replicant id "
+				"%" B_PRId32 ": %s\n", found_id, strerror(err));
+		}
+	}
+}
+
+
+void
 SettingsWindow::_UpdateControls()
 {
 	char string[4];
 	snprintf(string, sizeof(string), "%" B_PRId32, originalLimit);
 	fLimitControl->SetText(string);
+	fTrayIconBox->SetValue(originalTrayIcon);
+	if (originalTrayIcon)
+		_AddIconToDeskbar();
+	else
+		_RemoveIconFromDeskbar();
+
 	fAutoStartBox->SetValue(originalAutoStart);
 	fAutoPasteBox->SetValue(originalAutoPaste);
 	fFadeBox->SetValue(originalFade);
@@ -377,6 +440,7 @@ SettingsWindow::_GetSettings()
 	ClipdingerSettings* settings = my_app->Settings();
 	if (settings->Lock()) {
 		newLimit = originalLimit = settings->GetLimit();
+		newTrayIcon = originalTrayIcon = settings->GetTrayIcon();
 		newAutoStart = originalAutoStart = settings->GetAutoStart();
 		newAutoPaste = originalAutoPaste = settings->GetAutoPaste();
 		newFade = originalFade = settings->GetFade();
@@ -394,6 +458,7 @@ SettingsWindow::_RevertSettings()
 	ClipdingerSettings* settings = my_app->Settings();
 	if (settings->Lock()) {
 		settings->SetLimit(originalLimit);
+		settings->SetTrayIcon(originalTrayIcon);
 		settings->SetAutoStart(originalAutoStart);
 		settings->SetAutoPaste(originalAutoPaste);
 		settings->SetFade(originalFade);
@@ -403,6 +468,7 @@ SettingsWindow::_RevertSettings()
 		settings->Unlock();
 	}
 	newLimit = originalLimit;
+	newAutoStart = originalTrayIcon;
 	newAutoStart = originalAutoStart;
 	newAutoPaste = originalAutoPaste;
 	newFade = originalFade;

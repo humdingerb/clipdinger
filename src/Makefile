@@ -30,6 +30,7 @@ APP_MIME_SIG = application/x-vnd.humdinger-clipdinger
 #	Also note that spaces in folder names do not work well with this Makefile.
 SRCS = App.cpp \
 	ClipdingerSettings.cpp ClipItem.cpp ClipView.cpp ContextPopUp.cpp \
+	DeskbarReplicant.cpp \
 	EditWindow.cpp \
 	FavItem.cpp FavView.cpp \
 	KeyCatcher.cpp \

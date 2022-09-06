@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 
-#include <Alert.h>
+#include <AboutWindow.h>
 #include <Application.h>
 #include <Catalog.h>
 #include <Clipboard.h>
@@ -146,29 +146,15 @@ ReplView::MessageReceived(BMessage* msg)
 		}
 		case B_ABOUT_REQUESTED:
 		{
-			BString text = B_TRANSLATE_COMMENT(
-				"Clipdinger %version%\n"
-				"\twritten by Humdinger\n"
-				"\tCopyright %years%\n\n"
+			BAboutWindow* aboutW = new BAboutWindow(B_TRANSLATE_SYSTEM_NAME(kApplicationName),
+				kApplicationSignature);
+			aboutW->AddDescription(B_TRANSLATE(
 				"Clipdinger provides a history of clippings of the system "
 				"clipboard and lets you create favorites.\n\n"
 				"This is its clipboard monitor that can be replicated to "
-				"the Desktop to always show its current contents.",
-				"Don't change the variables %years% and %version%.");
-			text.ReplaceAll("%years%", kCopyright);
-			text.ReplaceAll("%version%", kVersion);
-
-			BAlert* alert = new BAlert("about", text.String(),
-				B_TRANSLATE("Thank you"));
-
-			BTextView* view = alert->TextView();
-			BFont font;
-			view->SetStylable(true);
-			view->GetFont(&font);
-			font.SetSize(font.Size() + 4);
-			font.SetFace(B_BOLD_FACE);
-			view->SetFontAndColor(0, 11, &font);
-			alert->Go();
+				"the Desktop to always show its current contents."));
+			aboutW->AddCopyright(2015, "Humdinger");
+			aboutW->Show();
 		}
 		default:
 		{

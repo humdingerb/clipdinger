@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016. All rights reserved.
+ * Copyright 2015-2022. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -28,6 +28,8 @@ public:
 private:
 	status_t		_KeyDown(BMessage* message);
 	void			_BuildLayout();
+	void			_AddIconToDeskbar();
+	void			_RemoveIconFromDeskbar();
 	void			_UpdateControls();
 	void			_UpdateFadeText();
 	void			_UpdateMainWindow();
@@ -37,6 +39,7 @@ private:
 
 	BTextControl*	fLimitControl;
 	BCheckBox*		fFadeBox;
+	BCheckBox*		fTrayIconBox;
 	BCheckBox*		fAutoStartBox;
 	BCheckBox*		fAutoPasteBox;
 	BSlider*		fDelaySlider;
@@ -46,6 +49,7 @@ private:
 	BString*		fFadeDescription;
 
 	int32			originalLimit;
+	int32			originalTrayIcon;
 	int32			originalAutoStart;
 	int32			originalAutoPaste;
 	int32			originalFade;
@@ -54,6 +58,7 @@ private:
 	int32			originalFadeMaxLevel;
 
 	int32			newLimit;
+	int32			newTrayIcon;
 	int32			newAutoStart;
 	int32			newAutoPaste;
 	int32			newFade;
