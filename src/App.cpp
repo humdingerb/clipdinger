@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016. All rights reserved.
+ * Copyright 2015-2022. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -8,6 +8,7 @@
  * A clipboard tool to manage clip history and favourites
  */
 
+#include <AboutWindow.h>
 #include <Catalog.h>
 
 #include "App.h"
@@ -113,29 +114,14 @@ App::MessageReceived(BMessage* msg)
 void
 App::AboutRequested()
 {
-	BString text = B_TRANSLATE_COMMENT(
-		"Clipdinger %version%\n"
-		"\twritten by Humdinger\n"
-		"\tCopyright %years%\n\n"
+	BAboutWindow* aboutW = new BAboutWindow("Clipdinger", kApplicationSignature);
+	aboutW->AddDescription(B_TRANSLATE(
 		"Clipdinger provides a history of clippings of the system "
 		"clipboard and lets you create favorites.\n\n"
 		"Please let me know of any bugs you find or features you "
-		"miss. Contact info is in the ReadMe, see menu item 'Help'.",
-		"Don't change the variables %years% and %version%.");
-	text.ReplaceAll("%years%", kCopyright);
-	text.ReplaceAll("%version%", kVersion);
-
-	BAlert *alert = new BAlert("about", text.String(),
-		B_TRANSLATE("Thank you"));
-
-	BTextView *view = alert->TextView();
-	BFont font;
-	view->SetStylable(true);
-	view->GetFont(&font);
-	font.SetSize(font.Size() + 4);
-	font.SetFace(B_BOLD_FACE);
-	view->SetFontAndColor(0, 11, &font);
-	alert->Go();
+		"miss. Contact info is in the ReadMe, see menu item 'Help'."));
+	aboutW->AddCopyright(2022, "Humdinger");
+	aboutW->Show();
 }
 
 

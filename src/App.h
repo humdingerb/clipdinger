@@ -9,7 +9,6 @@
 #ifndef APP_H
 #define APP_H
 
-#include <Alert.h>
 #include <Application.h>
 #include <TextView.h>
 

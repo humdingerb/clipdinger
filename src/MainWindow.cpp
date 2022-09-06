@@ -6,6 +6,7 @@
  *	Humdinger, humdingerb@gmail.com
  */
 
+#include <Alert.h>
 #include <Catalog.h>
 #include <ControlLook.h>
 #include <Directory.h>
