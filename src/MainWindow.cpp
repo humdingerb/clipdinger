@@ -538,7 +538,7 @@ MainWindow::MessageReceived(BMessage* message)
 				_ToggleFilterHistory();
 				break;
 			}
-			for (int32 i = 0; i < fHistory->CountItems(); i++)
+			for (int32 i = fHistory->CountItems() - 1; i >= 0; i--)
 			{
 				ClipItem* historyItem = NULL;
 				historyItem = dynamic_cast<ClipItem *>(fHistory->ItemAt(i));
