@@ -1,8 +1,7 @@
-1	Dutch	application/x-vnd.humdinger-clipdinger	158967473
+1	Dutch	application/x-vnd.humdinger-clipdinger	4188382096
 -= No text in clipboard =-	ClipboardMonitor		-= Geen inhoud in klembord =-
 Clipboard monitor	ClipboardMonitor		Klembord monitor
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tgeschreven door Humdinger\n\tCopyright %years%\n\nClipdinger geeft je een historiek van de inhoud van je klembord en laat je ook favorieten aanmaken.\n\nDit is de klembord monitor, deze kan naar het bureaublad gerepliceerd worden zodat de inhoud van het klembord altijd kan worden geraadpleegd.
-Thank you	ClipboardMonitor		Bedankt
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger geeft je een historiek van de inhoud van je klembord en laat je ook favorieten aanmaken.\n\nDit is de klembord monitor, deze kan naar het bureaublad gerepliceerd worden zodat de inhoud van het klembord altijd kan worden geraadpleegd.
 {0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Items vervagen na %A% minuten uit.\nMaximale vervaging na \n%B% minuten. (in 1 stap)}andere{Items vervagen elke %A% minuten.\nMaximale vervaging na\n%B% minuten (in # stappen)}}
 Auto-paste	SettingsWindow		Automatisch plakken
 Auto-start Clipdinger	SettingsWindow		Clipdinger automatisch opstarten
@@ -14,29 +13,37 @@ entries in the clipboard history	SettingsWindow		Items in de klembord historiek
 Fade history entries over time	SettingsWindow		Historiek items vervagen na verloop van tijd
 Max. tint level	SettingsWindow		Maximale vervaging
 OK	SettingsWindow		OK
+Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
 Steps	SettingsWindow		Stappen
+About Clipdinger	Application		Over Clipdinger
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger geeft je een historiek van de inhoud van je klembord en alsook om favorieten aan te maken.\n\nHeb je een bug gevonden of mis je functionaliteit?  Dan kan je me mailen op het mail adres in het ReadMe bestand, onder het 'Help' Menu.
+Open Clipdinger	Application		Open Clipdinger
 About Clipdinger	MainWindow		Over Clipdinger
 Add to favorites	MainWindow		Toevoegen aan favorieten
 App	MainWindow		App
+Clear	MainWindow		Wissen
 Clear clip history	MainWindow		Fragment historiek verwijderen
 Clear favorites	MainWindow		Favorieten verwijderen
 Clip	MainWindow		Fragment
 Clipboard monitor…	MainWindow		Klembord monitor...
 Edit title	MainWindow		Titel bewerken
 Favorites	MainWindow		Favorieten
+Filter:	MainWindow		Filter:
 Help	MainWindow		Help
 Lists	MainWindow		Lijsten
 Minimize	MainWindow		Minimalizeren
 Move down	MainWindow		Naar beneden
 Move up	MainWindow		Naar boven
+OK	MainWindow		OK
 Online paste service not available	MainWindow		Online plakken niet beschikbaar
 Paste online	MainWindow		Online plakken
 Pause fading	MainWindow		Vervagen pauzeren
 Quit	MainWindow		Sluit
 Remove	MainWindow		Verwijderen
 Settings…	MainWindow		Instellingen...
+This clip is already a favorite	MainWindow		This clip is already a favorite
 Add to favorites	ClipList		Toevoegen aan favorieten
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Toegevoegd op:\n%time%\n%date%
+Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Toegevoegd op: %time% - %date%\n%clip%
 Edit title	ClipList		Titel bewerken
 Paste online	ClipList		Online plakken
 Remove	ClipList		Verwijderen
@@ -48,5 +55,3 @@ Title:	EditWindow		Titel:
 Clipboard monitor	ReplWindow		Klembord monitor
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Pas de grootte van het venster naar wens aan en sleep het replicant icoontje vervolgens naar het bureaublad.\nProbeer bvb eens een kleur te slepen vn bvb Icon-O-Matic.
 Clipdinger	System name		Clipdinger
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tgeschreven door Humdinger\n\tCopyright %years%\n\nClipdinger geeft je een historiek van de inhoud van je klembord en alsook om favorieten aan te maken.\n\nHeb je een bug gevonden of mis je functionaliteit?  Dan kan je me mailen op het mail adres in het ReadMe bestand, onder het 'Help' Menu. 
-Thank you	Application		Bedankt

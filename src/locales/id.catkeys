@@ -1,8 +1,7 @@
-1	Indonesian	application/x-vnd.humdinger-clipdinger	158967473
+1	Indonesian	application/x-vnd.humdinger-clipdinger	4188382096
 -= No text in clipboard =-	ClipboardMonitor		-= Tiada teks di Papan klip=-
 Clipboard monitor	ClipboardMonitor		Monitor papan klip
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tditulis oleh Humdinger\n\tCopyright %years%\n\nClipdinger memberikan sejarah kliping papan klip sistem dan memungkinkan Anda membuat favorit.\n\nIni adalah monitor papan klip yang dapat direplikasi ke Desktop untuk selalu menampilkan isinya saat ini.
-Thank you	ClipboardMonitor		Terima kasih
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger memberikan sejarah kliping papan klip sistem dan memungkinkan Anda membuat favorit.\n\nIni adalah monitor papan klip yang dapat direplikasi ke Desktop untuk selalu menampilkan isinya saat ini.
 {0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Entri memudar setiap %A% menit.\nWarna maksimal tercapai setelah\n%B% menit (in 1 step)}other{Entries fade every %A% minutes.\nWarna maksimal tercapai setelah\n%B% menit (dalam # langkah)}}
 Auto-paste	SettingsWindow		Oto-tempel
 Auto-start Clipdinger	SettingsWindow		Oto-mulai Clipdinger
@@ -14,29 +13,37 @@ entries in the clipboard history	SettingsWindow		entri dalam riwayat clipboard
 Fade history entries over time	SettingsWindow		Entri riwayat pudar dari waktu ke waktu
 Max. tint level	SettingsWindow		Maks. tingkat warna
 OK	SettingsWindow		OKE
+Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
 Steps	SettingsWindow		Langkah
+About Clipdinger	Application		Tentang Clipdinger
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger memberikan riwayat kliping clipboard sistem dan memungkinkan Anda membuat favorit.\n\nTolong beri tahu saya jika ada bug yang Anda temukan atau fitur yang Anda lewatkan. Info kontak ada di ReadMe, lihat item menu 'Tolong'.
+Open Clipdinger	Application		Open Clipdinger
 About Clipdinger	MainWindow		Tentang Clipdinger
 Add to favorites	MainWindow		Tambahkan ke Favorit
 App	MainWindow		Aplikasi
+Clear	MainWindow		Bersih
 Clear clip history	MainWindow		Hapus riwayat klip
 Clear favorites	MainWindow		Bersihkan favorit
 Clip	MainWindow		Klip
 Clipboard monitor…	MainWindow		Monitor papan klip…
 Edit title	MainWindow		Sunting judul
 Favorites	MainWindow		Favorit
+Filter:	MainWindow		Saring:
 Help	MainWindow		Tolong
 Lists	MainWindow		Daftar
 Minimize	MainWindow		Perkecil
 Move down	MainWindow		Turunkan
 Move up	MainWindow		Naikkan
+OK	MainWindow		OKE
 Online paste service not available	MainWindow		Layanan tempel online tidak tersedia
 Paste online	MainWindow		Tempel secara online
 Pause fading	MainWindow		Jeda mengabur
 Quit	MainWindow		Keluar
 Remove	MainWindow		Hapus
 Settings…	MainWindow		pengaturan…
+This clip is already a favorite	MainWindow		This clip is already a favorite
 Add to favorites	ClipList		Tambah ke favorit
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Ditambahkan:\n%time%\n%date%
+Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Ditambahkan: %time% - %date%\n%clip%
 Edit title	ClipList		Sunting judul
 Paste online	ClipList		Tempel secara online
 Remove	ClipList		Hapus
@@ -48,5 +55,3 @@ Title:	EditWindow		Judul:
 Clipboard monitor	ReplWindow		Monitor papan-klip
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Ubah ukuran jendela sesuai kebutuhan Anda dan seret gagang replika ke Desktop. .\nCoba berikan warna, mis. dari Icon-O-Matic.
 Clipdinger	System name		Clipdinger
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tditulis oleh Humdinger\n\tCopyright %years%\n\nClipdinger memberikan riwayat kliping clipboard sistem dan memungkinkan Anda membuat favorit.\n\nTolong beri tahu saya jika ada bug yang Anda temukan atau fitur yang Anda lewatkan. Info kontak ada di ReadMe, lihat item menu 'Tolong'.
-Thank you	Application		Terima kasih

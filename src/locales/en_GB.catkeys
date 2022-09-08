@@ -1,8 +1,7 @@
-1	English (British)	application/x-vnd.humdinger-clipdinger	158967473
+1	English (British)	application/x-vnd.humdinger-clipdinger	4188382096
 -= No text in clipboard =-	ClipboardMonitor		-= No text in clipboard =-
 Clipboard monitor	ClipboardMonitor		Clipboard monitor
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favourites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.
-Thank you	ClipboardMonitor		Thank you
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger provides a history of clippings of the system clipboard and lets you create favourites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.
 {0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}
 Auto-paste	SettingsWindow		Auto-paste
 Auto-start Clipdinger	SettingsWindow		Auto-start Clipdinger
@@ -14,29 +13,37 @@ entries in the clipboard history	SettingsWindow		entries in the clipboard histor
 Fade history entries over time	SettingsWindow		Fade history entries over time
 Max. tint level	SettingsWindow		Max. tint level
 OK	SettingsWindow		Alright
+Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
 Steps	SettingsWindow		Steps
+About Clipdinger	Application		About Clipdinger
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger provides a history of clippings of the system clipboard and lets you create favourites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.
+Open Clipdinger	Application		Open Clipdinger
 About Clipdinger	MainWindow		About Clipdinger
 Add to favorites	MainWindow		Add to favourites
 App	MainWindow		App
+Clear	MainWindow		Clear
 Clear clip history	MainWindow		Clear clip history
 Clear favorites	MainWindow		Clear favourites
 Clip	MainWindow		Clip
 Clipboard monitor…	MainWindow		Clipboard monitor…
 Edit title	MainWindow		Edit title
 Favorites	MainWindow		Favourites
+Filter:	MainWindow		Filter:
 Help	MainWindow		Help
 Lists	MainWindow		Lists
 Minimize	MainWindow		Minimize
 Move down	MainWindow		Move down
 Move up	MainWindow		Move up
+OK	MainWindow		Alright
 Online paste service not available	MainWindow		Online paste service not available
 Paste online	MainWindow		Paste online
 Pause fading	MainWindow		Pause fading
 Quit	MainWindow		Quit
 Remove	MainWindow		Remove
 Settings…	MainWindow		Settings…
+This clip is already a favorite	MainWindow		This clip is already a favourite
 Add to favorites	ClipList		Add to favourites
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Added:\n%time%\n%date%
+Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Added: %time% - %date%\n%clip%
 Edit title	ClipList		Edit title
 Paste online	ClipList		Paste online
 Remove	ClipList		Remove
@@ -48,5 +55,3 @@ Title:	EditWindow		Title:
 Clipboard monitor	ReplWindow		Clipboard monitor
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a colour e.g. from Icon-O-Matic.
 Clipdinger	System name		Clipdinger
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favourites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.
-Thank you	Application		Thank you

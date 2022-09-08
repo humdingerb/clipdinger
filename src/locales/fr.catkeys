@@ -1,8 +1,7 @@
-1	French	application/x-vnd.humdinger-clipdinger	158967473
+1	French	application/x-vnd.humdinger-clipdinger	4188382096
 -= No text in clipboard =-	ClipboardMonitor		-= Pas de texte dans le presse-papiers =-
 Clipboard monitor	ClipboardMonitor		Moniteur de presse-papiers
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\técrit par Humdinger\n\tCopyright %years%\n\nClipdinger fournit un historique des notes du presse-papiers système et vous permet de créer des favoris.\n\nCeci est son moniteur de presse-papiers qui peut être répliqué sur le bureau pour toujours montrer le contenu actuel.
-Thank you	ClipboardMonitor		Merci
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger fournit un historique des notes du presse-papiers système et vous permet de créer des favoris.\n\nCeci est son moniteur de presse-papiers qui peut être répliqué sur le bureau pour toujours montrer le contenu actuel.
 {0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Les entrées s'assombrissent toutes les %A% minutes.\nLa tinte maximale est atteinte après\n%B% minutes (en 1 étape)}other{Les entrées s'assombrissent toutes les %A% minutes.\nLa tinte maximale est atteinte après\n%B% minutes (en # étapes)}}
 Auto-paste	SettingsWindow		Coller automatiquement
 Auto-start Clipdinger	SettingsWindow		Lancer Clipdinger automatiquement
@@ -14,29 +13,37 @@ entries in the clipboard history	SettingsWindow		entrées dans l'historique du p
 Fade history entries over time	SettingsWindow		Assombrir les entrées de l'historique avec le temps
 Max. tint level	SettingsWindow		Niveau max. de la tinte
 OK	SettingsWindow		D'accord
+Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
 Steps	SettingsWindow		Étapes
+About Clipdinger	Application		À propos de Clipdinger
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger fournit un historique des notes du presse-papiers système et vous permet de créer des favoris.\n\nVeuillez m'informer des problèmes rencontrés ou des fonctionnalités qui vous manquent. Les infos de contact sont dans le ReadMe, accessible par «Aide» dans le menu.
+Open Clipdinger	Application		Open Clipdinger
 About Clipdinger	MainWindow		À propos de Clipdinger
 Add to favorites	MainWindow		Ajouter aux favoris
 App	MainWindow		App
+Clear	MainWindow		Nettoyer
 Clear clip history	MainWindow		Nettoyer l'historique des notes
 Clear favorites	MainWindow		Nettoyer les favoris
 Clip	MainWindow		Note
 Clipboard monitor…	MainWindow		Moniteur de presse-papiers
 Edit title	MainWindow		Éditer le titre
 Favorites	MainWindow		Favoris
+Filter:	MainWindow		Filtre :
 Help	MainWindow		Aide
 Lists	MainWindow		Listes
 Minimize	MainWindow		Minimiser
 Move down	MainWindow		Descendre
 Move up	MainWindow		Monter
+OK	MainWindow		D'accord
 Online paste service not available	MainWindow		Service de collage en ligne non disponible
 Paste online	MainWindow		Coller en ligne
 Pause fading	MainWindow		Mettre l'assombrissement en pause
 Quit	MainWindow		Quitter
 Remove	MainWindow		Supprimer
 Settings…	MainWindow		Réglages…
+This clip is already a favorite	MainWindow		This clip is already a favorite
 Add to favorites	ClipList		Ajouter aux favoris
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Ajout :\n%time%\n%date%
+Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Ajout : %time% - %date%\n%clip%
 Edit title	ClipList		Éditer le titre
 Paste online	ClipList		Coller en ligne
 Remove	ClipList		Supprimer
@@ -48,5 +55,3 @@ Title:	EditWindow		Titre :
 Clipboard monitor	ReplWindow		Moniteur de presse-papiers
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Redimensionnez la fenêtre selon vos besoins et tirez la poignée du réplicant sur le Bureau.\nEssayez d'y déposer une couleur, par exemple à partir d'Icon-O-Matic.
 Clipdinger	System name		Clipdinger
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\técrit par Humdinger\n\tCopyright %years%\n\nClipdinger fournit un historique des notes du presse-papiers système et vous permet de créer des favoris.\n\nVeuillez m'informer des problèmes rencontrés ou des fonctionnalités qui vous manquent. Les infos de contact sont dans le ReadMe, accessible par «Aide» dans le menu.
-Thank you	Application		Merci

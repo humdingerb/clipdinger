@@ -1,8 +1,7 @@
-1	Czech	application/x-vnd.humdinger-clipdinger	158967473
+1	Czech	application/x-vnd.humdinger-clipdinger	4188382096
 -= No text in clipboard =-	ClipboardMonitor		-= Žádný text ve schránce =-
 Clipboard monitor	ClipboardMonitor		Sledovač schránky
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tnapsáno Humdingerem\n\tCopyright %years%\n\nClipdinger nabízí historii schránky a umožňuje vytváření oblíbených.\n\nTento sledovač schránky lze replikovat na plochu k zobrazování aktuálního obsahu.
-Thank you	ClipboardMonitor		Děkujeme
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger nabízí historii schránky a umožňuje vytváření oblíbených.\n\nTento sledovač schránky lze replikovat na plochu k zobrazování aktuálního obsahu.
 {0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Položky slábnou každých %A% minut.\nMaximální zbarvení je dosaženo po\n%B% minutách (v 1 kroku)}other{Položky slábnou každých %A% minut.\nMaximální zbarvení je dosaženo po\n%B% minutách (v # krocích)}}
 Auto-paste	SettingsWindow		Automatické vložení
 Auto-start Clipdinger	SettingsWindow		Automatické spuštění Clipdingeru
@@ -14,29 +13,37 @@ entries in the clipboard history	SettingsWindow		položky historie schránky
 Fade history entries over time	SettingsWindow		Slábnutí položek v průběhu času
 Max. tint level	SettingsWindow		Max. úroveň odstínu
 OK	SettingsWindow		OK
+Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
 Steps	SettingsWindow		Kroků
+About Clipdinger	Application		O aplikaci Clipdinger
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger nabízí historii schránky a umožňuje vytváření oblíbených.\n\nDejte prosím vědět, pokud narazíte na chyby nebo vás napadne šikovná funkce. Kontakt najdete v ReadMe, viz nabídka 'Nápověda'.
+Open Clipdinger	Application		Open Clipdinger
 About Clipdinger	MainWindow		O aplikaci Clipdinger
 Add to favorites	MainWindow		Přidat k oblíbeným
 App	MainWindow		App
+Clear	MainWindow		Vymazat
 Clear clip history	MainWindow		Smazat historii
 Clear favorites	MainWindow		Smazat oblíbené
 Clip	MainWindow		Schránka
 Clipboard monitor…	MainWindow		Sledovač schránky…
 Edit title	MainWindow		Změnit název
 Favorites	MainWindow		Oblíbené
+Filter:	MainWindow		Filtr:
 Help	MainWindow		Nápověda
 Lists	MainWindow		Seznamy
 Minimize	MainWindow		Minimalizovat
 Move down	MainWindow		Posunout dolů
 Move up	MainWindow		Posunout nahoru
+OK	MainWindow		OK
 Online paste service not available	MainWindow		Online služba není k dispozici
 Paste online	MainWindow		Vložit online
 Pause fading	MainWindow		Pozastavit slábnutí
 Quit	MainWindow		Ukončit
 Remove	MainWindow		Odstranit
 Settings…	MainWindow		Nastavení…
+This clip is already a favorite	MainWindow		This clip is already a favorite
 Add to favorites	ClipList		Přidat do oblíbených
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Přidáno:\n%time%\n%date%
+Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Přidáno: %time% - %date%\n%clip%
 Edit title	ClipList		Upravit název
 Paste online	ClipList		Vložit online
 Remove	ClipList		Odebrat
@@ -48,5 +55,3 @@ Title:	EditWindow		Název:
 Clipboard monitor	ReplWindow		Sledovač schránky
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Upravte velikost okna a přesuňte replikanta na plochu.\nBarvu lze změnit přetažením např. z Icon-O-Maticu.
 Clipdinger	System name		Clipdinger
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tnapsáno Humdingerem\n\tCopyright %years%\n\nClipdinger nabízí historii schránky a umožňuje vytváření oblíbených.\n\nDejte prosím vědět, pokud narazíte na chyby nebo vás napadne šikovná funkce. Kontakt najdete v ReadMe, viz nabídka 'Nápověda'.
-Thank you	Application		Děkujeme

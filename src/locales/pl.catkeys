@@ -1,8 +1,7 @@
-1	Polish	application/x-vnd.humdinger-clipdinger	158967473
+1	Polish	application/x-vnd.humdinger-clipdinger	4188382096
 -= No text in clipboard =-	ClipboardMonitor		-= Brak tekstu w schowku =-
 Clipboard monitor	ClipboardMonitor		Monitor schowka
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tnapisany przez Humdingera\n\tCopyright %years%\n\nClipdinger udostępnia historię wycinków w systemowym schowku i umożliwia dodawanie ich do ulubionych.\n\nProszę, daj mi znać o znalezionych błędach lub brakujących funkcjonalnościach.\n\nTo jest monitor schowka, który można umieścić na Pulpicie, aby zawsze pokazywał najnowsze wycinki.
-Thank you	ClipboardMonitor		Dziękuję
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger dostępnia historię wycinków w systemowym schowku i umożliwia dodawanie ich do ulubionych.\n\nProszę, daj mi znać o znalezionych błędach lub brakujących funkcjonalnościach.\n\nTo jest monitor schowka, który można umieścić na Pulpicie, aby zawsze pokazywał najnowsze wycinki.
 {0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Wpisy są stopniowo zapominane co %A% minut.\nMaksymalne zabarwienie zostaje osiągnięte po \n%B% minutach (w 1 kroku)} other{Wpisy są stopniowo zapominane co %A% minut.\nMaksymalne zabarwienie zostaje osiągnięte po \n%B% minutach (w # krokach)}}
 Auto-paste	SettingsWindow		Autowklejanie
 Auto-start Clipdinger	SettingsWindow		Automatycznie uruchamiaj Clipdingera
@@ -14,29 +13,37 @@ entries in the clipboard history	SettingsWindow		wpisów w historii schowka
 Fade history entries over time	SettingsWindow		Zapominaj wpisy z upływem czasu
 Max. tint level	SettingsWindow		Maks. poziom zabarwienia
 OK	SettingsWindow		OK
+Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
 Steps	SettingsWindow		Kroki
+About Clipdinger	Application		O Clipdingerze
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger udostępnia historię wycinków w systemowym schowku i umożliwia dodawanie ich do ulubionych.\n\nProszę, daj mi znać o znalezionych błędach lub brakujących funkcjonalnościach. Informacje kontaktowe są w pliku ReadMe, zobacz menu „Pomoc”.
+Open Clipdinger	Application		Open Clipdinger
 About Clipdinger	MainWindow		O Clipdingerze
 Add to favorites	MainWindow		Dodaj do ulubionych
 App	MainWindow		Aplikacja
+Clear	MainWindow		Wyczyść
 Clear clip history	MainWindow		Wyczyść historię schowka
 Clear favorites	MainWindow		Wyczyść ulubione
 Clip	MainWindow		Wycinek
 Clipboard monitor…	MainWindow		Monitor schowka…
 Edit title	MainWindow		Edytuj tytuł
 Favorites	MainWindow		Ulubione
+Filter:	MainWindow		Filtr:
 Help	MainWindow		Pomoc
 Lists	MainWindow		Listy
 Minimize	MainWindow		Minimalizuj
 Move down	MainWindow		Przesuń w dół
 Move up	MainWindow		Przesuń w górę
+OK	MainWindow		OK
 Online paste service not available	MainWindow		Sieciowa usługa wklejania jest niedostępna
 Paste online	MainWindow		Wklej do sieci
 Pause fading	MainWindow		Wstrzymaj wygaszanie
 Quit	MainWindow		Zakończ
 Remove	MainWindow		Usuń
 Settings…	MainWindow		Ustawienia…
+This clip is already a favorite	MainWindow		This clip is already a favorite
 Add to favorites	ClipList		Dodaj do ulubionych
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Dodany:\n%time%\n%date%
+Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Dodany: %time% - %date%\n%clip%
 Edit title	ClipList		Edytuj tytuł
 Paste online	ClipList		Wklej do sieci
 Remove	ClipList		Usuń
@@ -48,5 +55,3 @@ Title:	EditWindow		Tytuł:
 Clipboard monitor	ReplWindow		Monitor schowka
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Zmień rozmiar okna odpowiednio do potrzeb i przeciągnij replikant na Pulpit.\nSpróbuj  upuścić na nim kolor np. z Icon-O-Matic.
 Clipdinger	System name		Clipdinger
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tnapisany przez Humdingera\n\tCopyright %years%\n\nClipdinger udostępnia historię wycinków w systemowym schowku i umożliwia dodawanie ich do ulubionych.\n\nProszę, daj mi znać o znalezionych błędach lub brakujących funkcjonalnościach. Informacje kontaktowe są w pliku ReadMe, zobacz menu „Pomoc”.
-Thank you	Application		Dziękuję

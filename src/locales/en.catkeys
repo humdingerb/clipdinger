@@ -1,14 +1,15 @@
-1	English	application/x-vnd.humdinger-clipdinger	728989995
+1	English	application/x-vnd.humdinger-clipdinger	4188382096
 Cancel	SettingsWindow		Cancel
 Paste online	ClipList		Paste online
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.
+Open Clipdinger	Application		Open Clipdinger
 OK	MainWindow		OK
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.
 Quit	MainWindow		Quit
 Edit title	ClipList		Edit title
 Clipboard monitor…	MainWindow		Clipboard monitor…
 This clip is already a favorite	MainWindow		This clip is already a favorite
 Remove	ClipList		Remove
+Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
 Minimize	MainWindow		Minimize
 Edit title	MainWindow		Edit title
 Online paste service not available	MainWindow		Online paste service not available
@@ -17,32 +18,34 @@ Entries don't fade over time.	SettingsWindow		Entries don't fade over time.
 Move down	MainWindow		Move down
 Max. tint level	SettingsWindow		Max. tint level
 Settings…	MainWindow		Settings…
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.
-Thank you	ClipboardMonitor		Thank you
 Move up	MainWindow		Move up
+About Clipdinger	Application		About Clipdinger
 Clipboard monitor	ClipboardMonitor		Clipboard monitor
 Delay	SettingsWindow		Delay
 Clipboard monitor	ReplWindow		Clipboard monitor
 Clipdinger settings	SettingsWindow		Clipdinger settings
 Leave title empty to return to original title.	EditWindow		Leave title empty to return to original title.
 Remove	MainWindow		Remove
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.
+Clear	MainWindow		Clear
 Clip	MainWindow		Clip
 {0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}
-Thank you	Application		Thank you
 Paste online	MainWindow		Paste online
 entries in the clipboard history	SettingsWindow		entries in the clipboard history
 Add to favorites	ClipList		Add to favorites
 -= No text in clipboard =-	ClipboardMonitor		-= No text in clipboard =-
 OK	EditWindow		OK
 Clear clip history	MainWindow		Clear clip history
-Auto-paste	SettingsWindow		Auto-paste
 Steps	SettingsWindow		Steps
+Auto-paste	SettingsWindow		Auto-paste
 About Clipdinger	MainWindow		About Clipdinger
 Pause fading	MainWindow		Pause fading
+Filter:	MainWindow		Filter:
 Help	MainWindow		Help
 OK	SettingsWindow		OK
 Add to favorites	MainWindow		Add to favorites
 Favorites	MainWindow		Favorites
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.
 Title:	EditWindow		Title:
 App	MainWindow		App
 Edit title	EditWindow		Edit title

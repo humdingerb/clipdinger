@@ -1,8 +1,7 @@
-1	Ukrainian	application/x-vnd.humdinger-clipdinger	158967473
+1	Ukrainian	application/x-vnd.humdinger-clipdinger	4188382096
 -= No text in clipboard =-	ClipboardMonitor		-= Немає тексту в буфері обміну =-
 Clipboard monitor	ClipboardMonitor		Монітор буфера обміну
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tрозроблений Humdinger\n\tCopyright %years%\n\nClipdinger надає історію записів з системного буфера обміну і можливість зробити їх обраними.\n\nЦе монітор буфера обміну, який можна встановити у вигляді репліканта на робочий стіл, щоб завжди відображати його вміст. 
-Thank you	ClipboardMonitor		Дякуємо
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger надає історію записів з системного буфера обміну і можливість зробити їх обраними.\n\nЦе монітор буфера обміну, який можна встановити у вигляді репліканта на робочий стіл, щоб завжди відображати його вміст.
 {0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Записи затінюються кожні %A% хвилин.\nМаксимальне затінення буде досягнуте\nчерез %B% хвилин (за 1 Крок)}other{Записи затінюються кожні %A% хвилин.\nМаксимальне затінення буде досягнуте\nчерез %B% хвилин (за # кроків)}}
 Auto-paste	SettingsWindow		Автовставлення
 Auto-start Clipdinger	SettingsWindow		Автозавантаження Clipdinger
@@ -14,29 +13,37 @@ entries in the clipboard history	SettingsWindow		записів в історі�
 Fade history entries over time	SettingsWindow		Затінювати записи в історії з часом
 Max. tint level	SettingsWindow		Макс. рівень затінення
 OK	SettingsWindow		Гаразд
+Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
 Steps	SettingsWindow		Кроків
+About Clipdinger	Application		Про Clipdinger
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger надає історію записів з системного буфера обміну і можливість зробити їх обраними.\n\nПовідомляйте мене про всі знайдені вами помилки або нові функції, які вам потрібні.  Контактна інформація доступна через меню 'Довідка'.
+Open Clipdinger	Application		Open Clipdinger
 About Clipdinger	MainWindow		Про Clipdinger
 Add to favorites	MainWindow		Додати до обраного
 App	MainWindow		Програма
+Clear	MainWindow		Очистити
 Clear clip history	MainWindow		Очистити історію
 Clear favorites	MainWindow		Очистити обране
 Clip	MainWindow		Запис
 Clipboard monitor…	MainWindow		Монітор буфера обміну…
 Edit title	MainWindow		Редагувати заголовок
 Favorites	MainWindow		Обране
+Filter:	MainWindow		Filter:
 Help	MainWindow		Довідка
 Lists	MainWindow		Списки
 Minimize	MainWindow		Згорнути
 Move down	MainWindow		Перемістити нижче
 Move up	MainWindow		Перемістити вище
+OK	MainWindow		Гаразд
 Online paste service not available	MainWindow		Інтернет-сервіс недоступний
 Paste online	MainWindow		Вставити он-лайн
 Pause fading	MainWindow		Призупинити затінення
 Quit	MainWindow		Вийти
 Remove	MainWindow		Видалити
 Settings…	MainWindow		Параметри…
+This clip is already a favorite	MainWindow		This clip is already a favorite
 Add to favorites	ClipList		Додати до обраного
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Додано:\n%time%\n%date%
+Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Додано: %time% - %date%\n%clip%
 Edit title	ClipList		Редагувати заголовок
 Paste online	ClipList		Вставити он-лайн
 Remove	ClipList		Видалити
@@ -48,5 +55,3 @@ Title:	EditWindow		Заголовок:
 Clipboard monitor	ReplWindow		Монітор буфера обміну
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Розтягніть вікно як бажаєте і перетягніть реплікант на робочий стіл.\nСпробуйте перетягнути на нього колір, наприклад з Icon-O-Matic.
 Clipdinger	System name		Clipdinger
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tрозроблений Humdinger\n\tCopyright %years%\n\nClipdinger надає історію записів з системного буфера обміну і можливість зробити їх обраними.\n\nПовідомляйте мене про всі знайдені вами помилки або нові функції, які вам потрібні.  Контактна інформація доступна через меню 'Довідка'.
-Thank you	Application		Дякуємо

@@ -1,8 +1,7 @@
-1	Catalan	application/x-vnd.humdinger-clipdinger	158967473
+1	Catalan	application/x-vnd.humdinger-clipdinger	4188382096
 -= No text in clipboard =-	ClipboardMonitor		-= Cap text al porta-retalls =-
 Clipboard monitor	ClipboardMonitor		Monitor del porta-retalls
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tescrit per Humdinger\n\tCopyright %years%\n\nEl Clipdinger proporciona un historial de retalls del porta-retalls del sistema i us permet crear preferits.\n\nAquest és el monitor del porta-retalls, que es pot replicar a l'escriptori per mostrar-ne sempre el contingut actual.
-Thank you	ClipboardMonitor		Mercès
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		El Clipdinger proporciona un historial de retalls del porta-retalls del sistema i us permet crear preferits.\n\nAquest és el monitor del porta-retalls, que es pot replicar a l'escriptori per mostrar-ne sempre el contingut actual.
 {0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Les entrades s'esvaeixen cada %A% minuts.\nS'assoleix el tint màxim al cap de\n%B% minuts (en un 1 pas)}other{Les entrades s'esvaeixen cada %A% minuts.\nS'assoleix el tint màxime al cap de\n%B% minuts (en # passos)}}
 Auto-paste	SettingsWindow		Enganxa automàticament
 Auto-start Clipdinger	SettingsWindow		Inicia automàticament el Clipdinger
@@ -14,29 +13,37 @@ entries in the clipboard history	SettingsWindow		entrades a l'historial del port
 Fade history entries over time	SettingsWindow		Esvaeix les entrades de l’historial amb el temps.
 Max. tint level	SettingsWindow		Màx. nivell de tint
 OK	SettingsWindow		D'acord
+Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
 Steps	SettingsWindow		Passos
+About Clipdinger	Application		Quant al Clipdinger
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		El Clipdinger proporciona un historial de retalls del porta-retalls del sistema i us permet crear preferits.\n\nSi us plau, informeu-me de qualsevol error que trobeu o del que hi trobeu a faltar. La informació de contacte és al ReadMe, vegeu l’element del menú Ajuda.
+Open Clipdinger	Application		Open Clipdinger
 About Clipdinger	MainWindow		Quant al Clipdinger
 Add to favorites	MainWindow		Afegeix als preferits
 App	MainWindow		Aplicació
+Clear	MainWindow		Neteja
 Clear clip history	MainWindow		Neteja l'historial del porta-retalls
 Clear favorites	MainWindow		Neteja els preferits
 Clip	MainWindow		Porta-retalls
 Clipboard monitor…	MainWindow		Monitor del porta-retalls
 Edit title	MainWindow		Edita'n el títol
 Favorites	MainWindow		Preferits
+Filter:	MainWindow		Filtre:
 Help	MainWindow		Ajuda
 Lists	MainWindow		Llistes
 Minimize	MainWindow		Minimitza
 Move down	MainWindow		Mou avall
 Move up	MainWindow		Mou amunt
+OK	MainWindow		D'acord
 Online paste service not available	MainWindow		Servei d'enganxar en línia no disponible
 Paste online	MainWindow		Enganxa en línia
 Pause fading	MainWindow		Interromp amb esvaïment
 Quit	MainWindow		Surt
 Remove	MainWindow		Suprimeix
 Settings…	MainWindow		Paràmetres...
+This clip is already a favorite	MainWindow		This clip is already a favorite
 Add to favorites	ClipList		Afegeix als preferits
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Afegit:\n%time%\n%date%
+Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Afegit: %time% - %date%\n%clip%
 Edit title	ClipList		Edita'n el títol
 Paste online	ClipList		Enganxa en línia
 Remove	ClipList		Suprimeix
@@ -48,5 +55,3 @@ Title:	EditWindow		Títol:
 Clipboard monitor	ReplWindow		Monitor del porta-retalls
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Canvieu la mida de la finestra segons les vostres necessitats i arrossegueu el mànec del replicant a l'escriptori.\nIntenteu deixar-hi anar un color, per exemple, des de l'Icon-O-Màtic.
 Clipdinger	System name		Clipdinger
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tescrit per Humdinger\n\tCopyright %years%\n\nEl Clipdinger proporciona un historial de retalls del porta-retalls del sistema i us permet crear preferits.\n\nSi us plau, informeu-me de qualsevol error que trobeu o del que hi trobeu a faltar. La informació de contacte és al ReadMe, vegeu l’element del menú Ajuda.
-Thank you	Application		Mercès

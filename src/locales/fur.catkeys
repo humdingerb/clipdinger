@@ -1,8 +1,7 @@
-1	Friulian	application/x-vnd.humdinger-clipdinger	158967473
+1	Friulian	application/x-vnd.humdinger-clipdinger	4188382096
 -= No text in clipboard =-	ClipboardMonitor		-= Nissun test tes notis =-
 Clipboard monitor	ClipboardMonitor		Monitor notis
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tscrit di Humdinger\n\tCopyright %years%\n\nClipdinger al furnìs une cronologjie di ritais des notis di sisteme e ti permet di creâ dai preferîts.\n\nChest al è il so monitor des notis che al pues jessi replicât sul Scritori, cussì di podê simpri viodi i siei contignûts.
-Thank you	ClipboardMonitor		Gracie
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger al furnìs une cronologjie di ritais des notis di sisteme e ti permet di creâ dai preferîts.\n\nChest al è il so monitor des notis che al pues jessi replicât sul Scritori, cussì di podê simpri viodi i siei contignûts.
 {0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Lis vôs si fantin ogni %A% minûts.\nSi rive al massim tint dopo\n%B% minûts (in 1 passaç)}other{Lis vôs si sfantin ogni %A% minûts.\nSi rive al massim tint dopo\n%B% minûts (in # passaçs)}}
 Auto-paste	SettingsWindow		Tache in automatic
 Auto-start Clipdinger	SettingsWindow		Auto-invie Clipdinger
@@ -14,29 +13,37 @@ entries in the clipboard history	SettingsWindow		vôs te cronologjie des notis
 Fade history entries over time	SettingsWindow		Sfante vôs de cronologjie cul lâ dal timp
 Max. tint level	SettingsWindow		Nivel tint massim
 OK	SettingsWindow		Va ben
+Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
 Steps	SettingsWindow		Passaçs
+About Clipdinger	Application		Informazions su Clipdinger
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger al furnìs une cronologjie di ritais des notis di sisteme e ti permet di creâ dai preferîts.\n\nPar plasê fasimi savê se tu cjatis cualchi erôr o se a mancje cualchi funzionalitât. Lis informazions di contat a son tal ReadMe, viôt la vôs dal menù 'Jutori'.
+Open Clipdinger	Application		Open Clipdinger
 About Clipdinger	MainWindow		Informazions su Clipdinger
 Add to favorites	MainWindow		Zonte tai preferîts
 App	MainWindow		Aplicazion
+Clear	MainWindow		Nete
 Clear clip history	MainWindow		Nete cronologjie ritais
 Clear favorites	MainWindow		Nete preferîts
 Clip	MainWindow		Ritai
 Clipboard monitor…	MainWindow		Monitor des notis…
 Edit title	MainWindow		Modifiche titul
 Favorites	MainWindow		Preferîts
+Filter:	MainWindow		Filtri:
 Help	MainWindow		Jutori
 Lists	MainWindow		Listis
 Minimize	MainWindow		Minimize
 Move down	MainWindow		Sposte jù
 Move up	MainWindow		Sposte sù
+OK	MainWindow		Va ben
 Online paste service not available	MainWindow		Servizi par tacâ in rêt no disponibil
 Paste online	MainWindow		Tache in rêt
 Pause fading	MainWindow		Pause il sfantâ
 Quit	MainWindow		Jes
 Remove	MainWindow		Gjave
 Settings…	MainWindow		Impostazions…
+This clip is already a favorite	MainWindow		This clip is already a favorite
 Add to favorites	ClipList		Zonte tai preferîts
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Zontât:\n%time%\n%date%
+Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Zontât: %time% - %date%\n%clip%
 Edit title	ClipList		Modifiche titul
 Paste online	ClipList		Tache in rêt
 Remove	ClipList		Gjave
@@ -48,5 +55,3 @@ Title:	EditWindow		Titul:
 Clipboard monitor	ReplWindow		Monitor des notis
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Ridimensione il barcon in base aes tôs necessitâts e strissine il replicant sul Scritori dal so angulut.\nProve a strissinâi e molâi parsore un colôr p.e. di Icon-O-Matic.
 Clipdinger	System name		Clipdinger
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tscrit di Humdinger\n\tCopyright %years%\n\nClipdinger al furnìs une cronologjie di ritais des notis di sisteme e ti permet di creâ dai preferîts.\n\nPar plasê fasimi savê se tu cjatis cualchi erôr o se a mancje cualchi funzionalitât. Lis informazions di contat a son tal ReadMe, viôt la vôs dal menù 'Jutori'.
-Thank you	Application		Gracie

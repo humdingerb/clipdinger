@@ -1,8 +1,7 @@
-1	German	application/x-vnd.humdinger-clipdinger	158967473
+1	German	application/x-vnd.humdinger-clipdinger	4188382096
 -= No text in clipboard =-	ClipboardMonitor		-= Kein Text in Zwischenablage =-
 Clipboard monitor	ClipboardMonitor		Clipboardmonitor
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tvon Humdinger\n\tCopyright %years%\n\nClipdinger bietet eine Historie für die Zwischenablage und das Anlegen von Favoriten.\n\nDiese Zwischenablagenanzeige kann als Replikant auf dem Desktop genutzt werden, um stets deren aktuellen Inhalt anzuzeigen.
-Thank you	ClipboardMonitor		Danke
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger bietet eine Historie für die Zwischenablage und das Anlegen von Favoriten.\n\nDiese Zwischenablagenanzeige kann als Replikant auf dem Desktop genutzt werden, um stets deren aktuellen Inhalt anzuzeigen.
 {0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Einträge werden alle %A% Minuten dunkler.\nDie maximale Abdunklung wird nach\n%B% Minuten erreicht (in 1 Stufe)}other{Einträge werden alle %A% Minuten dunkler.\nDie maximale Abdunklung wird nach\n%B% Minuten erreicht (in # Stufen)}}
 Auto-paste	SettingsWindow		Auto-Einfügen
 Auto-start Clipdinger	SettingsWindow		Auto-Start  von Clipdinger
@@ -14,29 +13,37 @@ entries in the clipboard history	SettingsWindow		Einträge in der Historie
 Fade history entries over time	SettingsWindow		Einträge mit der Zeit abdunkeln
 Max. tint level	SettingsWindow		Max. Abdunklungsstufe
 OK	SettingsWindow		OK
+Show icon in Deskbar tray	SettingsWindow		Icon in Deskbar
 Steps	SettingsWindow		Stufen
+About Clipdinger	Application		Über Clipdinger
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger bietet eine Historie für die Zwischenablage und das Anlegen von Favoriten.\n\nBerichte zu Bugs oder gewünschten Features sind sehr willkommen. Kontaktinfos befinden sich im ReadMe, siehe Menü 'Hilfe'.
+Open Clipdinger	Application		Clipdinger öffnen
 About Clipdinger	MainWindow		Über Clipdinger
 Add to favorites	MainWindow		Zu Favoriten hinzufügen
 App	MainWindow		App
+Clear	MainWindow		Löschen
 Clear clip history	MainWindow		Historie löschen
 Clear favorites	MainWindow		Favoriten löschen
 Clip	MainWindow		Clip
 Clipboard monitor…	MainWindow		Zwischenablagenanzeige…
 Edit title	MainWindow		Titel bearbeiten
 Favorites	MainWindow		Favoriten
+Filter:	MainWindow		Filter:
 Help	MainWindow		Hilfe
 Lists	MainWindow		Listen
 Minimize	MainWindow		Minimieren
 Move down	MainWindow		Runter
 Move up	MainWindow		Rauf
+OK	MainWindow		OK
 Online paste service not available	MainWindow		Onlineservice nicht verfügbar
 Paste online	MainWindow		Auf Onlineservice hochladen
 Pause fading	MainWindow		Abdunkeln anhalten
 Quit	MainWindow		Beenden
 Remove	MainWindow		Entfernen
 Settings…	MainWindow		Einstellungen…
+This clip is already a favorite	MainWindow		Dieser Clip ist bereits ein Favorit
 Add to favorites	ClipList		Zu Favoriten hinzufügen
-Added:\n%time%\n%date%	ClipList	Tooltip, don't change the variables %time% and %date%.	Hinzu:\n%time%\n%date%
+Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Hinzu: %time% - %date%\n%clip%
 Edit title	ClipList		Titel bearbeiten
 Paste online	ClipList		Auf Onlineservice hochladen
 Remove	ClipList		Entfernen
@@ -48,5 +55,3 @@ Title:	EditWindow		Titel:
 Clipboard monitor	ReplWindow		Zwischenablagenanzeige
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Fenstergröße anpassen, dann den Replikant am Icon auf den Desktop ziehen.\nDie Farbe lässt sich per Drag&Drop z.B. aus Icon-O-Matic ändern.
 Clipdinger	System name		Clipdinger
-Clipdinger %version%\n\twritten by Humdinger\n\tCopyright %years%\n\nClipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application	Don't change the variables %years% and %version%.	Clipdinger %version%\n\tvon Humdinger\n\tCopyright %years%\n\nClipdinger bietet eine Historie für die Zwischenablage und das Anlegen von Favoriten.\n\nBerichte zu Bugs oder gewünschten Features sind sehr willkommen. Kontaktinfos befinden sich im ReadMe, siehe Menü 'Hilfe'.
-Thank you	Application		Danke
