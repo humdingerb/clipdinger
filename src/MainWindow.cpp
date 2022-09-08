@@ -610,12 +610,12 @@ MainWindow::_BuildLayout()
 	item->SetTarget(be_app);
 	menu->AddItem(item);
 	item = new BMenuItem(B_TRANSLATE("Settings" B_UTF8_ELLIPSIS),
-		new BMessage(SETTINGS));
+		new BMessage(SETTINGS), ',');
 	item->SetTarget(be_app);
 	menu->AddItem(item);
 	menu->AddSeparatorItem();
 	item = new BMenuItem(B_TRANSLATE("Help"),
-		new BMessage(HELP));
+		new BMessage(HELP), 'H');
 	menu->AddItem(item);
 	item = new BMenuItem(B_TRANSLATE("About Clipdinger"),
 		new BMessage(B_ABOUT_REQUESTED));
