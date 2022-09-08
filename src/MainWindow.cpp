@@ -399,12 +399,12 @@ MainWindow::MessageReceived(BMessage* message)
 			ClipItem* item = dynamic_cast<ClipItem *> (fFilter->ItemAt(itemindex));
 			BString text(item->GetClip());
 			_PutClipboard(text);
+			_ResetFilter();
 			if (fAutoPaste)
 				_AutoPaste();
 
 			be_clipboard->StartWatching(this);
-
-			_ResetFilter();
+			PostMessage(B_CLIPBOARD_CHANGED);
 			break;
 		}
 		case INSERT_HISTORY:
