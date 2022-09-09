@@ -18,10 +18,10 @@
 #include <stdlib.h>
 
 #include "Constants.h"
-#include "ClipdingerSettings.h"
+#include "Settings.h"
 
 
-ClipdingerSettings::ClipdingerSettings()
+Settings::Settings()
 	:
 	fLimit(kDefaultLimit),
 	fTrayIcon(kDefaultTrayIcon),
@@ -102,7 +102,7 @@ ClipdingerSettings::ClipdingerSettings()
 }
 
 
-ClipdingerSettings::~ClipdingerSettings()
+Settings::~Settings()
 {
 	if (!dirtySettings)
 		return;
@@ -145,21 +145,21 @@ ClipdingerSettings::~ClipdingerSettings()
 
 
 bool
-ClipdingerSettings::Lock()
+Settings::Lock()
 {
 	return fLock.Lock();
 }
 
 
 void
-ClipdingerSettings::Unlock()
+Settings::Unlock()
 {
 	fLock.Unlock();
 }
 
 
 void
-ClipdingerSettings::GetSplitWeight(float& left, float& right)
+Settings::GetSplitWeight(float& left, float& right)
 {
 	left = fLeftWeight;
 	right = fRightWeight;
@@ -167,7 +167,7 @@ ClipdingerSettings::GetSplitWeight(float& left, float& right)
 
 
 void
-ClipdingerSettings::GetSplitCollapse(bool& left, bool& right)
+Settings::GetSplitCollapse(bool& left, bool& right)
 {
 	left = fLeftCollapse;
 	right = fRightCollapse;
@@ -175,7 +175,7 @@ ClipdingerSettings::GetSplitCollapse(bool& left, bool& right)
 
 
 void
-ClipdingerSettings::SetLimit(int32 limit)
+Settings::SetLimit(int32 limit)
 {
 	if (fLimit == limit)
 		return;
@@ -185,7 +185,7 @@ ClipdingerSettings::SetLimit(int32 limit)
 
 
 void
-ClipdingerSettings::SetTrayIcon(int32 trayicon)
+Settings::SetTrayIcon(int32 trayicon)
 {
 	if (fTrayIcon == trayicon)
 		return;
@@ -195,7 +195,7 @@ ClipdingerSettings::SetTrayIcon(int32 trayicon)
 
 
 void
-ClipdingerSettings::SetAutoStart(int32 autostart)
+Settings::SetAutoStart(int32 autostart)
 {
 	if (fAutoStart == autostart)
 		return;
@@ -205,7 +205,7 @@ ClipdingerSettings::SetAutoStart(int32 autostart)
 
 
 void
-ClipdingerSettings::SetAutoPaste(int32 autopaste)
+Settings::SetAutoPaste(int32 autopaste)
 {
 	if (fAutoPaste == autopaste)
 		return;
@@ -215,7 +215,7 @@ ClipdingerSettings::SetAutoPaste(int32 autopaste)
 
 
 void
-ClipdingerSettings::SetFade(int32 fade)
+Settings::SetFade(int32 fade)
 {
 	if (fFade == fade)
 		return;
@@ -225,7 +225,7 @@ ClipdingerSettings::SetFade(int32 fade)
 
 
 void
-ClipdingerSettings::SetFadeDelay(int32 delay)
+Settings::SetFadeDelay(int32 delay)
 {
 	if (fFadeDelay == delay)
 		return;
@@ -235,7 +235,7 @@ ClipdingerSettings::SetFadeDelay(int32 delay)
 
 
 void
-ClipdingerSettings::SetFadeStep(int32 step)
+Settings::SetFadeStep(int32 step)
 {
 	if (fFadeStep == step)
 		return;
@@ -245,7 +245,7 @@ ClipdingerSettings::SetFadeStep(int32 step)
 
 
 void
-ClipdingerSettings::SetFadeMaxLevel(int32 level)
+Settings::SetFadeMaxLevel(int32 level)
 {
 	if (fFadeMaxLevel == level)
 		return;
@@ -255,7 +255,7 @@ ClipdingerSettings::SetFadeMaxLevel(int32 level)
 
 
 void
-ClipdingerSettings::SetWindowPosition(BRect where)
+Settings::SetWindowPosition(BRect where)
 {
 	if (fPosition == where)
 		return;
@@ -265,7 +265,7 @@ ClipdingerSettings::SetWindowPosition(BRect where)
 
 
 void
-ClipdingerSettings::SetSplitWeight(float left, float right)
+Settings::SetSplitWeight(float left, float right)
 {
 	if ((fLeftWeight == left) && (fRightWeight == right))
 		return;
@@ -276,7 +276,7 @@ ClipdingerSettings::SetSplitWeight(float left, float right)
 
 
 void
-ClipdingerSettings::SetSplitCollapse(bool left, bool right)
+Settings::SetSplitCollapse(bool left, bool right)
 {
 	if ((fLeftCollapse == left) && (fRightCollapse == right))
 		return;

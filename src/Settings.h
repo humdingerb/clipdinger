@@ -6,16 +6,16 @@
  *	Humdinger, humdingerb@gmail.com
  */
 
-#ifndef CLIPDINGERSETTINGS_H
-#define CLIPDINGERSETTINGS_H
+#ifndef Settings_H
+#define Settings_H
 
 #include <Locker.h>
 #include <Rect.h>
 
-class ClipdingerSettings {
+class Settings {
 public:
-					ClipdingerSettings();
-					~ClipdingerSettings();
+					Settings();
+					~Settings();
 
 		bool		Lock();
 		void		Unlock();
@@ -69,4 +69,4 @@ private:
 		BLocker		fLock;
 };
 
-#endif	/* CLIPDINGERSETTINGS_H */
+#endif	/* Settings_H */

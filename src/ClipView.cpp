@@ -252,7 +252,7 @@ ClipView::AdjustColors()
 	float maxlevel = 0;
 	bool pause = false;
 
-	ClipdingerSettings* settings = my_app->Settings();
+	Settings* settings = my_app->GetSettings();
 	if (settings->Lock()) {
 		fade = settings->GetFade();
 		step = settings->GetFadeStep();

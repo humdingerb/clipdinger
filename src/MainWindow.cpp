@@ -55,7 +55,7 @@ MainWindow::MainWindow(BRect frame)
 		if (!screen.Frame().InsetByCopy(10, 10).Intersects(Frame()))
 			CenterOnScreen();
 	}
-	ClipdingerSettings* settings = my_app->Settings();
+	Settings* settings = my_app->GetSettings();
 	int32 fade = 0;
 	if (settings->Lock()) {
 		fAutoPaste = settings->GetAutoPaste();
@@ -104,7 +104,7 @@ MainWindow::QuitRequested()
 	_SaveHistory();
 	_SaveFavorites();
 
-	ClipdingerSettings* settings = my_app->Settings();
+	Settings* settings = my_app->GetSettings();
 	if (settings->Lock()) {
 		float leftWeight = fMainSplitView->ItemWeight((int32)0);
 		float rightWeight = fMainSplitView->ItemWeight(1);
@@ -157,7 +157,7 @@ MainWindow::MessageReceived(BMessage* message)
 		case PAUSE:
 		{
 			int32 pause = fPauseCheckBox->Value();
-			ClipdingerSettings* settings = my_app->Settings();
+			Settings* settings = my_app->GetSettings();
 			if (settings->Lock()) {
 				settings->SetFadePause(pause);
 				settings->Unlock();
@@ -763,7 +763,7 @@ MainWindow::_SetSplitview()
 	float rightWeight;
 	bool leftCollapse;
 	bool rightCollapse;
-	ClipdingerSettings* settings = my_app->Settings();
+	Settings* settings = my_app->GetSettings();
 	if (settings->Lock()) {
 		settings->GetSplitWeight(leftWeight, rightWeight);
 		settings->GetSplitCollapse(leftCollapse, rightCollapse);

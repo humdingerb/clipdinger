@@ -12,7 +12,7 @@
 #include <Application.h>
 #include <TextView.h>
 
-#include "ClipdingerSettings.h"
+#include "Settings.h"
 #include "MainWindow.h"
 #include "ReplWindow.h"
 #include "SettingsWindow.h"
@@ -30,12 +30,12 @@ public:
 	void				AboutRequested();
 	void				MessageReceived(BMessage* msg);
 
-	ClipdingerSettings* Settings() { return &fSettings; }
+	Settings*			GetSettings() { return &fSettings; }
 
 	MainWindow*			fMainWindow;
 
 private:
-	ClipdingerSettings	fSettings;
+	Settings			fSettings;
 	ReplWindow*			fReplWindow;
 	SettingsWindow*		fSettingsWindow;
 };

@@ -29,14 +29,14 @@ APP_MIME_SIG = application/x-vnd.humdinger-clipdinger
 #	same name (source.c or source.cpp) are included from different directories.
 #	Also note that spaces in folder names do not work well with this Makefile.
 SRCS = App.cpp \
-	ClipdingerSettings.cpp ClipItem.cpp ClipView.cpp ContextPopUp.cpp \
+	ClipItem.cpp ClipView.cpp ContextPopUp.cpp \
 	DeskbarReplicant.cpp \
 	EditWindow.cpp \
 	FavItem.cpp FavView.cpp \
 	KeyCatcher.cpp \
 	MainWindow.cpp \
 	ReplView.cpp ReplWindow.cpp \
-	SettingsWindow.cpp
+	Settings.cpp SettingsWindow.cpp
 
 #	Specify the resource definition files to use. Full or relative paths can be
 #	used.

@@ -63,7 +63,7 @@ SettingsWindow::DispatchMessage(BMessage* message, BHandler* handler)
 void
 SettingsWindow::MessageReceived(BMessage* message)
 {
-	ClipdingerSettings* settings = my_app->Settings();
+	Settings* settings = my_app->GetSettings();
 
 	switch (message->what)
 	{
@@ -437,7 +437,7 @@ SettingsWindow::_UpdateMainWindow()
 void
 SettingsWindow::_GetSettings()
 {
-	ClipdingerSettings* settings = my_app->Settings();
+	Settings* settings = my_app->GetSettings();
 	if (settings->Lock()) {
 		newLimit = originalLimit = settings->GetLimit();
 		newTrayIcon = originalTrayIcon = settings->GetTrayIcon();
@@ -455,7 +455,7 @@ SettingsWindow::_GetSettings()
 void
 SettingsWindow::_RevertSettings()
 {
-	ClipdingerSettings* settings = my_app->Settings();
+	Settings* settings = my_app->GetSettings();
 	if (settings->Lock()) {
 		settings->SetLimit(originalLimit);
 		settings->SetTrayIcon(originalTrayIcon);
