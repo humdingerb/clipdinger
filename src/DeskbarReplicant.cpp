@@ -153,6 +153,8 @@ DeskbarReplicant::MessageReceived(BMessage* msg)
 			BMessenger messenger(kApplicationSignature);
 			if (messenger.IsValid())
 				messenger.SendMessage(msg);
+			else	// In case we're not running (crashed?)
+				be_roster->Launch(kApplicationSignature, msg);
 			break;
 		}
 		case OPEN_CLIPDINGER:
@@ -160,8 +162,8 @@ DeskbarReplicant::MessageReceived(BMessage* msg)
 			BMessenger messenger(kApplicationSignature);
 			if (messenger.IsValid())
 				messenger.SendMessage(new BMessage(ACTIVATE));
-			else
-				be_roster->Launch(kApplicationSignature);	// In case we're not running (crashed?)
+			else	// In case we're not running (crashed?)
+				be_roster->Launch(kApplicationSignature);
 			break;
 		}
 		default:
