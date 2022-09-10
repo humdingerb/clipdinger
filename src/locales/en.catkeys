@@ -1,4 +1,4 @@
-1	English	application/x-vnd.humdinger-clipdinger	4188382096
+1	English	application/x-vnd.humdinger-clipdinger	3722135617
 Cancel	SettingsWindow		Cancel
 Paste online	ClipList		Paste online
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.
@@ -19,9 +19,10 @@ Move down	MainWindow		Move down
 Max. tint level	SettingsWindow		Max. tint level
 Settings…	MainWindow		Settings…
 Move up	MainWindow		Move up
+Delay	SettingsWindow		Delay
 About Clipdinger	Application		About Clipdinger
 Clipboard monitor	ClipboardMonitor		Clipboard monitor
-Delay	SettingsWindow		Delay
+Clipdinger (fading paused)	MainWindow		Clipdinger (fading paused)
 Clipboard monitor	ReplWindow		Clipboard monitor
 Clipdinger settings	SettingsWindow		Clipdinger settings
 Leave title empty to return to original title.	EditWindow		Leave title empty to return to original title.

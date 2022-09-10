@@ -156,6 +156,8 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			int32 pause = fMenuPauseFading->IsMarked();
 			fMenuPauseFading->SetMarked(!pause);
+			SetTitle(pause ? B_TRANSLATE_SYSTEM_NAME("Clipdinger")
+				: B_TRANSLATE("Clipdinger (fading paused)"));
 
 			Settings* settings = my_app->GetSettings();
 			if (settings->Lock()) {
@@ -492,6 +494,8 @@ MainWindow::MessageReceived(BMessage* message)
 				fMenuPauseFading->SetEnabled(newValue);
 				if (newValue == 0) {
 					fMenuPauseFading->SetMarked(false);
+					SetTitle(B_TRANSLATE_SYSTEM_NAME("Clipdinger"));
+
 					Settings* settings = my_app->GetSettings();
 					if (settings->Lock()) {
 						settings->SetFadePause(false);
