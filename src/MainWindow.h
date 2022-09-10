@@ -88,9 +88,7 @@ private:
 
 	BGroupLayout*	fFilterLayout;
 	BGroupLayout*	fHistoryLayout;
-	BGroupLayout*	fPauseLayout;
 
-	BCheckBox*		fPauseCheckBox;
 	BButton*		fButtonUp;
 	BButton*		fButtonDown;
 	BMenuItem*		fMenuAdd;
@@ -98,6 +96,7 @@ private:
 	BMenuItem*		fMenuDelete;
 	BMenuItem*		fMenuPaste;
 	BMenuItem*		fMenuClearFav;
+	BMenuItem*		fMenuPauseFading;
 
 	EditWindow*		fEditWindow;
 };

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2018. All rights reserved.
+ * Copyright 2015-2022. All rights reserved.
  * Distributed under the terms of the MIT license.
  *
  * Author:
@@ -64,10 +64,8 @@ MainWindow::MainWindow(BRect frame)
 		settings->Unlock();
 	}
 
-	if (!fade) {
-		fPauseLayout->SetVisible(false);
-		InvalidateLayout();
-	}
+	fMenuPauseFading->SetEnabled(fade);
+
 	fLaunchTime = real_time_clock();
 
 	_LoadHistory();
@@ -156,10 +154,12 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case PAUSE:
 		{
-			int32 pause = fPauseCheckBox->Value();
+			int32 pause = fMenuPauseFading->IsMarked();
+			fMenuPauseFading->SetMarked(!pause);
+
 			Settings* settings = my_app->GetSettings();
 			if (settings->Lock()) {
-				settings->SetFadePause(pause);
+				settings->SetFadePause(!pause);
 				settings->Unlock();
 			}
 			break;
@@ -483,26 +483,23 @@ MainWindow::MessageReceived(BMessage* message)
 
 				if (fLimit != newValue)
 					fLimit = newValue;
-
-				BMessenger messenger(fHistory);
-				BMessage message(ADJUSTCOLORS);
-				messenger.SendMessage(&message);
 			}
 
 			if (message->FindInt32("autopaste", &newValue) == B_OK)
 				fAutoPaste = newValue;
 
 			if (message->FindInt32("fade", &newValue) == B_OK) {
-				bool visible = fPauseLayout->IsVisible();
-				if ((visible == false) && (newValue == 1))
-					fPauseLayout->SetVisible(true);
-				else if ((visible == true) && (newValue == 0))
-					fPauseLayout->SetVisible(false);
-				else
-					break;
-
-				InvalidateLayout();
+				fMenuPauseFading->SetEnabled(newValue);
+				if (newValue == 0) {
+					fMenuPauseFading->SetMarked(false);
+					Settings* settings = my_app->GetSettings();
+					if (settings->Lock()) {
+						settings->SetFadePause(false);
+						settings->Unlock();
+					}
+				}
 			}
+			_UpdateColors();
 			break;
 		}
 		case FILTER_CLEAR:
@@ -654,6 +651,10 @@ MainWindow::_BuildLayout()
 	fMenuClearFav = new BMenuItem(B_TRANSLATE("Clear favorites"),
 		new BMessage(CLEAR_FAVORITES));
 	menu->AddItem(fMenuClearFav);
+	menu->AddSeparatorItem();
+	fMenuPauseFading = new BMenuItem(B_TRANSLATE("Pause fading"),
+		new BMessage(PAUSE), 'F');
+	menu->AddItem(fMenuPauseFading);
 	menuBar->AddItem(menu);
 
 	// The lists
@@ -684,11 +685,6 @@ MainWindow::_BuildLayout()
 	favoritesHeader->SetFont(&font);
 	favoritesHeader->SetAlignment(B_ALIGN_CENTER);
 
-	// The pause checkbox
-	fPauseCheckBox = new BCheckBox("pause", B_TRANSLATE("Pause fading"),
-		new BMessage(PAUSE));
-	fPauseCheckBox->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
-
 	// The buttons
 	fButtonUp = new BButton("up", B_TRANSLATE("Move up"),
 		new BMessage(FAV_UP));
@@ -717,10 +713,6 @@ MainWindow::_BuildLayout()
 					.Add(filterScrollView)
 					.End()
 				.AddGroup(B_HORIZONTAL)
-					.GetLayout(&fPauseLayout)
-					.Add(fPauseCheckBox)
-					.End()
-				.AddGroup(B_HORIZONTAL)
 					.Add(fFilterControl)
 					.Add(buttonClear)
 					.End()
@@ -740,7 +732,6 @@ MainWindow::_BuildLayout()
 
 	fHistoryLayout->SetVisible(true);
 	fFilterLayout->SetVisible(false);
-	fPauseLayout->SetVisible(false);
 	InvalidateLayout();
 
 	fFilter->SetInvocationMessage(new BMessage(INSERT_FILTER));
