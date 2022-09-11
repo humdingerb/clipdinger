@@ -32,6 +32,8 @@
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "MainWindow"
 
+//#define HISTORY_VIEW		0
+//#define FILTER_VIEW 		1
 
 MainWindow::MainWindow(BRect frame)
 	:
@@ -137,16 +139,26 @@ MainWindow::MessageReceived(BMessage* message)
 			BEntry entry(&info.ref);
 			entry.GetPath(&path);
 
+			BString filter = fFilterControl->TextView()->Text();
+			if (filter != "") {
+				_RestoreHistory();
+				fBackup.MakeEmpty();
+			}
+
 			_MakeItemUnique(clip);
 			bigtime_t time(real_time_clock());
 			_AddClip(clip, NULL, path.Path(), time, time);
+
+			if (filter != "")
+				PostMessage(FILTER_INPUT);
 
 			fHistory->Select(0);
 			break;
 		}
 		case ESCAPE:
 		{
-			if (fFilterLayout->IsVisible())
+			BString filter = fFilterControl->Text();
+			if (filter != "")
 				_ResetFilter();
 			else
 				Minimize(true);
@@ -172,6 +184,13 @@ MainWindow::MessageReceived(BMessage* message)
 				int32 index = fHistory->CurrentSelection();
 				if (index < 0 || fHistory->CountItems() == 1)
 					break;
+
+				// Keep fBackList in-sync
+//				if (!fBackup.IsEmpty()) {
+//					ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(index));
+//					fBackup.RemoveItem(IndexOf(item));
+//				}
+
 				fHistory->RemoveItem(index);
 
 				int32 count = fHistory->CountItems();
@@ -231,6 +250,13 @@ MainWindow::MessageReceived(BMessage* message)
 					ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(index));
 					item->SetTitle(newTitle, true);
 					fHistory->InvalidateItem(index);
+
+					// Keep fBackList in-sync
+//					if (!fBackup.IsEmpty()) {
+//						ClipItem* backupItem
+//							= dynamic_cast<ClipItem *> (fBackup.ItemAt(fBackup.IndexOf(item)));
+//						backupItem->SetTitle(newTitle, true);
+//					}
 				}
 			} else if (!GetHistoryActiveFlag() && !fFavorites->IsEmpty()) {
 				int32 index = fFavorites->CurrentSelection();
@@ -388,27 +414,6 @@ MainWindow::MessageReceived(BMessage* message)
 			system(command.String());
 			break;
 		}
-		case INSERT_FILTER:
-		{
-			int32 itemindex;
-			message->FindInt32("index", &itemindex);
-			if ((fFilter->IsEmpty()) || (itemindex < 0))
-				break;
-
-			Minimize(true);
-			be_clipboard->StopWatching(this);
-
-			ClipItem* item = dynamic_cast<ClipItem *> (fFilter->ItemAt(itemindex));
-			BString text(item->GetClip());
-			_PutClipboard(text);
-			_ResetFilter();
-			if (fAutoPaste)
-				_AutoPaste();
-
-			be_clipboard->StartWatching(this);
-			PostMessage(B_CLIPBOARD_CHANGED);
-			break;
-		}
 		case INSERT_HISTORY:
 		{
 			int32 itemindex;
@@ -428,6 +433,11 @@ MainWindow::MessageReceived(BMessage* message)
 			_UpdateColors();
 
 			be_clipboard->StartWatching(this);
+
+			BString filter = fFilterControl->Text();
+			if (filter != "")
+				_ResetFilter();
+
 			break;
 		}
 		case INSERT_FAVORITE:
@@ -513,51 +523,37 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case FILTER_INPUT:
 		{
-			bool focus = fFilterControl->TextView()->IsFocus();
+			if (fBackup.IsEmpty())
+				_BackupHistory();
 
-			BString filter = fFilterControl->Text();
+			bool focus = fFilterControl->TextView()->IsFocus();
+			BString filter = fFilterControl->TextView()->Text();
 			BString input;
 			if ((message->FindString("input", &input) == B_OK) && (!focus)) {
 				if (input == "BACKSPACE") {
-					if (filter.IsEmpty())
+					if (filter == "")
 						break;
 					filter.Truncate(filter.CountChars() - 1);
-				} else
+				} else 
 					filter.Append(input.String());
 
 				fFilterControl->SetText(filter);
 			}
-			// Intentional fall-through
-		}
-		case FILTER:
-		{
-			fFilter->MakeEmpty();
-			BString filter = fFilterControl->Text();
-			if ((filter == "") && (!fHistoryLayout->IsVisible())) {
-				fHistory->Select(0);
-				fHistory->MakeFocus(true);
-				_ToggleFilterHistory();
+
+			if (filter == "") {
+				_ResetFilter();
 				break;
 			}
-			for (int32 i = fHistory->CountItems() - 1; i >= 0; i--)
-			{
-				ClipItem* historyItem = NULL;
-				historyItem = dynamic_cast<ClipItem *>(fHistory->ItemAt(i));
-				BString clip(historyItem->GetClip());
-				if (strcasestr(clip, filter.String()) != NULL) {
-					BString title(historyItem->GetTitle());
-					BString path(historyItem->GetOrigin());
-					bigtime_t added = historyItem->GetTimeAdded();
-					bigtime_t since = historyItem->GetTimeSince();
-					fFilter->AddItem(new ClipItem(clip, title, path, added, since), 0);
+			_RestoreHistory();
+
+			for (int32 i = fHistory->CountItems() - 1; i >= 0; i--) {
+				ClipItem* item = dynamic_cast<ClipItem *>(fHistory->ItemAt(i));
+				BString clip(item->GetClip());
+				if (strcasestr(clip.String(), filter.String()) == NULL) {
+					fHistory->RemoveItem(i);
 				}
 			}
-
-			fFilter->Select(0);
-			fFilter->MakeFocus(true);
-
-			if (fHistoryLayout->IsVisible())
-				_ToggleFilterHistory();
+			fHistory->Select(0);
 			break;
 		}
 		default:
@@ -575,24 +571,34 @@ MainWindow::MessageReceived(BMessage* message)
 void
 MainWindow::_ResetFilter()
 {
-	fFilter->MakeEmpty();
+printf("_ResetFilter()\n");
 	fFilterControl->SetText("");
-	_ToggleFilterHistory();
+	_RestoreHistory();
+	fHistory->Select(0);
+	fBackup.MakeEmpty();
 }
 
 
 void
-MainWindow::_ToggleFilterHistory()
+MainWindow::_BackupHistory()
 {
-	bool visible = fHistoryLayout->IsVisible();
-	if (visible) {
-		fHistoryLayout->SetVisible(false);
-		fFilterLayout->SetVisible(true);
-	} else {
-		fHistoryLayout->SetVisible(true);
-		fFilterLayout->SetVisible(false);
-		fHistory->Select(0);
-		fHistory->MakeFocus(true);
+printf("_BackupHistory()\n");
+	fBackup.MakeEmpty();
+	for (int32 i = fHistory->CountItems() - 1; i >= 0; i--) {
+		ClipItem* item = dynamic_cast<ClipItem *>(fHistory->ItemAt(i));
+		fBackup.AddItem(item);
+	}
+}
+
+
+void
+MainWindow::_RestoreHistory()
+{
+printf("_RestoreHistory()\n");
+	fHistory->MakeEmpty();
+	for (int32 i = fBackup.CountItems() - 1; i >= 0; i--) {
+		ClipItem* item = dynamic_cast<ClipItem *>(fBackup.ItemAt(i));
+		fHistory->AddItem(item);
 	}
 }
 
@@ -662,24 +668,18 @@ MainWindow::_BuildLayout()
 	menuBar->AddItem(menu);
 
 	// The lists
-	fFilter = new ClipView("filterview");
-	fFilter->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
-
 	fHistory = new ClipView("historyview");
 	fHistory->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
 	fFavorites = new FavView("favoritesview");
 	fFavorites->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
-	BScrollView* filterScrollView = new BScrollView("filterscroll", fFilter,
-		B_WILL_DRAW, false, true);
 	BScrollView* historyScrollView = new BScrollView("historyscroll", fHistory,
 		B_WILL_DRAW, false, true);
 	BScrollView* favoritesScrollView = new BScrollView("favoritesscroll", fFavorites,
 		B_WILL_DRAW, false, true);
 
-	fFilterControl = new BTextControl("filterbox", B_TRANSLATE("Filter:"), "",
-		NULL);
+	fFilterControl = new BTextControl("filterbox", B_TRANSLATE("Filter:"), "", NULL);
 	fFilterControl->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
 	BStringView* favoritesHeader = new BStringView("favorites",
@@ -702,20 +702,12 @@ MainWindow::_BuildLayout()
 		new BMessage(FILTER_CLEAR));
 	buttonClear->SetEnabled(true);
 
-	// do the layouting
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(menuBar)
 		.AddSplit(B_HORIZONTAL, B_USE_SMALL_SPACING)
 		.GetSplitView(&fMainSplitView)
 			.AddGroup(B_VERTICAL)
-				.AddGroup(B_HORIZONTAL)
-					.GetLayout(&fHistoryLayout)
-					.Add(historyScrollView)
-					.End()
-				.AddGroup(B_HORIZONTAL)
-					.GetLayout(&fFilterLayout)
-					.Add(filterScrollView)
-					.End()
+				.Add(historyScrollView)
 				.AddGroup(B_HORIZONTAL)
 					.Add(fFilterControl)
 					.Add(buttonClear)
@@ -734,12 +726,6 @@ MainWindow::_BuildLayout()
 			.SetInsets(B_USE_SMALL_INSETS)
 		.End();
 
-	fHistoryLayout->SetVisible(true);
-	fFilterLayout->SetVisible(false);
-	InvalidateLayout();
-
-	fFilter->SetInvocationMessage(new BMessage(INSERT_FILTER));
-	fFilter->SetViewColor(B_TRANSPARENT_COLOR);
 	fHistory->SetInvocationMessage(new BMessage(INSERT_HISTORY));
 	fHistory->SetViewColor(B_TRANSPARENT_COLOR);
 	fFavorites->SetInvocationMessage(new BMessage(INSERT_FAVORITE));
@@ -778,9 +764,9 @@ MainWindow::_SetSplitview()
 void
 MainWindow::_SaveHistory()
 {
+printf("Saving History\n");
 	BPath path;
 	BMessage msg;
-
 	if (find_directory(B_USER_SETTINGS_DIRECTORY, &path) < B_OK)
 		return;
 	status_t ret = path.Append(kSettingsFolder);
@@ -822,6 +808,7 @@ MainWindow::_SaveHistory()
 void
 MainWindow::_LoadHistory()
 {
+printf("Loading History\n");
 	BPath path;
 	BMessage msg;
 
@@ -834,6 +821,8 @@ MainWindow::_LoadHistory()
 			if (file.InitCheck() != B_OK || (msg.Unflatten(&file) != B_OK))
 				return;
 			else {
+				fHistory->MakeEmpty();
+
 				BString clip;
 				BString title;
 				BString path;
@@ -945,10 +934,15 @@ void
 MainWindow::_AddClip(BString clip, BString title, BString path,
 	bigtime_t added, bigtime_t since)
 {
-	if (fHistory->CountItems() > fLimit - 1)
+	if (fHistory->CountItems() > fLimit - 1) {
 		fHistory->RemoveItem(fHistory->LastItem());
+	}
 
 	fHistory->AddItem(new ClipItem(clip, title, path, added, since), 0);
+
+//	if (!fBackup.IsEmpty()) {
+//		fBackup.AddItem(new ClipItem(clip, title, path, added, since), 0);
+//	}
 }
 
 
@@ -967,7 +961,6 @@ MainWindow::_MakeItemUnique(BString clip)
 			fHistory->RemoveItem(i);
 	}
 }
-
 
 
 void

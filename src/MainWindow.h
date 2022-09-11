@@ -11,6 +11,7 @@
 
 #include <Application.h>
 #include <Button.h>
+#include <CardLayout.h>
 #include <CheckBox.h>
 #include <Clipboard.h>
 #include <GroupLayout.h>
@@ -18,6 +19,7 @@
 #include <Menu.h>
 #include <MenuBar.h>
 #include <MenuItem.h>
+#include <ObjectList.h>
 #include <ScrollView.h>
 #include <Size.h>
 #include <SplitView.h>
@@ -30,6 +32,7 @@
 #include <stdlib.h>
 #include <strings.h>
 
+#include "ClipItem.h"
 #include "ClipView.h"
 #include "EditWindow.h"
 #include "FavView.h"
@@ -47,8 +50,9 @@ public:
 
 	bool			GetHistoryActiveFlag();
 	void			SetHistoryActiveFlag(bool flag);
+	BString			GetFilterText() { return fFilterControl->Text(); }
 
-	ClipView*		fFilter;
+	BObjectList<ClipItem>		fBackup;
 	ClipView*		fHistory;
 	FavView*		fFavorites;
 
@@ -56,7 +60,9 @@ private:
 	void			_BuildLayout();
 	void			_SetSplitview();
 	void			_ResetFilter();
-	void			_ToggleFilterHistory();
+	void			_BackupHistory();
+	void			_RestoreHistory();
+//	void			_ToggleFilterHistory();
 
 	void			_LoadHistory();
 	void			_SaveHistory();
@@ -86,8 +92,7 @@ private:
 
 	BTextControl*	fFilterControl;
 
-	BGroupLayout*	fFilterLayout;
-	BGroupLayout*	fHistoryLayout;
+//	BCardLayout*	fCardLayout;
 
 	BButton*		fButtonUp;
 	BButton*		fButtonDown;
