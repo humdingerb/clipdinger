@@ -185,12 +185,6 @@ MainWindow::MessageReceived(BMessage* message)
 				if (index < 0 || fHistory->CountItems() == 1)
 					break;
 
-				// Keep fBackList in-sync
-//				if (!fBackup.IsEmpty()) {
-//					ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(index));
-//					fBackup.RemoveItem(IndexOf(item));
-//				}
-
 				fHistory->RemoveItem(index);
 
 				int32 count = fHistory->CountItems();
@@ -250,13 +244,6 @@ MainWindow::MessageReceived(BMessage* message)
 					ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(index));
 					item->SetTitle(newTitle, true);
 					fHistory->InvalidateItem(index);
-
-					// Keep fBackList in-sync
-//					if (!fBackup.IsEmpty()) {
-//						ClipItem* backupItem
-//							= dynamic_cast<ClipItem *> (fBackup.ItemAt(fBackup.IndexOf(item)));
-//						backupItem->SetTitle(newTitle, true);
-//					}
 				}
 			} else if (!GetHistoryActiveFlag() && !fFavorites->IsEmpty()) {
 				int32 index = fFavorites->CurrentSelection();
@@ -526,15 +513,24 @@ MainWindow::MessageReceived(BMessage* message)
 			if (fBackup.IsEmpty())
 				_BackupHistory();
 
-			bool focus = fFilterControl->TextView()->IsFocus();
 			BString filter = fFilterControl->TextView()->Text();
+
+			// avoid focus on fFilterControl, it eats e.g. cursor keys
+			if (fFilterControl->TextView()->IsFocus()) {
+				fHistory->MakeFocus(true);
+				// a letter got entered in fFilterControl:
+				// remove it, it'll arrive again from the KeyCatcher
+				if (filter != "")
+					filter.Truncate(filter.CountChars() - 1);
+			}
+
 			BString input;
-			if ((message->FindString("input", &input) == B_OK) && (!focus)) {
+			if (message->FindString("input", &input) == B_OK) {
 				if (input == "BACKSPACE") {
 					if (filter == "")
 						break;
 					filter.Truncate(filter.CountChars() - 1);
-				} else 
+				} else
 					filter.Append(input.String());
 
 				fFilterControl->SetText(filter);
@@ -549,11 +545,11 @@ MainWindow::MessageReceived(BMessage* message)
 			for (int32 i = fHistory->CountItems() - 1; i >= 0; i--) {
 				ClipItem* item = dynamic_cast<ClipItem *>(fHistory->ItemAt(i));
 				BString clip(item->GetClip());
-				if (strcasestr(clip.String(), filter.String()) == NULL) {
+				if (strcasestr(clip.String(), filter.String()) == NULL)
 					fHistory->RemoveItem(i);
-				}
 			}
 			fHistory->Select(0);
+			fButtonClear->SetEnabled(true);
 			break;
 		}
 		default:
@@ -571,9 +567,11 @@ MainWindow::MessageReceived(BMessage* message)
 void
 MainWindow::_ResetFilter()
 {
-printf("_ResetFilter()\n");
 	fFilterControl->SetText("");
+	fButtonClear->SetEnabled(false);
+
 	_RestoreHistory();
+
 	fHistory->Select(0);
 	fBackup.MakeEmpty();
 }
@@ -582,7 +580,6 @@ printf("_ResetFilter()\n");
 void
 MainWindow::_BackupHistory()
 {
-printf("_BackupHistory()\n");
 	fBackup.MakeEmpty();
 	for (int32 i = fHistory->CountItems() - 1; i >= 0; i--) {
 		ClipItem* item = dynamic_cast<ClipItem *>(fHistory->ItemAt(i));
@@ -594,7 +591,6 @@ printf("_BackupHistory()\n");
 void
 MainWindow::_RestoreHistory()
 {
-printf("_RestoreHistory()\n");
 	fHistory->MakeEmpty();
 	for (int32 i = fBackup.CountItems() - 1; i >= 0; i--) {
 		ClipItem* item = dynamic_cast<ClipItem *>(fBackup.ItemAt(i));
@@ -698,9 +694,9 @@ MainWindow::_BuildLayout()
 		new BMessage(FAV_DOWN));
 	fButtonDown->SetEnabled(false);
 
-	BButton* buttonClear = new BButton("clear", B_TRANSLATE("Clear"),
+	fButtonClear = new BButton("clear", B_TRANSLATE("Clear"),
 		new BMessage(FILTER_CLEAR));
-	buttonClear->SetEnabled(true);
+	fButtonClear->SetEnabled(false);
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(menuBar)
@@ -710,7 +706,7 @@ MainWindow::_BuildLayout()
 				.Add(historyScrollView)
 				.AddGroup(B_HORIZONTAL)
 					.Add(fFilterControl)
-					.Add(buttonClear)
+					.Add(fButtonClear)
 					.End()
 				.End()
 			.AddGroup(B_VERTICAL, B_USE_SMALL_SPACING)
@@ -764,7 +760,6 @@ MainWindow::_SetSplitview()
 void
 MainWindow::_SaveHistory()
 {
-printf("Saving History\n");
 	BPath path;
 	BMessage msg;
 	if (find_directory(B_USER_SETTINGS_DIRECTORY, &path) < B_OK)
@@ -808,7 +803,6 @@ printf("Saving History\n");
 void
 MainWindow::_LoadHistory()
 {
-printf("Loading History\n");
 	BPath path;
 	BMessage msg;
 

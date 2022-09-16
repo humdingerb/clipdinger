@@ -62,7 +62,6 @@ private:
 	void			_ResetFilter();
 	void			_BackupHistory();
 	void			_RestoreHistory();
-//	void			_ToggleFilterHistory();
 
 	void			_LoadHistory();
 	void			_SaveHistory();
@@ -92,8 +91,7 @@ private:
 
 	BTextControl*	fFilterControl;
 
-//	BCardLayout*	fCardLayout;
-
+	BButton*		fButtonClear;
 	BButton*		fButtonUp;
 	BButton*		fButtonDown;
 	BMenuItem*		fMenuAdd;
