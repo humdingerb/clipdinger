@@ -57,10 +57,10 @@ App::ReadyToRun()
 	fReplWindow = new ReplWindow(rect);
 	fSettingsWindow = new SettingsWindow(rect);
 
-	fMainWindow->MoveBy(4000, 0); // Move out of view to avoid flicker
+	fMainWindow->MoveBy(10000, 0); // Move out of view to avoid flicker
 	fMainWindow->Show();
 	fMainWindow->Minimize(true);
-	fMainWindow->MoveBy(-4000, 0);
+	fMainWindow->MoveBy(-10000, 0);
 	if (fMainWindow->Lock()) {
 		fMainWindow->fHistory->MakeFocus(true);
 		fMainWindow->Unlock();
