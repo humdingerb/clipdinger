@@ -160,9 +160,10 @@ ClipView::KeyDown(const char* bytes, int32 numBytes)
 		}
 		case B_RIGHT_ARROW:
 		{
-			if (my_app->fMainWindow->Lock())
+			if (my_app->fMainWindow->Lock()) {
 				my_app->fMainWindow->fFavorites->MakeFocus(true);
-			my_app->fMainWindow->Unlock();
+				my_app->fMainWindow->Unlock();
+			}
 			break;
 		}
 		default:

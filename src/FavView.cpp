@@ -175,9 +175,10 @@ FavView::KeyDown(const char* bytes, int32 numBytes)
 		}
 		case B_LEFT_ARROW:
 		{
-			if (my_app->fMainWindow->Lock())
+			if (my_app->fMainWindow->Lock()) {
 				my_app->fMainWindow->fHistory->MakeFocus(true);
-			my_app->fMainWindow->Unlock();
+				my_app->fMainWindow->Unlock();
+			}
 			break;
 		}
 		default:

@@ -163,7 +163,7 @@ DeskbarReplicant::MessageReceived(BMessage* msg)
 			if (messenger.IsValid())
 				messenger.SendMessage(new BMessage(ACTIVATE));
 			else	// In case we're not running (crashed?)
-				be_roster->Launch(kApplicationSignature);
+				be_roster->Launch(kApplicationSignature, new BMessage(ACTIVATE));
 			break;
 		}
 		default:

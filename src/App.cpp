@@ -61,9 +61,10 @@ App::ReadyToRun()
 	fMainWindow->Show();
 	fMainWindow->Minimize(true);
 	fMainWindow->MoveBy(-4000, 0);
-	if (fMainWindow->Lock())
+	if (fMainWindow->Lock()) {
 		fMainWindow->fHistory->MakeFocus(true);
-	fMainWindow->Unlock();
+		fMainWindow->Unlock();
+	}
 }
 
 
@@ -77,8 +78,8 @@ App::MessageReceived(BMessage* msg)
 			if (fMainWindow->Lock()) {
 				fMainWindow->Minimize(false);
 				fMainWindow->Activate(true);
+				fMainWindow->Unlock();
 			}
-			fMainWindow->Unlock();
 			break;
 		}
 		case CLIPMONITOR:
@@ -88,8 +89,8 @@ App::MessageReceived(BMessage* msg)
 					fReplWindow->Show();
 				else
 					fReplWindow->Activate();
+				fReplWindow->Unlock();
 			}
-			fReplWindow->Unlock();
 			break;
 		}
 		case SETTINGS:
@@ -99,8 +100,8 @@ App::MessageReceived(BMessage* msg)
 					fSettingsWindow->Show();
 				else
 					fSettingsWindow->Activate();
+				fSettingsWindow->Unlock();
 			}
-			fSettingsWindow->Unlock();
 			break;
 		}
 		default:
