@@ -94,6 +94,10 @@ DeskbarReplicant::_Init()
 DeskbarReplicant *
 DeskbarReplicant::Instantiate(BMessage* archive)
 {
+	// only create replicant if Clipdinger is running
+	if (!be_roster->IsRunning(kApplicationSignature))
+		return NULL;
+
 	if (!validate_instantiation(archive, kClassName))
 		return NULL;
 
