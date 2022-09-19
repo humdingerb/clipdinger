@@ -452,6 +452,10 @@ MainWindow::MessageReceived(BMessage* message)
 		}
 		case CLEAR_HISTORY:
 		{
+			BString filter = fFilterControl->TextView()->Text();
+			if (filter != "")
+				_ResetFilter();
+
 			fHistory->MakeEmpty();
 			PostMessage(B_CLIPBOARD_CHANGED);
 			break;
