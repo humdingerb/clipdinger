@@ -335,8 +335,8 @@ SettingsWindow::_AddIconToDeskbar()
 	if (!deskbar.IsRunning())
 		return;
 
-	if (deskbar.HasItem("Clipdinger"))
-		return;
+	if (deskbar.HasItem(kApplicationName))
+		_RemoveIconFromDeskbar();	// there could be a leftover replicant from a crashed Clipdinger
 
 	status_t res = deskbar.AddItem(&appInfo.ref);
 	if (res != B_OK)
