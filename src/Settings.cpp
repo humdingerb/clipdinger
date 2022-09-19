@@ -40,6 +40,20 @@ Settings::Settings()
 	dirtySettings(false)
 
 {
+	LoadSettings();
+}
+
+
+Settings::~Settings()
+{
+	if (dirtySettings)
+		SaveSettings();
+}
+
+
+void
+Settings::LoadSettings()
+{
 	BPath path;
 	BMessage msg;
 
@@ -102,11 +116,9 @@ Settings::Settings()
 }
 
 
-Settings::~Settings()
+void
+Settings::SaveSettings()
 {
-	if (!dirtySettings)
-		return;
-
 	BPath path;
 	BMessage msg;
 

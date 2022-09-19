@@ -20,6 +20,9 @@ public:
 		bool		Lock();
 		void		Unlock();
 
+		void		LoadSettings();
+		void		SaveSettings();
+
 		int32		GetLimit() { return fLimit; }
 		bool		GetAutoStart() { return fAutoStart; }
 		bool		GetTrayIcon() { return fTrayIcon; }

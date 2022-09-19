@@ -160,6 +160,7 @@ SettingsWindow::MessageReceived(BMessage* message)
 				settings->SetFade(newFade);
 				settings->SetFadeDelay(newFadeDelay);
 				settings->SetFadeStep(newFadeStep);
+				settings->SaveSettings();
 				settings->Unlock();
 			}
 			_UpdateMainWindow();
