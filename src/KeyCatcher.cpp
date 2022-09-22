@@ -74,8 +74,7 @@ KeyCatcher::KeyDown(const char* bytes, int32 numBytes)
 			}
 			default:
 			{	// Send all ASCII and UTF characters to MainWindow
-				if ((bytes[0] >= 'A' && bytes[0] <= 'Z') || (bytes[0] >= 'a' && bytes[0] <= 'z')
-						|| ((unsigned char)bytes[0] >= 0xC0)) {
+				if ((bytes[0] >= '!' && bytes[0] <= '~') || ((unsigned char)bytes[0] >= 0xC0)) {
 					BString input(bytes);
 					BMessenger messenger(Looper());
 					BMessage message(FILTER_INPUT);
