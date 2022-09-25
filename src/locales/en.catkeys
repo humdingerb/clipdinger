@@ -1,5 +1,6 @@
-1	English	application/x-vnd.humdinger-clipdinger	3063657291
+1	English	application/x-vnd.humdinger-clipdinger	2664829352
 Cancel	SettingsWindow		Cancel
+Upload error	MainWindow		Upload error
 Paste online	ClipList		Paste online
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.
 Open Clipdinger	Application		Open Clipdinger
@@ -39,6 +40,7 @@ OK	EditWindow		OK
 Clear clip history	MainWindow		Clear clip history
 Steps	SettingsWindow		Steps
 Auto-paste	SettingsWindow		Auto-paste
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Failed to upload the clip.\nThe temporary file could not be written to disk.
 About Clipdinger	MainWindow		About Clipdinger
 Pause fading	MainWindow		Pause fading
 Filter:	MainWindow		Filter:
@@ -53,6 +55,6 @@ Edit title	EditWindow		Edit title
 Auto-start Clipdinger	SettingsWindow		Auto-start Clipdinger
 Clear favorites	MainWindow		Clear favorites
 Clipdinger	System name		Clipdinger
-Cancel	EditWindow		Cancel
 Fade history entries over time	SettingsWindow		Fade history entries over time
+Cancel	EditWindow		Cancel
 Lists	MainWindow		Lists

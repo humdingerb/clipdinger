@@ -1007,20 +1007,29 @@ MainWindow::_UploadClip(void* self)
 	BPath tempPath;
 	status_t ret = find_directory(B_SYSTEM_TEMP_DIRECTORY, &tempPath);
 
-	if (ret == B_OK)
+	if (ret == B_OK) {
 		ret = tempPath.Append("clip_upload");
 
-	BFile tempFile(tempPath.Path(), B_CREATE_FILE | B_ERASE_FILE | B_WRITE_ONLY);
-	ret = tempFile.InitCheck();
+		if (ret == B_OK) {
+			BFile tempFile(tempPath.Path(), B_CREATE_FILE | B_ERASE_FILE | B_WRITE_ONLY);
+			ret = tempFile.InitCheck();
 
-	if (ret == B_OK) {
-		ssize_t written = tempFile.Write(text.String(),	text.Length());
-		if (written != text.Length())
-			ret = (status_t)written;
+			if (ret == B_OK) {
+				ssize_t written = tempFile.Write(text.String(),	text.Length());
+
+				if (written != text.Length())
+					ret = (status_t)written;
+			}
+		}
 	}
 
-	if (ret != B_OK)
+	if (ret != B_OK) {
+		BString error(B_TRANSLATE("Failed to upload the clip.\n"
+			"The temporary file could not be written to disk."));
+		BAlert* alert= new BAlert(B_TRANSLATE("Upload error"), error, B_TRANSLATE("OK"));
+		alert->Go();
 		return B_ERROR;
+	}
 
 	BString title = window->Title();
 	BString uploadTitle = title;
