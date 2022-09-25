@@ -120,6 +120,9 @@ MainWindow::QuitRequested()
 		settings->Unlock();
 	}
 
+	status_t status;
+	wait_for_thread(fThread, &status);
+
 	be_app->PostMessage(B_QUIT_REQUESTED);
 	return true;
 }
@@ -369,50 +372,20 @@ MainWindow::MessageReceived(BMessage* message)
 			_UpdateControls();
 			break;
 		}
-		case PASTE_SPRUNGE:
+		case PASTE_ONLINE:
 		{
-			BString text;
-
-			if (GetHistoryActiveFlag() && !fHistory->IsEmpty()) {
-				int32 index = fHistory->CurrentSelection();
-				if (index < 0)
-					break;
-
-				ClipItem* item = dynamic_cast<ClipItem *> (fHistory->ItemAt(index));
-				text = item->GetClip();
-
-			} else if (!GetHistoryActiveFlag() && !fFavorites->IsEmpty()) {
-				int32 index = fFavorites->CurrentSelection();
-				if (index < 0)
-					break;
-
-				FavItem* item = dynamic_cast<FavItem *> (fFavorites->ItemAt(index));
-				text = item->GetClip();
-
+			if (_CheckNetworkConnection() == true) {
+				fThread = spawn_thread(_UploadClip, "clip_upload",
+					B_LOW_PRIORITY, this);
+				if (fThread >= B_OK)
+					resume_thread(fThread);
 			} else
-				break;
-
-			_PutClipboard(text);
+				_PutClipboard(B_TRANSLATE("Online paste service not available"));
 
 			// don't minimize/reset filter on SHIFT
 			if ((modifiers() & (B_COMMAND_KEY | B_SHIFT_KEY))
-					!= (B_COMMAND_KEY | B_SHIFT_KEY)) {
+					!= (B_COMMAND_KEY | B_SHIFT_KEY))
 				PostMessage(MINIMIZE);
-
-			PostMessage(B_CLIPBOARD_CHANGED);
-
-			if (_CheckNetworkConnection() == true) {
-				BString command(
-					"URL=$(clipboard -p | curl -F 'f:1=<-' http://ix.io) ; "
-					"echo $URL ; "
-					"clipboard -c \"$URL\" ; "
-					"exit");
-				system(command.String());
-			} else
-				_PutClipboard(B_TRANSLATE("Online paste service not available"));
-				break;
-			}
-
 
 			break;
 		}
@@ -652,7 +625,7 @@ MainWindow::_BuildLayout()
 
 	menu = new BMenu(B_TRANSLATE("Clip"));
 	fMenuPaste = new BMenuItem(B_TRANSLATE("Paste online"),
-		new BMessage(PASTE_SPRUNGE), 'P');
+		new BMessage(PASTE_ONLINE), 'P');
 	menu->AddItem(fMenuPaste);
 	BMessage* message = new BMessage(FAV_ADD);
 	message->AddInt32("clipdinger_command", FAV_ADD);
@@ -739,7 +712,7 @@ MainWindow::_BuildLayout()
 	fFavorites->SetViewColor(B_TRANSPARENT_COLOR);
 
 	AddShortcut('P', B_SHIFT_KEY,
-		new BMessage(PASTE_SPRUNGE));
+		new BMessage(PASTE_ONLINE));
 }
 
 
@@ -938,15 +911,10 @@ void
 MainWindow::_AddClip(BString clip, BString title, BString path,
 	bigtime_t added, bigtime_t since)
 {
-	if (fHistory->CountItems() > fLimit - 1) {
+	if (fHistory->CountItems() > fLimit - 1)
 		fHistory->RemoveItem(fHistory->LastItem());
-	}
 
 	fHistory->AddItem(new ClipItem(clip, title, path, added, since), 0);
-
-//	if (!fBackup.IsEmpty()) {
-//		fBackup.AddItem(new ClipItem(clip, title, path, added, since), 0);
-//	}
 }
 
 
@@ -1010,6 +978,69 @@ MainWindow::_CheckNetworkConnection()
 	return false;
 }
 
+
+status_t
+MainWindow::_UploadClip(void* self)
+{
+	MainWindow* window = reinterpret_cast<MainWindow*>(self);
+	BString text;
+
+	if (window->GetHistoryActiveFlag() && !window->fHistory->IsEmpty()) {
+		int32 index = window->fHistory->CurrentSelection();
+		if (index < 0)
+			return B_ERROR;
+
+		ClipItem* item = dynamic_cast<ClipItem *> (window->fHistory->ItemAt(index));
+		text = item->GetClip();
+
+	} else if (!window->GetHistoryActiveFlag() && !window->fFavorites->IsEmpty()) {
+		int32 index = window->fFavorites->CurrentSelection();
+		if (index < 0)
+			return B_ERROR;
+
+		FavItem* item = dynamic_cast<FavItem *> (window->fFavorites->ItemAt(index));
+		text = item->GetClip();
+
+	} else
+		return B_ERROR;
+
+	BPath tempPath;
+	status_t ret = find_directory(B_SYSTEM_TEMP_DIRECTORY, &tempPath);
+
+	if (ret == B_OK)
+		ret = tempPath.Append("clip_upload");
+
+	BFile tempFile(tempPath.Path(), B_CREATE_FILE | B_ERASE_FILE | B_WRITE_ONLY);
+	ret = tempFile.InitCheck();
+
+	if (ret == B_OK) {
+		ssize_t written = tempFile.Write(text.String(),	text.Length());
+		if (written != text.Length())
+			ret = (status_t)written;
+	}
+
+	if (ret != B_OK)
+		return B_ERROR;
+
+	BString title = window->Title();
+	BString uploadTitle = title;
+	window->SetTitle(uploadTitle << " (" << B_TRANSLATE("Upload") << B_UTF8_ELLIPSIS << ")");
+
+	BString command(
+		"URL=$(curl -F 'file=@'\"%FILE%\" https://0x0.st) ; "
+		"clipboard -c \"$URL\" ; "
+		"exit");
+	command.ReplaceFirst("%FILE%", tempPath.Path());
+	system(command.String());
+
+	window->SetTitle(title);
+
+	BEntry entry(tempPath.Path());
+	if (entry.Exists())
+		entry.Remove();
+
+	return B_OK;
+}
 
 // #pragma mark - Clipboard
 

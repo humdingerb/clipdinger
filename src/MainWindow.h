@@ -74,6 +74,7 @@ private:
 	void			_MoveClipToTop();
 	void			_CropHistory(int32 limit);
 	bool			_CheckNetworkConnection();
+	static status_t	_UploadClip(void* self);
 
 	BString			_GetClipboard();
 	void			_PutClipboard(BString text);
@@ -85,6 +86,7 @@ private:
 	int32			fLimit;
 	int32			fAutoPaste;
 	bigtime_t		fLaunchTime;
+	thread_id		fThread;
 
 	BSplitView*		fMainSplitView;
 	bool			fHistoryActiveFlag;	// true if fHistory view is the active one

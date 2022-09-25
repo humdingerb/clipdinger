@@ -33,7 +33,7 @@ static const int32 kMinuteUnits = 10; // minutes per unit
 
 #define ACTIVATE			'actv'
 #define MENU_ADD			'madd'
-#define PASTE_SPRUNGE		'pssp'
+#define PASTE_ONLINE		'pssp'
 #define CLEAR_HISTORY		'clhi'
 #define CLEAR_FAVORITES		'clfv'
 #define DELETE				'dele'

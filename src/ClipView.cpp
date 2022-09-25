@@ -290,7 +290,7 @@ ClipView::_ShowPopUpMenu(BPoint screen)
 	ContextPopUp* menu = new ContextPopUp("PopUpMenu", this);
 	BMessage* msg = NULL;
 
-	msg = new BMessage(PASTE_SPRUNGE);
+	msg = new BMessage(PASTE_ONLINE);
 	BMenuItem* item = new BMenuItem(B_TRANSLATE("Paste online"), msg, 'P');
 	menu->AddItem(item);
 
