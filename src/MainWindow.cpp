@@ -553,7 +553,6 @@ MainWindow::MessageReceived(BMessage* message)
 					fHistory->RemoveItem(i);
 			}
 			fHistory->Select(0);
-			fButtonClear->SetEnabled(true);
 			break;
 		}
 		default:
@@ -572,7 +571,6 @@ void
 MainWindow::_ResetFilter()
 {
 	fFilterControl->SetText("");
-	fButtonClear->SetEnabled(false);
 
 	_RestoreHistory();
 
@@ -698,20 +696,13 @@ MainWindow::_BuildLayout()
 		new BMessage(FAV_DOWN));
 	fButtonDown->SetEnabled(false);
 
-	fButtonClear = new BButton("clear", B_TRANSLATE("Clear"),
-		new BMessage(FILTER_CLEAR));
-	fButtonClear->SetEnabled(false);
-
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(menuBar)
 		.AddSplit(B_HORIZONTAL, B_USE_SMALL_SPACING)
 		.GetSplitView(&fMainSplitView)
 			.AddGroup(B_VERTICAL)
 				.Add(historyScrollView)
-				.AddGroup(B_HORIZONTAL)
-					.Add(fFilterControl)
-					.Add(fButtonClear)
-					.End()
+				.Add(fFilterControl)
 				.End()
 			.AddGroup(B_VERTICAL, B_USE_SMALL_SPACING)
 				.Add(favoritesHeader)

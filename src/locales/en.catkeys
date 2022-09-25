@@ -1,4 +1,4 @@
-1	English	application/x-vnd.humdinger-clipdinger	3722135617
+1	English	application/x-vnd.humdinger-clipdinger	1023177478
 Cancel	SettingsWindow		Cancel
 Paste online	ClipList		Paste online
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.
@@ -19,16 +19,15 @@ Move down	MainWindow		Move down
 Max. tint level	SettingsWindow		Max. tint level
 Settings…	MainWindow		Settings…
 Move up	MainWindow		Move up
-Delay	SettingsWindow		Delay
 About Clipdinger	Application		About Clipdinger
 Clipboard monitor	ClipboardMonitor		Clipboard monitor
+Delay	SettingsWindow		Delay
 Clipdinger (fading paused)	MainWindow		Clipdinger (fading paused)
 Clipboard monitor	ReplWindow		Clipboard monitor
 Clipdinger settings	SettingsWindow		Clipdinger settings
 Leave title empty to return to original title.	EditWindow		Leave title empty to return to original title.
 Remove	MainWindow		Remove
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.
-Clear	MainWindow		Clear
 Clip	MainWindow		Clip
 {0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}
 Paste online	MainWindow		Paste online

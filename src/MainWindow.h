@@ -91,7 +91,6 @@ private:
 
 	BTextControl*	fFilterControl;
 
-	BButton*		fButtonClear;
 	BButton*		fButtonUp;
 	BButton*		fButtonDown;
 	BMenuItem*		fMenuAdd;
