@@ -101,6 +101,10 @@ MainWindow::~MainWindow()
 bool
 MainWindow::QuitRequested()
 {
+	BString filter = fFilterControl->Text();
+	if (filter != "")
+		_ResetFilter();
+
 	_SaveHistory();
 	_SaveFavorites();
 
@@ -153,6 +157,14 @@ MainWindow::MessageReceived(BMessage* message)
 				PostMessage(FILTER_INPUT);
 
 			fHistory->Select(0);
+			break;
+		}
+		case MINIMIZE:
+		{
+			BString filter = fFilterControl->Text();
+			if (filter != "")
+				_ResetFilter();
+			Minimize(true);
 			break;
 		}
 		case ESCAPE:
@@ -628,7 +640,7 @@ MainWindow::_BuildLayout()
 	item->SetTarget(be_app);
 	menu->AddSeparatorItem();
 	item = new BMenuItem(B_TRANSLATE("Minimize"),
-		new BMessage(ESCAPE), 'W');
+		new BMessage(MINIMIZE), 'W');
 	menu->AddItem(item);
 	item = new BMenuItem(B_TRANSLATE("Quit"),
 		new BMessage(B_QUIT_REQUESTED), 'Q');

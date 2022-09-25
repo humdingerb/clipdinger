@@ -40,6 +40,7 @@ static const int32 kMinuteUnits = 10; // minutes per unit
 #define FAV_ADD				'addf'
 #define	EDIT_TITLE			'edif'
 #define UPDATE_TITLE		'updt'
+#define MINIMIZE			'mize'
 #define ESCAPE				'esca'
 #define POPCLOSED			'pmcl'
 #define F_KEY				'fkey'
@@ -55,7 +56,6 @@ static const int32 kMinuteUnits = 10; // minutes per unit
 #define PAUSE				'paus'
 #define CLIPMONITOR			'cmon'
 #define SETTINGS			'sett'
-#define FILTER				'filt'
 #define FILTER_CLEAR		'ficl'
 #define FILTER_INPUT		'fiin'
 
