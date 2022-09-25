@@ -394,23 +394,26 @@ MainWindow::MessageReceived(BMessage* message)
 
 			_PutClipboard(text);
 
+			// don't minimize/reset filter on SHIFT
 			if ((modifiers() & (B_COMMAND_KEY | B_SHIFT_KEY))
-					!= (B_COMMAND_KEY | B_SHIFT_KEY)) // don't minimize on SHIFT
-				Minimize(true);
+					!= (B_COMMAND_KEY | B_SHIFT_KEY)) {
+				PostMessage(MINIMIZE);
 
 			PostMessage(B_CLIPBOARD_CHANGED);
 
-			if (_CheckNetworkConnection() == false) {
+			if (_CheckNetworkConnection() == true) {
+				BString command(
+					"URL=$(clipboard -p | curl -F 'f:1=<-' http://ix.io) ; "
+					"echo $URL ; "
+					"clipboard -c \"$URL\" ; "
+					"exit");
+				system(command.String());
+			} else
 				_PutClipboard(B_TRANSLATE("Online paste service not available"));
 				break;
 			}
 
-			BString command(
-				"URL=$(clipboard -p | curl -F 'f:1=<-' http://ix.io) ; "
-				"echo $URL ; "
-				"clipboard -c \"$URL\" ; "
-				"exit");
-			system(command.String());
+
 			break;
 		}
 		case INSERT_HISTORY:
