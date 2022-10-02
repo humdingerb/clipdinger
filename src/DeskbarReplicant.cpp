@@ -154,21 +154,33 @@ DeskbarReplicant::MessageReceived(BMessage* msg)
 	switch (msg->what) {
 		case B_ABOUT_REQUESTED:
 		{
-			BMessenger messenger(kApplicationSignature);
+			team_id team;
+			team = be_roster->TeamFor(kApplicationSignature);
+			if (team < 0) {
+				be_roster->Launch(kApplicationSignature);
+				while (be_roster->TeamFor(kApplicationSignature) < 0)
+					snooze(100000);
+			}
+			team = be_roster->TeamFor(kApplicationSignature);
+			BMessenger messenger(kApplicationSignature, team);
 			if (messenger.IsValid())
 				messenger.SendMessage(msg);
-			else	// In case we're not running (crashed?)
-				be_roster->Launch(kApplicationSignature, msg);
-			break;
 		}
 		case OPEN_CLIPDINGER:
 		{
-			BMessenger messenger(kApplicationSignature);
-			if (messenger.IsValid())
-				messenger.SendMessage(new BMessage(ACTIVATE));
-			else	// In case we're not running (crashed?)
-				be_roster->Launch(kApplicationSignature, new BMessage(ACTIVATE));
-			break;
+			team_id team;
+			team = be_roster->TeamFor(kApplicationSignature);
+			if (team < 0) {
+				be_roster->Launch(kApplicationSignature);
+				while (be_roster->TeamFor(kApplicationSignature) < 0)
+					snooze(100000);
+			}
+			team = be_roster->TeamFor(kApplicationSignature);
+			BMessenger messenger(kApplicationSignature, team);
+			if (messenger.IsValid()) {
+				BMessage message(ACTIVATE);
+				messenger.SendMessage(&message);
+			}
 		}
 		default:
 			BView::MessageReceived(msg);
