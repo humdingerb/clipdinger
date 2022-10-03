@@ -1,4 +1,4 @@
-1	Polish	application/x-vnd.humdinger-clipdinger	4188382096
+1	Polish	application/x-vnd.humdinger-clipdinger	2664829352
 -= No text in clipboard =-	ClipboardMonitor		-= Brak tekstu w schowku =-
 Clipboard monitor	ClipboardMonitor		Monitor schowka
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger dostępnia historię wycinków w systemowym schowku i umożliwia dodawanie ich do ulubionych.\n\nProszę, daj mi znać o znalezionych błędach lub brakujących funkcjonalnościach.\n\nTo jest monitor schowka, który można umieścić na Pulpicie, aby zawsze pokazywał najnowsze wycinki.
@@ -13,20 +13,21 @@ entries in the clipboard history	SettingsWindow		wpisów w historii schowka
 Fade history entries over time	SettingsWindow		Zapominaj wpisy z upływem czasu
 Max. tint level	SettingsWindow		Maks. poziom zabarwienia
 OK	SettingsWindow		OK
-Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
+Show icon in Deskbar tray	SettingsWindow		Pokaż ikonę w tacce Deskbara
 Steps	SettingsWindow		Kroki
 About Clipdinger	Application		O Clipdingerze
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger udostępnia historię wycinków w systemowym schowku i umożliwia dodawanie ich do ulubionych.\n\nProszę, daj mi znać o znalezionych błędach lub brakujących funkcjonalnościach. Informacje kontaktowe są w pliku ReadMe, zobacz menu „Pomoc”.
-Open Clipdinger	Application		Open Clipdinger
+Open Clipdinger	Application		Otwórz Clipdingera
 About Clipdinger	MainWindow		O Clipdingerze
 Add to favorites	MainWindow		Dodaj do ulubionych
 App	MainWindow		Aplikacja
-Clear	MainWindow		Wyczyść
 Clear clip history	MainWindow		Wyczyść historię schowka
 Clear favorites	MainWindow		Wyczyść ulubione
 Clip	MainWindow		Wycinek
 Clipboard monitor…	MainWindow		Monitor schowka…
+Clipdinger (fading paused)	MainWindow		Clipdinger (zapominanie wstrzymane)
 Edit title	MainWindow		Edytuj tytuł
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Nie udało się wysłać wycinka.\nZapisanie na dysku pliku tymczasowego było niemożliwe.
 Favorites	MainWindow		Ulubione
 Filter:	MainWindow		Filtr:
 Help	MainWindow		Pomoc
@@ -41,7 +42,9 @@ Pause fading	MainWindow		Wstrzymaj wygaszanie
 Quit	MainWindow		Zakończ
 Remove	MainWindow		Usuń
 Settings…	MainWindow		Ustawienia…
-This clip is already a favorite	MainWindow		This clip is already a favorite
+This clip is already a favorite	MainWindow		Ten wycinek już jest ulubiony
+Upload	MainWindow		Wysyłanie
+Upload error	MainWindow		Błąd wysyłania
 Add to favorites	ClipList		Dodaj do ulubionych
 Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Dodany: %time% - %date%\n%clip%
 Edit title	ClipList		Edytuj tytuł

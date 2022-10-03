@@ -1,4 +1,4 @@
-1	Catalan	application/x-vnd.humdinger-clipdinger	4188382096
+1	Catalan	application/x-vnd.humdinger-clipdinger	2664829352
 -= No text in clipboard =-	ClipboardMonitor		-= Cap text al porta-retalls =-
 Clipboard monitor	ClipboardMonitor		Monitor del porta-retalls
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		El Clipdinger proporciona un historial de retalls del porta-retalls del sistema i us permet crear preferits.\n\nAquest és el monitor del porta-retalls, que es pot replicar a l'escriptori per mostrar-ne sempre el contingut actual.
@@ -13,20 +13,21 @@ entries in the clipboard history	SettingsWindow		entrades a l'historial del port
 Fade history entries over time	SettingsWindow		Esvaeix les entrades de l’historial amb el temps.
 Max. tint level	SettingsWindow		Màx. nivell de tint
 OK	SettingsWindow		D'acord
-Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
+Show icon in Deskbar tray	SettingsWindow		Mostra la icona a la barra de l'escriptori.
 Steps	SettingsWindow		Passos
 About Clipdinger	Application		Quant al Clipdinger
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		El Clipdinger proporciona un historial de retalls del porta-retalls del sistema i us permet crear preferits.\n\nSi us plau, informeu-me de qualsevol error que trobeu o del que hi trobeu a faltar. La informació de contacte és al ReadMe, vegeu l’element del menú Ajuda.
-Open Clipdinger	Application		Open Clipdinger
+Open Clipdinger	Application		Obre el Clipdinger
 About Clipdinger	MainWindow		Quant al Clipdinger
 Add to favorites	MainWindow		Afegeix als preferits
 App	MainWindow		Aplicació
-Clear	MainWindow		Neteja
 Clear clip history	MainWindow		Neteja l'historial del porta-retalls
 Clear favorites	MainWindow		Neteja els preferits
 Clip	MainWindow		Porta-retalls
 Clipboard monitor…	MainWindow		Monitor del porta-retalls
+Clipdinger (fading paused)	MainWindow		Clipdinger (esvaïment en pausa)
 Edit title	MainWindow		Edita'n el títol
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Failed to upload the clip.\nThe temporary file could not be written to disk.
 Favorites	MainWindow		Preferits
 Filter:	MainWindow		Filtre:
 Help	MainWindow		Ajuda
@@ -41,7 +42,9 @@ Pause fading	MainWindow		Interromp amb esvaïment
 Quit	MainWindow		Surt
 Remove	MainWindow		Suprimeix
 Settings…	MainWindow		Paràmetres...
-This clip is already a favorite	MainWindow		This clip is already a favorite
+This clip is already a favorite	MainWindow		Aquest clip ja és un dels preferits.
+Upload	MainWindow		Carrega
+Upload error	MainWindow		Upload error
 Add to favorites	ClipList		Afegeix als preferits
 Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Afegit: %time% - %date%\n%clip%
 Edit title	ClipList		Edita'n el títol

@@ -1,6 +1,6 @@
-1	French	application/x-vnd.humdinger-clipdinger	4188382096
+1	French	application/x-vnd.humdinger-clipdinger	2664829352
 -= No text in clipboard =-	ClipboardMonitor		-= Pas de texte dans le presse-papiers =-
-Clipboard monitor	ClipboardMonitor		Moniteur de presse-papiers
+Clipboard monitor	ClipboardMonitor		Moniteur de presse-papiers
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger fournit un historique des notes du presse-papiers système et vous permet de créer des favoris.\n\nCeci est son moniteur de presse-papiers qui peut être répliqué sur le bureau pour toujours montrer le contenu actuel.
 {0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Les entrées s'assombrissent toutes les %A% minutes.\nLa tinte maximale est atteinte après\n%B% minutes (en 1 étape)}other{Les entrées s'assombrissent toutes les %A% minutes.\nLa tinte maximale est atteinte après\n%B% minutes (en # étapes)}}
 Auto-paste	SettingsWindow		Coller automatiquement
@@ -11,22 +11,23 @@ Delay	SettingsWindow		Délai
 Entries don't fade over time.	SettingsWindow		Les entrées ne s'assombrissent pas avec le temps.
 entries in the clipboard history	SettingsWindow		entrées dans l'historique du presse-papiers
 Fade history entries over time	SettingsWindow		Assombrir les entrées de l'historique avec le temps
-Max. tint level	SettingsWindow		Niveau max. de la tinte
+Max. tint level	SettingsWindow		Niveau max. de la teinte
 OK	SettingsWindow		D'accord
-Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
+Show icon in Deskbar tray	SettingsWindow		Afficher l'icône dans le cartouche de la Deskbar
 Steps	SettingsWindow		Étapes
 About Clipdinger	Application		À propos de Clipdinger
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger fournit un historique des notes du presse-papiers système et vous permet de créer des favoris.\n\nVeuillez m'informer des problèmes rencontrés ou des fonctionnalités qui vous manquent. Les infos de contact sont dans le ReadMe, accessible par «Aide» dans le menu.
-Open Clipdinger	Application		Open Clipdinger
+Open Clipdinger	Application		Ouvrir Clipdinger
 About Clipdinger	MainWindow		À propos de Clipdinger
 Add to favorites	MainWindow		Ajouter aux favoris
 App	MainWindow		App
-Clear	MainWindow		Nettoyer
 Clear clip history	MainWindow		Nettoyer l'historique des notes
 Clear favorites	MainWindow		Nettoyer les favoris
 Clip	MainWindow		Note
-Clipboard monitor…	MainWindow		Moniteur de presse-papiers
+Clipboard monitor…	MainWindow		Moniteur de presse-papiers…
+Clipdinger (fading paused)	MainWindow		Clipdinger (assombrissement en pause)
 Edit title	MainWindow		Éditer le titre
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		La publication du clip a échoué.\nLe fichier temporaire n'a pas pu être écrit sur le disque.
 Favorites	MainWindow		Favoris
 Filter:	MainWindow		Filtre :
 Help	MainWindow		Aide
@@ -41,7 +42,9 @@ Pause fading	MainWindow		Mettre l'assombrissement en pause
 Quit	MainWindow		Quitter
 Remove	MainWindow		Supprimer
 Settings…	MainWindow		Réglages…
-This clip is already a favorite	MainWindow		This clip is already a favorite
+This clip is already a favorite	MainWindow		Cette entrée fait déjà partie des favoris
+Upload	MainWindow		Envoyer
+Upload error	MainWindow		Erreur pendant la publication en ligne.
 Add to favorites	ClipList		Ajouter aux favoris
 Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Ajout : %time% - %date%\n%clip%
 Edit title	ClipList		Éditer le titre
@@ -52,6 +55,6 @@ Edit title	EditWindow		Éditer le titre
 Leave title empty to return to original title.	EditWindow		Laisser le titre vide pour revenir au titre original.
 OK	EditWindow		D'accord
 Title:	EditWindow		Titre :
-Clipboard monitor	ReplWindow		Moniteur de presse-papiers
+Clipboard monitor	ReplWindow		Moniteur de presse-papiers
 Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Redimensionnez la fenêtre selon vos besoins et tirez la poignée du réplicant sur le Bureau.\nEssayez d'y déposer une couleur, par exemple à partir d'Icon-O-Matic.
 Clipdinger	System name		Clipdinger

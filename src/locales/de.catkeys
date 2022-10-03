@@ -1,4 +1,4 @@
-1	German	application/x-vnd.humdinger-clipdinger	4188382096
+1	German	application/x-vnd.humdinger-clipdinger	2664829352
 -= No text in clipboard =-	ClipboardMonitor		-= Kein Text in Zwischenablage =-
 Clipboard monitor	ClipboardMonitor		Clipboardmonitor
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger bietet eine Historie für die Zwischenablage und das Anlegen von Favoriten.\n\nDiese Zwischenablagenanzeige kann als Replikant auf dem Desktop genutzt werden, um stets deren aktuellen Inhalt anzuzeigen.
@@ -21,12 +21,13 @@ Open Clipdinger	Application		Clipdinger öffnen
 About Clipdinger	MainWindow		Über Clipdinger
 Add to favorites	MainWindow		Zu Favoriten hinzufügen
 App	MainWindow		App
-Clear	MainWindow		Löschen
 Clear clip history	MainWindow		Historie löschen
 Clear favorites	MainWindow		Favoriten löschen
 Clip	MainWindow		Clip
 Clipboard monitor…	MainWindow		Zwischenablagenanzeige…
+Clipdinger (fading paused)	MainWindow		Clipdinger (Abdunkeln angehalten)
 Edit title	MainWindow		Titel bearbeiten
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Der Clip konnte nicht hochgeladen werden.\nDie temporäre Datei konnte nicht auf die Platte geschrieben werden.
 Favorites	MainWindow		Favoriten
 Filter:	MainWindow		Filter:
 Help	MainWindow		Hilfe
@@ -42,6 +43,8 @@ Quit	MainWindow		Beenden
 Remove	MainWindow		Entfernen
 Settings…	MainWindow		Einstellungen…
 This clip is already a favorite	MainWindow		Dieser Clip ist bereits ein Favorit
+Upload	MainWindow		Upload
+Upload error	MainWindow		Upload-Fehler
 Add to favorites	ClipList		Zu Favoriten hinzufügen
 Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Hinzu: %time% - %date%\n%clip%
 Edit title	ClipList		Titel bearbeiten

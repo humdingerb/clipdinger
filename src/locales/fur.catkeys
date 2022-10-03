@@ -1,4 +1,4 @@
-1	Friulian	application/x-vnd.humdinger-clipdinger	4188382096
+1	Friulian	application/x-vnd.humdinger-clipdinger	2664829352
 -= No text in clipboard =-	ClipboardMonitor		-= Nissun test tes notis =-
 Clipboard monitor	ClipboardMonitor		Monitor notis
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger al furnìs une cronologjie di ritais des notis di sisteme e ti permet di creâ dai preferîts.\n\nChest al è il so monitor des notis che al pues jessi replicât sul Scritori, cussì di podê simpri viodi i siei contignûts.
@@ -13,20 +13,21 @@ entries in the clipboard history	SettingsWindow		vôs te cronologjie des notis
 Fade history entries over time	SettingsWindow		Sfante vôs de cronologjie cul lâ dal timp
 Max. tint level	SettingsWindow		Nivel tint massim
 OK	SettingsWindow		Va ben
-Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
+Show icon in Deskbar tray	SettingsWindow		Mostre icone te guantiere dal Deskbar
 Steps	SettingsWindow		Passaçs
 About Clipdinger	Application		Informazions su Clipdinger
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger al furnìs une cronologjie di ritais des notis di sisteme e ti permet di creâ dai preferîts.\n\nPar plasê fasimi savê se tu cjatis cualchi erôr o se a mancje cualchi funzionalitât. Lis informazions di contat a son tal ReadMe, viôt la vôs dal menù 'Jutori'.
-Open Clipdinger	Application		Open Clipdinger
+Open Clipdinger	Application		Vierç Clipdinger
 About Clipdinger	MainWindow		Informazions su Clipdinger
 Add to favorites	MainWindow		Zonte tai preferîts
 App	MainWindow		Aplicazion
-Clear	MainWindow		Nete
 Clear clip history	MainWindow		Nete cronologjie ritais
 Clear favorites	MainWindow		Nete preferîts
 Clip	MainWindow		Ritai
 Clipboard monitor…	MainWindow		Monitor des notis…
+Clipdinger (fading paused)	MainWindow		Clipdinger (sfantâ in pause)
 Edit title	MainWindow		Modifiche titul
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Impussibil inviâ in rêt il ritai.\nNol è stât pussibil scrivi su disc il file temporani.
 Favorites	MainWindow		Preferîts
 Filter:	MainWindow		Filtri:
 Help	MainWindow		Jutori
@@ -41,7 +42,9 @@ Pause fading	MainWindow		Pause il sfantâ
 Quit	MainWindow		Jes
 Remove	MainWindow		Gjave
 Settings…	MainWindow		Impostazions…
-This clip is already a favorite	MainWindow		This clip is already a favorite
+This clip is already a favorite	MainWindow		Chest ritai al è za un preferît
+Upload	MainWindow		Invie in rêt
+Upload error	MainWindow		Erôr tal inviâ in rêt
 Add to favorites	ClipList		Zonte tai preferîts
 Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Zontât: %time% - %date%\n%clip%
 Edit title	ClipList		Modifiche titul

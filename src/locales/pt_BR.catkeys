@@ -1,4 +1,4 @@
-1	Portuguese (Brazil)	application/x-vnd.humdinger-clipdinger	4188382096
+1	Portuguese (Brazil)	application/x-vnd.humdinger-clipdinger	2664829352
 -= No text in clipboard =-	ClipboardMonitor		-= Nenhum texto na área de transferência =-
 Clipboard monitor	ClipboardMonitor		Monitor da área de transferência
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger provê um histórico de recortes da área de transferência do sistema e permite que se criem favoritos.\n\nEste é seu monitor da área de transferência que pode ser replicado na Área de Trabalho para mostrar sempre seus conteúdos atuais.
@@ -21,12 +21,13 @@ Open Clipdinger	Application		Open Clipdinger
 About Clipdinger	MainWindow		Sobre o Clipdinger
 Add to favorites	MainWindow		Adicionar aos favoritos
 App	MainWindow		Aplicativo
-Clear	MainWindow		Limpar
 Clear clip history	MainWindow		Limpar histórico
 Clear favorites	MainWindow		Limpar favoritos
 Clip	MainWindow		Recorte
 Clipboard monitor…	MainWindow		Monitor da área de transferência…
+Clipdinger (fading paused)	MainWindow		Clipdinger (fading paused)
 Edit title	MainWindow		Editar título
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Failed to upload the clip.\nThe temporary file could not be written to disk.
 Favorites	MainWindow		Favoritos
 Filter:	MainWindow		Filtro:
 Help	MainWindow		Ajuda
@@ -42,6 +43,8 @@ Quit	MainWindow		Sair
 Remove	MainWindow		Remover
 Settings…	MainWindow		Definições…
 This clip is already a favorite	MainWindow		This clip is already a favorite
+Upload	MainWindow		Upload
+Upload error	MainWindow		Upload error
 Add to favorites	ClipList		Adicionar aos favoritos
 Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Adicionado: %time% - %date%\n%clip%
 Edit title	ClipList		Editar título

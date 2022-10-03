@@ -1,4 +1,4 @@
-1	Romanian	application/x-vnd.humdinger-clipdinger	4188382096
+1	Romanian	application/x-vnd.humdinger-clipdinger	2664829352
 -= No text in clipboard =-	ClipboardMonitor		-= Niciun text în clipboard =-
 Clipboard monitor	ClipboardMonitor		Monitor clipboard
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger furnizează un istoric al decupărilor din clipboardul sistemului și vă permite să creați favorite.\n\nAcesta este monitorul de clipboard care poate fi replicat pe Desktop pentru a arăta mereu conținutul actual.
@@ -13,20 +13,21 @@ entries in the clipboard history	SettingsWindow		intrări în istoricul de clipb
 Fade history entries over time	SettingsWindow		Șterge intrările din istoric în timp
 Max. tint level	SettingsWindow		Nivel maxim tentă
 OK	SettingsWindow		OK
-Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
+Show icon in Deskbar tray	SettingsWindow		Afișează pictograma în Deskbar tray
 Steps	SettingsWindow		Pași
 About Clipdinger	Application		Despre Clipdinger
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger furnizează un istoric al decupărilor din clipboardul sistemului și vă permite să creați favorite.\n\nAnunțați dacă găsiți orice defecțiuni sau dacă vă lipsesc unele funcționalități. Informațiile de contact se află în ReadMe, vedeți elementul de meniu „Ajutor”.
-Open Clipdinger	Application		Open Clipdinger
+Open Clipdinger	Application		Deschide Clipdinger
 About Clipdinger	MainWindow		Despre Clipdinger
 Add to favorites	MainWindow		Adaugă la favorite
 App	MainWindow		Aplicație
-Clear	MainWindow		Eliberează
 Clear clip history	MainWindow		Eliberează istoric decupări
 Clear favorites	MainWindow		Elimină favorite
 Clip	MainWindow		Secțiune
 Clipboard monitor…	MainWindow		Monitor clipboard…
+Clipdinger (fading paused)	MainWindow		Clipdinger (dispariția oprită)
 Edit title	MainWindow		Editare titlu
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Încărcarea decupării eșuată.\nFișierul temporar nu poate fi scris pe disc.
 Favorites	MainWindow		Favorite
 Filter:	MainWindow		Filtru:
 Help	MainWindow		Ajutor
@@ -41,7 +42,9 @@ Pause fading	MainWindow		Pauzare decolorare
 Quit	MainWindow		Ieșire
 Remove	MainWindow		Eliminare
 Settings…	MainWindow		Configurări…
-This clip is already a favorite	MainWindow		This clip is already a favorite
+This clip is already a favorite	MainWindow		Aceasta decuare este deja în favorite
+Upload	MainWindow		Încarcă
+Upload error	MainWindow		Eroarea la încărcare
 Add to favorites	ClipList		Adaugă la favorite
 Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Adăugat: %time% - %date%\n%clip%
 Edit title	ClipList		Editează titlul

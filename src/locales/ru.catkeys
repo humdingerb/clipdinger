@@ -1,4 +1,4 @@
-1	Russian	application/x-vnd.humdinger-clipdinger	4188382096
+1	Russian	application/x-vnd.humdinger-clipdinger	2664829352
 -= No text in clipboard =-	ClipboardMonitor		-= Нет текста в буфере обмена =-
 Clipboard monitor	ClipboardMonitor		Монитор буфера обмена
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger предоставляет историю записей из системного буфера обмена и возможность их добвления в избранное.\n\nЭто его монитор буфера обмена, который можно установить в виде репликанта на рабочий стол: чтобы всегда отображать его содержимое.
@@ -13,20 +13,21 @@ entries in the clipboard history	SettingsWindow		записей в истори�
 Fade history entries over time	SettingsWindow		Затенять записи в истории со временем
 Max. tint level	SettingsWindow		Максимальный уровень затенения
 OK	SettingsWindow		OK
-Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
+Show icon in Deskbar tray	SettingsWindow		Показать значок в системном лотке
 Steps	SettingsWindow		Количество шагов
 About Clipdinger	Application		О Clipdinger
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger предоставляет историю записей из системного буфера обмена и возможность их добвления в избранное.\n\nПожалуйста, сообщайте мне обо всех найденных вами ошибках или новых функциях, которые вам нужны.  Данные для связи находятся в "Справке", доступной через меню.
-Open Clipdinger	Application		Open Clipdinger
+Open Clipdinger	Application		Открыть Clipdinger
 About Clipdinger	MainWindow		О Clipdinger
 Add to favorites	MainWindow		Добавить в избранное
 App	MainWindow		Приложение
-Clear	MainWindow		Очистить
 Clear clip history	MainWindow		Очистить истрию
 Clear favorites	MainWindow		Очистить избранное
 Clip	MainWindow		Запись
 Clipboard monitor…	MainWindow		Монитор буфера обмена…
+Clipdinger (fading paused)	MainWindow		Clipdinger (затенение приостановлено)
 Edit title	MainWindow		Изменить заголовок
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Не удалось загрузить запись.\nНевозможно записать временный файл на диск.
 Favorites	MainWindow		Избранное
 Filter:	MainWindow		Фильтр:
 Help	MainWindow		Справка
@@ -41,7 +42,9 @@ Pause fading	MainWindow		Приостановить затенение
 Quit	MainWindow		Выход
 Remove	MainWindow		Удалить
 Settings…	MainWindow		Настройки…
-This clip is already a favorite	MainWindow		This clip is already a favorite
+This clip is already a favorite	MainWindow		Запись уже в избранном
+Upload	MainWindow		Загрузить
+Upload error	MainWindow		Ошибка при загрузке
 Add to favorites	ClipList		Добавить в избранное
 Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Добавлено: %time% - %date%\n%clip%
 Edit title	ClipList		Редактировать заголовок

@@ -1,4 +1,4 @@
-1	Finnish	application/x-vnd.humdinger-clipdinger	4188382096
+1	Finnish	application/x-vnd.humdinger-clipdinger	2664829352
 -= No text in clipboard =-	ClipboardMonitor		-= Leikepöydällä ei ole tekstiä =-
 Clipboard monitor	ClipboardMonitor		Leikepöytävalvonta
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger tarjoaa järjestelmän leikepöydän leikkeiden historian ja sallii sinun luoda suosikkeja.\n\nTämä on sen leikepöytäseuranta, josta voidaan kopioida Työpöydälle aina näytettäväksi sen nykyinen sisältö.
@@ -21,12 +21,13 @@ Open Clipdinger	Application		Open Clipdinger
 About Clipdinger	MainWindow		Ohjelmasta Clipdinger
 Add to favorites	MainWindow		Lisää suosikkeihin
 App	MainWindow		Sovellus
-Clear	MainWindow		Nollaa
 Clear clip history	MainWindow		Tyhjennä leikepöytähistoria
 Clear favorites	MainWindow		Tyhjennä suosikit
 Clip	MainWindow		Leike
 Clipboard monitor…	MainWindow		Leikepöytäseuranta…
+Clipdinger (fading paused)	MainWindow		Clipdinger (fading paused)
 Edit title	MainWindow		Muokkaa otsikkoa
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Failed to upload the clip.\nThe temporary file could not be written to disk.
 Favorites	MainWindow		Suosikit
 Filter:	MainWindow		Suodatin:
 Help	MainWindow		Opaste
@@ -42,6 +43,8 @@ Quit	MainWindow		Poistu
 Remove	MainWindow		Poista
 Settings…	MainWindow		Asetukset…
 This clip is already a favorite	MainWindow		This clip is already a favorite
+Upload	MainWindow		Upload
+Upload error	MainWindow		Upload error
 Add to favorites	ClipList		Lisää suosikkeihin
 Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Lisätty: %time% - %date%\n%clip%
 Edit title	ClipList		Muokkaa otsikkoa

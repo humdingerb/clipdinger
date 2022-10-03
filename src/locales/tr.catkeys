@@ -1,33 +1,34 @@
-1	Turkish	application/x-vnd.humdinger-clipdinger	4188382096
+1	Turkish	application/x-vnd.humdinger-clipdinger	2664829352
 -= No text in clipboard =-	ClipboardMonitor		-= Panoda metin yok =-
 Clipboard monitor	ClipboardMonitor		Pano monitörü
-Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger sistem panosunun bir geçmişini tutar ve yer imleri oluşturmanıza izin verir.\n\nBu monitör için Masaüstünde bir Yinelenmiş oluşturarak pano içeriğinin sürekli elinizin altında olmasını sağlayabilirsiniz.
-{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Girdiler her %A% dakikada bir solar gider.\nEn ayrımlı renk tonuna \n%B% dakikadan sonra ulaşılır (bir adımda)}other{Girdiler her %A% dakikada bir solar gider.\nEn ayrımlı renk tonuna \n%B% dakikadan sonra ulaşılır (# adımda)}}
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger, sistem panosunun bir geçmişini tutar ve sık kullanılanlar oluşturmanıza izin verir.\n\nBu monitör için Masaüstünde bir Yinelenen oluşturarak pano içeriğinin sürekli elinizin altında olmasını sağlayabilirsiniz.
+{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Girdiler, her %A% dakikada bir kaybolur gider.\nEn ayrımlı renk tonuna \n%B% dakikadan sonra ulaşılır (bir adımda)}other{Girdiler, her %A% dakikada bir kaybolur gider.\nEn ayrımlı renk tonuna \n%B% dakikadan sonra ulaşılır (# adımda)}}
 Auto-paste	SettingsWindow		Kendiliğinden yapıştır
 Auto-start Clipdinger	SettingsWindow		Clipdinger'i sistem açılışında başlat
 Cancel	SettingsWindow		İptal
 Clipdinger settings	SettingsWindow		Clipdinger ayarları
 Delay	SettingsWindow		Gecikme
-Entries don't fade over time.	SettingsWindow		Girdiler zamanla solup gitmez
+Entries don't fade over time.	SettingsWindow		Girdiler zamanla kaybolmaz
 entries in the clipboard history	SettingsWindow		pano geçmişindeki girdiler
-Fade history entries over time	SettingsWindow		Geçmiş girdilerini zamanla soldur
+Fade history entries over time	SettingsWindow		Geçmiş girdilerini zamanla kaybet
 Max. tint level	SettingsWindow		En ayrımlı renk tonu düzeyi
 OK	SettingsWindow		Tamam
-Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
+Show icon in Deskbar tray	SettingsWindow		Masaüstü Çubuğu tepsisinde simgeyi göster
 Steps	SettingsWindow		Adımlar
 About Clipdinger	Application		Clipdinger hakkında
-Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger sistem panosunun bir geçmişini tutar ve yer imleri oluşturmanıza izin verir.\n\nDenk geldiğiniz hataları veya eklenmesini istediğiniz özellikleri lütfen bana iletin. İletişim bilgisi Benioku bölümündedir, 'Yardım' menüsüne bakın.
-Open Clipdinger	Application		Open Clipdinger
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger, sistem panosunun bir geçmişini tutar ve sık kullanılanlar oluşturmanıza izin verir.\n\nDenk geldiğiniz hataları veya eklenmesini istediğiniz özellikleri lütfen bana iletin. İletişim bilgisi BeniOku bölümündedir, 'Yardım' menüsüne bakın.
+Open Clipdinger	Application		Clipdinger’i aç
 About Clipdinger	MainWindow		Clipdinger hakkında
-Add to favorites	MainWindow		Yer imlerine ekle
+Add to favorites	MainWindow		Sık kullanılanlara ekle
 App	MainWindow		Uygulama
-Clear	MainWindow		Temizle
 Clear clip history	MainWindow		Pano geçmişini temizle
-Clear favorites	MainWindow		Yer imlerini temizle
+Clear favorites	MainWindow		Sık kullanılanları temizle
 Clip	MainWindow		Kırpıntı
 Clipboard monitor…	MainWindow		Pano monitörü...
+Clipdinger (fading paused)	MainWindow		Clipdinger (kaybolma duraklatıldı)
 Edit title	MainWindow		Başlığı düzenle
-Favorites	MainWindow		Yer imleri
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Kırpıntı karşıya yüklenemedi.\nGeçici dosya diske yazılamadı.
+Favorites	MainWindow		Sık kullanılanlar
 Filter:	MainWindow		Süz:
 Help	MainWindow		Yardım
 Lists	MainWindow		Listeler
@@ -37,21 +38,23 @@ Move up	MainWindow		Yukarı taşı
 OK	MainWindow		Tamam
 Online paste service not available	MainWindow		Çevrimiçi yapıştırma servisine ulaşılamıyor
 Paste online	MainWindow		Çevrimiçi yapıştır
-Pause fading	MainWindow		Solmayı duraklat
+Pause fading	MainWindow		Kaybolmayı duraklat
 Quit	MainWindow		Çık
 Remove	MainWindow		Kaldır
 Settings…	MainWindow		Ayarlar...
-This clip is already a favorite	MainWindow		This clip is already a favorite
-Add to favorites	ClipList		Yer imlerine ekle
+This clip is already a favorite	MainWindow		Bu kırpıntı zaten sık kullanılanlara eklenmiş
+Upload	MainWindow		Karşıya yükle
+Upload error	MainWindow		Karşıya yükleme hatası
+Add to favorites	ClipList		Sık kullanılanlara ekle
 Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Eklendi: %time% - %date%\n%clip%
 Edit title	ClipList		Başlığı düzenle
 Paste online	ClipList		Çevrimiçi yapıştır
 Remove	ClipList		Kaldır
 Cancel	EditWindow		İptal
 Edit title	EditWindow		Başlığı düzenle
-Leave title empty to return to original title.	EditWindow		Orijinal başlığa dönmek için başlık kısmını boş bırak
+Leave title empty to return to original title.	EditWindow		Özgün başlığa dönmek için başlık kısmını boş bırakın.
 OK	EditWindow		Tamam
 Title:	EditWindow		Başlık:
 Clipboard monitor	ReplWindow		Pano monitörü
-Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Pencereyi dilediğiniz gibi boyutlandırın ve Yinelenmiş tutacağını Masaüstü'ne sürükleyin.\nÖrneğin SimgeMatik'ten bir renk bırakmayı deneyin.
+Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Pencereyi dilediğiniz gibi boyutlandırın ve Yinelenen tutacağını Masaüstü'ne sürükleyin.\nÖrneğin, Icon-O-Matic'ten bir renk bırakmayı deneyin.
 Clipdinger	System name		Clipdinger

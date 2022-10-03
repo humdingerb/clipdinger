@@ -1,4 +1,4 @@
-1	Italian	application/x-vnd.humdinger-clipdinger	4188382096
+1	Italian	application/x-vnd.humdinger-clipdinger	2664829352
 -= No text in clipboard =-	ClipboardMonitor		-= Non c'è testo negli appunti =-
 Clipboard monitor	ClipboardMonitor		Monitoraggio degli appunti
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger fornisce una cronologia degli appunti di sistema e consente di creare dei preferiti.\n\nQuesto è il monitor degli appunti e può essere replicato sulla scrivania per mostrare sempre il suo contenuto.
@@ -13,20 +13,21 @@ entries in the clipboard history	SettingsWindow		elementi nella cronologia appun
 Fade history entries over time	SettingsWindow		Stingi gli elementi col tempo.
 Max. tint level	SettingsWindow		Livello massimo tinta
 OK	SettingsWindow		OK
-Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
+Show icon in Deskbar tray	SettingsWindow		Mostra icona sulla Deskbar
 Steps	SettingsWindow		Passaggi
 About Clipdinger	Application		Informazioni su Clipdinger
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger fornisce una cronologia degli appunti di sistema e consente di creare dei preferiti.\n\nPer favore, comunicami la presenza di eventuali bug o di funzioni di cui hai bisogno.Le informazioni di contatto sono nel file ReadMe, consulta il menu 'Aiuto'.
-Open Clipdinger	Application		Open Clipdinger
+Open Clipdinger	Application		Apri Clipdinger
 About Clipdinger	MainWindow		Informazioni su Clipdinger
 Add to favorites	MainWindow		Aggiungi ai preferiti
 App	MainWindow		Applicazione
-Clear	MainWindow		Rimuovi
 Clear clip history	MainWindow		Pulisci cronologia frammenti
 Clear favorites	MainWindow		Pulisci preferiti
-Clip	MainWindow		Frammento
+Clip	MainWindow		Appunto
 Clipboard monitor…	MainWindow		Monitor appunti…
+Clipdinger (fading paused)	MainWindow		Clipdinger (stingimento in pausa)
 Edit title	MainWindow		Modifica titolo
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Upload appunto fallito.\nImpossibile scrivere file temporaneo su disco.
 Favorites	MainWindow		Preferiti
 Filter:	MainWindow		Filtro:
 Help	MainWindow		Aiuto
@@ -41,7 +42,9 @@ Pause fading	MainWindow		Metti in pausa stingimento
 Quit	MainWindow		Esci
 Remove	MainWindow		Rimuovi
 Settings…	MainWindow		Impostazioni…
-This clip is already a favorite	MainWindow		This clip is already a favorite
+This clip is already a favorite	MainWindow		Questo ritaglio è già tra i preferiti
+Upload	MainWindow		Carica
+Upload error	MainWindow		Errore upload
 Add to favorites	ClipList		Aggiungi ai preferiti
 Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Aggiunto: %time% - %date%\n%clip%
 Edit title	ClipList		Modifica titolo
