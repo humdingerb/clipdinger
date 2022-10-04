@@ -7,7 +7,7 @@
  * Original Author:
  *              Werner Freytag <freytag@gmx.de>
  *
- * Minimal changes by Humdinger, humdingerb@gmail.com 
+ * Minimal changes by Humdinger, humdingerb@gmail.com
  */
 
 #ifndef _INPUT_DEVICE_H
@@ -21,7 +21,7 @@
 
 // export this for the input_server
 extern "C" _EXPORT BInputServerDevice* instantiate_input_device();
- 
+
 
 class ClipdingerInputDevice : public BInputServerDevice {
 public:
@@ -36,11 +36,11 @@ public:
 
 	virtual status_t		Control(const char* device,
 									void* cookie,
-									uint32 code, 
+									uint32 code,
 									BMessage *message);
 private:
 	static int32			listener(void* arg);
 	static thread_id		fThread;
 };
 
-#endif _INPUT_DEVICE_H
+#endif // _INPUT_DEVICE_H

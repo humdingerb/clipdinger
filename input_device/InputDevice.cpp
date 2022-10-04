@@ -7,7 +7,7 @@
  * Original Author:
  *              Werner Freytag <freytag@gmx.de>
  *
- * Minimal changes by Humdinger, humdingerb@gmail.com 
+ * Minimal changes by Humdinger, humdingerb@gmail.com
  */
 
 #include "InputDevice.h"
@@ -31,13 +31,13 @@ ClipdingerInputDevice::ClipdingerInputDevice()
 	:
 	BInputServerDevice()
 {
-	input_device_ref clipdingerDevice = { 
-		"Clipdinger input device", B_UNDEFINED_DEVICE, NULL};
-	input_device_ref *clipdingerDeviceList[2] = {
+	static input_device_ref clipdingerDevice = {
+		(char *) "Clipdinger input device", B_UNDEFINED_DEVICE, NULL};
+	static input_device_ref *clipdingerDeviceList[2] = {
 		&clipdingerDevice, NULL};
 
 	RegisterDevices(clipdingerDeviceList);
-	
+
 //	char *ident = "Clipdinger device";
 //	int logopt = LOG_PID | LOG_CONS;
 //	int facility = LOG_USER;
@@ -115,7 +115,7 @@ ClipdingerInputDevice::listener(void* arg)
 	port_id port = create_port(20, "Clipdinger output port");
 
 	ClipdingerInputDevice* clipdingerDevice = (ClipdingerInputDevice *)arg;
-	
+
 	int32 code;
 	while (read_port(port, &code, NULL, 0) == B_OK) {
 
@@ -128,7 +128,7 @@ ClipdingerInputDevice::listener(void* arg)
 		event->AddInt8("byte", 0);
 		event->AddInt32("raw_char", 'v');
 		event->AddString("bytes", "v");
-		
+
 		clipdingerDevice->EnqueueMessage(event);
 
 		event = new BMessage(B_KEY_UP);
@@ -140,11 +140,11 @@ ClipdingerInputDevice::listener(void* arg)
 		event->AddInt8("byte", 0);
 		event->AddInt32("raw_char", 'v');
 		event->AddString("bytes", "v");
-		
+
 		clipdingerDevice->EnqueueMessage(event);
 
 //	syslog(LOG_INFO, "Clipdinger device: Added event");
-	
+
 		snooze(100000);
 	}
 
