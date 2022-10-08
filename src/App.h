@@ -12,9 +12,9 @@
 #include <Application.h>
 #include <TextView.h>
 
-#include "Settings.h"
 #include "MainWindow.h"
 #include "ReplWindow.h"
+#include "Settings.h"
 #include "SettingsWindow.h"
 
 

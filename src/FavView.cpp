@@ -12,10 +12,10 @@
 #include <ToolTip.h>
 
 #include "App.h"
-#include "FavItem.h"
-#include "FavView.h"
 #include "Constants.h"
 #include "ContextPopUp.h"
+#include "FavItem.h"
+#include "FavView.h"
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "ClipList"
@@ -65,10 +65,10 @@ FavView::Draw(BRect rect)
 bool
 FavView::InitiateDrag(BPoint point, int32 dragIndex, bool wasSelected)
 {
-	FavItem* sItem = dynamic_cast<FavItem *> (ItemAt(CurrentSelection()));
+	FavItem* sItem = dynamic_cast<FavItem*>(ItemAt(CurrentSelection()));
 	if (sItem == NULL) {
 		// workaround for a timing problem (see Locale prefs)
-		sItem = dynamic_cast<FavItem *> (ItemAt(dragIndex));
+		sItem = dynamic_cast<FavItem*>(ItemAt(dragIndex));
 		Select(dragIndex);
 		if (sItem == NULL)
 			return false;
@@ -83,8 +83,7 @@ FavView::InitiateDrag(BPoint point, int32 dragIndex, bool wasSelected)
 	BRect dragRect(0.0f, 0.0f, Bounds().Width(), sItem->Height());
 	BBitmap* dragBitmap = new BBitmap(dragRect, B_RGB32, true);
 	if (dragBitmap->IsValid()) {
-		BView* view = new BView(dragBitmap->Bounds(), "helper", B_FOLLOW_NONE,
-			B_WILL_DRAW);
+		BView* view = new BView(dragBitmap->Bounds(), "helper", B_FOLLOW_NONE, B_WILL_DRAW);
 		dragBitmap->AddChild(view);
 		dragBitmap->Lock();
 
@@ -121,7 +120,6 @@ FavView::MakeFocus(bool focused)
 		if (CurrentSelection() < 0)
 			Select(0);
 	}
-
 }
 
 
@@ -238,7 +236,7 @@ FavView::MouseMoved(BPoint where, uint32 transit, const BMessage* dragMessage)
 
 				fDropRect = ItemFrame(index);
 				if (fDropRect.IsValid()) {
-					fDropRect.top = fDropRect.top -1;
+					fDropRect.top = fDropRect.top - 1;
 					fDropRect.bottom = fDropRect.top + 1;
 				} else {
 					fDropRect = ItemFrame(index - 1);
@@ -296,7 +294,7 @@ void
 FavView::RenumberFKeys()
 {
 	for (int32 i = 0; i < CountItems(); i++) {
-		FavItem* item = dynamic_cast<FavItem *>(ItemAt(i));
+		FavItem* item = dynamic_cast<FavItem*>(ItemAt(i));
 		item->SetFavNumber(i);
 	}
 }

@@ -38,12 +38,10 @@ KeyCatcher::KeyDown(const char* bytes, int32 numBytes)
 {
 	static const uint32 kModifiers = B_SHIFT_KEY | B_COMMAND_KEY;
 
-	if (strcasecmp(bytes, "v") == 0
-			&& (modifiers() & kModifiers) == kModifiers) {
+	if (strcasecmp(bytes, "v") == 0 && (modifiers() & kModifiers) == kModifiers) {
 		Window()->Minimize(false);
 		Window()->Activate(true);
-	}
-	else if (Window()->IsActive()) {
+	} else if (Window()->IsActive()) {
 		if ((modifiers() & B_COMMAND_KEY) == B_COMMAND_KEY) // don't catch shortcuts
 			return;
 		switch (bytes[0]) {
@@ -73,8 +71,8 @@ KeyCatcher::KeyDown(const char* bytes, int32 numBytes)
 				break;
 			}
 			default:
-			{	// Send all ASCII and UTF characters to MainWindow
-				if ((bytes[0] >= '!' && bytes[0] <= '~') || ((unsigned char)bytes[0] >= 0xC0)) {
+			{ // Send all ASCII and UTF characters to MainWindow
+				if ((bytes[0] >= '!' && bytes[0] <= '~') || ((unsigned char) bytes[0] >= 0xC0)) {
 					BString input(bytes);
 					BMessenger messenger(Looper());
 					BMessage message(FILTER_INPUT);

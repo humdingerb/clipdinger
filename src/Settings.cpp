@@ -11,8 +11,8 @@
 #include <File.h>
 #include <FindDirectory.h>
 #include <Font.h>
-#include <Path.h>
 #include <Message.h>
+#include <Path.h>
 
 #include <stdio.h>
 #include <stdlib.h>

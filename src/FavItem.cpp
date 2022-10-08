@@ -11,8 +11,8 @@
 #include <stdio.h>
 
 #include "App.h"
-#include "FavItem.h"
 #include "Constants.h"
+#include "FavItem.h"
 
 
 FavItem::FavItem(BString clip, BString title, int32 favnumber)
@@ -57,7 +57,7 @@ FavItem::DrawItem(BView* view, BRect rect, bool complete)
 	BFont font(be_plain_font);
 	font.SetFace(B_BOLD_FACE);
 	view->SetFont(&font);
-	font_height	fheight;
+	font_height fheight;
 	font.GetHeight(&fheight);
 
 	BString Fn("F");
@@ -70,10 +70,8 @@ FavItem::DrawItem(BView* view, BRect rect, bool complete)
 
 	float Fnwidth = font.StringWidth(Fn.String());
 
-	if (!IsSelected()
-			|| (IsSelected() && my_app->fMainWindow->GetHistoryActiveFlag())) {
-		BRect Fnrect(rect.LeftTop(),
-			BPoint(spacing * 2 + Fnwidth, rect.bottom));
+	if (!IsSelected() || (IsSelected() && my_app->fMainWindow->GetHistoryActiveFlag())) {
+		BRect Fnrect(rect.LeftTop(), BPoint(spacing * 2 + Fnwidth, rect.bottom));
 		view->SetHighColor(tint_color(ui_color(B_LIST_BACKGROUND_COLOR), 1.08));
 		view->FillRect(Fnrect);
 	}
@@ -83,8 +81,8 @@ FavItem::DrawItem(BView* view, BRect rect, bool complete)
 		view->SetHighColor(ui_color(B_LIST_ITEM_TEXT_COLOR));
 
 	if (fFavNumber < 12) {
-		view->DrawString(Fn.String(), BPoint(spacing,
-		rect.top + fheight.ascent + fheight.descent + fheight.leading));
+		view->DrawString(Fn.String(),
+			BPoint(spacing, rect.top + fheight.ascent + fheight.descent + fheight.leading));
 	}
 
 	if (fUpdateNeeded) {
@@ -97,15 +95,15 @@ FavItem::DrawItem(BView* view, BRect rect, bool complete)
 	font.SetFace(B_REGULAR_FACE);
 	view->SetFont(&font);
 
-	view->DrawString(fDisplayTitle.String(), BPoint(spacing * 3 + Fnwidth,
-		rect.top + fheight.ascent + fheight.descent + fheight.leading));
+	view->DrawString(fDisplayTitle.String(),
+		BPoint(
+			spacing * 3 + Fnwidth, rect.top + fheight.ascent + fheight.descent + fheight.leading));
 
 	// draw lines
-	view->SetHighColor(tint_color(ui_color(B_CONTROL_BACKGROUND_COLOR),
-		B_DARKEN_2_TINT));
+	view->SetHighColor(tint_color(ui_color(B_CONTROL_BACKGROUND_COLOR), B_DARKEN_2_TINT));
 	view->StrokeLine(rect.LeftBottom(), rect.RightBottom());
-	view->StrokeLine(BPoint(spacing * 2 + Fnwidth, rect.top),
-		BPoint(spacing * 2 + Fnwidth, rect.bottom));
+	view->StrokeLine(
+		BPoint(spacing * 2 + Fnwidth, rect.top), BPoint(spacing * 2 + Fnwidth, rect.bottom));
 }
 
 
@@ -120,11 +118,10 @@ FavItem::Update(BView* view, const BFont* finfo)
 	BString title(GetTitle());
 	view->TruncateString(&title, B_TRUNCATE_END, Width() - spacing * 7);
 	fDisplayTitle = title;
-	font_height	fheight;
+	font_height fheight;
 	finfo->GetHeight(&fheight);
 
-	SetHeight(ceilf(fheight.ascent + 2 + fheight.leading / 2
-		+ fheight.descent) + 5);
+	SetHeight(ceilf(fheight.ascent + 2 + fheight.leading / 2 + fheight.descent) + 5);
 }
 
 

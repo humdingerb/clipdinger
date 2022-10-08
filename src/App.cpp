@@ -19,6 +19,7 @@
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "Application"
 
+
 App::App()
 	:
 	BApplication(kApplicationSignature)
@@ -71,8 +72,7 @@ App::ReadyToRun()
 void
 App::MessageReceived(BMessage* msg)
 {
-	switch (msg->what)
-	{
+	switch (msg->what) {
 		case ACTIVATE:
 		{
 			if (fMainWindow->Lock()) {
@@ -116,8 +116,8 @@ App::MessageReceived(BMessage* msg)
 void
 App::AboutRequested()
 {
-	BAboutWindow* aboutW = new BAboutWindow(B_TRANSLATE_SYSTEM_NAME(kApplicationName),
-		kApplicationSignature);
+	BAboutWindow* aboutW
+		= new BAboutWindow(B_TRANSLATE_SYSTEM_NAME(kApplicationName), kApplicationSignature);
 	aboutW->AddDescription(B_TRANSLATE(
 		"Clipdinger provides a history of clippings of the system "
 		"clipboard and lets you create favorites.\n\n"

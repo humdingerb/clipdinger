@@ -9,6 +9,7 @@
 #include "ContextPopUp.h"
 #include "Constants.h"
 
+
 ContextPopUp::ContextPopUp(const char* name, BMessenger target)
 	:
 	BPopUpMenu(name, false, false),

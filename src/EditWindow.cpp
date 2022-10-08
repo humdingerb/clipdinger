@@ -22,13 +22,11 @@
 
 EditWindow::EditWindow(BRect frame, BString text)
 	:
-	BWindow(BRect(), B_TRANSLATE("Edit title"),
-		B_MODAL_WINDOW,
-		B_NOT_RESIZABLE | B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS |
-		B_CLOSE_ON_ESCAPE)
+	BWindow(BRect(), B_TRANSLATE("Edit title"), B_MODAL_WINDOW,
+		B_NOT_RESIZABLE | B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS | B_CLOSE_ON_ESCAPE)
 {
 	fOriginalTitle = text;
-	
+
 	_BuildLayout();
 
 	fTitleControl->MakeFocus(true);
@@ -45,9 +43,8 @@ EditWindow::~EditWindow()
 void
 EditWindow::MessageReceived(BMessage* message)
 {
-	switch (message->what)
-	{
-	case CANCEL:
+	switch (message->what) {
+		case CANCEL:
 		{
 			Quit();
 			break;
@@ -77,33 +74,29 @@ void
 EditWindow::_BuildLayout()
 {
 	// Title
-	fTitleControl = new BTextControl("title", B_TRANSLATE("Title:"),
-		fOriginalTitle, NULL);
+	fTitleControl = new BTextControl("title", B_TRANSLATE("Title:"), fOriginalTitle, NULL);
 	fTitleControl->SetExplicitMinSize(BSize(300.0, B_SIZE_UNSET));
 
 	// Info
 	BFont infoFont(*be_plain_font);
 	infoFont.SetFace(B_ITALIC_FACE);
-	rgb_color infoColor = tint_color(ui_color(B_PANEL_BACKGROUND_COLOR),
-		B_DARKEN_4_TINT);
-	BTextView* infoText = new BTextView("tip", &infoFont, &infoColor,
-		B_WILL_DRAW | B_SUPPORTS_LAYOUT);
+	rgb_color infoColor = tint_color(ui_color(B_PANEL_BACKGROUND_COLOR), B_DARKEN_4_TINT);
+	BTextView* infoText
+		= new BTextView("tip", &infoFont, &infoColor, B_WILL_DRAW | B_SUPPORTS_LAYOUT);
 	infoText->MakeEditable(false);
 	infoText->SetViewColor(ui_color(B_PANEL_BACKGROUND_COLOR));
 	infoText->SetStylable(true);
 	infoText->SetAlignment(B_ALIGN_CENTER);
-	infoText->SetText(B_TRANSLATE(
-		"Leave title empty to return to original title."));
+	infoText->SetText(B_TRANSLATE("Leave title empty to return to original title."));
 
 	font_height fheight;
 	infoFont.GetHeight(&fheight);
-	infoText->SetExplicitMinSize(BSize(B_SIZE_UNSET,
-		(fheight.ascent + fheight.descent + fheight.leading) * 2.0));
+	infoText->SetExplicitMinSize(
+		BSize(B_SIZE_UNSET, (fheight.ascent + fheight.descent + fheight.leading) * 2.0));
 	infoText->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
 	// Buttons
-	BButton* cancel = new BButton("cancel", B_TRANSLATE("Cancel"),
-		new BMessage(CANCEL));
+	BButton* cancel = new BButton("cancel", B_TRANSLATE("Cancel"), new BMessage(CANCEL));
 	BButton* ok = new BButton("ok", B_TRANSLATE("OK"), new BMessage(OK));
 	ok->MakeDefault(true);
 
@@ -113,7 +106,7 @@ EditWindow::_BuildLayout()
 			.SetInsets(spacing)
 			.Add(fTitleControl)
 			.Add(infoText)
-		.End()
+			.End()
 		.Add(new BSeparatorView(B_HORIZONTAL))
 		.AddGroup(B_HORIZONTAL)
 			.SetInsets(0, 0, 0, spacing / 2)
@@ -121,5 +114,5 @@ EditWindow::_BuildLayout()
 			.Add(cancel)
 			.Add(ok)
 			.AddGlue()
-		.End();
+			.End();
 }

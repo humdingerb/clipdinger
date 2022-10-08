@@ -27,10 +27,8 @@
 
 SettingsWindow::SettingsWindow(BRect frame)
 	:
-	BWindow(BRect(), B_TRANSLATE("Clipdinger settings"),
-		B_TITLED_WINDOW,
-		B_NOT_ZOOMABLE | B_NOT_RESIZABLE | B_AUTO_UPDATE_SIZE_LIMITS,
-		B_ALL_WORKSPACES)
+	BWindow(BRect(), B_TRANSLATE("Clipdinger settings"), B_TITLED_WINDOW,
+		B_NOT_ZOOMABLE | B_NOT_RESIZABLE | B_AUTO_UPDATE_SIZE_LIMITS, B_ALL_WORKSPACES)
 {
 	_BuildLayout();
 	_GetSettings();
@@ -53,7 +51,7 @@ SettingsWindow::~SettingsWindow()
 void
 SettingsWindow::DispatchMessage(BMessage* message, BHandler* handler)
 {
-	if (_KeyDown(message) == B_OK)	// Was ESC pressed?
+	if (_KeyDown(message) == B_OK) // Was ESC pressed?
 		return;
 
 	BWindow::DispatchMessage(message, handler);
@@ -65,8 +63,7 @@ SettingsWindow::MessageReceived(BMessage* message)
 {
 	Settings* settings = my_app->GetSettings();
 
-	switch (message->what)
-	{
+	switch (message->what) {
 		case TRAYICON:
 		{
 			newTrayIcon = fTrayIconBox->Value();
@@ -148,7 +145,7 @@ SettingsWindow::MessageReceived(BMessage* message)
 		{
 			newLimit = atoi(fLimitControl->Text());
 			if (newLimit == 0) {
-				newLimit = 1;	// History has to be at least 1 deep.
+				newLimit = 1; // History has to be at least 1 deep.
 				fLimitControl->SetText("1");
 			}
 
@@ -192,9 +189,8 @@ SettingsWindow::QuitRequested()
 status_t
 SettingsWindow::_KeyDown(BMessage* message)
 {
-	uint32 raw_char  = message->FindInt32("raw_char");
-	switch (raw_char)
-	{
+	uint32 raw_char = message->FindInt32("raw_char");
+	switch (raw_char) {
 		case B_ESCAPE:
 		{
 			PostMessage(CANCEL);
@@ -209,8 +205,7 @@ void
 SettingsWindow::_BuildLayout()
 {
 	// Limit
-	fLimitControl = new BTextControl("limitfield", NULL, "",
-		NULL);
+	fLimitControl = new BTextControl("limitfield", NULL, "", NULL);
 	fLimitControl->SetAlignment(B_ALIGN_CENTER, B_ALIGN_CENTER);
 	// only allow numbers
 	for (uint32 i = 0; i < '0'; i++)
@@ -218,40 +213,38 @@ SettingsWindow::_BuildLayout()
 	for (uint32 i = '9' + 1; i < 255; i++)
 		fLimitControl->TextView()->DisallowChar(i);
 
-	BStringView* limitlabel = new BStringView("limitlabel",
-		B_TRANSLATE("entries in the clipboard history"));
+	BStringView* limitlabel
+		= new BStringView("limitlabel", B_TRANSLATE("entries in the clipboard history"));
 
 	// Tray icon
-	fTrayIconBox = new BCheckBox("trayicon", B_TRANSLATE(
-		"Show icon in Deskbar tray"), new BMessage(TRAYICON));
+	fTrayIconBox = new BCheckBox(
+		"trayicon", B_TRANSLATE("Show icon in Deskbar tray"), new BMessage(TRAYICON));
 
 	// Auto-start
-	fAutoStartBox = new BCheckBox("autostart", B_TRANSLATE(
-		"Auto-start Clipdinger"), new BMessage(AUTOSTART));
+	fAutoStartBox
+		= new BCheckBox("autostart", B_TRANSLATE("Auto-start Clipdinger"), new BMessage(AUTOSTART));
 
 	// Auto-paste
-	fAutoPasteBox = new BCheckBox("autopaste", B_TRANSLATE(
-		"Auto-paste"), new BMessage(AUTOPASTE));
+	fAutoPasteBox = new BCheckBox("autopaste", B_TRANSLATE("Auto-paste"), new BMessage(AUTOPASTE));
 
 	// Fading
-	fFadeBox = new BCheckBox("fading", B_TRANSLATE(
-		"Fade history entries over time"), new BMessage(FADE));
-	fDelaySlider = new BSlider(BRect(), "delay", B_TRANSLATE("Delay"),
-		new BMessage(DELAY), 1, 12);	// 12 units á kMinuteUnits minutes
+	fFadeBox = new BCheckBox(
+		"fading", B_TRANSLATE("Fade history entries over time"), new BMessage(FADE));
+	fDelaySlider = new BSlider(BRect(), "delay", B_TRANSLATE("Delay"), new BMessage(DELAY), 1,
+		12); // 12 units á kMinuteUnits minutes
 	fDelaySlider->SetHashMarks(B_HASH_MARKS_BOTTOM);
 	fDelaySlider->SetHashMarkCount(12);
 	fDelaySlider->SetKeyIncrementValue(1);
 	fDelaySlider->SetModificationMessage(new BMessage(DELAY));
 
-	fStepSlider = new BSlider(BRect(), "step", B_TRANSLATE("Steps"),
-		new BMessage(STEP), 1, 10);
+	fStepSlider = new BSlider(BRect(), "step", B_TRANSLATE("Steps"), new BMessage(STEP), 1, 10);
 	fStepSlider->SetHashMarks(B_HASH_MARKS_BOTTOM);
 	fStepSlider->SetHashMarkCount(10);
 	fStepSlider->SetKeyIncrementValue(1);
 	fStepSlider->SetModificationMessage(new BMessage(STEP));
 
-	fLevelSlider = new BSlider(BRect(), "level", B_TRANSLATE("Max. tint level"),
-		new BMessage(LEVEL), 3, 14);
+	fLevelSlider
+		= new BSlider(BRect(), "level", B_TRANSLATE("Max. tint level"), new BMessage(LEVEL), 3, 14);
 	fLevelSlider->SetHashMarks(B_HASH_MARKS_BOTTOM);
 	fLevelSlider->SetHashMarkCount(12);
 	fLevelSlider->SetKeyIncrementValue(1);
@@ -259,10 +252,8 @@ SettingsWindow::_BuildLayout()
 
 	BFont infoFont(*be_plain_font);
 	infoFont.SetFace(B_ITALIC_FACE);
-	rgb_color infoColor = tint_color(ui_color(B_PANEL_BACKGROUND_COLOR),
-		B_DARKEN_4_TINT);
-	fFadeText = new BTextView("fadetext", &infoFont, &infoColor,
-		B_WILL_DRAW | B_SUPPORTS_LAYOUT);
+	rgb_color infoColor = tint_color(ui_color(B_PANEL_BACKGROUND_COLOR), B_DARKEN_4_TINT);
+	fFadeText = new BTextView("fadetext", &infoFont, &infoColor, B_WILL_DRAW | B_SUPPORTS_LAYOUT);
 	fFadeText->MakeEditable(false);
 	fFadeText->SetViewColor(ui_color(B_PANEL_BACKGROUND_COLOR));
 	fFadeText->SetStylable(true);
@@ -270,12 +261,11 @@ SettingsWindow::_BuildLayout()
 
 	font_height fheight;
 	infoFont.GetHeight(&fheight);
-	fFadeText->SetExplicitMinSize(BSize(300.0,
-		(fheight.ascent + fheight.descent + fheight.leading) * 3.0));
+	fFadeText->SetExplicitMinSize(
+		BSize(300.0, (fheight.ascent + fheight.descent + fheight.leading) * 3.0));
 
 	// Buttons
-	BButton* cancel = new BButton("cancel", B_TRANSLATE("Cancel"),
-		new BMessage(CANCEL));
+	BButton* cancel = new BButton("cancel", B_TRANSLATE("Cancel"), new BMessage(CANCEL));
 	BButton* ok = new BButton("ok", B_TRANSLATE("OK"), new BMessage(OK));
 	ok->MakeDefault(true);
 
@@ -286,7 +276,7 @@ SettingsWindow::_BuildLayout()
 			.Add(fLimitControl)
 			.Add(limitlabel)
 			.Add(BSpaceLayoutItem::CreateHorizontalStrut(spacing * 4))
-		.End()
+			.End()
 		.AddGroup(B_VERTICAL, 0)
 			.SetInsets(spacing, 0, spacing, 0)
 			.Add(fTrayIconBox)
@@ -299,21 +289,21 @@ SettingsWindow::_BuildLayout()
 			.AddGroup(B_HORIZONTAL)
 				.Add(BSpaceLayoutItem::CreateHorizontalStrut(spacing))
 				.Add(fDelaySlider)
-			.End()
+				.End()
 			.AddGroup(B_HORIZONTAL)
 				.Add(BSpaceLayoutItem::CreateHorizontalStrut(spacing))
 				.Add(fStepSlider)
-			.End()
+				.End()
 			.AddGroup(B_HORIZONTAL)
 				.Add(BSpaceLayoutItem::CreateHorizontalStrut(spacing))
 				.Add(fLevelSlider)
-			.End()
+				.End()
 			.AddStrut(spacing / 2)
 			.AddGroup(B_HORIZONTAL)
 				.Add(BSpaceLayoutItem::CreateHorizontalStrut(spacing))
 				.Add(fFadeText)
+				.End()
 			.End()
-		.End()
 		.Add(new BSeparatorView(B_HORIZONTAL))
 		.AddGroup(B_HORIZONTAL)
 			.SetInsets(0, 0, 0, spacing)
@@ -321,7 +311,7 @@ SettingsWindow::_BuildLayout()
 			.Add(cancel)
 			.Add(ok)
 			.AddGlue()
-		.End();
+			.End();
 }
 
 
@@ -337,7 +327,7 @@ SettingsWindow::_AddIconToDeskbar()
 		return;
 
 	if (deskbar.HasItem(kApplicationName))
-		_RemoveIconFromDeskbar();	// there could be a leftover replicant from a crashed Clipdinger
+		_RemoveIconFromDeskbar(); // there could be a leftover replicant from a crashed Clipdinger
 
 	status_t res = deskbar.AddItem(&appInfo.ref);
 	if (res != B_OK)
@@ -355,7 +345,8 @@ SettingsWindow::_RemoveIconFromDeskbar()
 		status_t err = deskbar.RemoveItem(found_id);
 		if (err != B_OK) {
 			printf("Clipdinger: Error removing replicant id "
-				"%" B_PRId32 ": %s\n", found_id, strerror(err));
+				   "%" B_PRId32 ": %s\n",
+				found_id, strerror(err));
 		}
 	}
 }
@@ -401,16 +392,15 @@ SettingsWindow::_UpdateFadeText()
 		char min[5];
 		char maxtint[5];
 		snprintf(min, sizeof(min), "%" B_PRId32, newFadeDelay * kMinuteUnits);
-		snprintf(maxtint, sizeof(maxtint), "%" B_PRId32,
-			newFadeStep * newFadeDelay * kMinuteUnits);
+		snprintf(maxtint, sizeof(maxtint), "%" B_PRId32, newFadeStep * newFadeDelay * kMinuteUnits);
 
 		static BStringFormat fadeFormat(B_TRANSLATE("{0, plural,"
 			"=1{Entries fade every %A% minutes.\n"
-				"The maximal tint is reached after\n"
-				"%B% minutes (in 1 step)}"
+			"The maximal tint is reached after\n"
+			"%B% minutes (in 1 step)}"
 			"other{Entries fade every %A% minutes.\n"
-				"The maximal tint is reached after\n"
-				"%B% minutes (in # steps)}}"));
+			"The maximal tint is reached after\n"
+			"%B% minutes (in # steps)}}"));
 		fadeFormat.Format(fadeText, newFadeStep);
 
 		fadeText.ReplaceAll("%A%", min);

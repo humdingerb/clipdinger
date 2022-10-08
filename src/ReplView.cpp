@@ -48,8 +48,7 @@ ReplView::ReplView()
 	font_height fheight;
 	fContentsView->GetFontHeight(&fheight);
 
-	SetExplicitMinSize(BSize(10.0,
-		(fheight.ascent + fheight.descent + fheight.leading) * 1.3));
+	SetExplicitMinSize(BSize(10.0, (fheight.ascent + fheight.descent + fheight.leading) * 1.3));
 	SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
 	BLayoutBuilder::Group<>(this, B_HORIZONTAL, 0)
@@ -64,7 +63,7 @@ ReplView::ReplView(BMessage* archive)
 	BView(archive),
 	fReplicated(true)
 {
-	fContentsView = dynamic_cast<BStringView *> (FindView("contents"));
+	fContentsView = dynamic_cast<BStringView*>(FindView("contents"));
 	fContentsView->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 }
 
@@ -108,8 +107,7 @@ ReplView::AttachedToWindow()
 
 	be_clipboard->StartWatching(this);
 
-	fContentsView->AddFilter(new BMessageFilter(B_MOUSE_DOWN,
-		&ReplView::_MessageFilter));
+	fContentsView->AddFilter(new BMessageFilter(B_MOUSE_DOWN, &ReplView::_MessageFilter));
 }
 
 
@@ -127,14 +125,12 @@ ReplView::MessageReceived(BMessage* msg)
 	if (msg->WasDropped()) {
 		rgb_color* color;
 		ssize_t size;
-		if (msg->FindData("RGBColor", B_RGB_COLOR_TYPE,
-			(const void **)&color, &size) == B_OK) {
-				_SetColor(*color);
-				return;
+		if (msg->FindData("RGBColor", B_RGB_COLOR_TYPE, (const void**)&color, &size) == B_OK) {
+			_SetColor(*color);
+			return;
 		}
 	}
-	switch (msg->what)
-	{
+	switch (msg->what) {
 		case B_CLIPBOARD_CHANGED:
 		{
 			fCurrentClip = _GetClipboard().String();
@@ -146,8 +142,8 @@ ReplView::MessageReceived(BMessage* msg)
 		}
 		case B_ABOUT_REQUESTED:
 		{
-			BAboutWindow* aboutW = new BAboutWindow(B_TRANSLATE_SYSTEM_NAME(kApplicationName),
-				kApplicationSignature);
+			BAboutWindow* aboutW = new BAboutWindow(
+				B_TRANSLATE_SYSTEM_NAME(kApplicationName), kApplicationSignature);
 			aboutW->AddDescription(B_TRANSLATE(
 				"Clipdinger provides a history of clippings of the system "
 				"clipboard and lets you create favorites.\n\n"
@@ -200,12 +196,11 @@ ReplView::_GetClipboard()
 {
 	const char* text;
 	ssize_t textLen;
-	BMessage* clipboard = (BMessage *)NULL;
+	BMessage* clipboard = (BMessage*)NULL;
 
 	if (be_clipboard->Lock()) {
 		if ((clipboard = be_clipboard->Data()))
-			clipboard->FindData("text/plain", B_MIME_TYPE,
-				(const void **)&text, &textLen);
+			clipboard->FindData("text/plain", B_MIME_TYPE, (const void**)&text, &textLen);
 		be_clipboard->Unlock();
 	}
 	if (text == NULL) {
@@ -244,9 +239,8 @@ ReplView::_LaunchClipdinger(BMessage* msg)
 filter_result
 ReplView::_MessageFilter(BMessage* msg, BHandler** target, BMessageFilter* filter)
 {
-	ReplView* view = (ReplView *)(*target);
-	switch (msg->what)
-	{
+	ReplView* view = (ReplView*)(*target);
+	switch (msg->what) {
 		case B_MOUSE_DOWN:
 		{
 			view->_LaunchClipdinger(msg);

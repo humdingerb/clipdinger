@@ -27,7 +27,7 @@
 #include <Roster.h>
 
 
-extern "C" _EXPORT BView *instantiate_deskbar_item(float maxWidth, float maxHeight);
+extern "C" _EXPORT BView* instantiate_deskbar_item(float maxWidth, float maxHeight);
 status_t our_image(image_info& image);
 
 const char* kClassName = "DeskbarReplicant";
@@ -41,15 +41,17 @@ const char* kClassName = "DeskbarReplicant";
 
 
 DeskbarReplicant::DeskbarReplicant(BRect frame, int32 resizingMode)
-	: BView(frame, "Clipdinger", resizingMode,
-		B_WILL_DRAW | B_TRANSPARENT_BACKGROUND | B_FRAME_EVENTS)
+	:
+	BView(
+		frame, "Clipdinger", resizingMode, B_WILL_DRAW | B_TRANSPARENT_BACKGROUND | B_FRAME_EVENTS)
 {
 	_Init();
 }
 
 
 DeskbarReplicant::DeskbarReplicant(BMessage* archive)
-	: BView(archive)
+	:
+	BView(archive)
 {
 	_Init();
 }
@@ -78,12 +80,11 @@ DeskbarReplicant::_Init()
 		return;
 
 	size_t size;
-	const void* data = resources.LoadResource(B_VECTOR_ICON_TYPE,
-		"tray_icon", &size);
+	const void* data = resources.LoadResource(B_VECTOR_ICON_TYPE, "tray_icon", &size);
 	if (data != NULL) {
 		BBitmap* icon = new BBitmap(Bounds(), B_RGBA32);
 		if (icon->InitCheck() == B_OK
-				&& BIconUtils::GetVectorIcon((const uint8 *)data, size, icon) == B_OK)
+			&& BIconUtils::GetVectorIcon((const uint8*)data, size, icon) == B_OK)
 			fIcon = icon;
 		else
 			delete icon;
@@ -91,7 +92,7 @@ DeskbarReplicant::_Init()
 }
 
 
-DeskbarReplicant *
+DeskbarReplicant*
 DeskbarReplicant::Instantiate(BMessage* archive)
 {
 	// only create replicant if Clipdinger is running
@@ -202,29 +203,26 @@ DeskbarReplicant::MouseDown(BPoint where)
 		menu->SetFont(be_plain_font);
 
 		menu->AddItem(new BMenuItem(B_TRANSLATE("Open Clipdinger"), new BMessage(OPEN_CLIPDINGER)));
-		menu->AddItem(new BMenuItem(B_TRANSLATE("About Clipdinger"),
-			new BMessage(B_ABOUT_REQUESTED)));
+		menu->AddItem(
+			new BMenuItem(B_TRANSLATE("About Clipdinger"), new BMessage(B_ABOUT_REQUESTED)));
 
 		menu->SetTargetForItems(this);
 		ConvertToScreen(&point);
-		menu->Go(point, true, true, BRect(where - BPoint(4, 4), 
-			point + BPoint(4, 4)));
+		menu->Go(point, true, true, BRect(where - BPoint(4, 4), point + BPoint(4, 4)));
 
 		delete menu;
 	} else if (buttons & B_PRIMARY_MOUSE_BUTTON)
 		BMessenger(this).SendMessage(OPEN_CLIPDINGER);
-
 }
 
 
 //	#pragma mark -
 
 
-extern "C" _EXPORT BView *
+extern "C" _EXPORT BView*
 instantiate_deskbar_item(float maxWidth, float maxHeight)
 {
-	return new DeskbarReplicant(BRect(0, 0, maxHeight - 1, maxHeight - 1),
-		B_FOLLOW_NONE);
+	return new DeskbarReplicant(BRect(0, 0, maxHeight - 1, maxHeight - 1), B_FOLLOW_NONE);
 }
 
 
@@ -236,8 +234,8 @@ our_image(image_info& image)
 {
 	int32 cookie = 0;
 	while (get_next_image_info(B_CURRENT_TEAM, &cookie, &image) == B_OK) {
-		if ((char *)our_image >= (char *)image.text
-			&& (char *)our_image <= (char *)image.text + image.text_size)
+		if ((char*)our_image >= (char*)image.text
+			&& (char*)our_image <= (char*)image.text + image.text_size)
 			return B_OK;
 	}
 	BAlert* alert = new BAlert("image", "Image NOT OK", "NOT");

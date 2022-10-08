@@ -41,7 +41,7 @@ ClipView::AttachedToWindow()
 	SetFlags(Flags() | B_FULL_UPDATE_ON_RESIZE | B_NAVIGABLE);
 
 	BMessage message(ADJUSTCOLORS);
-	fRunner	= new BMessageRunner(this, &message, kMinuteUnits * 60000000);
+	fRunner = new BMessageRunner(this, &message, kMinuteUnits * 60000000);
 
 	BListView::AttachedToWindow();
 }
@@ -71,10 +71,10 @@ ClipView::InitiateDrag(BPoint point, int32 dragIndex, bool wasSelected)
 	if ((buttons & B_SECONDARY_MOUSE_BUTTON) != 0)
 		return false;
 
-	ClipItem* sItem = dynamic_cast<ClipItem *> (ItemAt(CurrentSelection()));
+	ClipItem* sItem = dynamic_cast<ClipItem*>(ItemAt(CurrentSelection()));
 	if (sItem == NULL) {
 		// workaround for a timing problem (see Locale prefs)
-		sItem = dynamic_cast<ClipItem *> (ItemAt(dragIndex));
+		sItem = dynamic_cast<ClipItem*>(ItemAt(dragIndex));
 		Select(dragIndex);
 		if (sItem == NULL)
 			return false;
@@ -87,8 +87,7 @@ ClipView::InitiateDrag(BPoint point, int32 dragIndex, bool wasSelected)
 	BRect dragRect(0.0f, 0.0f, Bounds().Width(), sItem->Height());
 	BBitmap* dragBitmap = new BBitmap(dragRect, B_RGB32, true);
 	if (dragBitmap->IsValid()) {
-		BView* view = new BView(dragBitmap->Bounds(), "helper", B_FOLLOW_NONE,
-			B_WILL_DRAW);
+		BView* view = new BView(dragBitmap->Bounds(), "helper", B_FOLLOW_NONE, B_WILL_DRAW);
 		dragBitmap->AddChild(view);
 		dragBitmap->Lock();
 
@@ -120,7 +119,6 @@ ClipView::MakeFocus(bool focused)
 	// only signal ClipView is focused when gaining focus
 	if (focused)
 		my_app->fMainWindow->SetHistoryActiveFlag(focused);
-
 }
 
 
@@ -208,14 +206,12 @@ ClipView::GetToolTipAt(BPoint point, BToolTip** _tip)
 
 	BString dateString = "";
 	bigtime_t added = item->GetTimeAdded();
-	if (BDateFormat().Format(dateString, added,
-		B_MEDIUM_DATE_FORMAT) != B_OK)
+	if (BDateFormat().Format(dateString, added, B_MEDIUM_DATE_FORMAT) != B_OK)
 		return false;
 
 	BString timeString = "";
 	added = item->GetTimeAdded();
-	if (BTimeFormat().Format(timeString, added,
-		B_SHORT_TIME_FORMAT) != B_OK)
+	if (BTimeFormat().Format(timeString, added, B_SHORT_TIME_FORMAT) != B_OK)
 		return false;
 
 	BString clipString(item->GetClip());
@@ -268,13 +264,12 @@ ClipView::AdjustColors()
 
 	bigtime_t now(real_time_clock());
 	for (int32 i = 0; i < CountItems(); i++) {
-		ClipItem* sItem = dynamic_cast<ClipItem *> (ItemAt(i));
+		ClipItem* sItem = dynamic_cast<ClipItem*>(ItemAt(i));
 		if (fade) {
 			bigtime_t minutes = (now - sItem->GetTimeSince()) / 60;
-			float level = B_NO_TINT
-				+ (maxlevel / step * ((float)minutes / delay) / kMinuteUnits);
+			float level = B_NO_TINT + (maxlevel / step * ((float) minutes / delay) / kMinuteUnits);
 			sItem->SetColor(tint_color(ui_color(B_LIST_BACKGROUND_COLOR),
-			(level < maxlevel) ? level : maxlevel));  // limit to maxlevel
+				(level < maxlevel) ? level : maxlevel)); // limit to maxlevel
 		} else
 			sItem->SetColor(ui_color(B_LIST_BACKGROUND_COLOR));
 	}
