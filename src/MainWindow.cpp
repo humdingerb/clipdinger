@@ -158,6 +158,9 @@ MainWindow::MessageReceived(BMessage* message)
 				PostMessage(FILTER_INPUT);
 
 			fHistory->Select(0);
+// save history with every new clip until
+// https://review.haiku-os.org/c/haiku/+/5800 is solved
+_SaveHistory();
 			break;
 		}
 		case MINIMIZE:
@@ -207,6 +210,9 @@ MainWindow::MessageReceived(BMessage* message)
 					BString text(item->GetClip());
 					_PutClipboard(text);
 				}
+// save history with every new clip until
+// https://review.haiku-os.org/c/haiku/+/5800 is solved
+_SaveHistory();
 			} else if (!GetHistoryActiveFlag() && !fFavorites->IsEmpty()) {
 				int32 index = fFavorites->CurrentSelection();
 				if (index < 0)
@@ -216,6 +222,9 @@ MainWindow::MessageReceived(BMessage* message)
 				fFavorites->RenumberFKeys();
 				int32 count = fFavorites->CountItems();
 				fFavorites->Select((index > count - 1) ? count - 1 : index);
+// save history with every new clip until
+// https://review.haiku-os.org/c/haiku/+/5800 is solved
+_SaveFavorites();
 			}
 			break;
 		}
@@ -258,6 +267,9 @@ MainWindow::MessageReceived(BMessage* message)
 					item->SetTitle(newTitle, true);
 					fHistory->InvalidateItem(index);
 				}
+// save history with every new clip until
+// https://review.haiku-os.org/c/haiku/+/5800 is solved
+_SaveHistory();
 			} else if (!GetHistoryActiveFlag() && !fFavorites->IsEmpty()) {
 				int32 index = fFavorites->CurrentSelection();
 				if (index < 0)
@@ -268,6 +280,9 @@ MainWindow::MessageReceived(BMessage* message)
 					item->SetTitle(newTitle, true);
 					fFavorites->InvalidateItem(index);
 				}
+// save history with every new clip until
+// https://review.haiku-os.org/c/haiku/+/5800 is solved
+_SaveFavorites();
 			}
 			break;
 		}
@@ -336,6 +351,9 @@ MainWindow::MessageReceived(BMessage* message)
 			} else
 				fFavorites->RenumberFKeys();
 			_UpdateControls();
+// save history with every new clip until
+// https://review.haiku-os.org/c/haiku/+/5800 is solved
+_SaveFavorites();
 			break;
 		}
 		case FAV_DOWN:
@@ -349,6 +367,9 @@ MainWindow::MessageReceived(BMessage* message)
 			fFavorites->Select(index + 1);
 			fFavorites->RenumberFKeys();
 			_UpdateControls();
+// save history with every new clip until
+// https://review.haiku-os.org/c/haiku/+/5800 is solved
+_SaveFavorites();
 			break;
 		}
 		case FAV_UP:
@@ -361,6 +382,9 @@ MainWindow::MessageReceived(BMessage* message)
 			fFavorites->Select(index - 1);
 			fFavorites->RenumberFKeys();
 			_UpdateControls();
+// save history with every new clip until
+// https://review.haiku-os.org/c/haiku/+/5800 is solved
+_SaveFavorites();
 			break;
 		}
 		case FAV_SELECTION:
@@ -430,6 +454,9 @@ MainWindow::MessageReceived(BMessage* message)
 		{
 			fFavorites->MakeEmpty();
 			_UpdateControls();
+// save history with every new clip until
+// https://review.haiku-os.org/c/haiku/+/5800 is solved
+_SaveFavorites();
 			break;
 		}
 		case CLEAR_HISTORY:
@@ -440,6 +467,9 @@ MainWindow::MessageReceived(BMessage* message)
 
 			fHistory->MakeEmpty();
 			PostMessage(B_CLIPBOARD_CHANGED);
+// save history with every new clip until
+// https://review.haiku-os.org/c/haiku/+/5800 is solved
+_SaveHistory();
 			break;
 		}
 		case HELP:
@@ -721,6 +751,7 @@ MainWindow::_SetSplitview()
 void
 MainWindow::_SaveHistory()
 {
+printf("MainWindow::_SaveHistory()\n");
 	BPath path;
 	BMessage msg;
 	if (find_directory(B_USER_SETTINGS_DIRECTORY, &path) < B_OK)
@@ -816,6 +847,7 @@ MainWindow::_LoadHistory()
 void
 MainWindow::_SaveFavorites()
 {
+printf("MainWindow::_SaveFavorites()\n");
 	BPath path;
 	BMessage msg;
 
