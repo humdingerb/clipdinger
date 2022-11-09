@@ -27,7 +27,7 @@ Clip	MainWindow		Porta-retalls
 Clipboard monitor…	MainWindow		Monitor del porta-retalls
 Clipdinger (fading paused)	MainWindow		Clipdinger (esvaïment en pausa)
 Edit title	MainWindow		Edita'n el títol
-Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Failed to upload the clip.\nThe temporary file could not be written to disk.
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Ha fallat carregar el clip.\nEl fitxer temporal no s'ha pogut escriure al disc.
 Favorites	MainWindow		Preferits
 Filter:	MainWindow		Filtre:
 Help	MainWindow		Ajuda
@@ -44,7 +44,7 @@ Remove	MainWindow		Suprimeix
 Settings…	MainWindow		Paràmetres...
 This clip is already a favorite	MainWindow		Aquest clip ja és un dels preferits.
 Upload	MainWindow		Carrega
-Upload error	MainWindow		Upload error
+Upload error	MainWindow		Error de càrrega
 Add to favorites	ClipList		Afegeix als preferits
 Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Afegit: %time% - %date%\n%clip%
 Edit title	ClipList		Edita'n el títol
