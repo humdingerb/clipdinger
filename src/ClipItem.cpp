@@ -37,14 +37,18 @@ ClipItem::ClipItem(BString clip, BString title, BString path, bigtime_t added, b
 
 	fIconSize = (int32(be_control_look->ComposeIconSize(16).Height()) + 1);
 	BEntry entry(path.String());
+	fOriginIcon = new BBitmap(BRect(0, 0, fIconSize - 1, fIconSize - 1), 0, B_RGBA32);
 
 	if (entry.InitCheck() == B_OK) {
-		fOriginIcon = new BBitmap(BRect(0, 0, fIconSize - 1, fIconSize - 1), 0, B_RGBA32);
 		entry_ref ref;
 		entry.GetRef(&ref);
 		BNodeInfo::GetTrackerIcon(&ref, fOriginIcon, icon_size(fIconSize));
-	} else
-		fOriginIcon = NULL;
+	} else {
+		BMimeType type("application/x-vnd.Be-elfexecutable");
+		status_t error = type.GetIcon(fOriginIcon, icon_size(fIconSize));
+		if (error != B_OK)
+			fOriginIcon = NULL;
+	}
 }
 
 
