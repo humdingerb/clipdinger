@@ -45,6 +45,7 @@ private:
 
 	BString			fOrigin;
 	BBitmap*		fOriginIcon;
+	int32			fIconSize;
 	bigtime_t		fTimeAdded;
 	bigtime_t		fTimeSince;
 

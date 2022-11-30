@@ -35,14 +35,14 @@ ClipItem::ClipItem(BString clip, BString title, BString path, bigtime_t added, b
 	fTimeSince = since;
 	fColor = ui_color(B_LIST_BACKGROUND_COLOR);
 
-	BNode node;
-	BNodeInfo node_info;
+	fIconSize = (int32(be_control_look->ComposeIconSize(16).Height()) + 1);
+	BEntry entry(path.String());
 
-	if ((node.SetTo(path.String()) == B_NO_ERROR) && (node_info.SetTo(&node) == B_NO_ERROR)) {
-		fOriginIcon = new BBitmap(BRect(0, 0, kIconSize - 1, kIconSize - 1), 0, B_RGBA32);
-		status_t status = node_info.GetTrackerIcon(fOriginIcon, B_MINI_ICON);
-		if (status != B_OK)
-			fOriginIcon = NULL;
+	if (entry.InitCheck() == B_OK) {
+		fOriginIcon = new BBitmap(BRect(0, 0, fIconSize - 1, fIconSize - 1), 0, B_RGBA32);
+		entry_ref ref;
+		entry.GetRef(&ref);
+		BNodeInfo::GetTrackerIcon(&ref, fOriginIcon, icon_size(fIconSize));
 	} else
 		fOriginIcon = NULL;
 }
@@ -75,7 +75,7 @@ ClipItem::DrawItem(BView* view, BRect rect, bool complete)
 	if (fOriginIcon) {
 		view->SetDrawingMode(B_OP_OVER);
 		view->DrawBitmap(
-			fOriginIcon, BPoint(rect.left + spacing, rect.top + (rect.Height() - kIconSize) / 2));
+			fOriginIcon, BPoint(rect.left + spacing, rect.top + (rect.Height() - fIconSize) / 2));
 		view->SetDrawingMode(B_OP_COPY);
 	} else
 		printf("Found no icon\n");
@@ -88,7 +88,7 @@ ClipItem::DrawItem(BView* view, BRect rect, bool complete)
 
 	if (fUpdateNeeded) {
 		BString title(GetTitle());
-		view->TruncateString(&title, B_TRUNCATE_END, Width() - kIconSize - spacing * 4);
+		view->TruncateString(&title, B_TRUNCATE_END, Width() - fIconSize - spacing * 4);
 		fDisplayTitle = title;
 		fUpdateNeeded = false;
 	}
@@ -99,14 +99,14 @@ ClipItem::DrawItem(BView* view, BRect rect, bool complete)
 	font.GetHeight(&fheight);
 
 	view->DrawString(fDisplayTitle.String(),
-		BPoint(kIconSize - 1 + spacing * 3,
+		BPoint(fIconSize - 1 + spacing * 3,
 			rect.top + fheight.ascent + fheight.descent + fheight.leading));
 
 	// draw lines
 	view->SetHighColor(tint_color(ui_color(B_CONTROL_BACKGROUND_COLOR), B_DARKEN_2_TINT));
 	view->StrokeLine(rect.LeftBottom(), rect.RightBottom());
-	view->StrokeLine(BPoint(kIconSize - 1 + spacing * 2, rect.top),
-		BPoint(kIconSize - 1 + spacing * 2, rect.bottom));
+	view->StrokeLine(BPoint(fIconSize - 1 + spacing * 2, rect.top),
+		BPoint(fIconSize - 1 + spacing * 2, rect.bottom));
 }
 
 
@@ -119,7 +119,7 @@ ClipItem::Update(BView* view, const BFont* finfo)
 
 	static const float spacing = be_control_look->DefaultLabelSpacing();
 	BString title(GetTitle());
-	view->TruncateString(&title, B_TRUNCATE_END, Width() - kIconSize - spacing * 4);
+	view->TruncateString(&title, B_TRUNCATE_END, Width() - fIconSize - spacing * 4);
 	fDisplayTitle = title;
 
 	font_height fheight;

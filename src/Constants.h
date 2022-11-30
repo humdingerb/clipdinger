@@ -27,7 +27,6 @@ static const int32 kDefaultFade = 0;
 static const int32 kDefaultFadeDelay = 6;
 static const int32 kDefaultFadeStep = 5;
 static const int32 kDefaultFadeMaxLevel = 8;
-static const int32 kIconSize = 16;
 static const int32 kMaxTitleChars = 100;
 static const int32 kMinuteUnits = 10; // minutes per unit
 
