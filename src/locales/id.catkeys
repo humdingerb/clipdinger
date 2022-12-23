@@ -13,11 +13,11 @@ entries in the clipboard history	SettingsWindow		entri dalam riwayat clipboard
 Fade history entries over time	SettingsWindow		Entri riwayat pudar dari waktu ke waktu
 Max. tint level	SettingsWindow		Maks. tingkat warna
 OK	SettingsWindow		OKE
-Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
+Show icon in Deskbar tray	SettingsWindow		Tampilkan ikon di tray Deskbar
 Steps	SettingsWindow		Langkah
 About Clipdinger	Application		Tentang Clipdinger
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger memberikan riwayat kliping clipboard sistem dan memungkinkan Anda membuat favorit.\n\nTolong beri tahu saya jika ada bug yang Anda temukan atau fitur yang Anda lewatkan. Info kontak ada di ReadMe, lihat item menu 'Tolong'.
-Open Clipdinger	Application		Open Clipdinger
+Open Clipdinger	Application		Buka Clipdinger
 About Clipdinger	MainWindow		Tentang Clipdinger
 Add to favorites	MainWindow		Tambahkan ke Favorit
 App	MainWindow		Aplikasi
@@ -25,9 +25,9 @@ Clear clip history	MainWindow		Hapus riwayat klip
 Clear favorites	MainWindow		Bersihkan favorit
 Clip	MainWindow		Klip
 Clipboard monitor…	MainWindow		Monitor papan klip…
-Clipdinger (fading paused)	MainWindow		Clipdinger (fading paused)
+Clipdinger (fading paused)	MainWindow		Clipdinger (menghilang dijeda)
 Edit title	MainWindow		Sunting judul
-Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Failed to upload the clip.\nThe temporary file could not be written to disk.
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Gagal mengunggah Clip.\nFile sementara tidak dapat ditulis ke disk.
 Favorites	MainWindow		Favorit
 Filter:	MainWindow		Saring:
 Help	MainWindow		Tolong
@@ -42,9 +42,9 @@ Pause fading	MainWindow		Jeda mengabur
 Quit	MainWindow		Keluar
 Remove	MainWindow		Hapus
 Settings…	MainWindow		pengaturan…
-This clip is already a favorite	MainWindow		This clip is already a favorite
-Upload	MainWindow		Upload
-Upload error	MainWindow		Upload error
+This clip is already a favorite	MainWindow		Klip ini sudah menjadi favorit
+Upload	MainWindow		Unggah
+Upload error	MainWindow		Error mengunggah
 Add to favorites	ClipList		Tambah ke favorit
 Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Ditambahkan: %time% - %date%\n%clip%
 Edit title	ClipList		Sunting judul
