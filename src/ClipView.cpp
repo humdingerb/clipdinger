@@ -25,7 +25,8 @@
 
 ClipView::ClipView(const char* name)
 	:
-	BListView(name)
+	BListView(name),
+	fShowingPopUpMenu(false)
 {
 }
 

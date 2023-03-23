@@ -24,6 +24,7 @@
 FavView::FavView(const char* name)
 	:
 	BListView(name),
+	fShowingPopUpMenu(false),
 	fDropRect()
 {
 }
