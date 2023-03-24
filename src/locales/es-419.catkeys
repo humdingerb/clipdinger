@@ -1,0 +1,60 @@
+1	Spanish (Latin American)	application/x-vnd.humdinger-clipdinger	2664829352
+-= No text in clipboard =-	ClipboardMonitor		-= No hay texto en portapapeles =-
+Clipboard monitor	ClipboardMonitor		Monitor de portapapeles
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger proporciona un historial de recortes del portapapeles del sistema, y le permite crear favoritos.\n\nÉste es su monitor del portapapeles, que puede replicarse en el Escritorio para mostrar siempre su contenido actual.
+{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Las entradas se desvanecen cada %A% minutos.\nEl tinte máximo se alcanza después de\n%B% minutos (en 1 paso)}other{Las entradas se desvanecen cada %A% minutos.\nEl tinte máximo se alcanza después de\n%B% minutos (en # pasos)}}
+Auto-paste	SettingsWindow		Auto-pegar
+Auto-start Clipdinger	SettingsWindow		Auto-iniciar Clipdinger
+Cancel	SettingsWindow		Cancelar
+Clipdinger settings	SettingsWindow		Ajustes de Clipdinger
+Delay	SettingsWindow		Demora
+Entries don't fade over time.	SettingsWindow		Las entradas no desvanecen con el tiempo.
+entries in the clipboard history	SettingsWindow		entradas en el historial del portapapeles
+Fade history entries over time	SettingsWindow		Desvanecer entradas del historial a lo largo del tiempo
+Max. tint level	SettingsWindow		Nivel de tinte máximo
+OK	SettingsWindow		Aceptar
+Show icon in Deskbar tray	SettingsWindow		Mostrar ícono en el Deskbar
+Steps	SettingsWindow		Pasos
+About Clipdinger	Application		Acerca de Clipdinger
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger proporciona un historial de recortes del portapapeles del sistema, y le permite crear favoritos.\n\nPor favor, hágame saber cualquier error que encuentre o característica que eche de menos. La información de contacto se encuentra en el archivo Léeme, en el ítem de "Ayuda".
+Open Clipdinger	Application		Abrir Clipdinger
+About Clipdinger	MainWindow		Acerca de Clipdinger
+Add to favorites	MainWindow		Añadir a favoritos
+App	MainWindow		Aplicación
+Clear clip history	MainWindow		Limpiar historial de clips
+Clear favorites	MainWindow		Limpiar favoritos
+Clip	MainWindow		Clip
+Clipboard monitor…	MainWindow		Monitor del portapapeles...
+Clipdinger (fading paused)	MainWindow		Clipdinger (fading en pausa)
+Edit title	MainWindow		Editar título
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Error al cargar el clip.\nNo es posible escribir archivo temporal en disco.
+Favorites	MainWindow		Favoritos
+Filter:	MainWindow		Filtro:
+Help	MainWindow		Ayuda
+Lists	MainWindow		Listas
+Minimize	MainWindow		Minimizar
+Move down	MainWindow		Mover abajo
+Move up	MainWindow		Mover arriba
+OK	MainWindow		Aceptar
+Online paste service not available	MainWindow		Servicio de pegado online no disponible
+Paste online	MainWindow		Pegar online
+Pause fading	MainWindow		Pausar fading
+Quit	MainWindow		Salir
+Remove	MainWindow		Remover
+Settings…	MainWindow		Ajustes…
+This clip is already a favorite	MainWindow		Este clip ya es un favorito
+Upload	MainWindow		Subir
+Upload error	MainWindow		Error de subida
+Add to favorites	ClipList		Añadir a favoritos
+Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Añadido: %time% - %date%\n%clip%
+Edit title	ClipList		Editar título
+Paste online	ClipList		Pegar online
+Remove	ClipList		Remover
+Cancel	EditWindow		Cancelar
+Edit title	EditWindow		Editar título
+Leave title empty to return to original title.	EditWindow		Deje el título vacío para volver al original.
+OK	EditWindow		Aceptar
+Title:	EditWindow		Título:
+Clipboard monitor	ReplWindow		Monitor del portapapeles
+Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Redimensione la ventana según su necesidad, y arrastre el asa replicante al Escritorio.\NPruebe a soltar un color, por ejemplo, desde Icon-O-Matic.
+Clipdinger	System name		Clipdinger
