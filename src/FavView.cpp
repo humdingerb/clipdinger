@@ -146,6 +146,9 @@ FavView::MessageReceived(BMessage* message)
 			MoveItem(origIndex, dropIndex);
 			Select(dropIndex);
 			RenumberFKeys();
+			// Inform main window to save favorites,
+			// until https://review.haiku-os.org/c/haiku/+/5800 is solved:
+			Looper()->PostMessage(message);
 			break;
 		}
 		case POPCLOSED:

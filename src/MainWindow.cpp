@@ -104,8 +104,10 @@ MainWindow::QuitRequested()
 	if (filter != "")
 		_ResetFilter();
 
-	_SaveHistory();
-	_SaveFavorites();
+// we already save history and favorites with every new clip until
+// https://review.haiku-os.org/c/haiku/+/5800 is solved
+//	_SaveHistory();
+//	_SaveFavorites();
 
 	Settings* settings = my_app->GetSettings();
 	if (settings->Lock()) {
@@ -459,6 +461,12 @@ _SaveFavorites();
 _SaveFavorites();
 			break;
 		}
+		case FAV_DRAGGED:
+		// until https://review.haiku-os.org/c/haiku/+/5800 is solved:
+		{
+			_SaveFavorites();
+			break;
+		}
 		case CLEAR_HISTORY:
 		{
 			BString filter = fFilterControl->TextView()->Text();
@@ -751,7 +759,6 @@ MainWindow::_SetSplitview()
 void
 MainWindow::_SaveHistory()
 {
-printf("MainWindow::_SaveHistory()\n");
 	BPath path;
 	BMessage msg;
 	if (find_directory(B_USER_SETTINGS_DIRECTORY, &path) < B_OK)
@@ -847,7 +854,6 @@ MainWindow::_LoadHistory()
 void
 MainWindow::_SaveFavorites()
 {
-printf("MainWindow::_SaveFavorites()\n");
 	BPath path;
 	BMessage msg;
 
