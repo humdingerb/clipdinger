@@ -40,6 +40,7 @@ static const int32 kMinuteUnits = 10; // minutes per unit
 #define	EDIT_TITLE			'edif'
 #define UPDATE_TITLE		'updt'
 #define MINIMIZE			'mize'
+#define DOQUIT				'quit'
 #define ESCAPE				'esca'
 #define POPCLOSED			'pmcl'
 #define F_KEY				'fkey'

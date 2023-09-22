@@ -38,7 +38,8 @@
 MainWindow::MainWindow(BRect frame)
 	:
 	BWindow(frame, B_TRANSLATE_SYSTEM_NAME("Clipdinger"), B_TITLED_WINDOW,
-		B_NOT_CLOSABLE | B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS, B_ALL_WORKSPACES)
+		B_NOT_ZOOMABLE | B_AUTO_UPDATE_SIZE_LIMITS, B_ALL_WORKSPACES),
+	fDoQuit(false)
 {
 	KeyCatcher* catcher = new KeyCatcher("catcher");
 	AddChild(catcher);
@@ -100,6 +101,12 @@ MainWindow::~MainWindow()
 bool
 MainWindow::QuitRequested()
 {
+	// To avoid the window close button quitting the app. Minimize instead.
+	if (fDoQuit == false) {
+		Minimize(true);
+		return (false);
+	}
+
 	BString filter = fFilterControl->Text();
 	if (filter != "")
 		_ResetFilter();
@@ -171,6 +178,12 @@ _SaveHistory();
 			if (filter != "")
 				_ResetFilter();
 			Minimize(true);
+			break;
+		}
+		case DOQUIT:
+		{
+			fDoQuit = true;
+			QuitRequested();
 			break;
 		}
 		case ESCAPE:
@@ -647,7 +660,7 @@ MainWindow::_BuildLayout()
 	menu->AddSeparatorItem();
 	item = new BMenuItem(B_TRANSLATE("Minimize"), new BMessage(MINIMIZE), 'W');
 	menu->AddItem(item);
-	item = new BMenuItem(B_TRANSLATE("Quit"), new BMessage(B_QUIT_REQUESTED), 'Q');
+	item = new BMenuItem(B_TRANSLATE("Quit"), new BMessage(DOQUIT), 'Q');
 	menu->AddItem(item);
 	menuBar->AddItem(menu);
 

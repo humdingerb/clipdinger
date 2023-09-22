@@ -90,6 +90,7 @@ private:
 
 	BSplitView*		fMainSplitView;
 	bool			fHistoryActiveFlag;	// true if fHistory view is the active one
+	bool			fDoQuit; // if true, QuitRequested() quits, otherwise minimize
 
 	BTextControl*	fFilterControl;
 
