@@ -213,12 +213,18 @@ _SaveHistory();
 		{
 			if (GetHistoryActiveFlag() && !fHistory->IsEmpty()) {
 				int32 index = fHistory->CurrentSelection();
-				if (index < 0 || fHistory->CountItems() == 1)
+				if (index < 0)
 					break;
-
 				fHistory->RemoveItem(index);
 
 				int32 count = fHistory->CountItems();
+				// Only item left deleted: clear clipboard
+				if (count == 0) {
+					_PutClipboard("");
+					_SaveHistory();
+					break;
+				}
+
 				fHistory->Select((index > count - 1) ? count - 1 : index);
 
 				if (index == 0) {
