@@ -103,8 +103,8 @@ MainWindow::QuitRequested()
 {
 	// To avoid the window close button quitting the app. Minimize instead.
 	if (fDoQuit == false) {
-		Minimize(true);
-		return (false);
+		PostMessage(MINIMIZE);
+		return false;
 	}
 
 	BString filter = fFilterControl->Text();
