@@ -12,7 +12,7 @@
 
 body {
     font-size: 0.9em;
-	font-family: "DejaVu Sans",Arial,Helvetica,sans-serif;
+	font-family: "Noto Sans",Arial,Helvetica,sans-serif;
 	line-height: 1.5;
 	margin: 40px;
 	min-width: 45em;
@@ -108,7 +108,7 @@ for <a href="https://www.haiku-os.org">Haiku</a><br />
 
 <p>If you want to paste some text that isn't in the clipboard any more, simply hit <span class="key">SHIFT</span> <span class="key">ALT</span> <span class="key">V</span> or click the icon in the Deskbar tray to summon the Clipdinger window. There you can select an entry with the <span class="key">↑</span> / <span class="key">↓</span> keys and put it into the clipboard or auto-paste it by hitting <span class="key">RETURN</span>.</p>
 <p>After selecting a clip, you can also paste it to an online text pasting service by hitting <span class="key">ALT</span> <span class="key">P</span>. The returned URL for the clip is put into the clipboard for you to paste into your email or IRC channel etc.</p>
-<p><span class="key">ESC</span> or <span class="key">ALT</span> <span class="key">W</span> aborts and minimizes the Clipdinger window.</p>
+<p><span class="key">ESC</span> or <span class="key">ALT</span> <span class="key">W</span> aborts and minimizes the Clipdinger window. The close button of the window tab also minimizes; if you really want Clipdinger to quit, you need to press <span class="key">ALT</span> <span class="key">Q</span>.</p>
 
 <h2>
 <a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
@@ -166,6 +166,7 @@ Below the sliders is a summary of your setting in plain English.</p>
 <li><p>Pasting to an online service fails, if Clipdinger is unable to write the clip to a temporary file (<tt>/tmp/clip_upload</tt>).</p></li>
 <li><p>Changes in the settings window can be viewed live in the main window. To find the right fading settings for you, it's best to keep working normally for some time to fill the history and then just play around with the sliders until you're satisfied.</p></li>
 <li><p>Clipdinger's <span class="menu">Auto-paste</span> feature can be a bit tricky: It doesn't know in which application's window you pressed <span class="key">SHIFT</span> <span class="key">ALT</span> <span class="key">V</span> for it to pop up. With activated auto-paste, it simply pastes into last window that was active before you hit <span class="key">RETURN</span> or double-clicked an entry. So, avoid detours...</p></li>
+<li><p>Removing the last remaining clip in the history will empty the clipboard. Naturally, because being the top clip it is the contents of the clipboard.</p></li>
 <li><p>If you want to back-up Clipdinger's settings, history or favorites, or have the need to delete one or all of these files, you'll find them under <span class="path">/boot/home/config/settings/Clipdinger/</span>.</p></li>
 <li><p>If the replicant of the Clipboard monitor unexpectedly gives you grief (or any replicant for that matter), you can remove all replicants on the Desktop by deleting <span class="path">/boot/home/config/settings/Tracker/tracker_shelf</span>.</p></li>
 <li><p>If you've used Clipdinger before v0.5.5, you can now remove the link to it in the <span class="path">/boot/home/config/settings/boot/launch/</span>  folder and use the new setting to auto-start instead.</p></li> 
@@ -192,6 +193,16 @@ Also, thanks to everyone that contributed translations for Clipdinger.</p>
 <h2>
 <a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
 <a id="history" name="history">History</a></h2>
+
+<p><b>1.2.2</b> - <i>30-10-2023:</i></p>
+<ul>
+<li>Put Clipdinger directly into the apps folder instead of a "Clipdinger" subfolder there. Move docs to the documentation folder.</li>
+<li>Added close button to window tab that minimizes Clipdinger.</li>
+<li>Bugfix: Save favorites after they got re-ordered.</li>
+<li>Bugfix: Fix crash when trying to delete last clip in history.</li>
+<li>Allow deleting last clip in history, which results in emtying the clipboard.</li>
+<li>Added partial Sardinian translation, thanks zumikkebe!</li>
+</ul>
 
 <p><b>1.2.1</b> - <i>24-03-2023:</i></p>
 <ul>
