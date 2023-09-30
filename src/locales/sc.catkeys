@@ -1,0 +1,60 @@
+1	Sardinian	application/x-vnd.humdinger-clipdinger	2664829352
+-= No text in clipboard =-	ClipboardMonitor		-= perunu testu in su portaretallios =-
+Clipboard monitor	ClipboardMonitor		Clipboard monitor
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.
+{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}
+Auto-paste	SettingsWindow		Incolla de manera automàtica
+Auto-start Clipdinger	SettingsWindow		Avìa Clipdinger de manera automàtica
+Cancel	SettingsWindow		Annudda
+Clipdinger settings	SettingsWindow		Cuncordos de Clipdinger
+Delay	SettingsWindow		Delay
+Entries don't fade over time.	SettingsWindow		Is boghes no mudant tinta cun su tempus.
+entries in the clipboard history	SettingsWindow		boghes in s'istoria de su portaretallios
+Fade history entries over time	SettingsWindow		Is boghes mudant tinta cun su tempus
+Max. tint level	SettingsWindow		Livellu màssimu de tinta
+OK	SettingsWindow		Ello
+Show icon in Deskbar tray	SettingsWindow		Mustra sa cona in sa safata de sa barra
+Steps	SettingsWindow		Passos
+About Clipdinger	Application		Subra de Clipdinger
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.
+Open Clipdinger	Application		Aberi Clipdinger
+About Clipdinger	MainWindow		Subra de Clipdinger
+Add to favorites	MainWindow		Agiunghe a is preferidos
+App	MainWindow		App
+Clear clip history	MainWindow		Limpia istoria retallios
+Clear favorites	MainWindow		Limpia preferidos
+Clip	MainWindow		Retalliu
+Clipboard monitor…	MainWindow		Clipboard monitor…
+Clipdinger (fading paused)	MainWindow		Clipdinger (fading paused)
+Edit title	MainWindow		Edita tìtulu
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Failed to upload the clip.\nThe temporary file could not be written to disk.
+Favorites	MainWindow		Preferidos
+Filter:	MainWindow		Filtru:
+Help	MainWindow		Agiudu
+Lists	MainWindow		Listas
+Minimize	MainWindow		Minimiza
+Move down	MainWindow		Cala
+Move up	MainWindow		Artzia
+OK	MainWindow		Ello
+Online paste service not available	MainWindow		Su servitziu pro incollare in sa retza no est disponìbbile
+Paste online	MainWindow		Incolla in sa retza
+Pause fading	MainWindow		Pause fading
+Quit	MainWindow		Essi
+Remove	MainWindow		Boga
+Settings…	MainWindow		Cuncordos…
+This clip is already a favorite	MainWindow		Custu retalliu est giai unu preferidu
+Upload	MainWindow		Carriga
+Upload error	MainWindow		Faddina carrighende
+Add to favorites	ClipList		Agiunghe a is preferidos
+Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Agiuntu: %time% - %date%\n%clip%
+Edit title	ClipList		Edita tìtulu
+Paste online	ClipList		Incolla in sa retza
+Remove	ClipList		Boga
+Cancel	EditWindow		Annudda
+Edit title	EditWindow		Edita tìtulu
+Leave title empty to return to original title.	EditWindow		Lassa bòidu su tìtulu pro istorrare su originale.
+OK	EditWindow		Ello
+Title:	EditWindow		Tìtulu:
+Clipboard monitor	ReplWindow		Clipboard monitor
+Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.
+Clipdinger	System name		Clipdinger
