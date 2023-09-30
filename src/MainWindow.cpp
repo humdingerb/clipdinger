@@ -17,6 +17,7 @@
 #include <NetworkInterface.h>
 #include <NetworkRoster.h>
 #include <Path.h>
+#include <PathFinder.h>
 #include <Roster.h>
 #include <Screen.h>
 
@@ -502,19 +503,7 @@ _SaveHistory();
 		}
 		case HELP:
 		{
-			app_info info;
-			BPath path;
-			be_roster->GetActiveAppInfo(&info);
-			BEntry entry(&info.ref);
-
-			entry.GetPath(&path);
-			path.GetParent(&path);
-			path.Append("ReadMe.html");
-
-			entry = path.Path();
-			entry_ref ref;
-			entry.GetRef(&ref);
-			be_roster->Launch(&ref);
+			_OpenHelp();
 			break;
 		}
 		case UPDATE_SETTINGS:
@@ -932,6 +921,29 @@ MainWindow::_LoadFavorites()
 					i++;
 				}
 			}
+		}
+	}
+}
+
+
+void
+MainWindow::_OpenHelp()
+{
+	BPathFinder pathFinder;
+	BStringList paths;
+	BPath path;
+	BEntry entry;
+
+	status_t error = pathFinder.FindPaths(B_FIND_PATH_DOCUMENTATION_DIRECTORY,
+		"packages/clipdinger", paths);
+
+	for (int i = 0; i < paths.CountStrings(); ++i) {
+		if (error == B_OK && path.SetTo(paths.StringAt(i)) == B_OK
+			&& path.Append("ReadMe.html") == B_OK) {
+			entry = path.Path();
+			entry_ref ref;
+			entry.GetRef(&ref);
+			be_roster->Launch(&ref);
 		}
 	}
 }

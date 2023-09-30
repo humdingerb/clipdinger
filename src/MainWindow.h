@@ -67,6 +67,7 @@ private:
 	void			_SaveHistory();
 	void			_LoadFavorites();
 	void			_SaveFavorites();
+	void			_OpenHelp();
 
 	void			_AddClip(BString clip, BString title, BString path,
 						bigtime_t time, bigtime_t since);
