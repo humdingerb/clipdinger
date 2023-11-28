@@ -744,10 +744,10 @@ MainWindow::_BuildLayout()
 void
 MainWindow::_SetSplitview()
 {
-	float leftWeight;
-	float rightWeight;
-	bool leftCollapse;
-	bool rightCollapse;
+	float leftWeight = 0;
+	float rightWeight = 0;
+	bool leftCollapse = false;
+	bool rightCollapse = false;
 	Settings* settings = my_app->GetSettings();
 	if (settings->Lock()) {
 		settings->GetSplitWeight(leftWeight, rightWeight);

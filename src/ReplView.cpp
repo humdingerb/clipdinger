@@ -194,7 +194,7 @@ ReplView::TruncateClip(float width)
 BString
 ReplView::_GetClipboard()
 {
-	const char* text;
+	const char* text = NULL;
 	ssize_t textLen;
 	BMessage* clipboard = (BMessage*)NULL;
 
