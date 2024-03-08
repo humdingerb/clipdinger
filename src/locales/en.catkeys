@@ -1,4 +1,4 @@
-1	English	application/x-vnd.humdinger-clipdinger	2664829352
+1	English	application/x-vnd.humdinger-clipdinger	202858483
 Cancel	SettingsWindow		Cancel
 Upload error	MainWindow		Upload error
 Paste online	ClipList		Paste online
@@ -7,7 +7,6 @@ Open Clipdinger	Application		Open Clipdinger
 OK	MainWindow		OK
 Quit	MainWindow		Quit
 Edit title	ClipList		Edit title
-Clipboard monitor…	MainWindow		Clipboard monitor…
 This clip is already a favorite	MainWindow		This clip is already a favorite
 Remove	ClipList		Remove
 Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
@@ -18,7 +17,6 @@ Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %tim
 Entries don't fade over time.	SettingsWindow		Entries don't fade over time.
 Move down	MainWindow		Move down
 Max. tint level	SettingsWindow		Max. tint level
-Settings…	MainWindow		Settings…
 Move up	MainWindow		Move up
 Delay	SettingsWindow		Delay
 About Clipdinger	Application		About Clipdinger
@@ -50,11 +48,12 @@ Add to favorites	MainWindow		Add to favorites
 Favorites	MainWindow		Favorites
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.
 Title:	EditWindow		Title:
-App	MainWindow		App
 Edit title	EditWindow		Edit title
 Auto-start Clipdinger	SettingsWindow		Auto-start Clipdinger
 Clear favorites	MainWindow		Clear favorites
 Clipdinger	System name		Clipdinger
 Fade history entries over time	SettingsWindow		Fade history entries over time
 Cancel	EditWindow		Cancel
+Settings	MainWindow		Settings
 Lists	MainWindow		Lists
+Clipboard monitor	MainWindow		Clipboard monitor

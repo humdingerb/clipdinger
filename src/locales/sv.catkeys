@@ -1,4 +1,4 @@
-1	Swedish	application/x-vnd.humdinger-clipdinger	2664829352
+1	Swedish	application/x-vnd.humdinger-clipdinger	202858483
 -= No text in clipboard =-	ClipboardMonitor		-= Ingen text i urklipp =-
 Clipboard monitor	ClipboardMonitor		Urklippsmonitor
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger tillhandahåller historik om systemets urklipp och låter dig skapa favoriter.\n\nDet här är dess urklippsmonitor som kan bli replikerad till skrivbordet, så du alltid kan se den nuvarande statusen.
@@ -20,11 +20,10 @@ Clipdinger provides a history of clippings of the system clipboard and lets you 
 Open Clipdinger	Application		Öppna Clipdinger
 About Clipdinger	MainWindow		Om Clipdinger
 Add to favorites	MainWindow		Lägg till i favoriter
-App	MainWindow		App
 Clear clip history	MainWindow		Rensa klipphistorik
 Clear favorites	MainWindow		Rensa favoriter
 Clip	MainWindow		Klipp
-Clipboard monitor…	MainWindow		Urklippsmonitor…
+Clipboard monitor	MainWindow		Urklippsmonitor
 Clipdinger (fading paused)	MainWindow		Clipdinger (uttoning pausad)
 Edit title	MainWindow		Ändra titel
 Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Det gick inte att ladda upp klippet.\nDen temporära filen kunde inte skrivas till disken.
@@ -41,7 +40,7 @@ Paste online	MainWindow		Klistra in online
 Pause fading	MainWindow		Pausa uttoning
 Quit	MainWindow		Avsluta
 Remove	MainWindow		Ta bort
-Settings…	MainWindow		Inställningar…
+Settings	MainWindow		Inställningar
 This clip is already a favorite	MainWindow		Det här klippet är redan en favorit
 Upload	MainWindow		Ladda upp
 Upload error	MainWindow		Uppladdningsfel

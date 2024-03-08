@@ -1,4 +1,4 @@
-1	Portuguese	application/x-vnd.humdinger-clipdinger	2664829352
+1	Portuguese	application/x-vnd.humdinger-clipdinger	202858483
 -= No text in clipboard =-	ClipboardMonitor		-= Nenhum texto na área de transferência =-
 Clipboard monitor	ClipboardMonitor		Monitor da área de transferência
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger apresenta um histórico de itens copiados para a Área de Transferência do sistema e permite criar favoritos.\n\nEste é o seu monitor da área de transferência, que pode ser replicado para a Secrerária para mostrar sempre o seu conteúdo atual.
@@ -20,11 +20,10 @@ Clipdinger provides a history of clippings of the system clipboard and lets you 
 Open Clipdinger	Application		Clipdinger aberto
 About Clipdinger	MainWindow		Acerca do Clipdinger
 Add to favorites	MainWindow		Adicionar aos favoritos
-App	MainWindow		Aplicação
 Clear clip history	MainWindow		Limpar histórico
 Clear favorites	MainWindow		Limpar favoritos
 Clip	MainWindow		Clipe
-Clipboard monitor…	MainWindow		Monitor da área de transferência…
+Clipboard monitor	MainWindow		Monitor da área de transferência
 Clipdinger (fading paused)	MainWindow		Clipdinger (desvanecida pausada)
 Edit title	MainWindow		Editar título
 Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Não conseguiu carregar o clip.\n O ficheiro temporário não pôde ser escrito no disco.
@@ -41,7 +40,7 @@ Paste online	MainWindow		Colar online
 Pause fading	MainWindow		Suspender desvanecimento
 Quit	MainWindow		Sair
 Remove	MainWindow		Remover
-Settings…	MainWindow		Definições…
+Settings	MainWindow		Definições
 This clip is already a favorite	MainWindow		Este clip já é um favorito
 Upload	MainWindow		Upload
 Upload error	MainWindow		Erro de upload

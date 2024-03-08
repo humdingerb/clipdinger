@@ -1,4 +1,4 @@
-1	Catalan	application/x-vnd.humdinger-clipdinger	2664829352
+1	Catalan	application/x-vnd.humdinger-clipdinger	202858483
 -= No text in clipboard =-	ClipboardMonitor		-= Cap text al porta-retalls =-
 Clipboard monitor	ClipboardMonitor		Monitor del porta-retalls
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		El Clipdinger proporciona un historial de retalls del porta-retalls del sistema i us permet crear preferits.\n\nAquest és el monitor del porta-retalls, que es pot replicar a l'escriptori per mostrar-ne sempre el contingut actual.
@@ -20,11 +20,10 @@ Clipdinger provides a history of clippings of the system clipboard and lets you 
 Open Clipdinger	Application		Obre el Clipdinger
 About Clipdinger	MainWindow		Quant al Clipdinger
 Add to favorites	MainWindow		Afegeix als preferits
-App	MainWindow		Aplicació
 Clear clip history	MainWindow		Neteja l'historial del porta-retalls
 Clear favorites	MainWindow		Neteja els preferits
 Clip	MainWindow		Porta-retalls
-Clipboard monitor…	MainWindow		Monitor del porta-retalls
+Clipboard monitor	MainWindow		Monitor del porta-retalls
 Clipdinger (fading paused)	MainWindow		Clipdinger (esvaïment en pausa)
 Edit title	MainWindow		Edita'n el títol
 Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Ha fallat carregar el clip.\nEl fitxer temporal no s'ha pogut escriure al disc.
@@ -41,7 +40,7 @@ Paste online	MainWindow		Enganxa en línia
 Pause fading	MainWindow		Interromp amb esvaïment
 Quit	MainWindow		Surt
 Remove	MainWindow		Suprimeix
-Settings…	MainWindow		Paràmetres...
+Settings	MainWindow		Paràmetres
 This clip is already a favorite	MainWindow		Aquest clip ja és un dels preferits.
 Upload	MainWindow		Carrega
 Upload error	MainWindow		Error de càrrega

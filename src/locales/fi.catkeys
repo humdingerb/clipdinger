@@ -1,4 +1,4 @@
-1	Finnish	application/x-vnd.humdinger-clipdinger	2664829352
+1	Finnish	application/x-vnd.humdinger-clipdinger	202858483
 -= No text in clipboard =-	ClipboardMonitor		-= Leikepöydällä ei ole tekstiä =-
 Clipboard monitor	ClipboardMonitor		Leikepöytävalvonta
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger tarjoaa järjestelmän leikepöydän leikkeiden historian ja sallii sinun luoda suosikkeja.\n\nTämä on sen leikepöytäseuranta, josta voidaan kopioida Työpöydälle aina näytettäväksi sen nykyinen sisältö.
@@ -17,14 +17,13 @@ Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
 Steps	SettingsWindow		Vaiheet
 About Clipdinger	Application		Ohjelmasta Clipdinger
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger tarjoaa järjestelmän leikepöydän leikkeiden historian ja sallii sinun luoda suosikkeja.\n\nKerro minulle ohjelmointivirheistä ja ominaisuuksista, joita kaipaat. Yhteystiedot löytyvät kohdasta ReadMe valikosta 'Opaste'.
-Open Clipdinger	Application		Open Clipdinger
+Open Clipdinger	Application		Avaa Clipdinger
 About Clipdinger	MainWindow		Ohjelmasta Clipdinger
 Add to favorites	MainWindow		Lisää suosikkeihin
-App	MainWindow		Sovellus
 Clear clip history	MainWindow		Tyhjennä leikepöytähistoria
 Clear favorites	MainWindow		Tyhjennä suosikit
 Clip	MainWindow		Leike
-Clipboard monitor…	MainWindow		Leikepöytäseuranta…
+Clipboard monitor	MainWindow		Leikepöytävalvonta
 Clipdinger (fading paused)	MainWindow		Clipdinger (fading paused)
 Edit title	MainWindow		Muokkaa otsikkoa
 Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Failed to upload the clip.\nThe temporary file could not be written to disk.
@@ -41,7 +40,7 @@ Paste online	MainWindow		Liitä verkossa
 Pause fading	MainWindow		Tauota häivytys
 Quit	MainWindow		Poistu
 Remove	MainWindow		Poista
-Settings…	MainWindow		Asetukset…
+Settings	MainWindow		Asetukset
 This clip is already a favorite	MainWindow		This clip is already a favorite
 Upload	MainWindow		Upload
 Upload error	MainWindow		Upload error

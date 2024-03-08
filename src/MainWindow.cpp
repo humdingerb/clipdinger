@@ -638,12 +638,11 @@ MainWindow::_BuildLayout()
 	BMenu* menu;
 	BMenuItem* item;
 
-	menu = new BMenu(B_TRANSLATE("App"));
-	item = new BMenuItem(
-		B_TRANSLATE("Clipboard monitor" B_UTF8_ELLIPSIS), new BMessage(CLIPMONITOR));
+	menu = new BMenu(B_TRANSLATE_SYSTEM_NAME("Clipdinger"));
+	item = new BMenuItem(B_TRANSLATE("Clipboard monitor"), new BMessage(CLIPMONITOR));
 	item->SetTarget(be_app);
 	menu->AddItem(item);
-	item = new BMenuItem(B_TRANSLATE("Settings" B_UTF8_ELLIPSIS), new BMessage(SETTINGS), ',');
+	item = new BMenuItem(B_TRANSLATE("Settings"), new BMessage(SETTINGS), ',');
 	item->SetTarget(be_app);
 	menu->AddItem(item);
 	menu->AddSeparatorItem();

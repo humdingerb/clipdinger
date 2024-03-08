@@ -1,4 +1,4 @@
-1	Polish	application/x-vnd.humdinger-clipdinger	2664829352
+1	Polish	application/x-vnd.humdinger-clipdinger	202858483
 -= No text in clipboard =-	ClipboardMonitor		-= Brak tekstu w schowku =-
 Clipboard monitor	ClipboardMonitor		Monitor schowka
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger dostępnia historię wycinków w systemowym schowku i umożliwia dodawanie ich do ulubionych.\n\nProszę, daj mi znać o znalezionych błędach lub brakujących funkcjonalnościach.\n\nTo jest monitor schowka, który można umieścić na Pulpicie, aby zawsze pokazywał najnowsze wycinki.
@@ -20,11 +20,10 @@ Clipdinger provides a history of clippings of the system clipboard and lets you 
 Open Clipdinger	Application		Otwórz Clipdingera
 About Clipdinger	MainWindow		O Clipdingerze
 Add to favorites	MainWindow		Dodaj do ulubionych
-App	MainWindow		Aplikacja
 Clear clip history	MainWindow		Wyczyść historię schowka
 Clear favorites	MainWindow		Wyczyść ulubione
 Clip	MainWindow		Wycinek
-Clipboard monitor…	MainWindow		Monitor schowka…
+Clipboard monitor	MainWindow		Monitor schowka
 Clipdinger (fading paused)	MainWindow		Clipdinger (zapominanie wstrzymane)
 Edit title	MainWindow		Edytuj tytuł
 Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Nie udało się wysłać wycinka.\nZapisanie na dysku pliku tymczasowego było niemożliwe.
@@ -41,7 +40,7 @@ Paste online	MainWindow		Wklej do sieci
 Pause fading	MainWindow		Wstrzymaj wygaszanie
 Quit	MainWindow		Zakończ
 Remove	MainWindow		Usuń
-Settings…	MainWindow		Ustawienia…
+Settings	MainWindow		Ustawienia
 This clip is already a favorite	MainWindow		Ten wycinek już jest ulubiony
 Upload	MainWindow		Wysyłanie
 Upload error	MainWindow		Błąd wysyłania

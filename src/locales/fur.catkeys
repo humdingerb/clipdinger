@@ -1,4 +1,4 @@
-1	Friulian	application/x-vnd.humdinger-clipdinger	2664829352
+1	Friulian	application/x-vnd.humdinger-clipdinger	202858483
 -= No text in clipboard =-	ClipboardMonitor		-= Nissun test tes notis =-
 Clipboard monitor	ClipboardMonitor		Monitor notis
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger al furnìs une cronologjie di ritais des notis di sisteme e ti permet di creâ dai preferîts.\n\nChest al è il so monitor des notis che al pues jessi replicât sul Scritori, cussì di podê simpri viodi i siei contignûts.
@@ -20,11 +20,10 @@ Clipdinger provides a history of clippings of the system clipboard and lets you 
 Open Clipdinger	Application		Vierç Clipdinger
 About Clipdinger	MainWindow		Informazions su Clipdinger
 Add to favorites	MainWindow		Zonte tai preferîts
-App	MainWindow		Aplicazion
 Clear clip history	MainWindow		Nete cronologjie ritais
 Clear favorites	MainWindow		Nete preferîts
 Clip	MainWindow		Ritai
-Clipboard monitor…	MainWindow		Monitor des notis…
+Clipboard monitor	MainWindow		Monitor notis
 Clipdinger (fading paused)	MainWindow		Clipdinger (sfantâ in pause)
 Edit title	MainWindow		Modifiche titul
 Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Impussibil inviâ in rêt il ritai.\nNol è stât pussibil scrivi su disc il file temporani.
@@ -41,7 +40,7 @@ Paste online	MainWindow		Tache in rêt
 Pause fading	MainWindow		Pause il sfantâ
 Quit	MainWindow		Jes
 Remove	MainWindow		Gjave
-Settings…	MainWindow		Impostazions…
+Settings	MainWindow		Impostazions
 This clip is already a favorite	MainWindow		Chest ritai al è za un preferît
 Upload	MainWindow		Invie in rêt
 Upload error	MainWindow		Erôr tal inviâ in rêt

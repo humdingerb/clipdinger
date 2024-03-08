@@ -1,4 +1,4 @@
-1	Sardinian	application/x-vnd.humdinger-clipdinger	2664829352
+1	Sardinian	application/x-vnd.humdinger-clipdinger	202858483
 -= No text in clipboard =-	ClipboardMonitor		-= perunu testu in su portaretallios =-
 Clipboard monitor	ClipboardMonitor		Clipboard monitor
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.
@@ -20,11 +20,10 @@ Clipdinger provides a history of clippings of the system clipboard and lets you 
 Open Clipdinger	Application		Aberi Clipdinger
 About Clipdinger	MainWindow		Subra de Clipdinger
 Add to favorites	MainWindow		Agiunghe a is preferidos
-App	MainWindow		App
 Clear clip history	MainWindow		Limpia istoria retallios
 Clear favorites	MainWindow		Limpia preferidos
 Clip	MainWindow		Retalliu
-Clipboard monitor…	MainWindow		Clipboard monitor…
+Clipboard monitor	MainWindow		Clipboard monitor
 Clipdinger (fading paused)	MainWindow		Clipdinger (fading paused)
 Edit title	MainWindow		Edita tìtulu
 Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Failed to upload the clip.\nThe temporary file could not be written to disk.
@@ -41,7 +40,7 @@ Paste online	MainWindow		Incolla in sa retza
 Pause fading	MainWindow		Pause fading
 Quit	MainWindow		Essi
 Remove	MainWindow		Boga
-Settings…	MainWindow		Cuncordos…
+Settings	MainWindow		Cuncordos
 This clip is already a favorite	MainWindow		Custu retalliu est giai unu preferidu
 Upload	MainWindow		Carriga
 Upload error	MainWindow		Faddina carrighende

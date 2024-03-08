@@ -1,4 +1,4 @@
-1	French	application/x-vnd.humdinger-clipdinger	2664829352
+1	French	application/x-vnd.humdinger-clipdinger	202858483
 -= No text in clipboard =-	ClipboardMonitor		-= Pas de texte dans le presse-papiers =-
 Clipboard monitor	ClipboardMonitor		Moniteur de presse-papiers
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger fournit un historique des notes du presse-papiers système et vous permet de créer des favoris.\n\nCeci est son moniteur de presse-papiers qui peut être répliqué sur le bureau pour toujours montrer le contenu actuel.
@@ -20,11 +20,10 @@ Clipdinger provides a history of clippings of the system clipboard and lets you 
 Open Clipdinger	Application		Ouvrir Clipdinger
 About Clipdinger	MainWindow		À propos de Clipdinger
 Add to favorites	MainWindow		Ajouter aux favoris
-App	MainWindow		App
 Clear clip history	MainWindow		Nettoyer l’historique des notes
 Clear favorites	MainWindow		Nettoyer les favoris
 Clip	MainWindow		Note
-Clipboard monitor…	MainWindow		Moniteur de presse-papiers…
+Clipboard monitor	MainWindow		Moniteur de presse-papiers
 Clipdinger (fading paused)	MainWindow		Clipdinger (assombrissement en pause)
 Edit title	MainWindow		Éditer le titre
 Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		La publication du clip a échoué.\nLe fichier temporaire n’a pas pu être écrit sur le disque.
@@ -41,7 +40,7 @@ Paste online	MainWindow		Coller en ligne
 Pause fading	MainWindow		Mettre l’assombrissement en pause
 Quit	MainWindow		Quitter
 Remove	MainWindow		Supprimer
-Settings…	MainWindow		Réglages…
+Settings	MainWindow		Réglages
 This clip is already a favorite	MainWindow		Cette entrée fait déjà partie des favoris
 Upload	MainWindow		Envoyer
 Upload error	MainWindow		Erreur pendant la publication en ligne.

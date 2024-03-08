@@ -1,4 +1,4 @@
-1	Turkish	application/x-vnd.humdinger-clipdinger	2664829352
+1	Turkish	application/x-vnd.humdinger-clipdinger	202858483
 -= No text in clipboard =-	ClipboardMonitor		-= Panoda metin yok =-
 Clipboard monitor	ClipboardMonitor		Pano monitörü
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger, sistem panosunun bir geçmişini tutar ve sık kullanılanlar oluşturmanıza izin verir.\n\nBu monitör için Masaüstünde bir Yinelenen oluşturarak pano içeriğinin sürekli elinizin altında olmasını sağlayabilirsiniz.
@@ -20,11 +20,10 @@ Clipdinger provides a history of clippings of the system clipboard and lets you 
 Open Clipdinger	Application		Clipdinger’i aç
 About Clipdinger	MainWindow		Clipdinger hakkında
 Add to favorites	MainWindow		Sık kullanılanlara ekle
-App	MainWindow		Uygulama
 Clear clip history	MainWindow		Pano geçmişini temizle
 Clear favorites	MainWindow		Sık kullanılanları temizle
 Clip	MainWindow		Kırpıntı
-Clipboard monitor…	MainWindow		Pano monitörü...
+Clipboard monitor	MainWindow		Pano monitörü
 Clipdinger (fading paused)	MainWindow		Clipdinger (kaybolma duraklatıldı)
 Edit title	MainWindow		Başlığı düzenle
 Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Kırpıntı karşıya yüklenemedi.\nGeçici dosya diske yazılamadı.
@@ -41,7 +40,7 @@ Paste online	MainWindow		Çevrimiçi yapıştır
 Pause fading	MainWindow		Kaybolmayı duraklat
 Quit	MainWindow		Çık
 Remove	MainWindow		Kaldır
-Settings…	MainWindow		Ayarlar...
+Settings	MainWindow		Ayarlar
 This clip is already a favorite	MainWindow		Bu kırpıntı zaten sık kullanılanlara eklenmiş
 Upload	MainWindow		Karşıya yükle
 Upload error	MainWindow		Karşıya yükleme hatası

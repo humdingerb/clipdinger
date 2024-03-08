@@ -1,4 +1,4 @@
-1	Dutch	application/x-vnd.humdinger-clipdinger	2664829352
+1	Dutch	application/x-vnd.humdinger-clipdinger	202858483
 -= No text in clipboard =-	ClipboardMonitor		-= Geen inhoud in klembord =-
 Clipboard monitor	ClipboardMonitor		Klembord monitor
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger geeft je een historiek van de inhoud van je klembord en laat je ook favorieten aanmaken.\n\nDit is de klembord monitor, deze kan naar het bureaublad gerepliceerd worden zodat de inhoud van het klembord altijd kan worden geraadpleegd.
@@ -20,11 +20,10 @@ Clipdinger provides a history of clippings of the system clipboard and lets you 
 Open Clipdinger	Application		Open Clipdinger
 About Clipdinger	MainWindow		Over Clipdinger
 Add to favorites	MainWindow		Toevoegen aan favorieten
-App	MainWindow		App
 Clear clip history	MainWindow		Fragment historiek verwijderen
 Clear favorites	MainWindow		Favorieten verwijderen
 Clip	MainWindow		Fragment
-Clipboard monitor…	MainWindow		Klembord monitor...
+Clipboard monitor	MainWindow		Klembord monitor
 Clipdinger (fading paused)	MainWindow		Clipdinger (vervagen gepauzeerd)
 Edit title	MainWindow		Titel bewerken
 Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Kan clip niet uploaden.\nHet tijdelijk bestand kon niet geschreven worden naar de schijf.
@@ -41,7 +40,7 @@ Paste online	MainWindow		Online plakken
 Pause fading	MainWindow		Vervagen pauzeren
 Quit	MainWindow		Sluit
 Remove	MainWindow		Verwijderen
-Settings…	MainWindow		Instellingen...
+Settings	MainWindow		Instellingen
 This clip is already a favorite	MainWindow		Deze clip is al een favoriet
 Upload	MainWindow		Uploaden
 Upload error	MainWindow		Upload fout

@@ -1,4 +1,4 @@
-1	Czech	application/x-vnd.humdinger-clipdinger	2664829352
+1	Czech	application/x-vnd.humdinger-clipdinger	202858483
 -= No text in clipboard =-	ClipboardMonitor		-= Žádný text ve schránce =-
 Clipboard monitor	ClipboardMonitor		Sledovač schránky
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger nabízí historii schránky a umožňuje vytváření oblíbených.\n\nTento sledovač schránky lze replikovat na plochu k zobrazování aktuálního obsahu.
@@ -20,11 +20,10 @@ Clipdinger provides a history of clippings of the system clipboard and lets you 
 Open Clipdinger	Application		Open Clipdinger
 About Clipdinger	MainWindow		O aplikaci Clipdinger
 Add to favorites	MainWindow		Přidat k oblíbeným
-App	MainWindow		App
 Clear clip history	MainWindow		Smazat historii
 Clear favorites	MainWindow		Smazat oblíbené
 Clip	MainWindow		Schránka
-Clipboard monitor…	MainWindow		Sledovač schránky…
+Clipboard monitor	MainWindow		Sledovač schránky
 Clipdinger (fading paused)	MainWindow		Clipdinger (fading paused)
 Edit title	MainWindow		Změnit název
 Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Failed to upload the clip.\nThe temporary file could not be written to disk.
@@ -41,7 +40,7 @@ Paste online	MainWindow		Vložit online
 Pause fading	MainWindow		Pozastavit slábnutí
 Quit	MainWindow		Ukončit
 Remove	MainWindow		Odstranit
-Settings…	MainWindow		Nastavení…
+Settings	MainWindow		Nastavení
 This clip is already a favorite	MainWindow		This clip is already a favorite
 Upload	MainWindow		Upload
 Upload error	MainWindow		Upload error

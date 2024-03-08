@@ -1,4 +1,4 @@
-1	Spanish (Latin American)	application/x-vnd.humdinger-clipdinger	2664829352
+1	Spanish (Latin American)	application/x-vnd.humdinger-clipdinger	202858483
 -= No text in clipboard =-	ClipboardMonitor		-= No hay texto en portapapeles =-
 Clipboard monitor	ClipboardMonitor		Monitor de portapapeles
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger proporciona un historial de recortes del portapapeles del sistema, y le permite crear favoritos.\n\nÉste es su monitor del portapapeles, que puede replicarse en el Escritorio para mostrar siempre su contenido actual.
@@ -20,11 +20,10 @@ Clipdinger provides a history of clippings of the system clipboard and lets you 
 Open Clipdinger	Application		Abrir Clipdinger
 About Clipdinger	MainWindow		Acerca de Clipdinger
 Add to favorites	MainWindow		Añadir a favoritos
-App	MainWindow		Aplicación
 Clear clip history	MainWindow		Limpiar historial de clips
 Clear favorites	MainWindow		Limpiar favoritos
 Clip	MainWindow		Clip
-Clipboard monitor…	MainWindow		Monitor del portapapeles...
+Clipboard monitor	MainWindow		Monitor de portapapeles
 Clipdinger (fading paused)	MainWindow		Clipdinger (fading en pausa)
 Edit title	MainWindow		Editar título
 Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Error al cargar el clip.\nNo es posible escribir archivo temporal en disco.
@@ -41,7 +40,7 @@ Paste online	MainWindow		Pegar online
 Pause fading	MainWindow		Pausar fading
 Quit	MainWindow		Salir
 Remove	MainWindow		Remover
-Settings…	MainWindow		Ajustes…
+Settings	MainWindow		Ajustes
 This clip is already a favorite	MainWindow		Este clip ya es un favorito
 Upload	MainWindow		Subir
 Upload error	MainWindow		Error de subida

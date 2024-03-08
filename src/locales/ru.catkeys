@@ -1,4 +1,4 @@
-1	Russian	application/x-vnd.humdinger-clipdinger	2664829352
+1	Russian	application/x-vnd.humdinger-clipdinger	202858483
 -= No text in clipboard =-	ClipboardMonitor		-= Нет текста в буфере обмена =-
 Clipboard monitor	ClipboardMonitor		Монитор буфера обмена
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger предоставляет историю записей из системного буфера обмена и возможность их добвления в избранное.\n\nЭто его монитор буфера обмена, который можно установить в виде репликанта на рабочий стол: чтобы всегда отображать его содержимое.
@@ -20,11 +20,10 @@ Clipdinger provides a history of clippings of the system clipboard and lets you 
 Open Clipdinger	Application		Открыть Clipdinger
 About Clipdinger	MainWindow		О Clipdinger
 Add to favorites	MainWindow		Добавить в избранное
-App	MainWindow		Приложение
 Clear clip history	MainWindow		Очистить истрию
 Clear favorites	MainWindow		Очистить избранное
 Clip	MainWindow		Запись
-Clipboard monitor…	MainWindow		Монитор буфера обмена…
+Clipboard monitor	MainWindow		Монитор буфера обмена
 Clipdinger (fading paused)	MainWindow		Clipdinger (затенение приостановлено)
 Edit title	MainWindow		Изменить заголовок
 Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Не удалось загрузить запись.\nНевозможно записать временный файл на диск.
@@ -41,7 +40,7 @@ Paste online	MainWindow		Разместить онлайн
 Pause fading	MainWindow		Приостановить затенение
 Quit	MainWindow		Выход
 Remove	MainWindow		Удалить
-Settings…	MainWindow		Настройки…
+Settings	MainWindow		Настройки
 This clip is already a favorite	MainWindow		Запись уже в избранном
 Upload	MainWindow		Загрузить
 Upload error	MainWindow		Ошибка при загрузке

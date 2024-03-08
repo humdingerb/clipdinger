@@ -1,4 +1,4 @@
-1	Ukrainian	application/x-vnd.humdinger-clipdinger	2664829352
+1	Ukrainian	application/x-vnd.humdinger-clipdinger	202858483
 -= No text in clipboard =-	ClipboardMonitor		-= Немає тексту в буфері обміну =-
 Clipboard monitor	ClipboardMonitor		Монітор буфера обміну
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger надає історію записів з системного буфера обміну і можливість зробити їх обраними.\n\nЦе монітор буфера обміну, який можна встановити у вигляді репліканта на робочий стіл, щоб завжди відображати його вміст.
@@ -20,11 +20,10 @@ Clipdinger provides a history of clippings of the system clipboard and lets you 
 Open Clipdinger	Application		Open Clipdinger
 About Clipdinger	MainWindow		Про Clipdinger
 Add to favorites	MainWindow		Додати до обраного
-App	MainWindow		Програма
 Clear clip history	MainWindow		Очистити історію
 Clear favorites	MainWindow		Очистити обране
 Clip	MainWindow		Запис
-Clipboard monitor…	MainWindow		Монітор буфера обміну…
+Clipboard monitor	MainWindow		Монітор буфера обміну
 Clipdinger (fading paused)	MainWindow		Clipdinger (fading paused)
 Edit title	MainWindow		Редагувати заголовок
 Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Failed to upload the clip.\nThe temporary file could not be written to disk.
@@ -41,7 +40,7 @@ Paste online	MainWindow		Вставити он-лайн
 Pause fading	MainWindow		Призупинити затінення
 Quit	MainWindow		Вийти
 Remove	MainWindow		Видалити
-Settings…	MainWindow		Параметри…
+Settings	MainWindow		Параметри
 This clip is already a favorite	MainWindow		This clip is already a favorite
 Upload	MainWindow		Upload
 Upload error	MainWindow		Upload error

@@ -1,4 +1,4 @@
-1	English (Australian)	application/x-vnd.humdinger-clipdinger	2664829352
+1	English (Australian)	application/x-vnd.humdinger-clipdinger	202858483
 -= No text in clipboard =-	ClipboardMonitor		-= No text in clipboard =-
 Clipboard monitor	ClipboardMonitor		Clipboard monitor
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger provides a history of clippings of the system clipboard and lets you create favourites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.
@@ -20,11 +20,10 @@ Clipdinger provides a history of clippings of the system clipboard and lets you 
 Open Clipdinger	Application		Open Clipdinger
 About Clipdinger	MainWindow		About Clipdinger
 Add to favorites	MainWindow		Add to favourites
-App	MainWindow		App
 Clear clip history	MainWindow		Clear clip history
 Clear favorites	MainWindow		Clear favourites
 Clip	MainWindow		Clip
-Clipboard monitor…	MainWindow		Clipboard monitor…
+Clipboard monitor	MainWindow		Clipboard monitor
 Clipdinger (fading paused)	MainWindow		Clipdinger (fading paused)
 Edit title	MainWindow		Edit title
 Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Failed to upload the clip.\nThe temporary file could not be written to disk.
@@ -41,7 +40,7 @@ Paste online	MainWindow		Paste online
 Pause fading	MainWindow		Pause fading
 Quit	MainWindow		Quit
 Remove	MainWindow		Remove
-Settings…	MainWindow		Settings…
+Settings	MainWindow		Settings
 This clip is already a favorite	MainWindow		This clip is already a favourite
 Upload	MainWindow		Upload
 Upload error	MainWindow		Upload error

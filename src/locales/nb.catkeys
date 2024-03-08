@@ -1,0 +1,59 @@
+1	Norwegian	application/x-vnd.humdinger-clipdinger	202858483
+-= No text in clipboard =-	ClipboardMonitor		-= Ingen tekst i utklipstavlen =-
+Clipboard monitor	ClipboardMonitor		Utklippsmonitor
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger viser en historikk av systemets utklippstavle og lar deg lagre favoritter.\n\nDette er utklippstavlens skjerm som kan replikeres til skrivebordet for alltid å vise det gjeldende innholdet.
+{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Oppføringer toner ut hvert %A%. minutt.\nMaksimal fargetone nås etter\n%B% minutter (i 1 trinn)}other{Oppføringer toner ut hvert %A%. minutt.\nMaksimal fargetone nås etter\n%B% minutter (i # trinn)}}
+Auto-paste	SettingsWindow		Lim inn automatisk
+Auto-start Clipdinger	SettingsWindow		Auto-start Clipdinger
+Cancel	SettingsWindow		Avbryt
+Clipdinger settings	SettingsWindow		Clipdinger innstillinger
+Delay	SettingsWindow		Forsinkelse
+Entries don't fade over time.	SettingsWindow		Oppføringer tones ikke ut over tid.
+entries in the clipboard history	SettingsWindow		oppføringer i utklippstavlens historie
+Fade history entries over time	SettingsWindow		Ton ut oppføringer over tid
+Max. tint level	SettingsWindow		Maks. fargetonenivå
+OK	SettingsWindow		OK
+Show icon in Deskbar tray	SettingsWindow		Vis ikon i Deskbar-feltet
+Steps	SettingsWindow		Trinn
+About Clipdinger	Application		Om Clipdinger
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger gir en historie med utklipp fra systemets utklippstavle og lar deg lage favoritter.\n\nVennligst gi meg beskjed om eventuelle feil du finner eller funksjoner du savner. Kontaktinformasjon er i ReadMe-filen, se menypunktet 'Hjelp'.
+Open Clipdinger	Application		Åpne Clipdinger
+About Clipdinger	MainWindow		Om Clipdinger
+Add to favorites	MainWindow		Legg til i favoritter
+Clear clip history	MainWindow		Tøm utklippshistorikk
+Clear favorites	MainWindow		Tøm favoritter
+Clip	MainWindow		Utklipp
+Clipboard monitor	MainWindow		Utklippsmonitor
+Clipdinger (fading paused)	MainWindow		Clipdinger (uttoning pauset)
+Edit title	MainWindow		Rediger tittel
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Kunne ikke laste opp utklipp.\nDen midlertidige filen kunne ikke skrives til disk.
+Favorites	MainWindow		Favoritter
+Filter:	MainWindow		Filter:
+Help	MainWindow		Hjelp
+Lists	MainWindow		Lister
+Minimize	MainWindow		Minimiser
+Move down	MainWindow		Flytt ned
+Move up	MainWindow		Flytt opp
+OK	MainWindow		OK
+Online paste service not available	MainWindow		Nettbasert innlimingstjeneste utilgjengelig
+Paste online	MainWindow		Lim inn online
+Pause fading	MainWindow		Pause uttoning
+Quit	MainWindow		Avslutt
+Remove	MainWindow		Fjern
+Settings	MainWindow		Innstillinger
+This clip is already a favorite	MainWindow		Dette utklippet er allerede en favoritt
+Upload	MainWindow		Last opp
+Upload error	MainWindow		Opplastingsfeil
+Add to favorites	ClipList		Legg til i favoritter
+Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Lagt til: %time% - %date%\n%clip%
+Edit title	ClipList		Rediger tittel
+Paste online	ClipList		Lim inn online
+Remove	ClipList		Fjern
+Cancel	EditWindow		Avbryt
+Edit title	EditWindow		Rediger tittel
+Leave title empty to return to original title.	EditWindow		La tittelen stå tom for å gjenopprette den opprinnelige tittelen.
+OK	EditWindow		OK
+Title:	EditWindow		Tittel:
+Clipboard monitor	ReplWindow		Utklippsmonitor
+Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Endre størrelsen på vinduet etter behov og dra replikanthåndtaket til skrivebordet.\nPrøv å slippe en farge, f.eks. fra Icon-O-Matic.
+Clipdinger	System name		Clipdinger

@@ -1,4 +1,4 @@
-1	Romanian	application/x-vnd.humdinger-clipdinger	2664829352
+1	Romanian	application/x-vnd.humdinger-clipdinger	202858483
 -= No text in clipboard =-	ClipboardMonitor		-= Niciun text în clipboard =-
 Clipboard monitor	ClipboardMonitor		Monitor clipboard
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger furnizează un istoric al decupărilor din clipboardul sistemului și vă permite să creați favorite.\n\nAcesta este monitorul de clipboard care poate fi replicat pe Desktop pentru a arăta mereu conținutul actual.
@@ -20,11 +20,10 @@ Clipdinger provides a history of clippings of the system clipboard and lets you 
 Open Clipdinger	Application		Deschide Clipdinger
 About Clipdinger	MainWindow		Despre Clipdinger
 Add to favorites	MainWindow		Adaugă la favorite
-App	MainWindow		Aplicație
 Clear clip history	MainWindow		Eliberează istoric decupări
 Clear favorites	MainWindow		Elimină favorite
 Clip	MainWindow		Secțiune
-Clipboard monitor…	MainWindow		Monitor clipboard…
+Clipboard monitor	MainWindow		Monitor clipboard
 Clipdinger (fading paused)	MainWindow		Clipdinger (dispariția oprită)
 Edit title	MainWindow		Editare titlu
 Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Încărcarea decupării eșuată.\nFișierul temporar nu poate fi scris pe disc.
@@ -41,7 +40,7 @@ Paste online	MainWindow		Lipire online
 Pause fading	MainWindow		Pauzare decolorare
 Quit	MainWindow		Ieșire
 Remove	MainWindow		Eliminare
-Settings…	MainWindow		Configurări…
+Settings	MainWindow		Configurări
 This clip is already a favorite	MainWindow		Aceasta decuare este deja în favorite
 Upload	MainWindow		Încarcă
 Upload error	MainWindow		Eroarea la încărcare

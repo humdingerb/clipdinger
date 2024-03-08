@@ -1,4 +1,4 @@
-1	Indonesian	application/x-vnd.humdinger-clipdinger	2664829352
+1	Indonesian	application/x-vnd.humdinger-clipdinger	202858483
 -= No text in clipboard =-	ClipboardMonitor		-= Tiada teks di Papan klip=-
 Clipboard monitor	ClipboardMonitor		Monitor papan klip
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger memberikan sejarah kliping papan klip sistem dan memungkinkan Anda membuat favorit.\n\nIni adalah monitor papan klip yang dapat direplikasi ke Desktop untuk selalu menampilkan isinya saat ini.
@@ -20,11 +20,10 @@ Clipdinger provides a history of clippings of the system clipboard and lets you 
 Open Clipdinger	Application		Buka Clipdinger
 About Clipdinger	MainWindow		Tentang Clipdinger
 Add to favorites	MainWindow		Tambahkan ke Favorit
-App	MainWindow		Aplikasi
 Clear clip history	MainWindow		Hapus riwayat klip
 Clear favorites	MainWindow		Bersihkan favorit
 Clip	MainWindow		Klip
-Clipboard monitor…	MainWindow		Monitor papan klip…
+Clipboard monitor	MainWindow		Monitor papan klip
 Clipdinger (fading paused)	MainWindow		Clipdinger (menghilang dijeda)
 Edit title	MainWindow		Sunting judul
 Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Gagal mengunggah Clip.\nFile sementara tidak dapat ditulis ke disk.
@@ -41,7 +40,7 @@ Paste online	MainWindow		Tempel secara online
 Pause fading	MainWindow		Jeda mengabur
 Quit	MainWindow		Keluar
 Remove	MainWindow		Hapus
-Settings…	MainWindow		pengaturan…
+Settings	MainWindow		Pengaturan
 This clip is already a favorite	MainWindow		Klip ini sudah menjadi favorit
 Upload	MainWindow		Unggah
 Upload error	MainWindow		Error mengunggah
