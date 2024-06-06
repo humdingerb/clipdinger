@@ -438,22 +438,30 @@ _SaveFavorites();
 				break;
 
 			Minimize(true);
-			be_clipboard->StopWatching(this);
+
+			// When filtering is on, we're dealing with a temporary history list
+			// that will be replaced with the backed-up fHistory when we _ResetFilter().
+			// Keep watching the clipboard to make sure the inserted item is treated
+			// like a new clip with _MakeItemUnique() and _MoveClipToTop().
+			BString filter = fFilterControl->Text();
+			if (filter == "")
+				be_clipboard->StopWatching(this);
 
 			ClipItem* item = dynamic_cast<ClipItem*>(fHistory->ItemAt(itemindex));
 			BString text(item->GetClip());
-			_PutClipboard(text);
-			if (fAutoPaste)
-				_AutoPaste();
-			_MoveClipToTop();
-			_UpdateColors();
-
-			be_clipboard->StartWatching(this);
-
-			BString filter = fFilterControl->Text();
 			if (filter != "")
 				_ResetFilter();
 
+			_PutClipboard(text);
+
+			if (fAutoPaste)
+				_AutoPaste();
+
+			if (filter == "")
+				be_clipboard->StartWatching(this);
+
+			_MoveClipToTop();
+			_UpdateColors();
 			break;
 		}
 		case INSERT_FAVORITE:
