@@ -252,7 +252,7 @@ SettingsWindow::_BuildLayout()
 
 	BFont infoFont(*be_plain_font);
 	infoFont.SetFace(B_ITALIC_FACE);
-	rgb_color infoColor = tint_color(ui_color(B_PANEL_BACKGROUND_COLOR), B_DARKEN_4_TINT);
+	rgb_color infoColor = tint_color(ui_color(B_PANEL_TEXT_COLOR), B_DISABLED_LABEL_TINT);
 	fFadeText = new BTextView("fadetext", &infoFont, &infoColor, B_WILL_DRAW | B_SUPPORTS_LAYOUT);
 	fFadeText->MakeEditable(false);
 	fFadeText->SetViewColor(ui_color(B_PANEL_BACKGROUND_COLOR));

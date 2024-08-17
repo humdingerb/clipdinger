@@ -79,7 +79,7 @@ ReplWindow::_BuildLayout()
 	// Text
 	BFont infoFont(*be_plain_font);
 	infoFont.SetFace(B_ITALIC_FACE);
-	rgb_color infoColor = tint_color(ui_color(B_PANEL_BACKGROUND_COLOR), B_DARKEN_4_TINT);
+	rgb_color infoColor = tint_color(ui_color(B_PANEL_TEXT_COLOR), B_DISABLED_LABEL_TINT);
 	BTextView* welcomeText
 		= new BTextView("text", &infoFont, &infoColor, B_WILL_DRAW | B_SUPPORTS_LAYOUT);
 	welcomeText->MakeEditable(false);
