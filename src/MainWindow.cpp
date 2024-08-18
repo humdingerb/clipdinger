@@ -600,6 +600,13 @@ _SaveHistory();
 }
 
 
+void
+MainWindow::WindowActivated(bool active)
+{
+	if (active)
+		_UpdateColors();
+}
+
 // #pragma mark - Layout
 
 

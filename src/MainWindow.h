@@ -47,6 +47,7 @@ public:
 
 	bool			QuitRequested();
 	void			MessageReceived(BMessage* message);
+	void			WindowActivated(bool active);
 
 	bool			GetHistoryActiveFlag();
 	void			SetHistoryActiveFlag(bool flag);

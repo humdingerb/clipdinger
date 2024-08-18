@@ -264,16 +264,24 @@ ClipView::AdjustColors()
 		return;
 
 	bool isdark = ui_color(B_LIST_BACKGROUND_COLOR).IsDark();
-
+	bool reachedmax = false;
 	bigtime_t now(real_time_clock());
+
 	for (int32 i = 0; i < CountItems(); i++) {
 		ClipItem* sItem = dynamic_cast<ClipItem*>(ItemAt(i));
 		if (fade) {
-			bigtime_t minutes = (now - sItem->GetTimeSince()) / 60;
-			float level = B_NO_TINT + (maxlevel / step * ((float) minutes / delay) / kMinuteUnits);
-			level = level < maxlevel ? level : maxlevel; // limit to maxlevel
+			float level = 0;
+			if (!reachedmax) {
+				bigtime_t minutes = (now - sItem->GetTimeSince()) / 60;
+				level = B_NO_TINT + (maxlevel / step * ((float) minutes / delay) / kMinuteUnits);
+				if (level > maxlevel) {
+					reachedmax = true;
+					level = maxlevel;
+				}
+			} else
+				level = maxlevel;
 			if (isdark)
-				level = 1 + (1 - level);
+				level = 1 + (1 - level); // if backround is dark, lighten instead of darken
 			sItem->SetColor(tint_color(ui_color(B_LIST_BACKGROUND_COLOR), level)); 
 		} else
 			sItem->SetColor(ui_color(B_LIST_BACKGROUND_COLOR));
