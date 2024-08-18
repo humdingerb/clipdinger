@@ -100,7 +100,8 @@ FavItem::DrawItem(BView* view, BRect rect, bool complete)
 			spacing * 3 + Fnwidth, rect.top + fheight.ascent + fheight.descent + fheight.leading));
 
 	// draw lines
-	view->SetHighColor(tint_color(ui_color(B_CONTROL_BACKGROUND_COLOR), B_DARKEN_2_TINT));
+	float tint = ui_color(B_LIST_BACKGROUND_COLOR).IsDark() ? B_LIGHTEN_1_TINT : B_DARKEN_1_TINT;
+	view->SetHighColor(tint_color(ui_color(B_LIST_BACKGROUND_COLOR), tint));
 	view->StrokeLine(rect.LeftBottom(), rect.RightBottom());
 	view->StrokeLine(
 		BPoint(spacing * 2 + Fnwidth, rect.top), BPoint(spacing * 2 + Fnwidth, rect.bottom));

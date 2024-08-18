@@ -461,7 +461,6 @@ _SaveFavorites();
 				be_clipboard->StartWatching(this);
 
 			_MoveClipToTop();
-			_UpdateColors();
 			break;
 		}
 		case INSERT_FAVORITE:

@@ -86,9 +86,9 @@ ClipItem::DrawItem(BView* view, BRect rect, bool complete)
 
 	// text
 	if (IsSelected() && my_app->fMainWindow->GetHistoryActiveFlag())
-		view->SetHighColor(ui_color(B_LIST_SELECTED_ITEM_TEXT_COLOR));
+		view->SetHighUIColor(B_LIST_SELECTED_ITEM_TEXT_COLOR);
 	else
-		view->SetHighColor(ui_color(B_LIST_ITEM_TEXT_COLOR));
+		view->SetHighUIColor(B_LIST_ITEM_TEXT_COLOR);
 
 	if (fUpdateNeeded) {
 		BString title(GetTitle());
@@ -107,7 +107,8 @@ ClipItem::DrawItem(BView* view, BRect rect, bool complete)
 			rect.top + fheight.ascent + fheight.descent + fheight.leading));
 
 	// draw lines
-	view->SetHighColor(tint_color(ui_color(B_CONTROL_BACKGROUND_COLOR), B_DARKEN_2_TINT));
+	float tint = ui_color(B_LIST_BACKGROUND_COLOR).IsDark() ? B_LIGHTEN_1_TINT : B_DARKEN_1_TINT;
+	view->SetHighColor(tint_color(ui_color(B_LIST_BACKGROUND_COLOR), tint));
 	view->StrokeLine(rect.LeftBottom(), rect.RightBottom());
 	view->StrokeLine(BPoint(fIconSize - 1 + spacing * 2, rect.top),
 		BPoint(fIconSize - 1 + spacing * 2, rect.bottom));
