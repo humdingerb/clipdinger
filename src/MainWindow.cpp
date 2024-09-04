@@ -141,6 +141,14 @@ void
 MainWindow::MessageReceived(BMessage* message)
 {
 	switch (message->what) {
+		case B_COLORS_UPDATED:
+		{
+			if (message->HasColor(ui_color_name(B_LIST_BACKGROUND_COLOR))) {
+				fHistory->MakeEmpty();
+				_LoadHistory();
+			}
+			break;
+		}
 		case B_CLIPBOARD_CHANGED:
 		{
 			BString clip(_GetClipboard());
