@@ -22,7 +22,9 @@
 
 App::App()
 	:
-	BApplication(kApplicationSignature)
+	BApplication(kApplicationSignature),
+	fReplWindow(NULL),
+	fSettingsWindow(NULL)
 {
 }
 
@@ -35,12 +37,12 @@ App::~App()
 bool
 App::QuitRequested()
 {
-	if (fSettingsWindow) {
+	if (fSettingsWindow != NULL) {
 		BMessenger messenger(fSettingsWindow);
 		if (messenger.IsValid() && messenger.LockTarget())
 			fSettingsWindow->Quit();
 	}
-	if (fReplWindow) {
+	if (fReplWindow != NULL) {
 		BMessenger messenger(fReplWindow);
 		if (messenger.IsValid() && messenger.LockTarget())
 			fReplWindow->Quit();

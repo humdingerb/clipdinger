@@ -111,6 +111,9 @@ Settings::LoadSettings()
 				if (msg.FindBool("split_collapse_right", &fRightCollapse) != B_OK)
 					fRightCollapse = false;
 			}
+		// No settings found, save now, because they won't when Haiku gets shut down,
+		// because we're a background app
+		SaveSettings();
 		}
 	}
 }
