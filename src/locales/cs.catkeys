@@ -13,20 +13,20 @@ entries in the clipboard history	SettingsWindow		položky historie schránky
 Fade history entries over time	SettingsWindow		Slábnutí položek v průběhu času
 Max. tint level	SettingsWindow		Max. úroveň odstínu
 OK	SettingsWindow		OK
-Show icon in Deskbar tray	SettingsWindow		Show icon in Deskbar tray
+Show icon in Deskbar tray	SettingsWindow		Zobrazit ikonu na Deskbar panelu
 Steps	SettingsWindow		Kroků
 About Clipdinger	Application		O aplikaci Clipdinger
 Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger nabízí historii schránky a umožňuje vytváření oblíbených.\n\nDejte prosím vědět, pokud narazíte na chyby nebo vás napadne šikovná funkce. Kontakt najdete v ReadMe, viz nabídka 'Nápověda'.
-Open Clipdinger	Application		Open Clipdinger
+Open Clipdinger	Application		Otevřete Clipdinger
 About Clipdinger	MainWindow		O aplikaci Clipdinger
 Add to favorites	MainWindow		Přidat k oblíbeným
 Clear clip history	MainWindow		Smazat historii
 Clear favorites	MainWindow		Smazat oblíbené
 Clip	MainWindow		Schránka
 Clipboard monitor	MainWindow		Sledovač schránky
-Clipdinger (fading paused)	MainWindow		Clipdinger (fading paused)
+Clipdinger (fading paused)	MainWindow		Clipdinger (blednutí pozastaveno)
 Edit title	MainWindow		Změnit název
-Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Failed to upload the clip.\nThe temporary file could not be written to disk.
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Nahrání klipu se nezdařilo.\nDočasný soubor nelze zapsat na disk.
 Favorites	MainWindow		Oblíbené
 Filter:	MainWindow		Filtr:
 Help	MainWindow		Nápověda
@@ -41,9 +41,9 @@ Pause fading	MainWindow		Pozastavit slábnutí
 Quit	MainWindow		Ukončit
 Remove	MainWindow		Odstranit
 Settings	MainWindow		Nastavení
-This clip is already a favorite	MainWindow		This clip is already a favorite
-Upload	MainWindow		Upload
-Upload error	MainWindow		Upload error
+This clip is already a favorite	MainWindow		Tento klip je již oblíbený
+Upload	MainWindow		Nahrát
+Upload error	MainWindow		Chyba nahrávání
 Add to favorites	ClipList		Přidat do oblíbených
 Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Přidáno: %time% - %date%\n%clip%
 Edit title	ClipList		Upravit název

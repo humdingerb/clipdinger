@@ -1,32 +1,32 @@
 1	Spanish	application/x-vnd.humdinger-clipdinger	202858483
--= No text in clipboard =-	ClipboardMonitor		-= Ningún texto en el portapapeles =-
+-= No text in clipboard =-	ClipboardMonitor		-= Portapapeles vacío =-
 Clipboard monitor	ClipboardMonitor		Monitor del portapapeles
-Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger provee un historial de los copiados del portapapeles del sistema y te permite crear favoritos.\n\nEste es el monitor del portapapeles, que puede ser replicado al escritorio para mostrar siempre su contenido actual.
-{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Las entradas se desvanecen cada %A% minutos.\nEl matiz máximo se alcanza después de \n%B% minutos (en 1 paso)}other{Las entradas se desvanecen cada %A% minutos.\nEl matiz máximo se alcanza después de \n%B% minutos (en # pasos)}}
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nThis is its clipboard monitor that can be replicated to the Desktop to always show its current contents.	ClipboardMonitor		Clipdinger proporciona un historial de los recortes del portapapeles del sistema y le permite crear favoritos.\n\nEste es el monitor del portapapeles, que puede funcionar como un replicante en el escritorio para mostrar siempre su contenido actual.
+{0, plural,=1{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in 1 step)}other{Entries fade every %A% minutes.\nThe maximal tint is reached after\n%B% minutes (in # steps)}}	SettingsWindow		{0, plural,=1{Las entradas se sombrean cada %A% minutos.\nEl nivel máximo de sombreado se alcanza después de \n%B% minutos (en 1 paso)}other{Las entradas se sombrean cada %A% minutos.\nEl nivel máximo de sombreado se alcanza después de \n%B% minutos (en # pasos)}}
 Auto-paste	SettingsWindow		Auto-pegado
-Auto-start Clipdinger	SettingsWindow		Auto-inicio de Clipdinger
+Auto-start Clipdinger	SettingsWindow		Inicio automático de Clipdinger
 Cancel	SettingsWindow		Cancelar
 Clipdinger settings	SettingsWindow		Configuración de Clipdinger
-Delay	SettingsWindow		Retraso
-Entries don't fade over time.	SettingsWindow		Las entradas no se desvanecen con el tiempo.
+Delay	SettingsWindow		Tiempo
+Entries don't fade over time.	SettingsWindow		Las entradas no se sombrean con el tiempo.
 entries in the clipboard history	SettingsWindow		entradas en el historial del portapapeles
-Fade history entries over time	SettingsWindow		Historial del desvanecimiento de entradas en el tiempo
-Max. tint level	SettingsWindow		Nivel de matiz máximo
+Fade history entries over time	SettingsWindow		Sombreado de las entradas del historial con el tiempo
+Max. tint level	SettingsWindow		Nivel máximo de sombreado
 OK	SettingsWindow		Aceptar
-Show icon in Deskbar tray	SettingsWindow		Mostrar ícono en la bandeja de la Barra de escritorio
+Show icon in Deskbar tray	SettingsWindow		Mostrar icono en la bandeja de la barra de escritorio
 Steps	SettingsWindow		Pasos
 About Clipdinger	Application		Acerca de Clipdinger
-Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger provee un historial de los copiados del portapapeles del sistema y te permite crear favoritos.\n\nPor favor, permíteme conocer cualquier error que encuentres o funciones que eches en falta. Información de contacto en el ReadMe, ver apartado del menú 'Ayuda'
+Clipdinger provides a history of clippings of the system clipboard and lets you create favorites.\n\nPlease let me know of any bugs you find or features you miss. Contact info is in the ReadMe, see menu item 'Help'.	Application		Clipdinger proporciona un historial de los recortes del portapapeles del sistema y le permite crear favoritos.\n\nPor favor, comuníqueme cualquier error que encuentre o funciones que eche en falta. La información de contacto está en el ReadMe, ver apartado del menú 'Ayuda'
 Open Clipdinger	Application		Abrir Clipdinger
 About Clipdinger	MainWindow		Acerca de Clipdinger
-Add to favorites	MainWindow		Agregar a favoritos
+Add to favorites	MainWindow		Añadir a favoritos
 Clear clip history	MainWindow		Limpiar historial del portapapeles
 Clear favorites	MainWindow		Limpiar favoritos
 Clip	MainWindow		Copiar
 Clipboard monitor	MainWindow		Monitor del portapapeles
-Clipdinger (fading paused)	MainWindow		Clipdinger (desvanecimiento pausado)
+Clipdinger (fading paused)	MainWindow		Clipdinger (sombreado detenido)
 Edit title	MainWindow		Editar título
-Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Hubo un error al subir el clip.\nEl archivo temporal no pudo ser grabado a disco.
+Failed to upload the clip.\nThe temporary file could not be written to disk.	MainWindow		Ha ocurrido un error al subir el recorte.\nEl archivo temporal no ha podido ser grabado a disco.
 Favorites	MainWindow		Favoritos
 Filter:	MainWindow		Filtro:
 Help	MainWindow		Ayuda
@@ -37,15 +37,15 @@ Move up	MainWindow		Mover arriba
 OK	MainWindow		Aceptar
 Online paste service not available	MainWindow		Servicio de pegado en línea no disponible
 Paste online	MainWindow		Pegar en línea
-Pause fading	MainWindow		Pausar desvanecimiento
+Pause fading	MainWindow		Detener sombreado
 Quit	MainWindow		Salir
-Remove	MainWindow		Eliminar
+Remove	MainWindow		Quitar
 Settings	MainWindow		Ajustes
-This clip is already a favorite	MainWindow		Este clip ya está en favoritos
+This clip is already a favorite	MainWindow		Este recorte ya está en favoritos
 Upload	MainWindow		Subir
-Upload error	MainWindow		Error de subida
-Add to favorites	ClipList		Agregar a favoritos
-Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Agregado: %time% - %date%\n%clip%
+Upload error	MainWindow		Error al subir
+Add to favorites	ClipList		Añadir a favoritos
+Added: %time% - %date%\n%clip%	ClipList	Tooltip, don't change the variables %time% and %date%.	Añadido: %time% - %date%\n%clip%
 Edit title	ClipList		Editar título
 Paste online	ClipList		Pegar en línea
 Remove	ClipList		Quitar
@@ -55,5 +55,5 @@ Leave title empty to return to original title.	EditWindow		Dejar el título vac�
 OK	EditWindow		Aceptar
 Title:	EditWindow		Título:
 Clipboard monitor	ReplWindow		Monitor del portapapeles
-Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Redimensiona la ventana a tu necesidad y arrastra el lanzador del replicador al escritorio.\nPrueba dejando un color p.ej. desde Icon-O-Matic.
+Resize the window to your needs and drag the replicant handle onto the Desktop.\nTry dropping a color e.g. from Icon-O-Matic.	ReplWindow		Redimensione la ventana a su necesidad y arrastre el lanzador del replicante al escritorio.\nPruebe1719 a soltar encima un color, p.ej. desde Icon-O-Matic.
 Clipdinger	System name		Clipdinger
