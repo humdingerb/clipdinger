@@ -6,8 +6,85 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta http-equiv="Content-Style-Type" content="text/css" />
 	<meta name="robots" content="all" />
-	<link rel="stylesheet" type="text/css" href="./_doc.css" />
 	<title>Clipdinger</title>
+
+<style type="text/css">
+
+body {
+    font-size: 0.9em;
+	font-family: "DejaVu Sans",Arial,Helvetica,sans-serif;
+	line-height: 1.5;
+	margin: 40px;
+	min-width: 45em;
+	max-width: 70em;
+}
+/* link colors and text decoration */
+
+a:link {
+	font-weight: bold;
+	text-decoration: none;
+	color: #dc3c01;
+}
+a:visited {
+	font-weight: bold;
+	text-decoration: none;
+	color: #892601;
+}
+a:hover, a:active {
+	text-decoration: underline;
+	color: #ff4500;
+}
+
+hr {
+	border: dotted thin #e0e0e0;
+}
+h1 {
+	font-size: 1.3em;
+	border-bottom: dotted thin #e0e0e0;
+	margin-bottom: 45px;
+}
+h2 {
+	font-size: 1.2em;
+	border-bottom: dotted thin #e0e0e0;
+	margin-top: 40px;
+}
+h3 {
+	font-size: 1em;
+	border-bottom: none;
+	margin-bottom: 0px;
+}
+.key {				/* Shortcut (separate with &#160; */
+	-webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border-color: #c7c7c7;
+	border-style: solid;
+	border-width: 1px;
+	padding: 0px 2px 0px 2px;
+	background-color: #e8e8e8;
+    font-family: sans;
+	font-variant: small-caps;
+	font-size: 1em;
+}
+.menu {				/* Menu */
+    font-size: 1.0em;
+    font-family: serif;
+    font-style: italic;
+	color: #24225e;
+}
+.button {			/* Button */
+    font-size: 1.0em;
+    font-family: serif;
+    font-style: italic;
+	color: #33583c;
+}
+.path {				/* File path */
+    background-color: #e8e8e8;
+    font-size: 0.9em;
+    font-family: monospace;
+}
+</style>
 
 </head>
 <body>
@@ -115,6 +192,13 @@ Also, thanks to everyone that contributed translations for Clipdinger.</p>
 <h2>
 <a href="#"><img src="images/up.png" style="border:none;float:right" alt="index" /></a>
 <a id="history" name="history">History</a></h2>
+
+<p><b>1.2.4</b> - <i>15-09-2024:</i></p>
+<ul>
+<li>Bugfix: Create settings file if there were none to make auto-starting work even if the user didn't change any settings.</li>
+<li>Improved color management, esp. for dark themes, and live updating.</li>
+<li>Updated translations.</li>
+</ul>
 
 <p><b>1.2.3</b> - <i>09-06-2024:</i></p>
 <ul>
