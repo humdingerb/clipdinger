@@ -19,6 +19,7 @@
 
 
 thread_id ClipdingerInputDevice::fThread = B_ERROR;
+thread_id ClipdingerInputDevice::fPort = B_ERROR;
 
 
 BInputServerDevice* instantiate_input_device()
@@ -93,11 +94,13 @@ ClipdingerInputDevice::Stop(const char* device, void* cookie)
 	// this is a hook function, it is called for you
 	// (you should not call it yourself)
 
-	status_t err = B_OK;
+	delete_port(fPort);
+	fPort = B_ERROR;
 
+	status_t err = B_OK;
 	wait_for_thread(fThread, &err);
 	fThread = B_ERROR;
-	return B_NO_ERROR;
+	return err;
 }
 
 
@@ -112,12 +115,12 @@ ClipdingerInputDevice::Control(const char* device, void* cookie,
 int32
 ClipdingerInputDevice::listener(void* arg)
 {
-	port_id port = create_port(20, "Clipdinger output port");
+	fPort = create_port(20, "Clipdinger output port");
 
 	ClipdingerInputDevice* clipdingerDevice = (ClipdingerInputDevice *)arg;
 
 	int32 code;
-	while (read_port(port, &code, NULL, 0) == B_OK) {
+	while (read_port(fPort, &code, NULL, 0) == B_OK) {
 
 		BMessage* event = new BMessage(B_KEY_DOWN);
 		event->AddInt64("when", system_time());
@@ -148,6 +151,5 @@ ClipdingerInputDevice::listener(void* arg)
 		snooze(100000);
 	}
 
-	delete_port(port);
 	return B_OK;
 }
