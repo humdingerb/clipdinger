@@ -41,6 +41,7 @@ public:
 private:
 	static int32			listener(void* arg);
 	static thread_id		fThread;
+	static port_id			fPort;
 };
 
 #endif // _INPUT_DEVICE_H
