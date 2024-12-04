@@ -27,6 +27,7 @@
 #include "ClipItem.h"
 #include "Constants.h"
 #include "FavItem.h"
+#include "IconMenuItem.h"
 #include "KeyCatcher.h"
 #include "MainWindow.h"
 
@@ -657,10 +658,9 @@ MainWindow::_BuildLayout()
 {
 	// The menu
 	BMenuBar* menuBar = new BMenuBar("menubar");
-	BMenu* menu;
 	BMenuItem* item;
 
-	menu = new BMenu(B_TRANSLATE_SYSTEM_NAME("Clipdinger"));
+	BMenu* menu = new BMenu("");
 	item = new BMenuItem(B_TRANSLATE("Clipboard monitor"), new BMessage(CLIPMONITOR));
 	item->SetTarget(be_app);
 	menu->AddItem(item);
@@ -678,7 +678,8 @@ MainWindow::_BuildLayout()
 	menu->AddItem(item);
 	item = new BMenuItem(B_TRANSLATE("Quit"), new BMessage(DOQUIT), 'Q');
 	menu->AddItem(item);
-	menuBar->AddItem(menu);
+
+	menuBar->AddItem(new IconMenuItem(menu, NULL, kApplicationSignature, B_MINI_ICON));
 
 	menu = new BMenu(B_TRANSLATE("Clip"));
 	fMenuPaste = new BMenuItem(B_TRANSLATE("Paste online"), new BMessage(PASTE_ONLINE), 'P');
