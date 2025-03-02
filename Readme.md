@@ -1,3 +1,8 @@
+* * *
+This repository is in archived, read-only mode. 
+Clipdinger development continues at [Codeberg](https://codeberg.org/humdinger/clipdinger).
+* * *
+
 ![Clipdinger icon](./documentation/images/clipdinger_icon_64.png) **Clipdinger** for [Haiku](http://www.haiku-os.org)
 
 * * *
